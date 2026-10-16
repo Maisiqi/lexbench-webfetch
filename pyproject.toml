@@ -1,0 +1,25 @@
+[project]
+name = "lexbench-webfetch"
+version = "0.1.0"
+description = "Versioned Web Fetch tasks, acceptance contracts and frozen reference bindings"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = []
+
+[project.scripts]
+lexbench-webfetch = "lexbench_webfetch.cli:main"
+
+[project.urls]
+Repository = "https://github.com/lexmount/lexbench-webfetch"
+Issues = "https://github.com/lexmount/lexbench-webfetch/issues"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+lexbench_webfetch = ["suites/*.json", "suites/*/*.json"]

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "source_repository": "https://github.com/lexmount/browser-eval",
+  "source_commit": "894b38f8580f2b8c3b54ca37e05bd585b0b2be15",
+  "source_files": {
+    "evaluation/dataset-catalog.json": "ccb06789463ba0720d5e342b9ef384c241675a791ada8b0ea318ea99a474b2e1",
+    "evaluation/source-inputs.json": "4ff0c2f1a9eff95be7ff02ca0d00e0930978ed7e0f0121f6bc4af3fa628185d1",
+    "evaluation/popular-sites/dataset-catalog.json": "cf9b31ffe8486c158579cd543ae3f0ccf969ee4a3df8817b98b679192d087406",
+    "evaluation/popular-sites/source-inputs.json": "58f0de5e107f05161004df0a87216b69c4cf9a30c705bdd1304415ab02fd97f3",
+    "evaluation/dynamic-content-100-moli-webfetch/dataset-catalog.json": "81703f392b586931624692cb42a006843a9cbf02250fd9ea36d4ecb65ee1cb6e",
+    "evaluation/dynamic-content-100-moli-webfetch/source-inputs.json": "eabe4b3b9b6a1b2ef4ac4784be1254148c319f367eec55c6dd72684287a95f97",
+    "evaluation/risk-control/dataset-catalog.json": "43e79ab63c12f56ed025d78fa6e417cfc91b812faa6a69b9016b99979a498a98",
+    "evaluation/risk-control/source-inputs.json": "230c3a88585c7ebb838bc2d7d956fbbfbb4a2c23d2ff1f0a84eb103909c6ee14"
+  },
+  "task_projection": "Task instructions and acceptance structure; body reference text/source_text are replaced by SHA-256 and character-count bindings. Full references, answers and capture/review payloads remain in external inputs. Original full task hashes remain in each catalog."
+}

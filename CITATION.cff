@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Cite LexBench Web Fetch and record the commit and suite used."
+type: software
+title: LexBench Web Fetch
+authors:
+  - name: LexBench Web Fetch contributors
+repository-code: "https://github.com/lexmount/lexbench-webfetch"
+license: MIT
+version: 0.1.0

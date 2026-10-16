@@ -1,0 +1,106 @@
+<div align="center">
+
+<img src="docs/assets/overview.svg" alt="LexBench Web Fetch task suites and acceptance rules" width="100%">
+
+# LexBench Web Fetch
+
+### What does a fetch actually return?
+
+Versioned tasks and acceptance rules for retrieving web content, structured records and files.
+
+[English](README.md) · [简体中文](docs/README.zh-CN.md)
+
+[![CI](https://github.com/lexmount/lexbench-webfetch/actions/workflows/ci.yml/badge.svg)](https://github.com/lexmount/lexbench-webfetch/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/code-MIT-51735b)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-356a91)](pyproject.toml)
+
+[Tasks](#task-suites) · [Quickstart](#quickstart) · [Evaluation protocol](docs/protocol.md) · [Contributing](CONTRIBUTING.md)
+
+</div>
+
+---
+
+LexBench Web Fetch defines what a retrieval system must deliver: page text, named records with usable links, expected resources, or a requested file. The versioned task rules distinguish a successful request from a usable answer.
+
+The benchmark is independent of any browser, provider or execution harness. It has no Browser Eval dependency. Use its JSON task definitions with your own runner, or export verified inputs for [Browser Eval](https://github.com/lexmount/browser-eval).
+
+```mermaid
+flowchart LR
+    A[Versioned task and acceptance rules] --> B[Your retrieval system]
+    B --> C[Saved response or delivered file]
+    A --> D[Evaluate the declared requirements]
+    C --> D
+    E[Hash-bound reference inputs] --> D
+```
+
+## Task suites
+
+| Suite | Task entries | Scope |
+| --- | ---: | --- |
+| `webfetch` | 150 | Web pages, documents, images, video and challenge pages |
+| `dynamic-content` | 100 | Content and records loaded after the initial page response |
+| `popular-sites` | 100 | Task-relevant content on widely used websites |
+| `access-restrictions` | 100 | URLs where access restrictions were previously observed |
+
+These are four separately versioned populations, with 450 task entries in total. They are not a deduplicated 450-site leaderboard. The access-restriction label describes historical observations; a URL may behave differently today. WebMainBench, WCXB and WebArena remain separate upstream benchmarks.
+
+Each suite ships a readable `tasks.json`, a catalog with original task-definition hashes, and a manifest binding the exact executable dataset and reference files. See [data layout and rights](docs/data.md). Task wording and frozen acceptance rules retain their original language.
+
+## Quickstart
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
+
+```sh
+git clone https://github.com/lexmount/lexbench-webfetch.git
+cd lexbench-webfetch
+uv sync --frozen
+uv run --frozen lexbench-webfetch list
+uv run --frozen lexbench-webfetch validate
+```
+
+This checks the public definitions without a browser, API key or Browser Eval checkout. It does not fetch websites or compute benchmark scores.
+
+To reproduce a frozen suite, obtain an approved copy of its inputs. The required files and hashes are in `src/lexbench_webfetch/suites/<suite>/source-inputs.json`. Third-party snapshots are not redistributed here; no public download bundle is currently provided.
+
+```sh
+uv run --frozen lexbench-webfetch verify-inputs \
+  --suite webfetch --source /absolute/path/approved-inputs
+uv run --frozen lexbench-webfetch export \
+  --suite webfetch --source /absolute/path/approved-inputs \
+  --output /absolute/path/new-input-directory
+```
+
+The export includes only manifest-listed files and prints the executable dataset path. Missing files, changed bytes and symlinks fail validation. Existing output directories are never reused.
+
+## Run an evaluation
+
+A runner receives each task's URL and prompt, saves its response or files, and evaluates the declared requirements against the verified reference inputs. Record the benchmark commit, suite ID, input hashes, method versions, execution policy and scorer revision. Follow the [evaluation protocol](docs/protocol.md) when reporting scores or timing.
+
+With Browser Eval installed in a separate checkout:
+
+```sh
+uv run --frozen browser-harness-eval validate \
+  --dataset /absolute/path/new-input-directory/dataset.json
+uv run --frozen browser-harness-eval run \
+  --dataset /absolute/path/new-input-directory/dataset.json \
+  --provider-config configs/providers.quickstart.json --providers http
+```
+
+Run these two commands from Browser Eval. Ordinary runs are diagnostic; a formal live-site comparison additionally requires its pre-call/post-call reference certification. The benchmark input checker verifies frozen bytes, not present-day website validity. See the [Browser Eval integration guide](https://github.com/lexmount/browser-eval/blob/main/docs/benchmarks.md).
+
+## Repository contents
+
+| Path | Purpose |
+| --- | --- |
+| `src/lexbench_webfetch/suites/` | Task definitions, catalogs and frozen input manifests |
+| `src/lexbench_webfetch/benchmark.py` | Independent definition checks and verified input export |
+| `docs/protocol.md` | Acceptance, evidence, timing and result-reporting rules |
+| `tests/` | Accepted/rejected input scenarios and export behavior |
+
+Browser adapters, credentials, measured runs, report renderers and hosting configuration belong to the execution harness or its evidence storage. This repository publishes no measured leaderboard. Changes to task requirements belong here; generic execution or scorer bugs belong in the harness that implements them.
+
+## Contribute and cite
+
+Read [CONTRIBUTING](CONTRIBUTING.md) before changing a task or proposing a result. Run `make check` to validate the definitions and test the input tools. Report security issues through [SECURITY](SECURITY.md).
+
+Cite [LexBench Web Fetch](CITATION.cff) and record the exact commit and suite. Cite any execution harness separately. Project-owned code and definitions use the [MIT license](LICENSE); third-party source material retains its own terms, described in [THIRD_PARTY](THIRD_PARTY.md).
