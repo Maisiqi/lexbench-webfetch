@@ -81,7 +81,7 @@ uv run --frozen lexbench-webfetch score --task examples/task.json --response exa
 uv run --frozen lexbench-webfetch score --task examples/task.json --response examples/missing.txt
 ```
 
-第一份响应通过，第二份失败。实际评分时，请使用已校验数据集中的完整任务 JSON。公开任务文件中的参考正文只有哈希绑定，不能替代完整验收输入。文件任务通过可重复的 `--file /absolute/path/file` 提供真实文件；评分器检查字节签名、长度和声明的哈希，不接受调用者自报的通过标记。可选的树结构任务需要先运行 `uv sync --frozen --extra tree`。
+第一份响应通过，第二份失败。若回答含有结构化链接或图片等字段，可通过 `--metadata /absolute/path/metadata.json` 提供，文件内容须为 JSON 对象。元数据不能指定文件验收结果。实际评分时，请使用已校验数据集中的完整任务 JSON。公开任务文件中的参考正文只有哈希绑定，不能替代完整验收输入。文件任务通过可重复的 `--file /absolute/path/file` 提供真实文件；评分器检查字节签名、长度和声明的哈希，不接受调用者自报的通过标记。可选的树结构任务需要先运行 `uv sync --frozen --extra tree`。
 
 使用独立采集的参考输入编译已审定的访问受限任务规则：
 

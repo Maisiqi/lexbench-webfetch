@@ -81,7 +81,7 @@ uv run --frozen lexbench-webfetch score --task examples/task.json --response exa
 uv run --frozen lexbench-webfetch score --task examples/task.json --response examples/missing.txt
 ```
 
-The first answer passes; the second fails. Supply the complete task JSON from a verified dataset for a real result. Public task projections bind reference bodies by hash and cannot replace those complete rules. File tasks use repeated `--file /absolute/path/file` arguments; acceptance is derived from the actual bytes, signature, length and declared hash, not a supplied pass flag. Optional ordered-tree tasks require `uv sync --frozen --extra tree`.
+The first answer passes; the second fails. Use `--metadata /absolute/path/metadata.json` to include structured answer fields such as `links` or `images`; the file must contain a JSON object. Metadata cannot supply a file-acceptance verdict. Supply the complete task JSON from a verified dataset for a real result. Public task projections bind reference bodies by hash and cannot replace those complete rules. File tasks use repeated `--file /absolute/path/file` arguments; acceptance is derived from the actual bytes, signature, length and declared hash, not a supplied pass flag. Optional ordered-tree tasks require `uv sync --frozen --extra tree`.
 
 Compile the audited access-restriction rules with independently captured references:
 

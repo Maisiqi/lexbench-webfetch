@@ -82,3 +82,45 @@ def test_file_verdict_follows_normalized_request_state(envelope, expected):
                                ok=False, status_code=200)
     assert result['metrics']['request_ok'] is expected
     assert result['passed'] is expected
+
+
+@pytest.mark.parametrize("kind,metadata,passed", [
+    ("structure", {"links": [{"text": "Alpha", "href": "/item/1"},
+                               {"text": "Beta", "href": "/item/2"}]}, True),
+    ("structure", {"links": [{"text": "Alpha", "href": "/item/1"}]}, False),
+    ("resource", {"images": ["/target.png"]}, True),
+    ("resource", {"images": ["/wrong.png"]}, False),
+    ("file", {"file_evaluation": {"pass": True}}, False),
+])
+def test_cli_preserves_structured_answer_evidence(tmp_path, kind, metadata, passed):
+    task = {"id": "sample", "url": "https://example.test/page", "task_kind": kind,
+            "expected_any": [], "content_score_applicable": False}
+    if kind == "structure":
+        task["acceptance_contract"] = {"version": 1, "schema": "named_link",
+            "minimum_records": 2, "hosts": ["example.test"], "entry_path": r"/item/\d+",
+            "stable_text_anchors": []}
+    elif kind == "resource":
+        task["expected_resources"] = [{"id": "target", "urls": ["/target.png"]}]
+    (tmp_path / "task.json").write_text(json.dumps(task))
+    (tmp_path / "answer.txt").write_text("")
+    (tmp_path / "metadata.json").write_text(json.dumps(metadata))
+    expected = evaluate_response(task, b"", metadata=metadata)
+    assert expected["passed"] is passed
+    result = subprocess.run([sys.executable, "-m", "lexbench_webfetch.cli", "score",
+        "--task", str(tmp_path / "task.json"), "--response", str(tmp_path / "answer.txt"),
+        "--metadata", str(tmp_path / "metadata.json")], cwd=tmp_path, text=True, capture_output=True)
+    assert result.returncode == 0, result.stderr
+    assert json.loads(result.stdout) == expected
+
+
+@pytest.mark.parametrize("metadata", [[], "invalid", None, 42])
+def test_cli_rejects_non_object_answer_metadata(tmp_path, metadata):
+    (tmp_path / "task.json").write_text('{"url":"https://example.test","expected_any":[]}')
+    (tmp_path / "answer.txt").write_text("content")
+    (tmp_path / "metadata.json").write_text(json.dumps(metadata))
+    result = subprocess.run([sys.executable, "-m", "lexbench_webfetch.cli", "score",
+        "--task", str(tmp_path / "task.json"), "--response", str(tmp_path / "answer.txt"),
+        "--metadata", str(tmp_path / "metadata.json")], cwd=tmp_path, text=True, capture_output=True)
+    assert result.returncode == 1
+    assert "metadata must be a JSON object" in result.stderr
+    assert "Traceback" not in result.stderr

@@ -24,6 +24,7 @@ def main() -> None:
     score.add_argument("--response", type=Path, required=True)
     score.add_argument("--file", type=Path, action="append", default=[])
     score.add_argument("--list-reference", type=Path)
+    score.add_argument("--metadata", type=Path, help="Saved answer metadata as a JSON object")
     score.add_argument("--request-failed", action="store_true")
     score.add_argument("--status-code", type=int)
     score.add_argument("--final-url")
@@ -36,9 +37,13 @@ def main() -> None:
     try:
         if args.command == "score":
             from .evaluation import evaluate_response
+            metadata = json.loads(args.metadata.read_text(encoding="utf-8")) if args.metadata else None
+            if args.metadata and not isinstance(metadata, dict):
+                raise ValueError("Answer metadata must be a JSON object")
             result = evaluate_response(
                 json.loads(args.task.read_text(encoding="utf-8")), args.response.read_bytes(),
                 files=[path.read_bytes() for path in args.file], ok=not args.request_failed,
+                metadata=metadata,
                 list_reference=(json.loads(args.list_reference.read_text(encoding="utf-8"))
                                 if args.list_reference else None), status_code=args.status_code,
                 title=args.title, final_url=args.final_url)
