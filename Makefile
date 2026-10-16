@@ -1,4 +1,4 @@
 .PHONY: check
 check:
 	uv run --frozen lexbench-webfetch validate
-	uv run --frozen python -m unittest discover -s tests -v
+	uv run --frozen --extra test python -m pytest tests -q

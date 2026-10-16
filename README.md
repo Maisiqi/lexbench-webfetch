@@ -60,7 +60,7 @@ uv run --frozen lexbench-webfetch validate
 
 This checks the public definitions without a browser, API key or Browser Eval checkout. It does not fetch websites or compute benchmark scores.
 
-To reproduce a frozen suite, obtain an approved copy of its inputs. The required files and hashes are in `src/lexbench_webfetch/suites/<suite>/source-inputs.json`. Third-party snapshots are not redistributed here; no public download bundle is currently provided.
+To reproduce a frozen suite, obtain an approved copy of its inputs. The required files and hashes are in `src/lexbench_webfetch/definitions/registry.json`. Third-party snapshots are not redistributed here; no public download bundle is currently provided.
 
 ```sh
 uv run --frozen lexbench-webfetch verify-inputs \
@@ -71,6 +71,24 @@ uv run --frozen lexbench-webfetch export \
 ```
 
 The export includes only manifest-listed files and prints the executable dataset path. Missing files, changed bytes and symlinks fail validation. Existing output directories are never reused.
+
+## Score a saved answer
+
+The benchmark includes its own scorer. It needs no Browser Eval installation:
+
+```sh
+uv run --frozen lexbench-webfetch score --task examples/task.json --response examples/answer.txt
+uv run --frozen lexbench-webfetch score --task examples/task.json --response examples/missing.txt
+```
+
+The first answer passes; the second fails. Supply the complete task JSON from a verified dataset for a real result. Public task projections bind reference bodies by hash and cannot replace those complete rules. File tasks use repeated `--file /absolute/path/file` arguments; acceptance is derived from the actual bytes, signature, length and declared hash, not a supplied pass flag. Optional ordered-tree tasks require `uv sync --frozen --extra tree`.
+
+Compile the audited access-restriction rules with independently captured references:
+
+```sh
+uv run --frozen lexbench-webfetch compile-access-restrictions \
+  --evidence-home /absolute/path/reference-data-home --output /absolute/path/new-dataset.json
+```
 
 ## Run an evaluation
 
@@ -92,12 +110,14 @@ Run these two commands from Browser Eval. Ordinary runs are diagnostic; a formal
 
 | Path | Purpose |
 | --- | --- |
-| `src/lexbench_webfetch/suites/` | Task definitions, catalogs and frozen input manifests |
+| `src/lexbench_webfetch/definitions/` | Task definitions, catalogs and frozen input manifests |
 | `src/lexbench_webfetch/benchmark.py` | Independent definition checks and verified input export |
+| `src/lexbench_webfetch/scoring.py` | Authoritative task acceptance and content diagnostics |
+| `src/lexbench_webfetch/risk_control_dataset.py` | Compile audited access-restriction task requirements |
 | `docs/protocol.md` | Acceptance, evidence, timing and result-reporting rules |
 | `tests/` | Accepted/rejected input scenarios and export behavior |
 
-Browser adapters, credentials, measured runs, report renderers and hosting configuration belong to the execution harness or its evidence storage. This repository publishes no measured leaderboard. Changes to task requirements belong here; generic execution or scorer bugs belong in the harness that implements them.
+Browser adapters, credentials, measured runs, report renderers and hosting configuration belong to the execution harness or its evidence storage. This repository owns task models, deterministic acceptance scoring, file-byte checks and task compilation. Browser Eval imports these implementations as a pinned dependency. This repository publishes no measured leaderboard.
 
 ## Contribute and cite
 

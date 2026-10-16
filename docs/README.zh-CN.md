@@ -60,7 +60,7 @@ uv run --frozen lexbench-webfetch validate
 
 这一步检查公开任务定义，无需浏览器、API Key 或 Browser Eval。它不访问网站，也不计算评测分数。
 
-复现冻结任务集需要取得获准使用的原始输入。所需文件及哈希列在 `src/lexbench_webfetch/suites/<suite>/source-inputs.json` 中。本仓库不分发第三方页面快照，目前也没有公开的完整输入下载包。
+复现冻结任务集需要取得获准使用的原始输入。所需文件及哈希列在 `src/lexbench_webfetch/definitions/registry.json` 中。本仓库不分发第三方页面快照，目前也没有公开的完整输入下载包。
 
 ```sh
 uv run --frozen lexbench-webfetch verify-inputs \
@@ -71,6 +71,24 @@ uv run --frozen lexbench-webfetch export \
 ```
 
 导出工具只复制清单内的文件，并打印可执行数据集路径。缺文件、内容变化或符号链接都会使校验失败，已有输出目录不会被复用。
+
+## 对保存的响应评分
+
+本仓库自带评分器，无需安装 Browser Eval：
+
+```sh
+uv run --frozen lexbench-webfetch score --task examples/task.json --response examples/answer.txt
+uv run --frozen lexbench-webfetch score --task examples/task.json --response examples/missing.txt
+```
+
+第一份响应通过，第二份失败。实际评分时，请使用已校验数据集中的完整任务 JSON。公开任务文件中的参考正文只有哈希绑定，不能替代完整验收输入。文件任务通过可重复的 `--file /absolute/path/file` 提供真实文件；评分器检查字节签名、长度和声明的哈希，不接受调用者自报的通过标记。可选的树结构任务需要先运行 `uv sync --frozen --extra tree`。
+
+使用独立采集的参考输入编译已审定的访问受限任务规则：
+
+```sh
+uv run --frozen lexbench-webfetch compile-access-restrictions \
+  --evidence-home /absolute/path/reference-data-home --output /absolute/path/new-dataset.json
+```
 
 ## 执行评测
 
@@ -92,12 +110,14 @@ uv run --frozen browser-harness-eval run \
 
 | 路径 | 用途 |
 | --- | --- |
-| `src/lexbench_webfetch/suites/` | 任务定义、目录和冻结输入清单 |
+| `src/lexbench_webfetch/definitions/` | 任务定义、目录和冻结输入清单 |
 | `src/lexbench_webfetch/benchmark.py` | 独立的定义检查与输入导出 |
+| `src/lexbench_webfetch/scoring.py` | 统一的任务验收与内容诊断 |
+| `src/lexbench_webfetch/risk_control_dataset.py` | 将已审定的访问受限任务规则编译为数据集 |
 | `docs/protocol.md` | 验收、证据、耗时和结果报告规则 |
 | `tests/` | 输入接受、拒绝及导出行为测试 |
 
-浏览器适配器、凭据、实测结果、报告生成器和托管配置由执行脚手架或外部证据存储管理。本仓库没有实测排行榜。任务要求的修改在这里维护；通用执行或评分实现的问题在对应脚手架修复。
+浏览器适配器、凭据、实测结果、报告生成器和托管配置由执行脚手架或外部证据存储管理。任务模型、确定性验收评分、文件字节校验和任务编译由本仓库维护，Browser Eval 通过固定版本的依赖直接调用。本仓库没有实测排行榜。
 
 ## 参与贡献与引用
 

@@ -1,6 +1,6 @@
 # Data layout and rights
 
-The suite registry is `src/lexbench_webfetch/suites/registry.json`. It binds every shipped suite file by SHA-256 and records each population's ID and size.
+The suite registry is `src/lexbench_webfetch/definitions/registry.json`. Its suite directories contain the current inputs. It binds every shipped suite file by SHA-256 and records each population's ID and size.
 
 | File within a suite | Role |
 | --- | --- |
@@ -8,9 +8,9 @@ The suite registry is `src/lexbench_webfetch/suites/registry.json`. It binds eve
 | `dataset-catalog.json` | Original ordered task inventory, source URLs and complete task-definition hashes |
 | `source-inputs.json` | Exact executable dataset and external reference-file hashes |
 
-The four initial versions were imported from Browser Eval commit `894b38f8`. The full source commit and per-file hashes are in `provenance.json`. Original catalog and manifest bytes are retained, including original dataset IDs and task languages. Their names may contain historical method labels; those labels identify frozen input versions and confer no method-specific acceptance exception.
+The initial versions were imported from Browser Eval commit `894b38f8`. The current access-restriction suite selects the later frozen version declared in the registry. Source commits and per-file hashes are in `provenance.json`. Original catalog and manifest bytes are retained, including original dataset IDs and task languages. Their names may contain historical method labels; those labels identify frozen input versions and confer no method-specific acceptance exception.
 
-Public task requirements are maintained in this repository. Browser Eval retains hash-bound historical records needed by existing experiments; those records preserve old experiments and are not a second source for new task revisions.
+Public task requirements are maintained in this repository. Frozen historical catalogs and manifests also live under `definitions/evaluation/` with their original relative paths and bytes. Browser Eval resolves its historical logical paths through this installed package. It retains experiment profiles and compact hash bindings, rather than duplicate definition files.
 
 ## External inputs
 

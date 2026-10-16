@@ -1,0 +1,1 @@
+{"id":"article","name":"Local article","url":"https://example.test/article","category":"web","expected_any":["Alpha article"],"min_content_chars":1}

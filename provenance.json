@@ -12,5 +12,54 @@
     "evaluation/risk-control/dataset-catalog.json": "43e79ab63c12f56ed025d78fa6e417cfc91b812faa6a69b9016b99979a498a98",
     "evaluation/risk-control/source-inputs.json": "230c3a88585c7ebb838bc2d7d956fbbfbb4a2c23d2ff1f0a84eb103909c6ee14"
   },
-  "task_projection": "Task instructions and acceptance structure; body reference text/source_text are replaced by SHA-256 and character-count bindings. Full references, answers and capture/review payloads remain in external inputs. Original full task hashes remain in each catalog."
+  "task_projection": "Task instructions and acceptance structure; body reference text/source_text are replaced by SHA-256 and character-count bindings. Full references, answers and capture/review payloads remain in external inputs. Original full task hashes remain in each catalog.",
+  "implementation_import": {
+    "source_repository": "https://github.com/lexmount/browser-eval",
+    "source_commit": "b722587f9e8e9e8b438cd17f3c625096fd2af315",
+    "source_files": {
+      "harness/web_fetch/scoring.py": "6488d212d51cd4ac2e902f0c90e4ff56ffca7f9e63798a0de588300e05f0c91e",
+      "harness/web_fetch/metrics.py": "d3c37702ff79a952f0ab1d75e3030ec45ca388663c226f31a45a5dab46400029",
+      "harness/web_fetch/stable_tasks.py": "8767205609ddf47b59afab6110043d4076247eda6319a84d42557587586e20c3",
+      "harness/web_fetch/body_coverage.py": "71f1306f73e13c726376220eb542e0dbd1332ae692586d0ca7422c6b5c3822e3",
+      "harness/web_fetch/composite_tasks.py": "245ba0c069d6951ac339aa69fba6bd6c0724bf69c347a4141831b90a014078ea",
+      "harness/web_fetch/dynamic_lists.py": "5b2a6e9afc197806601703d1e1d58956970920100a664b573342d875b0e42fdd",
+      "harness/web_fetch/reference_quality.py": "e9c961b9ec90ea17f6dc84f5cbb702290b81f86204889287a8a2a3690ea7d162",
+      "harness/web_fetch/dynamic_entry_matching.py": "206f483bac2f11280f2ecc04f8d6aeb61ea68a2a1b47ac2abee3ded219f3e4d3",
+      "harness/web_fetch/dynamic_reference.py": "b0ea992fdb83f7af92c396919b944cb5947fe916b72a791e4e34bc178027996e",
+      "harness/web_fetch/response_input.py": "7ab4008509d382bc33455bb1415da9d6254f0ac23fda56dee029e45b646adb7e",
+      "harness/web_fetch/structured_tables.py": "2cd2d8e45ffd1d7b789eebe071708b476cdd774ff4397e406df00d579fafcd8f",
+      "harness/web_fetch/ordered_tree.py": "78c418fbe07188f3b7e8acbbccc64c16074208631517e77ca6edf7b7ceae166c",
+      "harness/web_fetch/list_verification.py": "c311bb3ef9d46f21319b7eef35e34120580ec6cad720958b6336fe59e5a24bf7",
+      "harness/web_fetch/scoring_regressions.py": "133853bbb7a9d2d20c100807a13a83c65eed83e5d6b2a9534d0c83fe5a49d10a",
+      "harness/web_fetch/risk_control_dataset.py": "58d0703d4138329a9b8f90a15eac23a0c5d0ad1b4f845b42fb69834c4c545ab9",
+      "harness/web_fetch/models.py": "9edd2aaf363f6e684425579f28ba73b088bd604db932f2dd37eb9997febd4e60",
+      "harness/web_fetch/safety.py": "a2c8974631e9e003fc493b7e2b3b32a74cf6ce5e87311e79038609f685511066",
+      "harness/web_fetch/reference_inputs.py": "3a7e5415f6a2ca305fefff2e15673965465ddbc801792ac017d346bd94460ab1",
+      "harness/web_fetch/call_boundary.py": "0e367fc148f3271b9600fb543db1a291a4e2e4bbe0f1ec0f223ae1c77a364a55"
+    }
+  },
+  "definition_import": {
+    "evaluation/dataset-catalog.json": "994fa53f7fc7c3170692a7bb493ebc5af9ad8ffb5b576c022fa123e6e6fb3838",
+    "evaluation/dynamic-content-100-moli-webfetch/dataset-catalog.json": "ca1572aa80fc2324b2f00800a79b053cfd584d1831ffb16e6906ae0981522c6c",
+    "evaluation/dynamic-content-100-moli-webfetch/source-inputs.json": "710f9c91705b29bb9e4aa15af97dcc856e64e406baa4b9966446408d7e3d26a8",
+    "evaluation/popular-sites/dataset-catalog.json": "f2b9dfb550230cdf8dbbba544d58158ac957620c1d064173790ead70754c178d",
+    "evaluation/popular-sites/source-inputs.json": "32c31cfd5458a1dfe06d370fc2411a1eea5d1a05da8ef88e0dcd4fd3b0f3c810",
+    "evaluation/risk-control/body-contracts.json": "de5a1ff1b4333e980dd824848e79f2e7717175b53ffade512491afeb4f6c13f9",
+    "evaluation/risk-control/current/dataset-catalog.json": "52ec968b2ada26e5e061ccb25cbe4a73747539e556fa88f31bece6d7fb79b3cb",
+    "evaluation/risk-control/current/source-inputs.json": "c61d6825abbff2a92098592f83055347cd0b0101374794023046c0fd0323dd5f",
+    "evaluation/risk-control/dataset-catalog.json": "02e30a5c408de3b5113e28f27359cf5e454814de612f860e6b7d7536c892efb0",
+    "evaluation/risk-control/first-30-rule-review.md": "6945a6aa7b0d8d5990d8abf5d24fc41b5a42a22c70940a7c996d8698c6e9bf81",
+    "evaluation/risk-control/history/v5/dataset-catalog.json": "73b1a3cd945c535d5043f0ba01316b98a26af25ed5156d900cdff79f2cbad4ef",
+    "evaluation/risk-control/list-contracts.json": "a566fb13328bd1a88b189b5a49fb7b3565a8d037c22aaa19c2b86087cbbe0881",
+    "evaluation/risk-control/qualification/cohort/cohort-manifest.json": "aeec7ec26d24650896263574135a27fc4848f4d362bd38f0a5b5c167f82abc26",
+    "evaluation/risk-control/qualification/cohort/cohort-receipt.json": "a5929b62ffb8b64da1ac902c5c5be61a75fa01ed171a497f115de14442a9a872",
+    "evaluation/risk-control/qualification/cohort/input-manifest.json": "8a61be8ffdf09a4f5ba84ebd2a621243a6b59d726825b1884f9c71295ecffd27",
+    "evaluation/risk-control/qualification/cohort-policy.json": "4835abe67852adf1609cb3033b19cbef839650d14879c0e24dd76116af2acd2e",
+    "evaluation/risk-control/remaining-70-rule-review.md": "301574dddcfddf6d30ed4d882cdd40b1ae859fdc95a0a02cf9868f55e3fd1079",
+    "evaluation/risk-control/rule-authoring-guide.md": "74363ab502978179e5438a0b992bac7563090e41c91784e492636832dc1cd088",
+    "evaluation/risk-control/source-inputs.json": "77c5a4b62c07d59ed57154a833e85f9e7a97bc739730f51cd4ca3a698edb9258",
+    "evaluation/scoring-regressions.json": "d519f86e327d9e2fd1c884670642eb31714435864e834592e2c7b65ef21ee655",
+    "evaluation/source-inputs.json": "c202abc4624811b938a837402bbaf0ecbe716e375fbca70567346d2edb3b1708",
+    "evaluation/native-retrieval-contracts.json": "210281ea49c61aa9c1ae4976be0f8b97adf1ef0eed6e08a74d77f54bab80b71b"
+  }
 }

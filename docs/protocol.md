@@ -8,7 +8,7 @@ Use the original dataset verified by the suite's `source-inputs.json`. The publi
 
 A method receives the task URL and prompt. Follow the declared task kind: return body text, structured records with the required identities and links, discover the specified resources, or deliver the requested file. A successful HTTP request or nonempty response alone is insufficient. Method-specific alternate task requirements are not allowed.
 
-Task requirements are data: expected markers, fact groups, forbidden output, minimum length, body coverage, structure and resource/file contracts are selected by the task. Missing reference coverage is unavailable, not zero or a perfect score. Binary task acceptance and text-quality diagnostics are separate. Browser Eval implements generic scoring through `score_attempt` and the shared `task_passed` predicate; other harnesses must disclose their evaluator implementation and demonstrate equivalent task-rule behavior before comparing scores.
+Task requirements are data: expected markers, fact groups, forbidden output, minimum length, body coverage, structure and resource/file contracts are selected by the task. Missing reference coverage is unavailable, not zero or a perfect score. Binary task acceptance and text-quality diagnostics are separate. LexBench owns `score_attempt`, the shared `task_passed` predicate and file-byte acceptance. Browser Eval calls the same installed implementations. Other harnesses can use `lexbench_webfetch.evaluation.evaluate_response` or the `score` command without Browser Eval; disclose the benchmark/scorer revision when comparing scores.
 
 ## Live sources and frozen evidence
 
