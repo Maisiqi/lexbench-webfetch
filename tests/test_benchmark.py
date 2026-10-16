@@ -38,6 +38,12 @@ class PublicDefinitions(unittest.TestCase):
         self.assertEqual(public['body_requirements']['min_region_coverage'], 0.8)
         self.assertEqual(case['body_requirements']['regions'][0]['text'], body)
 
+    def test_file_acceptance_metadata_is_public_without_capture_payloads(self):
+        public = bench.public_task({'source_verification': {
+            'mime': 'image/png', 'file_sha256': 'a'*64, 'capture_log': 'private source capture'}})
+        self.assertEqual(public['source_verification'], {'mime': 'image/png', 'file_sha256': 'a'*64})
+        self.assertNotIn('private source capture', json.dumps(public))
+
     def test_unknown_suite_is_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Unknown suite'):
             bench.validate('not-a-suite')
@@ -60,13 +66,14 @@ class FrozenInputs(unittest.TestCase):
         definition = hashlib.sha256(json.dumps(case, ensure_ascii=False, sort_keys=True,
                                                separators=(',', ':')).encode()).hexdigest()
         catalog_sha = write(suite / 'dataset-catalog.json', {
-            'id': 'test', 'name': 'Test', 'case_count': 1, 'dataset_sha256': sha,
+            'kind': 'frozen_dataset_catalog', 'id': 'test', 'name': 'Test', 'case_count': 1, 'dataset_sha256': sha,
             'cases': [{'id': 'article', 'name': 'Article', 'url': 'https://example.test',
                        'definition_sha256': definition}]})
         write(suite / 'tasks.json', {'id': 'test', 'cases': [{k: v for k, v in case.items()
                                                           if k != 'ground_truth_main_content'}]})
         write(suite / 'source-inputs.json', {
-            'schema_version': 2, 'kind': 'frozen_reference_inputs',
+            'schema_version': 2, 'kind': 'frozen_reference_inputs', 'id': 'synthetic-inputs',
+            'catalog': 'dataset-catalog.json',
             'catalog_sha256': catalog_sha, 'dataset_sha256': sha, 'dataset': 'dataset.json',
             'files': {'dataset.json': sha}, 'trees': {'sources': {'article.json': ref_sha}}})
         self.bind_registry()
@@ -145,6 +152,24 @@ class FrozenInputs(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'inventory'):
             bench.validate('synthetic')
 
+    def test_public_validation_rejects_escaping_catalog(self):
+        path = self.suites / 'synthetic/source-inputs.json'
+        data = bench.read(path)
+        data['catalog'] = '../escape.json'
+        write(path, data)
+        self.bind_registry()
+        with self.assertRaises(ValueError):
+            bench.validate('synthetic')
+
+    def test_public_validation_rejects_missing_manifest_identity(self):
+        path = self.suites / 'synthetic/source-inputs.json'
+        data = bench.read(path)
+        del data['id']
+        write(path, data)
+        self.bind_registry()
+        with self.assertRaises((ValueError, KeyError)):
+            bench.validate('synthetic')
+
     def test_changed_shipped_file_fails(self):
         (self.suites / 'synthetic/tasks.json').write_text('{}')
         with self.assertRaisesRegex(ValueError, 'Changed suite file'):
@@ -153,7 +178,7 @@ class FrozenInputs(unittest.TestCase):
     def test_escaping_paths_are_rejected(self):
         for value in ('../secret', '/absolute', 'sources/../../secret', 'sources\\secret'):
             with self.subTest(value=value), self.assertRaises(ValueError):
-                bench.bound_path(self.source, value)
+                bench.contained_path(self.source, value, reject_symlinks=True)
 
 
 if __name__ == '__main__':

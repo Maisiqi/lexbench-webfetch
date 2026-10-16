@@ -7,9 +7,11 @@ import os
 import re
 import shutil
 import tempfile
-from pathlib import Path, PurePosixPath
+from pathlib import Path
+from .paths import contained_path
+from .inputs import digest, load_manifest, verify_catalog
 
-SUITES = Path(__file__).parent / "suites"
+SUITES = Path(__file__).parent / "definitions"
 
 # Full reference bodies and source-capture/review payloads stay in frozen inputs.
 PUBLIC_TASK_FIELDS = (
@@ -54,27 +56,18 @@ def public_task(case: dict) -> dict:
         routing["risk_control"] = {"navigation_contract": navigation}
     if routing:
         task["source_benchmark"] = routing
+    verification = {key: case.get("source_verification", {})[key]
+                    for key in ("mime", "file_sha256") if key in case.get("source_verification", {})}
+    if verification:
+        task["source_verification"] = verification
     review = case.get("rule_review", {})
     if review:
         task["rule_review"] = {key: review[key] for key in ("status", "reason") if key in review}
     return task
 
 
-def digest(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def bound_path(root: Path, relative: str) -> Path:
-    path = PurePosixPath(relative)
-    if not relative or path.is_absolute() or ".." in path.parts or "\\" in relative:
-        raise ValueError(f"Unsafe input path: {relative}")
-    target = root / relative
-    for part in (root, *target.parents, target):
-        if part.is_symlink():
-            raise ValueError(f"Symlinked input: {part}")
-    if not target.resolve().is_relative_to(root.resolve()):
-        raise ValueError(f"Escaping input: {relative}")
-    return target
 
 
 def read(path: Path) -> dict:
@@ -96,11 +89,11 @@ def suite(identifier: str) -> tuple[dict, Path]:
     if len(matches) != 1:
         raise ValueError(f"Unknown suite: {identifier}")
     entry = matches[0]
-    root = bound_path(SUITES, identifier)
+    root = contained_path(SUITES, entry.get("directory", identifier), reject_symlinks=True)
     for relative, expected in entry["files"].items():
         if not re.fullmatch(r"[0-9a-f]{64}", expected):
             raise ValueError(f"Invalid SHA-256: {relative}")
-        if digest(bound_path(root, relative)) != expected:
+        if digest(contained_path(root, relative, reject_symlinks=True)) != expected:
             raise ValueError(f"Changed suite file: {identifier}/{relative}")
     return entry, root
 
@@ -109,13 +102,9 @@ def validate(identifier: str) -> dict:
     entry, root = suite(identifier)
     catalog = read(root / "dataset-catalog.json")
     tasks = read(root / "tasks.json")
-    manifest = read(root / "source-inputs.json")
-    if (manifest.get("schema_version") != 2
-            or manifest.get("kind") != "frozen_reference_inputs"
-            or manifest["catalog_sha256"] != digest(root / "dataset-catalog.json")
-            or manifest["dataset_sha256"] != catalog["dataset_sha256"]
-            or manifest["files"].get(manifest["dataset"]) != manifest["dataset_sha256"]):
-        raise ValueError("Inconsistent frozen input bindings")
+    manifest = load_manifest(root / "source-inputs.json")
+    if manifest['catalog'] != 'dataset-catalog.json':
+        raise ValueError('Manifest must select the registry-bound task catalog')
     if not (entry["dataset_id"] == catalog["id"] == tasks["id"]):
         raise ValueError("Inconsistent dataset identity")
     declared = catalog["cases"]
@@ -129,7 +118,7 @@ def validate(identifier: str) -> dict:
             if key in row and row[key] != task.get(key):
                 raise ValueError(f"Task catalog mismatch: {task['id']}/{key}")
     for relative, expected in input_files(manifest).items():
-        bound_path(root, relative)
+        contained_path(root, relative, reject_symlinks=True)
         if not re.fullmatch(r"[0-9a-f]{64}", expected):
             raise ValueError(f"Invalid input SHA-256: {relative}")
     return {"suite": identifier, "case_count": len(ids), "dataset_sha256": catalog["dataset_sha256"]}
@@ -151,20 +140,15 @@ def verify_inputs(identifier: str, source: Path) -> dict:
     _, root = suite(identifier)
     manifest = read(root / "source-inputs.json")
     for relative, expected in input_files(manifest).items():
-        if digest(bound_path(source, relative)) != expected:
+        if digest(contained_path(source, relative, reject_symlinks=True)) != expected:
             raise ValueError(f"Changed frozen input: {relative}")
-    dataset = read(bound_path(source, manifest["dataset"]))
-    catalog = read(root / "dataset-catalog.json")
-    if (len(dataset["cases"]) != catalog["case_count"]
-            or any(dataset.get(k) != catalog.get(k) for k in ("id", "name", "coverage_plan"))):
-        raise ValueError("Frozen dataset inventory differs from catalog")
-    tasks = read(root / "tasks.json")["cases"]
-    for case, row, task in zip(dataset["cases"], catalog["cases"], tasks):
-        encoded = json.dumps(case, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
-        if hashlib.sha256(encoded).hexdigest() != row["definition_sha256"]:
-            raise ValueError(f"Changed task definition: {row['id']}")
+    raw = contained_path(source, manifest['dataset'], reject_symlinks=True).read_bytes()
+    verify_catalog(root/'source-inputs.json', manifest, raw)
+    dataset = json.loads(raw)
+    tasks = read(root/'tasks.json')['cases']
+    for case, task in zip(dataset['cases'], tasks):
         if public_task(case) != task:
-            raise ValueError(f"Public task differs from frozen input: {row['id']}")
+            raise ValueError(f"Public task differs from frozen input: {case['id']}")
     return result
 
 
@@ -180,9 +164,9 @@ def export(identifier: str, source: Path, output: Path) -> Path:
     stage = Path(tempfile.mkdtemp(prefix=".lexbench-", dir=output.parent))
     try:
         for relative in input_files(manifest):
-            target = bound_path(stage, relative)
+            target = contained_path(stage, relative, reject_symlinks=True)
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(bound_path(source, relative), target)
+            shutil.copyfile(contained_path(source, relative, reject_symlinks=True), target)
         verify_inputs(identifier, stage)
         # A materialized dataset is intentionally independent of the historical
         # Browser Eval external-input resolver; do not copy source-inputs.json.

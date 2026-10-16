@@ -6,4 +6,4 @@ authors:
   - name: LexBench Web Fetch contributors
 repository-code: "https://github.com/lexmount/lexbench-webfetch"
 license: MIT
-version: 0.1.0
+version: 0.2.0

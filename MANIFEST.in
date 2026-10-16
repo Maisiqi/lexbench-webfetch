@@ -1,3 +1,5 @@
 include AGENTS.md CITATION.cff CONTRIBUTING.md SECURITY.md THIRD_PARTY.md provenance.json uv.lock Makefile
 recursive-include docs *.md *.svg
 recursive-include tests *.py
+recursive-include src/lexbench_webfetch/definitions *.json *.md
+recursive-include examples *.json *.txt

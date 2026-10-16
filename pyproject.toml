@@ -1,11 +1,15 @@
 [project]
 name = "lexbench-webfetch"
-version = "0.1.0"
+version = "0.2.0"
 description = "Versioned Web Fetch tasks, acceptance contracts and frozen reference bindings"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
-dependencies = []
+dependencies = ["beautifulsoup4==4.14.2", "soupsieve==2.9.2"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10", "apted==1.0.3", "rapidfuzz==3.14.1"]
+tree = ["apted==1.0.3", "rapidfuzz==3.14.1"]
 
 [project.scripts]
 lexbench-webfetch = "lexbench_webfetch.cli:main"
@@ -22,4 +26,4 @@ build-backend = "setuptools.build_meta"
 where = ["src"]
 
 [tool.setuptools.package-data]
-lexbench_webfetch = ["suites/*.json", "suites/*/*.json"]
+lexbench_webfetch = ["definitions/*.json", "definitions/evaluation/*.json", "definitions/evaluation/*/*.json", "definitions/evaluation/*/*.md", "definitions/evaluation/*/*/*.json", "definitions/evaluation/*/*/*/*.json"]
