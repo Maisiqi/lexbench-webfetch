@@ -7,6 +7,19 @@ from lexbench_webfetch.metrics import task_passed
 from lexbench_webfetch.scoring_regressions import load_scoring_regressions
 
 
+@pytest.mark.parametrize('answer,expected', [('short', False), ('x' * 100, True)])
+def test_new_task_fields_preserve_existing_positional_length_requirement(answer, expected):
+    from lexbench_webfetch.models import EvalCase, validate_case
+    # These are the public positional arguments from the base package: the
+    # tenth argument is min_content_chars, rather than a new diagnostic field.
+    case = EvalCase('a', 'A', 'https://example.test/', 'control', [], '', [], [], [], 100,
+                    diagnostic_any=['CAPTCHA'], page_identity_required=False)
+    validate_case(case)
+    metrics = score_attempt(case, answer.encode(), ok=True)
+    assert metrics['minimum_content_chars'] == 100
+    assert task_passed(True, metrics) is expected
+
+
 def test_declared_ban_is_distinct_from_heuristic_hint():
     case = {'id': 'contract', 'url': 'https://example.test/', 'task_kind': 'body',
             'required_facts': [{'id': 'body', 'alternatives': ['Required article text']}]}

@@ -24,7 +24,7 @@ class EvalCase:
     tags: list[str] = field(default_factory=list)
     required_facts: list[dict[str, Any]] = field(default_factory=list)
     forbidden_any: list[str] = field(default_factory=list)
-    diagnostic_any: list[str] = field(default_factory=list)
+    diagnostic_any: list[str] = field(default_factory=list, kw_only=True)
     min_content_chars: int = 1
     fact_coverage_threshold: float = 1.0
     ground_truth_evidence: list[dict[str, str]] = field(default_factory=list)
@@ -46,7 +46,7 @@ class EvalCase:
     retrieval_hints: dict[str, Any] = field(default_factory=dict)
     source_review_url: str = ""
     evaluation_url: str = ""
-    page_identity_required: bool = False
+    page_identity_required: bool = field(default=False, kw_only=True)
     expected_final_url: str = ""
     expected_document_language: str = ""
     expected_document_language_present: bool = True
