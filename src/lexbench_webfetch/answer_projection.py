@@ -58,6 +58,9 @@ SCORE_ANSWER_FIELDS = frozenset({'links', 'images', 'videos', 'media', 'extras'}
 
 
 def _selected(payload, spec):
+    # Missing native fields may mean no answer, never a synthesized answer.
+    if 'default' in spec and spec['default'] not in (None, '', [], {}):
+        raise ValueError('Native answer defaults must be empty')
     try:
         return _projection_value(payload, spec['pointer'])
     except ValueError:

@@ -47927,6 +47927,148 @@
       "artifact": "| Other |\n| --- |\nWords 12604\nEnd",
       "ok": true,
       "expected_task_pass": false
+    },
+    {
+      "id": "native-default-missing-resource-fails",
+      "category": "answer-surface",
+      "root_cause": "nonempty_native_projection_default",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "expected_any": [],
+        "task_kind": "resource",
+        "content_score_applicable": false,
+        "expected_resources": [
+          {
+            "id": "asset",
+            "urls": [
+              "https://example.test/native.png"
+            ]
+          }
+        ]
+      },
+      "artifact": "",
+      "ok": true,
+      "metadata": {
+        "images": [],
+        "native_answer_projection": {
+          "schema_version": 2,
+          "content_format": "text",
+          "content_pointer": [
+            "content"
+          ],
+          "answer_fields": {
+            "images": {
+              "pointer": [
+                "images"
+              ],
+              "format": "identity",
+              "default": []
+            }
+          }
+        }
+      },
+      "native_response": "{\"content\":\"\"}",
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "resource_pass": false
+      }
+    },
+    {
+      "id": "native-default-returned-resource-passes",
+      "category": "answer-surface",
+      "root_cause": "nonempty_native_projection_default",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "expected_any": [],
+        "task_kind": "resource",
+        "content_score_applicable": false,
+        "expected_resources": [
+          {
+            "id": "asset",
+            "urls": [
+              "https://example.test/native.png"
+            ]
+          }
+        ]
+      },
+      "artifact": "",
+      "ok": true,
+      "metadata": {
+        "images": [
+          "https://example.test/native.png"
+        ],
+        "native_answer_projection": {
+          "schema_version": 2,
+          "content_format": "text",
+          "content_pointer": [
+            "content"
+          ],
+          "answer_fields": {
+            "images": {
+              "pointer": [
+                "images"
+              ],
+              "format": "identity",
+              "default": []
+            }
+          }
+        }
+      },
+      "native_response": "{\"content\":\"\",\"images\":[\"https://example.test/native.png\"]}",
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "resource_pass": true
+      }
+    },
+    {
+      "id": "native-default-invented-resource-rejected",
+      "category": "answer-surface",
+      "root_cause": "nonempty_native_projection_default",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "expected_any": [],
+        "task_kind": "resource",
+        "content_score_applicable": false,
+        "expected_resources": [
+          {
+            "id": "asset",
+            "urls": [
+              "https://example.test/native.png"
+            ]
+          }
+        ]
+      },
+      "artifact": "",
+      "ok": true,
+      "metadata": {
+        "images": [
+          "https://example.test/native.png"
+        ],
+        "native_answer_projection": {
+          "schema_version": 2,
+          "content_format": "text",
+          "content_pointer": [
+            "content"
+          ],
+          "answer_fields": {
+            "images": {
+              "pointer": [
+                "images"
+              ],
+              "format": "identity",
+              "default": [
+                "https://example.test/native.png"
+              ]
+            }
+          }
+        }
+      },
+      "native_response": "{\"content\":\"\"}",
+      "expected_task_pass": false,
+      "expected_validation_error": "Native answer defaults must be empty"
     }
   ],
   "superseded_cases": {

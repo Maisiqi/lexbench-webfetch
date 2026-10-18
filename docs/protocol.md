@@ -10,6 +10,8 @@ A method receives the task URL and prompt. Follow the declared task kind: return
 
 Task requirements are data: expected markers, fact groups, forbidden output, minimum length, body coverage, structure and resource/file contracts are selected by the task. Missing reference coverage is unavailable, not zero or a perfect score. Binary task acceptance and text-quality diagnostics are separate. LexBench owns `score_attempt`, the shared `task_passed` predicate and file-byte acceptance. Browser Eval calls the same installed implementations. Other harnesses can use `lexbench_webfetch.evaluation.evaluate_response` or the `score` command without Browser Eval; disclose the benchmark/scorer revision when comparing scores.
 
+When an adapter selects answer fields from a retained native response, validate that projection before scoring. `score_attempt` accepts `native_response`, `native_files` and `native_diagnostic` for this check; the execution harness owns persistence and hash verification. Declare every score-bearing body, metadata, file, title and final-URL source. Missing-field defaults may only be empty; they cannot supply an answer absent from the response. Direct `evaluate_response` and CLI inputs are the submitted answer itself, so their caller remains responsible for acquisition provenance.
+
 ## Live sources and frozen evidence
 
 Input validation proves that supplied bytes match the frozen version. It does not prove that a live website still matches that version. A publishable live-site cohort must independently verify task-relevant reference scope before calls and again after the complete declared scope. If source content changes, preserve the attempt and investigate the shared cause; do not silently refresh references or omit failed cases.
