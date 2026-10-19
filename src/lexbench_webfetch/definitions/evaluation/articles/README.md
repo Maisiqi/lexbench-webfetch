@@ -1,7 +1,7 @@
 # Article suite authoring
 
-The user-approved population contains 105 URLs. `cohort.json` preserves their
-original candidate identities and approved replacement history;
+The user-approved population contains 101 URLs. `cohort.json` preserves their
+original candidate identities and approved replacement and removal history;
 search-result-only candidates 043 and 105 were
 removed before approval. `rules.json` records each case as `verified` or
 `unresolved`. This authoring population is not yet a registered frozen suite.
@@ -13,6 +13,11 @@ URLs and page types, the approval date, and the previous cohort hash and Git
 commit. The original inventory hash identifies the initial inventory; the
 current cohort bytes bind the revised population. No other proposed replacement
 is adopted by that approval.
+
+Cohort revision 3 removes only cases 042, 062, 083 and 097 at the user's explicit
+request, without replacement URLs. It preserves all four complete original case entries,
+the removal basis and date, and the previous cohort hash and Git commit. All
+other cases and the four existing frozen suites remain unchanged.
 
 ## Existing contracts used as references
 
@@ -33,8 +38,14 @@ can count its links. Existing frozen suites and input versions remain unchanged.
 ## Required scope
 
 Open the fixed URL and observe its first automatic load, including ordinary
-already-loaded content below the viewport. Do not click, expand, switch tabs
-within the page, log in, paginate, accept a wall or scroll to trigger loading.
+already-loaded content below the viewport. Do not expand, switch tabs within
+the page, log in, paginate, accept a wall or scroll to trigger loading.
+The user permits reference authors to close a login, subscription or similar
+obstruction through its ordinary dismissal control. Preserve before/after
+evidence and verify that the article was already loaded and its text did not
+change; do not use dismissal to unlock or load additional content. This is a
+reference-review exception only. Evaluated Web Fetch tasks still permit no
+browser clicks, login, expansion or other content-loading interactions.
 The reference must contain the complete qualified article/post body, not a
 selection of convenient paragraphs. Keep headings, paragraphs, textual lists,
 table text, captions and ordinary body links within their declared scope.
@@ -55,8 +66,9 @@ Each chosen group needs an original-language phrase, location and reason to
 expect stability. Do not freeze current news recommendations, comments,
 reaction counts, ranks, personalized account state or current copyright years.
 Historical numbers inside a fixed article remain part of its complete body.
-Consent prompts depend on session state and are not mandatory site text. Leave
-them untouched and record any obstruction when reviewing the article scope.
+Consent prompts depend on session state and are not mandatory site text. Record
+any obstruction and any permitted dismissal when reviewing the article scope;
+do not accept binding terms or purchase access to obtain the reference.
 A nonmodal notice alone does not establish a reading gate: inspect the article's
 actual visibility, clipping, inert state and any modal backdrop. Already-loaded
 ordinary document text below the viewport remains in scope; hidden or collapsed

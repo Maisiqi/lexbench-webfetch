@@ -1099,8 +1099,717 @@
     },
     {
       "id": "article-010",
-      "status": "unresolved",
-      "reason": "Direct initial Zhihu load automatically opens a login modal with dimmed backdrop covering the article. DOM contains article text, but ordinary complete body visibility cannot be certified without a forbidden dismissal/login; answer case also exposes 阅读全文. Saved screenshot, accessibility and DOM evidence in article-010/."
+      "status": "verified",
+      "target_kind": "fixed_article",
+      "reason": "Full already-loaded article independently qualified after the human-authorized authoring-only login-obstruction Close action. Before/after owning article text is exactly equal; no authentication, expansion, scrolling or additional article load occurred. Complete prose, learning-resource text links, rendered course-card ordinary text, all sections and original-author ending retained.",
+      "body_reference": {
+        "path": "article-010/modal-dismissal-v3/body.txt",
+        "sha256": "aa886d865159264d573990aeb04ebe80c04f4437d60774154241e67a84450fe3",
+        "chars": 2862
+      },
+      "reference_scope": {
+        "complete_initial_body": true,
+        "selector": ".Post-RichText",
+        "start": "如今ChatGPT、Midjourney和cursor等工具已将人工智能（AI）带入主流。这使得AI比以往任何时候都更加重要。",
+        "end": "原文作者：程序锅",
+        "observed_on": "2026-10-19",
+        "observation_scope": "after_user_authorized_login_obstruction_dismissal_no_content_expansion",
+        "authorized_obstruction_dismissal": {
+          "action": "click actual button 关闭",
+          "authoring_only": true,
+          "evaluation_browser_clicks_allowed": false,
+          "login": false,
+          "expand_content": false,
+          "scroll_triggered_load": false,
+          "before_after_article_text_exactly_equal": true,
+          "meaning": "complete_initial_body denotes complete already-loaded article made unobstructed by the expressly authorized dismissal; this is not an untouched-initial-page claim. This exception is solely for independent authoring inspection; evaluated Web Fetch tasks still prohibit browser interaction."
+        },
+        "evidence_files": [
+          "article-010/modal-dismissal-v3/source-review.json",
+          "article-010/modal-dismissal-v3/body.html",
+          "article-010/modal-dismissal-v3/links.json"
+        ],
+        "primary_after_capture": "/Users/milky886/.codex/visualizations/2026/10/19/01a152e8-de6a-7da0-9bb2-6a14b21bb78a/article-replacement-review/article-010-modal-policy-r3-after/capture.json",
+        "before_capture": "/Users/milky886/.codex/visualizations/2026/10/19/01a152e8-de6a-7da0-9bb2-6a14b21bb78a/article-replacement-review/article-010-modal-policy-r3-before/capture.json"
+      },
+      "body_regions": [
+        [
+          1,
+          8
+        ],
+        [
+          9,
+          26
+        ],
+        [
+          27,
+          42
+        ],
+        [
+          43,
+          62
+        ],
+        [
+          63,
+          95
+        ]
+      ],
+      "acceptance_contract": {
+        "version": 1,
+        "schema": "body_text",
+        "minimum_records": 0,
+        "page_patterns": [
+          "人工智能的细分方向及学习路线，看这一篇就够了"
+        ],
+        "stable_text_role": "required",
+        "stable_text_anchors": [
+          {
+            "id": "stable-1",
+            "alternatives": [
+              "关注"
+            ]
+          },
+          {
+            "id": "stable-2",
+            "alternatives": [
+              "推荐"
+            ]
+          },
+          {
+            "id": "stable-3",
+            "alternatives": [
+              "热榜"
+            ]
+          },
+          {
+            "id": "stable-4",
+            "alternatives": [
+              "专栏"
+            ]
+          },
+          {
+            "id": "stable-5",
+            "alternatives": [
+              "圈子"
+            ]
+          },
+          {
+            "id": "stable-6",
+            "alternatives": [
+              "AI Works"
+            ]
+          },
+          {
+            "id": "stable-7",
+            "alternatives": [
+              "Beta"
+            ]
+          },
+          {
+            "id": "stable-8",
+            "alternatives": [
+              "故事"
+            ]
+          },
+          {
+            "id": "stable-9",
+            "alternatives": [
+              "直答"
+            ]
+          },
+          {
+            "id": "stable-10",
+            "alternatives": [
+              "切换模式"
+            ]
+          },
+          {
+            "id": "stable-11",
+            "alternatives": [
+              "登录/注册"
+            ]
+          },
+          {
+            "id": "stable-12",
+            "alternatives": [
+              "人工智能的细分方向及学习路线，看这一篇就够了"
+            ]
+          },
+          {
+            "id": "stable-13",
+            "alternatives": [
+              "AI技能研究所"
+            ]
+          },
+          {
+            "id": "stable-14",
+            "alternatives": [
+              "已认证机构号"
+            ]
+          },
+          {
+            "id": "stable-15",
+            "alternatives": [
+              "编辑于 2025-10-15 15:41・北京"
+            ]
+          },
+          {
+            "id": "stable-16",
+            "alternatives": [
+              "人工智能"
+            ]
+          },
+          {
+            "id": "stable-17",
+            "alternatives": [
+              "大模型"
+            ]
+          },
+          {
+            "id": "stable-18",
+            "alternatives": [
+              "AI大模型"
+            ]
+          },
+          {
+            "id": "stable-19",
+            "alternatives": [
+              "赞同"
+            ]
+          },
+          {
+            "id": "stable-20",
+            "alternatives": [
+              "添加评论"
+            ]
+          },
+          {
+            "id": "stable-21",
+            "alternatives": [
+              "分享"
+            ]
+          },
+          {
+            "id": "stable-22",
+            "alternatives": [
+              "申请转载"
+            ]
+          },
+          {
+            "id": "stable-23",
+            "alternatives": [
+              "关于作者"
+            ]
+          },
+          {
+            "id": "stable-24",
+            "alternatives": [
+              "AI的进阶之旅"
+            ]
+          },
+          {
+            "id": "stable-25",
+            "alternatives": [
+              "回答"
+            ]
+          },
+          {
+            "id": "stable-26",
+            "alternatives": [
+              "文章"
+            ]
+          },
+          {
+            "id": "stable-27",
+            "alternatives": [
+              "关注者"
+            ]
+          },
+          {
+            "id": "stable-28",
+            "alternatives": [
+              "发私信"
+            ]
+          },
+          {
+            "id": "stable-29",
+            "alternatives": [
+              "大家都在搜"
+            ]
+          },
+          {
+            "id": "stable-30",
+            "alternatives": [
+              "换一换"
+            ]
+          },
+          {
+            "id": "stable-31",
+            "alternatives": [
+              "推荐阅读"
+            ]
+          },
+          {
+            "id": "stable-32",
+            "alternatives": [
+              "人工智能，机器学习与深度学习之间的区别？"
+            ]
+          },
+          {
+            "id": "stable-33",
+            "alternatives": [
+              "AI有哪些方向？"
+            ]
+          },
+          {
+            "id": "stable-34",
+            "alternatives": [
+              "学习LLM有哪些前置要求？"
+            ]
+          },
+          {
+            "id": "stable-35",
+            "alternatives": [
+              "LLM方向"
+            ]
+          },
+          {
+            "id": "stable-36",
+            "alternatives": [
+              "总结"
+            ]
+          },
+          {
+            "id": "stable-37",
+            "alternatives": [
+              "数学"
+            ]
+          },
+          {
+            "id": "stable-38",
+            "alternatives": [
+              "编程"
+            ]
+          },
+          {
+            "id": "stable-39",
+            "alternatives": [
+              "python"
+            ]
+          },
+          {
+            "id": "stable-40",
+            "alternatives": [
+              "pytorch"
+            ]
+          },
+          {
+            "id": "stable-41",
+            "alternatives": [
+              "1.大语言模型应用模块"
+            ]
+          },
+          {
+            "id": "stable-42",
+            "alternatives": [
+              "2.大语言模型训练"
+            ]
+          },
+          {
+            "id": "stable-43",
+            "alternatives": [
+              "3.大语言模型基础"
+            ]
+          },
+          {
+            "id": "stable-44",
+            "alternatives": [
+              "🔥技术岗高薪必学：AI大模型技术原理+应用开发+模型训练"
+            ]
+          },
+          {
+            "id": "stable-45",
+            "alternatives": [
+              "￥0.00"
+            ]
+          },
+          {
+            "id": "stable-46",
+            "alternatives": [
+              "就业无忧"
+            ]
+          },
+          {
+            "id": "stable-47",
+            "alternatives": [
+              "如今ChatGPT、Midjourney和cursor等工具已将人工智能（AI）带入主流。这使得AI比以往任何时候都更加重要。"
+            ]
+          },
+          {
+            "id": "stable-48",
+            "alternatives": [
+              "本文介绍了人工智能主要方向，并且重点介绍了LLM入门的学习路线图。"
+            ]
+          },
+          {
+            "id": "stable-49",
+            "alternatives": [
+              "原文作者：程序锅"
+            ]
+          }
+        ]
+      },
+      "stable_text_review": [
+        {
+          "id": "stable-1",
+          "phrase": "关注",
+          "region": "global_header_navigation_and_login_control",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-2",
+          "phrase": "推荐",
+          "region": "global_header_navigation_and_login_control",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-3",
+          "phrase": "热榜",
+          "region": "global_header_navigation_and_login_control",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-4",
+          "phrase": "专栏",
+          "region": "global_header_navigation_and_login_control",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-5",
+          "phrase": "圈子",
+          "region": "global_header_navigation_and_login_control",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-6",
+          "phrase": "AI Works",
+          "region": "global_header_navigation_and_login_control",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-7",
+          "phrase": "Beta",
+          "region": "global_header_navigation_and_login_control",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-8",
+          "phrase": "故事",
+          "region": "global_header_navigation_and_login_control",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-9",
+          "phrase": "直答",
+          "region": "global_header_navigation_and_login_control",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-10",
+          "phrase": "切换模式",
+          "region": "global_header_navigation_and_login_control",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-11",
+          "phrase": "登录/注册",
+          "region": "global_header_navigation_and_login_control",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-12",
+          "phrase": "人工智能的细分方向及学习路线，看这一篇就够了",
+          "region": "article_title_byline_and_publication",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-13",
+          "phrase": "AI技能研究所",
+          "region": "article_title_byline_and_publication",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-14",
+          "phrase": "已认证机构号",
+          "region": "article_title_byline_and_publication",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-15",
+          "phrase": "编辑于 2025-10-15 15:41・北京",
+          "region": "article_title_byline_and_publication",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-16",
+          "phrase": "人工智能",
+          "region": "article_topic_links",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-17",
+          "phrase": "大模型",
+          "region": "article_topic_links",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-18",
+          "phrase": "AI大模型",
+          "region": "article_topic_links",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-19",
+          "phrase": "赞同",
+          "region": "article_action_bar_visible_labels",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-20",
+          "phrase": "添加评论",
+          "region": "article_action_bar_visible_labels",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-21",
+          "phrase": "分享",
+          "region": "article_action_bar_visible_labels",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-22",
+          "phrase": "申请转载",
+          "region": "article_action_bar_visible_labels",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-23",
+          "phrase": "关于作者",
+          "region": "author_sidebar_description_and_controls",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-24",
+          "phrase": "AI的进阶之旅",
+          "region": "author_sidebar_description_and_controls",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-25",
+          "phrase": "回答",
+          "region": "author_sidebar_description_and_controls",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-26",
+          "phrase": "文章",
+          "region": "author_sidebar_description_and_controls",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-27",
+          "phrase": "关注者",
+          "region": "author_sidebar_description_and_controls",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-28",
+          "phrase": "发私信",
+          "region": "author_sidebar_description_and_controls",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-29",
+          "phrase": "大家都在搜",
+          "region": "sidebar_and_recommendation_section_controls",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-30",
+          "phrase": "换一换",
+          "region": "sidebar_and_recommendation_section_controls",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-31",
+          "phrase": "推荐阅读",
+          "region": "sidebar_and_recommendation_section_controls",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-32",
+          "phrase": "人工智能，机器学习与深度学习之间的区别？",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-33",
+          "phrase": "AI有哪些方向？",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-34",
+          "phrase": "学习LLM有哪些前置要求？",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-35",
+          "phrase": "LLM方向",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-36",
+          "phrase": "总结",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-37",
+          "phrase": "数学",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-38",
+          "phrase": "编程",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-39",
+          "phrase": "python",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-40",
+          "phrase": "pytorch",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-41",
+          "phrase": "1.大语言模型应用模块",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-42",
+          "phrase": "2.大语言模型训练",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-43",
+          "phrase": "3.大语言模型基础",
+          "region": "fixed_body_section_heading_or_list_label",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-44",
+          "phrase": "🔥技术岗高薪必学：AI大模型技术原理+应用开发+模型训练",
+          "region": "fixed_body_rendered_course_card",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-45",
+          "phrase": "￥0.00",
+          "region": "fixed_body_rendered_course_card",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-46",
+          "phrase": "就业无忧",
+          "region": "fixed_body_rendered_course_card",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-47",
+          "phrase": "如今ChatGPT、Midjourney和cursor等工具已将人工智能（AI）带入主流。这使得AI比以往任何时候都更加重要。",
+          "region": "fixed_body_opening_summary_original_author",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-48",
+          "phrase": "本文介绍了人工智能主要方向，并且重点介绍了LLM入门的学习路线图。",
+          "region": "fixed_body_opening_summary_original_author",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        },
+        {
+          "id": "stable-49",
+          "phrase": "原文作者：程序锅",
+          "region": "fixed_body_opening_summary_original_author",
+          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
+          "observed_on": "2026-10-19"
+        }
+      ],
+      "excluded_regions": [
+        "All diagram, resource-pack screenshot and avatar lettering; image alt/title, SVG/icon-only names and OCR. No manual transcription from image pixels.",
+        "Hidden zero-size display:none course preload iframe, hidden responsive elements, closed menus and all captured computed-hidden paths. Ordinary parent course-card title/price/label remain in body.",
+        "Reaction/favorite/follower/read totals, empty/changing comment state and prose, dynamic trending/search-suggestion content, recommendation members and personalized account state. Ordinary labels/controls retained without totals.",
+        "Dismissed initial login/QR modal and transient after-dismissal login-benefits popover wording; global visible login control remains required. No login, subscription/paywall access, content expansion, scrolling, pagination or lazy-load triggering authorized or performed."
+      ]
     },
     {
       "id": "article-011",
@@ -15067,27 +15776,6 @@
       ]
     },
     {
-      "id": "article-042",
-      "status": "unresolved",
-      "reason": "Initial Articles collection exposes two article previews with truncated descriptions, not complete article bodies. Clicking them is prohibited. Do not treat snippets/title links as body evidence.",
-      "target_kind": "article_collection",
-      "proposed_structure": {
-        "fields": [
-          "author",
-          "owned_status_url",
-          "title",
-          "complete_initial_post_text"
-        ],
-        "incomplete_records": "Two observed preview cards are truncated; cannot assert their complete body text."
-      },
-      "evidence_files": [
-        "article-042/body.txt",
-        "article-042/accessibility.txt",
-        "article-042/viewport.png",
-        "article-042/metadata.json"
-      ]
-    },
-    {
       "id": "article-044",
       "status": "verified",
       "target_kind": "fixed_article",
@@ -26000,28 +26688,6 @@
         "Comments, reaction/view counters, current news/recommendation membership, account state and changing footer years.",
         "Any content requiring clicks, expansion, login, pagination or scroll-triggered loading.",
         "Icon-only accessibility names, responsive header entries not visibly presented, and hidden screen-reader labels are not mandatory ordinary text. Visible input placeholders and submit values are ordinary control text even where body.innerText omits them."
-      ]
-    },
-    {
-      "id": "article-062",
-      "status": "unresolved",
-      "reason": "Initial collection contains ten article cards with truncated descriptions ending in ellipses, author and issue links. Complete article bodies are absent; cannot replace bodies with these snippets or navigate linked destinations.",
-      "target_kind": "article_collection",
-      "proposed_structure": {
-        "observed_records": 10,
-        "fields": [
-          "title",
-          "owned_article_url",
-          "authors",
-          "issue",
-          "description"
-        ],
-        "limitation": "Initial cards expose excerpts only."
-      },
-      "evidence_files": [
-        "article-062/body.html",
-        "article-062/accessibility.txt",
-        "article-062/viewport.png"
       ]
     },
     {
@@ -37817,13 +38483,6 @@
       "observed_on": "2026-10-19"
     },
     {
-      "id": "article-083",
-      "status": "unresolved",
-      "reason": "Direct approved URL navigation failed with browser certificate common-name error (ERR_CERT_COMMON_NAME_INVALID). Security interstitial was not bypassed; no alternate route attempted. No initial article reference could be independently observed. Tool/browser access failure is not an evaluated-product failure.",
-      "observed_on": "2026-10-19",
-      "evidence_files": []
-    },
-    {
       "id": "article-084",
       "status": "verified",
       "target_kind": "fixed_article",
@@ -46844,13 +47503,6 @@
         "Hidden MathJax assistive MathML duplicates, script/style/template text, SVG icon labels, hidden hover-only copy wording and social/theme icon accessibility names. Rendered inline mathematical notation remains in browser-text body once.",
         "Changing copyright year. Ordinary visible site footer wording remains required."
       ]
-    },
-    {
-      "id": "article-097",
-      "status": "unresolved",
-      "reason": "Direct approved URL failed browser certificate validation (ERR_CERT_AUTHORITY_INVALID). No bypass, alternate route or raw HTTP probe attempted. Initial article could not be observed; browser/tool access failure is not an evaluated-product failure.",
-      "observed_on": "2026-10-19",
-      "evidence_files": []
     },
     {
       "id": "article-098",

@@ -46,7 +46,7 @@ These are four separately versioned populations, with 450 task entries in total.
 
 Each suite ships a readable `tasks.json`, a catalog with original task-definition hashes, and a manifest binding the exact executable dataset and reference files. See [data layout and rights](docs/data.md). Task wording and frozen acceptance rules retain their original language.
 
-The [article suite](src/lexbench_webfetch/definitions/evaluation/articles/README.md) is being authored from a separately approved 105-URL inventory. Its unresolved rules are not registered as a frozen executable suite.
+The [article suite](src/lexbench_webfetch/definitions/evaluation/articles/README.md) is being authored from a separately approved 101-URL inventory. The user requested removal of cases 042, 062, 083 and 097; their original entries and removal basis remain in the cohort revision history. Its unresolved rules are not registered as a frozen executable suite.
 
 ## Quickstart
 

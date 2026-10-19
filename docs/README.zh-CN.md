@@ -46,7 +46,7 @@ flowchart LR
 
 每组提供可读的 `tasks.json`、包含原始完整任务哈希的目录，以及绑定可执行数据集和参考文件的清单。详见[数据结构与使用权](data.md)。任务原文和冻结的验收规则保留原语言。
 
-[文章分类](../src/lexbench_webfetch/definitions/evaluation/articles/README.md)正在依据单独确认的 105 个网址制定规则。尚未完成的规则不注册为已冻结、可执行的任务集。
+[文章分类](../src/lexbench_webfetch/definitions/evaluation/articles/README.md)正在依据单独确认的 101 个网址制定规则。用户要求移除案例 042、062、083 和 097；原条目和移除依据保留在清单修订历史中。尚未完成的规则不注册为已冻结、可执行的任务集。
 
 ## 快速开始
 

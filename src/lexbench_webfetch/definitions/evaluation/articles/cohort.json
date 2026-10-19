@@ -2,7 +2,7 @@
   "schema_version": 1,
   "id": "articles-v1",
   "status": "authoring",
-  "case_count": 105,
+  "case_count": 101,
   "approved_on": "2026-10-19",
   "provenance": {
     "candidate_inventory_sha256": "7f1338595f7c1cc3dc634253b24a637d0a38138b49c5e75ac1cf88668da27005",
@@ -10,8 +10,8 @@
       "article-candidate-043",
       "article-candidate-105"
     ],
-    "approval": "The user approved the initial inventory and subsequently approved the five replacements recorded in revision 2.",
-    "candidate_inventory_scope": "Initial approved inventory; separately approved replacements are recorded in revisions."
+    "approval": "The user approved the initial inventory, the five replacements recorded in revision 2, and the four removals recorded in revision 3.",
+    "candidate_inventory_scope": "Initial approved inventory; separately approved replacements and removals are recorded in revisions."
   },
   "cases": [
     {
@@ -384,15 +384,6 @@
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
     {
-      "id": "article-042",
-      "candidate_id": "article-candidate-042",
-      "name": "Browser Use 文章页",
-      "url": "https://x.com/browser_use/articles",
-      "platform": "X",
-      "page_type": "collection",
-      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
-    },
-    {
       "id": "article-044",
       "candidate_id": "article-candidate-044-r2",
       "name": "入行二十年，有知有畏，但求称职",
@@ -552,15 +543,6 @@
       "url": "https://www.metmuseum.org/essays/impressionism-art-and-modernity",
       "platform": "The Met",
       "page_type": "article",
-      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
-    },
-    {
-      "id": "article-062",
-      "candidate_id": "article-candidate-062",
-      "name": "土壤地理文章集合",
-      "url": "https://www.dili360.com/cng/tag/list/6494.htm",
-      "platform": "中国国家地理",
-      "page_type": "collection",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
     {
@@ -744,15 +726,6 @@
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
     {
-      "id": "article-083",
-      "candidate_id": "article-candidate-083",
-      "name": "博物馆如何加速成长",
-      "url": "https://kpzg.people.com.cn/n1/2025/1014/c404214-40581444.html",
-      "platform": "人民网",
-      "page_type": "article",
-      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
-    },
-    {
       "id": "article-084",
       "candidate_id": "article-candidate-084",
       "name": "影智XBOT通用餐饮服务机器人发布报道",
@@ -870,15 +843,6 @@
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
     {
-      "id": "article-097",
-      "candidate_id": "article-candidate-097",
-      "name": "嫦娥六号成功着陆月背，有效载荷圆满完成探测任务",
-      "url": "https://www.nssc.cas.cn/xwdt2015/xwsd2015/202406/t20240604_7184047.html",
-      "platform": "中科院国家空间科学中心",
-      "page_type": "article",
-      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
-    },
-    {
       "id": "article-098",
       "candidate_id": "article-candidate-098",
       "name": "人之所以活着，人之只好活着",
@@ -960,7 +924,7 @@
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     }
   ],
-  "revision": 2,
+  "revision": 3,
   "revisions": [
     {
       "revision": 2,
@@ -1042,6 +1006,67 @@
             "name": "能力圈不在于多大，在于敢说“我不懂”",
             "url": "https://www.xueqiu.com/7736566551/409968041",
             "page_type": "article"
+          }
+        }
+      ]
+    },
+    {
+      "revision": 3,
+      "approved_on": "2026-10-19",
+      "previous_cohort_sha256": "7d335ee4a2fa1659261e18aa2c3ad6a234424798345d4aa39097a0dde9ecd020",
+      "previous_git_commit": "dff7cd12d067c280880a0660dbdd50ec8d594415",
+      "basis": "The user explicitly requested removal of article-042, article-062, article-083 and article-097 without replacements. All other cases, including the five approved revision 2 replacements, remain unchanged.",
+      "changes": [
+        {
+          "id": "article-042",
+          "action": "remove",
+          "previous": {
+            "id": "article-042",
+            "candidate_id": "article-candidate-042",
+            "name": "Browser Use 文章页",
+            "url": "https://x.com/browser_use/articles",
+            "platform": "X",
+            "page_type": "collection",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          }
+        },
+        {
+          "id": "article-062",
+          "action": "remove",
+          "previous": {
+            "id": "article-062",
+            "candidate_id": "article-candidate-062",
+            "name": "土壤地理文章集合",
+            "url": "https://www.dili360.com/cng/tag/list/6494.htm",
+            "platform": "中国国家地理",
+            "page_type": "collection",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          }
+        },
+        {
+          "id": "article-083",
+          "action": "remove",
+          "previous": {
+            "id": "article-083",
+            "candidate_id": "article-candidate-083",
+            "name": "博物馆如何加速成长",
+            "url": "https://kpzg.people.com.cn/n1/2025/1014/c404214-40581444.html",
+            "platform": "人民网",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          }
+        },
+        {
+          "id": "article-097",
+          "action": "remove",
+          "previous": {
+            "id": "article-097",
+            "candidate_id": "article-candidate-097",
+            "name": "嫦娥六号成功着陆月背，有效载荷圆满完成探测任务",
+            "url": "https://www.nssc.cas.cn/xwdt2015/xwsd2015/202406/t20240604_7184047.html",
+            "platform": "中科院国家空间科学中心",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
           }
         }
       ]
