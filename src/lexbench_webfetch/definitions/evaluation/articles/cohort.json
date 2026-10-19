@@ -10,7 +10,8 @@
       "article-candidate-043",
       "article-candidate-105"
     ],
-    "approval": "User explicitly approved the displayed list and requested rule authoring."
+    "approval": "The user approved the initial inventory and subsequently approved the five replacements recorded in revision 2.",
+    "candidate_inventory_scope": "Initial approved inventory; separately approved replacements are recorded in revisions."
   },
   "cases": [
     {
@@ -393,11 +394,11 @@
     },
     {
       "id": "article-044",
-      "candidate_id": "article-candidate-044",
-      "name": "就叫姜诚的文章合集",
-      "url": "https://xueqiu.com/2245748859/218571421",
+      "candidate_id": "article-candidate-044-r2",
+      "name": "入行二十年，有知有畏，但求称职",
+      "url": "https://www.xueqiu.com/2245748859/383327076",
       "platform": "雪球",
-      "page_type": "collection",
+      "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
     {
@@ -474,11 +475,11 @@
     },
     {
       "id": "article-053",
-      "candidate_id": "article-candidate-053",
-      "name": "消费主题文章集合",
-      "url": "https://www.ifanr.com/tags/%E6%B6%88%E8%B4%B9",
+      "candidate_id": "article-candidate-053-r2",
+      "name": "我们采访了十几个人，发现基本没人想「报复性消费」",
+      "url": "https://www.ifanr.com/1312711",
       "platform": "爱范儿",
-      "page_type": "collection",
+      "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
     {
@@ -564,11 +565,11 @@
     },
     {
       "id": "article-063",
-      "candidate_id": "article-candidate-063",
-      "name": "Official English Blog 文章集合",
-      "url": "https://about.geekpark.net/blog/",
+      "candidate_id": "article-candidate-063-r2",
+      "name": "7 Things We Learned From 1,000+ Conversations With AI Founders",
+      "url": "https://about.geekpark.net/7-things-we-learned-from-1-000-conversations-with-ai-founders/",
       "platform": "极客公园",
-      "page_type": "collection",
+      "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
     {
@@ -816,11 +817,11 @@
     },
     {
       "id": "article-091",
-      "candidate_id": "article-candidate-091",
-      "name": "2024 in Review 文章集合",
-      "url": "https://www.quantamagazine.org/tag/2024-in-review/",
+      "candidate_id": "article-candidate-091-r2",
+      "name": "The Year in Computer Science",
+      "url": "https://www.quantamagazine.org/the-year-in-computer-science-20241219/",
       "platform": "Quanta",
-      "page_type": "collection",
+      "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
     {
@@ -933,11 +934,11 @@
     },
     {
       "id": "article-104",
-      "candidate_id": "article-candidate-104",
-      "name": "多伦多的大道信徒：专栏列表",
-      "url": "https://www.xueqiu.com/7736566551/column",
+      "candidate_id": "article-candidate-104-r2",
+      "name": "能力圈不在于多大，在于敢说“我不懂”",
+      "url": "https://www.xueqiu.com/7736566551/409968041",
       "platform": "雪球",
-      "page_type": "collection",
+      "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
     {
@@ -957,6 +958,93 @@
       "platform": "微博",
       "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    }
+  ],
+  "revision": 2,
+  "revisions": [
+    {
+      "revision": 2,
+      "approved_on": "2026-10-19",
+      "previous_cohort_sha256": "12fa83ae2479370e80520777ef5b2c356a8da9d318f6c392e053ef4c3a3917ba",
+      "previous_git_commit": "c74477bbef40e906716d258b0d0a80f0b8a48396",
+      "basis": "The user explicitly approved these five full-article replacements for initial directory or excerpt-only pages. Other approved cases remain unchanged.",
+      "changes": [
+        {
+          "id": "article-044",
+          "previous": {
+            "candidate_id": "article-candidate-044",
+            "name": "就叫姜诚的文章合集",
+            "url": "https://xueqiu.com/2245748859/218571421",
+            "page_type": "collection"
+          },
+          "replacement": {
+            "candidate_id": "article-candidate-044-r2",
+            "name": "入行二十年，有知有畏，但求称职",
+            "url": "https://www.xueqiu.com/2245748859/383327076",
+            "page_type": "article"
+          }
+        },
+        {
+          "id": "article-053",
+          "previous": {
+            "candidate_id": "article-candidate-053",
+            "name": "消费主题文章集合",
+            "url": "https://www.ifanr.com/tags/%E6%B6%88%E8%B4%B9",
+            "page_type": "collection"
+          },
+          "replacement": {
+            "candidate_id": "article-candidate-053-r2",
+            "name": "我们采访了十几个人，发现基本没人想「报复性消费」",
+            "url": "https://www.ifanr.com/1312711",
+            "page_type": "article"
+          }
+        },
+        {
+          "id": "article-063",
+          "previous": {
+            "candidate_id": "article-candidate-063",
+            "name": "Official English Blog 文章集合",
+            "url": "https://about.geekpark.net/blog/",
+            "page_type": "collection"
+          },
+          "replacement": {
+            "candidate_id": "article-candidate-063-r2",
+            "name": "7 Things We Learned From 1,000+ Conversations With AI Founders",
+            "url": "https://about.geekpark.net/7-things-we-learned-from-1-000-conversations-with-ai-founders/",
+            "page_type": "article"
+          }
+        },
+        {
+          "id": "article-091",
+          "previous": {
+            "candidate_id": "article-candidate-091",
+            "name": "2024 in Review 文章集合",
+            "url": "https://www.quantamagazine.org/tag/2024-in-review/",
+            "page_type": "collection"
+          },
+          "replacement": {
+            "candidate_id": "article-candidate-091-r2",
+            "name": "The Year in Computer Science",
+            "url": "https://www.quantamagazine.org/the-year-in-computer-science-20241219/",
+            "page_type": "article"
+          }
+        },
+        {
+          "id": "article-104",
+          "previous": {
+            "candidate_id": "article-candidate-104",
+            "name": "多伦多的大道信徒：专栏列表",
+            "url": "https://www.xueqiu.com/7736566551/column",
+            "page_type": "collection"
+          },
+          "replacement": {
+            "candidate_id": "article-candidate-104-r2",
+            "name": "能力圈不在于多大，在于敢说“我不懂”",
+            "url": "https://www.xueqiu.com/7736566551/409968041",
+            "page_type": "article"
+          }
+        }
+      ]
     }
   ]
 }

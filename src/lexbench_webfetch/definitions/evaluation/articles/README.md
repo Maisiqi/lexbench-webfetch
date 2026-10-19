@@ -1,9 +1,18 @@
 # Article suite authoring
 
 The user-approved population contains 105 URLs. `cohort.json` preserves their
-original candidate identities; search-result-only candidates 043 and 105 were
+original candidate identities and approved replacement history;
+search-result-only candidates 043 and 105 were
 removed before approval. `rules.json` records each case as `verified` or
 `unresolved`. This authoring population is not yet a registered frozen suite.
+
+Cohort revision 2 replaces cases 044, 053, 063, 091 and 104 with the five
+specific full articles separately approved by the user. Their candidate IDs
+carry an `-r2` suffix. The revision records previous and replacement identities,
+URLs and page types, the approval date, and the previous cohort hash and Git
+commit. The original inventory hash identifies the initial inventory; the
+current cohort bytes bind the revised population. No other proposed replacement
+is adopted by that approval.
 
 ## Existing contracts used as references
 
