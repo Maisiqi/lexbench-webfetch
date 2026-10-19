@@ -145,6 +145,37 @@ def project_native_files(payload, declaration):
     raise ValueError('Unknown native file projection')
 
 
+def native_fetch_diagnostics(stderr: bytes, requested_url: str) -> tuple[int | None, bool]:
+    """Read target HTTP events only through the captured document's lifetime.
+
+    A pending-navigation snapshot can precede renderer shutdown and a late
+    replacement commit. A unique page-turn/capture/close sequence binds that
+    cutoff; without it, later commits keep legacy ownership ambiguous.
+    """
+    prefix = rb"(?:^|\n)(?:\d{4}-\d{2}-\d{2}T[^\s]+\s+)?"
+    captures = list(re.finditer(prefix + rb"DEBUG capturing page state while a location navigation is pending\b[^\r\n]*", stderr))
+    if len(captures) == 1:
+        capture = captures[0]
+        turns = list(re.finditer(prefix + rb"DEBUG completed one ordinary Page turn\b[^\r\n]*\bpage_id=(\d+)\b", stderr[:capture.start()]))
+        if turns and len({row.group(1) for row in turns}) == 1:
+            page = turns[-1].group(1)
+            closes = list(re.finditer(prefix + rb"DEBUG closing renderer page handle page_id=" + re.escape(page) + rb" requested_execution_interrupt=true\b", stderr[capture.end():]))
+            if len(closes) == 1:
+                stderr = stderr[:capture.start()]
+    rows = list(re.finditer(prefix + rb"DEBUG fetch request complete method=(?:GET|POST) url=(?P<url>\S+) final_url=\S+ status=(?P<status>\d{3})\b[^\r\n]*", stderr))
+    matches = [row for row in rows if row.group('url') == requested_url.encode('utf-8')]
+    status = None
+    if len(matches) == 1:
+        row = matches[0]
+        value = int(row.group('status'))
+        if not 300 <= value < 400 and not any(marker in stderr[row.end():] for marker in (
+                b'committed main navigation before replacement realm bootstrap',
+                b'detached committed main WindowProxy for replacement context')):
+            status = value
+    waits = re.finditer(prefix + rb"WARN fetch readiness wait timed out; returning best-effort page page_id=\d+ url=(?P<url>\S+) final_url=\S+ wait_until=(?:DomStable|NetworkIdle) timeout_ms=[1-9]\d* remaining_ms=\d+ error=[^\r\n]+", stderr)
+    return status, any(row.group('url') == requested_url.encode('utf-8') for row in waits)
+
+
 def main_document_url_from_fetch_log(stderr: str | bytes, requested_url: str) -> str | None:
     """Replay the effective main-document URL from the same call's debug log."""
     pattern = re.compile(
