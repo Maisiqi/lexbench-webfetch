@@ -50581,6 +50581,110 @@
       "expected_metrics": {
         "composite_acceptance_pass": false
       }
+    },
+    {
+      "id": "atx-literal-code-comment-retained",
+      "category": "format-normalization",
+      "root_cause": "atx_projection_replaces_literal_comment_evidence",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/code",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "comment",
+              "alternatives": [
+                "# Tokenize the context texts (using a tokenizer from the"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "# Tokenize the context texts (using a tokenizer from the library)\nprint(tokens)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "atx-literal-code-comment-hash-missing",
+      "category": "format-normalization",
+      "root_cause": "atx_projection_replaces_literal_comment_evidence",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/code",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "comment",
+              "alternatives": [
+                "# Tokenize the context texts (using a tokenizer from the"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Tokenize the context texts (using a tokenizer from the library)\nprint(tokens)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "atx-literal-code-comment-html-hidden",
+      "category": "format-normalization",
+      "root_cause": "atx_projection_replaces_literal_comment_evidence",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/code",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "comment",
+              "alternatives": [
+                "# Tokenize the context texts (using a tokenizer from the"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><!-- # Tokenize the context texts (using a tokenizer from the --><h1>Other text</h1></body></html>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "atx-literal-code-comment-metadata-only",
+      "category": "format-normalization",
+      "root_cause": "atx_projection_replaces_literal_comment_evidence",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/code",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "comment",
+              "alternatives": [
+                "# Tokenize the context texts (using a tokenizer from the"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "---\nog:title: \"# Tokenize the context texts (using a tokenizer from the\"\n---\nOther text",
+      "ok": true,
+      "expected_task_pass": false
     }
   ],
   "superseded_cases": {

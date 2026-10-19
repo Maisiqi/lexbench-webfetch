@@ -1070,11 +1070,16 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
                     html_candidate, re.I):
             from .dynamic_lists import visible_html_text
             anchor_visible = visible_html_text(html_candidate)
+    original_markdown_visible = None
     if anchor_visible is None:
         from .reference_quality import markdown_heading_text
         heading_text = markdown_heading_text(content)
         if heading_text != content:
             anchor_visible = _visible(heading_text, schema)
+            # An unfenced code comment is indistinguishable from an ATX
+            # heading. Keep literal evidence on its original visible surface
+            # as well; never add this fallback to an HTML projection.
+            original_markdown_visible = visible
     exclusions = dict(contract.get('text_exclusions', {}))
     if contract.get('content_scope') == 'target_content':
         exclusions['html_selectors'] = ['nav', 'footer', *exclusions.get('html_selectors', [])]
@@ -1087,12 +1092,19 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
                 for element in soup.select(selector):
                     element.decompose()
             anchor_visible = visible_html_text(str(soup))
+            original_markdown_visible = None
         else:
             anchor_visible = anchor_visible if anchor_visible is not None else visible
         for pattern in exclusions.get('text_patterns', []):
             anchor_visible = re.sub(pattern, ' ', anchor_visible, flags=re.I | re.M)
+            if original_markdown_visible is not None:
+                original_markdown_visible = re.sub(pattern, ' ', original_markdown_visible, flags=re.I | re.M)
     text_surface = anchor_visible if anchor_visible is not None else visible
-    page_results = [{"pattern": p, "pass": bool(re.search(p, text_surface, re.I | re.M))} for p in patterns]
+    text_surfaces = [text_surface]
+    if original_markdown_visible is not None:
+        text_surfaces.append(original_markdown_visible)
+    page_results = [{"pattern": p, "pass": any(re.search(p, surface, re.I | re.M)
+                                               for surface in text_surfaces)} for p in patterns]
     content_errors = (["page_identity_mismatch"] if not all(r["pass"] for r in page_results) else [])
     from .reference_quality import blocked_page_hits
     blocked_page = bool(blocked_page_hits(text_surface))
@@ -1168,6 +1180,12 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
     for anchor in contract.get("stable_text_anchors", []):
         matched = _anchor_matches(anchor, records, visible, schema,
                                   non_record_visible, anchor_visible, registered_words)
+        if original_markdown_visible is not None:
+            literal_matches = _anchor_matches(
+                anchor, records, visible, schema, non_record_visible,
+                original_markdown_visible, registered_words)
+            matched = [value for value in anchor["alternatives"]
+                       if value in matched or value in literal_matches]
         anchors.append({**anchor, "matched": matched, "pass": bool(matched)})
     anchor_errors = ["missing_stable_anchor:" + r["id"] for r in anchors if not r["pass"]]
     if anchors_required:
