@@ -44,6 +44,32 @@ def markdown_body_content(text: str) -> str:
     return text[block.end():]
 
 
+
+def markdown_heading_text(text: str) -> str:
+    """Remove ATX presentation markers while retaining visible heading words."""
+    output = []
+    fence = None
+    for line in text.splitlines(keepends=True):
+        opening = re.match(r"^[ ]{0,3}(`{3,}|~{3,})", line)
+        if fence is not None:
+            output.append(line)
+            if re.match(r"^[ ]{0,3}" + re.escape(fence[0]) + "{" + str(len(fence)) + r",}[ \t]*(?:\r?\n|$)", line):
+                fence = None
+            continue
+        if opening:
+            fence = opening[1]
+            output.append(line)
+            continue
+        heading = re.match(r"^[ ]{0,3}#{1,6}(?:[ \t]+|(?=\r?$))(.*)", line)
+        if heading:
+            suffix = '\r\n' if line.endswith('\r\n') else '\n' if line.endswith('\n') else ''
+            title = re.sub(r"[ \t]+#+[ \t]*$", "", heading[1].rstrip('\r\n'))
+            output.append(title + suffix)
+        else:
+            output.append(line)
+    return ''.join(output)
+
+
 def normalize_reference_anchor(text: str) -> str:
     """Normalize capture layout while retaining evidence-bearing punctuation.
 
@@ -70,9 +96,9 @@ def is_html_document_or_fragment(text: str) -> bool:
     """
     elements = "|".join(sorted(HTML_BLOCK_ELEMENTS | {"html", "body"}))
     return bool(re.match(
-        rf"\s*(?:<!doctype\s+html\b[^>]*>\s*)?<(?:{elements})\b",
+        rf"\s*(?:(?:<!--.*?-->|<!doctype\s+html\b[^>]*>)\s*)*<(?:{elements})\b",
         text,
-        re.I,
+        re.I | re.S,
     ))
 
 

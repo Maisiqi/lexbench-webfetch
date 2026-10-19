@@ -645,7 +645,8 @@ def _non_record_visible(content, contract, records, base_url):
         except ValueError:
             return False
 
-    if re.search(r'<(?:html|body|main|div|section|article|a|p)\b', content, re.I):
+    from .reference_quality import is_html_document_or_fragment
+    if is_html_document_or_fragment(content):
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(content, 'html.parser')
         # A linked logo may supply page identity, but never an owned record
@@ -667,6 +668,11 @@ def _non_record_visible(content, contract, records, base_url):
                 continue
             if is_record(node['href']):
                 node.decompose()
+            else:
+                # Separate distinct HTML link labels before flattening, just
+                # as adjacent Markdown links keep their visible boundaries.
+                node.insert_before(' ')
+                node.insert_after(' ')
         return _visible(visible_html_text(str(soup)), normalized_html=True)
     links = markdown_links(content)
     if links:
@@ -1064,6 +1070,11 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
                     html_candidate, re.I):
             from .dynamic_lists import visible_html_text
             anchor_visible = visible_html_text(html_candidate)
+    if anchor_visible is None:
+        from .reference_quality import markdown_heading_text
+        heading_text = markdown_heading_text(content)
+        if heading_text != content:
+            anchor_visible = _visible(heading_text, schema)
     exclusions = dict(contract.get('text_exclusions', {}))
     if contract.get('content_scope') == 'target_content':
         exclusions['html_selectors'] = ['nav', 'footer', *exclusions.get('html_selectors', [])]

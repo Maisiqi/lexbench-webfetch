@@ -49659,6 +49659,928 @@
         "body_coverage_pass": true,
         "composite_acceptance_pass": false
       }
+    },
+    {
+      "id": "atx-heading-retains-visible-phrase",
+      "category": "answer-surface",
+      "root_cause": "atx_heading_markers_interrupt_stable_body_anchor",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "phrase",
+              "alternatives": [
+                "Alpha Beta"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Alpha\n## Beta",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "stable_anchor_hits": 1
+      }
+    },
+    {
+      "id": "atx-heading-closing-markers-retain-visible-phrase",
+      "category": "answer-surface",
+      "root_cause": "atx_heading_markers_interrupt_stable_body_anchor",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "phrase",
+              "alternatives": [
+                "Alpha Beta"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Alpha\n   ### Beta ###",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "stable_anchor_hits": 1
+      }
+    },
+    {
+      "id": "atx-heading-missing-word-still-fails",
+      "category": "answer-surface",
+      "root_cause": "atx_heading_markers_interrupt_stable_body_anchor",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "phrase",
+              "alternatives": [
+                "Alpha Beta"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Alpha\n## Wrong",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "stable_anchor_hits": 0
+      }
+    },
+    {
+      "id": "atx-heading-no-space-remains-literal",
+      "category": "answer-surface",
+      "root_cause": "atx_heading_markers_interrupt_stable_body_anchor",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "phrase",
+              "alternatives": [
+                "Alpha Beta"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Alpha\n#Beta",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "stable_anchor_hits": 0
+      }
+    },
+    {
+      "id": "atx-heading-escaped-marker-remains-literal",
+      "category": "answer-surface",
+      "root_cause": "atx_heading_markers_interrupt_stable_body_anchor",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "phrase",
+              "alternatives": [
+                "Alpha Beta"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Alpha\n\\## Beta",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "stable_anchor_hits": 0
+      }
+    },
+    {
+      "id": "atx-heading-fenced-code-marker-remains-literal",
+      "category": "answer-surface",
+      "root_cause": "atx_heading_markers_interrupt_stable_body_anchor",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "phrase",
+              "alternatives": [
+                "Alpha Beta"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "```\nAlpha\n## Beta\n```",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "stable_anchor_hits": 0
+      }
+    },
+    {
+      "id": "html-comment-prolog-retains-complete-record",
+      "category": "answer-surface",
+      "root_cause": "leading_html_comment_hides_native_document_surface",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "items",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "required_fields": [
+                {
+                  "id": "price",
+                  "kind": "price"
+                },
+                {
+                  "id": "area",
+                  "kind": "area"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "<!DOCTYPE html><!-- layout -->\n<main><article><a href=\"/item/1\">Alpha</a><p>$100,000</p><p>900 sqft</p></article></main>",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "html-comment-prolog-attribute-cannot-complete-record",
+      "category": "answer-surface",
+      "root_cause": "leading_html_comment_hides_native_document_surface",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "items",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "required_fields": [
+                {
+                  "id": "price",
+                  "kind": "price"
+                },
+                {
+                  "id": "area",
+                  "kind": "area"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "<!DOCTYPE html><!-- layout -->\n<main><article data-area=\"900 sqft\"><a href=\"/item/1\">Alpha</a><p>$100,000</p></article></main>",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "html-comment-prolog-hidden-comment-cannot-complete-record",
+      "category": "answer-surface",
+      "root_cause": "leading_html_comment_hides_native_document_surface",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "items",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "required_fields": [
+                {
+                  "id": "price",
+                  "kind": "price"
+                },
+                {
+                  "id": "area",
+                  "kind": "area"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "<!DOCTYPE html><!-- layout -->\n<main><article><a href=\"/item/1\">Alpha</a><p>$100,000</p><!-- 900 sqft --></article></main>",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "html-comment-prolog-script-cannot-complete-record",
+      "category": "answer-surface",
+      "root_cause": "leading_html_comment_hides_native_document_surface",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "items",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "required_fields": [
+                {
+                  "id": "price",
+                  "kind": "price"
+                },
+                {
+                  "id": "area",
+                  "kind": "area"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "<!DOCTYPE html><!-- layout -->\n<main><article><a href=\"/item/1\">Alpha</a><p>$100,000</p><script>900 sqft</script></article></main>",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "mixed-markdown-escaped-tag-retains-page-label",
+      "category": "answer-surface",
+      "root_cause": "escaped_markdown_tag_selects_whole_html_page_context",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "label",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "\\<div class=\"layout\"\\> [Example Site](/help)\n\n- [First ordinary article](/item/1)\n- [Second ordinary article](/item/2)",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "stable_anchor_hits": 1
+      }
+    },
+    {
+      "id": "mixed-markdown-escaped-tag-missing-page-label-fails",
+      "category": "answer-surface",
+      "root_cause": "escaped_markdown_tag_selects_whole_html_page_context",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "label",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "\\<div class=\"layout\"\\> [Other label](/help)\n\n- [First ordinary article](/item/1)\n- [Second ordinary article](/item/2)",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "stable_anchor_hits": 0
+      }
+    },
+    {
+      "id": "mixed-markdown-fenced-tag-retains-page-label",
+      "category": "answer-surface",
+      "root_cause": "escaped_markdown_tag_selects_whole_html_page_context",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "label",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "```html\n<div>example code</div>\n```\n[Example Site](/help)\n\n- [First ordinary article](/item/1)\n- [Second ordinary article](/item/2)",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "stable_anchor_hits": 1
+      }
+    },
+    {
+      "id": "html-sibling-page-links-retain-atomic-label",
+      "category": "answer-surface",
+      "root_cause": "adjacent_html_link_labels_lose_page_context_boundaries",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "label",
+              "alternatives": [
+                "Sports"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><nav><a href=\"/sports\">Sports</a><a href=\"/guide\">guide</a></nav><ul><li><a href=\"/item/1\">First ordinary article</a></li><li><a href=\"/item/2\">Second ordinary article</a></li></ul></body></html>",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "stable_anchor_hits": 1
+      }
+    },
+    {
+      "id": "html-single-joined-page-label-is-not-atomic-label",
+      "category": "answer-surface",
+      "root_cause": "adjacent_html_link_labels_lose_page_context_boundaries",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "label",
+              "alternatives": [
+                "Sports"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><nav><a href=\"/sports\">Sportsguide</a></nav><ul><li><a href=\"/item/1\">First ordinary article</a></li><li><a href=\"/item/2\">Second ordinary article</a></li></ul></body></html>",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "stable_anchor_hits": 0
+      }
+    },
+    {
+      "id": "html-hidden-sibling-page-link-cannot-supply-label",
+      "category": "answer-surface",
+      "root_cause": "adjacent_html_link_labels_lose_page_context_boundaries",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "label",
+              "alternatives": [
+                "Sports"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><nav><a hidden href=\"/sports\">Sports</a><a href=\"/guide\">guide</a></nav><ul><li><a href=\"/item/1\">First ordinary article</a></li><li><a href=\"/item/2\">Second ordinary article</a></li></ul></body></html>",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "stable_anchor_hits": 0
+      }
+    },
+    {
+      "id": "forum-description-category-scaffolding-rejected",
+      "category": "structured-extraction",
+      "root_cause": "unlabeled_description_borrowed_table_scaffolding_statistics_or_list_residue",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "forums",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/Forum-[a-z]+",
+              "required_fields": [
+                {
+                  "id": "description",
+                  "kind": "text",
+                  "minimum_chars": 5
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "| **[Category](https://example.test/Forum-category)** |\n| --- |\n| | **Threads** | **Posts** | **Last Post** |",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "forum-description-subforum-list-residue-rejected",
+      "category": "structured-extraction",
+      "root_cause": "unlabeled_description_borrowed_table_scaffolding_statistics_or_list_residue",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "forums",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/Forum-[a-z]+",
+              "required_fields": [
+                {
+                  "id": "description",
+                  "kind": "text",
+                  "minimum_chars": 5
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[Child](https://example.test/Forum-child), and 3 more. | 12 | 34 | [A long recent discussion](https://example.test/thread/1)\nYesterday |",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "forum-description-browsing-count-without-description-rejected",
+      "category": "structured-extraction",
+      "root_cause": "unlabeled_description_borrowed_table_scaffolding_statistics_or_list_residue",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "forums",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/Forum-[a-z]+",
+              "required_fields": [
+                {
+                  "id": "description",
+                  "kind": "text",
+                  "minimum_chars": 5
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "| [Forum](https://example.test/Forum-main) (10 users browsing) | 12 | 34 | Recent discussion text |",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "forum-description-multiline-owned-prose-preserved",
+      "category": "structured-extraction",
+      "root_cause": "unlabeled_description_borrowed_table_scaffolding_statistics_or_list_residue",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "forums",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/Forum-[a-z]+",
+              "required_fields": [
+                {
+                  "id": "description",
+                  "kind": "text",
+                  "minimum_chars": 5
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "| [Forum](https://example.test/Forum-main)\nDiscuss this subject here. | 12 | 34 | Recent discussion text |",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "forum-description-html-break-owned-prose-preserved",
+      "category": "structured-extraction",
+      "root_cause": "unlabeled_description_borrowed_table_scaffolding_statistics_or_list_residue",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "forums",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/Forum-[a-z]+",
+              "required_fields": [
+                {
+                  "id": "description",
+                  "kind": "text",
+                  "minimum_chars": 5
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "| [Forum](https://example.test/Forum-main)<br>Discuss this subject here. | 12 | 34 | Recent discussion text |",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "forum-description-escaped-pipe-prose-preserved",
+      "category": "structured-extraction",
+      "root_cause": "unlabeled_description_borrowed_table_scaffolding_statistics_or_list_residue",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "forums",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/Forum-[a-z]+",
+              "required_fields": [
+                {
+                  "id": "description",
+                  "kind": "text",
+                  "minimum_chars": 5
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "| [Forum](https://example.test/Forum-main)\nDiscuss escaped \\| pipe examples here. | 12 | 34 | Recent discussion text |",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "forum-description-two-cell-description-preserved",
+      "category": "structured-extraction",
+      "root_cause": "unlabeled_description_borrowed_table_scaffolding_statistics_or_list_residue",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "forums",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/Forum-[a-z]+",
+              "required_fields": [
+                {
+                  "id": "description",
+                  "kind": "text",
+                  "minimum_chars": 5
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "| [Forum](https://example.test/Forum-main) | Discuss this subject here. |",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "forum-description-ordinary-prose-pipe-preserved",
+      "category": "structured-extraction",
+      "root_cause": "unlabeled_description_borrowed_table_scaffolding_statistics_or_list_residue",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "forums",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/Forum-[a-z]+",
+              "required_fields": [
+                {
+                  "id": "description",
+                  "kind": "text",
+                  "minimum_chars": 5
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[Forum](https://example.test/Forum-main)\nDiscuss prose with an unescaped | pipe here.",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "forum-description-short-owned-description-preserved",
+      "category": "structured-extraction",
+      "root_cause": "unlabeled_description_borrowed_table_scaffolding_statistics_or_list_residue",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "forums",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/Forum-[a-z]+",
+              "required_fields": [
+                {
+                  "id": "description",
+                  "kind": "text",
+                  "minimum_chars": 5
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[Forum](https://example.test/Forum-main)\nClosed",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "forum-description-inline-list-residue-rejected",
+      "category": "structured-extraction",
+      "root_cause": "unlabeled_description_borrowed_table_scaffolding_statistics_or_list_residue",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "forums",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/Forum-[a-z]+",
+              "required_fields": [
+                {
+                  "id": "description",
+                  "kind": "text",
+                  "minimum_chars": 5
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[Forum](https://example.test/Forum-main), and 3 more.",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
     }
   ],
   "superseded_cases": {
