@@ -24,6 +24,8 @@ def main() -> None:
     score.add_argument("--response", type=Path, required=True)
     score.add_argument("--file", type=Path, action="append", default=[])
     score.add_argument("--list-reference", type=Path)
+    score.add_argument("--reference-context", type=Path,
+                       help="Caller-owned evaluation context for a fresh article-post reference")
     score.add_argument("--metadata", type=Path, help="Saved answer metadata as a JSON object")
     score.add_argument("--request-failed", action="store_true")
     score.add_argument("--status-code", type=int)
@@ -40,12 +42,17 @@ def main() -> None:
             metadata = json.loads(args.metadata.read_text(encoding="utf-8")) if args.metadata else None
             if args.metadata and not isinstance(metadata, dict):
                 raise ValueError("Answer metadata must be a JSON object")
+            reference_context = (json.loads(args.reference_context.read_text(encoding="utf-8"))
+                                 if args.reference_context else None)
+            if args.reference_context and not isinstance(reference_context, dict):
+                raise ValueError("Reference context must be a JSON object")
             result = evaluate_response(
                 json.loads(args.task.read_text(encoding="utf-8")), args.response.read_bytes(),
                 files=[path.read_bytes() for path in args.file], ok=not args.request_failed,
                 metadata=metadata,
                 list_reference=(json.loads(args.list_reference.read_text(encoding="utf-8"))
                                 if args.list_reference else None), status_code=args.status_code,
+                reference_context=reference_context,
                 title=args.title, final_url=args.final_url)
         elif args.command == "compile-access-restrictions":
             from .risk_control_dataset import build, RISK

@@ -1,0 +1,962 @@
+{
+  "schema_version": 1,
+  "id": "articles-v1",
+  "status": "authoring",
+  "case_count": 105,
+  "approved_on": "2026-10-19",
+  "provenance": {
+    "candidate_inventory_sha256": "7f1338595f7c1cc3dc634253b24a637d0a38138b49c5e75ac1cf88668da27005",
+    "removed_candidate_ids": [
+      "article-candidate-043",
+      "article-candidate-105"
+    ],
+    "approval": "User explicitly approved the displayed list and requested rule authoring."
+  },
+  "cases": [
+    {
+      "id": "article-001",
+      "candidate_id": "article-candidate-001",
+      "name": "量子位：脑电合成自然语音相关推文",
+      "url": "https://mp.weixin.qq.com/s/BcV3-3glmdsVF--fpPRU2g",
+      "platform": "微信公众号",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-002",
+      "candidate_id": "article-candidate-002",
+      "name": "量子位：Avenir-Web 相关推文",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247887827&idx=3&sn=6f15e73e3e9766986b064a1fce6fe955",
+      "platform": "微信公众号",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-003",
+      "candidate_id": "article-candidate-003",
+      "name": "推特增长策略相关推文",
+      "url": "https://mp.weixin.qq.com/s/2y463r9G4hnsIc0c2ig7dA",
+      "platform": "微信公众号",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-004",
+      "candidate_id": "article-candidate-004",
+      "name": "语言治理：乔姆斯基：ChatGPT 的虚假承诺",
+      "url": "https://mp.weixin.qq.com/s/e9KDOZ3vwd10PFvH6hbtmg",
+      "platform": "微信公众号",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-005",
+      "candidate_id": "article-candidate-005",
+      "name": "Karpathy：vibe coding 长帖",
+      "url": "https://x.com/karpathy/status/1886192184808149383",
+      "platform": "X",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-006",
+      "candidate_id": "article-candidate-006",
+      "name": "How We Made Cloud Browsers 3x Cheaper and Faster",
+      "url": "https://x.com/browser_use/status/2066911791360422071",
+      "platform": "X",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-007",
+      "candidate_id": "article-candidate-007",
+      "name": "How to Authenticate AI Web Agents",
+      "url": "https://x.com/browser_use/status/2031045678411981115",
+      "platform": "X",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-008",
+      "candidate_id": "article-candidate-008",
+      "name": "25个全球最佳旅游目的地（2025年珍藏版）",
+      "url": "https://www.weibo.com/ttarticle/p/show?id=2309405133590391554059",
+      "platform": "微博",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-009",
+      "candidate_id": "article-candidate-009",
+      "name": "从产业细微处，看见周期起落",
+      "url": "https://xueqiu.com/8007330530/409060327",
+      "platform": "雪球",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-010",
+      "candidate_id": "article-candidate-010",
+      "name": "人工智能的细分方向及学习路线",
+      "url": "https://zhuanlan.zhihu.com/p/1938981107581280917",
+      "platform": "知乎",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-011",
+      "candidate_id": "article-candidate-011",
+      "name": "深度学习应该从哪里开始学起来？",
+      "url": "https://www.zhihu.com/question/1908123292520408101/answer/2029584834092184706",
+      "platform": "知乎",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-012",
+      "candidate_id": "article-candidate-012",
+      "name": "数字花园之问",
+      "url": "https://sspai.com/post/80238",
+      "platform": "少数派",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-013",
+      "candidate_id": "article-candidate-013",
+      "name": "建造你的数字小森林",
+      "url": "https://sspai.com/post/81705",
+      "platform": "少数派",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-014",
+      "candidate_id": "article-candidate-014",
+      "name": "javascript事件循环（浏览器/node）",
+      "url": "https://juejin.cn/post/6844903734036676622",
+      "platform": "掘金",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-015",
+      "candidate_id": "article-candidate-015",
+      "name": "Avenir-Web 开源相关报道",
+      "url": "https://blog.csdn.net/QbitAI/article/details/160638160",
+      "platform": "CSDN",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-016",
+      "candidate_id": "article-candidate-016",
+      "name": "区级又怎样？这个博物馆拿捏了数十万人的心",
+      "url": "https://www.sohu.com/a/770951465_121119379",
+      "platform": "搜狐",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-017",
+      "candidate_id": "article-candidate-017",
+      "name": "馆长对话录：从上博东馆开始",
+      "url": "https://www.thepaper.cn/newsDetail_forward_26223402",
+      "platform": "澎湃",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-018",
+      "candidate_id": "article-candidate-018",
+      "name": "嫦娥六号拍摄月背系列影像图公布",
+      "url": "https://www.ithome.com/0/772/941.htm",
+      "platform": "IT之家",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-019",
+      "candidate_id": "article-candidate-019",
+      "name": "《如何阅读一本书》读书笔记",
+      "url": "https://www3.jianshu.com/p/4fad54d5b510",
+      "platform": "简书",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-020",
+      "candidate_id": "article-candidate-020",
+      "name": "事务隔离机制",
+      "url": "https://www.cnblogs.com/wuqiuyin/p/15403538.html",
+      "platform": "博客园",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-021",
+      "candidate_id": "article-candidate-021",
+      "name": "添加解析时提示 DNS 不正确如何处理？",
+      "url": "https://developer.cloud.tencent.com/article/1927047",
+      "platform": "腾讯云开发者社区",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-022",
+      "candidate_id": "article-candidate-022",
+      "name": "项目开发规范",
+      "url": "https://developer.aliyun.com/article/659453",
+      "platform": "阿里云开发者社区",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-023",
+      "candidate_id": "article-candidate-023",
+      "name": "星巴克在中国这20年",
+      "url": "https://www.huxiu.com/article/280829.html",
+      "platform": "虎嗅",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-024",
+      "candidate_id": "article-candidate-024",
+      "name": "参观国博实用攻略",
+      "url": "https://www.chnmuseum.cn/zx/gbxw/202609/t20260923_282658.shtml",
+      "platform": "国家博物馆",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-025",
+      "candidate_id": "article-candidate-025",
+      "name": "Flex 布局教程：语法篇",
+      "url": "https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html",
+      "platform": "阮一峰",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-026",
+      "candidate_id": "article-candidate-026",
+      "name": "The Illustrated Transformer",
+      "url": "https://shekhar14.medium.com/the-illustrated-transformer-5ae5230f4cd7",
+      "platform": "Medium",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-027",
+      "candidate_id": "article-candidate-027",
+      "name": "How to Write",
+      "url": "https://bradleytusk.substack.com/p/how-to-write",
+      "platform": "Substack",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-028",
+      "candidate_id": "article-candidate-028",
+      "name": "AIがチャットから仕事を代行する存在へ",
+      "url": "https://note.com/ai_gpt_take/n/n85e2a2b98456",
+      "platform": "note",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-029",
+      "candidate_id": "article-candidate-029",
+      "name": "Writes and Write-Nots",
+      "url": "https://www.paulgraham.com/writes.html",
+      "platform": "Paul Graham",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-030",
+      "candidate_id": "article-candidate-030",
+      "name": "A cartoon intro to WebAssembly",
+      "url": "https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/",
+      "platform": "Mozilla Hacks",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-031",
+      "candidate_id": "article-candidate-031",
+      "name": "Cloudflare outage on June 21, 2022",
+      "url": "https://blog.cloudflare.com/cloudflare-outage-on-june-21-2022/",
+      "platform": "Cloudflare",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-032",
+      "candidate_id": "article-candidate-032",
+      "name": "JavaScript Visualized: Event Loop",
+      "url": "https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif",
+      "platform": "DEV Community",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-033",
+      "candidate_id": "article-candidate-033",
+      "name": "New AI model could streamline operations in a robotic warehouse",
+      "url": "https://news.mit.edu/2024/new-ai-model-could-streamline-operations-robotic-warehouse-0227",
+      "platform": "MIT News",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-034",
+      "candidate_id": "article-candidate-034",
+      "name": "NASA’s Webb Delivers Deepest Infrared Image of Universe Yet",
+      "url": "https://science.nasa.gov/missions/webb/nasas-webb-delivers-deepest-infrared-image-of-universe-yet/",
+      "platform": "NASA",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-035",
+      "candidate_id": "article-candidate-035",
+      "name": "The Mimic Octopus",
+      "url": "https://www.smithsonianmag.com/science-nature/the-mimic-octopus-34059594/",
+      "platform": "Smithsonian",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-036",
+      "candidate_id": "article-candidate-036",
+      "name": "与普通章鱼相遇",
+      "url": "https://www.theguardian.com/environment/2024/apr/04/the-finger-touch-sent-shivers-down-my-spine-my-encounter-with-a-common-octopus",
+      "platform": "The Guardian",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-037",
+      "candidate_id": "article-candidate-037",
+      "name": "The Perfect Belgrade Itinerary",
+      "url": "https://www.bbc.com/storyworks/travel/experience-serbia/the-perfect-belgrade-itinerary",
+      "platform": "BBC StoryWorks",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-038",
+      "candidate_id": "article-candidate-038",
+      "name": "Browser Use 主页",
+      "url": "https://x.com/browser_use",
+      "platform": "X",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-039",
+      "candidate_id": "article-candidate-039",
+      "name": "Browser Use 回复页",
+      "url": "https://x.com/browser_use/with_replies",
+      "platform": "X",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-040",
+      "candidate_id": "article-candidate-040",
+      "name": "Browser Use 转发页",
+      "url": "https://x.com/browser_use/reposts",
+      "platform": "X",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-041",
+      "candidate_id": "article-candidate-041",
+      "name": "Browser Use 媒体页",
+      "url": "https://x.com/browser_use/media",
+      "platform": "X",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-042",
+      "candidate_id": "article-candidate-042",
+      "name": "Browser Use 文章页",
+      "url": "https://x.com/browser_use/articles",
+      "platform": "X",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-044",
+      "candidate_id": "article-candidate-044",
+      "name": "就叫姜诚的文章合集",
+      "url": "https://xueqiu.com/2245748859/218571421",
+      "platform": "雪球",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-045",
+      "candidate_id": "article-candidate-045",
+      "name": "大模型基础应用框架创新及零售业务落地",
+      "url": "https://www.infoq.cn/article/bixpxztgivpmgwwkli77",
+      "platform": "InfoQ",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-046",
+      "candidate_id": "article-candidate-046",
+      "name": "复杂场景下的 RAG 架构演进",
+      "url": "https://www.infoq.cn/article/d6zsusmd6pydv88qh6gz",
+      "platform": "InfoQ",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-047",
+      "candidate_id": "article-candidate-047",
+      "name": "JavaScript深入之闭包",
+      "url": "https://segmentfault.com/a/1190000009215716?sort=newest",
+      "platform": "SegmentFault",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-048",
+      "candidate_id": "article-candidate-048",
+      "name": "技术周刊 Vol.46：JavaScript 的那些事",
+      "url": "https://segmentfault.com/a/1190000041921498",
+      "platform": "SegmentFault",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-049",
+      "candidate_id": "article-candidate-049",
+      "name": "开源日报：PostgreSQL 17 等",
+      "url": "https://www.oschina.net/comment/news/313870",
+      "platform": "OSCHINA",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-050",
+      "candidate_id": "article-candidate-050",
+      "name": "PostgreSQL 17 Released!",
+      "url": "https://www.postgresql.org/about/news/postgresql-17-released-2936/",
+      "platform": "PostgreSQL",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-051",
+      "candidate_id": "article-candidate-051",
+      "name": "PostgreSQL 17 中文发布说明",
+      "url": "https://www.postgresql.org/about/press/presskit17/zh/",
+      "platform": "PostgreSQL",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-052",
+      "candidate_id": "article-candidate-052",
+      "name": "从小喝到大的三合一咖啡，怎么成了咖啡鄙视链最底端",
+      "url": "https://www.ifanr.com/1409353",
+      "platform": "爱范儿",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-053",
+      "candidate_id": "article-candidate-053",
+      "name": "消费主题文章集合",
+      "url": "https://www.ifanr.com/tags/%E6%B6%88%E8%B4%B9",
+      "platform": "爱范儿",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-054",
+      "candidate_id": "article-candidate-054",
+      "name": "How we scaled the GitHub API with a sharded, replicated rate limiter in Redis",
+      "url": "https://github.blog/engineering/how-we-scaled-github-api-sharded-replicated-rate-limiter-redis/",
+      "platform": "GitHub Blog",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-055",
+      "candidate_id": "article-candidate-055",
+      "name": "Reducing Slack’s memory footprint",
+      "url": "https://slack.engineering/reducing-slacks-memory-footprint/",
+      "platform": "Slack Engineering",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-056",
+      "candidate_id": "article-candidate-056",
+      "name": "How Discord Stores Trillions of Messages",
+      "url": "https://discord.com/blog/how-discord-stores-trillions-of-messages",
+      "platform": "Discord",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-057",
+      "candidate_id": "article-candidate-057",
+      "name": "How Discord Indexes Trillions of Messages",
+      "url": "https://discord.com/blog/how-discord-indexes-trillions-of-messages",
+      "platform": "Discord",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-058",
+      "candidate_id": "article-candidate-058",
+      "name": "Celebrating Five Years of Backstage",
+      "url": "https://engineering.atspotify.com/2025/4/celebrating-five-years-of-backstage",
+      "platform": "Spotify Engineering",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-059",
+      "candidate_id": "article-candidate-059",
+      "name": "龙舟漾遗风 粽情系家国——品端午情怀新气象",
+      "url": "https://www.xinhuanet.com/politics/20240610/f9bd687cb6734380a42d224d2ef23c90/c.html",
+      "platform": "新华网",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-060",
+      "candidate_id": "article-candidate-060",
+      "name": "2024年端午节假期文化和旅游市场情况",
+      "url": "https://www.mct.gov.cn/whzx/whyw/202406/t20240610_953396.htm",
+      "platform": "文化和旅游部",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-061",
+      "candidate_id": "article-candidate-061",
+      "name": "Impressionism: Art and Modernity",
+      "url": "https://www.metmuseum.org/essays/impressionism-art-and-modernity",
+      "platform": "The Met",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-062",
+      "candidate_id": "article-candidate-062",
+      "name": "土壤地理文章集合",
+      "url": "https://www.dili360.com/cng/tag/list/6494.htm",
+      "platform": "中国国家地理",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-063",
+      "candidate_id": "article-candidate-063",
+      "name": "Official English Blog 文章集合",
+      "url": "https://about.geekpark.net/blog/",
+      "platform": "极客公园",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-064",
+      "candidate_id": "article-candidate-064",
+      "name": "The Year in Math（2024）",
+      "url": "https://www.quantamagazine.org/the-year-in-math-20241216/",
+      "platform": "Quanta",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-065",
+      "candidate_id": "article-candidate-065",
+      "name": "Learn CSS Grid by Building 5 Layouts",
+      "url": "https://www.freecodecamp.org/news/learn-css-grid-by-building-5-layouts",
+      "platform": "freeCodeCamp",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-066",
+      "candidate_id": "article-candidate-066",
+      "name": "A Complete CSS Flexbox Layout Guide",
+      "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+      "platform": "CSS-Tricks",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-067",
+      "candidate_id": "article-candidate-067",
+      "name": "Designing Better Error Messages UX",
+      "url": "https://shop.smashingmagazine.com/2022/08/error-messages-ux-design/",
+      "platform": "Smashing Magazine",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-068",
+      "candidate_id": "article-candidate-068",
+      "name": "Responsive Web Design",
+      "url": "https://alistapart.com/article/responsive-web-design/?no_head=1",
+      "platform": "A List Apart",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-069",
+      "candidate_id": "article-candidate-069",
+      "name": "The Reformer: Pushing the limits of language modeling",
+      "url": "https://huggingface.co/blog/reformer",
+      "platform": "Hugging Face",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-070",
+      "candidate_id": "article-candidate-070",
+      "name": "Transformer: A Novel Neural Network Architecture for Language Understanding",
+      "url": "https://research.google/blog/transformer-a-novel-neural-network-architecture-for-language-understanding/",
+      "platform": "Google Research",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-071",
+      "candidate_id": "article-candidate-071",
+      "name": "GraphRAG: Unlocking LLM discovery on narrative private data",
+      "url": "https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data//",
+      "platform": "Microsoft Research",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-072",
+      "candidate_id": "article-candidate-072",
+      "name": "PyTorch 2.0 release",
+      "url": "https://pytorch.org/blog/pytorch-2.0-release/",
+      "platform": "PyTorch",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-073",
+      "candidate_id": "article-candidate-073",
+      "name": "Scaling your API with rate limiters",
+      "url": "https://stripe.com/blog/rate-limiters?trk=public_post_comment-text",
+      "platform": "Stripe",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-074",
+      "candidate_id": "article-candidate-074",
+      "name": "Scaling to exabytes and beyond",
+      "url": "https://dropbox.tech/infrastructure/magic-pocket-infrastructure",
+      "platform": "Dropbox Tech",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-075",
+      "candidate_id": "article-candidate-075",
+      "name": "H3: Uber’s Hexagonal Hierarchical Spatial Index",
+      "url": "https://www.uber.com/us/en/blog/h3/",
+      "platform": "Uber Engineering",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-076",
+      "candidate_id": "article-candidate-076",
+      "name": "Introducing the Amazon Builders’ Library（Part I）",
+      "url": "https://aws.amazon.com/blogs/architecture/reinvent-2019-introducing-the-amazon-builders-library-part-i/",
+      "platform": "AWS Architecture Blog",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-077",
+      "candidate_id": "article-candidate-077",
+      "name": "A beginner’s guide to Javascript Closure",
+      "url": "https://rishabhthakur.hashnode.dev/closures-in-javascript",
+      "platform": "Hashnode",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-078",
+      "candidate_id": "article-candidate-078",
+      "name": "Does reading do us any good?",
+      "url": "https://aeon.co/essays/the-role-of-literature-as-the-key-to-personal-freedom",
+      "platform": "Aeon",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-079",
+      "candidate_id": "article-candidate-079",
+      "name": "6 Ways Coffee Helped Transform the World",
+      "url": "https://www.history.com/articles/coffee-history-facts",
+      "platform": "HISTORY",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-080",
+      "candidate_id": "article-candidate-080",
+      "name": "How an octopus’s cleverness may have evolved",
+      "url": "https://www.sciencenews.org/article/how-octopuss-cleverness-may-have-evolved",
+      "platform": "Science News",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-081",
+      "candidate_id": "article-candidate-081",
+      "name": "The short history of global living conditions",
+      "url": "https://ourworldindata.org/a-history-of-global-living-conditions",
+      "platform": "Our World in Data",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-082",
+      "candidate_id": "article-candidate-082",
+      "name": "Oldest known animal sex chromosome evolved in octopuses",
+      "url": "https://www.nature.com/articles/d41586-024-00637-0",
+      "platform": "Nature",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-083",
+      "candidate_id": "article-candidate-083",
+      "name": "博物馆如何加速成长",
+      "url": "https://kpzg.people.com.cn/n1/2025/1014/c404214-40581444.html",
+      "platform": "人民网",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-084",
+      "candidate_id": "article-candidate-084",
+      "name": "影智XBOT通用餐饮服务机器人发布报道",
+      "url": "https://www.leiphone.com/category/industrynews/bn6JrENVQGf1G9tU.html",
+      "platform": "雷峰网",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-085",
+      "candidate_id": "article-candidate-085",
+      "name": "县城咖啡低调火热，培养土著喝咖啡才是关键",
+      "url": "https://www.tmtpost.com/7893079.html",
+      "platform": "钛媒体",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-086",
+      "candidate_id": "article-candidate-086",
+      "name": "Announcing Rust 1.0",
+      "url": "https://blog.rust-lang.org/2015/05/15/Rust-1.0/",
+      "platform": "Rust Blog",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-087",
+      "candidate_id": "article-candidate-087",
+      "name": "Go Concurrency Patterns: Context",
+      "url": "https://go.dev/blog/context",
+      "platform": "Go Blog",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-088",
+      "candidate_id": "article-candidate-088",
+      "name": "Attention and Augmented Recurrent Neural Networks",
+      "url": "https://distill.pub/2016/augmented-rnns/",
+      "platform": "Distill",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-089",
+      "candidate_id": "article-candidate-089",
+      "name": "The Scaling Hypothesis",
+      "url": "https://gwern.net/scaling-hypothesis",
+      "platform": "Gwern",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-090",
+      "candidate_id": "article-candidate-090",
+      "name": "Social Media Fact Sheet",
+      "url": "https://www.pewresearch.org/internet/fact-sheet/social-media/?level=0",
+      "platform": "Pew Research",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-091",
+      "candidate_id": "article-candidate-091",
+      "name": "2024 in Review 文章集合",
+      "url": "https://www.quantamagazine.org/tag/2024-in-review/",
+      "platform": "Quanta",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-092",
+      "candidate_id": "article-candidate-092",
+      "name": "A crash course in just-in-time (JIT) compilers",
+      "url": "https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/",
+      "platform": "Mozilla Hacks",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-093",
+      "candidate_id": "article-candidate-093",
+      "name": "JavaScript Visualized: Promises & Async/Await",
+      "url": "https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke",
+      "platform": "DEV Community",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-094",
+      "candidate_id": "article-candidate-094",
+      "name": "LLMs develop their own understanding of reality",
+      "url": "https://news.mit.edu/2024/llms-develop-own-understanding-of-reality-as-language-abilities-improve-0814",
+      "platform": "MIT News",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-095",
+      "candidate_id": "article-candidate-095",
+      "name": "科技爱好者周刊第300期",
+      "url": "https://www.ruanyifeng.com/blog/2024/05/weekly-issue-300.html",
+      "platform": "阮一峰",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-096",
+      "candidate_id": "article-candidate-096",
+      "name": "LLM Powered Autonomous Agents",
+      "url": "https://lilianweng.github.io/posts/2023-06-23-agent/",
+      "platform": "Lilian Weng",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-097",
+      "candidate_id": "article-candidate-097",
+      "name": "嫦娥六号成功着陆月背，有效载荷圆满完成探测任务",
+      "url": "https://www.nssc.cas.cn/xwdt2015/xwsd2015/202406/t20240604_7184047.html",
+      "platform": "中科院国家空间科学中心",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-098",
+      "candidate_id": "article-candidate-098",
+      "name": "人之所以活着，人之只好活着",
+      "url": "https://book.douban.com/review/1016514/",
+      "platform": "豆瓣读书",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-099",
+      "candidate_id": "article-candidate-099",
+      "name": "Announcing English Wikipedia’s most popular articles of 2024",
+      "url": "https://wikimediafoundation.org/news/2024/12/03/announcing-english-wikipedias-most-popular-articles-of-2024/",
+      "platform": "Wikimedia Foundation",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-100",
+      "candidate_id": "article-candidate-100",
+      "name": "Unpacking the 2024 Developer Survey results",
+      "url": "https://stackoverflow.blog/2024/08/06/2024-developer-survey/",
+      "platform": "Stack Overflow Blog",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-101",
+      "candidate_id": "article-candidate-101",
+      "name": "大道无形我有型：个人帖子首页",
+      "url": "https://www.xueqiu.com/u/1247347556",
+      "platform": "雪球",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-102",
+      "candidate_id": "article-candidate-102",
+      "name": "大道无形我有型：短帖与引用原帖",
+      "url": "https://www.xueqiu.com/1247347556/412864128",
+      "platform": "雪球",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-103",
+      "candidate_id": "article-candidate-103",
+      "name": "段永平谈CRWV：不懂不碰，但别把不可持续当成马上暴雷",
+      "url": "https://www.xueqiu.com/7736566551/412842048",
+      "platform": "雪球",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-104",
+      "candidate_id": "article-candidate-104",
+      "name": "多伦多的大道信徒：专栏列表",
+      "url": "https://www.xueqiu.com/7736566551/column",
+      "platform": "雪球",
+      "page_type": "collection",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-106",
+      "candidate_id": "article-candidate-106",
+      "name": "人民日报海外版导读：中国车企发力线控底盘",
+      "url": "https://m.weibo.cn/2/detail/5354200254911308",
+      "platform": "微博",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    },
+    {
+      "id": "article-107",
+      "candidate_id": "article-candidate-107",
+      "name": "中控技术：工业AI成果发布会",
+      "url": "https://weibo.com/2/detail/5355734640363402",
+      "platform": "微博",
+      "page_type": "article",
+      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+    }
+  ]
+}

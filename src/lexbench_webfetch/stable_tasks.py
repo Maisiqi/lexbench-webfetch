@@ -682,6 +682,46 @@ def _anchor_matches(anchor, records, visible, schema, non_record_visible=None,
     return [value for value in anchor["alternatives"] if fact_in_text(folded, normalize_for_match(_visible(value)))]
 
 
+def _validate_visible_control(control):
+    """Validate the narrowly opted-in ordinary control attribute surface."""
+    if (not isinstance(control, dict) or set(control) != {"selector", "attribute"}
+            or not isinstance(control["selector"], str) or not control["selector"].strip()
+            or not isinstance(control["attribute"], str)
+            or control["attribute"] not in {"placeholder", "value"}):
+        raise ValueError("Invalid visible control declaration")
+    import soupsieve
+    try:
+        soupsieve.compile(control["selector"])
+    except (soupsieve.SelectorSyntaxError, NotImplementedError) as error:
+        raise ValueError("Invalid visible control selector") from error
+
+
+def _ordinary_control_text(soup, control):
+    """Read only declared rendered-label attributes, never accessibility metadata.
+
+    Explicit hidden nodes are removed by _scoped_html. External stylesheet
+    visibility must be established by the independent source review.
+    """
+    parts = []
+    for node in soup.select(control["selector"]):
+        kind = str(node.get("type", "text")).lower()
+        attribute = control["attribute"]
+        # A populated control does not display its placeholder, even when the
+        # current value contains only whitespace.
+        if attribute == "placeholder" and (
+                node.get("value", "") if node.name == "input" else node.get_text()):
+            continue
+        permitted = (
+            attribute == "placeholder" and (
+                node.name == "textarea" or (node.name == "input" and kind in {
+                    "text", "search", "email", "url", "tel", "number"}))) or (
+            attribute == "value" and node.name == "input"
+            and kind in {"button", "submit", "reset"})
+        if permitted and isinstance(node.get(attribute), str):
+            parts.append(node[attribute])
+    return "\n".join(parts)
+
+
 def validate_acceptance_contract(contract: dict) -> None:
     """Fail closed before a caller chooses stable scoring instead of snapshots."""
     if (not isinstance(contract, dict) or type(contract.get("version")) is not int
@@ -758,6 +798,7 @@ def validate_acceptance_contract(contract: dict) -> None:
                 or set(anchor) - {
                     "id", "alternatives", "match_scope", "source_location",
                     "observation_status", "source_evidence_sha256",
+                    "visible_control",
                 }
                 or ('match_scope' in anchor and (anchor['match_scope'] != 'non_record_lines' or contract['schema'] != 'named_link'))
                 or ('source_location' in anchor and (
@@ -773,6 +814,8 @@ def validate_acceptance_contract(contract: dict) -> None:
                 or not isinstance(anchor.get("alternatives"), list) or not anchor["alternatives"]
                 or any(not isinstance(value, str) or not _visible(value).strip() for value in anchor["alternatives"])):
             raise ValueError("Invalid or duplicate stable text anchor group")
+        if "visible_control" in anchor:
+            _validate_visible_control(anchor["visible_control"])
         ids.add(anchor["id"])
     if contract["schema"] == "body_text" and not anchors and not patterns:
         raise ValueError("Stable body-text contracts require text anchors or page patterns")
@@ -927,6 +970,9 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
     same-site detail-link parser. Raw URL identity is not factual verification.
     anchor_text may reuse the caller's normalized visible HTML prose;
     document-title metadata cannot supply page text or structural records.
+    An anchor may opt into visible_control {selector, attribute} to recognize
+    independently reviewed ordinary input placeholders or button values in HTML.
+    This surface belongs only to that anchor, not page identity or body coverage.
     """
     validate_acceptance_contract(contract)
     schema = contract["schema"]
@@ -1018,13 +1064,26 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
                 )
             )
     anchors = []
+    control_soup = None
+    if any("visible_control" in a for a in contract.get("stable_text_anchors", [])):
+        from .reference_quality import is_html_document_or_fragment
+        if is_html_document_or_fragment(content):
+            from .dynamic_lists import _scoped_html
+            control_soup = _scoped_html(content)
     non_record_visible = None
     if schema == 'named_link' and any(a.get('match_scope') == 'non_record_lines'
                                       for a in contract.get('stable_text_anchors', [])):
         non_record_visible = _non_record_visible(content, contract, records, base_url)
     for anchor in contract.get("stable_text_anchors", []):
+        selected_surface = anchor_visible
+        selected_non_record = non_record_visible
+        if control_soup is not None and "visible_control" in anchor:
+            control_text = _ordinary_control_text(control_soup, anchor["visible_control"])
+            selected_surface = (anchor_visible if anchor_visible is not None else visible) + "\n" + control_text
+            if non_record_visible is not None:
+                selected_non_record = non_record_visible + "\n" + control_text
         matched = _anchor_matches(anchor, records, visible, schema,
-                                  non_record_visible, anchor_visible)
+                                  selected_non_record, selected_surface)
         anchors.append({**anchor, "matched": matched, "pass": bool(matched)})
     anchor_errors = ["missing_stable_anchor:" + r["id"] for r in anchors if not r["pass"]]
     if anchors_required:

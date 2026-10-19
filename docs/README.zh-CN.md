@@ -46,6 +46,8 @@ flowchart LR
 
 每组提供可读的 `tasks.json`、包含原始完整任务哈希的目录，以及绑定可执行数据集和参考文件的清单。详见[数据结构与使用权](data.md)。任务原文和冻结的验收规则保留原语言。
 
+[文章分类](../src/lexbench_webfetch/definitions/evaluation/articles/README.md)正在依据单独确认的 105 个网址制定规则。尚未完成的规则不注册为已冻结、可执行的任务集。
+
 ## 快速开始
 
 安装 [uv](https://docs.astral.sh/uv/getting-started/installation/)，然后运行：
@@ -82,6 +84,8 @@ uv run --frozen lexbench-webfetch score --task examples/task.json --response exa
 ```
 
 第一份响应通过，第二份失败。若回答含有结构化链接或图片等字段，可通过 `--metadata /absolute/path/metadata.json` 提供，文件内容须为 JSON 对象。元数据不能指定文件验收结果。实际评分时，请使用已校验数据集中的完整任务 JSON。公开任务文件中的参考正文只有哈希绑定，不能替代完整验收输入。文件任务通过可重复的 `--file /absolute/path/file` 提供真实文件；评分器检查字节签名、长度和声明的哈希，不接受调用者自报的通过标记。可选的树结构任务需要先运行 `uv sync --frozen --extra tree`。
+
+文章帖子集合任务还需提供 `--list-reference /absolute/path/reference.json` 和 `--reference-context /absolute/path/context.json`。由执行工具提供的上下文包含 `id` 和 UTC 时间 `started_at`；独立参考缺失、上下文不符或参考过期时，该案例不计入有效测量。见[文章规则编写说明](../src/lexbench_webfetch/definitions/evaluation/articles/README.md)。
 
 使用独立采集的参考输入编译已审定的访问受限任务规则：
 
