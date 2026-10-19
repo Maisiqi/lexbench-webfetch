@@ -19,6 +19,31 @@ def clean_reference_text(text: str) -> str:
     return text.translate({0x200B:None, 0xFEFF:None, 0x00AD:None})
 
 
+
+def markdown_body_content(text: str) -> str:
+    """Exclude a declared leading YAML metadata mapping from page prose.
+
+    Require both front-matter delimiters and a mapping key. Ordinary horizontal
+    rules, fenced examples, and unclosed headers remain body content. The caller
+    retains original answer bytes separately from this acceptance surface.
+    """
+    block = re.match(
+        r"\A\ufeff?---[ \t]*\r?\n(?P<metadata>.*?)\r?\n(?:---|\.\.\.)[ \t]*(?:\r?\n|\Z)",
+        text, re.S,
+    )
+    if block is None:
+        return text
+    key = re.compile(r"^(?:[A-Za-z_][\w.:-]*|\"[^\"\n]+\"|'[^'\n]+')[ \t]*:")
+    lines = block['metadata'].splitlines()
+    if not any(key.match(line) for line in lines) or any(
+        line.strip() and not line[0].isspace()
+        and not line.startswith('#') and not key.match(line)
+        for line in lines
+    ):
+        return text
+    return text[block.end():]
+
+
 def normalize_reference_anchor(text: str) -> str:
     """Normalize capture layout while retaining evidence-bearing punctuation.
 

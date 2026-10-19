@@ -49093,6 +49093,572 @@
       "expected_metrics": {
         "composite_acceptance_pass": false
       }
+    },
+    {
+      "id": "markdown-front-matter-title-cannot-supply-body-anchor",
+      "category": "answer-surface",
+      "root_cause": "markdown_front_matter_confused_with_page_body",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Page Label"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "---\ntitle: \"Other title\"\nmeta:\n  \"og:title\": \"Page Label\"\n  \"twitter:title\": \"Page Label\"\n---\nOrdinary text",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "stable_anchor_hits": 0
+      }
+    },
+    {
+      "id": "markdown-front-matter-retains-visible-body-anchor",
+      "category": "answer-surface",
+      "root_cause": "markdown_front_matter_confused_with_page_body",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Page Label"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "---\ntitle: \"Other title\"\nmeta:\n  \"og:title\": \"Page Label\"\n  \"twitter:title\": \"Page Label\"\n---\n# Page Label\nOrdinary text",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "stable_anchor_hits": 1
+      }
+    },
+    {
+      "id": "markdown-front-matter-cannot-supply-body-region",
+      "category": "answer-surface",
+      "root_cause": "markdown_front_matter_confused_with_page_body",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.6,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "article",
+              "text": "A complete visible article paragraph with essential details."
+            }
+          ]
+        }
+      },
+      "artifact": "---\ndescription: \"A complete visible article paragraph with essential details.\"\n---\nOrdinary text",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "body_coverage_pass": false
+      }
+    },
+    {
+      "id": "markdown-front-matter-retains-visible-body-region",
+      "category": "answer-surface",
+      "root_cause": "markdown_front_matter_confused_with_page_body",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.6,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "article",
+              "text": "A complete visible article paragraph with essential details."
+            }
+          ]
+        }
+      },
+      "artifact": "---\ndescription: \"A complete visible article paragraph with essential details.\"\n---\nA complete visible article paragraph with essential details.",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "body_coverage_pass": true
+      }
+    },
+    {
+      "id": "markdown-ordinary-horizontal-rules-retain-body",
+      "category": "answer-surface",
+      "root_cause": "markdown_front_matter_confused_with_page_body",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Page Label"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "---\nPage Label\n---\nOrdinary text",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "stable_anchor_hits": 1
+      }
+    },
+    {
+      "id": "markdown-fenced-metadata-example-retains-body",
+      "category": "answer-surface",
+      "root_cause": "markdown_front_matter_confused_with_page_body",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Page Label"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "```yaml\n---\ntitle: \"Other title\"\nmeta:\n  \"og:title\": \"Page Label\"\n  \"twitter:title\": \"Page Label\"\n---\n```\nOrdinary text",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "stable_anchor_hits": 1
+      }
+    },
+    {
+      "id": "markdown-front-matter-title-cannot-supply-required-fact",
+      "category": "answer-surface",
+      "root_cause": "markdown_front_matter_confused_with_page_body",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "required_facts": [
+          {
+            "id": "identity",
+            "alternatives": [
+              "Page Label"
+            ]
+          }
+        ]
+      },
+      "artifact": "---\ntitle: \"Other title\"\nmeta:\n  \"og:title\": \"Page Label\"\n  \"twitter:title\": \"Page Label\"\n---\nOrdinary text",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "fact_hits": 0
+      }
+    },
+    {
+      "id": "markdown-front-matter-retains-visible-required-fact",
+      "category": "answer-surface",
+      "root_cause": "markdown_front_matter_confused_with_page_body",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "min_content_chars": 1,
+        "required_facts": [
+          {
+            "id": "identity",
+            "alternatives": [
+              "Page Label"
+            ]
+          }
+        ]
+      },
+      "artifact": "---\ntitle: \"Other title\"\nmeta:\n  \"og:title\": \"Page Label\"\n  \"twitter:title\": \"Page Label\"\n---\nPage Label\nOrdinary text",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "fact_hits": 1
+      }
+    },
+    {
+      "id": "volatile-header-old-header-complete",
+      "category": "reference-evidence",
+      "root_cause": "variable_first_load_slogan_was_incorrectly_frozen_as_stable_text",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Community Archive"
+              ]
+            },
+            {
+              "id": "news",
+              "alternatives": [
+                "News"
+              ]
+            }
+          ]
+        },
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.6,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "purpose",
+              "text": "The community archive preserves stories and fan works for readers. Browse the public collection and discover creative writing."
+            }
+          ]
+        },
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "news",
+              "kind": "named_link",
+              "minimum_records": 3,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/posts/[0-9]+",
+              "start_pattern": "News",
+              "required_fields": [
+                {
+                  "id": "published",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Published"
+                  ]
+                },
+                {
+                  "id": "comments",
+                  "kind": "integer",
+                  "aliases": [
+                    "Comments"
+                  ]
+                },
+                {
+                  "id": "summary",
+                  "kind": "text",
+                  "minimum_chars": 20
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "# Community Archive\nA pleasant place for stories\n\nThe community archive preserves stories and fan works for readers. Browse the public collection and discover creative writing.\n\n# News\n[Update 1](https://example.test/posts/1)\nPublished: 2026-09-24\nComments: 1\nThis announcement explains a public collection update for readers.\n\n[Update 2](https://example.test/posts/2)\nPublished: 2026-09-24\nComments: 2\nThis announcement explains a public collection update for readers.\n\n[Update 3](https://example.test/posts/3)\nPublished: 2026-09-24\nComments: 3\nThis announcement explains a public collection update for readers.",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "body_coverage_pass": true,
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "volatile-header-alternate-header-complete",
+      "category": "reference-evidence",
+      "root_cause": "variable_first_load_slogan_was_incorrectly_frozen_as_stable_text",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Community Archive"
+              ]
+            },
+            {
+              "id": "news",
+              "alternatives": [
+                "News"
+              ]
+            }
+          ]
+        },
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.6,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "purpose",
+              "text": "The community archive preserves stories and fan works for readers. Browse the public collection and discover creative writing."
+            }
+          ]
+        },
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "news",
+              "kind": "named_link",
+              "minimum_records": 3,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/posts/[0-9]+",
+              "start_pattern": "News",
+              "required_fields": [
+                {
+                  "id": "published",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Published"
+                  ]
+                },
+                {
+                  "id": "comments",
+                  "kind": "integer",
+                  "aliases": [
+                    "Comments"
+                  ]
+                },
+                {
+                  "id": "summary",
+                  "kind": "text",
+                  "minimum_chars": 20
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "# Community Archive\nA different randomly selected welcome\n\nThe community archive preserves stories and fan works for readers. Browse the public collection and discover creative writing.\n\n# News\n[Update 1](https://example.test/posts/1)\nPublished: 2026-09-24\nComments: 1\nThis announcement explains a public collection update for readers.\n\n[Update 2](https://example.test/posts/2)\nPublished: 2026-09-24\nComments: 2\nThis announcement explains a public collection update for readers.\n\n[Update 3](https://example.test/posts/3)\nPublished: 2026-09-24\nComments: 3\nThis announcement explains a public collection update for readers.",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "body_coverage_pass": true,
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "volatile-header-alternate-header-missing-body",
+      "category": "reference-evidence",
+      "root_cause": "variable_first_load_slogan_was_incorrectly_frozen_as_stable_text",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Community Archive"
+              ]
+            },
+            {
+              "id": "news",
+              "alternatives": [
+                "News"
+              ]
+            }
+          ]
+        },
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.6,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "purpose",
+              "text": "The community archive preserves stories and fan works for readers. Browse the public collection and discover creative writing."
+            }
+          ]
+        },
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "news",
+              "kind": "named_link",
+              "minimum_records": 3,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/posts/[0-9]+",
+              "start_pattern": "News",
+              "required_fields": [
+                {
+                  "id": "published",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Published"
+                  ]
+                },
+                {
+                  "id": "comments",
+                  "kind": "integer",
+                  "aliases": [
+                    "Comments"
+                  ]
+                },
+                {
+                  "id": "summary",
+                  "kind": "text",
+                  "minimum_chars": 20
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "# Community Archive\nA different randomly selected welcome\n\n\n\n# News\n[Update 1](https://example.test/posts/1)\nPublished: 2026-09-24\nComments: 1\nThis announcement explains a public collection update for readers.\n\n[Update 2](https://example.test/posts/2)\nPublished: 2026-09-24\nComments: 2\nThis announcement explains a public collection update for readers.\n\n[Update 3](https://example.test/posts/3)\nPublished: 2026-09-24\nComments: 3\nThis announcement explains a public collection update for readers.",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "body_coverage_pass": false,
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "volatile-header-alternate-header-missing-news",
+      "category": "reference-evidence",
+      "root_cause": "variable_first_load_slogan_was_incorrectly_frozen_as_stable_text",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Community Archive"
+              ]
+            },
+            {
+              "id": "news",
+              "alternatives": [
+                "News"
+              ]
+            }
+          ]
+        },
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.6,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "purpose",
+              "text": "The community archive preserves stories and fan works for readers. Browse the public collection and discover creative writing."
+            }
+          ]
+        },
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "news",
+              "kind": "named_link",
+              "minimum_records": 3,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/posts/[0-9]+",
+              "start_pattern": "News",
+              "required_fields": [
+                {
+                  "id": "published",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Published"
+                  ]
+                },
+                {
+                  "id": "comments",
+                  "kind": "integer",
+                  "aliases": [
+                    "Comments"
+                  ]
+                },
+                {
+                  "id": "summary",
+                  "kind": "text",
+                  "minimum_chars": 20
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "# Community Archive\nA different randomly selected welcome\n\nThe community archive preserves stories and fan works for readers. Browse the public collection and discover creative writing.\n\n# News\n",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "body_coverage_pass": true,
+        "composite_acceptance_pass": false
+      }
     }
   ],
   "superseded_cases": {

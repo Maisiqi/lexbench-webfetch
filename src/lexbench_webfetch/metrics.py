@@ -664,17 +664,18 @@ def evaluate_content(
     allow_reference_block_exemptions: bool = False,
 ) -> dict[str, Any]:
     title_prefix = ((title.strip() + '\n') if title and title.strip() else '')
-    visible_content = content
-    from .reference_quality import is_html_document_or_fragment
-    is_html = is_html_document_or_fragment(content)
+    from .reference_quality import is_html_document_or_fragment, markdown_body_content
+    prose_content = markdown_body_content(content)
+    visible_content = prose_content
+    is_html = is_html_document_or_fragment(prose_content)
     if is_html:
         # Keep raw HTML for records and links; score prose from visible text.
         from .dynamic_lists import visible_html_text
-        visible_content = visible_html_text(content)
+        visible_content = visible_html_text(prose_content)
     else:
         from .reference_quality import visible_mixed_html_text
-        visible_content = visible_mixed_html_text(content)
-    has_html_prose = is_html or visible_content != content
+        visible_content = visible_mixed_html_text(prose_content)
+    has_html_prose = is_html or visible_content != prose_content
     answer_text = title_prefix + visible_content
     from .reference_quality import blocked_page_hits, script_payload_shell
     block_hits = blocked_page_hits(answer_text)
@@ -743,7 +744,7 @@ def evaluate_content(
         pattern_results.append({'id':rule['id'],'count':count,'minimum':rule.get('minimum',1),'pass':count >= rule.get('minimum',1)})
     content_pass = content_pass and all(item['pass'] for item in pattern_results)
     from .body_coverage import evaluate_body_requirements, native_markup_body_text
-    body_content = (native_markup_body_text(content, html.unescape(re.sub(r"<(script|style|template)\b[^>]*>.*?</\1\s*>", "", content, flags=re.I | re.S)))
+    body_content = (native_markup_body_text(prose_content, html.unescape(re.sub(r"<(script|style|template)\b[^>]*>.*?</\1\s*>", "", prose_content, flags=re.I | re.S)))
                     if body_requirements and not is_html else visible_content)
     body_checks = evaluate_body_requirements(body_content, body_requirements or {})
     content_pass = content_pass and body_checks['body_coverage_pass']
@@ -813,7 +814,7 @@ def evaluate_content(
         from .stable_tasks import evaluate_stable_task
         # Document metadata remains diagnostic; it cannot supply rendered
         # page anchors, records, or declared body coverage.
-        result.update(evaluate_stable_task(content, acceptance_contract,
+        result.update(evaluate_stable_task(prose_content, acceptance_contract,
                                            base_url, links=named_links,
                                             anchor_text=visible_content if has_html_prose else None,
                                            allow_closed_title_cards=True,
@@ -847,10 +848,10 @@ def evaluate_content(
         from .composite_tasks import evaluate_composite_acceptance
         from .dynamic_lists import visible_html_text
         composite = evaluate_composite_acceptance(
-            visible_html_text(content, preserve_links=True) if is_html else visible_content,
+            visible_html_text(prose_content, preserve_links=True) if is_html else visible_content,
             composite_acceptance, base_url=base_url, links=named_links,
-            native_html=content if is_html else None,
-            table_content=content,
+            native_html=prose_content if is_html else None,
+            table_content=prose_content,
         )
         result.update(composite)
         result["content_pass"] = bool(result["content_pass"] and composite["composite_acceptance_pass"])
