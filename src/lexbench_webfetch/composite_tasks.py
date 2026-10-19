@@ -109,11 +109,12 @@ def _scope(content: str, group: dict) -> str:
         )
         if match is not None:
             return match.start()
-        # Native Markdown can serialize adjacent reference-style controls
-        # without a space. Restore only that layout boundary, requiring the
-        # complete heading to match so prose cannot create a new section.
+        # Native Markdown can serialize adjacent reference-style controls or
+        # repeated horizontal spaces. Normalize layout only for a complete
+        # matching line, retaining its original offset and section ownership.
         for line in re.finditer(r'(?m)^.*$', value):
             spaced = re.sub(r'(?<=\])(?=(?:\\)?\[)', ' ', line[0])
+            spaced = re.sub(r'[ \t]+', ' ', spaced)
             if spaced != line[0] and re.fullmatch(pattern, spaced, re.I | re.M):
                 return line.start()
             if group['kind'] == 'field_report' and line[0].strip().startswith('|'):

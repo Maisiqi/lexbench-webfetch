@@ -50685,6 +50685,238 @@
       "artifact": "---\nog:title: \"# Tokenize the context texts (using a tokenizer from the\"\n---\nOther text",
       "ok": true,
       "expected_task_pass": false
+    },
+    {
+      "id": "section-horizontal-whitespace-single-space",
+      "category": "format-normalization",
+      "root_cause": "section_heading_horizontal_whitespace_breaks_declared_boundaries",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/news",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "wire",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "(?m)^## AGP Wire\\s*$",
+              "end_pattern": "(?m)^## AGP End\\s*$"
+            }
+          ]
+        }
+      },
+      "artifact": "## AGP Wire\n[One](https://example.test/item/1)\n[Two](https://example.test/item/2)\n## AGP End",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "section-horizontal-whitespace-repeated-space",
+      "category": "format-normalization",
+      "root_cause": "section_heading_horizontal_whitespace_breaks_declared_boundaries",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/news",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "wire",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "(?m)^## AGP Wire\\s*$",
+              "end_pattern": "(?m)^## AGP End\\s*$"
+            }
+          ]
+        }
+      },
+      "artifact": "##  AGP   Wire \n[One](https://example.test/item/1)\n[Two](https://example.test/item/2)\n##   AGP  End ",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "section-horizontal-whitespace-tab-space",
+      "category": "format-normalization",
+      "root_cause": "section_heading_horizontal_whitespace_breaks_declared_boundaries",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/news",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "wire",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "(?m)^## AGP Wire\\s*$",
+              "end_pattern": "(?m)^## AGP End\\s*$"
+            }
+          ]
+        }
+      },
+      "artifact": "##\tAGP\tWire\n[One](https://example.test/item/1)\n[Two](https://example.test/item/2)\n##\tAGP\tEnd",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "section-horizontal-whitespace-heading-in-prose",
+      "category": "format-normalization",
+      "root_cause": "section_heading_horizontal_whitespace_breaks_declared_boundaries",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/news",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "wire",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "(?m)^## AGP Wire\\s*$",
+              "end_pattern": "(?m)^## AGP End\\s*$"
+            }
+          ]
+        }
+      },
+      "artifact": "This mentions ##  AGP Wire\n[One](https://example.test/item/1)\n[Two](https://example.test/item/2)\n## AGP End",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "section-horizontal-whitespace-missing-end",
+      "category": "format-normalization",
+      "root_cause": "section_heading_horizontal_whitespace_breaks_declared_boundaries",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/news",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "wire",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "(?m)^## AGP Wire\\s*$",
+              "end_pattern": "(?m)^## AGP End\\s*$"
+            }
+          ]
+        }
+      },
+      "artifact": "##  AGP Wire\n[One](https://example.test/item/1)\n[Two](https://example.test/item/2)\n",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "section-horizontal-whitespace-outside-only",
+      "category": "format-normalization",
+      "root_cause": "section_heading_horizontal_whitespace_breaks_declared_boundaries",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/news",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "wire",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "(?m)^## AGP Wire\\s*$",
+              "end_pattern": "(?m)^## AGP End\\s*$"
+            }
+          ]
+        }
+      },
+      "artifact": "[One](https://example.test/item/1)\n[Two](https://example.test/item/2)\n##  AGP Wire\nNo records\n##  AGP End",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "section-horizontal-whitespace-wrong-section-words",
+      "category": "format-normalization",
+      "root_cause": "section_heading_horizontal_whitespace_breaks_declared_boundaries",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/news",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "wire",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "(?m)^## AGP Wire\\s*$",
+              "end_pattern": "(?m)^## AGP End\\s*$"
+            }
+          ]
+        }
+      },
+      "artifact": "##  AGP Wrong Wire\n[One](https://example.test/item/1)\n[Two](https://example.test/item/2)\n## AGP End",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "section-horizontal-whitespace-missing-start",
+      "category": "format-normalization",
+      "root_cause": "section_heading_horizontal_whitespace_breaks_declared_boundaries",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/news",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "wire",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "(?m)^## AGP Wire\\s*$",
+              "end_pattern": "(?m)^## AGP End\\s*$"
+            }
+          ]
+        }
+      },
+      "artifact": "[One](https://example.test/item/1)\n[Two](https://example.test/item/2)\n## AGP End",
+      "ok": true,
+      "expected_task_pass": false
     }
   ],
   "superseded_cases": {
