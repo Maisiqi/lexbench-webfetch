@@ -48069,6 +48069,1030 @@
       "native_response": "{\"content\":\"\"}",
       "expected_task_pass": false,
       "expected_validation_error": "Native answer defaults must be empty"
+    },
+    {
+      "id": "named-columns-standard-complete",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_falls_back_to_unrelated_section_boundaries",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "[A](https://example.test/division-a \"Track A\")\n[Prep](https://example.test/item/11)\n[Resources](https://example.test/item/12)\n\n| Track A | Track B |\n| --- | --- |\n| [Alpha](https://example.test/item/1) | [Gamma](https://example.test/item/3) |\n| [Beta](https://example.test/item/2) | [Delta](https://example.test/item/4) |\n\n[State One](https://example.test/item/21)\n[State Two](https://example.test/item/22)\n# End",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "named-columns-standard-empty-rejects-surrounding-records",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_falls_back_to_unrelated_section_boundaries",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "[A](https://example.test/division-a \"Track A\")\n[Prep](https://example.test/item/11)\n[Resources](https://example.test/item/12)\n\n| Track A | Track B |\n| --- | --- |\n|  |  |\n|  |  |\n\n[State One](https://example.test/item/21)\n[State Two](https://example.test/item/22)\n# End",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "named-columns-caption-before-complete",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_falls_back_to_unrelated_section_boundaries",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "[A](https://example.test/division-a \"Track A\")\n[Prep](https://example.test/item/11)\n[Resources](https://example.test/item/12)\n\n| Events |\n| --- |\n| Track A | Track B |\n| [Alpha](https://example.test/item/1) | [Gamma](https://example.test/item/3) |\n| [Beta](https://example.test/item/2) | [Delta](https://example.test/item/4) |\n\n[State One](https://example.test/item/21)\n[State Two](https://example.test/item/22)\n# End",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "named-columns-caption-before-empty-rejects-surrounding-records",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_falls_back_to_unrelated_section_boundaries",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "[A](https://example.test/division-a \"Track A\")\n[Prep](https://example.test/item/11)\n[Resources](https://example.test/item/12)\n\n| Events |\n| --- |\n| Track A | Track B |\n|  |  |\n|  |  |\n\n[State One](https://example.test/item/21)\n[State Two](https://example.test/item/22)\n# End",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "named-columns-html-complete",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_falls_back_to_unrelated_section_boundaries",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "<!doctype html><html><body><nav><a href=\"/division-a\" title=\"Track A\">A</a></nav><p><a href=\"/item/11\">Preparation</a><a href=\"/item/12\">Resources</a></p><table><tr><th colspan=\"2\">Events</th></tr><tr><th>Track A</th><th>Track B</th></tr><tr><td><a href=\"https://example.test/item/1\">Alpha</a></td><td><a href=\"https://example.test/item/3\">Gamma</a></td></tr><tr><td><a href=\"https://example.test/item/2\">Beta</a></td><td><a href=\"https://example.test/item/4\">Delta</a></td></tr></table><p><a href=\"/item/21\">State One</a><a href=\"/item/22\">State Two</a></p><h2>End</h2></body></html>",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "named-columns-html-empty-rejects-surrounding-records",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_falls_back_to_unrelated_section_boundaries",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "<!doctype html><html><body><nav><a href=\"/division-a\" title=\"Track A\">A</a></nav><p><a href=\"/item/11\">Preparation</a><a href=\"/item/12\">Resources</a></p><table><tr><th colspan=\"2\">Events</th></tr><tr><th>Track A</th><th>Track B</th></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></table><p><a href=\"/item/21\">State One</a><a href=\"/item/22\">State Two</a></p><h2>End</h2></body></html>",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "html-linked-logo-retains-page-identity",
+      "category": "answer-surface",
+      "root_cause": "named_link_page_anchor_representation_mismatch",
+      "failure_mode": "false-negative",
+      "case": {
+        "id": "page-label",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><a href=\"/\"><img src=\"/logo.svg\" alt=\"Example Site\"></a><ul><li><a href=\"/item/1\">First ordinary article</a></li><li><a href=\"/item/2\">Second ordinary article</a></li></ul></body></html>",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "markdown-linked-logo-retains-page-identity",
+      "category": "answer-surface",
+      "root_cause": "named_link_page_anchor_representation_mismatch",
+      "failure_mode": "false-negative",
+      "case": {
+        "id": "page-label",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "[![Example Site](/logo.svg)](/)\n\n- [First ordinary article](/item/1)\n- [Second ordinary article](/item/2)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "html-ordinary-label-retains-page-identity",
+      "category": "answer-surface",
+      "root_cause": "named_link_page_anchor_representation_mismatch",
+      "failure_mode": "false-negative",
+      "case": {
+        "id": "page-label",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><p>Example Site</p><ul><li><a href=\"/item/1\">First ordinary article</a></li><li><a href=\"/item/2\">Second ordinary article</a></li></ul></body></html>",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "html-data-attribute-cannot-supply-page-identity",
+      "category": "answer-surface",
+      "root_cause": "named_link_page_anchor_representation_mismatch",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "page-label",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><div data-label=\"Example Site\">Other label</div><ul><li><a href=\"/item/1\">First ordinary article</a></li><li><a href=\"/item/2\">Second ordinary article</a></li></ul></body></html>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "html-url-attribute-cannot-supply-page-identity",
+      "category": "answer-surface",
+      "root_cause": "named_link_page_anchor_representation_mismatch",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "page-label",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><a href=\"/Example Site\">Other label</a><ul><li><a href=\"/item/1\">First ordinary article</a></li><li><a href=\"/item/2\">Second ordinary article</a></li></ul></body></html>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "html-hidden-logo-cannot-supply-page-identity",
+      "category": "answer-surface",
+      "root_cause": "named_link_page_anchor_representation_mismatch",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "page-label",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><a href=\"/\"><img style=\"display:none\" alt=\"Example Site\"></a><ul><li><a href=\"/item/1\">First ordinary article</a></li><li><a href=\"/item/2\">Second ordinary article</a></li></ul></body></html>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "html-unlinked-image-cannot-supply-page-identity",
+      "category": "answer-surface",
+      "root_cause": "named_link_page_anchor_representation_mismatch",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "page-label",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><img src=\"/logo.svg\" alt=\"Example Site\"><ul><li><a href=\"/item/1\">First ordinary article</a></li><li><a href=\"/item/2\">Second ordinary article</a></li></ul></body></html>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "markdown-unlinked-image-cannot-supply-page-identity",
+      "category": "answer-surface",
+      "root_cause": "named_link_page_anchor_representation_mismatch",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "page-label",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "![Example Site](/logo.svg)\n\n- [First ordinary article](/item/1)\n- [Second ordinary article](/item/2)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "markdown-owned-record-logo-cannot-supply-page-identity",
+      "category": "answer-surface",
+      "root_cause": "named_link_page_anchor_representation_mismatch",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "page-label",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "[![Example Site](/logo.svg)](/item/3)\n\n- [First ordinary article](/item/1)\n- [Second ordinary article](/item/2)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "html-owned-record-logo-cannot-supply-page-identity",
+      "category": "answer-surface",
+      "root_cause": "named_link_page_anchor_representation_mismatch",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "page-label",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><a href=\"/item/3\"><img src=\"/logo.svg\" alt=\"Example Site\"></a><ul><li><a href=\"/item/1\">First ordinary article</a></li><li><a href=\"/item/2\">Second ordinary article</a></li></ul></body></html>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "html-wrong-logo-cannot-supply-page-identity",
+      "category": "answer-surface",
+      "root_cause": "named_link_page_anchor_representation_mismatch",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "page-label",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Example Site"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ]
+        }
+      },
+      "artifact": "<html><body><a href=\"/\"><img src=\"/logo.svg\" alt=\"Different Site\"></a><ul><li><a href=\"/item/1\">First ordinary article</a></li><li><a href=\"/item/2\">Second ordinary article</a></li></ul></body></html>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "newline-media-cards-retain-owned-descriptions",
+      "category": "answer-surface",
+      "root_cause": "media_card_newline_boundary_loss",
+      "failure_mode": "false-negative",
+      "case": {
+        "id": "media-cards",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "cards",
+              "kind": "name_description",
+              "minimum_records": 2
+            }
+          ]
+        }
+      },
+      "artifact": "![](/alpha.png)\nAlpha Film\nFirst film synopsis\nAlpha Film\n![](/beta.png)\nBeta Film\nSecond film synopsis\nBeta Film",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "blank-line-media-cards-retain-owned-descriptions",
+      "category": "answer-surface",
+      "root_cause": "media_card_newline_boundary_loss",
+      "failure_mode": "false-negative",
+      "case": {
+        "id": "media-cards",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "cards",
+              "kind": "name_description",
+              "minimum_records": 2
+            }
+          ]
+        }
+      },
+      "artifact": "![](/alpha.png)\n\nAlpha Film\n\nFirst film synopsis\n\nAlpha Film\n\n![](/beta.png)\n\nBeta Film\n\nSecond film synopsis\n\nBeta Film",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "page-loading-heading-cannot-own-media-inventory",
+      "category": "answer-surface",
+      "root_cause": "media_card_newline_boundary_loss",
+      "failure_mode": "false-negative",
+      "case": {
+        "id": "media-cards",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "cards",
+              "kind": "name_description",
+              "minimum_records": 2
+            }
+          ]
+        }
+      },
+      "artifact": "Loading content\n![](/alpha.png)\nAlpha Film\nFirst film synopsis\nAlpha Film\n![](/beta.png)\nBeta Film\nSecond film synopsis\nBeta Film",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "orphan-media-title-cannot-borrow-next-description",
+      "category": "answer-surface",
+      "root_cause": "media_card_newline_boundary_loss",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "media-cards",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "cards",
+              "kind": "name_description",
+              "minimum_records": 2
+            }
+          ]
+        }
+      },
+      "artifact": "![](/alpha.png)\nAlpha Film\n![](/beta.png)\nBeta Film\nSecond film synopsis\nBeta Film",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "media-title-cannot-close-across-another-image",
+      "category": "answer-surface",
+      "root_cause": "media_card_newline_boundary_loss",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "media-cards",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "cards",
+              "kind": "name_description",
+              "minimum_records": 2
+            }
+          ]
+        }
+      },
+      "artifact": "![](/alpha.png)\nAlpha Film\nFirst film synopsis\n![](/beta.png)\nAlpha Film",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "media-title-cannot-close-across-page-footer",
+      "category": "answer-surface",
+      "root_cause": "media_card_newline_boundary_loss",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "media-cards",
+        "url": "https://example.test/",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "cards",
+              "kind": "name_description",
+              "minimum_records": 2
+            }
+          ]
+        }
+      },
+      "artifact": "![](/alpha.png)\nAlpha Film\nFirst film synopsis\n# Footer\nAlpha Film",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "named-columns-lookalike-before-standard-complete",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_stops_at_navigation_lookalike_or_uses_unrelated_separator",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "| Track A | Track B |\nordinary navigation\n\n[Preparation](https://example.test/item/11)\n[Resources](https://example.test/item/12)\n\n| Track A | Track B |\n| --- | --- |\n| [Alpha](https://example.test/item/1) | [Gamma](https://example.test/item/3) |\n| [Beta](https://example.test/item/2) | [Delta](https://example.test/item/4) |\n\n[State One](https://example.test/item/21)\n[State Two](https://example.test/item/22)\n# End",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "named-columns-lookalike-before-standard-empty-rejected",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_stops_at_navigation_lookalike_or_uses_unrelated_separator",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "| Track A | Track B |\nordinary navigation\n\n[Preparation](https://example.test/item/11)\n[Resources](https://example.test/item/12)\n\n| Track A | Track B |\n| --- | --- |\n|  |  |\n|  |  |\n\n[State One](https://example.test/item/21)\n[State Two](https://example.test/item/22)\n# End",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "named-columns-lookalike-before-caption-before-complete",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_stops_at_navigation_lookalike_or_uses_unrelated_separator",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "| Track A | Track B |\nordinary navigation\n\n[Preparation](https://example.test/item/11)\n[Resources](https://example.test/item/12)\n\n| Events |\n| --- |\n| Track A | Track B |\n| [Alpha](https://example.test/item/1) | [Gamma](https://example.test/item/3) |\n| [Beta](https://example.test/item/2) | [Delta](https://example.test/item/4) |\n\n[State One](https://example.test/item/21)\n[State Two](https://example.test/item/22)\n# End",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "composite_acceptance_pass": true
+      }
+    },
+    {
+      "id": "named-columns-lookalike-before-caption-before-empty-rejected",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_stops_at_navigation_lookalike_or_uses_unrelated_separator",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "| Track A | Track B |\nordinary navigation\n\n[Preparation](https://example.test/item/11)\n[Resources](https://example.test/item/12)\n\n| Events |\n| --- |\n| Track A | Track B |\n|  |  |\n|  |  |\n\n[State One](https://example.test/item/21)\n[State Two](https://example.test/item/22)\n# End",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "named-columns-lookalike-without-real-table-rejected",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_stops_at_navigation_lookalike_or_uses_unrelated_separator",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "| Track A | Track B |\nordinary navigation\n\n[One](https://example.test/item/11)\n[Two](https://example.test/item/12)\n# End",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
+    },
+    {
+      "id": "named-columns-unrelated-separator-width-rejected",
+      "category": "structured-extraction",
+      "root_cause": "named_column_scope_stops_at_navigation_lookalike_or_uses_unrelated_separator",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "first",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track A",
+              "end_pattern": "Track B"
+            },
+            {
+              "id": "second",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "start_pattern": "Track B",
+              "end_pattern": "End"
+            }
+          ]
+        }
+      },
+      "artifact": "| Unrelated | Three | Columns |\n| --- | --- | --- |\nTrack A | Track B\n[Alpha](https://example.test/item/1) | [Gamma](https://example.test/item/3)\n[Beta](https://example.test/item/2) | [Delta](https://example.test/item/4)\n# End",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "composite_acceptance_pass": false
+      }
     }
   ],
   "superseded_cases": {

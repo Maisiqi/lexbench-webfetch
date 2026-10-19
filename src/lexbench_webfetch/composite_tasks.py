@@ -30,6 +30,7 @@ def _column_scope(content: str, group: dict) -> str | None:
         return None
     from .structured_tables import _pipe_cells
     lines = content.splitlines()
+    saw_columns = False
     def label(cell):
         return re.sub(r"^#{1,6}\s+", "", visible_markdown_links(cell).strip()).strip(" *")
     for index, line in enumerate(lines):
@@ -42,6 +43,7 @@ def _column_scope(content: str, group: dict) -> str | None:
         starts = [i for i, cell in enumerate(cells) if re.fullmatch(start, label(cell), re.I)]
         if not starts:
             continue
+        saw_columns = True
         if len(starts) != 1:
             return ""
         column = starts[0]
@@ -54,9 +56,27 @@ def _column_scope(content: str, group: dict) -> str | None:
             if cursor == len(lines):
                 return ""
             divider = _pipe_cells(lines[cursor])
-            if len(divider) != len(cells) or not all(re.fullmatch(r"\s*:?-{3,}:?\s*", value) for value in divider):
-                continue
-            cursor += 1
+            if len(divider) == len(cells) and all(
+                re.fullmatch(r"\s*:?-{3,}:?\s*", value) for value in divider
+            ):
+                cursor += 1
+            else:
+                # Native converters can place a merged table caption and its
+                # separator before the actual column labels. Keep the same
+                # column ownership in that layout; falling back to a text
+                # boundary can count navigation or the neighbouring column.
+                previous = index - 1
+                while previous >= 0 and lines[previous].strip() and "|" in lines[previous]:
+                    values = _pipe_cells(lines[previous])
+                    if (len(values) in {1, len(cells)}
+                            and all(re.fullmatch(r"\s*:?-{3,}:?\s*", value) for value in values)):
+                        break
+                    previous -= 1
+                else:
+                    # An earlier navigation row can resemble column labels.
+                    # Keep searching, but never reinterpret it as a section
+                    # boundary if no genuine column table follows.
+                    continue
         owned = [cells[column]]
         while cursor < len(lines) and lines[cursor].strip():
             values = _pipe_cells(lines[cursor]) if delimiter == "|" else lines[cursor].split("\t")
@@ -65,7 +85,7 @@ def _column_scope(content: str, group: dict) -> str | None:
             owned.append(values[column])
             cursor += 1
         return "\n".join(owned)
-    return None
+    return "" if saw_columns else None
 
 
 def _scope(content: str, group: dict) -> str:

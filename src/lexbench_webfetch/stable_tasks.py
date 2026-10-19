@@ -487,9 +487,10 @@ def _descriptions(text):
     return records
 
 
-def _closed_title_descriptions(text):
+def _closed_title_descriptions(text, *, line_delimited=False):
     """Treat title-description-title triples as explicitly closed cards."""
-    paragraphs = [block.strip() for block in re.split(r"\n\s*\n", text) if block.strip()]
+    blocks = text.splitlines() if line_delimited else re.split(r"\n\s*\n", text)
+    paragraphs = [block.strip() for block in blocks if block.strip()]
     records = []
     for first, description, repeated in zip(
         paragraphs, paragraphs[1:], paragraphs[2:], strict=False
@@ -515,7 +516,7 @@ def _media_closed_title_descriptions(text):
     return [
         record
         for block in text.split(_MEDIA_BOUNDARY)[1:]
-        for record in _closed_title_descriptions(block)
+        for record in _closed_title_descriptions(block, line_delimited=True)
     ]
 
 
@@ -592,12 +593,16 @@ def _parse_records(visible, schema, *, allow_closed_title_cards=False):
         # already bounded the target section, parsing both routes would emit
         # every image-backed card twice and reject an otherwise valid answer as
         # a duplicate-name list.
-        closed = (
-            _closed_title_descriptions(remainder)
-            if allow_closed_title_cards
-            else _media_closed_title_descriptions(remainder)
-        )
-        weak = _descriptions(remainder)
+        if _MEDIA_BOUNDARY in remainder:
+            closed = _media_closed_title_descriptions(remainder)
+            if allow_closed_title_cards:
+                closed += _closed_title_descriptions(remainder.split(_MEDIA_BOUNDARY, 1)[0])
+        else:
+            closed = _closed_title_descriptions(remainder) if allow_closed_title_cards else []
+        # A page heading cannot own descriptions across separate media cards.
+        weak = [record for record in _descriptions(remainder)
+                if not any(_MEDIA_BOUNDARY in value
+                           for value in record['fields'].values())]
         for record in weak:
             description = _key(record["fields"].get("description", ""))
             name = _key(record["fields"].get("name", ""))
@@ -621,8 +626,8 @@ def _non_record_visible(content, contract, records, base_url):
     """Remove owned record links, without erasing identical navigation text."""
     from urllib.parse import urljoin
 
-    from .dynamic_lists import _scoped_html, named_entry_identity
-    from .reference_quality import markdown_links, visible_markdown_links
+    from .dynamic_lists import _scoped_html, named_entry_identity, _canonical_entry_path, visible_html_text
+    from .reference_quality import markdown_links, visible_markdown_links, visible_mixed_html_text
 
     identities = {named_entry_identity(r['fields']['url'], contract)
                   for r in records if r.get('valid') and r.get('fields', {}).get('url')}
@@ -632,28 +637,55 @@ def _non_record_visible(content, contract, records, base_url):
             absolute = urljoin(base_url, url)
             if urlsplit(absolute).scheme not in {'http', 'https'} or not urlsplit(absolute).hostname:
                 return False
-            return named_entry_identity(absolute, contract) in identities
+            parts = urlsplit(absolute)
+            return (named_entry_identity(absolute, contract) in identities
+                    or (parts.hostname in contract['hosts']
+                        and re.fullmatch(contract['entry_path'],
+                                         _canonical_entry_path(parts.path).rstrip('/')) is not None))
         except ValueError:
             return False
 
     if re.search(r'<(?:html|body|main|div|section|article|a|p)\b', content, re.I):
-        soup = _scoped_html(content)
+        from bs4 import BeautifulSoup
+        soup = BeautifulSoup(content, 'html.parser')
+        # A linked logo may supply page identity, but never an owned record
+        # title. Preserve that label before the record parser removes image
+        # metadata. Keeping the element's attributes until visibility cleanup
+        # also excludes hidden images and their hidden ancestors.
+        for image in soup.select('a[href] img[alt]'):
+            owner = image.find_parent('a', href=True)
+            try:
+                target = urlsplit(urljoin(base_url, owner['href']))
+            except ValueError:
+                continue
+            if target.scheme in {'http', 'https'} and target.hostname and not is_record(owner['href']):
+                image.name = 'span'
+                image.string = image['alt']
+        soup = _scoped_html(str(soup))
         for node in list(soup.select('a[href]')):
             if node.parent is None or node.attrs is None:
                 continue
             if is_record(node['href']):
                 node.decompose()
-        return _visible(str(soup))
+        return _visible(visible_html_text(str(soup)), normalized_html=True)
     links = markdown_links(content)
     if links:
         for link in reversed(links):
-            if is_record(link.destination):
+            if link.is_image or is_record(link.destination):
                 content = content[:link.start] + ' ' + content[link.end:]
+            else:
+                try:
+                    target = urlsplit(urljoin(base_url, link.destination))
+                    web_link = target.scheme in {'http', 'https'} and bool(target.hostname)
+                except ValueError:
+                    web_link = False
+                if not web_link:
+                    content = content[:link.start] + _visible(link.label) + content[link.end:]
         # A linked logo can be the only reader-visible site identity. Preserve
         # its alt text for page-level anchors after owned record links are
         # removed. Record parsing still uses ``_visible`` above, so image alt
         # text cannot manufacture a named-link record title.
-        return _visible(visible_markdown_links(content))
+        return _visible(visible_markdown_links(visible_mixed_html_text(content)))
     # Plain text has no URL ownership; retain the conservative fallback.
     return None
 
