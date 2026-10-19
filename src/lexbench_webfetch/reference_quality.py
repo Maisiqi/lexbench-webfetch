@@ -355,6 +355,15 @@ def visible_mixed_html_text(text: str) -> str:
     # mention only when it has no matching closing tag; real raw-text blocks
     # (including incomplete blocks without this prose cue) remain hidden.
     def element_mention(match):
+        from bs4 import BeautifulSoup
+        sentinel = marker + 'element-context' + marker
+        prefix = BeautifulSoup(protected[:match.start()] + sentinel, 'html.parser')
+        context = prefix.find(string=lambda value: sentinel in value)
+        html_owners = HTML_BLOCK_ELEMENTS | {
+            'html', 'body', 'a', 'b', 'code', 'em', 'i', 'span', 'strong',
+            'script', 'style', 'template'}
+        if context is None or any(parent.name in html_owners for parent in context.parents):
+            return match[0]
         if re.search(r'</' + match['element'] + r'\s*>', protected[match.end():], re.I):
             return match[0]
         return protect(match)

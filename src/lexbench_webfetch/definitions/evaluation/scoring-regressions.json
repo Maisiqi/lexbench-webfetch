@@ -51627,7 +51627,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51658,7 +51659,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51689,7 +51691,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51720,7 +51723,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51751,7 +51755,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51782,7 +51787,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51813,7 +51819,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51844,7 +51851,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51875,7 +51883,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51906,7 +51915,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51937,7 +51947,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51968,7 +51979,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -51999,7 +52011,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -52030,7 +52043,8 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
@@ -52061,11 +52075,954 @@
             "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
             "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
             "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
-            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$"
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
           ]
         }
       },
       "artifact": "[【9日限定バイタル＆ロイヤ…](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "mixed-markdown-rawtext-html-paragraph-remains-hidden",
+      "category": "answer-surface",
+      "root_cause": "literal_unclosed_rawtext_element_mention_hides_later_documentation",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/css",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "body",
+              "alternatives": [
+                "Separation of content from presentation"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Intro <p>the <style> element Separation of content from presentation</p>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "mixed-markdown-rawtext-multiline-html-remains-hidden",
+      "category": "answer-surface",
+      "root_cause": "literal_unclosed_rawtext_element_mention_hides_later_documentation",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/css",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "body",
+              "alternatives": [
+                "Separation of content from presentation"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Intro <p>\nthe <style> element Separation of content from presentation</p>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "mixed-markdown-rawtext-autolink-remains-prose",
+      "category": "answer-surface",
+      "root_cause": "literal_unclosed_rawtext_element_mention_hides_later_documentation",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/css",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "body",
+              "alternatives": [
+                "Separation of content from presentation"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "See <https://example.test/style> and the <style> element.\nSeparation of content from presentation",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-offer-payment-points-only",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[今夜21:30まで楽天カードでP…](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-offer-time-escaped-prefix",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【12日19:30\\~!★先着最大7…](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-payment-points-plus-real-name",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[今夜21:30まで楽天カードでP最大3倍 国産牛切り落とし …](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-offer-time-price-only-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【12日午後まで半額！最大7,...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-offer-time-plus-real-name-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【12日午後まで半額】国産牛切り落とし ...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-offer-ranking-only-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【ポイント最大3倍】【総合ラン...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-offer-ranking-only-spaced-brackets",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【ポイント最大3倍】   【総合ラン…](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-offer-ranking-only-spaced-brackets-ascii",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【ポイント最大3倍】   【総合ラン...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-ranking-prefix-plus-real-name-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【総合ランキング】充電式コードレス掃除機 ...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-offer-bonus-only-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【楽天ブックス限定配送BOX...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-bonus-plus-real-name-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【先着特典】EXAMPLE ALBUM (初回...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-offer-coupon-price-only-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[クーポン利用で3kgあたり399...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-coupon-plus-real-name-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[クーポン利用で国産米3kg ...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-open-bracket-entity-name-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【国産牛切り落とし 1kg...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-bracket-generic-gift-entity-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【 贈答用ギフト ・ 化粧箱...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-offer-ranking-numeric-only-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【総合ランキング3位獲得★...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-ranking-award-plus-real-name-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【総合ランキング3位獲得★】高級オリーブオイル ...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-offer-bonus-empty-next-bracket-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【楽天ブックス限定特典】【...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-offer-bonus-empty-next-bracket-spaced-brackets",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【楽天ブックス限定特典】   【…](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-offer-bonus-empty-next-bracket-spaced-brackets-ascii",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【楽天ブックス限定特典】   【...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-bonus-next-bracket-real-name-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【楽天ブックス限定特典】【EXAMPLE ALBUM...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-bonus-next-bracket-real-name-spaced-brackets",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【楽天ブックス限定特典】   【EXAMPLE ALBUM…](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-bonus-next-bracket-real-name-spaced-brackets-ascii",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【楽天ブックス限定特典】   【EXAMPLE ALBUM...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-open-bracket-limited-named-item-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【9日限定バイタル＆ロイヤ...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "product-title-offer-payment-points-only-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[今夜21:30まで楽天カードでP...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-offer-time-escaped-prefix-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[【12日19:30\\~!★先着最大7...](https://shop.example/product/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "product-title-payment-points-plus-real-name-ascii-ellipsis",
+      "category": "reference-evidence",
+      "root_cause": "promotion_only_truncated_prefix_was_counted_as_entity_name",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://shop.example/",
+        "task_kind": "structure",
+        "min_content_chars": 1,
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 1,
+          "hosts": [
+            "shop.example"
+          ],
+          "entry_path": "/product/[0-9]+",
+          "stable_text_anchors": [],
+          "title_exclusion_patterns": [
+            "^【(?=[^】]*(?:半額|割引|先着|ポイント|P最大))(?:[0-9０-９ /:：.,，!！★~〜～\\\\%％-]|日|月|年|時|分|正午|午前|午後|まで|半額|割引|先着|最大|ポイント|P|倍|円)+(?:…|\\.{3})$",
+            "^(?:【(?=[^】]*(?:ポイント|P|倍|クーポン|限定|特典|半額|割引))[^】]*】\\s*)*【総合ラ(?:ン(?:キ(?:ン(?:グ)?)?)?)?(?:[0-9０-９]+位(?:獲得)?[★!！ ]*)?(?:…|\\.{3})$",
+            "^【楽天ブックス限定(?:配送BOX|先着特典|特典)(?:】\\s*【)?(?:…|\\.{3})$",
+            "^クーポン利用で[0-9０-９]+(?:kg|g|個|点)(?:あたり)?[0-9０-９,，]*(?:…|\\.{3})$",
+            "^(?:今夜|本日|今日|明日|[0-9０-９]+日)[0-9０-９:：]*(?:まで)?楽天カードで(?:P|ポイント)(?:[0-9０-９]+倍?)?(?:…|\\.{3})$"
+          ]
+        }
+      },
+      "artifact": "[今夜21:30まで楽天カードでP最大3倍 国産牛切り落とし ...](https://shop.example/product/1)",
       "ok": true,
       "expected_task_pass": true
     }
