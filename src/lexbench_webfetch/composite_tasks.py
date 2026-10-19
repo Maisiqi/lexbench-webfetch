@@ -530,6 +530,40 @@ def _record_owner_ranges(content: str, marker: str | None):
     return clean, ranges
 
 
+def _unlabeled_text_table_context(context: str, identity: str, group: dict,
+                                  base_url: str, fields: list[dict]) -> str:
+    """Keep a table record's prose separate from counters and later headers."""
+    if (len(fields) != 1 or fields[0]['kind'] != 'text'
+            or fields[0].get('aliases') or fields[0].get('pattern')):
+        return context
+    # A prose sentence containing a pipe is not necessarily a table row.
+    cell = context
+    if (context.lstrip().startswith('|')
+            or re.search(r'(?m)(?<!\\)\|[ \t]*$', context)):
+        cells = _pipe_cells(context)
+        owners = [index for index, value in enumerate(cells) if any(
+            not link.is_image and _link_identity(
+                urljoin(group.get('link_base_url', base_url), link.destination), group
+            ) == identity for link in markdown_links(value))]
+        if len(owners) != 1:
+            return ''
+        cell = cells[owners[0]]
+        # A simple name/description table can put prose in its second cell.
+        # Larger forum rows have separate statistics and last-post columns;
+        # those cannot complete a descriptionless title or subforum link.
+        if len(cells) == 2 and not re.search(r'\n[ \t]*\|', context):
+            cell += '\n' + cells[1 - owners[0]]
+        cell = re.sub(r'\(\d[\d,]*\s+(?:users?|visitors?)\s+(?:browsing|online)\)',
+                      '', cell, flags=re.I)
+    for link in markdown_links(cell):
+        if (not link.is_image
+                and _link_identity(urljoin(base_url, link.destination), group) == identity
+                and re.fullmatch(r'[*_\s]*[,;\s]*(?:and\s+)?\d+\s+more[.!]?[*_\s]*',
+                                 cell[link.end:], re.I)):
+            return cell[:link.end]
+    return cell
+
+
 def _named_link_group(content: str, group: dict, base_url: str, links: list | None, *, ownership_marker: str | None = None, native_html: str | None = None) -> dict:
     content, owner_ranges = _record_owner_ranges(content, ownership_marker)
     standard = {
@@ -753,6 +787,7 @@ def _named_link_group(content: str, group: dict, base_url: str, links: list | No
             pieces.append(content[cursor:next_line])
             context = "\n\n".join(pieces)
             context = _card_section_context(context, 0, len(context), max(0, link_start-line_start), identity, group, base_url)
+            context = _unlabeled_text_table_context(context, identity, group, base_url, fields)
             if label and _required_fields(context, label, field_specs=fields):
                 owned[identity] = {"url": destination, "title": label, "context": context}
         if native_html:
