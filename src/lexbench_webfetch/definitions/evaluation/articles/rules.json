@@ -8256,7 +8256,7 @@
     {
       "id": "article-027",
       "status": "unresolved",
-      "reason": "Complete5976character article DOM is present, but an opaque subscription dialog is positioned absolutely at top1320px,left419px and visibly overlays actual adviceitems3–4. This permanently covers the same article paragraphs in normal document coordinates, unlike a fixed bottom notice. Its explicit modal semantics are unproven (no aria-modal/inert; no dimming backdrop), so do not call it a true modal. Complete unobstructed initial ordinary body remains unproven without prohibited dismissal. Retain unresolved. Evidence: article-027/obstruction.png and complete review.json bodyHtml; DOM text alone is insufficient."
+      "reason": "Fresh direct initial-load review in observation-root-04 confirms an absolute opaque subscription dialog at x419,y1320,width442,height439,z-index3 over article paragraphs. The full 5986-character DOM body and ancestors are visible and unclipped, but complete unobstructed displayed prose is not established without forbidden dismissal. Absence of aria-modal does not remove the actual text occlusion; retain unresolved."
     },
     {
       "id": "article-028",
@@ -12097,8 +12097,810 @@
     },
     {
       "id": "article-035",
-      "status": "unresolved",
-      "reason": "Automatic initial advertising modal covers and dims the article (central overlay x280–999 y151–631 plus floating video ad). Screenshot viewport.png proves obstruction. Article prose is present in DOM but cannot be independently frozen as unobstructed complete initial body without prohibited dismissal; no interaction performed."
+      "status": "verified",
+      "target_kind": "fixed_article",
+      "reason": "Fresh independently observed initial source contains complete ordinary article before later automatic advertising transition. Early completeDOM/nativeAX and visible/unclipped per-paragraph ancestor metadata agree; independently inspected bodyclip visibly confirms credit and all4paragraphs. Later same-context bodyoverflow:hidden/campaign insertion is separately timestamped and is not used as unobstructed-body evidence. Previous modal observation remains valid for its older session; this qualification binds the documented early source only.",
+      "body_reference": {
+        "path": "article-035/a1-qualified-initial/body.txt",
+        "sha256": "a4aa08510d8c8698569108d65014fd8336f44d7b66c0634088ecb5e1d476559c",
+        "chars": 1497
+      },
+      "reference_scope": {
+        "complete_initial_body": true,
+        "selector": ".articleWrap[data-article-body] > figure .credit, .articleWrap[data-article-body] > p",
+        "selected_container_count": 5,
+        "body_line_count": 9,
+        "start": "Feedloader (Clickability)\n\nThe mimic octopus (Thaumoctopus mimicus) has some interesting ways to kee",
+        "end": "\n\nCheck out the entire collection of Surprising Science’s Pictures of the Week on our Facebook page.",
+        "observed_on": "2026-10-19T10:54:57.620Z",
+        "included": "Ordinary image credit and all4direct authored articleparagraphs, allinlineitalics/actualtextlinks including complete finalFacebook invitation; no imagelettering/alt/OCR. Links saved with actualhrefs.",
+        "evidence_files": [
+          "article-035/observation-root-04/capture.json",
+          "article-035/observation-root-04/complete-body.html",
+          "article-035/observation-root-04/accessibility.txt",
+          "article-035/observation-root-04/viewport.png",
+          "article-035/observation-root-04/article-scope.json",
+          "article-035/observation-root-04/article-body.png",
+          "article-035/observation-root-04/after-clip-scope.json",
+          "article-035/a1-qualified-initial/links.json",
+          "article-035/a1-qualified-initial/review.json"
+        ],
+        "completeness_basis": "Complete parentHTML90911chars equals capture original count/chunks. Four direct articleparagraph texts equal saved node text after whitespace normalization and appear in fullAX. All paragraph ancestors display:block/grid,visibility:visible,opacity1,overflow:visible,maxHeight:none, noDOMinert/ariahidden. Visible clip independently confirms beginning/middle/end. Initial scrollY0 retained throughout.",
+        "temporal_limitation": "Early initialcapture10:54:57.620Z and paragraphscope10:55:38.220Z precede latecampaign/bodylock10:55:50.704Z. No claim ads never appear or source remains unobstructed indefinitely. No click/scroll/dismiss/login."
+      },
+      "body_regions": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          9,
+          9
+        ]
+      ],
+      "acceptance_contract": {
+        "version": 1,
+        "schema": "body_text",
+        "minimum_records": 0,
+        "page_patterns": [
+          "The\\ Mimic\\ Octopus"
+        ],
+        "stable_text_role": "required",
+        "stable_text_anchors": [
+          {
+            "id": "stable-1",
+            "alternatives": [
+              "The Mimic Octopus"
+            ]
+          },
+          {
+            "id": "stable-2",
+            "alternatives": [
+              "Sarah Zielinski"
+            ]
+          },
+          {
+            "id": "stable-3",
+            "alternatives": [
+              "August 27, 2010"
+            ]
+          },
+          {
+            "id": "stable-4",
+            "alternatives": [
+              "Share"
+            ]
+          },
+          {
+            "id": "stable-5",
+            "alternatives": [
+              "Add as preferred source"
+            ]
+          },
+          {
+            "id": "stable-6",
+            "alternatives": [
+              "Search"
+            ]
+          },
+          {
+            "id": "stable-7",
+            "alternatives": [
+              "Shop"
+            ]
+          },
+          {
+            "id": "stable-8",
+            "alternatives": [
+              "Newsletters"
+            ]
+          },
+          {
+            "id": "stable-9",
+            "alternatives": [
+              "Renew"
+            ]
+          },
+          {
+            "id": "stable-10",
+            "alternatives": [
+              "Give a Gift"
+            ]
+          },
+          {
+            "id": "stable-11",
+            "alternatives": [
+              "Subscribe"
+            ]
+          },
+          {
+            "id": "stable-12",
+            "alternatives": [
+              "Membership"
+            ]
+          },
+          {
+            "id": "stable-13",
+            "alternatives": [
+              "You Might Also Like"
+            ]
+          },
+          {
+            "id": "stable-14",
+            "alternatives": [
+              "Get the latest Science stories in your inbox."
+            ]
+          },
+          {
+            "id": "stable-15",
+            "alternatives": [
+              "Email Powered by Salesforce Marketing Cloud"
+            ]
+          },
+          {
+            "id": "stable-16",
+            "alternatives": [
+              "Privacy Notice"
+            ]
+          },
+          {
+            "id": "stable-17",
+            "alternatives": [
+              "Terms & Conditions"
+            ]
+          },
+          {
+            "id": "stable-18",
+            "alternatives": [
+              "More about:"
+            ]
+          },
+          {
+            "id": "stable-19",
+            "alternatives": [
+              "Evolution"
+            ]
+          },
+          {
+            "id": "stable-20",
+            "alternatives": [
+              "Fish"
+            ]
+          },
+          {
+            "id": "stable-21",
+            "alternatives": [
+              "Oceans"
+            ]
+          },
+          {
+            "id": "stable-22",
+            "alternatives": [
+              "Follow Us"
+            ]
+          },
+          {
+            "id": "stable-23",
+            "alternatives": [
+              "Explore"
+            ]
+          },
+          {
+            "id": "stable-24",
+            "alternatives": [
+              "Smart News"
+            ]
+          },
+          {
+            "id": "stable-25",
+            "alternatives": [
+              "History"
+            ]
+          },
+          {
+            "id": "stable-26",
+            "alternatives": [
+              "Science"
+            ]
+          },
+          {
+            "id": "stable-27",
+            "alternatives": [
+              "Innovation"
+            ]
+          },
+          {
+            "id": "stable-28",
+            "alternatives": [
+              "Arts & Culture"
+            ]
+          },
+          {
+            "id": "stable-29",
+            "alternatives": [
+              "Travel"
+            ]
+          },
+          {
+            "id": "stable-30",
+            "alternatives": [
+              "At the Smithsonian"
+            ]
+          },
+          {
+            "id": "stable-31",
+            "alternatives": [
+              "Photo Contest"
+            ]
+          },
+          {
+            "id": "stable-32",
+            "alternatives": [
+              "Podcast"
+            ]
+          },
+          {
+            "id": "stable-33",
+            "alternatives": [
+              "Video"
+            ]
+          },
+          {
+            "id": "stable-34",
+            "alternatives": [
+              "Subscription"
+            ]
+          },
+          {
+            "id": "stable-35",
+            "alternatives": [
+              "Manage My Account"
+            ]
+          },
+          {
+            "id": "stable-36",
+            "alternatives": [
+              "Sign Up"
+            ]
+          },
+          {
+            "id": "stable-37",
+            "alternatives": [
+              "About"
+            ]
+          },
+          {
+            "id": "stable-38",
+            "alternatives": [
+              "About Us"
+            ]
+          },
+          {
+            "id": "stable-39",
+            "alternatives": [
+              "Advertising"
+            ]
+          },
+          {
+            "id": "stable-40",
+            "alternatives": [
+              "Contact Us"
+            ]
+          },
+          {
+            "id": "stable-41",
+            "alternatives": [
+              "Content Licensing"
+            ]
+          },
+          {
+            "id": "stable-42",
+            "alternatives": [
+              "FAQ"
+            ]
+          },
+          {
+            "id": "stable-43",
+            "alternatives": [
+              "Feedback"
+            ]
+          },
+          {
+            "id": "stable-44",
+            "alternatives": [
+              "Internships & Employment"
+            ]
+          },
+          {
+            "id": "stable-45",
+            "alternatives": [
+              "Member Services"
+            ]
+          },
+          {
+            "id": "stable-46",
+            "alternatives": [
+              "Smithsonian Institution"
+            ]
+          },
+          {
+            "id": "stable-47",
+            "alternatives": [
+              "Staff"
+            ]
+          },
+          {
+            "id": "stable-48",
+            "alternatives": [
+              "Our Partners"
+            ]
+          },
+          {
+            "id": "stable-49",
+            "alternatives": [
+              "Smithsonian.com"
+            ]
+          },
+          {
+            "id": "stable-50",
+            "alternatives": [
+              "Smithsonian Store"
+            ]
+          },
+          {
+            "id": "stable-51",
+            "alternatives": [
+              "Smithsonian Journeys"
+            ]
+          },
+          {
+            "id": "stable-52",
+            "alternatives": [
+              "Smithsonian Channel"
+            ]
+          },
+          {
+            "id": "stable-53",
+            "alternatives": [
+              "Smithsonian Books"
+            ]
+          },
+          {
+            "id": "stable-54",
+            "alternatives": [
+              "Smithsonian Membership"
+            ]
+          },
+          {
+            "id": "stable-55",
+            "alternatives": [
+              "Privacy Statement"
+            ]
+          },
+          {
+            "id": "stable-56",
+            "alternatives": [
+              "Cookie Policy"
+            ]
+          },
+          {
+            "id": "stable-57",
+            "alternatives": [
+              "Terms of Use"
+            ]
+          },
+          {
+            "id": "stable-58",
+            "alternatives": [
+              "Advertising Notice"
+            ]
+          },
+          {
+            "id": "stable-59",
+            "alternatives": [
+              "Your Privacy Choices"
+            ]
+          },
+          {
+            "id": "stable-60",
+            "alternatives": [
+              "Cookie Settings"
+            ]
+          }
+        ]
+      },
+      "stable_text_review": [
+        {
+          "id": "stable-1",
+          "region": "article_identity",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-2",
+          "region": "article_attribution",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-3",
+          "region": "article_attribution",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-4",
+          "region": "article_controls",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-5",
+          "region": "article_controls",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-6",
+          "region": "header_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-7",
+          "region": "header_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-8",
+          "region": "header_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-9",
+          "region": "header_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-10",
+          "region": "header_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-11",
+          "region": "header_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-12",
+          "region": "header_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-13",
+          "region": "related_section_label",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-14",
+          "region": "newsletter",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-15",
+          "region": "newsletter_attribution",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-16",
+          "region": "newsletter_policy",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-17",
+          "region": "newsletter_policy",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-18",
+          "region": "article_topics",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-19",
+          "region": "article_topics",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-20",
+          "region": "article_topics",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-21",
+          "region": "article_topics",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-22",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-23",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-24",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-25",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-26",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-27",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-28",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-29",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-30",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-31",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-32",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-33",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-34",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-35",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-36",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-37",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-38",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-39",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-40",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-41",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-42",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-43",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-44",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-45",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-46",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-47",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-48",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-49",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-50",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-51",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-52",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-53",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-54",
+          "region": "footer_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-55",
+          "region": "footer_legal_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-56",
+          "region": "footer_legal_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-57",
+          "region": "footer_legal_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-58",
+          "region": "footer_legal_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-59",
+          "region": "footer_legal_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        },
+        {
+          "id": "stable-60",
+          "region": "footer_legal_navigation",
+          "basis": "Ordinary original-language wording in complete early direct parent text and full nativeAX; fixed editorial identity, attribution, generic navigation, form/provider attribution or topic label. No current recommendations, counters, session-specific consent choices, hidden menu payload or changing version/date/year values. One initial observation only.",
+          "observed_on": "2026-10-19T10:54:57.620Z"
+        }
+      ],
+      "excluded_regions": [
+        {
+          "region": "earlyadvertisements, laterautomaticcampaign/bodylock and allthird-partyadframes",
+          "reason": "Not authored article; timed transition preserved in review. Late state does not supply unoccluded-source proof."
+        },
+        {
+          "region": "images/SVG/logolettering and alt/OCR; hidden/expandedshare/site-menu/consentpayload",
+          "reason": "Only ordinary already-loaded rendered text retained; no interaction or image-derivedtext."
+        },
+        {
+          "region": "recommendedarticlememberships/titles/dates, authorprofilebiography, promotionalofferwording, versiondates/currentcopyrightyear",
+          "reason": "Changing surrounding content. Generic section/topic/navigation/providerlabel wording reviewed separately."
+        },
+        {
+          "region": "literalinputplaceholderattributes not in earlyparenttext",
+          "reason": "Initial source has attribute strings, but no initial rendered bounds/screenshot of those attributes. No unqualifiedattribute or accessibility-only name added; visible generic Sign Up navigation remains required."
+        }
+      ]
     },
     {
       "id": "article-036",
@@ -13625,7 +14427,7 @@
     {
       "id": "article-039",
       "status": "unresolved",
-      "reason": "Initial saved DOM has nine records: record7 has a visible Show more expansion and record9 has no post-text node. The complete-text post contract cannot silently omit either record or replace missing text with media/alt/OCR; no interaction allowed.",
+      "reason": "Fresh direct initial load at observation-root-04 contains eight complete loaded record nodes; the ClaudeDevs record (position 6, status/2107925762720326090) still exposes Show more and a truncated outer body. The last Browser Use record now has its text loaded; the earlier missing-text observation is not classified as an image-only post. Retain all initial records and do not omit the truncated one to qualify the collection.",
       "target_kind": "post_collection",
       "proposed_structure": {
         "record_selector": "main article",
