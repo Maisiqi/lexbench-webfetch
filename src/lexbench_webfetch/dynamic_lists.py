@@ -26,7 +26,7 @@ class Links(HTMLParser):
 
 _PURE_CTA = re.compile(
     r'(?:details?|read more|view more|learn more|see (?:more|details|options)|open|visit|go|'
-    r'watch|free tv|tv|buy now|add to cart|click to see price|sign in|log in|'
+    r'watch|free\s*tv|tv|buy now|add to cart|click to see price|sign in|log in|'
     r'详情|查看|更多|评论|分享|图片|点击|了解更多|打开|访问|进入|前往|'
     r'立即查看|立即购买|加入购物车|前往登录|登录|去看看|\d+)', re.I)
 
@@ -228,7 +228,11 @@ def _named_candidate(url, title, contract, base_url, excluded_titles, diagnostic
         return None
     title = re.sub(r'<[^>]+>', ' ', unescape(title))
     title = re.sub(r'\s+', ' ', title).strip(' *#>-')
-    if (not _is_named_label(
+    # Keep explicitly excluded labels available to the later exclusion audit;
+    # they are removed before any record count or acceptance decision.
+    excluded_name = _label_key(title) in {
+        _label_key(value) for value in contract.get('record_name_exclusions', [])}
+    if (not excluded_name and not _is_named_label(
             title, destination, parts,
             contract.get('name_validation') == 'nonempty')
             or any(pattern.fullmatch(title) for pattern in excluded_titles)):
@@ -306,7 +310,7 @@ def _owned_metadata_links(full_content, scoped_content, links, base_url):
     """Use flat link metadata only when its visible name proves scope ownership."""
     from collections import defaultdict
 
-    from .reference_quality import visible_markdown_links
+    from .reference_quality import markdown_links, visible_markdown_links
     from .response_input import safe_named_links
 
     def visible_text(text):
@@ -330,6 +334,11 @@ def _owned_metadata_links(full_content, scoped_content, links, base_url):
 
     full_text = visible_text(full_content)
     scoped_text = visible_text(scoped_content)
+    # Explicit Markdown links already pass through the card/context parser.
+    # Flat metadata cannot resurrect a link rejected there as prose or a badge.
+    explicit_destinations = {
+        urljoin(base_url, unescape(link.destination))
+        for link in markdown_links(scoped_content) if not link.is_image}
     candidates = safe_named_links(links, base_url)
     destinations = defaultdict(set)
     for url, label in candidates:
@@ -337,7 +346,8 @@ def _owned_metadata_links(full_content, scoped_content, links, base_url):
     return [
         {'url': url, 'title': label}
         for url, label in candidates
-        if occurrence_count(full_text, _label_key(label)) == 1
+        if url not in explicit_destinations
+        and occurrence_count(full_text, _label_key(label)) == 1
         and occurrence_count(scoped_text, _label_key(label)) == 1
         and len(destinations[_label_key(label)]) == 1
     ]

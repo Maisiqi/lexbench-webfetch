@@ -689,11 +689,18 @@ def evaluate_content(
     from .dynamic_entry_matching import matching_entry_facts
     entry_hits = matching_entry_facts(folded, facts, normalize_for_match, fact_in_text)
     fact_results = []
+    from .stable_tasks import _stable_literal_match
+    registered_fact_words = tuple(value for fact in facts
+                                  for value in fact.get('alternatives', [])
+                                  if re.fullmatch(r'[A-Za-z]+', str(value)))
     for index, fact in enumerate(facts):
         alternatives = [str(item) for item in fact.get("alternatives", [])]
         identifier = str(fact.get("id") or f"fact-{index + 1}")
         hits = (entry_hits[identifier] if identifier in entry_hits else
-                [item for item in alternatives if fact_in_text(folded, normalize_for_match(item))])
+                [item for item in alternatives
+                 if (_stable_literal_match(answer_text, item, registered_fact_words)
+                     if re.fullmatch(r'[A-Za-z]+|[\u0600-\u06ff]+', item)
+                     else fact_in_text(folded, normalize_for_match(item)))])
         fact_results.append({
             "id": identifier,
             "alternatives": alternatives,

@@ -350,6 +350,18 @@ def visible_mixed_html_text(text: str) -> str:
         r"|(?:\\</?[A-Za-z][^<>\n]*>|</?[A-Za-z][^<>\n]*\\>)|\\[\\<>]",
         protect, text,
     )
+    # Extracted documentation can name a raw-text element in ordinary prose
+    # without escaping its angle brackets. Recognize that explicit grammatical
+    # mention only when it has no matching closing tag; real raw-text blocks
+    # (including incomplete blocks without this prose cue) remain hidden.
+    def element_mention(match):
+        if re.search(r'</' + match['element'] + r'\s*>', protected[match.end():], re.I):
+            return match[0]
+        return protect(match)
+
+    protected = re.sub(
+        r'\b(?:the|an?) +<(?P<element>script|style)> +(?:element|tag)\b',
+        element_mention, protected, flags=re.I)
     if not re.search(
         r"</?(?:a|article|aside|b|blockquote|br|code|dd|div|dl|dt|em|footer|"
         r"h[1-6]|header|hr|i|li|main|nav|ol|p|pre|section|span|strong|table|"

@@ -708,6 +708,11 @@ def _stable_literal_match(surface, value, registered_words=()):
     folded = normalize_for_match(surface)
     if not fact_in_text(folded, expected):
         return False
+    # Arabic labels are whitespace-delimited words too. A longer inflected
+    # word cannot supply an independently registered ordinary navigation label.
+    if value.isalpha() and re.fullmatch(r'[\u0600-\u06ff]+', value):
+        return bool(re.search(r'(?<![^\W\d_])' + re.escape(expected)
+                              + r'(?![^\W\d_])', folded))
     if not re.fullmatch(r"[A-Za-z]+", value):
         return True
     boundary = lambda needle, text: bool(re.search(
