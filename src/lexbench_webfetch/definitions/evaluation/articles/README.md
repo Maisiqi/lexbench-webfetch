@@ -50,6 +50,11 @@ The reference must contain the complete qualified article/post body, not a
 selection of convenient paragraphs. Keep headings, paragraphs, textual lists,
 table text, captions and ordinary body links within their declared scope.
 Exclude image lettering, alt text, OCR, hidden markup and collapsed content.
+For retained cases with folded prose, disclose a displayed-excerpt scope and
+require all ordinarily displayed text within that scope. Preserve the visible
+cutoff and expansion control as evidence; do not claim the full original article
+or substitute hidden DOM text for the displayed excerpt. A clipping or fading
+boundary needs rendered evidence, not an assumption based on accessible text.
 
 For article feeds, require actual post text in addition to record identity,
 same-record fields, real owned links where present, and independently observed

@@ -8964,8 +8964,775 @@
     },
     {
       "id": "article-027",
-      "status": "unresolved",
-      "reason": "Fresh direct initial-load review in observation-root-04 confirms an absolute opaque subscription dialog at x419,y1320,width442,height439,z-index3 over article paragraphs. The full 5986-character DOM body and ancestors are visible and unclipped, but complete unobstructed displayed prose is not established without forbidden dismissal. Absence of aria-modal does not remove the actual text occlusion; retain unresolved."
+      "status": "verified",
+      "target_kind": "fixed_article",
+      "reason": "Retained original approved URL under explicit authoring-only obstruction-dismissal policy. Complete authored prose existed before dismissal. Initial loaded Spotify ordinary text is proven in both pre-fullpage native AX captures; complete article/list/child scope visually reviewed without expanding content.",
+      "body_reference": {
+        "path": "article-027/modal-dismissal-v3/body.txt",
+        "sha256": "d7371e524f400aaa643d143387405fc469b0e1029bdb1294b6a6681b0bfaad8f",
+        "chars": 6102
+      },
+      "body_regions": [
+        [
+          1,
+          10
+        ],
+        [
+          11,
+          16
+        ],
+        [
+          17,
+          22
+        ],
+        [
+          23,
+          28
+        ],
+        [
+          29,
+          31
+        ]
+      ],
+      "body_region_review": [
+        {
+          "lines": [
+            1,
+            10
+          ],
+          "component": "Intro and complete initial Spotify ordinary card"
+        },
+        {
+          "lines": [
+            11,
+            16
+          ],
+          "component": "Advice items1–3"
+        },
+        {
+          "lines": [
+            17,
+            22
+          ],
+          "component": "Advice items4–6"
+        },
+        {
+          "lines": [
+            23,
+            28
+          ],
+          "component": "Advice items7–9"
+        },
+        {
+          "lines": [
+            29,
+            31
+          ],
+          "component": "Advice item10 and true final paragraph"
+        }
+      ],
+      "reference_scope": {
+        "complete_initial_body": true,
+        "selector": ".body.markup",
+        "additional_visible_child_surface": "iframe.spotify-wrap.podcast ordinary text from same initial-load native AX, before fullpage capture.",
+        "start": "I’ve always loved writing. I do it frequently — books, columns, scripts, memos, speeches. Some of it has come out well. Some less so. But the act of writing its",
+        "end": "it as well as you can. The tips above are certainly not the entirety of sound writing advice, but they have worked for me. I hope some of them work for you too!",
+        "observed_on": "2026-10-19",
+        "included": "Complete intro, initially loaded Spotify ordinary title/date/show/save label, all10 numbered advice items and complete final paragraph. Actual visible list numbering retained. No table, preformatted code or HTML image caption occurs.",
+        "evidence_files": [
+          "article-replacement-review/article-027-modal-policy-r3-before/capture.json",
+          "article-replacement-review/article-027-modal-policy-r3-before/accessibility.txt",
+          "article-replacement-review/article-027-modal-policy-r3-after/capture.json",
+          "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html",
+          "article-replacement-review/article-027-modal-policy-r3-after/accessibility.txt",
+          "article-replacement-review/article-027-modal-policy-r3-after/fullpage.png",
+          "article-replacement-review/article-027-modal-policy-r3-after/before-fullpage.json",
+          "article-replacement-review/article-027-modal-policy-r3-after/after-fullpage.json"
+        ],
+        "authoring_action": "Human specifically allowed closing an obstruction modal for authoring. Root clicked only button close. No login, subscribe, content expansion or manual scroll. This does not grant interaction to evaluated Web Fetch.",
+        "source_binding": "Reference uses complete AFTER capture saved before fullpage API. Main authored parent prose is identical in BEFORE modal state and AFTER dismissal. Native AX in BOTH saved pre-fullpage files already contains complete loaded Spotify card.",
+        "screenshot_limit": "Fullpage screenshot is visual QA only. The API changed scrollY989→0.5 despite no agent.scroll action; parent article text remained byte-identical in before/after-fullpage JSON. No scroll-unchanged or new child content inference is made."
+      },
+      "acceptance_contract": {
+        "version": 1,
+        "schema": "body_text",
+        "minimum_records": 0,
+        "page_patterns": [
+          "How to Write"
+        ],
+        "stable_text_role": "required",
+        "stable_text_anchors": [
+          {
+            "id": "stable-1",
+            "alternatives": [
+              "Bradley Tusk’s Substack"
+            ]
+          },
+          {
+            "id": "stable-2",
+            "alternatives": [
+              "Subscribe"
+            ]
+          },
+          {
+            "id": "stable-3",
+            "alternatives": [
+              "Sign in"
+            ]
+          },
+          {
+            "id": "stable-4",
+            "alternatives": [
+              "Translate"
+            ]
+          },
+          {
+            "id": "stable-5",
+            "alternatives": [
+              "How to Write"
+            ]
+          },
+          {
+            "id": "stable-6",
+            "alternatives": [
+              "BRADLEY TUSK"
+            ]
+          },
+          {
+            "id": "stable-7",
+            "alternatives": [
+              "JUL 21, 2026"
+            ]
+          },
+          {
+            "id": "stable-8",
+            "alternatives": [
+              "Share"
+            ]
+          },
+          {
+            "id": "stable-9",
+            "alternatives": [
+              "Subscribe to Bradley Tusk’s Substack"
+            ]
+          },
+          {
+            "id": "stable-10",
+            "alternatives": [
+              "Politics, technology and the pursuit of happiness."
+            ]
+          },
+          {
+            "id": "stable-11",
+            "alternatives": [
+              "By subscribing, you agree to Substack's Terms of Use, and acknowledge its Information Collection Notice and Privacy Policy."
+            ]
+          },
+          {
+            "id": "stable-12",
+            "alternatives": [
+              "Previous"
+            ]
+          },
+          {
+            "id": "stable-13",
+            "alternatives": [
+              "Next"
+            ]
+          },
+          {
+            "id": "stable-14",
+            "alternatives": [
+              "Discussion about this post"
+            ]
+          },
+          {
+            "id": "stable-15",
+            "alternatives": [
+              "Comments"
+            ]
+          },
+          {
+            "id": "stable-16",
+            "alternatives": [
+              "Restacks"
+            ]
+          },
+          {
+            "id": "stable-17",
+            "alternatives": [
+              "Top"
+            ]
+          },
+          {
+            "id": "stable-18",
+            "alternatives": [
+              "Latest"
+            ]
+          },
+          {
+            "id": "stable-19",
+            "alternatives": [
+              "Discussions"
+            ]
+          },
+          {
+            "id": "stable-20",
+            "alternatives": [
+              "See all"
+            ]
+          },
+          {
+            "id": "stable-21",
+            "alternatives": [
+              "Ready for more?"
+            ]
+          },
+          {
+            "id": "stable-22",
+            "alternatives": [
+              "Bradley Tusk"
+            ]
+          },
+          {
+            "id": "stable-23",
+            "alternatives": [
+              "Privacy"
+            ]
+          },
+          {
+            "id": "stable-24",
+            "alternatives": [
+              "Terms"
+            ]
+          },
+          {
+            "id": "stable-25",
+            "alternatives": [
+              "Collection notice"
+            ]
+          },
+          {
+            "id": "stable-26",
+            "alternatives": [
+              "Start your Substack"
+            ]
+          },
+          {
+            "id": "stable-27",
+            "alternatives": [
+              "Get the app"
+            ]
+          },
+          {
+            "id": "stable-28",
+            "alternatives": [
+              "Substack"
+            ]
+          },
+          {
+            "id": "stable-29",
+            "alternatives": [
+              "is the home for great culture"
+            ]
+          },
+          {
+            "id": "stable-30",
+            "alternatives": [
+              "Type your email..."
+            ],
+            "visible_control": {
+              "selector": "input[type=\"email\"][placeholder=\"Type your email...\"]",
+              "attribute": "placeholder"
+            }
+          },
+          {
+            "id": "stable-31",
+            "alternatives": [
+              "Write a comment..."
+            ],
+            "visible_control": {
+              "selector": "textarea[placeholder=\"Write a comment...\"]",
+              "attribute": "placeholder"
+            }
+          },
+          {
+            "id": "body-32",
+            "alternatives": [
+              "The Secret to Writing Is Editing"
+            ]
+          },
+          {
+            "id": "body-33",
+            "alternatives": [
+              "7月21日"
+            ]
+          },
+          {
+            "id": "body-34",
+            "alternatives": [
+              "Firewall with Bradley Tusk"
+            ]
+          },
+          {
+            "id": "body-35",
+            "alternatives": [
+              "在 Spotify 上收藏"
+            ]
+          },
+          {
+            "id": "body-36",
+            "alternatives": [
+              "Write like you speak."
+            ]
+          },
+          {
+            "id": "body-37",
+            "alternatives": [
+              "Do not try to sound smart."
+            ]
+          },
+          {
+            "id": "body-38",
+            "alternatives": [
+              "Speak your mind/ don’t sound like a politician."
+            ]
+          },
+          {
+            "id": "body-39",
+            "alternatives": [
+              "Use most of your time for editing"
+            ]
+          },
+          {
+            "id": "body-40",
+            "alternatives": [
+              "Then put it to bed."
+            ]
+          },
+          {
+            "id": "body-41",
+            "alternatives": [
+              "Keep your subconscious going."
+            ]
+          },
+          {
+            "id": "body-42",
+            "alternatives": [
+              "Have regular milestones."
+            ]
+          },
+          {
+            "id": "body-43",
+            "alternatives": [
+              "Talk out your ideas."
+            ]
+          },
+          {
+            "id": "body-44",
+            "alternatives": [
+              "If you’re writing fiction, have empathy for your characters. If it’s non-fiction, have empathy for yourself."
+            ]
+          },
+          {
+            "id": "body-45",
+            "alternatives": [
+              "Read a lot."
+            ]
+          },
+          {
+            "id": "body-46",
+            "alternatives": [
+              "Not everyone likes to write. And not everyone needs to. But if you do enjoy it — or if you have to write because of work or school — there’s no reason not to do it as well as you can. The tips above are certainly not the entirety of sound writing advice, but they have worked for me. I hope some of them work for you too!"
+            ]
+          }
+        ]
+      },
+      "stable_text_review": [
+        {
+          "id": "stable-1",
+          "region": "identity_and_header",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Bradley Tusk’s Substack",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-2",
+          "region": "identity_and_header",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Subscribe",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-3",
+          "region": "identity_and_header",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Sign in",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-4",
+          "region": "identity_and_header",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Translate",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-5",
+          "region": "identity_and_header",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "How to Write",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-6",
+          "region": "identity_and_header",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "BRADLEY TUSK",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-7",
+          "region": "identity_and_header",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "JUL 21, 2026",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-8",
+          "region": "identity_and_header",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Share",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-9",
+          "region": "subscription_and_post_navigation",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Subscribe to Bradley Tusk’s Substack",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-10",
+          "region": "subscription_and_post_navigation",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Politics, technology and the pursuit of happiness.",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-11",
+          "region": "subscription_and_post_navigation",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "By subscribing, you agree to Substack's Terms of Use, and acknowledge its Information Collection Notice and Privacy Policy.",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-12",
+          "region": "subscription_and_post_navigation",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Previous",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-13",
+          "region": "subscription_and_post_navigation",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Next",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-14",
+          "region": "discussion_and_archive_controls",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Discussion about this post",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-15",
+          "region": "discussion_and_archive_controls",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Comments",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-16",
+          "region": "discussion_and_archive_controls",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Restacks",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-17",
+          "region": "discussion_and_archive_controls",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Top",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-18",
+          "region": "discussion_and_archive_controls",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Latest",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-19",
+          "region": "discussion_and_archive_controls",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Discussions",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-20",
+          "region": "discussion_and_archive_controls",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "See all",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-21",
+          "region": "ordinary_footer",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Ready for more?",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-22",
+          "region": "ordinary_footer",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Bradley Tusk",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-23",
+          "region": "ordinary_footer",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Privacy",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-24",
+          "region": "ordinary_footer",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Terms",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-25",
+          "region": "ordinary_footer",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Collection notice",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-26",
+          "region": "ordinary_footer",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Start your Substack",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-27",
+          "region": "ordinary_footer",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Get the app",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-28",
+          "region": "ordinary_footer",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "Substack",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-29",
+          "region": "ordinary_footer",
+          "basis": "Ordinary visible source text independently read in fullpage QA and source DOM/AX; excludes icon-only descriptions and changing membership/counters.",
+          "observed_on": "2026-10-19",
+          "phrase": "is the home for great culture",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-30",
+          "region": "ordinary_visible_control",
+          "basis": "Empty control placeholder visibly confirmed in fullpage crop2/3 and actual input/textarea source attribute.",
+          "observed_on": "2026-10-19",
+          "phrase": "Type your email...",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "stable-31",
+          "region": "ordinary_visible_control",
+          "basis": "Empty control placeholder visibly confirmed in fullpage crop2/3 and actual input/textarea source attribute.",
+          "observed_on": "2026-10-19",
+          "phrase": "Write a comment...",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-32",
+          "region": "authored_article_body",
+          "basis": "Actual ordinary Spotify card text independently present in BOTH pre-fullpage native AX captures and visually readable in fullpage crop1; excludes cover-art letters and playback icon descriptions.",
+          "observed_on": "2026-10-19",
+          "phrase": "The Secret to Writing Is Editing",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-33",
+          "region": "authored_article_body",
+          "basis": "Actual ordinary Spotify card text independently present in BOTH pre-fullpage native AX captures and visually readable in fullpage crop1; excludes cover-art letters and playback icon descriptions.",
+          "observed_on": "2026-10-19",
+          "phrase": "7月21日",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-34",
+          "region": "authored_article_body",
+          "basis": "Actual ordinary Spotify card text independently present in BOTH pre-fullpage native AX captures and visually readable in fullpage crop1; excludes cover-art letters and playback icon descriptions.",
+          "observed_on": "2026-10-19",
+          "phrase": "Firewall with Bradley Tusk",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-35",
+          "region": "authored_article_body",
+          "basis": "Actual ordinary Spotify card text independently present in BOTH pre-fullpage native AX captures and visually readable in fullpage crop1; excludes cover-art letters and playback icon descriptions.",
+          "observed_on": "2026-10-19",
+          "phrase": "在 Spotify 上收藏",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-36",
+          "region": "authored_article_body",
+          "basis": "Complete ordinary emphasis label of numbered advice item1; prevents dropping any individual list item inside a larger coverage region.",
+          "observed_on": "2026-10-19",
+          "phrase": "Write like you speak.",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-37",
+          "region": "authored_article_body",
+          "basis": "Complete ordinary emphasis label of numbered advice item2; prevents dropping any individual list item inside a larger coverage region.",
+          "observed_on": "2026-10-19",
+          "phrase": "Do not try to sound smart.",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-38",
+          "region": "authored_article_body",
+          "basis": "Complete ordinary emphasis label of numbered advice item3; prevents dropping any individual list item inside a larger coverage region.",
+          "observed_on": "2026-10-19",
+          "phrase": "Speak your mind/ don’t sound like a politician.",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-39",
+          "region": "authored_article_body",
+          "basis": "Complete ordinary emphasis label of numbered advice item4; prevents dropping any individual list item inside a larger coverage region.",
+          "observed_on": "2026-10-19",
+          "phrase": "Use most of your time for editing",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-40",
+          "region": "authored_article_body",
+          "basis": "Complete ordinary emphasis label of numbered advice item5; prevents dropping any individual list item inside a larger coverage region.",
+          "observed_on": "2026-10-19",
+          "phrase": "Then put it to bed.",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-41",
+          "region": "authored_article_body",
+          "basis": "Complete ordinary emphasis label of numbered advice item6; prevents dropping any individual list item inside a larger coverage region.",
+          "observed_on": "2026-10-19",
+          "phrase": "Keep your subconscious going.",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-42",
+          "region": "authored_article_body",
+          "basis": "Complete ordinary emphasis label of numbered advice item7; prevents dropping any individual list item inside a larger coverage region.",
+          "observed_on": "2026-10-19",
+          "phrase": "Have regular milestones.",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-43",
+          "region": "authored_article_body",
+          "basis": "Complete ordinary emphasis label of numbered advice item8; prevents dropping any individual list item inside a larger coverage region.",
+          "observed_on": "2026-10-19",
+          "phrase": "Talk out your ideas.",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-44",
+          "region": "authored_article_body",
+          "basis": "Complete ordinary emphasis label of numbered advice item9; prevents dropping any individual list item inside a larger coverage region.",
+          "observed_on": "2026-10-19",
+          "phrase": "If you’re writing fiction, have empathy for your characters. If it’s non-fiction, have empathy for yourself.",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-45",
+          "region": "authored_article_body",
+          "basis": "Complete ordinary emphasis label of numbered advice item10; prevents dropping any individual list item inside a larger coverage region.",
+          "observed_on": "2026-10-19",
+          "phrase": "Read a lot.",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        },
+        {
+          "id": "body-46",
+          "region": "authored_article_body",
+          "basis": "Full final authored paragraph; true closing sentence is preserved beyond advice item10.",
+          "observed_on": "2026-10-19",
+          "phrase": "Not everyone likes to write. And not everyone needs to. But if you do enjoy it — or if you have to write because of work or school — there’s no reason not to do it as well as you can. The tips above are certainly not the entirety of sound writing advice, but they have worked for me. I hope some of them work for you too!",
+          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
+        }
+      ],
+      "excluded_regions": [
+        "The dismissed subscription obstruction modal and its session-dependent subscriber-count/account prompts; ordinary in-page subscription text remains required.",
+        "Comment bodies, users, comment dates and reactions; stable discussion/entry/sort controls retained.",
+        "Current recommendation/previous-next post membership, previews and dates; stable module controls retained.",
+        "Current copyright year, elapsed publication-age label and reaction/share/subscriber counters.",
+        "Spotify cover art and all image/SVG/alt lettering; playback/seek/More icon-only accessibility names and remaining-time counter52:46. No title is inferred from image lettering.",
+        "Hidden/collapsed page menus, image zoom controls and unopened audio/video states."
+      ],
+      "authoring_provenance": {
+        "cohort_revision": 3,
+        "approved_cohort_sha256": "bea786cb36ec52ab9304d26ef18052bd56367ab20ddfe0c30173b7dd45c4e5ab",
+        "original_url_retained": true,
+        "modal_dismissal_authorized_for_authoring_only": true,
+        "evaluated_fetch_interactions_authorized": false
+      }
     },
     {
       "id": "article-028",
