@@ -41,12 +41,13 @@ flowchart LR
 | `dynamic-content` | 100 | Content and records loaded after the initial page response |
 | `popular-sites` | 100 | Task-relevant content on widely used websites |
 | `access-restrictions` | 100 | URLs where access restrictions were previously observed |
+| `articles` | 100 | Complete displayed article/post text; changing feeds require fresh independent references |
 
-These are four separately versioned populations, with 450 task entries in total. They are not a deduplicated 450-site leaderboard. The access-restriction label describes historical observations; a URL may behave differently today. WebMainBench, WCXB and WebArena remain separate upstream benchmarks.
+These are five separately versioned populations, with 550 task entries in total. They are not a deduplicated 550-site leaderboard. The access-restriction label describes historical observations; a URL may behave differently today. WebMainBench, WCXB and WebArena remain separate upstream benchmarks.
 
 Each suite ships a readable `tasks.json`, a catalog with original task-definition hashes, and a manifest binding the exact executable dataset and reference files. See [data layout and rights](docs/data.md). Task wording and frozen acceptance rules retain their original language.
 
-The [article suite](src/lexbench_webfetch/definitions/evaluation/articles/README.md) is being authored from a separately approved 101-URL inventory. The user requested removal of cases 042, 062, 083 and 097; their original entries and removal basis remain in the cohort revision history. Its unresolved rules are not registered as a frozen executable suite.
+The [article suite](src/lexbench_webfetch/definitions/evaluation/articles/README.md) contains 95 fixed articles and five changing post collections. Rules cover the complete ordinarily displayed text; declared excerpts exclude collapsed continuations. The cohort records approved removals and independently reviewed replacements. Complete reference bodies stay outside Git.
 
 ## Quickstart
 

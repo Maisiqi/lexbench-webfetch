@@ -44,6 +44,17 @@
         "source-inputs.json": "c61d6825abbff2a92098592f83055347cd0b0101374794023046c0fd0323dd5f"
       },
       "directory": "evaluation/risk-control/current"
+    },
+    {
+      "id": "articles",
+      "dataset_id": "articles-v1",
+      "case_count": 100,
+      "directory": "evaluation/articles",
+      "files": {
+        "tasks.json": "7a5c908aa5f29d05e84ef8f6efc387ed915d4fceda105c0b69891db117ff8b81",
+        "dataset-catalog.json": "8cf202bcb6d776b589031827210657321a12c5079cb494fb07e61142dccaa1f7",
+        "source-inputs.json": "f44a883f1ed06487342d7ad7464c02a2b1527b9457acf945d3831101bdbb7c00"
+      }
     }
   ]
 }

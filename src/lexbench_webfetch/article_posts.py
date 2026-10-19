@@ -18,7 +18,8 @@ def validate_post_contract(contract):
     try:
         allowed = {'version', 'hosts', 'entry_path', 'html_record_selector',
                    'html_permalink_selector', 'html_author_selector', 'html_body_selector',
-                   'html_quote_selector', 'quote_markers', 'required_ratio', 'max_reference_age_seconds'}
+                   'html_quote_selector', 'quote_markers', 'required_ratio', 'max_reference_age_seconds',
+                   'allow_empty_outer_with_quotes'}
         if not isinstance(contract, dict) or set(contract) - allowed:
             raise ValueError('unknown frozen post contract fields')
         if type(contract['version']) is not int or contract['version'] != 1 or not isinstance(contract['hosts'], list) or not contract['hosts']:
@@ -37,6 +38,8 @@ def validate_post_contract(contract):
                 raise ValueError('invalid numeric bound')
         if contract['required_ratio'] > 1:
             raise ValueError('invalid ratio')
+        if type(contract.get('allow_empty_outer_with_quotes', False)) is not bool:
+            raise ValueError('invalid empty outer opt-in')
         markers = contract.get('quote_markers', [])
         if not isinstance(markers, list) or any(not isinstance(x, str) or not x.strip() for x in markers):
             raise ValueError('invalid quote markers')
@@ -110,11 +113,23 @@ def _reference_status(reference, context, contract, case_id, url):
             if (not isinstance(parts, list) or not parts or parts[0].get('kind') != 'post'
                     or any(p.get('kind') != 'quote' for p in parts[1:])):
                 return 'invalid'
-            for part in parts:
+            for index, part in enumerate(parts):
                 if (part['kind'] not in {'post', 'quote'} or part['complete_initial_text'] is not True
-                        or not isinstance(part['text'], str) or not tokens(part['text'])):
+                        or not isinstance(part['text'], str)):
                     return 'invalid'
                 if 'author' in part and (not isinstance(part['author'], str) or not tokens(part['author'])):
+                    return 'invalid'
+                if 'empty_outer_text' in part:
+                    # This independent observation cannot excuse omitted prose or
+                    # an empty quote. Every owned quote still needs attribution.
+                    if (not contract.get('allow_empty_outer_with_quotes', False)
+                            or part['empty_outer_text'] is not True or index != 0
+                            or part['text'] != '' or 'source_line_ranges' in part or len(parts) < 2
+                            or any(not isinstance(p.get('author'), str) or not tokens(p['author'])
+                                   for p in parts[1:])):
+                        return 'invalid'
+                    continue
+                if not tokens(part['text']):
                     return 'invalid'
                 _part_contract(part)
         if not isinstance(context, dict) or context.get('id') != reference['context_id']:
@@ -343,7 +358,10 @@ def verify_article_posts(content, contract, reference, *, case_id, url, referenc
                             actual = (row['quote_bodies_after_author'][quote_index]
                                       if quote_index < len(row['quote_bodies_after_author']) else '')
                     quote_index += part['kind'] == 'quote'
-                    coverage = evaluate_body_requirements(actual, _part_contract(part))
+                    if part.get('empty_outer_text') is True:
+                        coverage = {'body_coverage_pass': not actual.strip(), 'empty_outer_text': True}
+                    else:
+                        coverage = evaluate_body_requirements(actual, _part_contract(part))
                     check['body_part_results'].append({'kind': part['kind'], 'author_pass': quote_author_pass, **coverage})
                 check['author_pass'] = author_pass
                 check['pass'] = (author_pass and len(row['quote']) == quote_index

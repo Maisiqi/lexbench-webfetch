@@ -286,20 +286,28 @@ class ArticleContracts(unittest.TestCase):
     def test_approved_inventory_keeps_all_cases_and_disclosed_removals(self):
         cohort = json.loads((DEFINITIONS / "cohort.json").read_text())
         rules = json.loads((DEFINITIONS / "rules.json").read_text())['rules']
-        self.assertEqual(cohort['case_count'], 101)
+        self.assertEqual(cohort['case_count'], 100)
         self.assertEqual([c['id'] for c in cohort['cases']], [r['id'] for r in rules])
         self.assertEqual([c['id'] for c in cohort['cases']], [
             f'article-{number:03}' for number in range(1, 108)
-            if number not in {42, 43, 62, 83, 97, 105}])
+            if number not in {4, 42, 43, 62, 83, 97, 105}])
         self.assertEqual(cohort['provenance']['removed_candidate_ids'],
                          ['article-candidate-043', 'article-candidate-105'])
-        revision = cohort['revisions'][-1]
+        revision = next(r for r in cohort['revisions'] if r['revision'] == 3)
         self.assertEqual({change['id'] for change in revision['changes']},
                          {'article-042', 'article-062', 'article-083', 'article-097'})
         self.assertTrue(all(change['action'] == 'remove'
                             and change['previous']['id'] == change['id']
                             for change in revision['changes']))
         self.assertTrue(all(c['platform'] != '搜狗微信' for c in cohort['cases']))
+        final = cohort['revisions'][-1]
+        self.assertEqual(final['revision'], 4)
+        self.assertEqual({c['id'] for c in final['changes'] if c['action'] == 'replace'},
+                         {'article-001', 'article-002', 'article-003', 'article-079', 'article-082'})
+        self.assertEqual([c['id'] for c in final['changes'] if c['action'] == 'remove'],
+                         ['article-004'])
+        self.assertTrue(all(rule['status'] == 'verified' for rule in rules))
+        self.assertEqual(sum(rule['target_kind'] == 'post_collection' for rule in rules), 5)
 
     def test_definition_hashes_bind_the_parsed_snapshot(self):
         directory = self.root / "snapshot-definitions"

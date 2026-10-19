@@ -378,3 +378,64 @@ class ArticlePostsTests(unittest.TestCase):
         # A fallback record inside noscript must not become a displayed card.
         fallback = '<noscript>'+self.html()+'</noscript><main>No posts here.</main>'
         self.assertFalse(self.check(fallback)['article_posts_pass'])
+
+    def empty_outer_reference(self):
+        ref = deepcopy(self.ref)
+        ref['records'][0]['body_parts'][0].update(text='', empty_outer_text=True)
+        ref['records'][0]['body_parts'][1]['author'] = 'Bob'
+        return ref
+
+    def test_explicit_empty_outer_keeps_owned_quote_requirements(self):
+        self.contract['allow_empty_outer_with_quotes'] = True
+        ref = self.empty_outer_reference()
+        quote = '<span class="author">Bob</span>'+self.quote
+        for content in (self.html(post='', quote=quote),
+                        self.html(post='<img alt="image emoji">', quote=quote),
+                        self.md(post='', quote='Bob\n'+self.quote)):
+            with self.subTest(content=content[:80]):
+                self.assertTrue(self.check(content, reference=ref)['article_posts_pass'])
+        failures = (
+            self.html(post='', quote=''),
+            self.html(post='', quote=quote.replace('>Bob<', '>Charlie<')),
+            self.html(post=self.quote, quote='<span class="author">Bob</span>'),
+            self.html(post='Unexpected ordinary prose', quote=quote),
+            self.html(post='!', quote=quote),
+            self.html(post='', quote='<span class="author">Bob</span><img alt="'+self.quote+'">'),
+            self.md(post='', quote='Charlie\n'+self.quote),
+            self.md(post=self.quote, quote='Bob'),
+        )
+        for content in failures:
+            with self.subTest(content=content[:80]):
+                self.assertFalse(self.check(content, reference=ref)['article_posts_pass'])
+
+    def test_empty_outer_requires_valid_explicit_independent_declaration(self):
+        ref = self.empty_outer_reference()
+        self.assertEqual(self.check(self.html(), reference=ref)['article_reference_status'], 'invalid')
+        self.contract['allow_empty_outer_with_quotes'] = False
+        self.assertEqual(self.check(self.html(), reference=ref)['article_reference_status'], 'invalid')
+        self.contract['allow_empty_outer_with_quotes'] = True
+        mutations = (
+            lambda r: r['records'][0]['body_parts'][0].pop('empty_outer_text'),
+            lambda r: r['records'][0]['body_parts'][0].update(empty_outer_text=False),
+            lambda r: r['records'][0]['body_parts'][0].update(empty_outer_text=1),
+            lambda r: r['records'][0]['body_parts'][0].update(text=self.post),
+            lambda r: r['records'][0]['body_parts'][0].update(text=' '),
+            lambda r: r['records'][0]['body_parts'][0].update(source_line_ranges=[]),
+            lambda r: r['records'][0]['body_parts'].pop(),
+            lambda r: r['records'][0]['body_parts'][1].pop('author'),
+            lambda r: r['records'][0]['body_parts'][1].update(text=''),
+            lambda r: r['records'][0]['body_parts'][1].update(empty_outer_text=True),
+        )
+        for mutate in mutations:
+            invalid = deepcopy(ref)
+            mutate(invalid)
+            with self.subTest(reference=invalid):
+                self.assertEqual(self.check(self.html(), reference=invalid)['article_reference_status'], 'invalid')
+        for value in (None, 0, 1, 'true', [], {}):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                validate_post_contract({**self.contract, 'allow_empty_outer_with_quotes': value})
+
+    def test_empty_outer_opt_in_does_not_relax_ordinary_post_coverage(self):
+        self.contract['allow_empty_outer_with_quotes'] = True
+        self.assertTrue(self.check(self.html())['article_posts_pass'])
+        self.assertFalse(self.check(self.html(post='', quote=self.post+' '+self.quote))['article_posts_pass'])

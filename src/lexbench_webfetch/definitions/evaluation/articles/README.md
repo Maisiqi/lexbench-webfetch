@@ -1,23 +1,24 @@
 # Article suite authoring
 
-The user-approved population contains 101 URLs. `cohort.json` preserves their
-original candidate identities and approved replacement and removal history;
-search-result-only candidates 043 and 105 were
-removed before approval. `rules.json` records each case as `verified` or
-`unresolved`. This authoring population is not yet a registered frozen suite.
+The registered `articles` suite contains 100 qualified URLs: 95 fixed articles
+and five changing post collections. `cohort.json` preserves candidate identities
+and revision history; `rules.json` contains all 100 verified contracts. Public
+tasks, the catalog and input manifest bind the complete executable dataset.
+Full reference bodies and source observations remain external.
 
-Cohort revision 2 replaces cases 044, 053, 063, 091 and 104 with the five
-specific full articles separately approved by the user. Their candidate IDs
-carry an `-r2` suffix. The revision records previous and replacement identities,
-URLs and page types, the approval date, and the previous cohort hash and Git
-commit. The original inventory hash identifies the initial inventory; the
-current cohort bytes bind the revised population. No other proposed replacement
-is adopted by that approval.
+Revision 2 adopted five separately approved specific articles (044, 053, 063,
+091 and 104). Revision 3 removed 042, 062, 083 and 097 at the user's request.
+Revision 4 applies the user's authorization to replace unsuitable cases and
+complete exactly 100: it replaces 001, 002, 003, 079 and 082 after direct source
+review and removes 004. All original entries and prior cohort hashes remain
+in the history. Search-only candidates 043 and 105 were removed before initial
+approval. No previous frozen suite or input version changed.
 
-Cohort revision 3 removes only cases 042, 062, 083 and 097 at the user's explicit
-request, without replacement URLs. It preserves all four complete original case entries,
-the removal basis and date, and the previous cohort hash and Git commit. All
-other cases and the four existing frozen suites remain unchanged.
+The four original Weixin cases could not be independently observed because of
+an authoring-tool site-safety restriction. The final suite uses different
+publishers and does not claim Weixin coverage or evaluated Web Fetch failure.
+Retained folded pages have explicit complete-displayed-excerpt scope; they do
+not claim the hidden continuation of the original article.
 
 ## Existing contracts used as references
 
@@ -60,8 +61,8 @@ For article feeds, require actual post text in addition to record identity,
 same-record fields, real owned links where present, and independently observed
 record counts. A bare directory or search-snippet list is not an article.
 Use a separately reviewed `post_collection` contract for changing feeds; a
-fixed-body contract cannot freeze their membership. Preserve unresolved cases
-and their reasons rather than dropping difficult platforms from the population.
+fixed-body contract cannot freeze their membership. Do not silently drop difficult platforms. Record authorized replacements or
+removals in cohort history, with the original entries and review basis.
 
 ## Stable and changing regions
 
@@ -121,7 +122,11 @@ The context JSON contains `id` and a UTC `started_at`; the reference supplies
 the matching `context_id` and its independently observed `observed_at`.
 
 Each matched record must retain its own author and complete outer/quoted body
-components. Every declared component region needs 80% fragment coverage. The
+components. A contract may explicitly allow a genuinely empty outer text only
+when an independent reference marks `empty_outer_text: true` and supplies
+nonempty, attributed owned quotes. This never excuses missing ordinary prose
+or treats image alt text as body text. All other contracts retain strict
+nonempty outer-body requirements. Every declared component region needs 80% fragment coverage. The
 collection ratio is separate from component coverage; a quote cannot fill its
 outer post, and one post's text cannot satisfy another. Reject duplicate or
 unowned candidate records. Validate both HTML and ordinary linked-author Markdown.
@@ -139,8 +144,9 @@ an evaluated method cannot fetch the article.
 article or post collection against an external evidence directory. `compile_dataset` requires the
 entire approved inventory to be verified and refuses missing, reordered or
 unresolved rules. No partial population is silently published as the suite.
-After every case is resolved, bind the executable dataset, public task
-projection, catalog and input manifest together and register the suite.
+The current version binds all 100 cases together. Future revisions must resolve
+their whole declared population before publishing new dataset, task, catalog
+and manifest bindings.
 
 Validate through `evaluate_response`: complete independent body plus required
 stable groups should pass, including reasonable Markdown/whitespace changes.

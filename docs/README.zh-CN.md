@@ -41,12 +41,13 @@ flowchart LR
 | `dynamic-content` | 100 | 初始页面响应后加载的正文与记录 |
 | `popular-sites` | 100 | 常用网站上与任务相关的内容 |
 | `access-restrictions` | 100 | 曾观察到访问限制的网址 |
+| `articles` | 100 | 完整的已展示文章或帖子文字；变化的帖子集合需要新鲜的独立参考 |
 
-四组任务分别固定版本，共 450 条任务记录，不代表去重后的 450 个网站，也不直接合成总榜。访问限制描述的是历史观察，网址今天的表现可能不同。WebMainBench、WCXB 和 WebArena 仍是各自独立的上游 benchmark。
+五组任务分别固定版本，共 550 条任务记录，不代表去重后的 550 个网站，也不直接合成总榜。访问限制描述的是历史观察，网址今天的表现可能不同。WebMainBench、WCXB 和 WebArena 仍是各自独立的上游 benchmark。
 
 每组提供可读的 `tasks.json`、包含原始完整任务哈希的目录，以及绑定可执行数据集和参考文件的清单。详见[数据结构与使用权](data.md)。任务原文和冻结的验收规则保留原语言。
 
-[文章分类](../src/lexbench_webfetch/definitions/evaluation/articles/README.md)正在依据单独确认的 101 个网址制定规则。用户要求移除案例 042、062、083 和 097；原条目和移除依据保留在清单修订历史中。尚未完成的规则不注册为已冻结、可执行的任务集。
+[文章分类](../src/lexbench_webfetch/definitions/evaluation/articles/README.md)包含 95 个固定文章案例和 5 个变化的帖子集合。规则覆盖完整的普通可见文字；明确标注的可见片段不包含折叠后续内容。名单保留经授权的移除和经独立核查的替换记录。完整参考正文保存在 Git 之外。
 
 ## 快速开始
 

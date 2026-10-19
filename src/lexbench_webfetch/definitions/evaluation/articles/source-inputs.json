@@ -1,0 +1,13 @@
+{
+  "schema_version": 2,
+  "kind": "frozen_reference_inputs",
+  "id": "articles-v1-753556d51b38",
+  "catalog": "dataset-catalog.json",
+  "catalog_sha256": "8cf202bcb6d776b589031827210657321a12c5079cb494fb07e61142dccaa1f7",
+  "dataset": "dataset.json",
+  "dataset_sha256": "753556d51b384f49405e886a312f2261c32207f82ad1fe614c26ebc767574d73",
+  "files": {
+    "dataset.json": "753556d51b384f49405e886a312f2261c32207f82ad1fe614c26ebc767574d73"
+  },
+  "trees": {}
+}

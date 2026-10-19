@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "id": "articles-v1",
-  "status": "authoring",
-  "case_count": 101,
+  "status": "qualified",
+  "case_count": 100,
   "approved_on": "2026-10-19",
   "provenance": {
     "candidate_inventory_sha256": "7f1338595f7c1cc3dc634253b24a637d0a38138b49c5e75ac1cf88668da27005",
@@ -10,43 +10,34 @@
       "article-candidate-043",
       "article-candidate-105"
     ],
-    "approval": "The user approved the initial inventory, the five replacements recorded in revision 2, and the four removals recorded in revision 3.",
+    "approval": "The user approved the initial inventory, revisions 2 and 3, and subsequently authorized autonomous replacement of unsuitable cases to complete exactly 100 qualified cases.",
     "candidate_inventory_scope": "Initial approved inventory; separately approved replacements and removals are recorded in revisions."
   },
   "cases": [
     {
       "id": "article-001",
-      "candidate_id": "article-candidate-001",
-      "name": "量子位：脑电合成自然语音相关推文",
-      "url": "https://mp.weixin.qq.com/s/BcV3-3glmdsVF--fpPRU2g",
-      "platform": "微信公众号",
+      "candidate_id": "article-candidate-001-r4",
+      "name": "Island Hopping in Japan",
+      "url": "https://www.japan.travel/en/guide/island-hopping/",
+      "platform": "JNTO Travel Japan",
       "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
     {
       "id": "article-002",
-      "candidate_id": "article-candidate-002",
-      "name": "量子位：Avenir-Web 相关推文",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247887827&idx=3&sn=6f15e73e3e9766986b064a1fce6fe955",
-      "platform": "微信公众号",
+      "candidate_id": "article-candidate-002-r4",
+      "name": "Machine Learning Crash Course",
+      "url": "https://developers.googleblog.com/machine-learning-crash-course/",
+      "platform": "Google Developers Blog",
       "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
     {
       "id": "article-003",
-      "candidate_id": "article-candidate-003",
-      "name": "推特增长策略相关推文",
-      "url": "https://mp.weixin.qq.com/s/2y463r9G4hnsIc0c2ig7dA",
-      "platform": "微信公众号",
-      "page_type": "article",
-      "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
-    },
-    {
-      "id": "article-004",
-      "candidate_id": "article-candidate-004",
-      "name": "语言治理：乔姆斯基：ChatGPT 的虚假承诺",
-      "url": "https://mp.weixin.qq.com/s/e9KDOZ3vwd10PFvH6hbtmg",
-      "platform": "微信公众号",
+      "candidate_id": "article-candidate-003-r4",
+      "name": "What you need to do deep learning",
+      "url": "https://www.fast.ai/posts/2017-11-16-what-you-need.html",
+      "platform": "fast.ai",
       "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
@@ -691,10 +682,10 @@
     },
     {
       "id": "article-079",
-      "candidate_id": "article-candidate-079",
-      "name": "6 Ways Coffee Helped Transform the World",
-      "url": "https://www.history.com/articles/coffee-history-facts",
-      "platform": "HISTORY",
+      "candidate_id": "article-candidate-079-r4",
+      "name": "The Roosevelt Family Built a New York Coffee Chain 50 Years Before Starbucks",
+      "url": "https://www.smithsonianmag.com/history/roosevelt-family-built-new-york-coffee-chain-50-years-starbucks-180953398/",
+      "platform": "Smithsonian Magazine",
       "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
@@ -718,10 +709,10 @@
     },
     {
       "id": "article-082",
-      "candidate_id": "article-candidate-082",
-      "name": "Oldest known animal sex chromosome evolved in octopuses",
-      "url": "https://www.nature.com/articles/d41586-024-00637-0",
-      "platform": "Nature",
+      "candidate_id": "article-candidate-082-r4",
+      "name": "How sex chromosomes get trapped into nonrecombination",
+      "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3001718",
+      "platform": "PLOS Biology",
       "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     },
@@ -924,7 +915,7 @@
       "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
     }
   ],
-  "revision": 3,
+  "revision": 4,
   "revisions": [
     {
       "revision": 2,
@@ -1065,6 +1056,139 @@
             "name": "嫦娥六号成功着陆月背，有效载荷圆满完成探测任务",
             "url": "https://www.nssc.cas.cn/xwdt2015/xwsd2015/202406/t20240604_7184047.html",
             "platform": "中科院国家空间科学中心",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          }
+        }
+      ]
+    },
+    {
+      "revision": 4,
+      "approved_on": "2026-10-19",
+      "previous_cohort_sha256": "bea786cb36ec52ab9304d26ef18052bd56367ab20ddfe0c30173b7dd45c4e5ab",
+      "previous_git_commit": "dba0be1ce794bb02a132b4b6ad071c8d0c60ca90",
+      "basis": "The user authorized selecting and implementing replacements without individual reconfirmation to complete 100 qualified cases. All replacement articles were directly opened and independently reviewed. Tool access restrictions do not establish evaluated Web Fetch failure. Previously requested removals remain removed.",
+      "changes": [
+        {
+          "id": "article-001",
+          "action": "replace",
+          "previous": {
+            "id": "article-001",
+            "candidate_id": "article-candidate-001",
+            "name": "量子位：脑电合成自然语音相关推文",
+            "url": "https://mp.weixin.qq.com/s/BcV3-3glmdsVF--fpPRU2g",
+            "platform": "微信公众号",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          },
+          "replacement": {
+            "id": "article-001",
+            "candidate_id": "article-candidate-001-r4",
+            "name": "Island Hopping in Japan",
+            "url": "https://www.japan.travel/en/guide/island-hopping/",
+            "platform": "JNTO Travel Japan",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          }
+        },
+        {
+          "id": "article-002",
+          "action": "replace",
+          "previous": {
+            "id": "article-002",
+            "candidate_id": "article-candidate-002",
+            "name": "量子位：Avenir-Web 相关推文",
+            "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247887827&idx=3&sn=6f15e73e3e9766986b064a1fce6fe955",
+            "platform": "微信公众号",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          },
+          "replacement": {
+            "id": "article-002",
+            "candidate_id": "article-candidate-002-r4",
+            "name": "Machine Learning Crash Course",
+            "url": "https://developers.googleblog.com/machine-learning-crash-course/",
+            "platform": "Google Developers Blog",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          }
+        },
+        {
+          "id": "article-003",
+          "action": "replace",
+          "previous": {
+            "id": "article-003",
+            "candidate_id": "article-candidate-003",
+            "name": "推特增长策略相关推文",
+            "url": "https://mp.weixin.qq.com/s/2y463r9G4hnsIc0c2ig7dA",
+            "platform": "微信公众号",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          },
+          "replacement": {
+            "id": "article-003",
+            "candidate_id": "article-candidate-003-r4",
+            "name": "What you need to do deep learning",
+            "url": "https://www.fast.ai/posts/2017-11-16-what-you-need.html",
+            "platform": "fast.ai",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          }
+        },
+        {
+          "id": "article-004",
+          "action": "remove",
+          "previous": {
+            "id": "article-004",
+            "candidate_id": "article-candidate-004",
+            "name": "语言治理：乔姆斯基：ChatGPT 的虚假承诺",
+            "url": "https://mp.weixin.qq.com/s/e9KDOZ3vwd10PFvH6hbtmg",
+            "platform": "微信公众号",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          },
+          "basis": "Reduce the revised inventory to exactly 100 qualified cases under the user-authorized target; this source could not be independently observed because of an authoring-tool site-safety restriction."
+        },
+        {
+          "id": "article-079",
+          "action": "replace",
+          "previous": {
+            "id": "article-079",
+            "candidate_id": "article-candidate-079",
+            "name": "6 Ways Coffee Helped Transform the World",
+            "url": "https://www.history.com/articles/coffee-history-facts",
+            "platform": "HISTORY",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          },
+          "replacement": {
+            "id": "article-079",
+            "candidate_id": "article-candidate-079-r4",
+            "name": "The Roosevelt Family Built a New York Coffee Chain 50 Years Before Starbucks",
+            "url": "https://www.smithsonianmag.com/history/roosevelt-family-built-new-york-coffee-chain-50-years-starbucks-180953398/",
+            "platform": "Smithsonian Magazine",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          }
+        },
+        {
+          "id": "article-082",
+          "action": "replace",
+          "previous": {
+            "id": "article-082",
+            "candidate_id": "article-candidate-082",
+            "name": "Oldest known animal sex chromosome evolved in octopuses",
+            "url": "https://www.nature.com/articles/d41586-024-00637-0",
+            "platform": "Nature",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
+          },
+          "replacement": {
+            "id": "article-082",
+            "candidate_id": "article-candidate-082-r4",
+            "name": "How sex chromosomes get trapped into nonrecombination",
+            "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3001718",
+            "platform": "PLOS Biology",
             "page_type": "article",
             "task_prompt": "直接获取此网址首次自动加载后展示的文章或帖子正文，保留完整段落、章节、列表、表格和文字链接，并保留相关稳定页面文字；不得点击、展开、切换、登录、翻页或滚动触发加载。"
           }
