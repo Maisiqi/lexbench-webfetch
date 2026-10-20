@@ -680,7 +680,14 @@ def _named_link_group(content: str, group: dict, base_url: str, links: list | No
                     label = scalar
             return label
 
-        def name_only(label):
+        def name_only(label, link=None):
+            # An explicit heading identifies the linked item even when its
+            # complete name also happens to be a weekday or other scalar.
+            if link is not None and re.search(
+                r"(?m)^ {0,3}#{1,6}[ \t]+" + re.escape(label)
+                + r"(?:[ \t]*(?:\r?\n|$)|[ \t]+[|•·])", link.label
+            ):
+                return True
             return not (_PRICE.fullmatch(label) or _DATE_OR_TIME.fullmatch(label)
                         or re.fullmatch(r"(?i)(?:today|tomorrow|\d[\d,.]*|more|details?)", label))
 
@@ -698,7 +705,7 @@ def _named_link_group(content: str, group: dict, base_url: str, links: list | No
             candidate_contract = (standard if "*" not in group["hosts"] else
                                   {**standard, "hosts": [urlsplit(destination).hostname]})
             candidate = _named_candidate(destination, label, candidate_contract, base_url, [])
-            if candidate and name_only(candidate[1]["title"]) and _key(candidate[1]["title"]) not in exclusions:
+            if candidate and name_only(candidate[1]["title"], link) and _key(candidate[1]["title"]) not in exclusions:
                 allowed_rows.setdefault(identity, candidate[1])
         def owner_for(position):
             containing = [(begin, end) for begin, end in owner_ranges
@@ -831,7 +838,7 @@ _DATE_OR_TIME = re.compile(
     r"\b\d{1,2}\s+(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|"
     r"Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|"
     r"Dec(?:ember)?)\.?(?:\s+(?:19|20)\d{2})?\b|"
-    r"\b(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)(?:day)?\b|"
+    r"\b(?:Mon(?:day)?|Tue(?:sday)?|Wed(?:nesday)?|Thu(?:rsday)?|Fri(?:day)?|Sat(?:urday)?|Sun(?:day)?)\b|"
     r"\b\d{1,2}:\d{2}(?:\s*[ap]m)?\b|"
     r"\b(?:an?|\d+)\s+(?:minutes?|hours?|days?)\s+ago\b)",
     re.I,
@@ -882,8 +889,26 @@ def serialized_link_card_fields(link):
         if image.is_image:
             label = label[:image.start] + " " + label[image.end:]
     label = visible_markdown_links(label).strip()
-    fields = [field.strip(" *_") for field in re.split(r"\n+|[ \t]+[|•·][ \t]+", label)
-              if field.strip(" *_")]
+    fields = []
+    explicit_name = False
+    for raw in re.split(r"\n+|[ \t]+[|•·][ \t]+", label):
+        # Native Markdown hard breaks and empty ATX headings are layout,
+        # not record names. Apply the same line-end escape handling as the
+        # existing card-context reader before selecting a visible field.
+        field = re.sub(r"\\+$", "", raw.strip()).strip()
+        heading = re.match(r"^#{1,6}[ \t]+\S", field)
+        field = re.sub(r"^#{1,6}(?:[ \t]+|$)", "", field).strip(" *_")
+        if field:
+            if not fields:
+                explicit_name = heading is not None
+            fields.append(field)
+    temporal_remainder = (_DATE_OR_TIME.sub('', fields[0]) if fields else '')
+    temporal_remainder = re.sub(r"\b(?:at|am|pm)\b", '', temporal_remainder, flags=re.I)
+    if (len(fields) > 1 and not explicit_name and _DATE_OR_TIME.search(fields[0])
+            and not re.search(r"\w", temporal_remainder)):
+        # A leading temporal field does not name the item. Do not promote it
+        # or guess which later unlabeled span is the title.
+        return '', fields
     if len(fields) < 3 or not any(_DATE_OR_TIME.search(field) for field in fields[1:]):
         return None
     return fields[0], fields[1:]
