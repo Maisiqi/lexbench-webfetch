@@ -10,6 +10,8 @@ A method receives the task URL and prompt. Follow the declared task kind: return
 
 Task requirements are data: expected markers, fact groups, forbidden output, minimum length, body coverage, structure and resource/file contracts are selected by the task. Missing reference coverage is unavailable, not zero or a perfect score. Binary task acceptance and text-quality diagnostics are separate. LexBench owns `score_attempt`, the shared `task_passed` predicate and file-byte acceptance. Browser Eval calls the same installed implementations. Other harnesses can use `lexbench_webfetch.evaluation.evaluate_response` or the `score` command without Browser Eval; disclose the benchmark/scorer revision when comparing scores.
 
+Execution harnesses own acquisition provenance: validate every selected body, metadata, file, title and final-URL field against retained native evidence before calling the scorer. `score_attempt`, `evaluate_response` and CLI inputs are the submitted answer itself. `score_attempt(delivered_files=...)` accepts actual file bytes and recomputes file acceptance rather than trusting previous metrics. Native API envelopes, diagnostic log decoding, and pre-call selection policies belong to the execution harness, not the scoring package.
+
 ## Live sources and frozen evidence
 
 Input validation proves that supplied bytes match the frozen version. It does not prove that a live website still matches that version. A publishable live-site cohort must independently verify task-relevant reference scope before calls and again after the complete declared scope. If source content changes, preserve the attempt and investigate the shared cause; do not silently refresh references or omit failed cases.
@@ -27,3 +29,13 @@ Declare the score-bearing call and timing boundary before execution. If retries 
 A result submission must identify the immutable input and code revisions, full declared method–task matrix, saved output hashes, verdicts and denominators, errors, timing boundaries, missing results, source verification and review scope. Keep measured artifacts in a separately licensed evidence release with a stable location and integrity manifest. No leaderboard or automatic submission service is maintained here.
 
 A requirement correction creates a new benchmark revision, with accepted and rejected scenario controls. A scoring implementation correction must fix the shared cause and rescore the complete affected scope without overwriting prior evidence. Changes to execution inputs require new calls. Independent result review is a separate operation; machine checks do not imply human review.
+
+## Native projection and text boundaries
+
+Projection schema 2 keeps `title` and `final_url` optional for replay of retained declarations: an absent result field yields `None` unless a declared request-URL fallback applies. An explicit default is still checked and must be empty, just as for answer fields. New declarations should state `default: null` when missing context is allowed. File projections accept only their declared byte/base64 shapes and report malformed declarations or payloads as validation errors.
+
+Historical `fetch_log_final_url` and `video_values` formats remain replay readers for retained native declarations; they do not choose a provider interface or add a scored answer. The execution harness owns native acquisition, format selection and evidence persistence. Changing a retained declaration requires a new binding and must not rewrite historical evidence.
+
+A flattened link label establishes multiple record fields only when its visible text retains field separators, such as line breaks or spaced vertical bars. URL slugs, English ticket-action labels and US city/state spelling cannot establish missing field boundaries. Ambiguous labels remain unqualified even when a reader can guess their intended layout. Named table columns with duplicate matching headers remain ambiguous; a navigation line without a table structure is not a column header.
+
+Contract-declared field aliases support Unicode labels. The built-in English metadata-role recognition is a limited legacy fallback, not an automatic translation dictionary. Declare the language-specific labels needed by a task rather than treating every colon in prose as a metadata separator. Body matching treats unfenced table tags as HTML, including in mixed prose. Literal code needs an explicit code fence or escape; a standalone table tag cannot disable HTML visibility rules for hidden elements or attributes.
