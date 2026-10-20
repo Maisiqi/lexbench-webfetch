@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v4",
+  "id": "articles-v5",
   "status": "qualified",
   "case_count": 100,
   "approved_on": "2026-10-20",
@@ -915,7 +915,7 @@
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     }
   ],
-  "revision": 7,
+  "revision": 8,
   "revisions": [
     {
       "revision": 2,
@@ -2233,6 +2233,139 @@
           "action": "remove_runtime_comment_rule",
           "status": "observed_absent",
           "minimum_comments": null
+        }
+      ]
+    },
+    {
+      "revision": 8,
+      "dataset_id": "articles-v5",
+      "approved_on": "2026-10-20",
+      "previous_dataset_id": "articles-v4",
+      "previous_git_commit": "c8c112616cc196f4c9dd0d776da26574b111bee3",
+      "previous_dataset_sha256": "9bd0f28ed98c9b78fc96a5a5806fce33cbbbbd6d7d93e23178aa99efd0e14978",
+      "previous_cohort_sha256": "af7d2a1e0b76169f7a9fce8ccc8909f962ebaa3300b777219f1b2b374c1ccd71",
+      "previous_rules_sha256": "ef1024358c314fd51bb9f414123b2a0de2f39ed7d5e29bbc469556e10b3928f3",
+      "basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter.",
+      "changes": [
+        {
+          "id": "article-005",
+          "observed_valid_comments": 7,
+          "previous_minimum": 3,
+          "minimum_comments": 6
+        },
+        {
+          "id": "article-009",
+          "observed_valid_comments": 1,
+          "previous_minimum": 1,
+          "minimum_comments": 1
+        },
+        {
+          "id": "article-014",
+          "observed_valid_comments": 3,
+          "previous_minimum": 3,
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-017",
+          "observed_valid_comments": 4,
+          "previous_minimum": 3,
+          "minimum_comments": 4
+        },
+        {
+          "id": "article-023",
+          "observed_valid_comments": 9,
+          "previous_minimum": 3,
+          "minimum_comments": 8
+        },
+        {
+          "id": "article-025",
+          "observed_valid_comments": 255,
+          "previous_minimum": 3,
+          "minimum_comments": 204
+        },
+        {
+          "id": "article-027",
+          "observed_valid_comments": 1,
+          "previous_minimum": 1,
+          "minimum_comments": 1
+        },
+        {
+          "id": "article-030",
+          "observed_valid_comments": 22,
+          "previous_minimum": 3,
+          "minimum_comments": 18
+        },
+        {
+          "id": "article-032",
+          "observed_valid_comments": 24,
+          "previous_minimum": 3,
+          "minimum_comments": 20
+        },
+        {
+          "id": "article-044",
+          "observed_valid_comments": 29,
+          "previous_minimum": 3,
+          "minimum_comments": 24
+        },
+        {
+          "id": "article-047",
+          "observed_valid_comments": 3,
+          "previous_minimum": 3,
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-049",
+          "observed_valid_comments": 1,
+          "previous_minimum": 1,
+          "minimum_comments": 1
+        },
+        {
+          "id": "article-052",
+          "observed_valid_comments": 4,
+          "previous_minimum": 3,
+          "minimum_comments": 4
+        },
+        {
+          "id": "article-053",
+          "observed_valid_comments": 4,
+          "previous_minimum": 3,
+          "minimum_comments": 4
+        },
+        {
+          "id": "article-068",
+          "observed_valid_comments": 13,
+          "previous_minimum": 3,
+          "minimum_comments": 11
+        },
+        {
+          "id": "article-092",
+          "observed_valid_comments": 14,
+          "previous_minimum": 3,
+          "minimum_comments": 12
+        },
+        {
+          "id": "article-093",
+          "observed_valid_comments": 20,
+          "previous_minimum": 3,
+          "minimum_comments": 16
+        },
+        {
+          "id": "article-095",
+          "observed_valid_comments": 69,
+          "previous_minimum": 3,
+          "minimum_comments": 56
+        },
+        {
+          "id": "article-098",
+          "observed_valid_comments": 49,
+          "previous_minimum": 3,
+          "minimum_comments": 40
+        },
+        {
+          "id": "article-103",
+          "observed_valid_comments": 24,
+          "previous_minimum": 3,
+          "minimum_comments": 20
         }
       ]
     }

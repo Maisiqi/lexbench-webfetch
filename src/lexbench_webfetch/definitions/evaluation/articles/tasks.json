@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v4",
+  "id": "articles-v5",
   "name": "Article retrieval",
   "tool": "web_fetch",
   "case_count": 100,
@@ -14,8 +14,8 @@
   },
   "interaction_policy": "initial_load_only_no_click_input_scroll_pagination_login_or_ocr",
   "source_bindings": {
-    "cohort_sha256": "af7d2a1e0b76169f7a9fce8ccc8909f962ebaa3300b777219f1b2b374c1ccd71",
-    "rules_sha256": "ef1024358c314fd51bb9f414123b2a0de2f39ed7d5e29bbc469556e10b3928f3"
+    "cohort_sha256": "e8d247e70392b7c806a15776ebb253d1e68dcfae4acdac3ba93c1b6e5d4e67ae",
+    "rules_sha256": "23e810d3cf9910948ada5725d870825edcacb6c9a09d23e40dcc5b0360e63990"
   },
   "cases": [
     {
@@ -1623,7 +1623,7 @@
             "Post your reply"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 6
         }
       },
       "rule_review": {
@@ -5658,7 +5658,7 @@
             "新评论"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 4
         }
       },
       "rule_review": {
@@ -7851,7 +7851,7 @@
             "最新评论"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 8
         }
       },
       "rule_review": {
@@ -8496,7 +8496,7 @@
             "我要发表看法"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 204
         }
       },
       "rule_review": {
@@ -9702,7 +9702,7 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 18
         }
       },
       "rule_review": {
@@ -10491,7 +10491,7 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 20
         }
       },
       "rule_review": {
@@ -13841,7 +13841,7 @@
             "评论"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 24
         }
       },
       "rule_review": {
@@ -16825,7 +16825,7 @@
             "评论"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 4
         }
       },
       "rule_review": {
@@ -17404,7 +17404,7 @@
             "评论"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 4
         }
       },
       "rule_review": {
@@ -22579,7 +22579,7 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 11
         }
       },
       "rule_review": {
@@ -32144,7 +32144,7 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 12
         }
       },
       "rule_review": {
@@ -32964,7 +32964,7 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 16
         }
       },
       "rule_review": {
@@ -33758,7 +33758,7 @@
             "我要发表看法"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 56
         }
       },
       "rule_review": {
@@ -34378,7 +34378,7 @@
             "全部回复："
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 40
         }
       },
       "rule_review": {
@@ -36116,7 +36116,7 @@
             "评论"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 20
         }
       },
       "rule_review": {

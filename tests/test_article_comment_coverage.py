@@ -130,3 +130,21 @@ def test_plain_navigation_comment_label_does_not_make_article_captions_comments(
             '▲ 图片来自: Example site\nArticle ending.')
     assert check(text)['article_comment_count'] == 0
     assert not check(text)['article_comments_pass']
+
+
+@pytest.mark.parametrize('number,expected', [
+    (5,6),(9,1),(14,3),(17,4),(23,8),(25,204),(27,1),(30,18),
+    (32,20),(44,24),(47,3),(49,1),(52,4),(53,4),(68,11),(92,12),
+    (93,16),(95,56),(98,40),(103,20),
+])
+def test_published_comment_floors_accept_boundary_and_reject_one_fewer(number, expected):
+    import json
+    from lexbench_webfetch.article_dataset import DEFINITIONS
+    rules = json.loads((DEFINITIONS / 'rules.json').read_text())['rules']
+    rule = next(row for row in rules if row['id'] == f'article-{number:03}')
+    contract = rule['comment_contract']
+    assert contract['minimum_comments'] == expected
+    records = [f'### Current reader {i}\nCurrent comment prose {i}.' for i in range(expected)]
+    marker = '## ' + contract['section_markers'][0] + '\n'
+    assert check(marker + '\n\n'.join(records), contract)['article_comments_pass']
+    assert not check(marker + '\n\n'.join(records[:-1]), contract)['article_comments_pass']

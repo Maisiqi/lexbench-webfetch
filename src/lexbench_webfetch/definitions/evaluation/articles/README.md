@@ -1,6 +1,6 @@
 # Article suite authoring
 
-The registered `articles` suite (`articles-v4`) contains 100 qualified URLs: 95 fixed articles
+The registered `articles` suite (`articles-v5`) contains 100 qualified URLs: 95 fixed articles
 and five changing post collections. `cohort.json` preserves candidate identities
 and revision history; `rules.json` contains all 100 verified contracts. Public
 tasks, the catalog and input manifest bind the complete executable dataset.
@@ -26,7 +26,9 @@ Revision 7 replaces runtime comment matching with fixed coverage rules on the
 have no comment rule: 74 have no displayed records, and 069 shows only hidden/spam
 placeholders. Every classification retains hash-bound independent evidence.
 Body text, title contracts, body regions and all five post contracts are unchanged.
-Previous `articles-v1`, `articles-v2` and `articles-v3` inputs and all four earlier suites remain unchanged.
+Revision 8 raises comment floors: baselines of at most five require every record;
+larger baselines require 80%, rounded up. Only numeric comment floors change.
+Previous `articles-v1`, `articles-v2`, `articles-v3` and `articles-v4` inputs and all four earlier suites remain unchanged.
 
 The four original Weixin cases could not be independently observed because of
 an authoring-tool site-safety restriction. The final suite uses different
@@ -148,8 +150,9 @@ Author headings, standalone linked or bold names are supported; colon-labelled
 authors require an explicit Markdown comment-section heading. Bare names and
 metadata-only text are ambiguous and are not guessed as valid comments.
 
-The minimum is the smaller of three and the independently reviewed number of
-valid distinct text records. This deliberately tests modest comment coverage:
+The minimum equals the independently reviewed valid record count when that count
+is at most five; otherwise it equals 80% of that count, rounded up. The baseline
+is frozen at authoring time, not refreshed for each test. This tests comment coverage:
 missing the whole section or returning fewer valid records fails, while names,
 wording and totals may change. It cannot prove every visible comment was captured,
 or detect omissions above the minimum. Do not describe it as exhaustive comment
