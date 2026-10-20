@@ -22,6 +22,7 @@ SCORING_SOURCE_FILES = tuple(Path(__file__).with_name(name) for name in (
     "response_input.py", "body_coverage.py", "structured_tables.py",
     "ordered_tree.py", "composite_tasks.py", "dynamic_reference.py",
     "file_acceptance.py", "evaluation.py", "models.py", "paths.py", "answer_projection.py",
+    "resource_urls.py",
 ))
 SCORING_SOURCE_SHA256 = hashlib.sha256(b"\0".join(
     path.read_bytes() for path in SCORING_SOURCE_FILES)).hexdigest()

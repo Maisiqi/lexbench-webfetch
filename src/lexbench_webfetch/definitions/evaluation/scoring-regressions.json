@@ -53529,6 +53529,214 @@
       "artifact": "[Story](/item/1)\n作者：独立新闻社",
       "ok": true,
       "expected_task_pass": false
+    },
+    {
+      "id": "body-unfenced-table-is-markup-not-literal-code",
+      "category": "format-normalization",
+      "root_cause": "unfenced_table_markup_does_not_prove_literal_code",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/body",
+        "task_kind": "body",
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 1.0,
+          "minimum_floor": 1.0,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "body",
+              "text": "Example table tr td Alice td tr table"
+            }
+          ]
+        }
+      },
+      "artifact": "Example\n\n<table>\n\n<tr>\n\n<td>Alice</td>\n\n</tr>\n\n</table>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "body-fenced-table-code-retains-literal-tags",
+      "category": "format-normalization",
+      "root_cause": "unfenced_table_markup_does_not_prove_literal_code",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/body",
+        "task_kind": "body",
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 1.0,
+          "minimum_floor": 1.0,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "body",
+              "text": "Example table tr td Alice td tr table"
+            }
+          ]
+        }
+      },
+      "artifact": "Example\n\n```\n<table>\n\n<tr>\n\n<td>Alice</td>\n\n</tr>\n\n</table>\n```",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "multiline-table-html-visible",
+      "category": "body-scope",
+      "root_cause": "unfenced_table_markup_does_not_prove_literal_code",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/body",
+        "task_kind": "body",
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 1.0,
+          "minimum_floor": 1.0,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "body",
+              "text": "visible public article content"
+            }
+          ]
+        }
+      },
+      "artifact": "<table>\n<tr><td data-answer=\"SECRET\">visible public article content</td></tr>\n<script>HIDDEN</script>\n</table>",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "multiline-table-html-attribute",
+      "category": "body-scope",
+      "root_cause": "unfenced_table_markup_does_not_prove_literal_code",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/body",
+        "task_kind": "body",
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 1.0,
+          "minimum_floor": 1.0,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "body",
+              "text": "SECRET"
+            }
+          ]
+        }
+      },
+      "artifact": "<table>\n<tr><td data-answer=\"SECRET\">visible public article content</td></tr>\n<script>HIDDEN</script>\n</table>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "multiline-table-html-script",
+      "category": "body-scope",
+      "root_cause": "unfenced_table_markup_does_not_prove_literal_code",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/body",
+        "task_kind": "body",
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 1.0,
+          "minimum_floor": 1.0,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "body",
+              "text": "HIDDEN"
+            }
+          ]
+        }
+      },
+      "artifact": "<table>\n<tr><td data-answer=\"SECRET\">visible public article content</td></tr>\n<script>HIDDEN</script>\n</table>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "multiline-table-mixed-visible",
+      "category": "body-scope",
+      "root_cause": "unfenced_table_markup_does_not_prove_literal_code",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/body",
+        "task_kind": "body",
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 1.0,
+          "minimum_floor": 1.0,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "body",
+              "text": "visible public article content"
+            }
+          ]
+        }
+      },
+      "artifact": "Article introduction\n\n<table>\n<tr><td data-answer=\"SECRET\">visible public article content</td></tr>\n<script>HIDDEN</script>\n</table>",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "multiline-table-mixed-attribute",
+      "category": "body-scope",
+      "root_cause": "unfenced_table_markup_does_not_prove_literal_code",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/body",
+        "task_kind": "body",
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 1.0,
+          "minimum_floor": 1.0,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "body",
+              "text": "SECRET"
+            }
+          ]
+        }
+      },
+      "artifact": "Article introduction\n\n<table>\n<tr><td data-answer=\"SECRET\">visible public article content</td></tr>\n<script>HIDDEN</script>\n</table>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "multiline-table-mixed-script",
+      "category": "body-scope",
+      "root_cause": "unfenced_table_markup_does_not_prove_literal_code",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/body",
+        "task_kind": "body",
+        "body_requirements": {
+          "version": 3,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 1.0,
+          "minimum_floor": 1.0,
+          "minimum_region_passes": 1,
+          "regions": [
+            {
+              "id": "body",
+              "text": "HIDDEN"
+            }
+          ]
+        }
+      },
+      "artifact": "Article introduction\n\n<table>\n<tr><td data-answer=\"SECRET\">visible public article content</td></tr>\n<script>HIDDEN</script>\n</table>",
+      "ok": true,
+      "expected_task_pass": false
     }
   ],
   "superseded_cases": {
@@ -53541,7 +53749,8 @@
     "required-final-url-missing-is-a-measured-failure": "content-policy-required-final-url-missing-is-a-measured-failure",
     "required-final-url-present-keeps-valid-body": "content-policy-required-final-url-present-keeps-valid-body",
     "inline-linked-card-visible-fields": "inline-linked-card-visible-fields-ambiguous-boundaries-rejected",
-    "inline-accessible-card-visible-fields": "inline-accessible-card-visible-fields-ambiguous-boundaries-rejected"
+    "inline-accessible-card-visible-fields": "inline-accessible-card-visible-fields-ambiguous-boundaries-rejected",
+    "body-unfenced-native-table-code-retained": "body-unfenced-table-is-markup-not-literal-code"
   },
   "superseded_controls": {
     "frozen_scorer_sha256": "ceb62fb821e6777d24a015ff713f406faecfff6181b0601b8e3ea2adffbf7c10",

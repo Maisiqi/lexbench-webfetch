@@ -21,17 +21,6 @@ def native_markup_body_text(content, fallback):
     masked = re.sub(r"(`+|~{3,}).*?\1|\\<[^>\n]+>", protect, content, flags=re.S)
     if not re.search(r"<(?:table|thead|tbody|tfoot|tr|th|td|ul|ol|li|h[1-6]|p|div|section|article|br|span|strong|em|b|a)\b", masked, re.I):
         return fallback
-    # Native converters can expose unfenced code samples as standalone
-    # table tags. Their original text remains authoritative; do not erase it
-    # by interpreting an ambiguous tag-only line as document structure.
-    # Preserve the ambiguous table-code region, not the entire answer. Other
-    # HTML in the same answer must still hide attributes and non-visible nodes.
-    if re.search(r"(?m)^[ \t]*</?(?:table|tr|th|td)>[ \t]*$", masked):
-        masked = re.sub(
-            r"(?ms)^[ \t]*<(table|tr|th|td)>[ \t]*\n.*?^[ \t]*</\1>[ \t]*$",
-            protect, masked,
-        )
-        masked = re.sub(r"(?m)^[ \t]*</?(?:table|tr|th|td)>[ \t]*$", protect, masked)
     from bs4 import ParserRejectedMarkup
     try:
         visible = visible_html_text(masked, preserve_links=True)
