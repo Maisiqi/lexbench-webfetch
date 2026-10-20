@@ -21,7 +21,7 @@ SCORING_SOURCE_FILES = tuple(Path(__file__).with_name(name) for name in (
     "list_verification.py", "reference_quality.py", "dynamic_entry_matching.py",
     "response_input.py", "body_coverage.py", "structured_tables.py",
     "ordered_tree.py", "composite_tasks.py", "dynamic_reference.py",
-    "file_acceptance.py", "evaluation.py", "models.py", "paths.py", "answer_projection.py",
+    "file_acceptance.py", "evaluation.py", "models.py", "paths.py",
     "resource_urls.py",
 ))
 SCORING_SOURCE_SHA256 = hashlib.sha256(b"\0".join(
@@ -88,9 +88,7 @@ def score_attempt(
     list_reference: dict | None = None,
     status_code: int | None = None,
     prepared_answer: tuple | None = None,
-    native_response: bytes | None = None,
-    native_files: list | None = None,
-    native_diagnostic: bytes | None = None,
+    delivered_files: list[bytes] | None = None,
     title: str | None = None,
     final_url: str | None = None,
 ) -> dict[str, Any]:
@@ -104,18 +102,10 @@ def score_attempt(
     evidence is preserved; the caller must have validated its artifact binding.
     """
     case = _case_dict(case)
-    if native_files is not None and native_response is None:
-        raise ValueError('Native file scoring requires its retained response bytes')
-    if native_response is not None:
-        from .answer_projection import require_native_answer_projection
-        require_native_answer_projection(artifact.decode('utf-8'), metadata or {},
-                                         native_response, files=native_files or (), title=title, final_url=final_url,
-            request_url=case.get('url'), diagnostic=native_diagnostic,
-            transport_receipt=(metadata or {}).get('source_transport_receipt'))
-    if native_files is not None:
+    if delivered_files is not None:
         from .file_acceptance import evaluate_files
         metadata = dict(metadata or {})
-        metadata['file_evaluation'] = evaluate_files(case, [item.get('data') for item in native_files])
+        metadata['file_evaluation'] = evaluate_files(case, list(delivered_files))
     if 'acceptance_policy_version' in case:
         raise ValueError('Historical policy selectors require their frozen scorer; current scoring has one contract')
     identity_required = case.get('page_identity_required', False)
@@ -270,7 +260,7 @@ def score_attempt(
             if "declared_truncation" not in result["stable_task_errors"]:
                 result["stable_task_errors"].append("declared_truncation")
     file_evaluation = (metadata or {}).get('file_evaluation')
-    if result['task_kind'] == 'file' and isinstance(file_evaluation, dict) and ('raw_file_pass' not in result or native_files is not None):
+    if result['task_kind'] == 'file' and isinstance(file_evaluation, dict) and ('raw_file_pass' not in result or delivered_files is not None):
         result['raw_file_pass'] = bool(file_evaluation.get('pass'))
     result["content_score_applicable"] = case.get("content_score_applicable", True)
     contract = scoring_values.get("acceptance_contract")
