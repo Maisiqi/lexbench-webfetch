@@ -66,7 +66,7 @@ class ArticleContracts(unittest.TestCase):
     def score(self, text):
         return evaluate_response(self.task, text.encode())["passed"]
 
-    def test_semantic_regions_are_not_limited_to_five(self):
+    def test_legacy_regions_remain_readable_but_current_regions_are_capped(self):
         paragraphs = self.paragraphs + [
             "A desert observatory records meteor paths across the darkest sky.",
             "Marine researchers preserve specimens in a coastal laboratory.",
@@ -79,6 +79,10 @@ class ArticleContracts(unittest.TestCase):
         rule["body_regions"] = [[i, i] for i in range(1, 8)]
         task = compile_case(self.case, rule, self.root)
         self.assertEqual(len(task["body_requirements"]["regions"]), 7)
+        current = copy.deepcopy(rule)
+        current["body_segmentation"] = {"version": 3}
+        with self.assertRaisesRegex(ValueError, "at most five"):
+            compile_case(self.case, current, self.root)
         self.assertTrue(evaluate_response(task, (self.prefix + raw.decode()).encode())["passed"])
         for omitted in range(7):
             with self.subTest(omitted=omitted):
@@ -87,7 +91,7 @@ class ArticleContracts(unittest.TestCase):
 
     def test_semantic_regions_keep_labels_and_reject_misbound_reviews(self):
         rule = copy.deepcopy(self.rule)
-        rule["body_segmentation"] = {"version": 2, "method": "source_sections",
+        rule["body_segmentation"] = {"version": 3, "method": "source_sections",
                                     "reference_sha256": rule["body_reference"]["sha256"]}
         rule["body_region_review"] = [
             {"lines": bounds, "label": f"Observed section {i}"}
@@ -368,7 +372,7 @@ class ArticleContracts(unittest.TestCase):
                             for change in revision['changes']))
         self.assertTrue(all(c['platform'] != '搜狗微信' for c in cohort['cases']))
         final = next(r for r in cohort['revisions'] if r['revision'] == 4)
-        self.assertEqual(cohort['revisions'][-1]['revision'], 5)
+        self.assertEqual(cohort['revisions'][-1]['revision'], 6)
         self.assertEqual({c['id'] for c in final['changes'] if c['action'] == 'replace'},
                          {'article-001', 'article-002', 'article-003', 'article-079', 'article-082'})
         self.assertEqual([c['id'] for c in final['changes'] if c['action'] == 'remove'],
@@ -376,18 +380,19 @@ class ArticleContracts(unittest.TestCase):
         self.assertTrue(all(rule['status'] == 'verified' for rule in rules))
         self.assertEqual(sum(rule['target_kind'] == 'post_collection' for rule in rules), 5)
         fixed = [r for r in rules if r['target_kind'] == 'fixed_article']
-        self.assertEqual(cohort['id'], 'articles-v2')
+        self.assertEqual(cohort['id'], 'articles-v3')
         self.assertEqual(len(fixed), 95)
         self.assertEqual(sum('title_contract' in r for r in fixed), 90)
         self.assertTrue(all('comment_contract' in r for r in fixed))
-        self.assertTrue(all(r['body_segmentation']['version'] == 2 for r in fixed))
+        self.assertTrue(all(r['body_segmentation']['version'] == 3 for r in fixed))
         self.assertTrue(all(r['body_segmentation']['reference_sha256'] == r['body_reference']['sha256']
                             for r in fixed))
         for rule in fixed:
             self.assertEqual([r['lines'] for r in rule['body_region_review']], rule['body_regions'])
             self.assertTrue(all(r['label'].strip() for r in rule['body_region_review']))
-        self.assertTrue(any(len(r['body_regions']) > 5 for r in fixed))
-        revised = {c['id']: c['action'] for c in cohort['revisions'][-1]['changes']}
+        self.assertTrue(all(1 <= len(r['body_regions']) <= 5 for r in fixed))
+        self.assertEqual(len(cohort['revisions'][-1]['changes']), 57)
+        revised = {c['id']: c['action'] for c in next(r for r in cohort['revisions'] if r['revision'] == 5)['changes']}
         self.assertEqual(revised, {'article-049': 'revise_entry_url',
                                    'article-090': 'revise_source_reference',
                                    'article-061': 'replace',

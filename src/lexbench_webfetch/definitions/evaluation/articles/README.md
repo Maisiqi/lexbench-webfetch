@@ -1,6 +1,6 @@
 # Article suite authoring
 
-The registered `articles` suite (`articles-v2`) contains 100 qualified URLs: 95 fixed articles
+The registered `articles` suite (`articles-v3`) contains 100 qualified URLs: 95 fixed articles
 and five changing post collections. `cohort.json` preserves candidate identities
 and revision history; `rules.json` contains all 100 verified contracts. Public
 tasks, the catalog and input manifest bind the complete executable dataset.
@@ -17,7 +17,11 @@ independent initial-comment contracts for all 95 fixed cases. It corrects 049 to
 the canonical OSCHINA article URL, revises 090 to the same URL's current 2026
 Pew fact sheet, and replaces 061 with the independently reviewed National
 Gallery of Art article. The other 93 fixed-body references are byte-identical.
-The previous `articles-v1` input and all four earlier suites remain unchanged.
+Revision 6 caps body regions at five by merging adjacent reviewed components.
+All 95 body references and title/comment/post contracts remain byte-identical
+to revision 5; 57 cases have fewer regions. Wider regions reduce sensitivity
+to a small missing paragraph, while complete-region omissions still fail.
+Previous `articles-v1` and `articles-v2` inputs and all four earlier suites remain unchanged.
 
 The four original Weixin cases could not be independently observed because of
 an authoring-tool site-safety restriction. The final suite uses different
@@ -92,7 +96,7 @@ Declared stable groups are mandatory in the current fixed-article contracts.
 They supplement distributed body coverage; title or navigation matches cannot
 replace missing article text. Reviewers divide every source line into contiguous natural chapters,
 paragraphs or quotations with readable labels and explicit one-based inclusive
-ranges. There is no fixed region-count limit.
+ranges. Current segmentation version 3 allows at most five regions. Merge adjacent\nreviewed components at their existing boundaries, preserving complete text and\norder. Legacy segmentation versions remain readable for prior frozen inputs.
 Automatic paragraph detection is insufficient for arbitrary DOM line breaks.
 Each region must contain enough ordinary text to yield a six-character fragment;
 merge shorter labels into their adjacent natural component.
@@ -158,6 +162,24 @@ own independent post contracts rather than an extra empty-comment contract.
 All five require every initial record. Revision 5 raises the older 80% record
 ratios in 038, 040 and 041 to 100%; complete sources pass and each individual
 record omission fails.
+
+## Comparable dynamic observations
+
+Freshness and a matching run ID do not establish equal page content. Comments
+and feed membership can change between requests, even within 900 seconds; the
+same count can contain different records. A strict completeness comparison is
+valid only for comparable initial states, including login/session, sorting and
+viewport/loading conditions. The execution harness must retain independent
+observations around the evaluated request and check membership and text, not
+just totals. Source drift or an unmatched state requires a new observation or
+an unmeasured result, not an automatic extraction-failure verdict.
+
+The current scorer checks reference schema, ownership, age and run identity;
+it does not automatically establish this cross-request comparability. The
+execution harness must supply that validation before these dynamic scores are
+used for provider comparisons. A lower record percentage does not resolve
+source drift. Historical zero-comment observations do not establish permanent
+absence.
 
 ## Changing post collections
 

@@ -156,7 +156,10 @@ def compile_case(case: dict, rule: dict, evidence_home: Path) -> dict:
     if not isinstance(ranges, list) or not ranges:
         raise ValueError("Article scope requires reviewed contiguous semantic regions")
     contract = body_requirements(body)
-    semantic = rule.get("body_segmentation", {}).get("version") == 2
+    segmentation_version = rule.get("body_segmentation", {}).get("version")
+    if segmentation_version == 3 and len(ranges) > 5:
+        raise ValueError("Current article scope allows at most five body regions")
+    semantic = segmentation_version in (2, 3)
     reviews = rule.get("body_region_review", [])
     if semantic and (len(reviews) != len(ranges)
                      or rule["body_segmentation"].get("reference_sha256") != proof["sha256"]

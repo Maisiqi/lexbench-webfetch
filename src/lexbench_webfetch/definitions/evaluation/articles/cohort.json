@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v2",
+  "id": "articles-v3",
   "status": "qualified",
   "case_count": 100,
   "approved_on": "2026-10-20",
@@ -915,7 +915,7 @@
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     }
   ],
-  "revision": 5,
+  "revision": 6,
   "revisions": [
     {
       "revision": 2,
@@ -1296,6 +1296,360 @@
           "previous_required_ratio": 0.8,
           "required_ratio": 1.0,
           "basis": "All independently observed initial posts and replies must be present; removing any one must fail. No interaction-triggered content is added."
+        }
+      ]
+    },
+    {
+      "revision": 6,
+      "dataset_id": "articles-v3",
+      "approved_on": "2026-10-20",
+      "previous_dataset_id": "articles-v2",
+      "previous_dataset_sha256": "8c9490b75d34fa8a7a5111bf27cf5cce1ba902ef753513afd5a47daf58a2d9c5",
+      "previous_cohort_sha256": "6b92d51728b3bd0f6f5a9992864fc26ed827fdbb8bd0aaccb84bc17dacdfb894",
+      "previous_rules_sha256": "d1255ab7dd51b722d736f3caecdbb1244e51e9cdfbf9de5fc12f0c454d3a3658",
+      "basis": "User requested at most five body regions. Merge adjacent reviewed components without changing any body, title, comment or post reference.",
+      "changes": [
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-001",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-002",
+          "previous_regions": 11,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-003",
+          "previous_regions": 7,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-006",
+          "previous_regions": 11,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-007",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-010",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-013",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-014",
+          "previous_regions": 7,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-016",
+          "previous_regions": 53,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-017",
+          "previous_regions": 65,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-018",
+          "previous_regions": 10,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-019",
+          "previous_regions": 12,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-020",
+          "previous_regions": 15,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-022",
+          "previous_regions": 10,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-023",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-024",
+          "previous_regions": 55,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-026",
+          "previous_regions": 11,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-027",
+          "previous_regions": 12,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-028",
+          "previous_regions": 17,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-031",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-032",
+          "previous_regions": 19,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-033",
+          "previous_regions": 28,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-034",
+          "previous_regions": 19,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-036",
+          "previous_regions": 14,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-044",
+          "previous_regions": 19,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-046",
+          "previous_regions": 62,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-047",
+          "previous_regions": 7,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-048",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-050",
+          "previous_regions": 8,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-051",
+          "previous_regions": 10,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-053",
+          "previous_regions": 7,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-054",
+          "previous_regions": 9,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-055",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-056",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-059",
+          "previous_regions": 40,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-063",
+          "previous_regions": 8,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-064",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-065",
+          "previous_regions": 8,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-066",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-067",
+          "previous_regions": 15,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-068",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-070",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-071",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-078",
+          "previous_regions": 32,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-081",
+          "previous_regions": 9,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-084",
+          "previous_regions": 28,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-087",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-088",
+          "previous_regions": 9,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-089",
+          "previous_regions": 9,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-093",
+          "previous_regions": 6,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-094",
+          "previous_regions": 10,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-095",
+          "previous_regions": 13,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-096",
+          "previous_regions": 9,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-100",
+          "previous_regions": 93,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-103",
+          "previous_regions": 21,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-104",
+          "previous_regions": 16,
+          "regions": 5
+        },
+        {
+          "action": "merge_adjacent_body_regions",
+          "id": "article-106",
+          "previous_regions": 9,
+          "regions": 5
         }
       ]
     }
