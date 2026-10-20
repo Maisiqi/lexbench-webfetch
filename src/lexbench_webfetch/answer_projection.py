@@ -1,4 +1,6 @@
 """Validate score-bearing fields against retained native answer bytes."""
+import base64
+import binascii
 import json
 import re
 from urllib.parse import parse_qsl, quote, urljoin, urlsplit
@@ -42,8 +44,8 @@ def _attribute_record_urls(groups, base_url):
                 name = name.casefold()
                 if name not in {'src', 'srcset', 'href', 'data-src', 'data-original'}:
                     continue
-                values = ([part.strip().split()[0] for part in value.split(',') if part.strip()]
-                          if name == 'srcset' else [value])
+                from .resource_urls import srcset_urls
+                values = srcset_urls(value) if name == 'srcset' else [value]
                 for raw in values:
                     try:
                         urls.append(urljoin(base_url, raw.strip()))
@@ -131,18 +133,34 @@ def project_native_answer(payload, declaration):
 
 def project_native_files(payload, declaration):
     """Decode native delivered bytes; filenames and logs cannot supply answers."""
-    import base64
     spec = declaration.get('files')
     if spec is None:
         return []
-    value = _selected(payload, spec) if spec.get('format') != 'raw_bytes' else payload
-    if spec['format'] == 'raw_bytes' and isinstance(payload, bytes):
+    if not isinstance(spec, dict):
+        raise ValueError('Native file projection must be an object')
+    kind = spec.get('format')
+    if kind not in {'raw_bytes', 'base64_file', 'worker_files'}:
+        raise ValueError('Unknown native file projection')
+    if kind == 'raw_bytes':
+        if not isinstance(payload, bytes):
+            raise ValueError('Native raw file projection requires bytes')
         return [payload] if payload else []
-    if spec['format'] == 'base64_file':
-        return [base64.b64decode(value, validate=True)] if value else []
-    if spec['format'] == 'worker_files':
-        return [base64.b64decode(item['base64'], validate=True) for item in value]
-    raise ValueError('Unknown native file projection')
+    value = _selected(payload, spec)
+    if kind == 'base64_file':
+        values = [value] if value else []
+        if not isinstance(value, str):
+            raise ValueError('Native base64 file projection requires text')
+    else:
+        if not isinstance(value, list) or any(
+            not isinstance(item, dict) or not isinstance(item.get('base64'), str)
+            for item in value
+        ):
+            raise ValueError('Native worker files require objects with base64 text')
+        values = [item['base64'] for item in value]
+    try:
+        return [base64.b64decode(item, validate=True) for item in values]
+    except (binascii.Error, ValueError) as error:
+        raise ValueError('Native file projection contains invalid base64') from error
 
 
 def native_fetch_diagnostics(stderr: bytes, requested_url: str) -> tuple[int | None, bool]:
@@ -268,7 +286,9 @@ def project_native_result_fields(payload, declaration, *, request_url=None,
                 raise ValueError('Native final URL lacks its source transport receipt')
             value = transport_receipt['response_url']
         else:
-            value = _selected(payload, {**spec, 'default': None})
+            # Schema 2 historically treats result context as optional. Preserve
+            # missing-field replay, but never overwrite an explicit default.
+            value = _selected(payload, {'default': None, **spec})
             if kind == 'text_or_none':
                 value = value if isinstance(value, str) else None
             elif kind != 'identity':

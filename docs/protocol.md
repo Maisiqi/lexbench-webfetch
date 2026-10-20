@@ -29,3 +29,13 @@ Declare the score-bearing call and timing boundary before execution. If retries 
 A result submission must identify the immutable input and code revisions, full declared method–task matrix, saved output hashes, verdicts and denominators, errors, timing boundaries, missing results, source verification and review scope. Keep measured artifacts in a separately licensed evidence release with a stable location and integrity manifest. No leaderboard or automatic submission service is maintained here.
 
 A requirement correction creates a new benchmark revision, with accepted and rejected scenario controls. A scoring implementation correction must fix the shared cause and rescore the complete affected scope without overwriting prior evidence. Changes to execution inputs require new calls. Independent result review is a separate operation; machine checks do not imply human review.
+
+## Native projection and text boundaries
+
+Projection schema 2 keeps `title` and `final_url` optional for replay of retained declarations: an absent result field yields `None` unless a declared request-URL fallback applies. An explicit default is still checked and must be empty, just as for answer fields. New declarations should state `default: null` when missing context is allowed. File projections accept only their declared byte/base64 shapes and report malformed declarations or payloads as validation errors.
+
+Historical `fetch_log_final_url` and `video_values` formats remain replay readers for retained native declarations; they do not choose a provider interface or add a scored answer. The execution harness owns native acquisition, format selection and evidence persistence. Changing a retained declaration requires a new binding and must not rewrite historical evidence.
+
+A flattened link label establishes multiple record fields only when its visible text retains field separators, such as line breaks or spaced vertical bars. URL slugs, English ticket-action labels and US city/state spelling cannot establish missing field boundaries. Ambiguous labels remain unqualified even when a reader can guess their intended layout. Named table columns with duplicate matching headers remain ambiguous; a navigation line without a table structure is not a column header.
+
+Contract-declared field aliases support Unicode labels. The built-in English metadata-role recognition is a limited legacy fallback, not an automatic translation dictionary. Declare the language-specific labels needed by a task rather than treating every colon in prose as a metadata separator. Body matching preserves ambiguous unfenced table examples as literal text while continuing to apply HTML visibility rules to the rest of the answer.

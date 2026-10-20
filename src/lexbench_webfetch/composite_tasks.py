@@ -44,8 +44,6 @@ def _column_scope(content: str, group: dict) -> str | None:
         if not starts:
             continue
         saw_columns = True
-        if len(starts) != 1:
-            return ""
         column = starts[0]
         sibling_end = any(i != column and re.fullmatch(end, label(cell), re.I)
                           for i, cell in enumerate(cells))
@@ -77,6 +75,13 @@ def _column_scope(content: str, group: dict) -> str | None:
                     # Keep searching, but never reinterpret it as a section
                     # boundary if no genuine column table follows.
                     continue
+        if len(starts) != 1:
+            # A genuine ambiguous table must fail closed, but navigation
+            # text that merely resembles column labels must not hide a later
+            # valid table. Validate the table boundary before rejecting it.
+            if delimiter == "\t" and (cursor >= len(lines) or len(lines[cursor].split("\t")) != len(cells)):
+                continue
+            return ""
         owned = [cells[column]]
         while cursor < len(lines) and lines[cursor].strip():
             values = _pipe_cells(lines[cursor]) if delimiter == "|" else lines[cursor].split("\t")
@@ -867,51 +872,21 @@ def _value_matches_spec(value: str, spec: dict, *, whole_cell: bool = False) -> 
 
 
 def serialized_link_card_fields(link):
-    """Recover explicit inline card spans; URLs only corroborate visible text."""
+    """Read visibly separated card fields; never infer boundaries from URLs.
+
+    A single concatenated label does not establish which words name the item,
+    venue or city. URL slugs cannot resolve that ambiguity or supply a field.
+    """
     label = link.label
     for image in reversed(markdown_links(label)):
         if image.is_image:
             label = label[:image.start] + " " + label[image.end:]
     label = visible_markdown_links(label).strip()
-    explicit = re.fullmatch(
-        r"(?P<name>.+),\s+(?P<city>[^,\n]+,\s*[A-Z]{2})\s+"
-        r"(?P<venue>.+?)(?P<date>\d{1,2}/\d{1,2}/\d{2,4},\s*\d{1,2}:\d{2}\s*[AP]M)(?:.*)", label)
-    if explicit:
-        name = re.sub(r"^(?:Find Tickets|Event Info)\s*", "", explicit['name'])
-        return name, [explicit['date'], explicit['venue'], explicit['city']]
-    times = list(re.finditer(r"\d{1,2}:\d{2}\s*[AP]M\b", label, re.I))
-    if not times:
+    fields = [field.strip(" *_") for field in re.split(r"\n+|[ \t]+[|•·][ \t]+", label)
+              if field.strip(" *_")]
+    if len(fields) < 3 or not any(_DATE_OR_TIME.search(field) for field in fields[1:]):
         return None
-    end = times[-1].end()
-    tail = label[end:].strip()
-    compact = lambda value: re.sub(r"[^a-z0-9]", "", value.casefold())
-    slugs = [compact(unquote(segment)) for segment in urlsplit(link.destination).path.split('/')]
-    cities = [match for match in re.finditer(
-        r"(?<=[a-z\s])(?=[A-Z][A-Za-z .'-]+,\s*[A-Z]{2}$)", tail)
-        if any(compact(tail[match.start():].rsplit(',', 1)[0]) in slug for slug in slugs)]
-    if not cities:
-        return None
-    city = cities[0]
-    name_venue, location = tail[:city.start()].strip(), tail[city.start():]
-    city_key = compact(location.rsplit(',', 1)[0])
-    matches = []
-    for segment in urlsplit(link.destination).path.split('/'):
-        slug = compact(unquote(segment))
-        if city_key not in slug:
-            continue
-        # The URL cannot supply a missing name, date, place or city. It only
-        # distinguishes two values already present in the same link label.
-        slug = slug.split(city_key, 1)[0]
-        for boundary in re.finditer(r"(?<=\w)(?=\s|[^\w\s])", name_venue):
-            name = name_venue[:boundary.start()].strip()
-            venue = name_venue[boundary.start():].strip()
-            if (len(re.findall(r"\w+", name)) >= 2 and len(compact(name)) >= 8
-                    and compact(name) == slug and len(re.findall(r"[A-Za-z]+", venue)) >= 2):
-                matches.append((len(compact(name)), name, venue))
-    if not matches:
-        return None
-    _, name, venue = max(matches)
-    return name, [label[:end], venue, location]
+    return fields[0], fields[1:]
 
 
 def _context_lines(context: str, title: str) -> list[str]:
@@ -987,13 +962,6 @@ def _context_lines(context: str, title: str) -> list[str]:
         line = re.sub(r"(?<![\w*_])([*_]{1,3})([^\s*_](?:[^*_\n]*?[^\s*_])?)\1(?![\w*_])", r"\2", line)
         line = line.strip(" \t#>*|-_")
         if not line or _key(line) == title_key or re.fullmatch(r"https?://\S+", line):
-            continue
-        # Some native Markdown serializers concatenate venue and city text
-        # nodes without a separator (for example ``ArenaSeattle, WA``).  The
-        # lowercase-to-uppercase boundary still proves two visible fields.
-        split = re.search(r"(?<=[a-z])(?=[A-Z][A-Za-z .'-]+,\s*[A-Z]{2}\b)", line)
-        if split:
-            lines.extend((line[: split.start()], line[split.start() :]))
             continue
         # Browser innerText may join adjacent inline field/status nodes.
         # Preserve the visible lexical boundary, not a new record/field value.

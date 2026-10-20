@@ -148,9 +148,10 @@ def _image_content_candidates(content: str) -> list[tuple[str, str]]:
     candidates.extend((html.unescape(match[1]), "content.html_img") for match in re.findall(
         r"<img\b[^>]*?\bsrc\s*=\s*([\"'])(.*?)\1", content, re.I | re.S
     ))
+    from .resource_urls import srcset_urls
     for match in re.findall(r"<img\b[^>]*?\bsrcset\s*=\s*([\"'])(.*?)\1", content, re.I | re.S):
-        candidates.extend((html.unescape(part.strip().split()[0]), "content.html_img_srcset")
-                          for part in match[1].split(',') if part.strip())
+        candidates.extend((url, "content.html_img_srcset")
+                          for url in srcset_urls(html.unescape(match[1])))
     # HTML attributes are decoded above. Do not also admit their raw entity
     # spelling as a second bare candidate; plain URL answers remain literal.
     bare_content = re.sub(r"<img\b[^>]*>", "", content, flags=re.I | re.S)
