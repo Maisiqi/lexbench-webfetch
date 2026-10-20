@@ -47,13 +47,13 @@
     },
     {
       "id": "articles",
-      "dataset_id": "articles-v5",
+      "dataset_id": "articles-v6",
       "case_count": 100,
       "directory": "evaluation/articles",
       "files": {
-        "tasks.json": "2f61f3871c3639873e03ea9ca1f7b8ecf114cc384ce7024a609a6fd8f3e6828e",
-        "dataset-catalog.json": "779109c2bb1756e78210f61f8995b6148078615105e81a9c597a828dcee26ae8",
-        "source-inputs.json": "e3a5660e7461c4fef81cbb1ebe62c49a3076d0809ae7a162ffd916be545b7eb9"
+        "tasks.json": "154fce3444b575c9506c63cc3a94c8aab93e12da44062cabdc9df9ab3fb5499c",
+        "dataset-catalog.json": "2802b4d83c71b3d3f98a1112f167a4f8b9613b5b5b8352494396c26e0e71c829",
+        "source-inputs.json": "b2452d04671c961703ec1bc32684c645a1b247bd61fab4b06abb359fa18b1dd7"
       }
     }
   ]

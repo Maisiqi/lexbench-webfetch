@@ -317,7 +317,9 @@ def score_attempt(
         result["article_post_contract_sha256"] = hashlib.sha256(json.dumps(
             post_contract, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
         result["content_pass"] = bool(result["content_pass"] and post_result["article_posts_pass"])
-        result["content_decision_basis"] = "stable_and_article_post_acceptance_contract"
+        result["content_decision_basis"] = (
+            "stable_and_fixed_post_coverage" if post_contract["version"] == 2
+            else "stable_and_article_post_acceptance_contract")
     if (rule_review.get("status") != "unresolved" and not contract
             and benchmark.get("mode") == "dynamic_list_structure"):
         result.update(evaluate_dynamic_list(content, benchmark, base_url, ok, links))

@@ -154,11 +154,25 @@ def _compile_post_collection(case: dict, rule: dict, evidence_home: Path) -> dic
             or any(type(count) is not int or count < 1 for count in counts)
             or not isinstance(records, list) or not records or len(records) != counts[-1]):
         raise ValueError("Article collections require independent initial-load record review")
-    # Validate the historical qualification schema at its captured time. This
-    # never certifies freshness for a future evaluation; its caller must provide
-    # a separate current reference and execution context to the shared scorer.
+    # Historical evidence qualifies the frozen floor; it is not a runtime reference.
+    qualification_contract = contract
+    if contract["version"] == 2:
+        if contract["minimum_posts"] > min(counts):
+            raise ValueError("Post minimum exceeds independently observed record counts")
+        qualification_contract = {
+            key: value for key, value in contract.items() if key != "minimum_posts"
+        }
+        qualification_contract.update(version=1, required_ratio=1.0,
+                                      max_reference_age_seconds=900)
+        sources = rule.get("post_coverage_review", {}).get("source_evidence", [])
+        if not sources:
+            raise ValueError("Static post coverage requires source evidence")
+        for source in sources:
+            captured = contained_path(evidence_home, source["path"], reject_symlinks=True).read_bytes()
+            if hashlib.sha256(captured).hexdigest() != source["sha256"]:
+                raise ValueError("Changed article collection source evidence")
     qualification = verify_article_posts(
-        "", contract, reference, case_id=case["id"], url=case["url"],
+        "", qualification_contract, reference, case_id=case["id"], url=case["url"],
         reference_context={"id": reference.get("context_id"),
                            "started_at": reference.get("observed_at")})
     if qualification["article_reference_status"] != "verified":

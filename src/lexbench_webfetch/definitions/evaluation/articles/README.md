@@ -1,6 +1,6 @@
 # Article suite authoring
 
-The registered `articles` suite (`articles-v5`) contains 100 qualified URLs: 95 fixed articles
+The registered `articles` suite (`articles-v6`) contains 100 qualified URLs: 95 fixed articles
 and five changing post collections. `cohort.json` preserves candidate identities
 and revision history; `rules.json` contains all 100 verified contracts. Public
 tasks, the catalog and input manifest bind the complete executable dataset.
@@ -28,7 +28,11 @@ placeholders. Every classification retains hash-bound independent evidence.
 Body text, title contracts, body regions and all five post contracts are unchanged.
 Revision 8 raises comment floors: baselines of at most five require every record;
 larger baselines require 80%, rounded up. Only numeric comment floors change.
-Previous `articles-v1`, `articles-v2`, `articles-v3` and `articles-v4` inputs and all four earlier suites remain unchanged.
+Revision 9 replaces the five runtime-reference post contracts with fixed coverage
+contracts: minima 4, 8, 4, 4 and 16 for 038, 039, 040, 041 and 101 respectively.
+All 95 fixed tasks remain byte-identical. The five collections preserve their
+URLs, page-identity checks and stable anchors; only their post contracts and explanatory review text change.
+Previous `articles-v1` through `articles-v5` inputs and all four earlier suites remain unchanged.
 
 The four original Weixin cases could not be independently observed because of
 an authoring-tool site-safety restriction. The final suite uses different
@@ -48,7 +52,8 @@ visibility, complete scope and independent evidence.
 
 Reuse those scoring contracts where applicable, but do not copy their current
 items or counts. A named-link floor alone cannot establish article completeness:
-an article case must also require the qualified full article/post text. Likewise,
+a fixed-article case must also require the qualified full article text.
+Changing collections use the separately disclosed post-coverage contract. Likewise,
 an excerpt directory cannot become an article merely because a list contract
 can count its links. Existing frozen suites and input versions remain unchanged.
 
@@ -63,7 +68,7 @@ evidence and verify that the article was already loaded and its text did not
 change; do not use dismissal to unlock or load additional content. This is a
 reference-review exception only. Evaluated Web Fetch tasks still permit no
 browser clicks, login, expansion or other content-loading interactions.
-The reference must contain the complete qualified article/post body, not a
+The historical reference must contain the complete qualified displayed article/post body, not a
 selection of convenient paragraphs. Keep headings, paragraphs, textual lists,
 table text, captions and ordinary body links within their declared scope.
 Exclude image lettering, alt text, OCR, hidden markup and collapsed content.
@@ -167,51 +172,36 @@ invent a precise timestamp. Version 1 comment verification remains supported for
 older frozen datasets; its runtime references and reply ownership requirements
 do not apply to version 2 coverage rules.
 
-The five post collections retain their separate independent post contracts.
-All five require every initial record. Revision 5 raised the older 80% record
-ratios in 038, 040 and 041 to 100%.
-
-## Comparable dynamic post observations
-
-Freshness and a matching run ID do not establish equal feed content. Post
-membership can change between requests, even within 900 seconds; the same count
-can contain different records. The execution harness must establish comparable
-initial states, including session, sorting and loading conditions, before using
-these strict post scores in provider comparisons. The scorer validates reference
-schema, ownership, age and run identity but does not itself establish cross-request
-comparability. Source drift requires investigation or an unmeasured result, not
-an automatic extraction-failure verdict. This dynamic post requirement does not
-reintroduce a fresh-reference requirement for version 2 comment coverage.
-
 ## Changing post collections
 
-Qualify collection scope from at least two independent direct initial loads.
-Bind the complete displayed outer post and each displayed quoted component to
-its own record identity and author. A displayed quote excerpt describes that
-excerpt, not the full linked original. Do not silently discard truncated outer
-posts to make a collection qualify.
+Version 2 post contracts count distinct owned post-detail links with a nonempty
+attributed author and visible post text. A genuinely empty outer post can qualify
+through its attributed nonempty quoted text. A link and author alone do not count.
+Duplicate links count once; quote-only links are not separate outer records.
+HTML uses the reviewed selectors; ordinary linked-author Markdown is supported.
+Keep the declared page-identity and stable-text checks. Do not freeze current
+post identities, author names or wording.
 
-The public task contains extraction selectors and coverage requirements, not
-frozen current post identities or text. Each evaluation needs a fresh independent
-reference plus a caller-supplied evaluation context. The scorer validates the
-context identity, observation time and contract age limit before matching
-records. A missing, stale or mismatched reference makes the case unmeasured.
-Historical authoring references qualify a contract; they cannot certify a later
-evaluation. Reference acquisition belongs in the external execution harness.
-The standalone `score` command accepts the independent reference through
-`--list-reference` and its caller-owned context through `--reference-context`.
-The context JSON contains `id` and a UTC `started_at`; the reference supplies
-the matching `context_id` and its independently observed `observed_at`.
+Qualify scope from at least two independent direct initial loads. Preserve
+historical qualification records and hash-bound source files outside Git.
+The minimum equals the observed valid record count for baselines up to five,
+or 80% rounded up above five. Only automatically displayed records qualify;
+clicking, expansion, switching, login, pagination and scroll-triggered loading
+remain out of scope. A displayed quote excerpt represents that excerpt only.
 
-Each matched record must retain its own author and complete outer/quoted body
-components. A contract may explicitly allow a genuinely empty outer text only
-when an independent reference marks `empty_outer_text: true` and supplies
-nonempty, attributed owned quotes. This never excuses missing ordinary prose
-or treats image alt text as body text. All other contracts retain strict
-nonempty outer-body requirements. Every declared component region needs 80% fragment coverage. The
-collection ratio is separate from component coverage; a quote cannot fill its
-outer post, and one post's text cannot satisfy another. Reject duplicate or
-unowned candidate records. Validate both HTML and ordinary linked-author Markdown.
+No runtime post reference or reference context is required for version 2.
+These fixed floors detect missing fields and insufficient post coverage. They
+do not prove complete per-post text, current membership, source identity beyond
+the checked fields, or freshness. A website changing its initial display or
+structure requires review and a dataset revision, not an automatic conclusion
+that an extraction method failed.
+
+Legacy version 1 post contracts remain supported for previous frozen datasets.
+They require `--list-reference` and `--reference-context`, including matching
+context identity and a fresh independent observation. They compare all declared
+owned text components against that reference. Missing, stale or mismatched
+references leave legacy cases unmeasured. The execution harness must establish
+comparable page states; freshness alone does not establish comparability.
 
 ## References and validation
 

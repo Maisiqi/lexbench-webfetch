@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "kind": "frozen_dataset_catalog",
-  "id": "articles-v5",
+  "id": "articles-v6",
   "name": "Article retrieval",
   "dataset": "dataset.json",
-  "dataset_sha256": "fc4ee3ee680fef3f3c021978f725e80a8b32804eb5acf6c93381e26b256f8073",
+  "dataset_sha256": "0da8b7e80f89f4f63185a32885b2c6c4e8ab10d5660e5dcc0f0669d92d7ed5f7",
   "case_count": 100,
   "cases": [
     {
@@ -374,7 +374,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "af9288fa285a925fe82bd7cfb21b53743615ceee905358a1d550d66d0bf38d0c",
+      "definition_sha256": "2bb007b6f03885497cb5fc601629e7cc889306f104abc3e47ebac00dd98f7ef5",
       "reference_sha256": null
     },
     {
@@ -384,7 +384,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "4ac2ed20c39cd0d3d3325a546a1f349071e5e3cb3863a92ee19940cf3cc7d547",
+      "definition_sha256": "1a815e88271738ec86b806b337c694d3a811f994e57d4671ca53e143e30926ac",
       "reference_sha256": null
     },
     {
@@ -394,7 +394,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "406d2c5a694e7205908a2bcf271584c8974c9b80ad1c622ec386e160557be211",
+      "definition_sha256": "83fd180f1541dd4a0bb121d0d19884a95117ae6f14da0f7717368212ed6c171a",
       "reference_sha256": null
     },
     {
@@ -404,7 +404,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "ba5ff797a1332907f2afb8e5e66580cdb61fc32f89783c0f62bed8adb7aded66",
+      "definition_sha256": "5a8fb9118ab7994d0c1e6a9c14d65d507c6e7c60e76efed6dafc443cd7566705",
       "reference_sha256": null
     },
     {
@@ -954,7 +954,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "cfd7c6fb72dc9b9d9a0dd4cea5836cc023d92926e8d5caf6bbb9ba6170cbe055",
+      "definition_sha256": "0b98649679d0c1745f7086502f68ce098c6c52693ce63b6df92a51c877d3fe9e",
       "reference_sha256": null
     },
     {

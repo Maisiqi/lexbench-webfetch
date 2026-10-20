@@ -25267,13 +25267,13 @@
       "id": "article-038",
       "status": "verified",
       "target_kind": "post_collection",
-      "reason": "Two independent direct initial loads contained four complete owned outer posts. Require complete owned post text and separately displayed quoted components against a contemporaneous per-evaluation reference; freeze neither member identities nor counters.",
+      "reason": "Two independently captured automatic initial loads each displayed 4 qualified records. Require at least 4 distinct owned post links with author and nonempty visible text, permitting attributed quotes for empty outer text. Retain page identity and stable labels. No runtime reference, fixed wording or current membership is required; this is coverage, not full-text completeness or freshness.",
       "qualification_reference": {
         "path": "article-reference-inputs-v1/article-038/qualification-posts.json",
         "sha256": "8fb37c133c8e99197eefc26eea9fda04bc1f6a5043e948e95564e1dd85097199"
       },
       "post_contract": {
-        "version": 1,
+        "version": 2,
         "hosts": [
           "x.com"
         ],
@@ -25286,8 +25286,8 @@
         "quote_markers": [
           "Quote"
         ],
-        "required_ratio": 1.0,
-        "max_reference_age_seconds": 900
+        "minimum_posts": 4,
+        "allow_empty_outer_with_quotes": true
       },
       "acceptance_contract": {
         "version": 1,
@@ -25472,42 +25472,86 @@
         }
       ],
       "excluded_regions": [
-        "Changing engagement counters, profile counts and trend/ad sidebar members.",
-        "Personalized account labels, signed-in primary navigation and follow relationship state.",
-        "Image lettering and media payloads; quoted excerpts do not assert completeness of their linked originals."
+        "Interaction-triggered records and hidden continuations: no clicks, expansion, tab switching, login, pagination or scroll-triggered loading.",
+        "Image lettering, OCR, alt text and accessibility-only descriptions are not visible post text.",
+        "Changing counters, relative dates, personalized account state and recommendation members are not frozen. Current names, post identities and wording are not matched against historical captures.",
+        "Historical observations qualify the fixed count floor only; quote excerpts do not establish complete linked originals."
       ],
       "comment_review": {
-        "scope": "Everyordinarycomment/replytextinitiallydisplayedafterautomaticloading; no expansion,scrollloading,tabchange,loginorcommentpagination.",
+        "mode": "covered_by_post_contract",
         "runtime_reference_required": false,
-        "runtime_reference_policy": "Freshindependentcompleteinitial-loadobservationboundtoexecutioncontext; oldest<=900seconds. Multipleobservationsmustbecomplete, notloadingskeletons.",
-        "counter_policy": "Visiblecommenttotals,reactioncountsandpublicationagesarenotexpectedrecordcounts.",
-        "qualification_only": true,
-        "observed_excluded_when_closed": "Comment/replycontentinsidecloseddisclosures,collapsedpanels,inactive tabs,loginwalls,paginationoruntriggeredscrollloadingisexcluded; neverinteracttoexposeit.",
-        "zero_source_guard": "Azeroreferencerequirescompleteindependentinitialsourcesandclosed/hiddenancestorchecks. RawDOMabsence/emptyselectors/loadingstatecannotcertifyzero.",
-        "status": "covered_by_post_contract",
-        "identity_role": "comment_author",
-        "source_evidence": [],
-        "reason": "Allinitialfeedposts/replycardsandquotedtextarealreadyrequiredandownedmatchedbyexistingpost_contract; no redundantcommentabsenceinferencefromXshell.",
-        "existing_post_qualification": {
-          "path": "article-038/qualification-posts.json",
+        "basis": "This is a changing post collection. Initially displayed posts and reply posts use the fixed version 2 post coverage contract, not a separate comment rule."
+      },
+      "post_coverage_review": {
+        "scope": "initial_load_only",
+        "observed_on": "2026-10-19",
+        "reviewed_on": "2026-10-20",
+        "observed_valid_post_count": 4,
+        "minimum_posts": 4,
+        "minimum_basis": "Require all independently observed initial posts when the baseline is at most five; otherwise require 80%, rounded up. Count distinct owned post links with author and visible text; accept attributed quote text for genuinely empty outer posts. No current identities, wording, runtime reference or freshness claim.",
+        "user_approved": true,
+        "qualification_reference": {
+          "path": "article-reference-inputs-v1/article-038/qualification-posts.json",
           "sha256": "8fb37c133c8e99197eefc26eea9fda04bc1f6a5043e948e95564e1dd85097199"
         },
-        "existing_post_contract": {
-          "version": 1,
-          "hosts": [
-            "x.com"
-          ],
-          "entry_path": "/browser_use/status/[0-9]+",
-          "html_record_selector": "article[data-testid=\"tweet\"]",
-          "html_permalink_selector": "a:has(time)",
-          "html_author_selector": "[data-testid=\"User-Name\"] > div:first-child",
-          "html_body_selector": "[data-testid=\"tweetText\"]",
-          "html_quote_selector": "div[role=\"link\"][tabindex=\"0\"]:has([data-testid=\"tweetText\"])",
-          "quote_markers": [
-            "Quote"
-          ],
-          "required_ratio": 1.0,
-          "max_reference_age_seconds": 900
+        "source_evidence": [
+          {
+            "path": "article-reference-inputs-v1/article-038/body.html",
+            "sha256": "d56f05796e78ace8c40aab7b825cf42ba28849cfbdd8e5e37aac405860fc13f6"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-038/metadata.json",
+            "sha256": "a465605de8f9952df51e1f1bb5ca762d03a6c582ff8731d69bb7710b899d6478"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-038/observation-root-02/observation.json",
+            "sha256": "ad8c9415530dd8483ce89d1b6b26978dd603143e56ef2d327de22dbd7e2b0b21"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-038/observation-root-02/records.json",
+            "sha256": "4411829c920814a7d0c5a92aa146dd9d1e6195df13630ced768e4f6e31a715b9"
+          }
+        ],
+        "limitation": "Coverage only: does not establish complete text, current membership or freshness. Interaction-triggered and hidden content is excluded.",
+        "historical_qualification_reason": "Two independent direct initial loads contained four complete owned outer posts. Require complete owned post text and separately displayed quoted components against a contemporaneous per-evaluation reference; freeze neither member identities nor counters.",
+        "historical_excluded_regions": [
+          "Changing engagement counters, profile counts and trend/ad sidebar members.",
+          "Personalized account labels, signed-in primary navigation and follow relationship state.",
+          "Image lettering and media payloads; quoted excerpts do not assert completeness of their linked originals."
+        ],
+        "historical_comment_review": {
+          "scope": "Everyordinarycomment/replytextinitiallydisplayedafterautomaticloading; no expansion,scrollloading,tabchange,loginorcommentpagination.",
+          "runtime_reference_required": false,
+          "runtime_reference_policy": "Freshindependentcompleteinitial-loadobservationboundtoexecutioncontext; oldest<=900seconds. Multipleobservationsmustbecomplete, notloadingskeletons.",
+          "counter_policy": "Visiblecommenttotals,reactioncountsandpublicationagesarenotexpectedrecordcounts.",
+          "qualification_only": true,
+          "observed_excluded_when_closed": "Comment/replycontentinsidecloseddisclosures,collapsedpanels,inactive tabs,loginwalls,paginationoruntriggeredscrollloadingisexcluded; neverinteracttoexposeit.",
+          "zero_source_guard": "Azeroreferencerequirescompleteindependentinitialsourcesandclosed/hiddenancestorchecks. RawDOMabsence/emptyselectors/loadingstatecannotcertifyzero.",
+          "status": "covered_by_post_contract",
+          "identity_role": "comment_author",
+          "source_evidence": [],
+          "reason": "Allinitialfeedposts/replycardsandquotedtextarealreadyrequiredandownedmatchedbyexistingpost_contract; no redundantcommentabsenceinferencefromXshell.",
+          "existing_post_qualification": {
+            "path": "article-038/qualification-posts.json",
+            "sha256": "8fb37c133c8e99197eefc26eea9fda04bc1f6a5043e948e95564e1dd85097199"
+          },
+          "existing_post_contract": {
+            "version": 1,
+            "hosts": [
+              "x.com"
+            ],
+            "entry_path": "/browser_use/status/[0-9]+",
+            "html_record_selector": "article[data-testid=\"tweet\"]",
+            "html_permalink_selector": "a:has(time)",
+            "html_author_selector": "[data-testid=\"User-Name\"] > div:first-child",
+            "html_body_selector": "[data-testid=\"tweetText\"]",
+            "html_quote_selector": "div[role=\"link\"][tabindex=\"0\"]:has([data-testid=\"tweetText\"])",
+            "quote_markers": [
+              "Quote"
+            ],
+            "required_ratio": 1.0,
+            "max_reference_age_seconds": 900
+          }
         }
       }
     },
@@ -25515,13 +25559,13 @@
       "id": "article-039",
       "status": "verified",
       "target_kind": "post_collection",
-      "reason": "Two fresh controlled direct initial loads each contain all nine records. Human-authorized displayed-parts scope qualifies each complete default-visible post component, including the unexpanded ClaudeDevs prefix and its Show more control; no claim of complete linked originals or collapsed continuations. Every initial record remains in the external reference. The docs reply includes all three ordinary owned components: post prefix, visible preview title and source-domain caption.",
+      "reason": "Two independently captured automatic initial loads each displayed 9 qualified records. Require at least 8 distinct owned post links with author and nonempty visible text, permitting attributed quotes for empty outer text. Retain page identity and stable labels. No runtime reference, fixed wording or current membership is required; this is coverage, not full-text completeness or freshness.",
       "qualification_reference": {
         "path": "article-reference-inputs-v1/article-039/displayed-scope-r3/qualification-posts.json",
         "sha256": "5af29463b56c324d5a00b6b72f736e55584c834b17a74d56afe87e110fc92399"
       },
       "post_contract": {
-        "version": 1,
+        "version": 2,
         "hosts": [
           "x.com"
         ],
@@ -25534,8 +25578,8 @@
         "quote_markers": [
           "Quote"
         ],
-        "required_ratio": 1.0,
-        "max_reference_age_seconds": 900
+        "minimum_posts": 8,
+        "allow_empty_outer_with_quotes": true
       },
       "acceptance_contract": {
         "version": 1,
@@ -26010,44 +26054,112 @@
         }
       ],
       "excluded_regions": [
-        "Collapsed ClaudeDevs continuation after the complete default-displayed prefix; no expansion, login, scrolling, pagination, consent action or linked-article navigation. No source record omitted.",
-        "Hidden zero-size r-qlhcfr URL scheme/suffix spans; visible ellipsis remains. Actual t.co destinations retained in external per-part link metadata.",
-        "Image/media lettering, OCR, alt descriptions, aria-only link preview descriptions, 1px screen-reader-only timeline/trending/keyboard-shortcut headings. Actual ordinary docs preview title and source caption remain required.",
-        "Changing reply authors/IDs/post text live exclusively in the independent external reference. Relative dates/ages, engagement/profile totals, personalized account labels/follow relationship, ads/trends/recommendation members and session prompts excluded.",
-        "The generic owned body wrapper also physically contains its own author/date/reaction/action text. These are not article-body reference material and cannot substitute for prose. Intrinsic metadata removal is not claimed; per-record and per-component HTML negatives retain all such metadata while removing real body components. Existing nested-record/quote ownership isolation still applies."
+        "Interaction-triggered records and hidden continuations: no clicks, expansion, tab switching, login, pagination or scroll-triggered loading.",
+        "Image lettering, OCR, alt text and accessibility-only descriptions are not visible post text.",
+        "Changing counters, relative dates, personalized account state and recommendation members are not frozen. Current names, post identities and wording are not matched against historical captures.",
+        "Historical observations qualify the fixed count floor only; quote excerpts do not establish complete linked originals."
       ],
       "comment_review": {
-        "scope": "Everyordinarycomment/replytextinitiallydisplayedafterautomaticloading; no expansion,scrollloading,tabchange,loginorcommentpagination.",
+        "mode": "covered_by_post_contract",
         "runtime_reference_required": false,
-        "runtime_reference_policy": "Freshindependentcompleteinitial-loadobservationboundtoexecutioncontext; oldest<=900seconds. Multipleobservationsmustbecomplete, notloadingskeletons.",
-        "counter_policy": "Visiblecommenttotals,reactioncountsandpublicationagesarenotexpectedrecordcounts.",
-        "qualification_only": true,
-        "observed_excluded_when_closed": "Comment/replycontentinsidecloseddisclosures,collapsedpanels,inactive tabs,loginwalls,paginationoruntriggeredscrollloadingisexcluded; neverinteracttoexposeit.",
-        "zero_source_guard": "Azeroreferencerequirescompleteindependentinitialsourcesandclosed/hiddenancestorchecks. RawDOMabsence/emptyselectors/loadingstatecannotcertifyzero.",
-        "status": "covered_by_post_contract",
-        "identity_role": "comment_author",
-        "source_evidence": [],
-        "reason": "Allinitialfeedposts/replycardsandquotedtextarealreadyrequiredandownedmatchedbyexistingpost_contract; no redundantcommentabsenceinferencefromXshell.",
-        "existing_post_qualification": {
-          "path": "article-039/displayed-scope-r3/qualification-posts.json",
+        "basis": "This is a changing post collection. Initially displayed posts and reply posts use the fixed version 2 post coverage contract, not a separate comment rule."
+      },
+      "post_coverage_review": {
+        "scope": "initial_load_only",
+        "observed_on": "2026-10-19",
+        "reviewed_on": "2026-10-20",
+        "observed_valid_post_count": 9,
+        "minimum_posts": 8,
+        "minimum_basis": "Require all independently observed initial posts when the baseline is at most five; otherwise require 80%, rounded up. Count distinct owned post links with author and visible text; accept attributed quote text for genuinely empty outer posts. No current identities, wording, runtime reference or freshness claim.",
+        "user_approved": true,
+        "qualification_reference": {
+          "path": "article-reference-inputs-v1/article-039/displayed-scope-r3/qualification-posts.json",
           "sha256": "5af29463b56c324d5a00b6b72f736e55584c834b17a74d56afe87e110fc92399"
         },
-        "existing_post_contract": {
-          "version": 1,
-          "hosts": [
-            "x.com"
-          ],
-          "entry_path": "/[^/]+/status/[0-9]+",
-          "html_record_selector": "article[data-testid=\"tweet\"]",
-          "html_permalink_selector": "a:has(time)",
-          "html_author_selector": "[data-testid=\"User-Name\"] > div:first-child",
-          "html_body_selector": "div.r-1iusvr4.r-kzbkwu",
-          "html_quote_selector": "div[role=\"link\"][tabindex=\"0\"]:has([data-testid=\"tweetText\"])",
-          "quote_markers": [
-            "Quote"
-          ],
-          "required_ratio": 1.0,
-          "max_reference_age_seconds": 900
+        "source_evidence": [
+          {
+            "path": "article-replacement-review/article-039-visible-r3-a/accessibility.txt",
+            "sha256": "3281dc2f16a7431b521bc95e9aa40118a22e37d3b9c6190df2161e760868a085"
+          },
+          {
+            "path": "article-replacement-review/article-039-visible-r3-a/capture.json",
+            "sha256": "cd269e94701bbc8e2a3a177c03637913b2d2c9bd4bb4a7fa311e8f3328030174"
+          },
+          {
+            "path": "article-replacement-review/article-039-visible-r3-a/complete-body.html",
+            "sha256": "6372e7f8861bbbdaaa8179f5acbb34cd9e7b9eea2dd4b0c46cccd1aed6e37c7c"
+          },
+          {
+            "path": "article-replacement-review/article-039-visible-r3-a/viewport.png",
+            "sha256": "8431532bce8094c85a671ef5eeeb824704a48e482c9436b89c86a6ea201785dd"
+          },
+          {
+            "path": "article-replacement-review/article-039-visible-r3-a/visible-prose-geometry.json",
+            "sha256": "baa6453c6e66342fedcc78821cc775f9230ef9c828c12aa7bb50abc93eb48bb7"
+          },
+          {
+            "path": "article-replacement-review/article-039-visible-r3-b/accessibility.txt",
+            "sha256": "8fc75e52cf5c1933e4ccebf12b5b0c08b482a93e535476c13f08d8ec7247ef1e"
+          },
+          {
+            "path": "article-replacement-review/article-039-visible-r3-b/capture.json",
+            "sha256": "15a3e98834d38da713188c8d86d8ffa750d1a4d3e9bacdce76456a5f8de0feeb"
+          },
+          {
+            "path": "article-replacement-review/article-039-visible-r3-b/complete-body.html",
+            "sha256": "1b41879663be67e41b4c87b262d204685e4e0ef53ae1a20b03fb7ee00c247d35"
+          },
+          {
+            "path": "article-replacement-review/article-039-visible-r3-b/viewport.png",
+            "sha256": "414fbdb6e6e4b01322a45264fc84e1e7989f513eb8cbb3a0e81b5c784b7c327f"
+          },
+          {
+            "path": "article-replacement-review/article-039-visible-r3-b/visible-prose-geometry.json",
+            "sha256": "0722ec2f273df9b5559837756430decc7ac5494ecd14b07d8b286e38d2ec6731"
+          }
+        ],
+        "limitation": "Coverage only: does not establish complete text, current membership or freshness. Interaction-triggered and hidden content is excluded.",
+        "historical_qualification_reason": "Two fresh controlled direct initial loads each contain all nine records. Human-authorized displayed-parts scope qualifies each complete default-visible post component, including the unexpanded ClaudeDevs prefix and its Show more control; no claim of complete linked originals or collapsed continuations. Every initial record remains in the external reference. The docs reply includes all three ordinary owned components: post prefix, visible preview title and source-domain caption.",
+        "historical_excluded_regions": [
+          "Collapsed ClaudeDevs continuation after the complete default-displayed prefix; no expansion, login, scrolling, pagination, consent action or linked-article navigation. No source record omitted.",
+          "Hidden zero-size r-qlhcfr URL scheme/suffix spans; visible ellipsis remains. Actual t.co destinations retained in external per-part link metadata.",
+          "Image/media lettering, OCR, alt descriptions, aria-only link preview descriptions, 1px screen-reader-only timeline/trending/keyboard-shortcut headings. Actual ordinary docs preview title and source caption remain required.",
+          "Changing reply authors/IDs/post text live exclusively in the independent external reference. Relative dates/ages, engagement/profile totals, personalized account labels/follow relationship, ads/trends/recommendation members and session prompts excluded.",
+          "The generic owned body wrapper also physically contains its own author/date/reaction/action text. These are not article-body reference material and cannot substitute for prose. Intrinsic metadata removal is not claimed; per-record and per-component HTML negatives retain all such metadata while removing real body components. Existing nested-record/quote ownership isolation still applies."
+        ],
+        "historical_comment_review": {
+          "scope": "Everyordinarycomment/replytextinitiallydisplayedafterautomaticloading; no expansion,scrollloading,tabchange,loginorcommentpagination.",
+          "runtime_reference_required": false,
+          "runtime_reference_policy": "Freshindependentcompleteinitial-loadobservationboundtoexecutioncontext; oldest<=900seconds. Multipleobservationsmustbecomplete, notloadingskeletons.",
+          "counter_policy": "Visiblecommenttotals,reactioncountsandpublicationagesarenotexpectedrecordcounts.",
+          "qualification_only": true,
+          "observed_excluded_when_closed": "Comment/replycontentinsidecloseddisclosures,collapsedpanels,inactive tabs,loginwalls,paginationoruntriggeredscrollloadingisexcluded; neverinteracttoexposeit.",
+          "zero_source_guard": "Azeroreferencerequirescompleteindependentinitialsourcesandclosed/hiddenancestorchecks. RawDOMabsence/emptyselectors/loadingstatecannotcertifyzero.",
+          "status": "covered_by_post_contract",
+          "identity_role": "comment_author",
+          "source_evidence": [],
+          "reason": "Allinitialfeedposts/replycardsandquotedtextarealreadyrequiredandownedmatchedbyexistingpost_contract; no redundantcommentabsenceinferencefromXshell.",
+          "existing_post_qualification": {
+            "path": "article-039/displayed-scope-r3/qualification-posts.json",
+            "sha256": "5af29463b56c324d5a00b6b72f736e55584c834b17a74d56afe87e110fc92399"
+          },
+          "existing_post_contract": {
+            "version": 1,
+            "hosts": [
+              "x.com"
+            ],
+            "entry_path": "/[^/]+/status/[0-9]+",
+            "html_record_selector": "article[data-testid=\"tweet\"]",
+            "html_permalink_selector": "a:has(time)",
+            "html_author_selector": "[data-testid=\"User-Name\"] > div:first-child",
+            "html_body_selector": "div.r-1iusvr4.r-kzbkwu",
+            "html_quote_selector": "div[role=\"link\"][tabindex=\"0\"]:has([data-testid=\"tweetText\"])",
+            "quote_markers": [
+              "Quote"
+            ],
+            "required_ratio": 1.0,
+            "max_reference_age_seconds": 900
+          }
         }
       }
     },
@@ -26055,13 +26167,13 @@
       "id": "article-040",
       "status": "verified",
       "target_kind": "post_collection",
-      "reason": "Two independent initial-load inventories contain the same complete four outer repost records. All owning outer text, visible shortened URL labels and two separately owned displayed quotes are qualified. A read-only clip proves the third record’s quote shows exactly its first two full paragraphs plus a painted ellipsis; its third paragraph is hidden overflow. Before/after clip checks preserve720px viewport, scroll0 and four records. No full-page screenshot or expansion is used as membership proof.",
+      "reason": "Two independently captured automatic initial loads each displayed 4 qualified records. Require at least 4 distinct owned post links with author and nonempty visible text, permitting attributed quotes for empty outer text. Retain page identity and stable labels. No runtime reference, fixed wording or current membership is required; this is coverage, not full-text completeness or freshness.",
       "qualification_reference": {
         "path": "article-reference-inputs-v1/article-040/qualification-posts-a3.json",
         "sha256": "65089ad3d7ec16da02a9dcd269b8225c306ffa3a6b67dd185d7e5129555f4f9f"
       },
       "post_contract": {
-        "version": 1,
+        "version": 2,
         "hosts": [
           "x.com"
         ],
@@ -26074,8 +26186,8 @@
         "quote_markers": [
           "Quote"
         ],
-        "required_ratio": 1.0,
-        "max_reference_age_seconds": 900
+        "minimum_posts": 4,
+        "allow_empty_outer_with_quotes": true
       },
       "acceptance_contract": {
         "version": 1,
@@ -26429,44 +26541,100 @@
         }
       ],
       "excluded_regions": [
-        "Hidden third paragraph of the clipped quoted post. Reference requires its whole visible two-paragraph excerpt, not an arbitrary shortened snippet or full underlying linked original.",
-        "Zero-size position:absolute r-qlhcfr URL prefix/suffix spans proven by computed styles; visible ellipsis spans remain. Actual t.co link destinations retained in external reference metadata.",
-        "Changing repost/quote identities and bodies live only in independent per-evaluation reference; no members frozen in generic contract.",
-        "Image/media lettering, alt/OCR, reaction/view/reply totals, profile counts, trend/ad members, account labels and personalized relationship state.",
-        "Observation02 fullpage screenshot expanded the virtualized feed and is not used for initial membership/count or visible-quote proof. No clicks, expansion, login or scrolling performed."
+        "Interaction-triggered records and hidden continuations: no clicks, expansion, tab switching, login, pagination or scroll-triggered loading.",
+        "Image lettering, OCR, alt text and accessibility-only descriptions are not visible post text.",
+        "Changing counters, relative dates, personalized account state and recommendation members are not frozen. Current names, post identities and wording are not matched against historical captures.",
+        "Historical observations qualify the fixed count floor only; quote excerpts do not establish complete linked originals."
       ],
       "comment_review": {
-        "scope": "Everyordinarycomment/replytextinitiallydisplayedafterautomaticloading; no expansion,scrollloading,tabchange,loginorcommentpagination.",
+        "mode": "covered_by_post_contract",
         "runtime_reference_required": false,
-        "runtime_reference_policy": "Freshindependentcompleteinitial-loadobservationboundtoexecutioncontext; oldest<=900seconds. Multipleobservationsmustbecomplete, notloadingskeletons.",
-        "counter_policy": "Visiblecommenttotals,reactioncountsandpublicationagesarenotexpectedrecordcounts.",
-        "qualification_only": true,
-        "observed_excluded_when_closed": "Comment/replycontentinsidecloseddisclosures,collapsedpanels,inactive tabs,loginwalls,paginationoruntriggeredscrollloadingisexcluded; neverinteracttoexposeit.",
-        "zero_source_guard": "Azeroreferencerequirescompleteindependentinitialsourcesandclosed/hiddenancestorchecks. RawDOMabsence/emptyselectors/loadingstatecannotcertifyzero.",
-        "status": "covered_by_post_contract",
-        "identity_role": "comment_author",
-        "source_evidence": [],
-        "reason": "Allinitialfeedposts/replycardsandquotedtextarealreadyrequiredandownedmatchedbyexistingpost_contract; no redundantcommentabsenceinferencefromXshell.",
-        "existing_post_qualification": {
-          "path": "article-040/qualification-posts-a3.json",
+        "basis": "This is a changing post collection. Initially displayed posts and reply posts use the fixed version 2 post coverage contract, not a separate comment rule."
+      },
+      "post_coverage_review": {
+        "scope": "initial_load_only",
+        "observed_on": "2026-10-19",
+        "reviewed_on": "2026-10-20",
+        "observed_valid_post_count": 4,
+        "minimum_posts": 4,
+        "minimum_basis": "Require all independently observed initial posts when the baseline is at most five; otherwise require 80%, rounded up. Count distinct owned post links with author and visible text; accept attributed quote text for genuinely empty outer posts. No current identities, wording, runtime reference or freshness claim.",
+        "user_approved": true,
+        "qualification_reference": {
+          "path": "article-reference-inputs-v1/article-040/qualification-posts-a3.json",
           "sha256": "65089ad3d7ec16da02a9dcd269b8225c306ffa3a6b67dd185d7e5129555f4f9f"
         },
-        "existing_post_contract": {
-          "version": 1,
-          "hosts": [
-            "x.com"
-          ],
-          "entry_path": "/[^/]+/status/[0-9]+",
-          "html_record_selector": "article[data-testid=\"tweet\"]",
-          "html_permalink_selector": "a:has(time)",
-          "html_author_selector": "[data-testid=\"User-Name\"] > div:first-child",
-          "html_body_selector": "[data-testid=\"tweetText\"]",
-          "html_quote_selector": "div[role=\"link\"][tabindex=\"0\"]:has([data-testid=\"tweetText\"])",
-          "quote_markers": [
-            "Quote"
-          ],
-          "required_ratio": 1.0,
-          "max_reference_age_seconds": 900
+        "source_evidence": [
+          {
+            "path": "article-reference-inputs-v1/article-040/body.html",
+            "sha256": "7fafa7960e058829e207e0fce73b30b7281102972b58a32c9155d9a9d1975a79"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-040/metadata.json",
+            "sha256": "9e11617b74eda1361be0506fbbbc8f17af6dd945f0f3d7e6b82582d2e62092cf"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-040/observation-root-03/capture.json",
+            "sha256": "197d8055bf58b0116cddb2699a0aba7a0ae63694b52350cd4437f99ed3e4c2ad"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-040/observation-root-03/clip-scope-check.json",
+            "sha256": "8470ac4e2d8a28236a4b6b08b3d7f06b3692a80a3bcc23ad5bd04990d29a59ad"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-040/observation-root-03/complete-body.html",
+            "sha256": "c9e30fccf030859fafc1e03a9e9f45a1eb0c4b2a936bbf2cb6daac55c52a5ec7"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-040/observation-root-03/quote-context.png",
+            "sha256": "d2873bf598ee067d86beb35a4e4ad839b5478a167fd28d663ac56de8a7d78b60"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-040/observation-root-03/url-label-visibility.json",
+            "sha256": "be4927a989aa4e6765a57d9da170854a55668ee8e3665b3f0c9680df045f72cd"
+          }
+        ],
+        "limitation": "Coverage only: does not establish complete text, current membership or freshness. Interaction-triggered and hidden content is excluded.",
+        "historical_qualification_reason": "Two independent initial-load inventories contain the same complete four outer repost records. All owning outer text, visible shortened URL labels and two separately owned displayed quotes are qualified. A read-only clip proves the third record’s quote shows exactly its first two full paragraphs plus a painted ellipsis; its third paragraph is hidden overflow. Before/after clip checks preserve720px viewport, scroll0 and four records. No full-page screenshot or expansion is used as membership proof.",
+        "historical_excluded_regions": [
+          "Hidden third paragraph of the clipped quoted post. Reference requires its whole visible two-paragraph excerpt, not an arbitrary shortened snippet or full underlying linked original.",
+          "Zero-size position:absolute r-qlhcfr URL prefix/suffix spans proven by computed styles; visible ellipsis spans remain. Actual t.co link destinations retained in external reference metadata.",
+          "Changing repost/quote identities and bodies live only in independent per-evaluation reference; no members frozen in generic contract.",
+          "Image/media lettering, alt/OCR, reaction/view/reply totals, profile counts, trend/ad members, account labels and personalized relationship state.",
+          "Observation02 fullpage screenshot expanded the virtualized feed and is not used for initial membership/count or visible-quote proof. No clicks, expansion, login or scrolling performed."
+        ],
+        "historical_comment_review": {
+          "scope": "Everyordinarycomment/replytextinitiallydisplayedafterautomaticloading; no expansion,scrollloading,tabchange,loginorcommentpagination.",
+          "runtime_reference_required": false,
+          "runtime_reference_policy": "Freshindependentcompleteinitial-loadobservationboundtoexecutioncontext; oldest<=900seconds. Multipleobservationsmustbecomplete, notloadingskeletons.",
+          "counter_policy": "Visiblecommenttotals,reactioncountsandpublicationagesarenotexpectedrecordcounts.",
+          "qualification_only": true,
+          "observed_excluded_when_closed": "Comment/replycontentinsidecloseddisclosures,collapsedpanels,inactive tabs,loginwalls,paginationoruntriggeredscrollloadingisexcluded; neverinteracttoexposeit.",
+          "zero_source_guard": "Azeroreferencerequirescompleteindependentinitialsourcesandclosed/hiddenancestorchecks. RawDOMabsence/emptyselectors/loadingstatecannotcertifyzero.",
+          "status": "covered_by_post_contract",
+          "identity_role": "comment_author",
+          "source_evidence": [],
+          "reason": "Allinitialfeedposts/replycardsandquotedtextarealreadyrequiredandownedmatchedbyexistingpost_contract; no redundantcommentabsenceinferencefromXshell.",
+          "existing_post_qualification": {
+            "path": "article-040/qualification-posts-a3.json",
+            "sha256": "65089ad3d7ec16da02a9dcd269b8225c306ffa3a6b67dd185d7e5129555f4f9f"
+          },
+          "existing_post_contract": {
+            "version": 1,
+            "hosts": [
+              "x.com"
+            ],
+            "entry_path": "/[^/]+/status/[0-9]+",
+            "html_record_selector": "article[data-testid=\"tweet\"]",
+            "html_permalink_selector": "a:has(time)",
+            "html_author_selector": "[data-testid=\"User-Name\"] > div:first-child",
+            "html_body_selector": "[data-testid=\"tweetText\"]",
+            "html_quote_selector": "div[role=\"link\"][tabindex=\"0\"]:has([data-testid=\"tweetText\"])",
+            "quote_markers": [
+              "Quote"
+            ],
+            "required_ratio": 1.0,
+            "max_reference_age_seconds": 900
+          }
         }
       }
     },
@@ -26474,13 +26642,13 @@
       "id": "article-041",
       "status": "verified",
       "target_kind": "post_collection",
-      "reason": "Two independent direct initial loads contained four complete owned media-feed text posts. Second capture confirms each body has positive clientHeight equal to scrollHeight and no line clamp; no Show more or quoted card is present. Require full owned text and author/link associations against a contemporaneous external reference without freezing membership.",
+      "reason": "Two independently captured automatic initial loads each displayed 4 qualified records. Require at least 4 distinct owned post links with author and nonempty visible text, permitting attributed quotes for empty outer text. Retain page identity and stable labels. No runtime reference, fixed wording or current membership is required; this is coverage, not full-text completeness or freshness.",
       "qualification_reference": {
         "path": "article-reference-inputs-v1/article-041/qualification-posts.json",
         "sha256": "ee7bbd86aec02e301418c4a677040e3ab86ec24cbefdf7fe69b4fd93b9109d36"
       },
       "post_contract": {
-        "version": 1,
+        "version": 2,
         "hosts": [
           "x.com"
         ],
@@ -26493,8 +26661,8 @@
         "quote_markers": [
           "Quote"
         ],
-        "required_ratio": 1.0,
-        "max_reference_age_seconds": 900
+        "minimum_posts": 4,
+        "allow_empty_outer_with_quotes": true
       },
       "acceptance_contract": {
         "version": 1,
@@ -26678,9 +26846,10 @@
         }
       ],
       "excluded_regions": [
-        "Changing engagement/profile counts, trend/sidebar/ad members and personalized account/navigation/follow state.",
-        "Video payloads, transcription, image alt text and image lettering. All four actual visible post texts remain required.",
-        "Closed Videos filter options and collapsed menu items. Current feed membership is external reference data, not frozen rule text."
+        "Interaction-triggered records and hidden continuations: no clicks, expansion, tab switching, login, pagination or scroll-triggered loading.",
+        "Image lettering, OCR, alt text and accessibility-only descriptions are not visible post text.",
+        "Changing counters, relative dates, personalized account state and recommendation members are not frozen. Current names, post identities and wording are not matched against historical captures.",
+        "Historical observations qualify the fixed count floor only; quote excerpts do not establish complete linked originals."
       ],
       "evidence_files": [
         "article-041/body.html",
@@ -26703,37 +26872,84 @@
         }
       ],
       "comment_review": {
-        "scope": "Everyordinarycomment/replytextinitiallydisplayedafterautomaticloading; no expansion,scrollloading,tabchange,loginorcommentpagination.",
+        "mode": "covered_by_post_contract",
         "runtime_reference_required": false,
-        "runtime_reference_policy": "Freshindependentcompleteinitial-loadobservationboundtoexecutioncontext; oldest<=900seconds. Multipleobservationsmustbecomplete, notloadingskeletons.",
-        "counter_policy": "Visiblecommenttotals,reactioncountsandpublicationagesarenotexpectedrecordcounts.",
-        "qualification_only": true,
-        "observed_excluded_when_closed": "Comment/replycontentinsidecloseddisclosures,collapsedpanels,inactive tabs,loginwalls,paginationoruntriggeredscrollloadingisexcluded; neverinteracttoexposeit.",
-        "zero_source_guard": "Azeroreferencerequirescompleteindependentinitialsourcesandclosed/hiddenancestorchecks. RawDOMabsence/emptyselectors/loadingstatecannotcertifyzero.",
-        "status": "covered_by_post_contract",
-        "identity_role": "comment_author",
-        "source_evidence": [],
-        "reason": "Allinitialfeedposts/replycardsandquotedtextarealreadyrequiredandownedmatchedbyexistingpost_contract; no redundantcommentabsenceinferencefromXshell.",
-        "existing_post_qualification": {
-          "path": "article-041/qualification-posts.json",
+        "basis": "This is a changing post collection. Initially displayed posts and reply posts use the fixed version 2 post coverage contract, not a separate comment rule."
+      },
+      "post_coverage_review": {
+        "scope": "initial_load_only",
+        "observed_on": "2026-10-19",
+        "reviewed_on": "2026-10-20",
+        "observed_valid_post_count": 4,
+        "minimum_posts": 4,
+        "minimum_basis": "Require all independently observed initial posts when the baseline is at most five; otherwise require 80%, rounded up. Count distinct owned post links with author and visible text; accept attributed quote text for genuinely empty outer posts. No current identities, wording, runtime reference or freshness claim.",
+        "user_approved": true,
+        "qualification_reference": {
+          "path": "article-reference-inputs-v1/article-041/qualification-posts.json",
           "sha256": "ee7bbd86aec02e301418c4a677040e3ab86ec24cbefdf7fe69b4fd93b9109d36"
         },
-        "existing_post_contract": {
-          "version": 1,
-          "hosts": [
-            "x.com"
-          ],
-          "entry_path": "/browser_use/status/[0-9]+",
-          "html_record_selector": "article[data-testid=\"tweet\"]",
-          "html_permalink_selector": "a:has(time)",
-          "html_author_selector": "[data-testid=\"User-Name\"] > div:first-child",
-          "html_body_selector": "[data-testid=\"tweetText\"]",
-          "html_quote_selector": "div[role=\"link\"][tabindex=\"0\"]:has([data-testid=\"tweetText\"])",
-          "quote_markers": [
-            "Quote"
-          ],
-          "required_ratio": 1.0,
-          "max_reference_age_seconds": 900
+        "source_evidence": [
+          {
+            "path": "article-reference-inputs-v1/article-041/accessibility.txt",
+            "sha256": "1405c78101c20680c4ede0ad7db835d0e5e7aba7b947fbc33b8fe7764f1e061d"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-041/body.html",
+            "sha256": "ffc8d2307ac0002d2f63f273fa74ffbf32ca5581ba9e76580507f2eeb69784a9"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-041/observation-root-02/capture.json",
+            "sha256": "40baf30ba37b0496c4a5ba936f9a6be8654eba35f98fa432df6f6f9fdb0e84c0"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-041/observation-root-02/viewport.png",
+            "sha256": "cbb47cb156e9f363e4612b360cee32d79c06e1230a85a652c14825cabb2c53c3"
+          },
+          {
+            "path": "article-reference-inputs-v1/article-041/viewport.png",
+            "sha256": "737b529e221e5b67462fc3b124d42e9a69f9cdf1cb354d63ee7061a60fb47873"
+          }
+        ],
+        "limitation": "Coverage only: does not establish complete text, current membership or freshness. Interaction-triggered and hidden content is excluded.",
+        "historical_qualification_reason": "Two independent direct initial loads contained four complete owned media-feed text posts. Second capture confirms each body has positive clientHeight equal to scrollHeight and no line clamp; no Show more or quoted card is present. Require full owned text and author/link associations against a contemporaneous external reference without freezing membership.",
+        "historical_excluded_regions": [
+          "Changing engagement/profile counts, trend/sidebar/ad members and personalized account/navigation/follow state.",
+          "Video payloads, transcription, image alt text and image lettering. All four actual visible post texts remain required.",
+          "Closed Videos filter options and collapsed menu items. Current feed membership is external reference data, not frozen rule text."
+        ],
+        "historical_comment_review": {
+          "scope": "Everyordinarycomment/replytextinitiallydisplayedafterautomaticloading; no expansion,scrollloading,tabchange,loginorcommentpagination.",
+          "runtime_reference_required": false,
+          "runtime_reference_policy": "Freshindependentcompleteinitial-loadobservationboundtoexecutioncontext; oldest<=900seconds. Multipleobservationsmustbecomplete, notloadingskeletons.",
+          "counter_policy": "Visiblecommenttotals,reactioncountsandpublicationagesarenotexpectedrecordcounts.",
+          "qualification_only": true,
+          "observed_excluded_when_closed": "Comment/replycontentinsidecloseddisclosures,collapsedpanels,inactive tabs,loginwalls,paginationoruntriggeredscrollloadingisexcluded; neverinteracttoexposeit.",
+          "zero_source_guard": "Azeroreferencerequirescompleteindependentinitialsourcesandclosed/hiddenancestorchecks. RawDOMabsence/emptyselectors/loadingstatecannotcertifyzero.",
+          "status": "covered_by_post_contract",
+          "identity_role": "comment_author",
+          "source_evidence": [],
+          "reason": "Allinitialfeedposts/replycardsandquotedtextarealreadyrequiredandownedmatchedbyexistingpost_contract; no redundantcommentabsenceinferencefromXshell.",
+          "existing_post_qualification": {
+            "path": "article-041/qualification-posts.json",
+            "sha256": "ee7bbd86aec02e301418c4a677040e3ab86ec24cbefdf7fe69b4fd93b9109d36"
+          },
+          "existing_post_contract": {
+            "version": 1,
+            "hosts": [
+              "x.com"
+            ],
+            "entry_path": "/browser_use/status/[0-9]+",
+            "html_record_selector": "article[data-testid=\"tweet\"]",
+            "html_permalink_selector": "a:has(time)",
+            "html_author_selector": "[data-testid=\"User-Name\"] > div:first-child",
+            "html_body_selector": "[data-testid=\"tweetText\"]",
+            "html_quote_selector": "div[role=\"link\"][tabindex=\"0\"]:has([data-testid=\"tweetText\"])",
+            "quote_markers": [
+              "Quote"
+            ],
+            "required_ratio": 1.0,
+            "max_reference_age_seconds": 900
+          }
         }
       }
     },
@@ -68278,13 +68494,13 @@
       "id": "article-101",
       "status": "verified",
       "target_kind": "post_collection",
-      "reason": "Two fresh independent direct initial loads each contain all20 records and20 owned quoted components. Human-authorized displayed-parts scope qualifies complete default-displayed prose and column headings, including unexpanded outer/quoted prefixes; no claim of full linked originals or hidden continuations. All records retained, required_ratio1.0. The fifth outer contains only an emoji image and no ordinary text; explicit opt-in permits exactly this independently observed empty outer only with its attributed substantive quote still mandatory.",
+      "reason": "Two independently captured automatic initial loads each displayed 20 qualified records. Require at least 16 distinct owned post links with author and nonempty visible text, permitting attributed quotes for empty outer text. Retain page identity and stable labels. No runtime reference, fixed wording or current membership is required; this is coverage, not full-text completeness or freshness.",
       "qualification_reference": {
         "path": "article-reference-inputs-v1/article-101/displayed-scope-r4/qualification-posts.json",
         "sha256": "b77427a943ac17e46a26375e95c8474de9e8a380a51a6fe1b684a08360671f54"
       },
       "post_contract": {
-        "version": 1,
+        "version": 2,
         "hosts": [
           "xueqiu.com",
           "www.xueqiu.com"
@@ -68299,9 +68515,8 @@
           "Quote",
           "引用"
         ],
-        "required_ratio": 1.0,
-        "max_reference_age_seconds": 900,
-        "allow_empty_outer_with_quotes": true
+        "allow_empty_outer_with_quotes": true,
+        "minimum_posts": 16
       },
       "acceptance_contract": {
         "version": 1,
@@ -69053,47 +69268,115 @@
         }
       ],
       "excluded_regions": [
-        "All hidden collapsed continuations, including clipped quoted-column suffix; no expand/view-dialog, login, scrolling, pagination or lazy-load action. 展开/查看对话 remain stable UI controls, not body.",
-        "Image/emoji alt/title, screenshot lettering, avatar badges/icons, OCR and CSS-generated decorative separators. The fifth empty outer is not converted to invented text; its actual attributed quoted title/body stays required.",
-        "Quote dates/relative ages, reaction/engagement counts, profile/feed totals, numeric page membership, recommended users, public IP/location changes, copyright year and session-specific account state. Stable ordinary labels/controls/legal and risk text retained.",
-        "Quote wrapper physically includes its own attribution/footer counts. These are not reference body and cannot substitute for prose; tests remove quoted content while retaining all author/footer metadata. Existing record/quote ownership checks remain strict.",
-        "Old saved20-card inventory and failed second-observation attempt are not qualification inputs; these references use only the two fresh r4 captures."
+        "Interaction-triggered records and hidden continuations: no clicks, expansion, tab switching, login, pagination or scroll-triggered loading.",
+        "Image lettering, OCR, alt text and accessibility-only descriptions are not visible post text.",
+        "Changing counters, relative dates, personalized account state and recommendation members are not frozen. Current names, post identities and wording are not matched against historical captures.",
+        "Historical observations qualify the fixed count floor only; quote excerpts do not establish complete linked originals."
       ],
       "comment_review": {
-        "scope": "Everyordinarycomment/replytextinitiallydisplayedafterautomaticloading; no expansion,scrollloading,tabchange,loginorcommentpagination.",
+        "mode": "covered_by_post_contract",
         "runtime_reference_required": false,
-        "runtime_reference_policy": "Freshindependentcompleteinitial-loadobservationboundtoexecutioncontext; oldest<=900seconds. Multipleobservationsmustbecomplete, notloadingskeletons.",
-        "counter_policy": "Visiblecommenttotals,reactioncountsandpublicationagesarenotexpectedrecordcounts.",
-        "qualification_only": true,
-        "observed_excluded_when_closed": "Comment/replycontentinsidecloseddisclosures,collapsedpanels,inactive tabs,loginwalls,paginationoruntriggeredscrollloadingisexcluded; neverinteracttoexposeit.",
-        "zero_source_guard": "Azeroreferencerequirescompleteindependentinitialsourcesandclosed/hiddenancestorchecks. RawDOMabsence/emptyselectors/loadingstatecannotcertifyzero.",
-        "status": "covered_by_post_contract",
-        "identity_role": "comment_author",
-        "source_evidence": [],
-        "reason": "Allinitialfeedposts/replycardsandquotedtextarealreadyrequiredandownedmatchedbyexistingpost_contract; no redundantcommentabsenceinferencefromXshell.",
-        "existing_post_qualification": {
-          "path": "article-101/displayed-scope-r4/qualification-posts.json",
+        "basis": "This is a changing post collection. Initially displayed posts and reply posts use the fixed version 2 post coverage contract, not a separate comment rule."
+      },
+      "post_coverage_review": {
+        "scope": "initial_load_only",
+        "observed_on": "2026-10-19",
+        "reviewed_on": "2026-10-20",
+        "observed_valid_post_count": 20,
+        "minimum_posts": 16,
+        "minimum_basis": "Require all independently observed initial posts when the baseline is at most five; otherwise require 80%, rounded up. Count distinct owned post links with author and visible text; accept attributed quote text for genuinely empty outer posts. No current identities, wording, runtime reference or freshness claim.",
+        "user_approved": true,
+        "qualification_reference": {
+          "path": "article-reference-inputs-v1/article-101/displayed-scope-r4/qualification-posts.json",
           "sha256": "b77427a943ac17e46a26375e95c8474de9e8a380a51a6fe1b684a08360671f54"
         },
-        "existing_post_contract": {
-          "version": 1,
-          "hosts": [
-            "xueqiu.com",
-            "www.xueqiu.com"
-          ],
-          "entry_path": "/\\d+/\\d+",
-          "html_record_selector": "article.timeline__item",
-          "html_permalink_selector": "a.date-and-source",
-          "html_author_selector": ".user-name",
-          "html_body_selector": ".timeline__item__content > .content > div:first-child",
-          "html_quote_selector": "blockquote.timeline__item__forward",
-          "quote_markers": [
-            "Quote",
-            "引用"
-          ],
-          "required_ratio": 1.0,
-          "max_reference_age_seconds": 900,
-          "allow_empty_outer_with_quotes": true
+        "source_evidence": [
+          {
+            "path": "article-replacement-review/article-101-visible-r4-a/accessibility.txt",
+            "sha256": "cf34f7f427e211bacdd50ca747d30082ba09977e43afd17a7edf2a0d137d1e22"
+          },
+          {
+            "path": "article-replacement-review/article-101-visible-r4-a/capture.json",
+            "sha256": "c5c981b1363d42f1d7d266f773964e0235d0a3f196a894b31a3843d7d9e3100d"
+          },
+          {
+            "path": "article-replacement-review/article-101-visible-r4-a/complete-body.html",
+            "sha256": "0ce7d077d4129ededd006401c022d5a2176d7ac2b5f0c86ebf1e0b3145a3840b"
+          },
+          {
+            "path": "article-replacement-review/article-101-visible-r4-a/viewport.png",
+            "sha256": "8819d92a807b1139185e1e436b3e5d1029089f771ffde2a6c788d05816d1d504"
+          },
+          {
+            "path": "article-replacement-review/article-101-visible-r4-a/visible-prose-geometry.json",
+            "sha256": "b7e52a9513b0c57a0e17570986179e7fcbff3e1e5a243269127b9da6cc14aa84"
+          },
+          {
+            "path": "article-replacement-review/article-101-visible-r4-b/accessibility.txt",
+            "sha256": "41cf5f90e637bff5866d1d67473a8ea520d50f7790fd16220bcaec14ab851b61"
+          },
+          {
+            "path": "article-replacement-review/article-101-visible-r4-b/capture.json",
+            "sha256": "500bd2caf7320e640316a0c9efc2419deef87e1081279d848314f2e4afa92522"
+          },
+          {
+            "path": "article-replacement-review/article-101-visible-r4-b/complete-body.html",
+            "sha256": "d77624775db5935f987e72285dc5dbcb6d6db3508f9a0dd37dd7dd832b3fe929"
+          },
+          {
+            "path": "article-replacement-review/article-101-visible-r4-b/viewport.png",
+            "sha256": "2f89603d5b07a6127bebed6cc1b27c2f8eff44e1e3283b5f6c6b753b0a041e0c"
+          },
+          {
+            "path": "article-replacement-review/article-101-visible-r4-b/visible-prose-geometry.json",
+            "sha256": "273bd62d58e16de87525a55da872e337774fcacd20af2820cd76501aa8987c74"
+          }
+        ],
+        "limitation": "Coverage only: does not establish complete text, current membership or freshness. Interaction-triggered and hidden content is excluded.",
+        "historical_qualification_reason": "Two fresh independent direct initial loads each contain all20 records and20 owned quoted components. Human-authorized displayed-parts scope qualifies complete default-displayed prose and column headings, including unexpanded outer/quoted prefixes; no claim of full linked originals or hidden continuations. All records retained, required_ratio1.0. The fifth outer contains only an emoji image and no ordinary text; explicit opt-in permits exactly this independently observed empty outer only with its attributed substantive quote still mandatory.",
+        "historical_excluded_regions": [
+          "All hidden collapsed continuations, including clipped quoted-column suffix; no expand/view-dialog, login, scrolling, pagination or lazy-load action. 展开/查看对话 remain stable UI controls, not body.",
+          "Image/emoji alt/title, screenshot lettering, avatar badges/icons, OCR and CSS-generated decorative separators. The fifth empty outer is not converted to invented text; its actual attributed quoted title/body stays required.",
+          "Quote dates/relative ages, reaction/engagement counts, profile/feed totals, numeric page membership, recommended users, public IP/location changes, copyright year and session-specific account state. Stable ordinary labels/controls/legal and risk text retained.",
+          "Quote wrapper physically includes its own attribution/footer counts. These are not reference body and cannot substitute for prose; tests remove quoted content while retaining all author/footer metadata. Existing record/quote ownership checks remain strict.",
+          "Old saved20-card inventory and failed second-observation attempt are not qualification inputs; these references use only the two fresh r4 captures."
+        ],
+        "historical_comment_review": {
+          "scope": "Everyordinarycomment/replytextinitiallydisplayedafterautomaticloading; no expansion,scrollloading,tabchange,loginorcommentpagination.",
+          "runtime_reference_required": false,
+          "runtime_reference_policy": "Freshindependentcompleteinitial-loadobservationboundtoexecutioncontext; oldest<=900seconds. Multipleobservationsmustbecomplete, notloadingskeletons.",
+          "counter_policy": "Visiblecommenttotals,reactioncountsandpublicationagesarenotexpectedrecordcounts.",
+          "qualification_only": true,
+          "observed_excluded_when_closed": "Comment/replycontentinsidecloseddisclosures,collapsedpanels,inactive tabs,loginwalls,paginationoruntriggeredscrollloadingisexcluded; neverinteracttoexposeit.",
+          "zero_source_guard": "Azeroreferencerequirescompleteindependentinitialsourcesandclosed/hiddenancestorchecks. RawDOMabsence/emptyselectors/loadingstatecannotcertifyzero.",
+          "status": "covered_by_post_contract",
+          "identity_role": "comment_author",
+          "source_evidence": [],
+          "reason": "Allinitialfeedposts/replycardsandquotedtextarealreadyrequiredandownedmatchedbyexistingpost_contract; no redundantcommentabsenceinferencefromXshell.",
+          "existing_post_qualification": {
+            "path": "article-101/displayed-scope-r4/qualification-posts.json",
+            "sha256": "b77427a943ac17e46a26375e95c8474de9e8a380a51a6fe1b684a08360671f54"
+          },
+          "existing_post_contract": {
+            "version": 1,
+            "hosts": [
+              "xueqiu.com",
+              "www.xueqiu.com"
+            ],
+            "entry_path": "/\\d+/\\d+",
+            "html_record_selector": "article.timeline__item",
+            "html_permalink_selector": "a.date-and-source",
+            "html_author_selector": ".user-name",
+            "html_body_selector": ".timeline__item__content > .content > div:first-child",
+            "html_quote_selector": "blockquote.timeline__item__forward",
+            "quote_markers": [
+              "Quote",
+              "引用"
+            ],
+            "required_ratio": 1.0,
+            "max_reference_age_seconds": 900,
+            "allow_empty_outer_with_quotes": true
+          }
         }
       }
     },
@@ -71482,5 +71765,5 @@
       }
     }
   ],
-  "benchmark_revision": 8
+  "benchmark_revision": 9
 }

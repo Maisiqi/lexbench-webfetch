@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v5",
+  "id": "articles-v6",
   "name": "Article retrieval",
   "tool": "web_fetch",
   "case_count": 100,
@@ -14,8 +14,8 @@
   },
   "interaction_policy": "initial_load_only_no_click_input_scroll_pagination_login_or_ocr",
   "source_bindings": {
-    "cohort_sha256": "e8d247e70392b7c806a15776ebb253d1e68dcfae4acdac3ba93c1b6e5d4e67ae",
-    "rules_sha256": "23e810d3cf9910948ada5725d870825edcacb6c9a09d23e40dcc5b0360e63990"
+    "cohort_sha256": "2254bde55de2fde5d6bf6861608e28d459c2ebcbd9bfbc1df49b0a507a7703da",
+    "rules_sha256": "e2d2bf11b8fd7ace3438d4ee73ce1b2997c7519a413d9d8da7e24d8c4042a441"
   },
   "cases": [
     {
@@ -12836,7 +12836,7 @@
       "source_benchmark": {
         "mode": "article_post_collection",
         "post_contract": {
-          "version": 1,
+          "version": 2,
           "hosts": [
             "x.com"
           ],
@@ -12849,13 +12849,13 @@
           "quote_markers": [
             "Quote"
           ],
-          "required_ratio": 1.0,
-          "max_reference_age_seconds": 900
+          "minimum_posts": 4,
+          "allow_empty_outer_with_quotes": true
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Two independent direct initial loads contained four complete owned outer posts. Require complete owned post text and separately displayed quoted components against a contemporaneous per-evaluation reference; freeze neither member identities nor counters."
+        "reason": "Two independently captured automatic initial loads each displayed 4 qualified records. Require at least 4 distinct owned post links with author and nonempty visible text, permitting attributed quotes for empty outer text. Retain page identity and stable labels. No runtime reference, fixed wording or current membership is required; this is coverage, not full-text completeness or freshness."
       }
     },
     {
@@ -13096,7 +13096,7 @@
       "source_benchmark": {
         "mode": "article_post_collection",
         "post_contract": {
-          "version": 1,
+          "version": 2,
           "hosts": [
             "x.com"
           ],
@@ -13109,13 +13109,13 @@
           "quote_markers": [
             "Quote"
           ],
-          "required_ratio": 1.0,
-          "max_reference_age_seconds": 900
+          "minimum_posts": 8,
+          "allow_empty_outer_with_quotes": true
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Two fresh controlled direct initial loads each contain all nine records. Human-authorized displayed-parts scope qualifies each complete default-visible post component, including the unexpanded ClaudeDevs prefix and its Show more control; no claim of complete linked originals or collapsed continuations. Every initial record remains in the external reference. The docs reply includes all three ordinary owned components: post prefix, visible preview title and source-domain caption."
+        "reason": "Two independently captured automatic initial loads each displayed 9 qualified records. Require at least 8 distinct owned post links with author and nonempty visible text, permitting attributed quotes for empty outer text. Retain page identity and stable labels. No runtime reference, fixed wording or current membership is required; this is coverage, not full-text completeness or freshness."
       }
     },
     {
@@ -13298,7 +13298,7 @@
       "source_benchmark": {
         "mode": "article_post_collection",
         "post_contract": {
-          "version": 1,
+          "version": 2,
           "hosts": [
             "x.com"
           ],
@@ -13311,13 +13311,13 @@
           "quote_markers": [
             "Quote"
           ],
-          "required_ratio": 1.0,
-          "max_reference_age_seconds": 900
+          "minimum_posts": 4,
+          "allow_empty_outer_with_quotes": true
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Two independent initial-load inventories contain the same complete four outer repost records. All owning outer text, visible shortened URL labels and two separately owned displayed quotes are qualified. A read-only clip proves the third record’s quote shows exactly its first two full paragraphs plus a painted ellipsis; its third paragraph is hidden overflow. Before/after clip checks preserve720px viewport, scroll0 and four records. No full-page screenshot or expansion is used as membership proof."
+        "reason": "Two independently captured automatic initial loads each displayed 4 qualified records. Require at least 4 distinct owned post links with author and nonempty visible text, permitting attributed quotes for empty outer text. Retain page identity and stable labels. No runtime reference, fixed wording or current membership is required; this is coverage, not full-text completeness or freshness."
       }
     },
     {
@@ -13422,7 +13422,7 @@
       "source_benchmark": {
         "mode": "article_post_collection",
         "post_contract": {
-          "version": 1,
+          "version": 2,
           "hosts": [
             "x.com"
           ],
@@ -13435,13 +13435,13 @@
           "quote_markers": [
             "Quote"
           ],
-          "required_ratio": 1.0,
-          "max_reference_age_seconds": 900
+          "minimum_posts": 4,
+          "allow_empty_outer_with_quotes": true
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Two independent direct initial loads contained four complete owned media-feed text posts. Second capture confirms each body has positive clientHeight equal to scrollHeight and no line clamp; no Show more or quoted card is present. Require full owned text and author/link associations against a contemporaneous external reference without freezing membership."
+        "reason": "Two independently captured automatic initial loads each displayed 4 qualified records. Require at least 4 distinct owned post links with author and nonempty visible text, permitting attributed quotes for empty outer text. Retain page identity and stable labels. No runtime reference, fixed wording or current membership is required; this is coverage, not full-text completeness or freshness."
       }
     },
     {
@@ -35496,7 +35496,7 @@
       "source_benchmark": {
         "mode": "article_post_collection",
         "post_contract": {
-          "version": 1,
+          "version": 2,
           "hosts": [
             "xueqiu.com",
             "www.xueqiu.com"
@@ -35511,14 +35511,13 @@
             "Quote",
             "引用"
           ],
-          "required_ratio": 1.0,
-          "max_reference_age_seconds": 900,
-          "allow_empty_outer_with_quotes": true
+          "allow_empty_outer_with_quotes": true,
+          "minimum_posts": 16
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Two fresh independent direct initial loads each contain all20 records and20 owned quoted components. Human-authorized displayed-parts scope qualifies complete default-displayed prose and column headings, including unexpanded outer/quoted prefixes; no claim of full linked originals or hidden continuations. All records retained, required_ratio1.0. The fifth outer contains only an emoji image and no ordinary text; explicit opt-in permits exactly this independently observed empty outer only with its attributed substantive quote still mandatory."
+        "reason": "Two independently captured automatic initial loads each displayed 20 qualified records. Require at least 16 distinct owned post links with author and nonempty visible text, permitting attributed quotes for empty outer text. Retain page identity and stable labels. No runtime reference, fixed wording or current membership is required; this is coverage, not full-text completeness or freshness."
       }
     },
     {

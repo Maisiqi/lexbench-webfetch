@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v5",
+  "id": "articles-v6",
   "status": "qualified",
   "case_count": 100,
   "approved_on": "2026-10-20",
@@ -915,7 +915,7 @@
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     }
   ],
-  "revision": 8,
+  "revision": 9,
   "revisions": [
     {
       "revision": 2,
@@ -2366,6 +2366,49 @@
           "observed_valid_comments": 24,
           "previous_minimum": 3,
           "minimum_comments": 20
+        }
+      ]
+    },
+    {
+      "revision": 9,
+      "dataset_id": "articles-v6",
+      "approved_on": "2026-10-20",
+      "previous_dataset_id": "articles-v5",
+      "previous_git_commit": "2ef8ade8fbb9cb40c35c350f04e4101f84465fe1",
+      "previous_dataset_sha256": "fc4ee3ee680fef3f3c021978f725e80a8b32804eb5acf6c93381e26b256f8073",
+      "previous_cohort_sha256": "e8d247e70392b7c806a15776ebb253d1e68dcfae4acdac3ba93c1b6e5d4e67ae",
+      "previous_rules_sha256": "23e810d3cf9910948ada5725d870825edcacb6c9a09d23e40dcc5b0360e63990",
+      "basis": "Require all independently observed initial posts when the baseline is at most five; otherwise require 80%, rounded up. Count distinct owned post links with author and visible text; accept attributed quote text for genuinely empty outer posts. No current identities, wording, runtime reference or freshness claim.",
+      "changes": [
+        {
+          "id": "article-038",
+          "action": "fixed_post_coverage",
+          "observed_valid_posts": 4,
+          "minimum_posts": 4
+        },
+        {
+          "id": "article-039",
+          "action": "fixed_post_coverage",
+          "observed_valid_posts": 9,
+          "minimum_posts": 8
+        },
+        {
+          "id": "article-040",
+          "action": "fixed_post_coverage",
+          "observed_valid_posts": 4,
+          "minimum_posts": 4
+        },
+        {
+          "id": "article-041",
+          "action": "fixed_post_coverage",
+          "observed_valid_posts": 4,
+          "minimum_posts": 4
+        },
+        {
+          "id": "article-101",
+          "action": "fixed_post_coverage",
+          "observed_valid_posts": 20,
+          "minimum_posts": 16
         }
       ]
     }

@@ -398,6 +398,28 @@ class ArticleContracts(unittest.TestCase):
         self.assertNotIn('article_reference_status', rescored)
         self.assertNotIn('article_posts_pass', rescored)
 
+        static = copy.deepcopy(rule)
+        static['post_contract'] = {key: value for key, value in contract.items()
+                                   if key not in {'required_ratio', 'max_reference_age_seconds'}}
+        static['post_contract'].update(version=2, minimum_posts=2,
+                                       allow_empty_outer_with_quotes=True)
+        source = self.root / 'independent-source.txt'
+        source.write_text('Two independently displayed posts with visible author and text.')
+        static['post_coverage_review'] = {'source_evidence': [
+            {'path': source.name, 'sha256': hashlib.sha256(source.read_bytes()).hexdigest()}]}
+        static_task = compile_case(case, static, self.root)
+        self.assertEqual(static_task['source_benchmark']['post_contract']['minimum_posts'], 2)
+        static['post_contract']['minimum_posts'] = 3
+        with self.assertRaisesRegex(ValueError, 'exceeds independently observed'):
+            compile_case(case, static, self.root)
+        static['post_contract']['minimum_posts'] = 2
+        source.write_text('Changed capture')
+        with self.assertRaisesRegex(ValueError, 'Changed article collection source'):
+            compile_case(case, static, self.root)
+        static['post_coverage_review']['source_evidence'] = []
+        with self.assertRaisesRegex(ValueError, 'requires source evidence'):
+            compile_case(case, static, self.root)
+
         incomplete = copy.deepcopy(reference)
         incomplete['records'][0]['body_parts'][0]['complete_initial_text'] = False
         raw = json.dumps(incomplete).encode()
@@ -452,7 +474,7 @@ class ArticleContracts(unittest.TestCase):
                             for change in revision['changes']))
         self.assertTrue(all(c['platform'] != '搜狗微信' for c in cohort['cases']))
         final = next(r for r in cohort['revisions'] if r['revision'] == 4)
-        self.assertEqual(cohort['revisions'][-1]['revision'], 8)
+        self.assertEqual(cohort['revisions'][-1]['revision'], 9)
         self.assertEqual({c['id'] for c in final['changes'] if c['action'] == 'replace'},
                          {'article-001', 'article-002', 'article-003', 'article-079', 'article-082'})
         self.assertEqual([c['id'] for c in final['changes'] if c['action'] == 'remove'],
@@ -460,7 +482,7 @@ class ArticleContracts(unittest.TestCase):
         self.assertTrue(all(rule['status'] == 'verified' for rule in rules))
         self.assertEqual(sum(rule['target_kind'] == 'post_collection' for rule in rules), 5)
         fixed = [r for r in rules if r['target_kind'] == 'fixed_article']
-        self.assertEqual(cohort['id'], 'articles-v5')
+        self.assertEqual(cohort['id'], 'articles-v6')
         self.assertEqual(len(fixed), 95)
         self.assertEqual(sum('title_contract' in r for r in fixed), 90)
         self.assertEqual(sum('comment_contract' in r for r in fixed), 20)
@@ -483,8 +505,10 @@ class ArticleContracts(unittest.TestCase):
                                    'article-038': 'require_all_initial_posts',
                                    'article-040': 'require_all_initial_posts',
                                    'article-041': 'require_all_initial_posts'})
-        self.assertTrue(all(r['post_contract']['required_ratio'] == 1.0
-                            for r in rules if r['target_kind'] == 'post_collection'))
+        posts = [r for r in rules if r['target_kind'] == 'post_collection']
+        self.assertTrue(all(r['post_contract']['version'] == 2 for r in posts))
+        self.assertEqual([r['post_contract']['minimum_posts'] for r in posts], [4, 8, 4, 4, 16])
+        self.assertTrue(all(r['post_coverage_review']['source_evidence'] for r in posts))
 
     def test_definition_hashes_bind_the_parsed_snapshot(self):
         directory = self.root / "snapshot-definitions"
