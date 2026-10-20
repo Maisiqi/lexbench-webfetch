@@ -3108,7 +3108,16 @@
           "Post your reply"
         ],
         "version": 2,
-        "minimum_comments": 6
+        "minimum_comments": 6,
+        "text_scope": {
+          "body_end": "t really coding - I just see stuff, say stuff, run stuff, and copy paste stuff, and it mostly works.",
+          "end_markers": [
+            "Relevant people",
+            "Trending now",
+            "Terms",
+            "Privacy"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -3120,6 +3129,20 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 6,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-comment-coverage-r7/article-005/source-capture-2.json",
+          "sha256": "08cac7ca6670c16f5af97630fc353314f8871b2a0cc38a719e251daa6208e2ef",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "Relevant people",
+          "Trending now",
+          "Terms",
+          "Privacy"
+        ]
       }
     },
     {
@@ -5758,7 +5781,14 @@
           "评论"
         ],
         "version": 2,
-        "minimum_comments": 1
+        "minimum_comments": 1,
+        "text_scope": {
+          "body_end": "业跟踪\n、\n产业链基本面拆解类长文\n。\n\n会尽量把复杂的宏观逻辑通俗化\n，\n把枯燥产业数据提炼成可跟踪的观察指标\n。\n不追逐短线热点炒作\n，\n更关注中长期产业趋势的变化\n。\n#宏观经济# #产业研究#",
+          "end_markers": [
+            "热门话题",
+            "热股榜"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -5770,6 +5800,18 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 1,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-009/settled-page.json",
+          "sha256": "4586ad6437e9360bf6ca20252d6f407b7cb6a7d05c57e45cab52b724c959c341",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "热门话题",
+          "热股榜"
+        ]
       }
     },
     {
@@ -5914,12 +5956,6 @@
             "id": "stable-14",
             "alternatives": [
               "已认证机构号"
-            ]
-          },
-          {
-            "id": "stable-15",
-            "alternatives": [
-              "编辑于 2025-10-15 15:41・北京"
             ]
           },
           {
@@ -6091,24 +6127,6 @@
             ]
           },
           {
-            "id": "stable-44",
-            "alternatives": [
-              "🔥技术岗高薪必学：AI大模型技术原理+应用开发+模型训练"
-            ]
-          },
-          {
-            "id": "stable-45",
-            "alternatives": [
-              "￥0.00"
-            ]
-          },
-          {
-            "id": "stable-46",
-            "alternatives": [
-              "就业无忧"
-            ]
-          },
-          {
             "id": "stable-47",
             "alternatives": [
               "如今ChatGPT、Midjourney和cursor等工具已将人工智能（AI）带入主流。这使得AI比以往任何时候都更加重要。"
@@ -6216,13 +6234,6 @@
         {
           "id": "stable-14",
           "phrase": "已认证机构号",
-          "region": "article_title_byline_and_publication",
-          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
-          "observed_on": "2026-10-19"
-        },
-        {
-          "id": "stable-15",
-          "phrase": "编辑于 2025-10-15 15:41・北京",
           "region": "article_title_byline_and_publication",
           "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
           "observed_on": "2026-10-19"
@@ -6424,27 +6435,6 @@
           "observed_on": "2026-10-19"
         },
         {
-          "id": "stable-44",
-          "phrase": "🔥技术岗高薪必学：AI大模型技术原理+应用开发+模型训练",
-          "region": "fixed_body_rendered_course_card",
-          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
-          "observed_on": "2026-10-19"
-        },
-        {
-          "id": "stable-45",
-          "phrase": "￥0.00",
-          "region": "fixed_body_rendered_course_card",
-          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
-          "observed_on": "2026-10-19"
-        },
-        {
-          "id": "stable-46",
-          "phrase": "就业无忧",
-          "region": "fixed_body_rendered_course_card",
-          "basis": "Ordinary original-language visible after-dismissal article/site text independently located in full DOM, AX and screenshots. No quota; fixed body heading/card/opening/ending anchors keep short natural components mandatory. Engagement totals and session-specific prompts excluded.",
-          "observed_on": "2026-10-19"
-        },
-        {
           "id": "stable-47",
           "phrase": "如今ChatGPT、Midjourney和cursor等工具已将人工智能（AI）带入主流。这使得AI比以往任何时候都更加重要。",
           "region": "fixed_body_opening_summary_original_author",
@@ -6594,6 +6584,35 @@
         "valid_unique_text_record_count": 0,
         "excluded_empty_text_count": 0,
         "excluded_placeholder_count": 0
+      },
+      "anchor_revision_review": {
+        "basis": "Remove exact promotional, edit-time and locale/timezone-sensitive hard anchors; original body text remains unchanged.",
+        "removed_anchors": [
+          {
+            "id": "stable-15",
+            "alternatives": [
+              "编辑于 2025-10-15 15:41・北京"
+            ]
+          },
+          {
+            "id": "stable-44",
+            "alternatives": [
+              "🔥技术岗高薪必学：AI大模型技术原理+应用开发+模型训练"
+            ]
+          },
+          {
+            "id": "stable-45",
+            "alternatives": [
+              "￥0.00"
+            ]
+          },
+          {
+            "id": "stable-46",
+            "alternatives": [
+              "就业无忧"
+            ]
+          }
+        ]
       }
     },
     {
@@ -8884,7 +8903,14 @@
           "评论"
         ],
         "version": 2,
-        "minimum_comments": 3
+        "minimum_comments": 3,
+        "text_scope": {
+          "body_end": "eJS Event Loop Part 4\nEvent Loop Best Practices — NodeJS Event Loop Part 5\nUsing requestIdleCallback",
+          "end_markers": [
+            "加个关注，精彩更新不错过~",
+            "相关推荐"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -8896,6 +8922,18 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 3,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-014/settled-page.json",
+          "sha256": "48f94c8700aacff884d21ad9d4c023f82c3bdbd535898bad527293877427f7dd",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "加个关注，精彩更新不错过~",
+          "相关推荐"
+        ]
       }
     },
     {
@@ -11327,7 +11365,14 @@
           "新评论"
         ],
         "version": 2,
-        "minimum_comments": 4
+        "minimum_comments": 4,
+        "text_scope": {
+          "body_end": "时中央文化部和华东军管委批准设立筹建上海博物馆，给上博的定位是艺术博物馆。七十多年过去了，对上博而言我们开拓现当代艺术收藏是没有任何问题，因为跟它的定位是吻合的。未来，上海博物馆也会在这方面加大力度。",
+          "end_markers": [
+            "加载中",
+            "关于澎湃"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -11339,6 +11384,18 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 4,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-017/settled-page.json",
+          "sha256": "c9174a817ba41ae811eee5fcf3467955a8c60005a4fdc650c9b5772e482f3c83",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "加载中",
+          "关于澎湃"
+        ]
       }
     },
     {
@@ -15614,7 +15671,14 @@
           "最新评论"
         ],
         "version": 2,
-        "minimum_comments": 8
+        "minimum_comments": 8,
+        "text_scope": {
+          "body_end": "欢咖啡开始”讲述了品牌进入中国20周年的故事。看起来这个品牌正努力变成一个正值年轻的少年形象，朝气蓬勃、还有梦想，刚满20岁。毕竟在经历了过去20年中国市场的开拓之后，它需要找到更多吸引消费者的东西。",
+          "end_markers": [
+            "回顶部",
+            "Copyright ©"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -15626,6 +15690,18 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 8,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-reference-inputs-v1/article-023/dom.html",
+          "sha256": "3f742d871eec65555d43f42f72f1f326438a1187f843d8793f7dd5553d43ce43",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "回顶部",
+          "Copyright ©"
+        ]
       }
     },
     {
@@ -16880,7 +16956,13 @@
           "我要发表看法"
         ],
         "version": 2,
-        "minimum_comments": 204
+        "minimum_comments": 204,
+        "text_scope": {
+          "body_end": "lex-start | flex-end | center | baseline | stretch;\n}\n\n\n该属性可能取6个值，除了auto，其他都与align-items属性完全一致。\n\n（完）",
+          "end_markers": [
+            "我要发表看法"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -16892,6 +16974,17 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 204,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-025/current-page.json",
+          "sha256": "8980ee471d4d0c3b76a5968d31cd7e2bd1d7032f86be0759b16082b01b59ef2b",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "我要发表看法"
+        ]
       }
     },
     {
@@ -17689,21 +17782,9 @@
             ]
           },
           {
-            "id": "body-33",
-            "alternatives": [
-              "7月21日"
-            ]
-          },
-          {
             "id": "body-34",
             "alternatives": [
               "Firewall with Bradley Tusk"
-            ]
-          },
-          {
-            "id": "body-35",
-            "alternatives": [
-              "在 Spotify 上收藏"
             ]
           },
           {
@@ -18024,27 +18105,11 @@
           "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
         },
         {
-          "id": "body-33",
-          "region": "authored_article_body",
-          "basis": "Actual ordinary Spotify card text independently present in BOTH pre-fullpage native AX captures and visually readable in fullpage crop1; excludes cover-art letters and playback icon descriptions.",
-          "observed_on": "2026-10-19",
-          "phrase": "7月21日",
-          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
-        },
-        {
           "id": "body-34",
           "region": "authored_article_body",
           "basis": "Actual ordinary Spotify card text independently present in BOTH pre-fullpage native AX captures and visually readable in fullpage crop1; excludes cover-art letters and playback icon descriptions.",
           "observed_on": "2026-10-19",
           "phrase": "Firewall with Bradley Tusk",
-          "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
-        },
-        {
-          "id": "body-35",
-          "region": "authored_article_body",
-          "basis": "Actual ordinary Spotify card text independently present in BOTH pre-fullpage native AX captures and visually readable in fullpage crop1; excludes cover-art letters and playback icon descriptions.",
-          "observed_on": "2026-10-19",
-          "phrase": "在 Spotify 上收藏",
           "evidence": "article-replacement-review/article-027-modal-policy-r3-after/complete-body.html; accessibility.txt; fullpage.png (visual QA only)"
         },
         {
@@ -18217,7 +18282,14 @@
           "Comments"
         ],
         "version": 2,
-        "minimum_comments": 1
+        "minimum_comments": 1,
+        "text_scope": {
+          "body_end": "it as well as you can. The tips above are certainly not the entirety of sound writing advice, but they have worked for me. I hope some of them work for you too!",
+          "end_markers": [
+            "Ready for more?",
+            "Privacy"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -18229,6 +18301,35 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 1,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "anchor_revision_review": {
+        "basis": "Remove exact promotional, edit-time and locale/timezone-sensitive hard anchors; original body text remains unchanged.",
+        "removed_anchors": [
+          {
+            "id": "body-33",
+            "alternatives": [
+              "7月21日"
+            ]
+          },
+          {
+            "id": "body-35",
+            "alternatives": [
+              "在 Spotify 上收藏"
+            ]
+          }
+        ]
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-027/current-page.json",
+          "sha256": "57b537aed902076e27a7db97aa27514e094dedda75ddc99994d791917210475a",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "Ready for more?",
+          "Privacy"
+        ]
       }
     },
     {
@@ -19223,7 +19324,13 @@
           "Comments"
         ],
         "version": 2,
-        "minimum_comments": 18
+        "minimum_comments": 18,
+        "text_scope": {
+          "body_end": "ules\nWhat makes WebAssembly fast?\nWebAssembly, the future:\nWhere is WebAssembly now and what’s next?",
+          "end_markers": [
+            "Comments are closed for this article."
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -19235,6 +19342,17 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 18,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-030/current-page.json",
+          "sha256": "8155488be5e8eb25ea59d0e27b0e0408c4eaeefa63671292b20404fa215a70de",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "Comments are closed for this article."
+        ]
       }
     },
     {
@@ -20778,7 +20896,15 @@
           "Comments"
         ],
         "version": 2,
-        "minimum_comments": 20
+        "minimum_comments": 20,
+        "text_scope": {
+          "body_end": "end up on the correct Stack Overflow page 💪🏼 Feel free to reach out to me if you have any questions!",
+          "end_markers": [
+            "Some comments may only be visible to logged-in visitors.",
+            "Code of Conduct",
+            "More from"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -20790,6 +20916,19 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 20,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-032/current-page.json",
+          "sha256": "1492d6cd7b9dc575c7fe3f0bead069a7da373d28512a3227682aa1dec692ba38",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "Some comments may only be visible to logged-in visitors.",
+          "Code of Conduct",
+          "More from"
+        ]
       }
     },
     {
@@ -27750,7 +27889,14 @@
           "评论"
         ],
         "version": 2,
-        "minimum_comments": 24
+        "minimum_comments": 24,
+        "text_scope": {
+          "body_end": "。\n\n以上内容仅代表个人观点，不作为投资建议，请大家理性。\n\n@今日话题 @中泰证券资管\n\n#价值投资# $中泰星元灵活配置混合A(F006567)$ $中泰兴诚价值一年持有混合A(F010728)$",
+          "end_markers": [
+            "热门话题",
+            "热股榜"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -27762,6 +27908,18 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 24,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-044/settled-page.json",
+          "sha256": "b01daa775fd6b0e84f3e47da330e79525822f1db079dd26de446a1dfea6e9812",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "热门话题",
+          "热股榜"
+        ]
       }
     },
     {
@@ -30028,7 +30186,15 @@
           "提交评论"
         ],
         "version": 2,
-        "minimum_comments": 3
+        "minimum_comments": 3,
+        "text_scope": {
+          "body_end": "按值传递、call、apply、bind、new、继承等难点概念。\n\n如果有错误或者不严谨的地方，请务必给予指正，十分感谢。如果喜欢或者有所启发，欢迎star，对作者也是一种鼓励。",
+          "end_markers": [
+            "除特别声明外，",
+            "使用 SegmentFault 发布",
+            "服务协议"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -30040,6 +30206,19 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 3,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-047/settled-page.json",
+          "sha256": "ede0a0ca68631388634739ed6969f486c68b034dd1d117f6c63b19abc970d105",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "除特别声明外，",
+          "使用 SegmentFault 发布",
+          "服务协议"
+        ]
       }
     },
     {
@@ -31282,7 +31461,14 @@
           "Comments"
         ],
         "version": 2,
-        "minimum_comments": 1
+        "minimum_comments": 1,
+        "text_scope": {
+          "body_end": "11：只能说，还好祖师爷不是老顽固，冥顽不化。不然linux内核未来真的药丸💊。 毕竟总不能让生生世世的年轻人都去玩c对吧。时代在发展毕竟。大人，时代变了。\n\n---END---",
+          "end_markers": [
+            "推荐阅读",
+            "关于我们"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -31294,6 +31480,18 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 1,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-049/canonical-entry-attempt.json",
+          "sha256": "35d857474d17a407bf229e17fad92b20cf6c233fdfdaf3d8952a4f7f9c9e4a50",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "推荐阅读",
+          "关于我们"
+        ]
       }
     },
     {
@@ -33189,7 +33387,14 @@
           "评论"
         ],
         "version": 2,
-        "minimum_comments": 4
+        "minimum_comments": 4,
+        "text_scope": {
+          "body_end": "」的末端，也意味着更廉价的三合一咖啡要更加亲民，有着更大的市场受众和需求。这种需求在很长一段时间里都不会被精品咖啡所取代，而真正要担心精品咖啡冲击的，恐怕会是街头巷角的小咖啡店们。",
+          "end_markers": [
+            "推荐文章",
+            "本篇来自栏目"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -33201,6 +33406,18 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 4,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-052/settled-page.json",
+          "sha256": "8ca35477c8562792043df073e0ebef5f93af1bddd0cd2d98d0c4a01a04808426",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "推荐文章",
+          "本篇来自栏目"
+        ]
       }
     },
     {
@@ -34420,7 +34637,14 @@
           "评论"
         ],
         "version": 2,
-        "minimum_comments": 4
+        "minimum_comments": 4,
+        "text_scope": {
+          "body_end": "的诸多分享、吐槽来看，大部分的人都长久的隔离中寻求生活的幸福感。大家的情绪没有那么糟糕，想要的东西也没那么夸张。\n\n当隔离在家需求都能满足，并没那么痛苦时，大部分人其实都没那么想要报复性消费。相比走出家门疯狂消费，大家其实更希望生活秩序恢复正常。\n\n想喝奶茶喝奶茶，想晒太阳晒太阳，上班不用担心感染，恢复正常生活就很好。",
+          "end_markers": [
+            "推荐文章",
+            "本篇来自栏目"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -34432,6 +34656,18 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 4,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-053/settled-page.json",
+          "sha256": "d9d65e874064025c09c7ab4bbfd50c89f0362a01e2ea4051b829a81b689ee186",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "推荐文章",
+          "本篇来自栏目"
+        ]
       }
     },
     {
@@ -43934,7 +44170,15 @@
           "Comments"
         ],
         "version": 2,
-        "minimum_comments": 11
+        "minimum_comments": 11,
+        "text_scope": {
+          "body_end": "n offers us a way forward, finally allowing us to “design for the ebb and flow of things.”",
+          "end_markers": [
+            "Comments navigation",
+            "Got something to say?",
+            "More from ALA"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -43946,6 +44190,19 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 11,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-068/current-page.json",
+          "sha256": "e2870f1b77553c54fb83cc4bc379a356e57d1f98a997a61c1a329cf3309ca27c",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "Comments navigation",
+          "Got something to say?",
+          "More from ALA"
+        ]
       }
     },
     {
@@ -62557,7 +62814,13 @@
           "Comments"
         ],
         "version": 2,
-        "minimum_comments": 12
+        "minimum_comments": 12,
+        "text_scope": {
+          "body_end": " focus on Rust and WebAssembly.\n\nhttps://twitter.com/linclark\n@linclark\n\nMore articles by Lin Clark…",
+          "end_markers": [
+            "Comments are closed for this article."
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -62569,6 +62832,17 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 12,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-092/current-page.json",
+          "sha256": "945b4bc42ecc5bfd77a182ebb9e90f7e9559172afa81b3723f5a2e513b85d01e",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "Comments are closed for this article."
+        ]
       }
     },
     {
@@ -62643,18 +62917,6 @@
             "id": "stable-2",
             "alternatives": [
               "Lydia Hallie"
-            ]
-          },
-          {
-            "id": "stable-3",
-            "alternatives": [
-              "Posted on 2020年4月15日"
-            ]
-          },
-          {
-            "id": "stable-4",
-            "alternatives": [
-              "Edited on 2024年5月1日"
             ]
           },
           {
@@ -62817,12 +63079,6 @@
             "id": "stable-31",
             "alternatives": [
               "Chrome and Safari call this a \"resolved\" promise, which is true, but kinda misleading…"
-            ]
-          },
-          {
-            "id": "stable-32",
-            "alternatives": [
-              "5:21 PM · Apr 9, 2020"
             ]
           },
           {
@@ -63228,12 +63484,6 @@
             ]
           },
           {
-            "id": "stable-100",
-            "alternatives": [
-              "2019年7月21日"
-            ]
-          },
-          {
             "id": "stable-101",
             "alternatives": [
               "More from Lydia Hallie"
@@ -63325,20 +63575,6 @@
           "id": "stable-2",
           "phrase": "Lydia Hallie",
           "region": "author",
-          "basis": "Ordinary stable article/title/attribution/navigation/sidebar/control wording observed in initial rendered/DOM evidence. The exact fixed loaded-quote phrase is mandatory so a parent-only response cannot omit the short ordinary quote. No quota applied.",
-          "observed_on": "2026-10-19"
-        },
-        {
-          "id": "stable-3",
-          "phrase": "Posted on 2020年4月15日",
-          "region": "publication",
-          "basis": "Ordinary stable article/title/attribution/navigation/sidebar/control wording observed in initial rendered/DOM evidence. The exact fixed loaded-quote phrase is mandatory so a parent-only response cannot omit the short ordinary quote. No quota applied.",
-          "observed_on": "2026-10-19"
-        },
-        {
-          "id": "stable-4",
-          "phrase": "Edited on 2024年5月1日",
-          "region": "publication",
           "basis": "Ordinary stable article/title/attribution/navigation/sidebar/control wording observed in initial rendered/DOM evidence. The exact fixed loaded-quote phrase is mandatory so a parent-only response cannot omit the short ordinary quote. No quota applied.",
           "observed_on": "2026-10-19"
         },
@@ -63527,13 +63763,6 @@
         {
           "id": "stable-31",
           "phrase": "Chrome and Safari call this a \"resolved\" promise, which is true, but kinda misleading…",
-          "region": "loaded_iframe_quote",
-          "basis": "Ordinary stable article/title/attribution/navigation/sidebar/control wording observed in initial rendered/DOM evidence. The exact fixed loaded-quote phrase is mandatory so a parent-only response cannot omit the short ordinary quote. No quota applied.",
-          "observed_on": "2026-10-19"
-        },
-        {
-          "id": "stable-32",
-          "phrase": "5:21 PM · Apr 9, 2020",
           "region": "loaded_iframe_quote",
           "basis": "Ordinary stable article/title/attribution/navigation/sidebar/control wording observed in initial rendered/DOM evidence. The exact fixed loaded-quote phrase is mandatory so a parent-only response cannot omit the short ordinary quote. No quota applied.",
           "observed_on": "2026-10-19"
@@ -64008,13 +64237,6 @@
           "observed_on": "2026-10-19"
         },
         {
-          "id": "stable-100",
-          "phrase": "2019年7月21日",
-          "region": "author_sidebar",
-          "basis": "Ordinary stable article/title/attribution/navigation/sidebar/control wording observed in initial rendered/DOM evidence. The exact fixed loaded-quote phrase is mandatory so a parent-only response cannot omit the short ordinary quote. No quota applied.",
-          "observed_on": "2026-10-19"
-        },
-        {
           "id": "stable-101",
           "phrase": "More from Lydia Hallie",
           "region": "author_sidebar",
@@ -64237,7 +64459,15 @@
           "Comments"
         ],
         "version": 2,
-        "minimum_comments": 16
+        "minimum_comments": 16,
+        "text_scope": {
+          "body_end": "The ES6 promises spec, as per September 2013 TC39 meeting",
+          "end_markers": [
+            "Some comments may only be visible to logged-in visitors.",
+            "Code of Conduct",
+            "More from"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -64249,6 +64479,48 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 16,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "anchor_revision_review": {
+        "basis": "Remove exact promotional, edit-time and locale/timezone-sensitive hard anchors; original body text remains unchanged.",
+        "removed_anchors": [
+          {
+            "id": "stable-3",
+            "alternatives": [
+              "Posted on 2020年4月15日"
+            ]
+          },
+          {
+            "id": "stable-4",
+            "alternatives": [
+              "Edited on 2024年5月1日"
+            ]
+          },
+          {
+            "id": "stable-32",
+            "alternatives": [
+              "5:21 PM · Apr 9, 2020"
+            ]
+          },
+          {
+            "id": "stable-100",
+            "alternatives": [
+              "2019年7月21日"
+            ]
+          }
+        ]
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-093/current-page.json",
+          "sha256": "fd477a5b9994c79c9bd7dd0ab770d4cafb9bc774370f55928d04dfd89a6d0fac",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "Some comments may only be visible to logged-in visitors.",
+          "Code of Conduct",
+          "More from"
+        ]
       }
     },
     {
@@ -65783,7 +66055,13 @@
           "我要发表看法"
         ],
         "version": 2,
-        "minimum_comments": 56
+        "minimum_comments": 56,
+        "text_scope": {
+          "body_end": "\n训练材料用完之日（2023 #253）\n\n英国的名校签证，伯克利的计算机教育（2022 #203）\n\n机器翻译是对译者的侮辱吗？（2021 #153）\n\n信息的半衰期（2020 #103）\n\n（完）",
+          "end_markers": [
+            "我要发表看法"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -65795,6 +66073,17 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 56,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-095/current-page.json",
+          "sha256": "51aec8cff8668736c4ee0dc778711d120587a4be4a269615190f60a7911d85fc",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "我要发表看法"
+        ]
       }
     },
     {
@@ -66930,7 +67219,14 @@
           "全部回复："
         ],
         "version": 2,
-        "minimum_comments": 40
+        "minimum_comments": 40,
+        "text_scope": {
+          "body_end": "态，就像女人召唤她们的儿女，土地召唤着黑夜来临。”\n    这样的文字让我们的心面对物欲的汹涌波涛还能够有片刻的宁静，它让我们感受到的不是消沉而是勃勃的生机，是对生命的召唤。这样的文字，你能不感动吗？",
+          "end_markers": [
+            "> 我来回复",
+            "关于豆瓣"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -66942,6 +67238,18 @@
         "excluded_placeholder_count": 7,
         "minimum_comments": 40,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-098/source-capture-2.json",
+          "sha256": "27e0d4d1684cfe09b7b583b038d291bb9c85cce3fa83c508a8f2d95f1068f1ab",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "> 我来回复",
+          "关于豆瓣"
+        ]
       }
     },
     {
@@ -70581,7 +70889,15 @@
           "评论"
         ],
         "version": 2,
-        "minimum_comments": 20
+        "minimum_comments": 20,
+        "text_scope": {
+          "body_end": "学的\n，\n是他提问的方式：这东西我懂吗？用户买的到底是什么？风险什么时候兑现？钱是谁付的？\n\n想清楚这几个问题\n，\n比追随任何人的观点都重要\n。\n\n以上仅为个人对公开发言的理解\n，\n不构成投资建议\n。",
+          "end_markers": [
+            "抱歉，本帖讨论暂时受限",
+            "热门话题",
+            "热股榜"
+          ]
+        }
       },
       "comment_coverage_review": {
         "status": "visible_text",
@@ -70593,6 +70909,19 @@
         "excluded_placeholder_count": 0,
         "minimum_comments": 20,
         "minimum_basis": "Require all independently observed valid text records when the count is at most five; otherwise require 80%, rounded up. The baseline is the frozen authoring count, not a live page counter."
+      },
+      "comment_boundary_review": {
+        "source_evidence": {
+          "path": "article-completeness-r5/article-103/current-page.json",
+          "sha256": "275e19f01b91c0a8cc7c4e492e4131375656597c4387e23ce0b19fc35f9625e3",
+          "scope": "complete_initial_page"
+        },
+        "basis": "Reviewed standalone labels after the final captured initial comment record; not inferred from all stable anchors. Body ending is a scope hint, not an extra body pass requirement.",
+        "end_markers": [
+          "抱歉，本帖讨论暂时受限",
+          "热门话题",
+          "热股榜"
+        ]
       }
     },
     {
@@ -71765,5 +72094,5 @@
       }
     }
   ],
-  "benchmark_revision": 9
+  "benchmark_revision": 10
 }

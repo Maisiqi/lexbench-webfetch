@@ -1,10 +1,11 @@
 # Article suite authoring
 
-The registered `articles` suite (`articles-v6`) contains 100 qualified URLs: 95 fixed articles
+The registered `articles` suite (`articles-v7`) contains 100 qualified URLs: 95 fixed articles
 and five changing post collections. `cohort.json` preserves candidate identities
 and revision history; `rules.json` contains all 100 verified contracts. Public
 tasks, the catalog and input manifest bind the complete executable dataset.
 Full reference bodies and source observations remain external.
+See the [PR review decisions](../../../../../docs/reviews/pr-5.md) for revision 10 evidence and tradeoffs.
 
 Revision 2 adopted five separately approved specific articles (044, 053, 063,
 091 and 104). Revision 3 removed 042, 062, 083 and 097 at the user's request.
@@ -32,7 +33,8 @@ Revision 9 replaces the five runtime-reference post contracts with fixed coverag
 contracts: minima 4, 8, 4, 4 and 16 for 038, 039, 040, 041 and 101 respectively.
 All 95 fixed tasks remain byte-identical. The five collections preserve their
 URLs, page-identity checks and stable anchors; only their post contracts and explanatory review text change.
-Previous `articles-v1` through `articles-v5` inputs and all four earlier suites remain unchanged.
+Revision 10 removes ten brittle exact anchors in 010, 027 and 093 and bounds text comment parsing in all 20 comment cases using reviewed body endings and subsequent section labels. Body references, titles, numeric floors and post contracts remain unchanged.
+Previous `articles-v1` through `articles-v6` inputs and all four earlier suites remain unchanged.
 
 The four original Weixin cases could not be independently observed because of
 an authoring-tool site-safety restriction. The final suite uses different
@@ -152,7 +154,12 @@ record IDs, repeated identical author-and-text pairs count once. Source identity
 as the author for visible pingbacks. HTML uses the reviewed selectors; text and
 Markdown need recognizable author-and-body records within the comment section.
 Author headings, standalone linked or bold names are supported; colon-labelled
-authors require an explicit Markdown comment-section heading. Bare names and
+authors require an explicit Markdown comment-section heading or the reviewed body ending.
+Current text contracts locate the comment component after that ending, or use an
+explicit comment heading if the ending is absent. Reviewed standalone end labels
+and equal-or-higher headings terminate the component. A navigation label alone
+cannot establish it. These hints are not additional required output anchors;
+they keep article text and subsequent recommendations from supplying comments. Bare names and
 metadata-only text are ambiguous and are not guessed as valid comments.
 
 The minimum equals the independently reviewed valid record count when that count

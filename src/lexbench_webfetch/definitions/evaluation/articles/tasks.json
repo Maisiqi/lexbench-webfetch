@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v6",
+  "id": "articles-v7",
   "name": "Article retrieval",
   "tool": "web_fetch",
   "case_count": 100,
@@ -14,8 +14,8 @@
   },
   "interaction_policy": "initial_load_only_no_click_input_scroll_pagination_login_or_ocr",
   "source_bindings": {
-    "cohort_sha256": "2254bde55de2fde5d6bf6861608e28d459c2ebcbd9bfbc1df49b0a507a7703da",
-    "rules_sha256": "e2d2bf11b8fd7ace3438d4ee73ce1b2997c7519a413d9d8da7e24d8c4042a441"
+    "cohort_sha256": "c75681dc17bf915aa24bc79b81636d65a112c347d4c6f96c90505f7f089e4d9d",
+    "rules_sha256": "755c9fea31d4ccc0b9a6f11fd334ef889f7645f69c46130919147f03eb14c284"
   },
   "cases": [
     {
@@ -1623,7 +1623,16 @@
             "Post your reply"
           ],
           "version": 2,
-          "minimum_comments": 6
+          "minimum_comments": 6,
+          "text_scope": {
+            "body_end": "t really coding - I just see stuff, say stuff, run stuff, and copy paste stuff, and it mostly works.",
+            "end_markers": [
+              "Relevant people",
+              "Trending now",
+              "Terms",
+              "Privacy"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -2934,7 +2943,14 @@
             "评论"
           ],
           "version": 2,
-          "minimum_comments": 1
+          "minimum_comments": 1,
+          "text_scope": {
+            "body_end": "业跟踪\n、\n产业链基本面拆解类长文\n。\n\n会尽量把复杂的宏观逻辑通俗化\n，\n把枯燥产业数据提炼成可跟踪的观察指标\n。\n不追逐短线热点炒作\n，\n更关注中长期产业趋势的变化\n。\n#宏观经济# #产业研究#",
+            "end_markers": [
+              "热门话题",
+              "热股榜"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -3037,12 +3053,6 @@
             "id": "stable-14",
             "alternatives": [
               "已认证机构号"
-            ]
-          },
-          {
-            "id": "stable-15",
-            "alternatives": [
-              "编辑于 2025-10-15 15:41・北京"
             ]
           },
           {
@@ -3211,24 +3221,6 @@
             "id": "stable-43",
             "alternatives": [
               "3.大语言模型基础"
-            ]
-          },
-          {
-            "id": "stable-44",
-            "alternatives": [
-              "🔥技术岗高薪必学：AI大模型技术原理+应用开发+模型训练"
-            ]
-          },
-          {
-            "id": "stable-45",
-            "alternatives": [
-              "￥0.00"
-            ]
-          },
-          {
-            "id": "stable-46",
-            "alternatives": [
-              "就业无忧"
             ]
           },
           {
@@ -4500,7 +4492,14 @@
             "评论"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 3,
+          "text_scope": {
+            "body_end": "eJS Event Loop Part 4\nEvent Loop Best Practices — NodeJS Event Loop Part 5\nUsing requestIdleCallback",
+            "end_markers": [
+              "加个关注，精彩更新不错过~",
+              "相关推荐"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -5658,7 +5657,14 @@
             "新评论"
           ],
           "version": 2,
-          "minimum_comments": 4
+          "minimum_comments": 4,
+          "text_scope": {
+            "body_end": "时中央文化部和华东军管委批准设立筹建上海博物馆，给上博的定位是艺术博物馆。七十多年过去了，对上博而言我们开拓现当代艺术收藏是没有任何问题，因为跟它的定位是吻合的。未来，上海博物馆也会在这方面加大力度。",
+            "end_markers": [
+              "加载中",
+              "关于澎湃"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -7851,7 +7857,14 @@
             "最新评论"
           ],
           "version": 2,
-          "minimum_comments": 8
+          "minimum_comments": 8,
+          "text_scope": {
+            "body_end": "欢咖啡开始”讲述了品牌进入中国20周年的故事。看起来这个品牌正努力变成一个正值年轻的少年形象，朝气蓬勃、还有梦想，刚满20岁。毕竟在经历了过去20年中国市场的开拓之后，它需要找到更多吸引消费者的东西。",
+            "end_markers": [
+              "回顶部",
+              "Copyright ©"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -8496,7 +8509,13 @@
             "我要发表看法"
           ],
           "version": 2,
-          "minimum_comments": 204
+          "minimum_comments": 204,
+          "text_scope": {
+            "body_end": "lex-start | flex-end | center | baseline | stretch;\n}\n\n\n该属性可能取6个值，除了auto，其他都与align-items属性完全一致。\n\n（完）",
+            "end_markers": [
+              "我要发表看法"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -8974,21 +8993,9 @@
             ]
           },
           {
-            "id": "body-33",
-            "alternatives": [
-              "7月21日"
-            ]
-          },
-          {
             "id": "body-34",
             "alternatives": [
               "Firewall with Bradley Tusk"
-            ]
-          },
-          {
-            "id": "body-35",
-            "alternatives": [
-              "在 Spotify 上收藏"
             ]
           },
           {
@@ -9172,7 +9179,14 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 1
+          "minimum_comments": 1,
+          "text_scope": {
+            "body_end": "it as well as you can. The tips above are certainly not the entirety of sound writing advice, but they have worked for me. I hope some of them work for you too!",
+            "end_markers": [
+              "Ready for more?",
+              "Privacy"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -9702,7 +9716,13 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 18
+          "minimum_comments": 18,
+          "text_scope": {
+            "body_end": "ules\nWhat makes WebAssembly fast?\nWebAssembly, the future:\nWhere is WebAssembly now and what’s next?",
+            "end_markers": [
+              "Comments are closed for this article."
+            ]
+          }
         }
       },
       "rule_review": {
@@ -10491,7 +10511,15 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 20
+          "minimum_comments": 20,
+          "text_scope": {
+            "body_end": "end up on the correct Stack Overflow page 💪🏼 Feel free to reach out to me if you have any questions!",
+            "end_markers": [
+              "Some comments may only be visible to logged-in visitors.",
+              "Code of Conduct",
+              "More from"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -13841,7 +13869,14 @@
             "评论"
           ],
           "version": 2,
-          "minimum_comments": 24
+          "minimum_comments": 24,
+          "text_scope": {
+            "body_end": "。\n\n以上内容仅代表个人观点，不作为投资建议，请大家理性。\n\n@今日话题 @中泰证券资管\n\n#价值投资# $中泰星元灵活配置混合A(F006567)$ $中泰兴诚价值一年持有混合A(F010728)$",
+            "end_markers": [
+              "热门话题",
+              "热股榜"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -15059,7 +15094,15 @@
             "提交评论"
           ],
           "version": 2,
-          "minimum_comments": 3
+          "minimum_comments": 3,
+          "text_scope": {
+            "body_end": "按值传递、call、apply、bind、new、继承等难点概念。\n\n如果有错误或者不严谨的地方，请务必给予指正，十分感谢。如果喜欢或者有所启发，欢迎star，对作者也是一种鼓励。",
+            "end_markers": [
+              "除特别声明外，",
+              "使用 SegmentFault 发布",
+              "服务协议"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -15768,7 +15811,14 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 1
+          "minimum_comments": 1,
+          "text_scope": {
+            "body_end": "11：只能说，还好祖师爷不是老顽固，冥顽不化。不然linux内核未来真的药丸💊。 毕竟总不能让生生世世的年轻人都去玩c对吧。时代在发展毕竟。大人，时代变了。\n\n---END---",
+            "end_markers": [
+              "推荐阅读",
+              "关于我们"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -16825,7 +16875,14 @@
             "评论"
           ],
           "version": 2,
-          "minimum_comments": 4
+          "minimum_comments": 4,
+          "text_scope": {
+            "body_end": "」的末端，也意味着更廉价的三合一咖啡要更加亲民，有着更大的市场受众和需求。这种需求在很长一段时间里都不会被精品咖啡所取代，而真正要担心精品咖啡冲击的，恐怕会是街头巷角的小咖啡店们。",
+            "end_markers": [
+              "推荐文章",
+              "本篇来自栏目"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -17404,7 +17461,14 @@
             "评论"
           ],
           "version": 2,
-          "minimum_comments": 4
+          "minimum_comments": 4,
+          "text_scope": {
+            "body_end": "的诸多分享、吐槽来看，大部分的人都长久的隔离中寻求生活的幸福感。大家的情绪没有那么糟糕，想要的东西也没那么夸张。\n\n当隔离在家需求都能满足，并没那么痛苦时，大部分人其实都没那么想要报复性消费。相比走出家门疯狂消费，大家其实更希望生活秩序恢复正常。\n\n想喝奶茶喝奶茶，想晒太阳晒太阳，上班不用担心感染，恢复正常生活就很好。",
+            "end_markers": [
+              "推荐文章",
+              "本篇来自栏目"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -22579,7 +22643,15 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 11
+          "minimum_comments": 11,
+          "text_scope": {
+            "body_end": "n offers us a way forward, finally allowing us to “design for the ebb and flow of things.”",
+            "end_markers": [
+              "Comments navigation",
+              "Got something to say?",
+              "More from ALA"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -32144,7 +32216,13 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 12
+          "minimum_comments": 12,
+          "text_scope": {
+            "body_end": " focus on Rust and WebAssembly.\n\nhttps://twitter.com/linclark\n@linclark\n\nMore articles by Lin Clark…",
+            "end_markers": [
+              "Comments are closed for this article."
+            ]
+          }
         }
       },
       "rule_review": {
@@ -32181,18 +32259,6 @@
             "id": "stable-2",
             "alternatives": [
               "Lydia Hallie"
-            ]
-          },
-          {
-            "id": "stable-3",
-            "alternatives": [
-              "Posted on 2020年4月15日"
-            ]
-          },
-          {
-            "id": "stable-4",
-            "alternatives": [
-              "Edited on 2024年5月1日"
             ]
           },
           {
@@ -32355,12 +32421,6 @@
             "id": "stable-31",
             "alternatives": [
               "Chrome and Safari call this a \"resolved\" promise, which is true, but kinda misleading…"
-            ]
-          },
-          {
-            "id": "stable-32",
-            "alternatives": [
-              "5:21 PM · Apr 9, 2020"
             ]
           },
           {
@@ -32766,12 +32826,6 @@
             ]
           },
           {
-            "id": "stable-100",
-            "alternatives": [
-              "2019年7月21日"
-            ]
-          },
-          {
             "id": "stable-101",
             "alternatives": [
               "More from Lydia Hallie"
@@ -32964,7 +33018,15 @@
             "Comments"
           ],
           "version": 2,
-          "minimum_comments": 16
+          "minimum_comments": 16,
+          "text_scope": {
+            "body_end": "The ES6 promises spec, as per September 2013 TC39 meeting",
+            "end_markers": [
+              "Some comments may only be visible to logged-in visitors.",
+              "Code of Conduct",
+              "More from"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -33758,7 +33820,13 @@
             "我要发表看法"
           ],
           "version": 2,
-          "minimum_comments": 56
+          "minimum_comments": 56,
+          "text_scope": {
+            "body_end": "\n训练材料用完之日（2023 #253）\n\n英国的名校签证，伯克利的计算机教育（2022 #203）\n\n机器翻译是对译者的侮辱吗？（2021 #153）\n\n信息的半衰期（2020 #103）\n\n（完）",
+            "end_markers": [
+              "我要发表看法"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -34378,7 +34446,14 @@
             "全部回复："
           ],
           "version": 2,
-          "minimum_comments": 40
+          "minimum_comments": 40,
+          "text_scope": {
+            "body_end": "态，就像女人召唤她们的儿女，土地召唤着黑夜来临。”\n    这样的文字让我们的心面对物欲的汹涌波涛还能够有片刻的宁静，它让我们感受到的不是消沉而是勃勃的生机，是对生命的召唤。这样的文字，你能不感动吗？",
+            "end_markers": [
+              "> 我来回复",
+              "关于豆瓣"
+            ]
+          }
         }
       },
       "rule_review": {
@@ -36115,7 +36190,15 @@
             "评论"
           ],
           "version": 2,
-          "minimum_comments": 20
+          "minimum_comments": 20,
+          "text_scope": {
+            "body_end": "学的\n，\n是他提问的方式：这东西我懂吗？用户买的到底是什么？风险什么时候兑现？钱是谁付的？\n\n想清楚这几个问题\n，\n比追随任何人的观点都重要\n。\n\n以上仅为个人对公开发言的理解\n，\n不构成投资建议\n。",
+            "end_markers": [
+              "抱歉，本帖讨论暂时受限",
+              "热门话题",
+              "热股榜"
+            ]
+          }
         }
       },
       "rule_review": {

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v6",
+  "id": "articles-v7",
   "status": "qualified",
   "case_count": 100,
   "approved_on": "2026-10-20",
@@ -915,7 +915,7 @@
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     }
   ],
-  "revision": 9,
+  "revision": 10,
   "revisions": [
     {
       "revision": 2,
@@ -2409,6 +2409,210 @@
           "action": "fixed_post_coverage",
           "observed_valid_posts": 20,
           "minimum_posts": 16
+        }
+      ]
+    },
+    {
+      "revision": 10,
+      "dataset_id": "articles-v7",
+      "approved_on": "2026-10-20",
+      "previous_dataset_id": "articles-v6",
+      "previous_git_commit": "e664d7ff8ba851769682abf328115a8c5befdf53",
+      "previous_dataset_sha256": "0da8b7e80f89f4f63185a32885b2c6c4e8ab10d5660e5dcc0f0669d92d7ed5f7",
+      "previous_cohort_sha256": "2254bde55de2fde5d6bf6861608e28d459c2ebcbd9bfbc1df49b0a507a7703da",
+      "previous_rules_sha256": "e2d2bf11b8fd7ace3438d4ee73ce1b2997c7519a413d9d8da7e24d8c4042a441",
+      "basis": "Independently reviewed external PR feedback: remove brittle exact anchors and bind text comments to source-reviewed start/end boundaries. Preserve visible excerpt scope, thresholds and frozen version identities.",
+      "changes": [
+        {
+          "id": "article-005",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "Relevant people",
+            "Trending now",
+            "Terms",
+            "Privacy"
+          ]
+        },
+        {
+          "id": "article-009",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "热门话题",
+            "热股榜"
+          ]
+        },
+        {
+          "id": "article-010",
+          "action": "remove_brittle_hard_anchors",
+          "removed_ids": [
+            "stable-15",
+            "stable-44",
+            "stable-45",
+            "stable-46"
+          ]
+        },
+        {
+          "id": "article-014",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "加个关注，精彩更新不错过~",
+            "相关推荐"
+          ]
+        },
+        {
+          "id": "article-017",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "加载中",
+            "关于澎湃"
+          ]
+        },
+        {
+          "id": "article-023",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "回顶部",
+            "Copyright ©"
+          ]
+        },
+        {
+          "id": "article-025",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "我要发表看法"
+          ]
+        },
+        {
+          "id": "article-027",
+          "action": "remove_brittle_hard_anchors",
+          "removed_ids": [
+            "body-33",
+            "body-35"
+          ]
+        },
+        {
+          "id": "article-027",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "Ready for more?",
+            "Privacy"
+          ]
+        },
+        {
+          "id": "article-030",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "Comments are closed for this article."
+          ]
+        },
+        {
+          "id": "article-032",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "Some comments may only be visible to logged-in visitors.",
+            "Code of Conduct",
+            "More from"
+          ]
+        },
+        {
+          "id": "article-044",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "热门话题",
+            "热股榜"
+          ]
+        },
+        {
+          "id": "article-047",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "除特别声明外，",
+            "使用 SegmentFault 发布",
+            "服务协议"
+          ]
+        },
+        {
+          "id": "article-049",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "推荐阅读",
+            "关于我们"
+          ]
+        },
+        {
+          "id": "article-052",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "推荐文章",
+            "本篇来自栏目"
+          ]
+        },
+        {
+          "id": "article-053",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "推荐文章",
+            "本篇来自栏目"
+          ]
+        },
+        {
+          "id": "article-068",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "Comments navigation",
+            "Got something to say?",
+            "More from ALA"
+          ]
+        },
+        {
+          "id": "article-092",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "Comments are closed for this article."
+          ]
+        },
+        {
+          "id": "article-093",
+          "action": "remove_brittle_hard_anchors",
+          "removed_ids": [
+            "stable-100",
+            "stable-3",
+            "stable-32",
+            "stable-4"
+          ]
+        },
+        {
+          "id": "article-093",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "Some comments may only be visible to logged-in visitors.",
+            "Code of Conduct",
+            "More from"
+          ]
+        },
+        {
+          "id": "article-095",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "我要发表看法"
+          ]
+        },
+        {
+          "id": "article-098",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "> 我来回复",
+            "关于豆瓣"
+          ]
+        },
+        {
+          "id": "article-103",
+          "action": "bound_text_comments_to_reviewed_region",
+          "end_markers": [
+            "抱歉，本帖讨论暂时受限",
+            "热门话题",
+            "热股榜"
+          ]
         }
       ]
     }

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "kind": "frozen_dataset_catalog",
-  "id": "articles-v6",
+  "id": "articles-v7",
   "name": "Article retrieval",
   "dataset": "dataset.json",
-  "dataset_sha256": "0da8b7e80f89f4f63185a32885b2c6c4e8ab10d5660e5dcc0f0669d92d7ed5f7",
+  "dataset_sha256": "9a3749c04a840b7f0543ecab61d06c83abf26a06c2dfcf1066501ca0306bfc1c",
   "case_count": 100,
   "cases": [
     {
@@ -44,7 +44,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "933611c9b1da5dca7f19f68a5f88552b054f756408e6a55fbd8399e4ed0e19e6",
+      "definition_sha256": "924780eef323754e4a22c3b624fe5e06c59ec0e8bd0046ccd0a7bc32075d7e36",
       "reference_sha256": "ce58f6c719a695db06ff0cf7751662f9add982f2cf2aabfef80d5958bdb8205b"
     },
     {
@@ -84,7 +84,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "a606ef57cc15dc779b4b6465c547c91b70241e1f613fb17d99f4a17eee13dd75",
+      "definition_sha256": "c77c98905c09e17a06e606d74b4e97d75bddd87d03f59d641363314574055867",
       "reference_sha256": "711eca574fe502bc28280fa59e95ff1c9a2bab53dd4dd55af29a4579a79826f1"
     },
     {
@@ -94,7 +94,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "9f8f68ab32529a81689da1595b9033159df07c63421c23ac6a492a1f74ea81b8",
+      "definition_sha256": "e98efe0c075d7f0b8ce1c72781aa13e69ccb2ea967674954a3fc561b71449cd9",
       "reference_sha256": "aa886d865159264d573990aeb04ebe80c04f4437d60774154241e67a84450fe3"
     },
     {
@@ -134,7 +134,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "bda7a738c6642aa48ec05f4738be35ddeb4530d6ce7807d699444385f26fa983",
+      "definition_sha256": "8a0160564279f9e6c12f981f26de4a65c941592992c4c8c67edad6d5f75ffd57",
       "reference_sha256": "095d44071cb07b3682397f09bea75ce9e282de6c4029cbbc50bb38653aec5502"
     },
     {
@@ -164,7 +164,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "5e951ab36c1be65ff4c214e3be89930d4135a7b4d838849a0b91c217c8ac8d90",
+      "definition_sha256": "1dbe744af476f2e42b7faaaded67e7c28edb4a5be87b65d7d744c417a11b0f85",
       "reference_sha256": "f7187d9f132a8a05a5d7e4f901b94b44d4192d438da2959d0bb0e141e42b4bcb"
     },
     {
@@ -224,7 +224,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "6513edec8e86959cce19798e35d5096a22e3eeb3fd6a9f469b31a6e78bb02f9e",
+      "definition_sha256": "161f33d0021a5d32bdb6090ec77efc167baa831c04addb4959ccaee349afdf2f",
       "reference_sha256": "1039045e7edb09189024fc336bba5e2c539faeb9b1d4a59d295e6e72380ee8d1"
     },
     {
@@ -244,7 +244,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "e49efa44671615dbb381a821933007f354e9bd8a7836627c701d2be25b342b6d",
+      "definition_sha256": "d8beb8a44566619a19e82f71052e62b8a540ee1bde7dec212c50629c6c2b5584",
       "reference_sha256": "9694bcff3d4be8fae94b56e48217a44bef553eb1a062aea57dcf69b8824d894f"
     },
     {
@@ -264,7 +264,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "be735d760919181ac397f9160ea666dfc7a34a03089db0094ea6ba7bab5f7f44",
+      "definition_sha256": "aa5479820a51c0dfe3321bbf327b7d697e890d34110c0f27cc4c2c87d21fd9be",
       "reference_sha256": "d7371e524f400aaa643d143387405fc469b0e1029bdb1294b6a6681b0bfaad8f"
     },
     {
@@ -294,7 +294,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "be99cc675cf3df319a132fe48d26ba8073034b42cc4f37213b7ebdab585a1170",
+      "definition_sha256": "078a4f9a515ebf8a46bc4a018b3ea916c080aa0fa2b417f0bba2d0a1ee85215b",
       "reference_sha256": "45d23ee0057f84d01e96258eaa11806cebc50a1b36d4e33fbf72dfeed689486a"
     },
     {
@@ -314,7 +314,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "ad5180f25eeb32b2f35a0b55e4273b0e9d486efe4d456ca7665a6e1b49d157e8",
+      "definition_sha256": "38eb1d4c2c46beabdd7fb1feb53d9e25cd82ccea15186da69da85d53adc54af4",
       "reference_sha256": "7c506c5fb203cb69a61e1f2c474a19d6b04fe7d950a4b4d133b09f9c0a6638ed"
     },
     {
@@ -414,7 +414,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "a816a7621f758bf670494a67cd5939aa2445697230d344086f171d702b5bebc0",
+      "definition_sha256": "d667fcdb855a270ef22176201e62ee48d55d01237021034c44e9442fb27af94f",
       "reference_sha256": "8c63ddec3ca091af5ac35fde9219339733b40f717faf3f7dfe3dc314c1b4a364"
     },
     {
@@ -444,7 +444,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "042a0f8c99bc31686e9129c5828d38b3820aef5a49a64e723825b8172fb9ceea",
+      "definition_sha256": "63946ba55294cbbeb35b985417a5b0a6975e545319466b22c3427b86506c98aa",
       "reference_sha256": "6eb925acebf2276e96748e99086abec11a56815aa2f04d254ccd03fdf57c9602"
     },
     {
@@ -464,7 +464,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "860f6a4bd609643ebdaff2ddba8076cc178b1322ef3d7ec90e7af9b624eab38e",
+      "definition_sha256": "7feacd62ccb3556c385955ba7056bf3f41207b43e825c6e1d8ceb5df067982d2",
       "reference_sha256": "de466a27efb840dbb9d0e4ec1c7591ee4006ba8b573fde094b915b16ad2b31b0"
     },
     {
@@ -494,7 +494,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "3d6a745ce6ad42b481889d722f88f098a224b2f89b578b95df33110962b26385",
+      "definition_sha256": "6c2cb42938d69b486ba6ea01e99f0ab098225b674a4d176171b2f73013a931c6",
       "reference_sha256": "5b1528a31a8952fda2312855f5d3fe54a2c9ab3836c135b044f8dbb9f132bdf4"
     },
     {
@@ -504,7 +504,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "757ef169110c70aa79ea5ea740be87ecb493b34cdd0daa1281603ed1e59b46b3",
+      "definition_sha256": "947231ef49ea2f5fed1d96a456006515f6c35a686be654e0063d422d447d3d05",
       "reference_sha256": "15e71f82646a1e4bd09b1d702148879f16d6feca213826a3c944a617c334c072"
     },
     {
@@ -644,7 +644,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "16c5a4713802317417d6716fb9b1a9bfc55dfc6aada7dd16cc157e5e77fbfe42",
+      "definition_sha256": "04403efcbfef33e3915beae5cd26facd06ea81e8e434e7e25351efb50404f3f8",
       "reference_sha256": "2a534d1fe9d90d8b1b622fcf7904caaedffb2d8b1318f86eb460929ca11001f8"
     },
     {
@@ -874,7 +874,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "e75635b7252b6231256f0d4b522de3cae982fc235a3e34ef9df38d4656836ad8",
+      "definition_sha256": "88d874ba8ae7574aff354cacfb36fb78b83a1585431d3b58a6e05ce928e915a2",
       "reference_sha256": "88a96e043508b79ca4e4fc8e3ccd2d66942588f7cf79b49b95e3679ee2b7a123"
     },
     {
@@ -884,7 +884,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "a8b238228b81e2274ac246c17f04c693a9b2d7be34ff9a25aa6dd8ac53fde2f3",
+      "definition_sha256": "dd2d817794ae8ac5330699641d03e6c34508f505f6a2173f189960f797e5ba8d",
       "reference_sha256": "d1028f4ddb02cd0fa2db41930b1b2d48f034e2b740074ccacc991acfe3ccbf60"
     },
     {
@@ -904,7 +904,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "98a3155bf9b448aff8463750c807e43b07570a35d48849aec39fb611f7f7bddc",
+      "definition_sha256": "95e0ea8f82119253c5c55b13811baf2023426db4e3eb611b814acf603ff15aff",
       "reference_sha256": "26ac7d21c9a65cf003e4ffae2365895bcb5950264d94d1d4a7695ad894a623fd"
     },
     {
@@ -924,7 +924,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "1f5f690c13983fd1e8aafceccfe3ed8fce1982a89d9756db51aff76f297db572",
+      "definition_sha256": "4f4ef1950a898aae51f1b6df70968f9c10475959a005627731e9ef020dfb8f3d",
       "reference_sha256": "1c99385870a7644ba97de98f4f540c74a09e3ecbcab962a0adc18a6ea3009edb"
     },
     {
@@ -974,7 +974,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "3d3a5769628c7b65ad37d90eefd99f4b8640912343a99bb003c3b9190170869d",
+      "definition_sha256": "7a53914b6eeb7c23acd5f3b83bb2ea076e2dc81ce55000bb89794972f7cf5c4b",
       "reference_sha256": "de63089eba5018d63283ce2ebc08a06fc1c500c12865a43c700104d45d932c89"
     },
     {

@@ -53,11 +53,20 @@ def validate_comment_contract(contract):
 
 def _validate_coverage_contract(contract):
     allowed = {'version', 'minimum_comments', 'record_selector', 'author_selector',
-               'body_selector', 'section_markers', 'id_attribute'}
+               'body_selector', 'section_markers', 'id_attribute', 'text_scope'}
     if set(contract) - allowed or type(contract.get('minimum_comments')) is not int or contract['minimum_comments'] < 1:
         raise ValueError('comment coverage requires a positive minimum')
     # Reuse selector validation without admitting legacy runtime requirements.
-    legacy = {key: value for key, value in contract.items() if key != 'minimum_comments'}
+    scope = contract.get('text_scope')
+    if scope is not None:
+        if (not isinstance(scope, dict) or set(scope) != {'body_end', 'end_markers'}
+                or not isinstance(scope['body_end'], str) or not tokens(scope['body_end'])
+                or not isinstance(scope['end_markers'], list)
+                or any(not isinstance(marker, str) or not tokens(marker) for marker in scope['end_markers'])):
+            raise ValueError('invalid comment text scope')
+    elif 'text_scope' in contract:
+        raise ValueError('invalid comment text scope')
+    legacy = {key: value for key, value in contract.items() if key not in {'minimum_comments', 'text_scope'}}
     legacy.update(version=1, max_reference_age_seconds=900)
     validate_comment_contract(legacy)
 
@@ -406,14 +415,55 @@ def _comment_time_metadata(line):
         r'|\d+\s*(?:秒|分钟|小时|天|周|个月|年)前|刚刚)', stamp, re.I))
 
 
+def _coverage_text_start(lines, contract):
+    """Prefer the reviewed body ending over an earlier navigation label.
+
+    The ending is a scope hint, not an additional exact-body pass requirement.
+    If it is absent, an explicit comment heading can independently establish
+    the component. A bare navigation label cannot do so for scoped contracts.
+    """
+    markers = {_section_marker_tokens(x) for x in contract['section_markers']}
+    scope = contract.get('text_scope')
+    end_markers = {_section_marker_tokens(x) for x in scope['end_markers']} if scope else set()
+    first = 0
+    found_ending = False
+    if scope:
+        expected = tokens(visible_markdown_links(scope['body_end']))
+        flattened, owners = [], []
+        for index, line in enumerate(lines):
+            words = tokens(visible_markdown_links(line))
+            flattened.extend(words)
+            owners.extend([index] * len(words))
+        for index in range(len(flattened) - len(expected) + 1):
+            if flattened[index:index + len(expected)] == expected:
+                first = owners[index + len(expected) - 1] + 1
+                found_ending = True
+                break
+    for index in range(first, len(lines)):
+        # A reviewed end boundary wins over a historical start label. Forms
+        # below the last comment must never open a new discussion component.
+        if _section_marker_tokens(lines[index]) in end_markers:
+            break
+        if _section_marker_tokens(lines[index]) not in markers:
+            continue
+        heading = re.match(r'\s*(#{1,6})\s+', lines[index])
+        if not scope or found_ending or heading:
+            # Do not skip earlier records just because a comment form appears
+            # below them. Only a marker before any content is the start marker.
+            if found_ending and any(line.strip() for line in lines[first:index]):
+                break
+            return index + 1, len(heading[1]) if heading else 0, bool(heading)
+    return (first, 0, True) if found_ending else (None, 0, False)
+
+
 def _coverage_text_records(content, contract):
     """Read explicit author/body formatting without a frozen author list.
 
     An unlabelled prose block cannot establish author attribution. Subheadings,
     linked/bold author lines and colon-labelled records are supported; ambiguous
     bare names are deliberately not guessed from arbitrary prose. Colon-style
-    authors additionally require an explicit section heading: a plain navigation
-    label mentioning comments must not turn article captions into authors.
+    authors additionally require a section heading or reviewed body ending: a
+    plain navigation label must not turn article captions into authors.
     """
     # Code may be comment text, but cannot introduce fake record boundaries.
     fences = {}
@@ -431,20 +481,21 @@ def _coverage_text_records(content, contract):
     content = visible_html_text(str(_comment_html(content)), preserve_source_whitespace=True, preserve_links=True)
     lines = content.replace(paragraph_marker, '').splitlines()
     markers = {_section_marker_tokens(x) for x in contract['section_markers']}
-    start = next((i for i, line in enumerate(lines) if _section_marker_tokens(line) in markers), None)
+    start, section_level, explicit_scope = _coverage_text_start(lines, contract)
     if start is None:
         return []
-    section_heading = re.match(r'\s*(#{1,6})\s+', lines[start])
-    section_level = len(section_heading[1]) if section_heading else 0
+    end_markers = {_section_marker_tokens(x) for x in contract.get('text_scope', {}).get('end_markers', [])}
     rows, current = [], None
     heading_authors = False
-    for offset, line in enumerate(lines[start + 1:], start + 1):
-        previous_blank = not lines[offset - 1].strip()
+    for offset, line in enumerate(lines[start:], start):
+        previous_blank = offset == start or not lines[offset - 1].strip()
         stripped = line.strip()
         if stripped in fences:
             if current is not None:
                 current['text'] += '\n' + fences[stripped]
             continue
+        if _section_marker_tokens(line) in end_markers:
+            break
         heading = re.fullmatch(r'\s*(#{1,6})\s+(.+?)\s*', line)
         if heading and section_level and len(heading[1]) <= section_level:
             break
@@ -452,6 +503,11 @@ def _coverage_text_records(content, contract):
             current = None
             continue
         if _section_marker_tokens(line) in markers:
+            if not rows and heading:
+                # Metadata may separate the reviewed ending from the section
+                # heading. Retain its level before reading any author records.
+                section_level = len(heading[1])
+                explicit_scope = True
             current = None
             continue
         pingback = re.fullmatch(r'\s*Pingback:\s+(.+?)\s*', line)
@@ -476,9 +532,9 @@ def _coverage_text_records(content, contract):
             author = links[0].label
         elif bold:
             author = bold[1]
-        elif section_heading and colon and (current is None or previous_blank):
+        elif explicit_scope and colon and (current is None or previous_blank):
             author, body = colon[1], colon[2]
-        elif section_heading and colon and not colon[2]:
+        elif explicit_scope and colon and not colon[2]:
             author = colon[1]
         if author is not None:
             current = {'author': visible_markdown_links(author), 'text': visible_markdown_links(body)}
