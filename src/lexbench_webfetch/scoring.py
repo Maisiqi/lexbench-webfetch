@@ -302,7 +302,10 @@ def score_attempt(
         result["article_comment_contract_sha256"] = hashlib.sha256(json.dumps(
             benchmark["comment_contract"], sort_keys=True, ensure_ascii=False).encode()).hexdigest()
         result["content_pass"] = bool(result["content_pass"] and comment_result["article_comments_pass"])
-        result["content_decision_basis"] = "body_title_stable_and_initial_comments"
+        result["content_decision_basis"] = (
+            "body_title_stable_and_comment_coverage"
+            if benchmark["comment_contract"]["version"] == 2
+            else "body_title_stable_and_initial_comments")
     if (rule_review.get("status") != "unresolved"
             and benchmark.get("mode") == "article_post_collection"):
         from .article_posts import verify_article_posts

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v3",
+  "id": "articles-v4",
   "status": "qualified",
   "case_count": 100,
   "approved_on": "2026-10-20",
@@ -915,7 +915,7 @@
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     }
   ],
-  "revision": 6,
+  "revision": 7,
   "revisions": [
     {
       "revision": 2,
@@ -1650,6 +1650,589 @@
           "id": "article-106",
           "previous_regions": 9,
           "regions": 5
+        }
+      ]
+    },
+    {
+      "revision": 7,
+      "dataset_id": "articles-v4",
+      "approved_on": "2026-10-20",
+      "previous_dataset_id": "articles-v3",
+      "previous_git_commit": "554880fee0ae4d59bd779846b1d5f593790a5fcb",
+      "previous_dataset_sha256": "5b8d151e0b32b8d1bde8ce4ce2d6b1ef27f89ebb5588cee6d7598490426d379b",
+      "previous_cohort_sha256": "0417028629206d0e66a662ddf470df80fb9a2de1209efccd910ddb0ebead75b6",
+      "previous_rules_sha256": "b8ae6de3dd8f3f545e9c714c930d58dc9b9f5e5250496ee57c6dda038654396d",
+      "basis": "User approved fixed initial-comment coverage without runtime text matching or reply relationships. Add rules only for evidenced actual visible comment prose, using min(3, valid unique observed records); retain absence evidence. This checks section coverage, not exhaustive comment completeness.",
+      "changes": [
+        {
+          "id": "article-001",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-002",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-003",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-005",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-006",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-007",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-008",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-009",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 1
+        },
+        {
+          "id": "article-010",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-011",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-012",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-013",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-014",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-015",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-016",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-017",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-018",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-019",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-020",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-021",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-022",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-023",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-024",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-025",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-026",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-027",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 1
+        },
+        {
+          "id": "article-028",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-029",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-030",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-031",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-032",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-033",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-034",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-035",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-036",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-037",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-044",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-045",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-046",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-047",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-048",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-049",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 1
+        },
+        {
+          "id": "article-050",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-051",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-052",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-053",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-054",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-055",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-056",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-057",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-058",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-059",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-060",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-061",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-063",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-064",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-065",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-066",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-067",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-068",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-069",
+          "action": "remove_runtime_comment_rule",
+          "status": "visible_placeholders_only",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-070",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-071",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-072",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-073",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-074",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-075",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-076",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-077",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-078",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-079",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-080",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-081",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-082",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-084",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-085",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-086",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-087",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-088",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-089",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-090",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-091",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-092",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-093",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-094",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-095",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-096",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-098",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-099",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-100",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-102",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-103",
+          "action": "fixed_comment_coverage",
+          "status": "visible_text",
+          "minimum_comments": 3
+        },
+        {
+          "id": "article-104",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-106",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
+        },
+        {
+          "id": "article-107",
+          "action": "remove_runtime_comment_rule",
+          "status": "observed_absent",
+          "minimum_comments": null
         }
       ]
     }

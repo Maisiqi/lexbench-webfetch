@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v3",
+  "id": "articles-v4",
   "name": "Article retrieval",
   "tool": "web_fetch",
   "case_count": 100,
@@ -14,8 +14,8 @@
   },
   "interaction_policy": "initial_load_only_no_click_input_scroll_pagination_login_or_ocr",
   "source_bindings": {
-    "cohort_sha256": "0417028629206d0e66a662ddf470df80fb9a2de1209efccd910ddb0ebead75b6",
-    "rules_sha256": "b8ae6de3dd8f3f545e9c714c930d58dc9b9f5e5250496ee57c6dda038654396d"
+    "cohort_sha256": "af7d2a1e0b76169f7a9fce8ccc8909f962ebaa3300b777219f1b2b374c1ccd71",
+    "rules_sha256": "ef1024358c314fd51bb9f414123b2a0de2f39ed7d5e29bbc469556e10b3928f3"
   },
   "cases": [
     {
@@ -495,16 +495,11 @@
             "Island Hopping in Japan"
           ],
           "html_selector": "h1.mod-keyvisual__heading .mod-keyvisual__heading-text,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete H1 and #anchor_1 ordinary source text, including five direct-text image captions. Complete serialization length391110 matches capture. NativeAX independently includes all captions, every geographical section and final transport paragraph. Read-only geometry source_innerText retains all text; displayed h/p blocks have no masks and are bounded only by enclosing whole-document wrapper. Article begins836px and ends5824px inside7340px document wrapper; no clipped or expanded body. Untouched fixed cookie notice occupies x30.20/y72/w650/h458.12 above article, without an article backdrop. H1 is ordinary rendered HTML, independently in heading geometry and AX; notice does not make its text hidden DOM."
+        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete H1 and #anchor_1 ordinary source text, including five direct-text image captions. Complete serialization length391110 matches capture. NativeAX independently includes all captions, every geographical section and final transport paragraph. Read-only geometry source_innerText retains all text; displayed h/p blocks have no masks and are bounded only by enclosing whole-document wrapper. Article begins836px and ends5824px inside7340px document wrapper; no clipped or expanded body. Untouched fixed cookie notice occupies x30.20/y72/w650/h458.12 above article, without an article backdrop. H1 is ordinary rendered HTML, independently in heading geometry and AX; notice does not make its text hidden DOM. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -1050,16 +1045,11 @@
             "Machine Learning Crash Course"
           ],
           "html_selector": "h1.glue-headline.glue-headline--headline-1,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete originalHTML29673chars equals capture html_length. Ordinary title, explicit byline, introduction and all ten question-and-answer sections are direct children of .blog-detail-container; native AX independently includes complete final MLCC/GoogleAI links. Read-only visible-prose geometry independently verifies initial full container and final prose. No dialogs, frames, expansion controls or clipping gates; source initially directly displayed, no interactions."
+        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete originalHTML29673chars equals capture html_length. Ordinary title, explicit byline, introduction and all ten question-and-answer sections are direct children of .blog-detail-container; native AX independently includes complete final MLCC/GoogleAI links. Read-only visible-prose geometry independently verifies initial full container and final prose. No dialogs, frames, expansion controls or clipping gates; source initially directly displayed, no interactions. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -1521,16 +1511,11 @@
             "What you need to do deep learning"
           ],
           "html_selector": "h1.title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete originalHTML55371chars equals capture html_length. H1 plus every ordinary #quarto-document-content paragraph, full hardware/software/production/background/data/access sections, all list items and ordinary Face Recognition with Dlib figcaption retained. Geometry observes13523chars47blocks, all ordinary text without content masks; nativeAX independently confirms full concluding access paragraph. No modal, iframe, login or expansion gate. Empty image-only paragraphs, SVG/image lettering excluded. Heading Anchor links are accessibility control names for empty ordinary DOM anchors, not extra article prose."
+        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete originalHTML55371chars equals capture html_length. H1 plus every ordinary #quarto-document-content paragraph, full hardware/software/production/background/data/access sections, all list items and ordinary Face Recognition with Dlib figcaption retained. Geometry observes13523chars47blocks, all ordinary text without content masks; nativeAX independently confirms full concluding access paragraph. No modal, iframe, login or expansion gate. Empty image-only paragraphs, SVG/image lettering excluded. Heading Anchor links are accessibility control names for empty ordinary DOM anchors, not extra article prose. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -1631,14 +1616,19 @@
       },
       "source_benchmark": {
         "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
+          "record_selector": "article[data-testid=\"tweet\"]:not(:has(a[href=\"/karpathy/status/1886192184808149383\"] > time))",
+          "author_selector": "[data-testid=\"User-Name\"] > div:first-child a",
+          "body_selector": "[data-testid=\"tweetText\"]",
+          "section_markers": [
+            "Post your reply"
+          ],
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The target post is fully visible from first to final sentence in the initial viewport. Its fixed single post is distinct from the changing reply timeline; no show-more control or line clamp applies to its body."
+        "reason": "The target post is fully visible from first to final sentence in the initial viewport. Its fixed single post is distinct from the changing reply timeline; no show-more control or line clamp applies to its body. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -1812,16 +1802,11 @@
             "How We Made Cloud Browsers 3x Cheaper and Faster"
           ],
           "html_selector": "[data-testid=\"twitter-article-title\"],h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete longform body and all 11 headings through the final cloud.browser-use.com link were present on initial automatic load; full-page screenshot confirms non-collapsed flowing article content and separate post controls."
+        "reason": "The complete longform body and all 11 headings through the final cloud.browser-use.com link were present on initial automatic load; full-page screenshot confirms non-collapsed flowing article content and separate post controls. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -1995,16 +1980,11 @@
             "How to Authenticate AI Web Agents"
           ],
           "html_selector": "[data-testid=\"twitter-article-title\"],h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initially loaded longform includes all five named sections, three textual Python examples and the final two documentation links. DOM CSS reports visible code blocks without collapsed controls; screenshots verify article start, section flow and final body boundary."
+        "reason": "The complete initially loaded longform includes all five named sections, three textual Python examples and the final two documentation links. DOM CSS reports visible code blocks without collapsed controls; screenshots verify article start, section flow and final body boundary. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -2671,16 +2651,11 @@
             "25个全球最佳旅游目的地（2025年珍藏版）"
           ],
           "html_selector": "div.title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Human explicitly accepts complete displayed portion of retained original URL with no follow/login/content expansion. Fresh intrinsic text-range capture binds every displayed block through the actual fixed-height clamp; hidden remainder is not claimed to be a complete article."
+        "reason": "Human explicitly accepts complete displayed portion of retained original URL with no follow/login/content expansion. Fresh intrinsic text-range capture binds every displayed block through the actual fixed-height clamp; hidden remainder is not claimed to be a complete article. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -2950,7 +2925,6 @@
           "html_selector": "h1.article__bd__title,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": ".comment__item, .comment__item__reply > .items",
           "author_selector": ".comment__item__main__hd > a.user-name, :scope > a.user-name:first-of-type",
           "body_selector": ".comment__item__main > p, :scope > .content",
@@ -2959,12 +2933,13 @@
             "全部讨论",
             "评论"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 1
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The fixed article is complete in .article__bd__detail: opening, research framework, decision disclaimer and future plan through both owned topic links. Full-page screenshot confirms its ending before platform risk notice and comment controls; no wall blocks the body."
+        "reason": "The fixed article is complete in .article__bd__detail: opening, research framework, decision disclaimer and future plan through both owned topic links. Full-page screenshot confirms its ending before platform risk notice and comment controls; no wall blocks the body. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -3378,16 +3353,11 @@
             "人工智能的细分方向及学习路线，看这一篇就够了"
           ],
           "html_selector": "h1.Post-Title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Full already-loaded article independently qualified after the human-authorized authoring-only login-obstruction Close action. Before/after owning article text is exactly equal; no authentication, expansion, scrolling or additional article load occurred. Complete prose, learning-resource text links, rendered course-card ordinary text, all sections and original-author ending retained."
+        "reason": "Full already-loaded article independently qualified after the human-authorized authoring-only login-obstruction Close action. Before/after owning article text is exactly equal; no authentication, expansion, scrolling or additional article load occurred. Complete prose, learning-resource text links, rendered course-card ordinary text, all sections and original-author ending retained. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -3834,16 +3804,11 @@
             "深度学习应该从哪里开始学起来？"
           ],
           "html_selector": "h1.QuestionHeader-title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Human explicitly accepts complete displayed portion of retained original URL without expanding collapsed body. Every displayed character/block is source-bound through real clipping/mask geometry; full unopened article/answer is not claimed."
+        "reason": "Human explicitly accepts complete displayed portion of retained original URL without expanding collapsed body. Every displayed character/block is source-bound through real clipping/mask geometry; full unopened article/answer is not claimed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -4031,16 +3996,11 @@
             "数字花园之问"
           ],
           "html_selector": "#article-title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The entire essay, initial quotation, two source hyperlinks and both named sections end before the category and charging controls. Initial DOM CSS and full-page screenshot confirm the final sentence and no collapsed body/wall."
+        "reason": "The entire essay, initial quotation, two source hyperlinks and both named sections end before the category and charging controls. Initial DOM CSS and full-page screenshot confirm the final sentence and no collapsed body/wall. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -4262,16 +4222,11 @@
             "建造你的数字小森林"
           ],
           "html_selector": "#article-title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The full initial essay includes its opening quotation, all five named sections, concluding encouragement and final sentence, ending before category and charging controls. DOM and full-page screenshot show flowing complete content without overlay or expansion."
+        "reason": "The full initial essay includes its opening quotation, all five named sections, concluding encouragement and final sentence, ending before category and charging controls. DOM and full-page screenshot show flowing complete content without overlay or expansion. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -4537,7 +4492,6 @@
           "html_selector": "h1.article-title,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": ".comment-card.comment-item",
           "author_selector": ".comment-header .username .name",
           "body_selector": ".comment-content > .content",
@@ -4545,12 +4499,13 @@
           "section_markers": [
             "评论"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete #article-root body includes browser and Node explanation, all demonstrations and outputs, and nine reference links. Initial viewport plus middle/end screenshots confirm ordinary readable code and article end before site recommendations; no expansion or wall applies."
+        "reason": "Complete #article-root body includes browser and Node explanation, all demonstrations and outputs, and nine reference links. Initial viewport plus middle/end screenshots confirm ordinary readable code and article end before site recommendations; no expansion or wall applies. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -4961,16 +4916,11 @@
             "龙虾冲浪终于不迷路了！网页智能体新框架Avenir-Web开源即SOTA"
           ],
           "html_selector": "#articleContentId,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Human explicitly accepts complete displayed portion of retained original URL without expanding collapsed body. Every displayed character/block is source-bound through real clipping/mask geometry; full unopened article/answer is not claimed."
+        "reason": "Human explicitly accepts complete displayed portion of retained original URL without expanding collapsed body. Every displayed character/block is source-bound through real clipping/mask geometry; full unopened article/answer is not claimed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -5333,16 +5283,11 @@
           "excluded_html_selectors": [
             "h1.screen-reader-only"
           ]
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "All fixed article text, captions, three main interview sections, editorial credits and original publisher subscription footer appear in initial #mp-editor. DOM shows full element height and end screenshot confirms final owned homepage link before platform statement and comments; no expansion."
+        "reason": "All fixed article text, captions, three main interview sections, editorial credits and original publisher subscription footer appear in initial #mp-editor. DOM shows full element height and end screenshot confirms final owned homepage link before platform statement and comments; no expansion. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -5704,7 +5649,6 @@
           "html_selector": "h1.title__FIwxD,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": ".ant-comment.costomComment__XAR1T",
           "author_selector": ".ant-comment-content-author-name > a",
           "body_selector": "[class^=\"content__\"]",
@@ -5713,12 +5657,13 @@
             "评论",
             "新评论"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete interview flows from video caption and lead through four named interview sections and final collection-policy answer. Read-only DOM and beginning/middle/end screenshots confirm no clipping or modal; image placeholders do not conceal textual captions."
+        "reason": "Complete interview flows from video caption and lead through four named interview sections and final collection-policy answer. Read-only DOM and beginning/middle/end screenshots confirm no clipping or modal; image placeholders do not conceal textual captions. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -6204,16 +6149,11 @@
             "嫦娥六号拍摄月背系列影像图公布，含着陆点彩色全景图像"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete initial article contains lead, all four ordinary figure captions/explanations and final lunar-ascent paragraph with its real internal link. Initial/middle/end screenshots verify article boundary before feedback/value controls with no expansion."
+        "reason": "Complete initial article contains lead, all four ordinary figure captions/explanations and final lunar-ascent paragraph with its real internal link. Initial/middle/end screenshots verify article boundary before feedback/value controls with no expansion. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -6447,16 +6387,11 @@
             "《如何阅读一本书》| 读书笔记"
           ],
           "html_selector": "h1._2zeTMs,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The full initial body has the image caption, opening quotation, all eleven numbered reading-note sections, lists and final sentence before edit/copyright notices. Beginning/middle/end screenshots and un-clipped article CSS confirm ordinary complete text without modal."
+        "reason": "The full initial body has the image caption, opening quotation, all eleven numbered reading-note sections, lists and final sentence before edit/copyright notices. Beginning/middle/end screenshots and un-clipped article CSS confirm ordinary complete text without modal. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -6726,16 +6661,11 @@
             "事务隔离机制"
           ],
           "html_selector": "#事务隔离机制,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete article includes original TOC, all seven sections, transaction tables and every SQL example through final InnoDB next-key-lock conclusion. The __EOF__ marker and generic author/license suffix are site boilerplate excluded from body; screenshots verify uncollapsed text at middle and end."
+        "reason": "Complete article includes original TOC, all seven sections, transaction tables and every SQL example through final InnoDB next-key-lock conclusion. The __EOF__ marker and generic author/license suffix are site boilerplate excluded from body; screenshots verify uncollapsed text at middle and end. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -7080,16 +7010,11 @@
             "在腾讯云添加解析时，提示 DNS 不正确如何处理？"
           ],
           "html_selector": "h1.title-text,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete initial body includes both management scenarios, three-row DNS address/location table, ordinary captions, warning and final three reference links. Initial/middle/end screenshots confirm no clipping/overlay or expansion."
+        "reason": "Complete initial body includes both management scenarios, three-row DNS address/location table, ordinary captions, warning and final three reference links. Initial/middle/end screenshots confirm no clipping/overlay or expansion. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -7653,16 +7578,11 @@
             "项目开发规范"
           ],
           "html_selector": "h1.article-title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The entire initial free article includes preface/TOC, nine programming subsections, exception/logging, unit testing, security, database, engineering, both appendices and final legal statement. Body height exceeds 44k px without clipping; beginning/middle/end screenshots verify full text through original upload-failure placeholders."
+        "reason": "The entire initial free article includes preface/TOC, nine programming subsections, exception/logging, unit testing, security, database, engineering, both appendices and final legal statement. Body height exceeds 44k px without clipping; beginning/middle/end screenshots verify full text through original upload-failure placeholders. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -7922,7 +7842,6 @@
           "html_selector": "h1,h2,[role=\"heading\"],h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "#comment .comment-item",
           "author_selector": ".user-info__username",
           "body_selector": ".comment-content-box > .comment-content",
@@ -7931,12 +7850,13 @@
             "评论",
             "最新评论"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Initial .article__content has full introduction and all five named historical sections, captions and final paragraph. Auto-height wrapper exceeds body height and does not clip it; beginning/middle/end screenshots confirm complete ordinary text."
+        "reason": "Initial .article__content has full introduction and all five named historical sections, captions and final paragraph. Auto-height wrapper exceeds body height and does not clip it; beginning/middle/end screenshots confirm complete ordinary text. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -8296,16 +8216,11 @@
             "参观国博实用攻略，请您查收！"
           ],
           "html_selector": ".content_layout > .title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete initial guide has opening, reservation instructions, service desk list, convenience facilities, public explanations, self-guided options and final wish. Screenshots verify beginning/middle/end without clipping, modal or expansion; article body links retained without following them."
+        "reason": "Complete initial guide has opening, reservation instructions, service desk list, convenience facilities, public explanations, self-guided options and final wish. Screenshots verify beginning/middle/end without clipping, modal or expansion; article body links retained without following them. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -8572,7 +8487,6 @@
           "html_selector": "#page-title,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "#comments-content > .comment",
           "author_selector": ".comment-header .author",
           "body_selector": ".comment-content",
@@ -8581,12 +8495,13 @@
             "留言",
             "我要发表看法"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "All initial body paragraphs, four major sections, twelve property subsections, CSS examples and final （完） marker are present in #main-content. Screenshots confirm middle and final align-self text before document information; no clipping or expansion."
+        "reason": "All initial body paragraphs, four major sections, twelve property subsections, CSS examples and final （完） marker are present in #main-content. Screenshots confirm middle and final align-self text before document information; no clipping or expansion. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -8838,16 +8753,11 @@
             "The Illustrated Transformer"
           ],
           "html_selector": "#\\36 639,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete article prose, code and original author connection/LeetCode/book-promotion sections are retained through Kindle Unlimited ending. Captured selectable paragraphs/PRE exclude the inserted platform subscription form; screenshots confirm beginning, visible Python and final body before tags/author card."
+        "reason": "Complete article prose, code and original author connection/LeetCode/book-promotion sections are retained through Kindle Unlimited ending. Captured selectable paragraphs/PRE exclude the inserted platform subscription form; screenshots confirm beginning, visible Python and final body before tags/author card. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -9253,7 +9163,6 @@
           "html_selector": "h1.post-title.published,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "#discussion .comment-list-items > .comment",
           "author_selector": "a[href*=\"/profile/\"][data-native=\"true\"]",
           "body_selector": ".comment-body",
@@ -9262,12 +9171,13 @@
             "Discussion about this post",
             "Comments"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 1
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Retained original approved URL under explicit authoring-only obstruction-dismissal policy. Complete authored prose existed before dismissal. Initial loaded Spotify ordinary text is proven in both pre-fullpage native AX captures; complete article/list/child scope visually reviewed without expanding content."
+        "reason": "Retained original approved URL under explicit authoring-only obstruction-dismissal policy. Complete authored prose existed before dismissal. Initial loaded Spotify ordinary text is proven in both pre-fullpage native AX captures; complete article/list/child scope visually reviewed without expanding content. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -9531,16 +9441,11 @@
             "【AIニュース】AIが“チャット”から“仕事を代行する存在”へ – Weekly Digest (04/05〜04/11)"
           ],
           "html_selector": "h1.pointer-events-auto.mt-\\[30px\\],h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete initially rendered 64k-character weekly digest, including original introduction, glossary, currently visible partial table of contents, every news category and concluding column. Auto-height body; beginning/middle/ending screenshots confirm no body truncation. Collapsed TOC is left untouched."
+        "reason": "Complete initially rendered 64k-character weekly digest, including original introduction, glossary, currently visible partial table of contents, every news category and concluding column. Auto-height body; beginning/middle/ending screenshots confirm no body truncation. Collapsed TOC is left untouched. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -9620,16 +9525,9 @@
           }
         ]
       },
-      "source_benchmark": {
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
-        }
-      },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Initial full-page screenshot and DOM show the complete essay, Lamport quotation, final comparison and acknowledgment, with no collapsed content or overlay. Site navigation and article title are image lettering."
+        "reason": "Initial full-page screenshot and DOM show the complete essay, Lamport quotation, final comparison and acknowledgment, with no collapsed content or overlay. Site navigation and article title are image lettering. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -9795,7 +9693,6 @@
           "html_selector": "h1.post__title,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "li.comment",
           "author_selector": ".comment__title > cite.author",
           "body_selector": ".comment__body",
@@ -9804,12 +9701,13 @@
             "comments",
             "Comments"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete introductory article including linked Background, present and future series lists. Full-page screenshot verifies all prose and final link before separate author card. Image diagram text excluded; ordinary linked titles preserved with href in review.json."
+        "reason": "Complete introductory article including linked Background, present and future series lists. Full-page screenshot verifies all prose and final link before separate author card. Image diagram text excluded; ordinary linked titles preserved with href in review.json. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -10343,16 +10241,11 @@
             "Cloudflare outage on June 21, 2022"
           ],
           "html_selector": "h1.m-0.text-4xl,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete incident post with six sections, timeline, all four configuration code examples and conclusion. Full-page capture and auto-height styles confirm complete prose; lazy image placeholders do not contribute body text."
+        "reason": "Complete incident post with six sections, timeline, all four configuration code examples and conclusion. Full-page capture and auto-height styles confirm complete prose; lazy image placeholders do not contribute body text. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -10589,7 +10482,6 @@
           "html_selector": "h1.fs-3xl.m\\:fs-4xl,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": ".single-comment-node",
           "author_selector": ".comment__header > a .js-comment-username",
           "body_selector": ".comment__body",
@@ -10598,12 +10490,13 @@
             "Top comments",
             "Comments"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Prior rejection overgeneralized a nonmodal sign-in notification. Saved independent initial DOM/AX contain full ordinary article and inline code; article ancestor CSS has no clamp or hidden/inert gate, and screenshot shows no dimming backdrop. Notification remains untouched and excluded. Complete body runs from original updated-post notice through closing Stack Overflow paragraph. Complete ordinary h1 is separately required; the nonmodal notification does not disqualify already loaded title text."
+        "reason": "Prior rejection overgeneralized a nonmodal sign-in notification. Saved independent initial DOM/AX contain full ordinary article and inline code; article ancestor CSS has no clamp or hidden/inert gate, and screenshot shows no dimming backdrop. Notification remains untouched and excluded. Complete body runs from original updated-post notice through closing Stack Overflow paragraph. Complete ordinary h1 is separately required; the nonmodal notification does not disqualify already loaded title text. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -11041,16 +10934,11 @@
             "New AI model could streamline operations in a robotic warehouse"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete initially visible article includes subtitle, ordinary image caption and credit, full lead, Robotic Tetris, Considering relationships and funding acknowledgement. Full-page screenshot confirms no obstruction or collapsed body; all links retained."
+        "reason": "Complete initially visible article includes subtitle, ordinary image caption and credit, full lead, Robotic Tetris, Considering relationships and funding acknowledgement. Full-page screenshot confirms no obstruction or collapsed body; all links retained. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -11618,16 +11506,11 @@
             "NASA’s Webb Delivers Deepest Infrared Image of Universe Yet"
           ],
           "html_selector": "h1.display-48.margin-bottom-2,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Approved NASA URL successfully loaded after earlier transient tool/DNS failure. Same-run root03 complete parent article and automatically rendered iframe were reviewed against fullpage screenshot and AX. Body includes actual hero HTML caption/credit, four summary bullets, all14 paragraphs and the complete visible Webb’s First Images card; related-image recommendation previews are outside the authored body."
+        "reason": "Approved NASA URL successfully loaded after earlier transient tool/DNS failure. Same-run root03 complete parent article and automatically rendered iframe were reviewed against fullpage screenshot and AX. Body includes actual hero HTML caption/credit, four summary bullets, all14 paragraphs and the complete visible Webb’s First Images card; related-image recommendation previews are outside the authored body. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -12107,16 +11990,11 @@
             "The Mimic Octopus"
           ],
           "html_selector": "h1.headline,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Fresh independently observed initial source contains complete ordinary article before later automatic advertising transition. Early completeDOM/nativeAX and visible/unclipped per-paragraph ancestor metadata agree; independently inspected bodyclip visibly confirms credit and all4paragraphs. Later same-context bodyoverflow:hidden/campaign insertion is separately timestamped and is not used as unobstructed-body evidence. Previous modal observation remains valid for its older session; this qualification binds the documented early source only."
+        "reason": "Fresh independently observed initial source contains complete ordinary article before later automatic advertising transition. Early completeDOM/nativeAX and visible/unclipped per-paragraph ancestor metadata agree; independently inspected bodyclip visibly confirms credit and all4paragraphs. Later same-context bodyoverflow:hidden/campaign insertion is separately timestamped and is not used as unobstructed-body evidence. Previous modal observation remains valid for its older session; this qualification binds the documented early source only. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -12566,16 +12444,11 @@
             "‘The finger-touch sent shivers down my spine’: my encounter with a common octopus"
           ],
           "html_selector": "h1.dcr-l0wuod,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete initial article with subtitle and two owned related links, both ordinary figure captions, seven narrative paragraphs and original closing attribution/competition note. Full-page screenshot confirms beginning, encounter middle and final note, and no visible modal. Hidden image viewer excluded."
+        "reason": "Complete initial article with subtitle and two owned related links, both ordinary figure captions, seven narrative paragraphs and original closing attribution/competition note. Full-page screenshot confirms beginning, encounter middle and final note, and no visible modal. Hidden image viewer excluded. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -12854,16 +12727,11 @@
             "The Perfect Belgrade Itinerary"
           ],
           "html_selector": "h1.sc-8e3fc05-0.sc-77279772-11,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete initially rendered itinerary, including original travel notice, lead, all five destination/food/transport sections and six must-see bullets. Direct clipping screenshots begin/middle/end verify full prose. Full-page screenshot changes vh-sized hero painting, so completeness relies on saved clips and visible auto-height body styles rather than that capture alone."
+        "reason": "Complete initially rendered itinerary, including original travel notice, lead, all five destination/food/transport sections and six must-see bullets. Direct clipping screenshots begin/middle/end verify full prose. Full-page screenshot changes vh-sized hero painting, so completeness relies on saved clips and visible auto-height body styles rather than that capture alone. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -13964,7 +13832,6 @@
           "html_selector": "h1.article__bd__title,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": ".comment__item, .comment__item__reply > .items",
           "author_selector": ".comment__item__main__hd > a.user-name, :scope > a.user-name:first-of-type",
           "body_selector": ".comment__item__main > p, :scope > .content",
@@ -13973,12 +13840,13 @@
             "全部讨论",
             "评论"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "User approved exact replacementURL in cohortrevision2. Independent root direct initial DOM/AX/screenshot establish complete standalone .article__bd; all ordinary paragraphs, original authored ending/disclaimer and owned links retained. One source-hidden attribution paragraph and image-only lettering are excluded. Article and ancestors visible/unclipped; bottomright nonmodal login promotion does not overlap article. No clicks, expansion, input, login or scrolling performed."
+        "reason": "User approved exact replacementURL in cohortrevision2. Independent root direct initial DOM/AX/screenshot establish complete standalone .article__bd; all ordinary paragraphs, original authored ending/disclaimer and owned links retained. One source-hidden attribution paragraph and image-only lettering are excluded. Article and ancestors visible/unclipped; bottomright nonmodal login promotion does not overlap article. No clicks, expansion, input, login or scrolling performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -14399,16 +14267,11 @@
             "大模型基础应用框架 (ReACT\\SFT\\RAG) 创新及零售业务落地"
           ],
           "html_selector": "h1.article-title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -14852,16 +14715,11 @@
             "复杂场景下的 RAG 架构演进：跨模态知识联邦与统一语义推理实践"
           ],
           "html_selector": "h1.article-title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -15191,7 +15049,6 @@
           "html_selector": "h1.h2.mb-3,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "#comment-area .commentUnit",
           "author_selector": "a.d-uname",
           "body_selector": ".parsedText",
@@ -15201,12 +15058,13 @@
             "评论",
             "提交评论"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -15522,24 +15380,11 @@
             "SegmentFault 思否技术周刊 Vol.46 -- JavaScript 的那些事"
           ],
           "html_selector": "h1.h2.mb-3,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "record_selector": "#comment-area .commentUnit",
-          "author_selector": "a.d-uname",
-          "body_selector": ".parsedText",
-          "id_attribute": "id",
-          "section_markers": [
-            "条评论",
-            "评论",
-            "提交评论"
-          ],
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -15913,7 +15758,6 @@
           "html_selector": "h1,h2,[role=\"heading\"],h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "#comment .ant-comment:has(> .ant-comment-inner > .ant-comment-content > .ant-comment-content-author .user-name)",
           "author_selector": ".ant-comment-content-author-name > .user-name",
           "body_selector": ".ant-comment-content-detail",
@@ -15923,12 +15767,13 @@
             "评论:",
             "Comments"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 1
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -16222,16 +16067,11 @@
             "PostgreSQL 17 Released!"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -16657,16 +16497,11 @@
             "PostgreSQL 17 Press Kit"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -16981,7 +16816,6 @@
           "html_selector": "h1.c-single-normal__title,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "#article-comments li[id^=\"comment-\"]",
           "author_selector": ".c-article-comments-item__name",
           "body_selector": ".c-article-comments-item__content",
@@ -16990,12 +16824,13 @@
             "全部评论",
             "评论"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -17560,7 +17395,6 @@
           "html_selector": "h1.c-single-normal__title,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "#article-comments li[id^=\"comment-\"]",
           "author_selector": ".c-article-comments-item__name",
           "body_selector": ".c-article-comments-item__content",
@@ -17569,12 +17403,13 @@
             "全部评论",
             "评论"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Human approved direct replacement URL in cohort revision2. Complete initial authored body independently reviewed against fullpage screenshot, DOM, accessibility and computed visibility evidence, without interaction."
+        "reason": "Human approved direct replacement URL in cohort revision2. Complete initial authored body independently reviewed against fullpage screenshot, DOM, accessibility and computed visibility evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -18072,16 +17907,11 @@
             "How we scaled the GitHub API with a sharded, replicated rate limiter in Redis"
           ],
           "html_selector": "h1.h3-mktg.lh-condensed,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -18381,16 +18211,11 @@
             "Reducing Slack’s memory footprint"
           ],
           "html_selector": "h1.ts-jumbo,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -18760,16 +18585,11 @@
             "How Discord Stores Trillions of Messages"
           ],
           "html_selector": "h1.article_heading.is-up-26,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -19101,16 +18921,11 @@
             "How Discord Indexes Trillions of Messages"
           ],
           "html_selector": "h1.article_heading.is-up-26,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -19404,16 +19219,11 @@
             "Celebrating Five Years of Backstage: From Open Source Project to Enterprise Business"
           ],
           "html_selector": "h1.single-post__title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -19953,16 +19763,11 @@
             "新华全媒+|龙舟漾遗风 粽情系家国——品端午情怀新气象"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -20145,16 +19950,11 @@
             "2024年端午节假期文化和旅游市场情况"
           ],
           "html_selector": ".sp_title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "All five body paragraphs were observed in the initial automatic-load #zoom container, including the final sentence before article controls; no interaction was performed."
+        "reason": "All five body paragraphs were observed in the initial automatic-load #zoom container, including the final sentence before article controls; no interaction was performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -20508,16 +20308,11 @@
             "What Is Impressionism? 4 Things to Know"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Replaces the prior Met essay because its qualification included horizontally hidden gallery captions and the boundary could not be independently recovered. This independently observed same-topic National Gallery of Art article retains complete default prose and six visible ordinary art captions. Two normal loads, scrollY0, no click, expansion or carousel change. Ten other art captions have computedopacity0 and are excluded; an additional By figcaption is a separately checked byline label. Nonzero geometry alone does not establish visible text."
+        "reason": "Replaces the prior Met essay because its qualification included horizontally hidden gallery captions and the boundary could not be independently recovered. This independently observed same-topic National Gallery of Art article retains complete default prose and six visible ordinary art captions. Two normal loads, scrollY0, no click, expansion or carousel change. Ten other art captions have computedopacity0 and are excluded; an additional By figcaption is a separately checked byline label. Nonzero geometry alone does not establish visible text. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -20953,16 +20748,11 @@
             "7 Things We Learned From 1,000+ Conversations With AI Founders"
           ],
           "html_selector": "h1.inst-article-title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Human-approved replacement revision2. Complete independently captured initial article comprises both opening paragraphs, all seven numbered sections, the full conclusion, and the entire displayed How to cite citation and canonical-URL hint. Article ancestors are visible/unclipped; no interaction or image transcription. Related feed previews and neighboring article membership are outside authored body; their ordinary section/navigation controls remain required."
+        "reason": "Human-approved replacement revision2. Complete independently captured initial article comprises both opening paragraphs, all seven numbered sections, the full conclusion, and the entire displayed How to cite citation and canonical-URL hint. Article ancestors are visible/unclipped; no interaction or image transcription. Related feed previews and neighboring article membership are outside authored body; their ordinary section/navigation controls remain required. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -21292,16 +21082,11 @@
             "The Year in Math"
           ],
           "html_selector": "h1.post__title__title.mv025,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -21577,16 +21362,11 @@
             "Learn CSS Grid by Building 5 Layouts in 17 minutes"
           ],
           "html_selector": "h1.post-full-title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction."
+        "reason": "The complete initial-load article was independently reviewed through accessibility, rendered DOM boundaries and viewport evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -21982,22 +21762,11 @@
             "A Complete CSS Flexbox Layout Guide"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "record_selector": "details[open] #commentlist li[id^=\"li-comment-\"]",
-          "author_selector": ".comment-author",
-          "body_selector": ".comment-content",
-          "id_attribute": "id",
-          "section_markers": [
-            "Comments"
-          ],
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Independent fresh initial source repairs previously omitted CodePen text. Complete parent article matches prior reference ignoring whitespace; all18 article embeds are mapped at exact DOM positions. Six automatically selected CSS panes and ordinary tab/resource/zoom labels are retained from full native AX. All18 nested preview WebAreas are currently about:blank without child text; no viewport entry or interaction was performed."
+        "reason": "Independent fresh initial source repairs previously omitted CodePen text. Complete parent article matches prior reference ignoring whitespace; all18 article embeds are mapped at exact DOM positions. Six automatically selected CSS panes and ordinary tab/resource/zoom labels are retained from full native AX. All18 nested preview WebAreas are currently about:blank without child text; no viewport entry or interaction was performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -22357,16 +22126,11 @@
             "Designing Better Error Messages UX"
           ],
           "html_selector": "#main-heading,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed."
+        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -22806,7 +22570,6 @@
           "html_selector": "h1.entry-title,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "#comments li.pingback",
           "author_selector": ".comment-body > a.url",
           "body_selector": ".comment-body",
@@ -22815,12 +22578,13 @@
             "Reader Comments",
             "Comments"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed."
+        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -23108,23 +22872,11 @@
             "The Reformer - Pushing the limits of language modeling"
           ],
           "html_selector": "h1.group.relative,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "record_selector": "div[id].scroll-mt-4",
-          "author_selector": "div.flex.max-w-full.items-center.overflow-hidden > div.mr-2, div.flex.max-w-full.items-center.overflow-hidden > span div.mr-2 > a",
-          "body_selector": "div.flex.max-w-full.items-center.overflow-hidden > span.italic",
-          "id_attribute": "id",
-          "section_markers": [
-            "Community",
-            "Comments"
-          ],
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed."
+        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -23496,16 +23248,11 @@
             "Transformer: A Novel Neural Network Architecture for Language Understanding"
           ],
           "html_selector": "h1.headline-1.bhoig__headline,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed."
+        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -24123,16 +23870,11 @@
             "GraphRAG: Unlocking LLM discovery on narrative private data"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed."
+        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -24402,16 +24144,11 @@
             "PyTorch 2.0: Our next generation release that is faster, more Pythonic and Dynamic as ever"
           ],
           "html_selector": "h1.entry-title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed."
+        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -25137,16 +24874,11 @@
             "Scaling your API with rate limiters"
           ],
           "html_selector": "h1.BlogPost__title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed."
+        "reason": "Complete first-automatic-load article reviewed through accessibility, rendered DOM boundaries and saved viewport evidence; no interaction performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -25383,16 +25115,11 @@
             "Scaling to exabytes and beyond"
           ],
           "html_selector": "h1.dr-display-inline.dr-typography-t15,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete body from opening Years ago through Stay tuned reviewed in full-page screenshot. Cookie notice remains open without blocking body; no interaction performed."
+        "reason": "Complete body from opening Years ago through Stay tuned reviewed in full-page screenshot. Cookie notice remains open without blocking body; no interaction performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -25806,16 +25533,11 @@
             "H3: Uber’s Hexagonal Hierarchical Spatial Index"
           ],
           "html_selector": "h1.css-bUfMjo,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete rendered article with captions, code-source text links and contributor/newsletter closing reviewed through complete initial-load full-page screenshot. Images lazy-unloaded remain excluded; cookie notice untouched."
+        "reason": "Complete rendered article with captions, code-source text links and contributor/newsletter closing reviewed through complete initial-load full-page screenshot. Images lazy-unloaded remain excluded; cookie notice untouched. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -26427,16 +26149,11 @@
             "re:Invent 2019: Introducing the Amazon Builders’ Library (Part I)"
           ],
           "html_selector": "h1.lb-h2.blog-post-title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Direct approved URL automatically redirects to /cn/ English-content article. Complete opening, four linked excerpt sections and closing reviewed in full-page screenshot; no wall or collapsed body."
+        "reason": "Direct approved URL automatically redirects to /cn/ English-content article. Complete opening, four linked excerpt sections and closing reviewed in full-page screenshot; no wall or collapsed body. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -26631,16 +26348,11 @@
             "Closures in Javascript"
           ],
           "html_selector": "h1,h2,[role=\"heading\"],h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "All five sections and four rendered code blocks reviewed to two summary bullets in full-page screenshot. Excludes hidden command palette, collapsed on-page navigation and changing blog recommendations."
+        "reason": "All five sections and four rendered code blocks reviewed to two summary bullets in full-page screenshot. Excludes hidden command palette, collapsed on-page navigation and changing blog recommendations. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -26940,16 +26652,11 @@
             "Does reading do us any good?"
           ],
           "html_selector": "h1.mt-2\\.5.mb-6,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete essay, captions and pullquotes reviewed in full-page screenshot. Inline newsletter is separate from authored body; drop caps normalized without changing words. No clicks or scrolls."
+        "reason": "Complete essay, captions and pullquotes reviewed in full-page screenshot. Inline newsletter is separate from authored body; drop caps normalized without changing words. No clicks or scrolls. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -27522,16 +27229,11 @@
             "The Roosevelt Family Built a New York Coffee Chain 50 Years Before Starbucks"
           ],
           "html_selector": "h1.headline,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete originalHTML93261chars equals captured html_length. Full ordinary headline/deck, all20nonempty authored paragraph blocks (including the poem), three actual figcaptions with credits, and all four lines of quoted poem retained in source order through1928sale and final Brooklyn sentence. Direct .articleWrap geometry includes body/captions/poem and full ending without clipping or masks. NativeAX independently contains beginning, middle and ending. Top subscription promotion does not obstruct body; no clicks, expansion, scroll or login. Unpainted image pixels and control characters are not ordinary text."
+        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete originalHTML93261chars equals captured html_length. Full ordinary headline/deck, all20nonempty authored paragraph blocks (including the poem), three actual figcaptions with credits, and all four lines of quoted poem retained in source order through1928sale and final Brooklyn sentence. Direct .articleWrap geometry includes body/captions/poem and full ending without clipping or masks. NativeAX independently contains beginning, middle and ending. Top subscription promotion does not obstruct body; no clicks, expansion, scroll or login. Unpainted image pixels and control characters are not ordinary text. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -27900,16 +27602,11 @@
             "How an octopus’s cleverness may have evolved"
           ],
           "html_selector": "h1.header-default__title___ychM4,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete six-paragraph report and original citation plus editorial notes reviewed in full-page screenshot. Hero caption/credit bound separately as mandatory stable groups. No wall, expansion or interaction."
+        "reason": "Complete six-paragraph report and original citation plus editorial notes reviewed in full-page screenshot. Hero caption/credit bound separately as mandatory stable groups. No wall, expansion or interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -28371,16 +28068,11 @@
             "The short history of global living conditions and why it matters that we know it"
           ],
           "html_selector": "h1.centered-article-header__title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The saved initial DOM and independently inspected viewport/full-page screenshots show the complete ordinary article text: header, all eight prose sections, one ordinary figure caption, update/translation callouts, seven endnotes, visible prose/BibTeX citations, past-version and reuse information. The nonmodal cookie banner remains untouched; the page is not dimmed and the full-page capture shows the owning text through its end. Five chart frames are empty initial placeholders, so no chart data/lettering is claimed."
+        "reason": "The saved initial DOM and independently inspected viewport/full-page screenshots show the complete ordinary article text: header, all eight prose sections, one ordinary figure caption, update/translation callouts, seven endnotes, visible prose/BibTeX citations, past-version and reuse information. The nonmodal cookie banner remains untouched; the page is not dimmed and the full-page capture shows the owning text through its end. Five chart frames are empty initial placeholders, so no chart data/lettering is claimed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -29077,16 +28769,11 @@
             "How sex chromosomes get trapped into nonrecombination"
           ],
           "html_selector": "#artTitle,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete originalHTML96972chars matches captured html_length. Full visible title and2025Editorial Note (all3paragraphs plus dated citation and link), abstract, fixed citation/publication/copyright/funding/conflict statements, all seven main prose paragraphs, full ordinary figure caption/explanation/download/DOI text, and all nine bibliography entries with owned links retained. Root performed only user-authorized authoring privacy dismissal Save Selected Preferences and Close with all optional settings off; no content expansion/login/navigation. Exact before/after #artText, .amendment-editorial-note and #artTitle DOM text equality independently checked. #artText geometry includes full ordinary source through final reference, no masks or body clipping; nativeAX corroborates all sections. Editorial Note explicitly reports cited Research Article retracted; this required clarification is retained, without representing its model as validated science."
+        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete originalHTML96972chars matches captured html_length. Full visible title and2025Editorial Note (all3paragraphs plus dated citation and link), abstract, fixed citation/publication/copyright/funding/conflict statements, all seven main prose paragraphs, full ordinary figure caption/explanation/download/DOI text, and all nine bibliography entries with owned links retained. Root performed only user-authorized authoring privacy dismissal Save Selected Preferences and Close with all optional settings off; no content expansion/login/navigation. Exact before/after #artText, .amendment-editorial-note and #artTitle DOM text equality independently checked. #artText geometry includes full ordinary source through final reference, no masks or body clipping; nativeAX corroborates all sections. Editorial Note explicitly reports cited Research Article retracted; this required clarification is retained, without representing its model as validated science. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -29410,16 +29097,11 @@
             "影智XBOT发布通用餐饮服务机器人矩阵与“一脑多形”具身智能体系"
           ],
           "html_selector": "h1.headTit,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete report including all product specifications, collaboration section and final conclusion reviewed in full-page screenshot. Dropdown submenu texts and changing hot-search terms excluded; no interaction."
+        "reason": "Complete report including all product specifications, collaboration section and final conclusion reviewed in full-page screenshot. Dropdown submenu texts and changing hot-search terms excluded; no interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -29828,16 +29510,11 @@
             "县城咖啡低调火热，培养“土著”喝咖啡才是关键"
           ],
           "html_selector": "h2.tit,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete opening, three principal sections and final conclusion reviewed in full-page screenshot; all paragraph text retained, changing news sidebar, comment suggestions and counts excluded."
+        "reason": "Complete opening, three principal sections and final conclusion reviewed in full-page screenshot; all paragraph text retained, changing news sidebar, comment suggestions and counts excluded. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -30078,16 +29755,11 @@
             "Announcing Rust 1.0"
           ],
           "html_selector": "h2,h1,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete narrative and all 215 historical contributor entries through らいどっと reviewed in full-page screenshot. Contributor list is original fixed article content, not a live count or feed."
+        "reason": "Complete narrative and all 215 historical contributor entries through らいどっと reviewed in full-page screenshot. Contributor list is original fixed article content, not a live count or feed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -30453,16 +30125,11 @@
             "Go Concurrency Patterns: Context"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "All prose, typed code blocks, complete server/userip/google worked example and final Further reading links reviewed in full-page screenshot. Cookie strip left untouched and excluded as session-dependent."
+        "reason": "All prose, typed code blocks, complete server/userip/google worked example and final Further reading links reviewed in full-page screenshot. Cookie strip left untouched and excluded as session-dependent. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -30690,16 +30357,11 @@
             "Attention and Augmented Recurrent Neural Networks"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete ordinary article and appendix independently verified against uncapped fresh initial DOM, CSS scope map, full rendered page text, AX image ownership and original fullpage screenshot. All four augmented-RNN directions, inline mathematical prose,8ordinary captions,21references, acknowledgments, correction/license text and complete BibTeX retained. No interaction or hidden-state expansion."
+        "reason": "Complete ordinary article and appendix independently verified against uncapped fresh initial DOM, CSS scope map, full rendered page text, AX image ownership and original fullpage screenshot. All four augmented-RNN directions, inline mathematical prose,8ordinary captions,21references, acknowledgments, correction/license text and complete BibTeX retained. No interaction or hidden-state expansion. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -31167,16 +30829,11 @@
             "The Scaling Hypothesis"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The complete second independent initial DOM, rendered viewport and computed region/hidden-node evidence qualify the whole essay, Appendix, nine visible ordinary captions and all 34 endnotes. All 16 HTML chunks reassemble exactly; earlier truncatedHTML is not used. Owning main/essay/endnotes regions are visible and unclipped; related backlink/similar collections and the closed bibliography are excluded explicitly. Preserve observed generated monetary/date annotations as displayed."
+        "reason": "The complete second independent initial DOM, rendered viewport and computed region/hidden-node evidence qualify the whole essay, Appendix, nine visible ordinary captions and all 34 endnotes. All 16 HTML chunks reassemble exactly; earlier truncatedHTML is not used. Owning main/essay/endnotes regions are visible and unclipped; related backlink/similar collections and the closed bibliography are excluded explicitly. Preserve observed generated monetary/date annotations as displayed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -31603,16 +31260,11 @@
             "Americans’ Use of Social Media in 2026"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The source page now publishes a2026fact sheet at the existingURL; the preceding2024-stylebody and Social Media Fact Sheet title no longer describe the current initial state."
+        "reason": "The source page now publishes a2026fact sheet at the existingURL; the preceding2024-stylebody and Social Media Fact Sheet title no longer describe the current initial state. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -32285,16 +31937,11 @@
             "The Year in Computer Science"
           ],
           "html_selector": "h1.post__title__title.mv025,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Human approved direct replacement URL in cohort revision2. Complete initial authored body independently reviewed against fullpage screenshot, DOM, accessibility and computed visibility evidence, without interaction."
+        "reason": "Human approved direct replacement URL in cohort revision2. Complete initial authored body independently reviewed against fullpage screenshot, DOM, accessibility and computed visibility evidence, without interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -32488,7 +32135,6 @@
           "html_selector": "h1.post__title,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "li.comment",
           "author_selector": ".comment__title > cite.author",
           "body_selector": ".comment__body",
@@ -32497,12 +32143,13 @@
             "comments",
             "Comments"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete prose, real preformatted arraySum code, conclusion list and author bio reviewed in full-page screenshot. Cartoon image lettering/alt excluded; no rendered prose omitted. Comments excluded."
+        "reason": "Complete prose, real preformatted arraySum code, conclusion list and author bio reviewed in full-page screenshot. Cartoon image lettering/alt excluded; no rendered prose omitted. Comments excluded. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -33308,7 +32955,6 @@
           "html_selector": "h1.fs-3xl.m\\:fs-4xl,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": ".single-comment-node",
           "author_selector": ".comment__header > a .js-comment-username",
           "body_selector": ".comment__body",
@@ -33317,12 +32963,13 @@
             "Top comments",
             "Comments"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Same-run complete initial parent DOM and automatically loaded accessibility capture qualify the whole owning tutorial body, including all 168 inline-code nodes and all ordinary tables, author resource links and the complete loaded quoted post. Five natural tutorial components cover all 114 reference lines. Image/GIF lettering and media controls are excluded without OCR. The nonmodal notification remains untouched; independently measured article ancestors are visible/unclipped and undimmed, with no dialog/inert restriction."
+        "reason": "Same-run complete initial parent DOM and automatically loaded accessibility capture qualify the whole owning tutorial body, including all 168 inline-code nodes and all ordinary tables, author resource links and the complete loaded quoted post. Five natural tutorial components cover all 114 reference lines. Image/GIF lettering and media controls are excluded without OCR. The nonmodal notification remains untouched; independently measured article ancestors are visible/unclipped and undimmed, with no dialog/inert restriction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -33814,16 +33461,11 @@
             "LLMs develop their own understanding of reality as their language abilities improve"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete opening, two named sections, limitations, external commentary and final DARPA funding paragraph reviewed in full-page screenshot. Hero caption required separately. Press inquiry accordion left closed; no interaction."
+        "reason": "Complete opening, two named sections, limitations, external commentary and final DARPA funding paragraph reviewed in full-page screenshot. Hero caption required separately. Press inquiry accordion left closed; no interaction. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -34107,7 +33749,6 @@
           "html_selector": "#page-title,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "#comments-content > .comment",
           "author_selector": ".comment-header .author",
           "body_selector": ".comment-content",
@@ -34116,12 +33757,13 @@
             "留言",
             "我要发表看法"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Independent new direct root observation resolves prior screenshot-tool limitation. Complete317-line weekly issue is rendered initially through（完）, including intro, cover caption, essay, original event promos, all four news items, six article links, AI items, twelve tools, four resources, image descriptions, original digest, five quotations and historical review links. No source clipping/expansion or visible overlays."
+        "reason": "Independent new direct root observation resolves prior screenshot-tool limitation. Complete317-line weekly issue is rendered initially through（完）, including intro, cover caption, essay, original event promos, all four news items, six article links, AI items, twelve tools, four resources, image descriptions, original digest, five quotations and historical review links. No source clipping/expansion or visible overlays. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -34391,16 +34033,11 @@
             "LLM Powered Autonomous Agents"
           ],
           "html_selector": "h1.post-title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete initial article independently reviewed in saved DOM, browser innerText and the full23054px screenshot at legible resolution. Preserve all prose, rendered inline mathematical notation, code/prompt/conversation samples,13 ordinary figure captions, citation and21references. Closed TOC inner links and image lettering are excluded."
+        "reason": "Complete initial article independently reviewed in saved DOM, browser innerText and the full23054px screenshot at legible resolution. Preserve all prose, rendered inline mathematical notation, code/prompt/conversation samples,13 ordinary figure captions, citation and21references. Closed TOC inner links and image lettering are excluded. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -34732,7 +34369,6 @@
           "html_selector": "h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": "#comments .comment-item, #comments .reply-item",
           "author_selector": ".comment-item-body > .comment-main > .meta-header > a",
           "body_selector": ".comment-item-body > .comment-main > .comment-content",
@@ -34741,12 +34377,13 @@
             "全部回复",
             "全部回复："
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete nine-line review including quoted literary passage and final question independently reviewed in full-page screenshot. No collapsed review body. Comments/pagination and rating totals excluded; historical publication metadata retained as ordinary stable sidebar text."
+        "reason": "Complete nine-line review including quoted literary passage and final question independently reviewed in full-page screenshot. No collapsed review body. Comments/pagination and rating totals excluded; historical publication metadata retained as ordinary stable sidebar text. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -35006,16 +34643,11 @@
             "Announcing English Wikipedia’s most popular articles of 2024"
           ],
           "html_selector": "h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete fixed 2024 retrospective including category lists, all 25 historical pageview totals, closing explanation and appendix methodology reviewed in full-page screenshot. Hero deck caption required separately; reused-image credits are separate from authored body. No live-rank feed frozen."
+        "reason": "Complete fixed 2024 retrospective including category lists, all 25 historical pageview totals, closing explanation and appendix methodology reviewed in full-page screenshot. Hero deck caption required separately; reused-image credits are separate from authored body. No live-rank feed frozen. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -35489,16 +35121,11 @@
             "Unpacking the 2024 Developer Survey results"
           ],
           "html_selector": "h1.fs-display2.lh-xs,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "The independently saved initial DOM and full-page screenshot contain the complete article header/summary, linked highlights and all transcript turns through the final outro music cue. Five natural components cover all 97 reference lines. No expansion or consent action was performed; the session-dependent cookie overlay remains untouched."
+        "reason": "The independently saved initial DOM and full-page screenshot contain the complete article header/summary, linked highlights and all transcript turns through the final outro music cue. Five natural components cover all 97 reference lines. No expansion or consent action was performed; the session-dependent cookie overlay remains untouched. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -36128,23 +35755,9 @@
           }
         ]
       },
-      "source_benchmark": {
-        "comment_contract": {
-          "version": 1,
-          "record_selector": ".comment__item, .comment__item__reply > .items",
-          "author_selector": ".comment__item__main__hd > a.user-name, :scope > a.user-name:first-of-type",
-          "body_selector": ".comment__item__main > p, :scope > .content",
-          "id_attribute": "data-id",
-          "section_markers": [
-            "全部讨论",
-            "评论"
-          ],
-          "max_reference_age_seconds": 900
-        }
-      },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete short original post and quoted original source content independently reviewed without expansion; source href retained in links.json. Quoted metadata timestamps/reactions excluded. No separate visible article title: exact original-post opening binds identity."
+        "reason": "Complete short original post and quoted original source content independently reviewed without expansion; source href retained in links.json. Quoted metadata timestamps/reactions excluded. No separate visible article title: exact original-post opening binds identity. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -36494,7 +36107,6 @@
           "html_selector": "h1.article__bd__title,h1,h2,[role=\"heading\"]"
         },
         "comment_contract": {
-          "version": 1,
           "record_selector": ".comment__item, .comment__item__reply > .items",
           "author_selector": ".comment__item__main__hd > a.user-name, :scope > a.user-name:first-of-type",
           "body_selector": ".comment__item__main > p, :scope > .content",
@@ -36503,12 +36115,13 @@
             "全部讨论",
             "评论"
           ],
-          "max_reference_age_seconds": 900
+          "version": 2,
+          "minimum_comments": 3
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete prose with all five named argument sections, summary and final personal-understanding disclaimer reviewed in full-page screenshot. Punctuation line breaks preserve rendered DOM; no hidden or expanded text used."
+        "reason": "Complete prose with all five named argument sections, summary and final personal-understanding disclaimer reviewed in full-page screenshot. Punctuation line breaks preserve rendered DOM; no hidden or expanded text used. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -36886,23 +36499,11 @@
             "能力圈不在于多大 ， 在于敢说\"我不懂\""
           ],
           "html_selector": "h1.article__bd__title,h1,h2,[role=\"heading\"]"
-        },
-        "comment_contract": {
-          "version": 1,
-          "record_selector": ".comment__item, .comment__item__reply > .items",
-          "author_selector": ".comment__item__main__hd > a.user-name, :scope > a.user-name:first-of-type",
-          "body_selector": ".comment__item__main > p, :scope > .content",
-          "id_attribute": "data-id",
-          "section_markers": [
-            "全部讨论",
-            "评论"
-          ],
-          "max_reference_age_seconds": 900
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "User approved exact replacementURL in cohortrevision2. Independent root direct initial DOM/AX/screenshot establish complete standalone .article__bd; all ordinary paragraphs, original authored ending/disclaimer and owned links retained. One source-hidden attribution paragraph and image-only lettering are excluded. Article and ancestors visible/unclipped; bottomright nonmodal login promotion does not overlap article. No clicks, expansion, input, login or scrolling performed."
+        "reason": "User approved exact replacementURL in cohortrevision2. Independent root direct initial DOM/AX/screenshot establish complete standalone .article__bd; all ordinary paragraphs, original authored ending/disclaimer and owned links retained. One source-hidden attribution paragraph and image-only lettering are excluded. Article and ancestors visible/unclipped; bottomright nonmodal login promotion does not overlap article. No clicks, expansion, input, login or scrolling performed. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -37045,16 +36646,9 @@
           }
         ]
       },
-      "source_benchmark": {
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
-        }
-      },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete original post with opening, eight numbered news items, all ordinary 网页链接 links and final hashtag reviewed in full-page screenshot. Newspaper image lettering excluded. No title heading: original topic phrase binds post identity."
+        "reason": "Complete original post with opening, eight numbered news items, all ordinary 网页链接 links and final hashtag reviewed in full-page screenshot. Newspaper image lettering excluded. No title heading: original topic phrase binds post identity. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     },
     {
@@ -37129,16 +36723,9 @@
           }
         ]
       },
-      "source_benchmark": {
-        "comment_contract": {
-          "version": 1,
-          "mode": "observed_absent",
-          "max_reference_age_seconds": 900
-        }
-      },
       "rule_review": {
         "status": "reviewed",
-        "reason": "Complete five-line post visible in initial viewport above image, including outgoing 网页链接 and three hashtags. No expansion or interaction; image lettering and changing recommended post text excluded. Original post phrase binds identity without an invented visible title."
+        "reason": "Complete five-line post visible in initial viewport above image, including outgoing 网页链接 and three hashtags. No expansion or interaction; image lettering and changing recommended post text excluded. Original post phrase binds identity without an invented visible title. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
       }
     }
   ]

@@ -68,9 +68,32 @@ def _base_case(case: dict, rule: dict, acceptance: dict) -> dict:
 
 def _qualify_components(case: dict, rule: dict, task: dict, evidence_home: Path) -> dict:
     """Validate historical qualification without certifying a future live run."""
-    if "comment_contract" not in rule:
+    review = rule.get("comment_coverage_review")
+    if "comment_contract" not in rule and review is None:
         return task
     from .article_comments import qualify_article_comments
+    contract = rule.get("comment_contract")
+    if review is not None:
+        if (not isinstance(review, dict) or review.get("status") not in (
+                "visible_text", "observed_absent", "visible_placeholders_only")
+                or not isinstance(review.get("basis"), str) or not review["basis"].strip()):
+            raise ValueError("Invalid comment presence review")
+        if ((review["status"] == "visible_text") != (contract is not None)
+                or contract is not None and contract.get("version") != 2):
+            raise ValueError("Comment presence review and coverage contract disagree")
+        if "historical_contract" in review and (
+                review["status"] != "visible_placeholders_only"
+                or not isinstance(review["historical_contract"], dict)
+                or review["historical_contract"].get("version") != 1):
+            raise ValueError("Only placeholders may retain a legacy authoring contract")
+    elif contract is not None and contract.get("version") == 2:
+        raise ValueError("Comment coverage requires a presence review")
+    if contract is None:
+        if not isinstance(review, dict) or review.get("status") not in (
+                "observed_absent", "visible_placeholders_only"):
+            raise ValueError("Omitted comment rules require reviewed absence evidence")
+        contract = review.get("historical_contract", {
+            "version": 1, "mode": "observed_absent", "max_reference_age_seconds": 900})
     proof = rule.get("comment_qualification_reference", {})
     if not isinstance(proof.get("path"), str) or not proof.get("sha256"):
         raise ValueError("Comment contracts require independent qualification evidence")
@@ -79,14 +102,35 @@ def _qualify_components(case: dict, rule: dict, task: dict, evidence_home: Path)
         raise ValueError("Changed article comment qualification reference")
     reference = json.loads(raw)
     checked = qualify_article_comments(
-        rule["comment_contract"], reference, case_id=case["id"], url=case["url"])
+        contract, reference, case_id=case["id"], url=case["url"])
     if checked["status"] != "qualified":
         raise ValueError("Article comments require a complete independent observation")
+    if review is not None:
+        if not isinstance(review, dict) or not reference.get("source_evidence"):
+            raise ValueError("Comment presence review requires source evidence")
+        if review.get("status") == "visible_placeholders_only":
+            placeholders = review.get("placeholder_texts", [])
+            records = reference.get("records", [])
+            if ("comment_contract" in rule or not records
+                    or not isinstance(placeholders, list) or not placeholders
+                    or any(not isinstance(text, str) or not text.strip() for text in placeholders)
+                    or any(row["text"].strip() not in placeholders for row in records)):
+                raise ValueError("Placeholder-only review must explain every observed record")
+        elif review.get("status") == "observed_absent" and reference.get("records"):
+            raise ValueError("Absent comment review contains observed records")
+        elif review.get("status") == "visible_text" and "comment_contract" not in rule:
+            raise ValueError("Visible comment text requires a coverage contract")
     for source in reference.get("source_evidence", []):
         data = contained_path(evidence_home, source["path"], reject_symlinks=True).read_bytes()
         if hashlib.sha256(data).hexdigest() != source["sha256"]:
             raise ValueError("Changed article comment source evidence")
-    task["source_benchmark"]["comment_qualification_proof"] = proof
+    task.setdefault("source_benchmark", {})["comment_qualification_proof"] = proof
+    if review is not None:
+        task["source_benchmark"]["comment_presence_review"] = {
+            "status": review["status"], "basis": review["basis"],
+            "observed_record_count": len(reference["records"]),
+            "qualification_only": True,
+        }
     return task
 
 

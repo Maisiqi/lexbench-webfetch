@@ -137,6 +137,86 @@ class ArticleContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Changed article comment qualification reference"):
             compile_case(self.case, rule, self.root)
 
+    def test_absence_review_keeps_evidence_without_runtime_comment_contract(self):
+        source = b"<article>Complete source without comments.</article>"
+        (self.root / "source.html").write_bytes(source)
+        reference = {"version": 1, "case_id": self.case["id"], "url": self.case["url"],
+                     "scope": "initial_load_only", "context_id": "historical-authoring",
+                     "observed_on": "2026-10-19", "observation_complete": True,
+                     "source_observation_counts": [0], "records": [],
+                     "source_evidence": [{"path": "source.html",
+                         "sha256": hashlib.sha256(source).hexdigest(),
+                         "scope": "complete_initial_page"}]}
+        raw = (json.dumps(reference) + "\n").encode()
+        (self.root / "comments.json").write_bytes(raw)
+        rule = copy.deepcopy(self.rule)
+        rule["comment_coverage_review"] = {
+            "status": "observed_absent", "basis": "Complete initial source reviewed."}
+        with self.assertRaisesRegex(ValueError, "qualification evidence"):
+            compile_case(self.case, rule, self.root)
+        rule["comment_qualification_reference"] = {
+            "path": "comments.json", "sha256": hashlib.sha256(raw).hexdigest()}
+        task = compile_case(self.case, rule, self.root)
+        self.assertNotIn("comment_contract", task["source_benchmark"])
+        self.assertEqual(task["source_benchmark"]["comment_presence_review"]["status"],
+                         "observed_absent")
+        result = evaluate_response(task, (self.prefix + self.body).encode())
+        self.assertTrue(result["passed"])
+        self.assertTrue(result["measured"])
+        for status in ("unknown", None, "visible_text"):
+            invalid = copy.deepcopy(rule)
+            invalid["comment_coverage_review"]["status"] = status
+            with self.assertRaises(ValueError):
+                compile_case(self.case, invalid, self.root)
+        invalid = copy.deepcopy(rule)
+        invalid["comment_contract"] = {
+            "version": 2, "minimum_comments": 1, "record_selector": ".comment",
+            "author_selector": ".author", "body_selector": ".body",
+            "section_markers": ["Comments"]}
+        invalid.pop("comment_coverage_review")
+        with self.assertRaisesRegex(ValueError, "presence review"):
+            compile_case(self.case, invalid, self.root)
+        (self.root / "source.html").write_bytes(source + b"changed")
+        with self.assertRaisesRegex(ValueError, "Changed article comment source evidence"):
+            compile_case(self.case, rule, self.root)
+
+    def test_placeholder_only_review_cannot_hide_actual_comment_text(self):
+        source = b"<div class='comment'>Comment hidden</div>"
+        (self.root / "source.html").write_bytes(source)
+        reference = {"version": 1, "case_id": self.case["id"], "url": self.case["url"],
+                     "scope": "initial_load_only", "context_id": "historical-authoring",
+                     "observed_on": "2026-10-19", "observation_complete": True,
+                     "source_observation_counts": [1],
+                     "records": [{"id": "c1", "author": "Reader", "text": "Comment hidden",
+                                  "parent_id": None, "complete_initial_text": True}],
+                     "source_evidence": [{"path": "source.html",
+                         "sha256": hashlib.sha256(source).hexdigest(),
+                         "scope": "complete_initial_page"}]}
+        rule = copy.deepcopy(self.rule)
+        rule["comment_coverage_review"] = {
+            "status": "visible_placeholders_only", "basis": "Only a moderation notice is displayed.",
+            "placeholder_texts": ["Comment hidden"], "historical_contract": {
+                "version": 1, "record_selector": ".comment", "author_selector": ".author",
+                "body_selector": ".body", "section_markers": ["Comments"],
+                "max_reference_age_seconds": 900}}
+        for text, accepted in [("Comment hidden", True), ("Actual comment prose", False)]:
+            reference["records"][0]["text"] = text
+            raw = (json.dumps(reference) + "\n").encode()
+            (self.root / "comments.json").write_bytes(raw)
+            rule["comment_qualification_reference"] = {
+                "path": "comments.json", "sha256": hashlib.sha256(raw).hexdigest()}
+            if accepted:
+                task = compile_case(self.case, rule, self.root)
+                self.assertNotIn("comment_contract", task["source_benchmark"])
+                for placeholders in ("Comment hidden", [""], [None]):
+                    invalid = copy.deepcopy(rule)
+                    invalid["comment_coverage_review"]["placeholder_texts"] = placeholders
+                    with self.assertRaisesRegex(ValueError, "Placeholder-only"):
+                        compile_case(self.case, invalid, self.root)
+            else:
+                with self.assertRaisesRegex(ValueError, "Placeholder-only"):
+                    compile_case(self.case, rule, self.root)
+
     def test_complete_plain_and_markdown_articles_pass(self):
         validate_case(EvalCase(**self.task))
         self.assertTrue(self.score(self.prefix + self.body))
@@ -372,7 +452,7 @@ class ArticleContracts(unittest.TestCase):
                             for change in revision['changes']))
         self.assertTrue(all(c['platform'] != '搜狗微信' for c in cohort['cases']))
         final = next(r for r in cohort['revisions'] if r['revision'] == 4)
-        self.assertEqual(cohort['revisions'][-1]['revision'], 6)
+        self.assertEqual(cohort['revisions'][-1]['revision'], 7)
         self.assertEqual({c['id'] for c in final['changes'] if c['action'] == 'replace'},
                          {'article-001', 'article-002', 'article-003', 'article-079', 'article-082'})
         self.assertEqual([c['id'] for c in final['changes'] if c['action'] == 'remove'],
@@ -380,10 +460,14 @@ class ArticleContracts(unittest.TestCase):
         self.assertTrue(all(rule['status'] == 'verified' for rule in rules))
         self.assertEqual(sum(rule['target_kind'] == 'post_collection' for rule in rules), 5)
         fixed = [r for r in rules if r['target_kind'] == 'fixed_article']
-        self.assertEqual(cohort['id'], 'articles-v3')
+        self.assertEqual(cohort['id'], 'articles-v4')
         self.assertEqual(len(fixed), 95)
         self.assertEqual(sum('title_contract' in r for r in fixed), 90)
-        self.assertTrue(all('comment_contract' in r for r in fixed))
+        self.assertEqual(sum('comment_contract' in r for r in fixed), 20)
+        self.assertTrue(all(r['comment_contract']['version'] == 2
+                            for r in fixed if 'comment_contract' in r))
+        self.assertTrue(all('comment_qualification_reference' in r
+                            and 'comment_coverage_review' in r for r in fixed))
         self.assertTrue(all(r['body_segmentation']['version'] == 3 for r in fixed))
         self.assertTrue(all(r['body_segmentation']['reference_sha256'] == r['body_reference']['sha256']
                             for r in fixed))
@@ -391,7 +475,7 @@ class ArticleContracts(unittest.TestCase):
             self.assertEqual([r['lines'] for r in rule['body_region_review']], rule['body_regions'])
             self.assertTrue(all(r['label'].strip() for r in rule['body_region_review']))
         self.assertTrue(all(1 <= len(r['body_regions']) <= 5 for r in fixed))
-        self.assertEqual(len(cohort['revisions'][-1]['changes']), 57)
+        self.assertEqual(len(next(r for r in cohort['revisions'] if r['revision'] == 6)['changes']), 57)
         revised = {c['id']: c['action'] for c in next(r for r in cohort['revisions'] if r['revision'] == 5)['changes']}
         self.assertEqual(revised, {'article-049': 'revise_entry_url',
                                    'article-090': 'revise_source_reference',

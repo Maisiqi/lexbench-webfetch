@@ -94,3 +94,53 @@ class ArticleComponentIntegration(unittest.TestCase):
                 "--reference-context", str(root / "context.json")],
                 text=True, capture_output=True, check=True)
             self.assertTrue(json.loads(result.stdout)["passed"])
+
+
+class StaticCommentCoverageIntegration(unittest.TestCase):
+    def setUp(self):
+        original = ArticleComponentIntegration()
+        original.setUp()
+        self.case = copy.deepcopy(original.case)
+        self.contract = self.case["source_benchmark"]["comment_contract"]
+        self.contract.pop("max_reference_age_seconds")
+        self.contract.update(version=2, minimum_comments=2)
+        self.complete = "# Life and dignity\n\nArticle prose.\n\nComments\n\n## New reader\nA new comment today.\n\n## Another reader\nA different response."
+
+    def test_static_coverage_needs_no_runtime_reference(self):
+        result = evaluate_response(self.case, self.complete.encode())
+        self.assertTrue(result["passed"])
+        self.assertTrue(result["measured"])
+        self.assertNotIn("article_comments_reference_status", result["metrics"])
+        self.assertEqual(result["metrics"]["content_decision_basis"],
+                         "body_title_stable_and_comment_coverage")
+
+    def test_missing_comment_section_and_below_floor_are_measured_failures(self):
+        for content in (self.complete.split("Comments")[0],
+                        self.complete.split("## Another reader")[0]):
+            with self.subTest(content=content):
+                result = evaluate_response(self.case, content.encode())
+                self.assertTrue(result["measured"])
+                self.assertFalse(result["passed"])
+                self.assertFalse(result["metrics"]["article_comments_pass"])
+
+    def test_comment_names_text_and_reply_depth_are_not_frozen(self):
+        changed = self.complete.replace("New reader", "Changed author").replace(
+            "A new comment today.", "Entirely different current prose.").replace(
+            "## Another reader", "### Another reader")
+        self.assertTrue(evaluate_response(self.case, changed.encode())["passed"])
+
+    def test_no_comment_contract_has_no_comment_requirement(self):
+        self.case["source_benchmark"].pop("comment_contract")
+        result = evaluate_response(self.case, b"# Life and dignity\n\nArticle prose.")
+        self.assertTrue(result["passed"])
+        self.assertNotIn("article_comments_pass", result["metrics"])
+
+    def test_cli_scores_static_comments_without_reference_arguments(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "task.json").write_text(json.dumps(self.case))
+            (root / "answer.md").write_text(self.complete)
+            result = subprocess.run([sys.executable, "-m", "lexbench_webfetch.cli", "score",
+                "--task", str(root / "task.json"), "--response", str(root / "answer.md")],
+                text=True, capture_output=True, check=True)
+            self.assertTrue(json.loads(result.stdout)["passed"])

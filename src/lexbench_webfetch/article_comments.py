@@ -1,4 +1,4 @@
-"""Verify initially displayed comments against independent, run-bound observations."""
+"""Check initial comment coverage, preserving legacy run-bound verification."""
 from __future__ import annotations
 
 import hashlib
@@ -19,6 +19,8 @@ from .reference_quality import markdown_links, visible_markdown_links
 
 def validate_comment_contract(contract):
     """Validate the frozen extraction contract without acquiring any source page."""
+    if isinstance(contract, dict) and type(contract.get('version')) is int and contract['version'] == 2:
+        return _validate_coverage_contract(contract)
     allowed = {'version', 'mode', 'record_selector', 'author_selector', 'body_selector',
                'id_attribute', 'parent_record_selector', 'section_markers',
                'max_reference_age_seconds'}
@@ -47,6 +49,17 @@ def validate_comment_contract(contract):
             raise ValueError('comment section markers required')
     except (KeyError, TypeError, re.error, soupsieve.SelectorSyntaxError) as error:
         raise ValueError('invalid comment contract') from error
+
+
+def _validate_coverage_contract(contract):
+    allowed = {'version', 'minimum_comments', 'record_selector', 'author_selector',
+               'body_selector', 'section_markers', 'id_attribute'}
+    if set(contract) - allowed or type(contract.get('minimum_comments')) is not int or contract['minimum_comments'] < 1:
+        raise ValueError('comment coverage requires a positive minimum')
+    # Reuse selector validation without admitting legacy runtime requirements.
+    legacy = {key: value for key, value in contract.items() if key != 'minimum_comments'}
+    legacy.update(version=1, max_reference_age_seconds=900)
+    validate_comment_contract(legacy)
 
 
 def _utc(value):
@@ -172,6 +185,9 @@ def qualify_article_comments(contract, reference, *, case_id, url):
     Runtime verification still requires two observations and exact UTC times.
     """
     validate_comment_contract(contract)
+    qualification_contract = contract
+    if contract['version'] == 2:
+        qualification_contract = dict(contract, max_reference_age_seconds=900)
     if reference is None:
         status = 'missing'
     elif not isinstance(reference, dict):
@@ -179,12 +195,17 @@ def qualify_article_comments(contract, reference, *, case_id, url):
     else:
         status = _reference_status(reference, {
             'id': reference.get('context_id'), 'started_at': reference.get('observed_at')},
-            contract, case_id, url, allow_single_observation=True, allow_authoring_date=True)
+            qualification_contract, case_id, url, allow_single_observation=True, allow_authoring_date=True)
     result = {'status': 'qualified' if status == 'verified' else status,
             'observation_count': len(reference.get('source_observation_counts', []))
             if isinstance(reference, dict) and isinstance(reference.get('source_observation_counts'), list) else 0,
             'comment_count': len(reference.get('records', []))
             if isinstance(reference, dict) and isinstance(reference.get('records'), list) else 0}
+    if status == 'verified' and contract['version'] == 2:
+        valid_count = len(_valid_coverage_records(reference['records']))
+        result['valid_comment_count'] = valid_count
+        if valid_count < contract['minimum_comments']:
+            result['status'] = 'insufficient_comments'
     if status == 'verified' and 'observed_at' not in reference:
         result['observed_on'] = reference['observed_on']
     return result
@@ -334,6 +355,149 @@ def _text_records(content, contract, authors):
     return rows
 
 
+# These are interface controls, not author identities or comment bodies. Match
+# whole labels only: a real comment can discuss logging in or loading a page.
+_COMMENT_CONTROLS = {'reply', 'replies', 'like', 'likes', 'share', 'report',
+                     'load more', 'show more', 'read more', 'sign in', 'log in',
+                     'login', 'register', 'leave a reply', 'add a comment',
+                     '发表评论', '添加评论', '回复', '点赞', '登录', '注册',
+                     '查看更多', '加载更多', '展开', '展开回复', '登录后评论'}
+_COMMENT_PLACEHOLDERS = {'[内容不可见]', '[已删除]', '[deleted]', '[removed]',
+                         'this comment has been hidden',
+                         'this comment has been hidden (marked as spam)'}
+
+
+def _coverage_label(value):
+    return ' '.join(unicodedata.normalize('NFKC', value).split()).casefold().strip(':：')
+
+
+def _valid_coverage_records(rows):
+    valid, seen = [], set()
+    for row in rows:
+        author, body = row.get('author'), row.get('text')
+        if (_author_key(author) is None or not isinstance(body, str)
+                or _author_key(body) is None
+                or _coverage_label(author) in _COMMENT_CONTROLS
+                or _coverage_label(body) in _COMMENT_CONTROLS
+                or _coverage_label(body) in _COMMENT_PLACEHOLDERS):
+            continue
+        # Preserve separately identified equal comments. Without source IDs,
+        # repeated identical records provide no evidence of additional coverage.
+        identity = ('id', row.get('source_id') or row.get('id')) if row.get('source_id') or row.get('id') else (
+            'text', _author_key(author), _coverage_label(body))
+        if identity not in seen:
+            seen.add(identity)
+            valid.append(row)
+    return valid
+
+
+def _comment_time_metadata(line):
+    """Recognize standalone serializer timestamps, not date mentions in prose.
+
+    Plain output consisting only of an author and date cannot distinguish a
+    timestamp from a date-only comment. Native HTML body ownership remains the
+    unambiguous representation for that unusual case.
+    """
+    stamp = visible_markdown_links(line).strip()
+    return bool(re.fullmatch(
+        r'(?:\d{4}[-/]\d{1,2}[-/]\d{1,2}(?:[ T]\d{1,2}:\d{2}(?::\d{2})?(?:Z|[+-]\d{2}:?\d{2})?)?'
+        r'|\d{1,2}:\d{2}(?::\d{2})?(?:\s*[AP]M)?'
+        r'|\d+\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)\s+ago'
+        r'|\d+\s*(?:秒|分钟|小时|天|周|个月|年)前|刚刚)', stamp, re.I))
+
+
+def _coverage_text_records(content, contract):
+    """Read explicit author/body formatting without a frozen author list.
+
+    An unlabelled prose block cannot establish author attribution. Subheadings,
+    linked/bold author lines and colon-labelled records are supported; ambiguous
+    bare names are deliberately not guessed from arbitrary prose. Colon-style
+    authors additionally require an explicit section heading: a plain navigation
+    label mentioning comments must not turn article captions into authors.
+    """
+    # Code may be comment text, but cannot introduce fake record boundaries.
+    fences = {}
+    prefix = '\ue000coverage-fence'
+    while prefix in content:
+        prefix += '_'
+    def protect(match):
+        key = prefix + str(len(fences))
+        fences[key] = match.group(0)
+        return '\n' + key + '\n'
+    content = re.sub(r'(?ms)^\s*(```|~~~).*?^\s*\1[^\n]*$', protect, content)
+    content = _without_markdown_images(content)
+    paragraph_marker = prefix + 'paragraph'
+    content = re.sub(r'\n[ \t]*\n', '\n' + paragraph_marker + '\n', content)
+    content = visible_html_text(str(_comment_html(content)), preserve_source_whitespace=True, preserve_links=True)
+    lines = content.replace(paragraph_marker, '').splitlines()
+    markers = {_section_marker_tokens(x) for x in contract['section_markers']}
+    start = next((i for i, line in enumerate(lines) if _section_marker_tokens(line) in markers), None)
+    if start is None:
+        return []
+    section_heading = re.match(r'\s*(#{1,6})\s+', lines[start])
+    section_level = len(section_heading[1]) if section_heading else 0
+    rows, current = [], None
+    heading_authors = False
+    for offset, line in enumerate(lines[start + 1:], start + 1):
+        previous_blank = not lines[offset - 1].strip()
+        stripped = line.strip()
+        if stripped in fences:
+            if current is not None:
+                current['text'] += '\n' + fences[stripped]
+            continue
+        heading = re.fullmatch(r'\s*(#{1,6})\s+(.+?)\s*', line)
+        if heading and section_level and len(heading[1]) <= section_level:
+            break
+        if _coverage_label(visible_markdown_links(stripped)) in _COMMENT_CONTROLS:
+            current = None
+            continue
+        if _section_marker_tokens(line) in markers:
+            current = None
+            continue
+        pingback = re.fullmatch(r'\s*Pingback:\s+(.+?)\s*', line)
+        if pingback:
+            label = visible_markdown_links(pingback[1])
+            rows.append({'author': label, 'text': visible_markdown_links(line).strip()})
+            current = None
+            continue
+        links = [link for link in markdown_links(stripped) if not link.is_image]
+        linked = len(links) == 1 and links[0].start == 0 and links[0].end == len(stripped)
+        bold = re.fullmatch(r'\*\*(.+?)\*\*[:：]?', stripped)
+        colon = re.fullmatch(r'([^\n:：]{1,120})[:：]\s*(.*)', stripped)
+        # Colon records need a paragraph boundary; prose/code inside a comment
+        # must not create new users merely by containing a colon.
+        author, body = None, ''
+        if heading:
+            author = heading[2]
+            heading_authors = True
+        elif heading_authors:
+            pass
+        elif linked:
+            author = links[0].label
+        elif bold:
+            author = bold[1]
+        elif section_heading and colon and (current is None or previous_blank):
+            author, body = colon[1], colon[2]
+        elif section_heading and colon and not colon[2]:
+            author = colon[1]
+        if author is not None:
+            current = {'author': visible_markdown_links(author), 'text': visible_markdown_links(body)}
+            rows.append(current)
+        elif current is not None and not _comment_time_metadata(line):
+            current['text'] += '\n' + visible_markdown_links(line)
+    return rows
+
+
+def _verify_comment_coverage(content, contract):
+    rows = (_html_records(content, contract) if _is_post_html(content)
+            else _coverage_text_records(content, contract))
+    valid = _valid_coverage_records(rows)
+    return {'article_comments_mode': 'fixed_coverage',
+            'article_comments_pass': len(valid) >= contract['minimum_comments'],
+            'article_comment_count': len(valid),
+            'article_comment_minimum': contract['minimum_comments']}
+
+
 def _body_matches(actual, expected):
     # Short comments and deleted-message placeholders still carry real text.
     if not tokens(expected):
@@ -347,8 +511,10 @@ def _body_matches(actual, expected):
 
 
 def verify_article_comments(content, contract, reference, *, case_id, url, reference_context=None):
-    """Require every observed comment, its author, owned text and reply parent."""
+    """Apply fixed coverage, or the frozen legacy exact-reference contract."""
     validate_comment_contract(contract)
+    if contract['version'] == 2:
+        return _verify_comment_coverage(content, contract)
     status = _reference_status(reference, reference_context, contract, case_id, url)
     result = {'article_comments_reference_status': status, 'article_comments_reference_sha256': None,
               'article_comments_pass': False, 'article_comment_results': [],

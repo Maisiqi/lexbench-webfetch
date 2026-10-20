@@ -1,6 +1,6 @@
 # Article suite authoring
 
-The registered `articles` suite (`articles-v3`) contains 100 qualified URLs: 95 fixed articles
+The registered `articles` suite (`articles-v4`) contains 100 qualified URLs: 95 fixed articles
 and five changing post collections. `cohort.json` preserves candidate identities
 and revision history; `rules.json` contains all 100 verified contracts. Public
 tasks, the catalog and input manifest bind the complete executable dataset.
@@ -21,7 +21,12 @@ Revision 6 caps body regions at five by merging adjacent reviewed components.
 All 95 body references and title/comment/post contracts remain byte-identical
 to revision 5; 57 cases have fewer regions. Wider regions reduce sensitivity
 to a small missing paragraph, while complete-region omissions still fail.
-Previous `articles-v1` and `articles-v2` inputs and all four earlier suites remain unchanged.
+Revision 7 replaces runtime comment matching with fixed coverage rules on the
+20 cases with actual initially displayed comment text. The other 75 fixed cases
+have no comment rule: 74 have no displayed records, and 069 shows only hidden/spam
+placeholders. Every classification retains hash-bound independent evidence.
+Body text, title contracts, body regions and all five post contracts are unchanged.
+Previous `articles-v1`, `articles-v2` and `articles-v3` inputs and all four earlier suites remain unchanged.
 
 The four original Weixin cases could not be independently observed because of
 an authoring-tool site-safety restriction. The final suite uses different
@@ -96,7 +101,9 @@ Declared stable groups are mandatory in the current fixed-article contracts.
 They supplement distributed body coverage; title or navigation matches cannot
 replace missing article text. Reviewers divide every source line into contiguous natural chapters,
 paragraphs or quotations with readable labels and explicit one-based inclusive
-ranges. Current segmentation version 3 allows at most five regions. Merge adjacent\nreviewed components at their existing boundaries, preserving complete text and\norder. Legacy segmentation versions remain readable for prior frozen inputs.
+ranges. Current segmentation version 3 allows at most five regions. Merge adjacent
+reviewed components at their existing boundaries, preserving complete text and
+order. Legacy segmentation versions remain readable for prior frozen inputs.
 Automatic paragraph detection is insufficient for arbitrary DOM line breaks.
 Each region must contain enough ordinary text to yield a six-character fragment;
 merge shorter labels into their adjacent natural component.
@@ -122,64 +129,56 @@ the title. A body repetition does not replace a missing title component.
 
 ## Initially displayed comments and replies
 
-Each fixed case has a comment contract. Include every comment/reply already
-displayed after automatic initial loading, including content below the viewport
-that requires no action to load. Do not click, expand, switch tabs, paginate,
-log in or scroll to load more. Closed disclosures, clipped continuations and
-inactive panels are excluded. For a partially displayed comment, require its
-complete readable prefix only; preserve rendered cutoff evidence independently.
-An empty selector during loading does not prove that there are no comments.
+Only cases with evidenced initially displayed comment text receive a version 2
+comment contract. Include comments and replies displayed after automatic initial
+loading, including below-viewport content that needs no action to load. Exclude
+anything requiring clicking, expansion, tab switching, pagination, login or
+scroll-triggered loading. Closed disclosures, clipped continuations and inactive
+panels do not count. An empty selector during loading is not evidence of absence.
 
-Comments are changing records, not frozen stable labels. Every evaluation needs
-an independent complete initial-page reference, including zero-comment pages.
-Require all observed records with their own author, body and parent/reply
-ownership; each substantive body needs 80% fragment coverage. Short or
-symbol-only text is checked exactly. Preserve image-only record identity only
-when independently marked as such; never substitute alt text for visible prose.
-Do not freeze visible aggregate comment counters as record counts.
+A valid record contains its own nonempty author and actual nonempty comment text.
+Reply relationships, exact names, historical wording and per-comment links are
+not requirements. Ordinary comments and replies may be flattened. Image-only
+records and hidden/deleted/spam placeholders do not establish text coverage.
+Distinct source record IDs remain distinct even when their text matches. Without
+record IDs, repeated identical author-and-text pairs count once. Source identity may serve
+as the author for visible pingbacks. HTML uses the reviewed selectors; text and
+Markdown need recognizable author-and-body records within the comment section.
+Author headings, standalone linked or bold names are supported; colon-labelled
+authors require an explicit Markdown comment-section heading. Bare names and
+metadata-only text are ambiguous and are not guessed as valid comments.
 
-Pass `comments_reference` to `score_attempt` or `evaluate_response`, or use
-`--comments-reference` with `--reference-context` for the standalone `score`
-command. The caller-owned context supplies `id` and UTC `started_at`. The
-reference contains `version: 1`, the exact `case_id` and `url`,
-`scope: "initial_load_only"`, matching `context_id`, UTC `observed_at`,
-`observation_complete: true`, at least two complete `source_observation_counts`,
-and `records`. Each record supplies its own `id`, `author`, `text`, `parent_id`
-(null for a root) and `complete_initial_text: true`. A reference must be at most
-900 seconds old relative to the caller's context. Missing, stale, mismatched or
-unsupported references make the case unmeasured; complete body text alone
-cannot pass it. If an observed-absent layout later has comments, review that
-layout before measuring it instead of silently ignoring the new records.
+The minimum is the smaller of three and the independently reviewed number of
+valid distinct text records. This deliberately tests modest comment coverage:
+missing the whole section or returning fewer valid records fails, while names,
+wording and totals may change. It cannot prove every visible comment was captured,
+or detect omissions above the minimum. Do not describe it as exhaustive comment
+completeness. A site that later stops displaying comments requires a dataset
+revision; historical presence does not establish permanent presence.
 
-Historical contract qualification is separate from runtime measurement. A
-single complete historical observation may qualify authoring only when bound
-to the complete independent source file's hash. A date without a recorded UTC
-time is allowed for that historical review; never invent a timestamp or treat
-that reference as fresh evaluation evidence. Source acquisition and provider
-adapters belong in the external execution harness. The five existing post
-collections continue to check displayed posts, quotes and replies through their
-own independent post contracts rather than an extra empty-comment contract.
-All five require every initial record. Revision 5 raises the older 80% record
-ratios in 038, 040 and 041 to 100%; complete sources pass and each individual
-record omission fails.
+No fresh comment reference is acquired or required at scoring time. Historical
+qualification still binds the complete independent source files by SHA-256 and
+supports the presence/absence decision. Absent pages retain that evidence but
+have no runtime comment contract. A date-only historical observation does not
+invent a precise timestamp. Version 1 comment verification remains supported for
+older frozen datasets; its runtime references and reply ownership requirements
+do not apply to version 2 coverage rules.
 
-## Comparable dynamic observations
+The five post collections retain their separate independent post contracts.
+All five require every initial record. Revision 5 raised the older 80% record
+ratios in 038, 040 and 041 to 100%.
 
-Freshness and a matching run ID do not establish equal page content. Comments
-and feed membership can change between requests, even within 900 seconds; the
-same count can contain different records. A strict completeness comparison is
-valid only for comparable initial states, including login/session, sorting and
-viewport/loading conditions. The execution harness must retain independent
-observations around the evaluated request and check membership and text, not
-just totals. Source drift or an unmatched state requires a new observation or
-an unmeasured result, not an automatic extraction-failure verdict.
+## Comparable dynamic post observations
 
-The current scorer checks reference schema, ownership, age and run identity;
-it does not automatically establish this cross-request comparability. The
-execution harness must supply that validation before these dynamic scores are
-used for provider comparisons. A lower record percentage does not resolve
-source drift. Historical zero-comment observations do not establish permanent
-absence.
+Freshness and a matching run ID do not establish equal feed content. Post
+membership can change between requests, even within 900 seconds; the same count
+can contain different records. The execution harness must establish comparable
+initial states, including session, sorting and loading conditions, before using
+these strict post scores in provider comparisons. The scorer validates reference
+schema, ownership, age and run identity but does not itself establish cross-request
+comparability. Source drift requires investigation or an unmeasured result, not
+an automatic extraction-failure verdict. This dynamic post requirement does not
+reintroduce a fresh-reference requirement for version 2 comment coverage.
 
 ## Changing post collections
 
@@ -229,7 +228,7 @@ their whole declared population before publishing new dataset, task, catalog
 and manifest bindings.
 
 Validate through `evaluate_response`: complete independent body plus required
-stable groups, actual title and fresh independent comment reference should pass,
+stable groups, actual title and sufficient valid initially displayed comment records should pass,
 including reasonable Markdown/whitespace changes.
 Title-only, navigation-only, wrong article, repeated opening, omitted body
 regions, missing titles/comments and absent mandatory groups must fail. Keep controls synthetic in CI;
