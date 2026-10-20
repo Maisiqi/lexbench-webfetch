@@ -53,6 +53,9 @@ def public_task(case: dict) -> dict:
                if key in benchmark}
     if benchmark.get("mode") == "article_post_collection":
         routing["post_contract"] = benchmark["post_contract"]
+    for component in ("title_contract", "comment_contract"):
+        if component in benchmark:
+            routing[component] = benchmark[component]
     navigation = benchmark.get("risk_control", {}).get("navigation_contract")
     if navigation is not None:
         routing["risk_control"] = {"navigation_contract": navigation}

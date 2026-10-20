@@ -50,7 +50,43 @@ def _base_case(case: dict, rule: dict, acceptance: dict) -> dict:
         "acceptance_contract": acceptance,
         "rule_review": {"status": "reviewed", "reason": rule["reason"]},
     }
+    components = {}
+    if "title_contract" in rule:
+        from .article_title import validate_title_contract
+        validate_title_contract(rule["title_contract"])
+        components["title_contract"] = rule["title_contract"]
+    if "comment_contract" in rule:
+        from .article_comments import validate_comment_contract
+        validate_comment_contract(rule["comment_contract"])
+        components["comment_contract"] = rule["comment_contract"]
+    if components:
+        task["source_benchmark"] = components
     validate_case(EvalCase(**task))
+    return task
+
+
+
+def _qualify_components(case: dict, rule: dict, task: dict, evidence_home: Path) -> dict:
+    """Validate historical qualification without certifying a future live run."""
+    if "comment_contract" not in rule:
+        return task
+    from .article_comments import qualify_article_comments
+    proof = rule.get("comment_qualification_reference", {})
+    if not isinstance(proof.get("path"), str) or not proof.get("sha256"):
+        raise ValueError("Comment contracts require independent qualification evidence")
+    raw = contained_path(evidence_home, proof["path"], reject_symlinks=True).read_bytes()
+    if hashlib.sha256(raw).hexdigest() != proof["sha256"]:
+        raise ValueError("Changed article comment qualification reference")
+    reference = json.loads(raw)
+    checked = qualify_article_comments(
+        rule["comment_contract"], reference, case_id=case["id"], url=case["url"])
+    if checked["status"] != "qualified":
+        raise ValueError("Article comments require a complete independent observation")
+    for source in reference.get("source_evidence", []):
+        data = contained_path(evidence_home, source["path"], reject_symlinks=True).read_bytes()
+        if hashlib.sha256(data).hexdigest() != source["sha256"]:
+            raise ValueError("Changed article comment source evidence")
+    task["source_benchmark"]["comment_qualification_proof"] = proof
     return task
 
 
@@ -85,10 +121,11 @@ def _compile_post_collection(case: dict, rule: dict, evidence_home: Path) -> dic
         raise ValueError("Every source record needs complete owned post and quote text")
     task = _base_case(case, rule, _acceptance(rule))
     task.update(ground_truth_main_content="", source_benchmark={
+        **task.get("source_benchmark", {}),
         "mode": "article_post_collection", "post_contract": contract,
         "qualification_proof": proof,
     })
-    return task
+    return _qualify_components(case, rule, task, evidence_home)
 
 
 def compile_case(case: dict, rule: dict, evidence_home: Path) -> dict:
@@ -116,9 +153,17 @@ def compile_case(case: dict, rule: dict, evidence_home: Path) -> dict:
     acceptance = _acceptance(rule)
     lines = body.splitlines()
     ranges = rule.get("body_regions", [])
-    if not 1 <= len(ranges) <= 5:
-        raise ValueError("Article scope requires one to five reviewed contiguous regions")
+    if not isinstance(ranges, list) or not ranges:
+        raise ValueError("Article scope requires reviewed contiguous semantic regions")
     contract = body_requirements(body)
+    semantic = rule.get("body_segmentation", {}).get("version") == 2
+    reviews = rule.get("body_region_review", [])
+    if semantic and (len(reviews) != len(ranges)
+                     or rule["body_segmentation"].get("reference_sha256") != proof["sha256"]
+                     or any(row.get("lines") != bounds
+                            or not isinstance(row.get("label"), str) or not row["label"].strip()
+                            for row, bounds in zip(reviews, ranges))):
+        raise ValueError("Every semantic region needs a source-bound readable label")
     regions, next_line = [], 1
     for index, bounds in enumerate(ranges, 1):
         if (not isinstance(bounds, list) or len(bounds) != 2
@@ -130,18 +175,23 @@ def compile_case(case: dict, rule: dict, evidence_home: Path) -> dict:
         if not part["regions"] or not compact_ngrams(source, 6):
             raise ValueError("Article body cannot yield an empty coverage region")
         region = part["regions"][0]
-        region.update(id=f"body-region-{index}", segmentation_method="reviewed_source_lines")
+        region.update(id=f"body-region-{index}", segmentation_method=(
+            "reviewed_source_semantics" if semantic else "reviewed_source_lines"))
+        if semantic:
+            region.update(label=reviews[index - 1]["label"], source_line_range=bounds)
         regions.append(region)
         next_line = bounds[1] + 1
     if next_line != len(lines) + 1:
         raise ValueError("Article regions must include the complete source ending")
-    contract.update(regions=regions, segmentation_method="reviewed_source_lines",
+    contract.update(regions=regions, segmentation_method=(
+                        "reviewed_source_semantics" if semantic else "reviewed_source_lines"),
                     minimum_region_passes=max(1, len(regions) - 1))
-    return {
+    task = {
         **_base_case(case, rule, acceptance),
         "ground_truth_main_content": body,
         "body_requirements": contract,
     }
+    return _qualify_components(case, rule, task, evidence_home)
 
 
 def compile_dataset(evidence_home: Path, definition_dir: Path = DEFINITIONS) -> dict:
@@ -161,7 +211,7 @@ def compile_dataset(evidence_home: Path, definition_dir: Path = DEFINITIONS) -> 
         compile_case(case, rule, evidence_home) for case, rule in zip(cases, rules)
     ]
     return {
-        "schema_version": 1, "id": "articles-v1", "name": "Article retrieval",
+        "schema_version": 1, "id": cohort.get("id", "articles-v1"), "name": "Article retrieval",
         "tool": "web_fetch", "case_count": len(compiled),
         "site_count": len({urlsplit(case["url"]).hostname for case in cases}),
         "runs_per_case": 1, "timeout_ms": 45000, "workers": 1,

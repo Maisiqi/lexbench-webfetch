@@ -461,7 +461,9 @@ def task_passed(ok: bool, metrics: dict, task_kind: str | None = None) -> bool:
     # predicate as the report. Explicit case context still takes precedence.
     task_kind = task_kind if task_kind is not None else metrics.get('task_kind', 'body')
     if (not task_measured(metrics, task_kind) or metrics.get('deadline_overrun')
-            or metrics.get('blocked_page') or metrics.get('article_posts_pass') is False):
+            or metrics.get('blocked_page') or metrics.get('article_posts_pass') is False
+            or metrics.get('article_title_pass') is False
+            or metrics.get('article_comments_pass') is False):
         return False
     if "stable_task_pass" in metrics:
         combined = (metrics.get("content_pass")
@@ -483,6 +485,9 @@ def task_measured(metrics: dict, task_kind: str | None = None) -> bool:
         return False
     if ('article_reference_status' in metrics
             and metrics['article_reference_status'] != 'verified'):
+        return False
+    if ('article_comments_reference_status' in metrics
+            and metrics['article_comments_reference_status'] != 'verified'):
         return False
     # A completed call missing required page observations is a measured failure.
     # Missing benchmark rules remain unmeasured through rule_review_status above.

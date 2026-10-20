@@ -24,6 +24,8 @@ def main() -> None:
     score.add_argument("--response", type=Path, required=True)
     score.add_argument("--file", type=Path, action="append", default=[])
     score.add_argument("--list-reference", type=Path)
+    score.add_argument("--comments-reference", type=Path,
+                       help="Independent complete initial-load comments observation")
     score.add_argument("--reference-context", type=Path,
                        help="Caller-owned evaluation context for a fresh article-post reference")
     score.add_argument("--metadata", type=Path, help="Saved answer metadata as a JSON object")
@@ -52,6 +54,8 @@ def main() -> None:
                 metadata=metadata,
                 list_reference=(json.loads(args.list_reference.read_text(encoding="utf-8"))
                                 if args.list_reference else None), status_code=args.status_code,
+                comments_reference=(json.loads(args.comments_reference.read_text(encoding="utf-8"))
+                                    if args.comments_reference else None),
                 reference_context=reference_context,
                 title=args.title, final_url=args.final_url)
         elif args.command == "compile-access-restrictions":

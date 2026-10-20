@@ -66,6 +66,73 @@ class ArticleContracts(unittest.TestCase):
     def score(self, text):
         return evaluate_response(self.task, text.encode())["passed"]
 
+    def test_semantic_regions_are_not_limited_to_five(self):
+        paragraphs = self.paragraphs + [
+            "A desert observatory records meteor paths across the darkest sky.",
+            "Marine researchers preserve specimens in a coastal laboratory.",
+        ]
+        raw = ("\n".join(paragraphs) + "\n").encode()
+        (self.root / "body.txt").write_bytes(raw)
+        rule = copy.deepcopy(self.rule)
+        rule["body_reference"].update(sha256=hashlib.sha256(raw).hexdigest(), chars=len(raw.decode()))
+        rule["reference_scope"].update(start=paragraphs[0], end=paragraphs[-1])
+        rule["body_regions"] = [[i, i] for i in range(1, 8)]
+        task = compile_case(self.case, rule, self.root)
+        self.assertEqual(len(task["body_requirements"]["regions"]), 7)
+        self.assertTrue(evaluate_response(task, (self.prefix + raw.decode()).encode())["passed"])
+        for omitted in range(7):
+            with self.subTest(omitted=omitted):
+                incomplete = self.prefix + "\n".join(p for i, p in enumerate(paragraphs) if i != omitted)
+                self.assertFalse(evaluate_response(task, incomplete.encode())["passed"])
+
+    def test_semantic_regions_keep_labels_and_reject_misbound_reviews(self):
+        rule = copy.deepcopy(self.rule)
+        rule["body_segmentation"] = {"version": 2, "method": "source_sections",
+                                    "reference_sha256": rule["body_reference"]["sha256"]}
+        rule["body_region_review"] = [
+            {"lines": bounds, "label": f"Observed section {i}"}
+            for i, bounds in enumerate(rule["body_regions"], 1)]
+        task = compile_case(self.case, rule, self.root)
+        self.assertEqual(task["body_requirements"]["regions"][0]["label"], "Observed section 1")
+        self.assertEqual(task["body_requirements"]["regions"][0]["source_line_range"], [1, 2])
+        for field, value in [("label", ""), ("lines", [2, 3])]:
+            bad = copy.deepcopy(rule)
+            bad["body_region_review"][0][field] = value
+            with self.assertRaisesRegex(ValueError, "source-bound readable label"):
+                compile_case(self.case, bad, self.root)
+
+    def test_historical_comment_qualification_binds_actual_source_bytes(self):
+        source = b"<h1>Comet field report</h1><p>Independent complete initial page.</p>"
+        (self.root / "source.html").write_bytes(source)
+        reference = {"version": 1, "case_id": self.case["id"], "url": self.case["url"],
+                     "scope": "initial_load_only", "context_id": "historical-authoring",
+                     "observed_on": "2026-10-19", "observation_complete": True,
+                     "source_observation_counts": [0], "records": [],
+                     "source_evidence": [{"path": "source.html",
+                         "sha256": hashlib.sha256(source).hexdigest(),
+                         "scope": "complete_initial_page"}]}
+        raw = (json.dumps(reference) + "\n").encode()
+        (self.root / "comments.json").write_bytes(raw)
+        rule = copy.deepcopy(self.rule)
+        rule["comment_contract"] = {"version": 1, "mode": "observed_absent",
+                                    "max_reference_age_seconds": 900}
+        with self.assertRaisesRegex(ValueError, "independent qualification evidence"):
+            compile_case(self.case, rule, self.root)
+        rule["comment_qualification_reference"] = {
+            "path": "comments.json", "sha256": hashlib.sha256(raw).hexdigest()}
+        task = compile_case(self.case, rule, self.root)
+        # Historical qualification does not provide a fresh runtime reference.
+        unavailable = evaluate_response(task, (self.prefix + self.body).encode())
+        self.assertFalse(unavailable["passed"])
+        self.assertFalse(unavailable["measured"])
+        (self.root / "source.html").write_bytes(source + b"changed")
+        with self.assertRaisesRegex(ValueError, "Changed article comment source evidence"):
+            compile_case(self.case, rule, self.root)
+        (self.root / "source.html").write_bytes(source)
+        (self.root / "comments.json").write_bytes(raw + b" ")
+        with self.assertRaisesRegex(ValueError, "Changed article comment qualification reference"):
+            compile_case(self.case, rule, self.root)
+
     def test_complete_plain_and_markdown_articles_pass(self):
         validate_case(EvalCase(**self.task))
         self.assertTrue(self.score(self.prefix + self.body))
@@ -300,14 +367,35 @@ class ArticleContracts(unittest.TestCase):
                             and change['previous']['id'] == change['id']
                             for change in revision['changes']))
         self.assertTrue(all(c['platform'] != '搜狗微信' for c in cohort['cases']))
-        final = cohort['revisions'][-1]
-        self.assertEqual(final['revision'], 4)
+        final = next(r for r in cohort['revisions'] if r['revision'] == 4)
+        self.assertEqual(cohort['revisions'][-1]['revision'], 5)
         self.assertEqual({c['id'] for c in final['changes'] if c['action'] == 'replace'},
                          {'article-001', 'article-002', 'article-003', 'article-079', 'article-082'})
         self.assertEqual([c['id'] for c in final['changes'] if c['action'] == 'remove'],
                          ['article-004'])
         self.assertTrue(all(rule['status'] == 'verified' for rule in rules))
         self.assertEqual(sum(rule['target_kind'] == 'post_collection' for rule in rules), 5)
+        fixed = [r for r in rules if r['target_kind'] == 'fixed_article']
+        self.assertEqual(cohort['id'], 'articles-v2')
+        self.assertEqual(len(fixed), 95)
+        self.assertEqual(sum('title_contract' in r for r in fixed), 90)
+        self.assertTrue(all('comment_contract' in r for r in fixed))
+        self.assertTrue(all(r['body_segmentation']['version'] == 2 for r in fixed))
+        self.assertTrue(all(r['body_segmentation']['reference_sha256'] == r['body_reference']['sha256']
+                            for r in fixed))
+        for rule in fixed:
+            self.assertEqual([r['lines'] for r in rule['body_region_review']], rule['body_regions'])
+            self.assertTrue(all(r['label'].strip() for r in rule['body_region_review']))
+        self.assertTrue(any(len(r['body_regions']) > 5 for r in fixed))
+        revised = {c['id']: c['action'] for c in cohort['revisions'][-1]['changes']}
+        self.assertEqual(revised, {'article-049': 'revise_entry_url',
+                                   'article-090': 'revise_source_reference',
+                                   'article-061': 'replace',
+                                   'article-038': 'require_all_initial_posts',
+                                   'article-040': 'require_all_initial_posts',
+                                   'article-041': 'require_all_initial_posts'})
+        self.assertTrue(all(r['post_contract']['required_ratio'] == 1.0
+                            for r in rules if r['target_kind'] == 'post_collection'))
 
     def test_definition_hashes_bind_the_parsed_snapshot(self):
         directory = self.root / "snapshot-definitions"

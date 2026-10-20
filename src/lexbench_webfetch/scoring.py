@@ -22,6 +22,7 @@ SCORING_SOURCE_FILES = tuple(Path(__file__).with_name(name) for name in (
     "response_input.py", "body_coverage.py", "structured_tables.py",
     "ordered_tree.py", "composite_tasks.py", "dynamic_reference.py",
     "file_acceptance.py", "evaluation.py", "models.py", "paths.py", "article_posts.py",
+    "article_comments.py", "article_title.py",
 ))
 SCORING_SOURCE_SHA256 = hashlib.sha256(b"\0".join(
     path.read_bytes() for path in SCORING_SOURCE_FILES)).hexdigest()
@@ -88,6 +89,7 @@ def score_attempt(
     metadata: dict[str, Any] | None = None,
     previous_metrics: dict[str, Any] | None = None,
     list_reference: dict | None = None,
+    comments_reference: dict | None = None,
     reference_context: dict | None = None,
     status_code: int | None = None,
     prepared_answer: tuple | None = None,
@@ -286,6 +288,21 @@ def score_attempt(
         result["resource_acceptance_contract_sha256"] = hashlib.sha256(json.dumps(
             resource_contract, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
     benchmark = case.get("source_benchmark", {})
+    if rule_review.get("status") != "unresolved" and benchmark.get("title_contract"):
+        from .article_title import verify_article_title
+        title_result = verify_article_title(content, benchmark["title_contract"])
+        result.update(title_result)
+        result["content_pass"] = bool(result["content_pass"] and title_result["article_title_pass"])
+    if rule_review.get("status") != "unresolved" and benchmark.get("comment_contract"):
+        from .article_comments import verify_article_comments
+        comment_result = verify_article_comments(
+            content, benchmark["comment_contract"], comments_reference,
+            case_id=case["id"], url=case["url"], reference_context=reference_context)
+        result.update(comment_result)
+        result["article_comment_contract_sha256"] = hashlib.sha256(json.dumps(
+            benchmark["comment_contract"], sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+        result["content_pass"] = bool(result["content_pass"] and comment_result["article_comments_pass"])
+        result["content_decision_basis"] = "body_title_stable_and_initial_comments"
     if (rule_review.get("status") != "unresolved"
             and benchmark.get("mode") == "article_post_collection"):
         from .article_posts import verify_article_posts

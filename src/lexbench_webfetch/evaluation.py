@@ -5,7 +5,7 @@ from .scoring import score_attempt
 
 
 def evaluate_response(case: dict, response: bytes, *, files=(), ok=True, metadata=None,
-                      list_reference=None, reference_context=None,
+                      list_reference=None, comments_reference=None, reference_context=None,
                       status_code=None, title=None, final_url=None) -> dict:
     metadata = dict(metadata or {})
     # Acceptance of delivered files can only be derived from actual bytes.
@@ -13,7 +13,8 @@ def evaluate_response(case: dict, response: bytes, *, files=(), ok=True, metadat
     if case.get('task_kind') == 'file' or files:
         metadata['file_evaluation'] = evaluate_files(case, list(files))
     metrics = score_attempt(case, response, ok=ok, metadata=metadata,
-                            list_reference=list_reference, reference_context=reference_context,
+                            list_reference=list_reference, comments_reference=comments_reference,
+                            reference_context=reference_context,
                             status_code=status_code,
                             title=title, final_url=final_url)
     return {'passed': task_passed(metrics.get('request_ok', ok), metrics, case.get('task_kind', 'body')),
