@@ -117,3 +117,19 @@ def test_earlier_comments_still_count_when_later_form_is_also_start_marker():
     result = check('The article ends right here.' + COMMENTS + '\nPost your reply' + COMMENTS, contract)
     assert result['article_comments_pass']
     assert result['article_comment_count'] == 2
+
+
+@pytest.mark.parametrize('ending,full_body', [
+    ('t really coding - I just see stuff, and it mostly works.',
+     "A longer post. It's not really coding - I just see stuff, and it mostly works."),
+    ('t really coding - I just see stuff, and it mostly wor',
+     "A longer post. It's not really coding - I just see stuff, and it mostly works."),
+    ('t really coding - I just see stuff, and it mostly works.',
+     "A longer post. It's not **really** coding - I just see\nstuff, and it mostly works."),
+])
+def test_character_sliced_ending_matches_inside_full_body_tokens(ending, full_body):
+    contract = deepcopy(CONTRACT)
+    contract['text_scope']['body_end'] = ending
+    result = check(full_body + COMMENTS, contract)
+    assert result['article_comments_pass']
+    assert result['article_comment_count'] == 2

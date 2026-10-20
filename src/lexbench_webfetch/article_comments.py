@@ -428,17 +428,22 @@ def _coverage_text_start(lines, contract):
     first = 0
     found_ending = False
     if scope:
-        expected = tokens(visible_markdown_links(scope['body_end']))
-        flattened, owners = [], []
+        expected = ' '.join(tokens(visible_markdown_links(scope['body_end'])))
+        fragments, owners = [], []
         for index, line in enumerate(lines):
-            words = tokens(visible_markdown_links(line))
-            flattened.extend(words)
-            owners.extend([index] * len(words))
-        for index in range(len(flattened) - len(expected) + 1):
-            if flattened[index:index + len(expected)] == expected:
-                first = owners[index + len(expected) - 1] + 1
-                found_ending = True
-                break
+            normalized = ' '.join(tokens(visible_markdown_links(line)))
+            if not normalized:
+                continue
+            fragments.append(normalized)
+            owners.extend([index] * (len(normalized) + 1))
+        # Frozen endings are character slices, so their first or last word
+        # may be partial. Match normalized text, not whole-token sequences.
+        # Retain character ownership to find the actual ending line even when
+        # a serializer wraps the same visible prose onto multiple lines.
+        offset = ' '.join(fragments).find(expected)
+        if offset >= 0:
+            first = owners[offset + len(expected) - 1] + 1
+            found_ending = True
     for index in range(first, len(lines)):
         # A reviewed end boundary wins over a historical start label. Forms
         # below the last comment must never open a new discussion component.

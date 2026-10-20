@@ -57,9 +57,12 @@ changes must preserve source provenance and publish new input bindings.
 ## Validation scope
 
 Regression tests cover comment start/end ambiguity, missing form hints, article
-and footer decoys, malformed scope, and legacy contracts. External controls use
+and footer decoys, malformed scope, character-sliced endings within full body
+text, and legacy contracts. Ending hints use normalized substring matching
+because a frozen character slice may begin or end inside a word. External controls use
 20 independently qualified comment cases with six accepted/rejected projections
-each (120 checks). These projections are not provider outputs. Existing visible
+each (120 checks), plus 139 end-to-end controls with complete article bodies
+and required title/anchor components. These projections are not provider outputs. Existing visible
 control tests cover HTML and Markdown, missing labels and hidden controls.
 Repository-wide validation is run with `make check`; frozen input verification
 checks the complete 100-case executable dataset. Full captures and control
