@@ -406,6 +406,8 @@ def _card_section_context(content: str, begin: int, end: int, title_start: int,
     context = content[begin:end]
     first_line = content[begin:].split("\n", 1)[0]
     own_heading = re.match(r"[ \t]{0,3}(#{1,6})[ \t]+", first_line)
+    own_item = re.match(r"([ \t]*)(?:[-+*]|\d+[.)])[ \t]+", first_line)
+    item_indent = len(own_item[1].expandtabs(4)) if own_item else None
     level = len(own_heading[1]) if own_heading else 6
     links = markdown_links(content)
     fence = None
@@ -422,6 +424,18 @@ def _card_section_context(content: str, begin: int, end: int, title_start: int,
         elif fence is None:
             heading = re.match(r"[ \t]{0,3}(#{1,6})[ \t]+", line)
             absolute = begin + offset
+            peer_item = re.match(r"([ \t]*)(?:[-+*]|\d+[.)])[ \t]+", line)
+            owned_item = peer_item and any(
+                absolute <= link.start < absolute + len(line)
+                and _link_identity(urljoin(group.get("link_base_url", base_url), link.destination), group) == identity
+                for link in links if not link.is_image)
+            peer_indent = len(peer_item[1].expandtabs(4)) if peer_item else None
+            peer_boundary = (peer_item and (
+                (item_indent is not None and peer_indent <= item_indent)
+                or (item_indent is None and own_heading is None and peer_indent == 0)))
+            if (peer_boundary and not owned_item and absolute > title_start
+                    and not any(link.start <= absolute < link.end for link in links)):
+                return context[:offset]
             owned_heading = heading and any(
                 absolute <= link.start < absolute + len(line)
                 and _link_identity(urljoin(group.get("link_base_url", base_url), link.destination), group) == identity

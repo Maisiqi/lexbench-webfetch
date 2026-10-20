@@ -54263,6 +54263,414 @@
       "artifact": "[### Friday | October 10, 2026 at 6:00 PM | Grand Hall | Springfield](https://events.example.test/shows/unrelated-slug/item/123)",
       "ok": true,
       "expected_task_pass": true
+    },
+    {
+      "id": "card-peer-list-owner-outside-host-peer",
+      "category": "structured-extraction",
+      "root_cause": "implicit_card_boundary_cannot_depend_on_peer_url_eligibility",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[a-z]+",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Date"
+                  ]
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "aliases": [
+                    "Venue"
+                  ]
+                },
+                {
+                  "id": "city",
+                  "kind": "text",
+                  "aliases": [
+                    "City"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "- [Orchard Live](https://example.test/item/one)\n  Venue: Grand Hall\n- [Different event](https://foreign.test/event/two)\n  Date: October 10, 2026\n  City: Springfield",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "card-peer-list-owner-outside-path-peer",
+      "category": "structured-extraction",
+      "root_cause": "implicit_card_boundary_cannot_depend_on_peer_url_eligibility",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[a-z]+",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Date"
+                  ]
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "aliases": [
+                    "Venue"
+                  ]
+                },
+                {
+                  "id": "city",
+                  "kind": "text",
+                  "aliases": [
+                    "City"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "- [Orchard Live](https://example.test/item/one)\n  Venue: Grand Hall\n- [Different event](https://example.test/other/two)\n  Date: October 10, 2026\n  City: Springfield",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "card-peer-list-owner-owned-inline-auxiliary-link",
+      "category": "structured-extraction",
+      "root_cause": "implicit_card_boundary_cannot_depend_on_peer_url_eligibility",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[a-z]+",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Date"
+                  ]
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "aliases": [
+                    "Venue"
+                  ]
+                },
+                {
+                  "id": "city",
+                  "kind": "text",
+                  "aliases": [
+                    "City"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "- [Orchard Live](https://example.test/item/one)\n  Date: October 10, 2026\n  Venue: [Grand Hall](https://foreign.test/venue/one)\n  City: Springfield",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "card-peer-list-owner-owned-nested-list-auxiliary-link",
+      "category": "structured-extraction",
+      "root_cause": "implicit_card_boundary_cannot_depend_on_peer_url_eligibility",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[a-z]+",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Date"
+                  ]
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "aliases": [
+                    "Venue"
+                  ]
+                },
+                {
+                  "id": "city",
+                  "kind": "text",
+                  "aliases": [
+                    "City"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "- [Orchard Live](https://example.test/item/one)\n  - Date: October 10, 2026\n  - Venue: [Grand Hall](https://foreign.test/venue/one)\n  - City: Springfield",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "card-peer-list-owner-same-identity-linked-date",
+      "category": "structured-extraction",
+      "root_cause": "implicit_card_boundary_cannot_depend_on_peer_url_eligibility",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[a-z]+",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Date"
+                  ]
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "aliases": [
+                    "Venue"
+                  ]
+                },
+                {
+                  "id": "city",
+                  "kind": "text",
+                  "aliases": [
+                    "City"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "- [Orchard Live](https://example.test/item/one)\n- [Date: October 10, 2026](https://example.test/item/one)\n  Venue: Grand Hall\n  City: Springfield",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "card-peer-list-owner-implicit-record-stops-at-top-level-peer",
+      "category": "structured-extraction",
+      "root_cause": "implicit_card_boundary_cannot_depend_on_peer_url_eligibility",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[a-z]+",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Date"
+                  ]
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "aliases": [
+                    "Venue"
+                  ]
+                },
+                {
+                  "id": "city",
+                  "kind": "text",
+                  "aliases": [
+                    "City"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Unrelated date block\n\n[Orchard Live](https://example.test/item/one)\nVenue: Grand Hall\n- [Different event](https://foreign.test/event/two)\nDate: October 10, 2026\nCity: Springfield",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "card-peer-list-owner-implicit-record-keeps-inline-auxiliary",
+      "category": "structured-extraction",
+      "root_cause": "implicit_card_boundary_cannot_depend_on_peer_url_eligibility",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[a-z]+",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Date"
+                  ]
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "aliases": [
+                    "Venue"
+                  ]
+                },
+                {
+                  "id": "city",
+                  "kind": "text",
+                  "aliases": [
+                    "City"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[Orchard Live](https://example.test/item/one)\nDate: October 10, 2026\nVenue: [Grand Hall](https://foreign.test/venue/one)\nCity: Springfield",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "card-peer-list-owner-heading-owned-record-keeps-bullet-fields",
+      "category": "structured-extraction",
+      "root_cause": "implicit_card_boundary_cannot_depend_on_peer_url_eligibility",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/catalog",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[a-z]+",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Date"
+                  ]
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "aliases": [
+                    "Venue"
+                  ]
+                },
+                {
+                  "id": "city",
+                  "kind": "text",
+                  "aliases": [
+                    "City"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "# [Orchard Live](https://example.test/item/one)\n- Date: October 10, 2026\n- Venue: [Grand Hall](https://foreign.test/venue/one)\n- City: Springfield",
+      "ok": true,
+      "expected_task_pass": true
     }
   ],
   "superseded_cases": {
