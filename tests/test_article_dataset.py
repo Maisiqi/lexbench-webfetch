@@ -508,6 +508,28 @@ class ArticleContracts(unittest.TestCase):
         self.assertEqual([r['post_contract']['minimum_posts'] for r in posts], [4, 8, 4, 4, 16])
         self.assertTrue(all(r['post_coverage_review']['source_evidence'] for r in posts))
 
+    def test_published_contracts_match_authoring_rules(self):
+        rules = json.loads((DEFINITIONS / "rules.json").read_text())["rules"]
+        tasks = json.loads((DEFINITIONS / "tasks.json").read_text())["cases"]
+        by_id = {task["id"]: task for task in tasks}
+        self.assertEqual(len(by_id), len(tasks), "Duplicate public task IDs")
+        self.assertEqual(len({rule["id"] for rule in rules}), len(rules))
+        self.assertEqual({rule["id"] for rule in rules}, set(by_id))
+        for rule in rules:
+            task = by_id[rule["id"]]
+            with self.subTest(case=rule["id"]):
+                self.assertEqual(rule["acceptance_contract"], task["acceptance_contract"])
+                for component in ("title_contract", "comment_contract", "post_contract"):
+                    self.assertEqual(rule.get(component),
+                                     task.get("source_benchmark", {}).get(component))
+
+    def test_published_tasks_bind_current_authoring_bytes(self):
+        tasks = json.loads((DEFINITIONS / "tasks.json").read_text())
+        for name in ("cohort", "rules"):
+            with self.subTest(source=name):
+                self.assertEqual(tasks["source_bindings"][name + "_sha256"],
+                                 hashlib.sha256((DEFINITIONS / (name + ".json")).read_bytes()).hexdigest())
+
     def test_definition_hashes_bind_the_parsed_snapshot(self):
         directory = self.root / "snapshot-definitions"
         directory.mkdir()
