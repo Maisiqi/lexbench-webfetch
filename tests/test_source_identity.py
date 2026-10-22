@@ -12,14 +12,20 @@ from lexbench_webfetch.scoring import SCORING_SOURCE_SHA256
 
 
 @pytest.mark.parametrize('changed', ['dynamic_reference.py', 'file_acceptance.py',
-                                     'evaluation.py', 'models.py', 'paths.py'])
+                                     'evaluation.py', 'models.py', 'paths.py',
+                                     'definitions/evaluation/scorer-policy-v1.json'])
 def test_acceptance_dependency_change_invalidates_source_identity(tmp_path, changed):
     package = tmp_path/'lexbench_webfetch'
     package.mkdir()
     for source in Path(lexbench_webfetch.__file__).parent.glob('*.py'):
         shutil.copyfile(source, package/source.name)
+    from lexbench_webfetch.rule_policy import POLICY_PATH
+    policy_target = package / "definitions/evaluation/scorer-policy-v1.json"
+    policy_target.parent.mkdir(parents=True)
+    shutil.copyfile(POLICY_PATH, policy_target)
     target = package/changed
-    target.write_bytes(target.read_bytes()+b'\n# Synthetic source identity control.\n')
+    target.write_bytes(target.read_bytes() + (b'\n ' if target.suffix == '.json'
+                                            else b'\n# Synthetic source identity control.\n'))
     env = dict(os.environ, PYTHONPATH=str(tmp_path))
     result = subprocess.run([sys.executable, '-c',
                              'from lexbench_webfetch.scoring import SCORING_SOURCE_SHA256; print(SCORING_SOURCE_SHA256)'],

@@ -154,7 +154,7 @@ promise to resolve those ambiguous representations. An explicit comment heading
 allows repeated body endings before that heading to be disambiguated.
 
 Whole-label control and placeholder exclusions are an article-only policy in
-`article_text.py`, shared by comment and post parsers. They are not substring
+`../scorer-policy-v1.json`, consumed through `article_text.py` by comment and post parsers. They are not substring
 filters or a general multilingual content policy. New labels need accepted and
 rejected controls; this refactor preserves the existing frozen contract policy.
 

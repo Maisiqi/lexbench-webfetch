@@ -1,4 +1,5 @@
 """Post ownership checks for fixed initial coverage contracts."""
+from .rule_policy import SCORER_POLICY
 import re
 import unicodedata
 from urllib.parse import urljoin, urlsplit
@@ -176,8 +177,7 @@ def _markdown_records(content, contract, url):
             author = visible_markdown_links(link.label)
         if (not re.sub(
                 r'^(?:#{1,6}|[-*+]|\d+[.)])(?:\s+|$)', '', prefix).strip()
-                and re.fullmatch(r'(?:today|yesterday|date|time|permalink|view post|post|'
-                                 r'今天|昨天|详情|查看帖子|\d{4}[-/]\d{1,2}[-/]\d{1,2})',
+                and re.fullmatch(SCORER_POLICY["article_patterns"]["post_non_author_label"],
                                  author, re.I)):
             author = ''
         if not prefix and index and lines[index-1].strip() and not lines[index-1].startswith('>'):
@@ -249,11 +249,7 @@ def _has_post_prose(text):
         if not line:
             continue
         if re.fullmatch(
-                r'(?:\d{4}[-/]\d{1,2}[-/]\d{1,2}(?:[ T]\d{1,2}:\d{2}'
-                r'(?::\d{2})?(?:Z|[+-]\d{2}:?\d{2})?)?'
-                r'|\d{1,2}:\d{2}(?::\d{2})?(?:\s*[AP]M)?'
-                r'|\d+\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)\s+ago'
-                r'|\d+\s*(?:秒|分钟|小时|天|周|个月|年)前|刚刚)', line, re.I):
+                SCORER_POLICY["article_patterns"]["post_timestamp"], line, re.I):
             continue
         labels = [part.strip().casefold().strip(':：*_')
                   for part in re.split(r'\s*[|·•]\s*', line)]

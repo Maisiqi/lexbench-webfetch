@@ -1,6 +1,7 @@
 """Check fixed initial comment coverage and explicit record ownership."""
 from __future__ import annotations
 
+from .rule_policy import SCORER_POLICY
 import re
 import unicodedata
 
@@ -74,8 +75,8 @@ def _html_records(content, contract):
 def _section_marker_tokens(line):
     """Ignore changing count decorations only on a comment section heading."""
     label = re.sub(r'^\s*#{1,6}\s+', '', line).strip().rstrip(':：')
-    label = re.sub(r'^[0-9]+(?:\s*(?:条|则|件)\s*|\s+)', '', label)
-    label = re.sub(r'\s*(?:\(\s*[0-9]+\s*(?:条|则|件)?\s*\)|（\s*[0-9]+\s*(?:条|则|件)?\s*）)\s*$', '', label)
+    label = re.sub(SCORER_POLICY["article_patterns"]["section_leading_count"], '', label)
+    label = re.sub(SCORER_POLICY["article_patterns"]["section_trailing_count"], '', label)
     return tuple(tokens(label))
 
 
@@ -116,10 +117,7 @@ def _comment_time_metadata(line):
     """
     stamp = visible_markdown_links(line).strip()
     return bool(re.fullmatch(
-        r'(?:\d{4}[-/]\d{1,2}[-/]\d{1,2}(?:[ T]\d{1,2}:\d{2}(?::\d{2})?(?:Z|[+-]\d{2}:?\d{2})?)?'
-        r'|\d{1,2}:\d{2}(?::\d{2})?(?:\s*[AP]M)?'
-        r'|\d+\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)\s+ago'
-        r'|\d+\s*(?:秒|分钟|小时|天|周|个月|年)前|刚刚)', stamp, re.I))
+        SCORER_POLICY["article_patterns"]["comment_timestamp"], stamp, re.I))
 
 
 def _coverage_text_start(lines, contract):
@@ -236,7 +234,7 @@ def _coverage_text_records(content, contract):
                 explicit_scope = True
             current = None
             continue
-        pingback = re.fullmatch(r'\s*Pingback:\s+(.+?)\s*', line)
+        pingback = re.fullmatch(SCORER_POLICY["article_patterns"]["pingback_record"], line)
         if pingback:
             label = visible_markdown_links(pingback[1])
             rows.append({'author': label, 'text': visible_markdown_links(line).strip()})

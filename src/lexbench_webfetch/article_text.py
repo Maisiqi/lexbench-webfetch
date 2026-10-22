@@ -1,4 +1,5 @@
 """Shared article-only visible text and identity policy."""
+from .rule_policy import SCORER_POLICY
 import re
 import unicodedata
 from .dynamic_lists import scoped_html
@@ -59,14 +60,12 @@ def is_article_html(content):
 
 
 # Article-specific whole-label policy; never applied as substring filtering.
-ARTICLE_CONTROLS = {'show more', 'log in', 'report', '回复', '注册', '加载更多', '展开', 'sign in', 'share', 'read more', 'like', '点赞', 'load more', 'likes', '登录', 'replies', 'reply', '查看更多'}
-COMMENT_CONTROLS = ARTICLE_CONTROLS | {'login', '展开回复', 'register', '发表评论', '登录后评论', '添加评论', 'leave a reply', 'add a comment'}
-COMMENT_PLACEHOLDERS = {'[内容不可见]', '[已删除]', '[deleted]', '[removed]',
-                         'this comment has been hidden',
-                         'this comment has been hidden (marked as spam)'}
+ARTICLE_CONTROLS = frozenset(SCORER_POLICY["article_labels"]["ARTICLE_CONTROLS"])
+COMMENT_CONTROLS = frozenset(SCORER_POLICY["article_labels"]["COMMENT_CONTROLS"])
+COMMENT_PLACEHOLDERS = frozenset(SCORER_POLICY["article_labels"]["COMMENT_PLACEHOLDERS"])
 
 
-POST_CONTROLS = ARTICLE_CONTROLS | {'view', 'views', '昨天', '今天', 'permalink', '转发', 'bookmarks', 'repost', 'yesterday', 'reposts', 'today', '查看', '分享', '收藏', 'bookmark'}
+POST_CONTROLS = frozenset(SCORER_POLICY["article_labels"]["POST_CONTROLS"])
 
 
 def article_markdown(content):

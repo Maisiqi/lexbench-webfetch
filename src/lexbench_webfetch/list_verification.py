@@ -1,4 +1,5 @@
 """Bounded, independently evidenced name-to-detail verification, not list recall."""
+from .rule_policy import SCORER_POLICY
 import re
 import unicodedata
 from urllib.parse import urlsplit
@@ -8,12 +9,11 @@ from .dynamic_lists import extract_named_entries
 def identity(url):
     p=urlsplit(url);host=(p.hostname or '').removeprefix('www.')
     path=p.path.rstrip('/')
-    if host=='amazon.com':
-        m=re.search(r'/dp/([A-Z0-9]{10})(?:/|$)',path)
-        if m:return host+'/dp/'+m[1]
-    if host=='reddit.com':
-        m=re.search(r'(/r/[^/]+/comments/[^/]+)',path)
-        if m:return host+m[1]
+    for rule in SCORER_POLICY['list_identity']:
+        if host == rule['host']:
+            match = re.search(rule['pattern'], path)
+            if match:
+                return host + rule['prefix'] + match[rule['group']]
     return host+path
 
 
@@ -21,7 +21,7 @@ def normalize(title):
     text=unicodedata.normalize('NFKC',title).casefold()
     text=re.sub(r'^\s*\d+[.)、]\s*','',text)
     # Observed card badges, not arbitrary words before the actual name.
-    text=re.sub(r'^(?:top rated\s*|free\s+)','',text)
+    text=re.sub(SCORER_POLICY['list_name_prefix_pattern'],'',text)
     return re.sub(r'[^\w\s]',' ',text).strip()
 
 
