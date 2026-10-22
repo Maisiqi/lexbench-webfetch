@@ -67,6 +67,40 @@ class ArticleContracts(unittest.TestCase):
     def score(self, text):
         return evaluate_response(self.task, text.encode())["passed"]
 
+    def test_compiler_requires_every_region_and_binds_ending(self):
+        body = self.task["body_requirements"]
+        self.assertEqual(body["version"], 4)
+        self.assertEqual(body["minimum_floor"], 0.8)
+        self.assertEqual(body["minimum_region_passes"], len(body["regions"]))
+        self.assertEqual(body["ending"]["text"], self.rule["reference_scope"]["end"])
+        self.assertTrue(self.score(self.prefix + self.body))
+        self.assertTrue(self.score(self.prefix + "\n\n".join("**" + p + "**" for p in self.paragraphs)))
+        self.assertFalse(self.score(self.prefix + "\n\n".join(self.paragraphs[:-1])))
+        public = public_task(self.task)["body_requirements"]["ending"]
+        self.assertNotIn("text", public)
+        self.assertEqual(public["text_binding"]["chars"], len(self.paragraphs[-1]))
+
+    def test_review_defaults_preserve_acceptance_and_explicit_overrides(self):
+        rule = copy.deepcopy(self.rule)
+        original = rule["stable_text_review"][0]
+        rule["stable_text_review_defaults"] = {k: original.pop(k) for k in ("basis", "observed_on")}
+        self.assertEqual(compile_case(self.case, rule, self.root), self.task)
+        rule["stable_text_review"][0]["basis"] = ""
+        with self.assertRaises(ValueError):
+            compile_case(self.case, rule, self.root)
+        del rule["stable_text_review"][0]["basis"]
+        rule["stable_text_review_defaults"]["region"] = "Should remain explicit"
+        with self.assertRaises(ValueError):
+            compile_case(self.case, rule, self.root)
+
+    def test_one_region_below_eighty_no_longer_uses_sixty_percent_allowance(self):
+        text = self.prefix + "\n\n".join([self.paragraphs[0][:int(len(self.paragraphs[0]) * .72)], *self.paragraphs[1:]])
+        legacy = copy.deepcopy(self.task)
+        legacy["body_requirements"].update(version=3, minimum_floor=.6, minimum_region_passes=4)
+        del legacy["body_requirements"]["ending"]
+        self.assertTrue(evaluate_response(legacy, text.encode())["passed"])
+        self.assertFalse(self.score(text))
+
     def test_legacy_regions_remain_readable_but_current_regions_are_capped(self):
         paragraphs = self.paragraphs + [
             "A desert observatory records meteor paths across the darkest sky.",
@@ -472,7 +506,7 @@ class ArticleContracts(unittest.TestCase):
                             for change in revision['changes']))
         self.assertTrue(all(c['platform'] != '搜狗微信' for c in cohort['cases']))
         final = next(r for r in cohort['revisions'] if r['revision'] == 4)
-        self.assertEqual(cohort['revisions'][-1]['revision'], 13)
+        self.assertEqual(cohort['revisions'][-1]['revision'], 14)
         self.assertEqual({c['id'] for c in final['changes'] if c['action'] == 'replace'},
                          {'article-001', 'article-002', 'article-003', 'article-079', 'article-082'})
         self.assertEqual([c['id'] for c in final['changes'] if c['action'] == 'remove'],
@@ -480,7 +514,7 @@ class ArticleContracts(unittest.TestCase):
         self.assertTrue(all(rule['status'] == 'verified' for rule in rules))
         self.assertEqual(sum(rule['target_kind'] == 'post_collection' for rule in rules), 5)
         fixed = [r for r in rules if r['target_kind'] == 'fixed_article']
-        self.assertEqual(cohort['id'], 'articles-v10')
+        self.assertEqual(cohort['id'], 'articles-v11')
         self.assertEqual(len(fixed), 95)
         self.assertEqual(sum('title_contract' in r for r in fixed), 90)
         self.assertEqual(sum('comment_contract' in r for r in fixed), 20)

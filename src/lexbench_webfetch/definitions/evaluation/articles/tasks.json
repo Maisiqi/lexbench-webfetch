@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v10",
+  "id": "articles-v11",
   "name": "Article retrieval",
   "tool": "web_fetch",
   "case_count": 100,
@@ -14,8 +14,8 @@
   },
   "interaction_policy": "initial_load_only_no_click_input_scroll_pagination_login_or_ocr",
   "source_bindings": {
-    "cohort_sha256": "ba8bc7367ebb0ce6ea1432ffd323527f6433c62a45ba0cc978d3322a04639ac5",
-    "rules_sha256": "4a50d72f3f4425587750ae76ea5a70f5b1226d31e675b920286f2bb2db91da60"
+    "cohort_sha256": "802910d39ad3dd1f78955b1d4f381118680270df4197bb7dd5e425ef475ff3f2",
+    "rules_sha256": "cc88eaab011397691df7203cd88fb3c656561921c980fc0c4a5812a2e1605772"
   },
   "cases": [
     {
@@ -94,11 +94,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -186,7 +186,13 @@
               66
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "03e49e04b2538c18bc7010acd233daa2fd1c65340bd7aa5a732ae2dbba1bd14d",
+            "chars": 39
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -272,11 +278,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -364,7 +370,13 @@
               44
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "9c5481599e48d16bb79402588936b07f561ce6b6cd471696c573ddd8cbe81bfd",
+            "chars": 52
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -438,11 +450,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -530,7 +542,13 @@
               13
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "d6327795a19f7b8b25fef15c46456455cc220a9286f3c31fb11a1b6a1e36ce5a",
+            "chars": 327
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -616,10 +634,10 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
+        "minimum_floor": 0.8,
         "minimum_region_passes": 1,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
@@ -640,7 +658,13 @@
               1
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "15750f0b38a4fec612391345f6c05f444053c8bd7dfd44251eb3f4afa138a396",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "comment_contract": {
@@ -774,11 +798,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -866,7 +890,13 @@
               94
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "6e459fc556b663a995fe9b6e49646a333c067321dc4d50d80b639654fb554f6d",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -952,11 +982,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -1044,7 +1074,13 @@
               54
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "83162fcdc065224e8a3370b1562d1b199e8a55b98aac96fd9b78815dc8e2738d",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -1623,11 +1659,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -1715,7 +1751,13 @@
               127
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "b48dfd6c53a2366e08678a5589509cd9578c7b71b255cde19086524fcf3245f3",
+            "chars": 160
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -1963,10 +2005,10 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
+        "minimum_floor": 0.8,
         "minimum_region_passes": 1,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
@@ -1987,7 +2029,13 @@
               119
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "c3087546c6f73e842e00f6afb3248dbcc8d28fdb280bdac6286f48c49dab0d56",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -2344,11 +2392,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -2436,7 +2484,13 @@
               95
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "621553a0582893da822332273a0f02d289aabab9cb3eced144ecf2bd41e8699a",
+            "chars": 8
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -2846,11 +2900,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 1,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 2,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -2887,7 +2941,13 @@
               11
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "3d3e56b3400caec021de510cf1211efa69861ebe814159d67f088a7413482d39",
+            "chars": 160
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -3021,11 +3081,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 2,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 3,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -3079,7 +3139,13 @@
               27
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "a96835fb54ea48b38034b0e546cacb1f824d451e7e73313e50ebfe3ccaa8bcfb",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -3213,11 +3279,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -3305,7 +3371,13 @@
               57
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "b29c4f39a9d1d5522d3e68c150e761334b943712dcc301f49cc3aaf3404c0aee",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -3481,11 +3553,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -3573,7 +3645,13 @@
               248
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "3390cfb0baba96b111b83acd7ee43c79501788c059a98a448b95adbcf9b8a3dc",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -3984,11 +4062,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 2,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 3,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -4042,7 +4120,13 @@
               28
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "c4fa2c1f313df76752496c09aa99867885fc36593b3cb22b288d64fb43c9b7a4",
+            "chars": 160
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -4314,11 +4398,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -4406,7 +4490,13 @@
               123
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "4023eef9f93430dfe6c3f6f21e356b24eb0d810e4eadb576153ed7af73090139",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -4681,11 +4771,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -4773,7 +4863,13 @@
               139
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "9cc298e39aae54b951a261ce4d986c864083ada143b3d4d7bda07727920e5c7e",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -5226,11 +5322,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -5318,7 +5414,13 @@
               19
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "07ee94255828ede7d05a33184ab94282f80188c29d8d218c4c8b72bf84e9014d",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -5464,11 +5566,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -5556,7 +5658,13 @@
               208
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "88b37dc60002600622c0a610ce6a32a80f138ad057817943432f22bfd12cb2ef",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -5738,11 +5846,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -5830,7 +5938,13 @@
               296
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "10e316da7a31c37c1fe614122780a2f4ae42b8692f7e47f5b76b327381499824",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -6138,11 +6252,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 1,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 2,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -6179,7 +6293,13 @@
               78
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "9e5c65a3defe966e34d52366411363b217b65d856b7a9d4059c0252ecdacf679",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -6655,11 +6775,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -6747,7 +6867,13 @@
               1842
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "1ba16ed1b8196f54d392dcad3bc48f0786e7f4422b2cc7c48081ad1fabc45cec",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -6917,11 +7043,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -7009,7 +7135,13 @@
               355
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "4c855403e0055c07cac46fa59095501a41c0b18307490d108b2af50e3d66b5db",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -7336,11 +7468,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -7428,7 +7560,13 @@
               167
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "3b358908682113770def05831c838ab3ab8f18f32eb93d7ff9a61f03f6e6f215",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -7622,11 +7760,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 3,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 4,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -7697,7 +7835,13 @@
               239
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "55ef957d0773ccda3560d2de72cb7ab3ca5236cb2e687703054f78464b351db4",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -7915,11 +8059,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -8007,7 +8151,13 @@
               94
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "41aca9fd1526a9d5704cc437864b55cc166dcf673a91068253e050624a4fbd37",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -8311,11 +8461,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -8403,7 +8553,13 @@
               31
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "a6a258a5424992752cd6aecf44c7ef1dbe2f28e91110685dbad64c3f07707d3e",
+            "chars": 160
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -8634,11 +8790,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -8726,7 +8882,13 @@
               2643
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "b92b6ddc4da4651398a119d8d850c258731d63882893c7afa00d6332cf88560b",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -8776,11 +8938,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 1,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 2,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -8817,7 +8979,13 @@
               37
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "55cc6a7c00051b4563530267bd30425f46a0b28c58907cdc7c7f4e0ba0003f8a",
+            "chars": 100
+          }
+        }
       },
       "rule_review": {
         "status": "reviewed",
@@ -8918,11 +9086,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 2,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 3,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -8976,7 +9144,13 @@
               36
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "1df807250b5858208da3e6568b032716933c671bec4994852bb05b132337923a",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -9476,11 +9650,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -9568,7 +9742,13 @@
               119
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "07f00551948d06aac931f4be3d4ea7f407c95c82b5e9730e047f96f000817708",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -9715,11 +9895,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -9807,7 +9987,13 @@
               47
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "2ddca2a75458b0f5e692b4a43e21b0e7cc240548ffe506d5c669127854bdabe5",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -10213,11 +10399,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -10305,7 +10491,13 @@
               63
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "e4e4ab613a865be1ce9f73f90a636b5dc5be4d2fa42d610725edd61096e7d8e1",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -10785,11 +10977,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -10877,7 +11069,13 @@
               38
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "dca6a965b17b88f4af3f6699187703c4c179ea9196184d4f168b4de7e99e79dd",
+            "chars": 286
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -11269,11 +11467,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -11361,7 +11559,13 @@
               9
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "acdeb272e443bf55aecabd52ae96166789a049af63044811cc37d196016877ec",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -11723,11 +11927,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -11815,7 +12019,13 @@
               27
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "aced4ba42491130232f9ec5c97386036deff049dc33cbfb5ae543e387717d6c9",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -12057,11 +12267,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 1,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 2,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -12098,7 +12308,13 @@
               32
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "ab64e48b5690a82eb707eb8d4acec9ef3ef37549535a0581f7b53b113e092f57",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -13365,11 +13581,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -13457,7 +13673,13 @@
               37
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "19e16bbabbe2ff8651e1a4067b125d23933561d07e582b28a749804ffbed1a12",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -13862,11 +14084,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 3,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 4,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -13937,7 +14159,13 @@
               365
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "6cd679a7a77000486b54070b48df0b955a2d72b0732254b427496a89ee5c1a49",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -14293,11 +14521,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -14385,7 +14613,13 @@
               284
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "d8062e02c92e7763f4dab8024e35dfba82933a9bd5448699e2a227980fbe693a",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -14625,11 +14859,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -14717,7 +14951,13 @@
               229
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "f53eeb170400e8c53782a9686b09250756fda491559e13849a5f847c06745235",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -15002,11 +15242,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -15094,7 +15334,13 @@
               150
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "97717aaa596d2ffab1e01512491bfc3683a4217e025a663bedd848a407610778",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -15378,11 +15624,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -15470,7 +15716,13 @@
               149
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "688b8b550927baf6c4f888a148809f62640ba479d18b47f8d9153f3d0b75854c",
+            "chars": 89
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -15732,11 +15984,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -15824,7 +16076,13 @@
               57
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "fdf8ff8c555fa0c8f03f10cab58d387a86006bfc69e78dfeb0a93b44fe68a38b",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -16162,11 +16420,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -16254,7 +16512,13 @@
               117
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "726fcafc7d1cbc8a7c8dec080852d394dd74a66e411cfe94bde30cc011928fc4",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -16496,11 +16760,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 3,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 4,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -16571,7 +16835,13 @@
               125
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "b9d1c497625dabc3c7fd222b19b11fe428ef6d64cb1fcb1477a2b8eaee799686",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -17101,11 +17371,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -17193,7 +17463,13 @@
               227
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "56a64c5219059719f8a984700c426641a0081d0dfe4cdc54a70a3639edce9193",
+            "chars": 160
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -17658,11 +17934,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -17750,7 +18026,13 @@
               162
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "afbc343aabf6d896bc742d01065b07b7f8136751aa5d77c120e6a189f9831161",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -17962,11 +18244,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -18054,7 +18336,13 @@
               76
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "dbb79a6eae6cd61a8638c25900cdf2e14449b9bd319ca8bef0cb090ead114a81",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -18336,11 +18624,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -18428,7 +18716,13 @@
               137
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "440d312762e98e2dc8cdb50ef237928920969fa5c241794f7131e26f0b3fb094",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -18706,11 +19000,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 2,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 3,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -18764,7 +19058,13 @@
               220
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "3a840992afe0ed03878e0a5e61b56c3507958776cccf661491f510c445e228df",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -18970,11 +19270,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -19062,7 +19362,13 @@
               45
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "77dc2276c0288b59aed8a75393cea6836af8bc1206c173624ba699771b6ab167",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -19514,11 +19820,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -19606,7 +19912,13 @@
               81
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "d364eaaa87e13c986c329bfb94980c8e7cc8487f94bda41928fd08cd3f1e7df3",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -19752,11 +20064,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 1,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 2,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -19793,7 +20105,13 @@
               6
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "8df8e3e046867cdebc19857a307b4e9b22fdce42048af40d970cbedf8210b995",
+            "chars": 40
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -20059,11 +20377,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -20151,7 +20469,13 @@
               34
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "846d4523b60b1faef25951644cb8295caae116d4236e706e453ee3c2ef228945",
+            "chars": 175
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -20499,11 +20823,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -20591,7 +20915,13 @@
               97
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "9001854d5c7cac00149d9bb6831121c9b7d27514cdd60c6893f412b6d3849d29",
+            "chars": 65
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -20833,11 +21163,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -20925,7 +21255,13 @@
               81
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "7c0098a9cc89b0fcd5ae45fa0733b89cf95c5d02f8e6206ba4f450d976ebfd4f",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -21113,11 +21449,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -21205,7 +21541,13 @@
               394
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "f96838f5916b0c8f24a2729db275add050be4c79839011503ac8a735ec602f38",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -21513,11 +21855,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -21605,7 +21947,13 @@
               615
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "ce8bf3428326af77b338b2729abade2f0ea4da1c1796adb8d3dff2fcae659451",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -21877,11 +22225,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -21969,7 +22317,13 @@
               221
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "fc0fabd2d1a320f46cac0ce61f2cf6691578966b6c25de39230ae8e7a57e9721",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -22319,11 +22673,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -22411,7 +22765,13 @@
               157
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "23ecb8e9b5d12292724c4b372b542028ed764dc56e9d84060bba1b0f13a2d276",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -22667,11 +23027,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -22759,7 +23119,13 @@
               1036
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "e2ecf0a2e8781b8af482524ecde4071a60e1cc6012ba04a4161e40049f017e13",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -23043,11 +23409,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -23135,7 +23501,13 @@
               56
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "b57df863ac38e304632d3e60dd7846da58aa340a81e19b04992be21a64253b29",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -23665,11 +24037,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -23757,7 +24129,13 @@
               109
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "0e15b1af9941f8433fac71715d0306e6b3c17eaff897899d16a4848404dfcd0e",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -23939,11 +24317,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -24031,7 +24409,13 @@
               263
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "7cd85f5662ce82d38b1e069e72eb4c60b54a8b24abe589d3031a5e2c9650152f",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -24669,11 +25053,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -24761,7 +25145,13 @@
               109
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "59ee7a9a50d988ca2fab106133e22bcea881bff5fe314b062fd9602b0a6d9cf5",
+            "chars": 90
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -24961,11 +25351,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 1,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 2,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -25002,7 +25392,13 @@
               29
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "6c2a5592833d6f10e4866d479cf8a349718210df936b27955c65acd4c347e79b",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -25328,11 +25724,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -25420,7 +25816,13 @@
               121
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "a0d36a0b3cad19205a1ebbbf47fcaf3d9265c5fcaf77805c739b7f114e9aae2a",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -25944,11 +26346,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -26036,7 +26438,13 @@
               33
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "e3e3c0cfb2cd2af33883e78905dbb690ee601c4453fb697a99683799934bb131",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -26128,11 +26536,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -26220,7 +26628,13 @@
               23
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "18148b55454aec60dde2786d13902a081e1aa3d3dd79af15cac63f2a78b85d47",
+            "chars": 33
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -26432,11 +26846,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -26524,7 +26938,13 @@
               32
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "a11a9a1e0372a0dbf7211430188c62807f7cb73fdfe5beae064ecb2d45532111",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -27060,11 +27480,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 1,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 2,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -27101,7 +27521,13 @@
               52
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "3aa0a4b30c3a58650f79ff9a8575c24a2ea19b70bd59c9dbaf5b7c48f5d69154",
+            "chars": 120
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -27433,11 +27859,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 1,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 2,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -27474,7 +27900,13 @@
               23
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "1773cccc80ea05db3d039700c8c8312300abf848ac397f73798f4c3238ecdaca",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -27848,11 +28280,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -27940,7 +28372,13 @@
               117
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "a65a39286a8b7533ef0f5781c8b966bbda2243c25dd071e4a0f8666f78f4d518",
+            "chars": 46
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -28566,11 +29004,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 3,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 4,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -28641,7 +29079,13 @@
               61
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "c30cfcbf4f2dce3fd65b22e90a4cbb0f84559734fb6ff5c4a4168b7cc3125c42",
+            "chars": 120
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -28877,11 +29321,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -28969,7 +29413,13 @@
               59
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "024dc35ec71d487bb7f915852375a5953d6e392a60ae43122359fd909698b151",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -29307,11 +29757,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 3,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 4,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -29382,7 +29832,13 @@
               125
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "f99710ce6ea0da8ee8fb0b0e1f8e338e954e45e1c6851b426758104a73e570ae",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -29552,11 +30008,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 3,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 4,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -29627,7 +30083,13 @@
               243
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "efb81e43c0a2e232fe7208cc31d8e71e95caf97ec2fbf32de5308ea98bba18a6",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -29905,11 +30367,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -29997,7 +30459,13 @@
               281
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "df1e2649b71e2037d519206739a5a11483fb39e1891f5a75913c7ea47626b09b",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -30137,11 +30605,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -30229,7 +30697,13 @@
               216
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "32b8b53468010de1fe1f6969d699031b6e9a15a2b60695819a42d2a36bf9e1b8",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -30609,11 +31083,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -30701,7 +31175,13 @@
               251
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "5afacf6fd0efe66bdda235baee24233a3e33d830bce26f9e8fd3e794bfc5958c",
+            "chars": 122
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -31057,11 +31537,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 3,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 4,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -31132,7 +31612,13 @@
               55
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "4b1519629f212403efd30fed8148224624999fd79382ac1f3b5c492bae3ebd9e",
+            "chars": 136
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -31717,11 +32203,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -31809,7 +32295,13 @@
               55
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "541873d33122a839093b18be18a568fc4ab58b4c4b4c840f3dc6ad8d8faa1319",
+            "chars": 160
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -31913,11 +32405,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -32005,7 +32497,13 @@
               147
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "29d94b901647e4ef2c2ddaca508014f6f8b5f0839000c0822acc13b15306f643",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -32751,11 +33249,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -32843,7 +33341,13 @@
               114
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "c7c226a90470a5069f3161e6c8a3d57fb1604ebab496beded68347eaa8968c55",
+            "chars": 57
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -33303,11 +33807,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -33395,7 +33899,13 @@
               39
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "a93cab251375bb8d13aff39c0568892fa1521cae67a1edc8528f28698aa17054",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -33589,11 +34099,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -33681,7 +34191,13 @@
               317
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "39a3e3e8c02b67f35a38e5e22845b1523815cccc86bf2cc4d3500eef48556724",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -33917,11 +34433,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -34009,7 +34525,13 @@
               551
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "31299cc74f6e3ffed08d07d6cdeea690064b3ae7de279811192615a35a06a21c",
+            "chars": 61
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -34251,11 +34773,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -34343,7 +34865,13 @@
               9
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "746fcf8f4e7f998f49091f13c970687f9ad1169b3d9672c3e0cffbf5dec03316",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -34604,11 +35132,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 2,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 3,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -34662,7 +35190,13 @@
               122
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "e7d171261b5d734f651dbd707e53191c5fe2278b05c44773ae1011470d59ac08",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -35048,11 +35582,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -35140,7 +35674,13 @@
               97
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "71b7c65928c1272367932e51be2a44926f979f54313e761993a3f54c714a98fd",
+            "chars": 19
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -35805,10 +36345,10 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
+        "minimum_floor": 0.8,
         "minimum_region_passes": 1,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
@@ -35829,7 +36369,13 @@
               10
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "7450de1c2d2d44b72a090333355b2bebbd503989412b78fda62fa218065cae9f",
+            "chars": 90
+          }
+        }
       },
       "rule_review": {
         "status": "reviewed",
@@ -36080,11 +36626,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -36172,7 +36718,13 @@
               181
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "376415844eb5cbe4eff2d0c41c923ade5872d67167ca33324f69c8fcf93e6dea",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -36518,11 +37070,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -36610,7 +37162,13 @@
               33
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "e13ee03e9d0578f8ea8286f77f4a3d9df7757ddf4f10f5094d830a8e8820e2ee",
+            "chars": 100
+          }
+        }
       },
       "source_benchmark": {
         "title_contract": {
@@ -36672,11 +37230,11 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
-        "minimum_region_passes": 4,
+        "minimum_floor": 0.8,
+        "minimum_region_passes": 5,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
@@ -36764,7 +37322,13 @@
               28
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "7c2dc7c728f040cb5205c2488eabe80e6c89f5fb92aa47c9ffe67a0b8cdbe7b4",
+            "chars": 100
+          }
+        }
       },
       "rule_review": {
         "status": "reviewed",
@@ -36817,10 +37381,10 @@
         ]
       },
       "body_requirements": {
-        "version": 3,
+        "version": 4,
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
-        "minimum_floor": 0.6,
+        "minimum_floor": 0.8,
         "minimum_region_passes": 1,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
@@ -36841,7 +37405,13 @@
               5
             ]
           }
-        ]
+        ],
+        "ending": {
+          "text_binding": {
+            "sha256": "8e99de88da7b98985adbb0f915dc77a853bb88c3b1124a9656030f62468e4cee",
+            "chars": 100
+          }
+        }
       },
       "rule_review": {
         "status": "reviewed",

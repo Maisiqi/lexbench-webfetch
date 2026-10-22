@@ -1,10 +1,11 @@
 # Article coverage review decisions
 
-This records the response to the [100-case review](https://github.com/lexmount/lexbench-webfetch/pull/5#issuecomment-6336835161) against `4dd9a95` and the approved `articles-v10` revision.
+This records the response to the [100-case review](https://github.com/lexmount/lexbench-webfetch/pull/5#issuecomment-6336835161) against `4dd9a95` and the approved `articles-v10`/`articles-v11` revisions.
 
 - **Missing profile content in 038/041: accepted and corrected.** Both saved accessibility observations contain the bio, category, location, website and joined date. The rules now require these fields using the existing shared stable-text matcher. Paired public-scorer controls accept complete profiles and reject each missing field. No site-specific scoring branch was added.
 - **Dynamic records with a one-character body: reproduced, not claimed fixed.** All five collection contracts accept distinct attributed links with nonempty text, including `x`. This is a real limit of structural coverage. The user explicitly chose reusable fixed floors without per-run source acquisition and excluded reply relationships. Reintroducing contemporary references or reply matching would change that approved contract. A minimum character count would reject legitimate short posts while accepting unrelated padding. No such patch is applied, and the suite must not be presented as proving semantic or exhaustive dynamic-body completeness.
-- **Independent static-module coverage: accepted concern, still open.** Source-based deletion controls reproduced false passes for four rate-limiter sections in 073 and ten CSS-property sections in 066. The same controls rejected each tested missing section in 037. Controls exclude body anchors from the appended page-label fixture so removed content is not accidentally restored. This demonstrates that the existing aggregate region tolerance can hide missing smaller modules; it does not justify claiming those cases prove every module is complete. A shared, source-bound component contract and paired controls are required before claiming this issue resolved. Do not put body snippets into stable page-UI anchors or add website-specific scorer branches. Table-cell and speaker association remain separate unverified concerns. These changes are not bundled into the user-approved four-case Weixin revision.
+- **Static coverage: adopt the user-approved minimal scheme 2 from the v7 review.** Version 4 requires every existing body region and the separately bound ending to reach 80%. No new module layer or website branch is published. The experimental module layer was withdrawn: 24 of 25 omission controls failed as intended, but repeated text still allowed one omission. Scheme 2 addresses the weaker 60% region allowance and unprotected tail; it does not solve every middle-module omission, ordering, table-cell or speaker association. Those stronger proposals are not claimed implemented. Exact 20% character deletion need not fail an 80% fragment rule. Format and truncation controls must substantiate the narrower contract.
+- **Repeated review prose: accepted.** Per-case defaults deduplicate basis/date fields; every row retains its ID, source region and explicit exceptions. Expanded reviews and acceptance/title/comment/post contracts are unchanged by this storage change. Input version 11 preserves the already published v10 Weixin revision.
 - **Retrievable evidence: valid reproducibility requirement, external distribution still outstanding.** Full input and capture bundles exist in local external storage and are hash-bound. Local paths are not a public download service. Do not commit third-party captures or claim a public bundle exists. Public rules plus a hash alone do not let a reviewer reconstruct the frozen bodies. A separately provisioned evidence location remains necessary for external reproduction.
 
 ## Weixin revision
@@ -12,3 +13,23 @@ This records the response to the [100-case review](https://github.com/lexmount/l
 Four user-approved articles replace 001, 002, 003 and 077, each previously the only case from its platform and without a comment contract. The population stays at 100: 95 single articles/posts and five collections; all 20 existing comment contracts remain unchanged. The new population covers 72 platform names and 75 URL hosts.
 
 The evidence consists of four user-supplied webarchives and the user's confirmation that they were saved after normal automatic loading without interaction. It is not an independently successful live browser visit. Source captures remain external. Main-body boundaries exclude attribution, promotional cards and related-article lists; source links remain. Ordinary stable attribution/profile/control text is declared separately with per-region rationale. Hidden comment dialogs do not become visible comment requirements. The existing compiler, qualifier and scorer are reused unchanged.
+
+## Version 11 scope
+
+The four approved Weixin cases and all 100 URLs are preserved. Body compilation changes for 95 fixed articles; five changing collections retain their contracts. Review metadata storage changes do not relax any acceptance threshold. Prior frozen bytes remain unchanged. The v7 proposal referenced v9/v10; current publication instead advances v10 to v11 to avoid reusing the already bound version.
+
+## Version 11 validation and limits
+
+All 95 fixed reference bodies passed body-only checks in plain text, Markdown
+blockquote and HTML-derived text (285 positive controls). Truncating the last
+24% of characters failed for all 95. Removing only the declared ending failed
+for 93/95; 069 and 100 still passed because matching fragments occur elsewhere.
+Removing the last four blank-line-delimited paragraphs failed for 94/95; 069
+still passed. These are source-based body-layer controls, not provider runs or
+a claim that all 100 cases are fixed articles. No special exception was added
+for these cases. Scheme 2 is a stricter coverage contract, not an ordered
+end-position or semantic completeness guarantee.
+
+Deduplication removes 7,671 repeated review fields: rules.json decreases from
+3,078,113 to 2,211,902 bytes. Expanding defaults reproduces every prior review
+row; acceptance, title, comment and collection contracts remain unchanged.

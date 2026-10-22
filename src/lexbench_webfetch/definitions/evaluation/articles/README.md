@@ -1,6 +1,6 @@
 # Article suite authoring
 
-The registered `articles` suite (`articles-v10`) contains 100 qualified URLs: 95 fixed articles
+The registered `articles` suite (`articles-v11`) contains 100 qualified URLs: 95 fixed articles
 and five changing post collections. `cohort.json` preserves candidate identities
 and revision history; `rules.json` contains all 100 verified contracts. Public
 tasks, the catalog and input manifest bind the complete executable dataset.
@@ -76,7 +76,9 @@ actual visibility, clipping, inert state and any modal backdrop. Already-loaded
 ordinary document text below the viewport remains in scope; hidden or collapsed
 body text does not.
 Each declared stable group must have a matching review ID, source region,
-stability basis and observation date. Page-identity patterns are regular
+stability basis and observation date. Repeated basis/date fields may be stored
+in per-case `stable_text_review_defaults`; explicit row values take precedence.
+IDs and source regions remain explicit, and empty overrides are invalid. Page-identity patterns are regular
 expressions; escape punctuation when the intended identity is literal text.
 
 Declared stable groups are mandatory in the current fixed-article contracts.
@@ -89,11 +91,19 @@ order. Legacy segmentation versions remain readable for prior frozen inputs.
 Automatic paragraph detection is insufficient for arbitrary DOM line breaks.
 Each region must contain enough ordinary text to yield a six-character fragment;
 merge shorter labels into their adjacent natural component.
-The shared version-3 body scorer checks these complete regions: all need 60%
-fragment coverage, and at least all but one need 80% (one region needs 80%).
-These are the repository's fragment-coverage tolerances, not a claim that every
-character is reproduced. Test loss of complete opening, middle and final
-components; do not use whole-document averages to hide a missing ending.
+The version-4 body contract requires every region to reach 80% fragment coverage
+and independently requires 80% coverage of the reviewed `reference_scope.end`.
+A missing or empty ending is invalid. The compiler adds this requirement only
+to fixed articles; changing post collections retain their separate contracts.
+The generic scorer retains legacy version-3 behavior for older frozen inputs.
+These are fragment-coverage tolerances, not a guarantee of exact characters,
+paragraph ordering or every small module. Middle omissions can remain within
+tolerance; repeated wording elsewhere may also match. Ending coverage is not
+proof of its position in the output. Do not describe this as exhaustive
+semantic completeness or as a precise bound on the percentage of lost characters.
+Test complete output in multiple formats, missing endings and substantial
+truncation. Exactly 20% character deletion is not necessarily below an 80%
+fragment threshold and is not universally required to fail.
 
 Shared HTML visibility exposes only the first direct summary of a closed native
 `details` element. Its hidden descendants cannot satisfy body, anchor or record

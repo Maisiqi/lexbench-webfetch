@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v10",
+  "id": "articles-v11",
   "status": "qualified",
   "case_count": 100,
   "approved_on": "2026-10-20",
@@ -915,7 +915,7 @@
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     }
   ],
-  "revision": 13,
+  "revision": 14,
   "revisions": [
     {
       "revision": 2,
@@ -2899,6 +2899,30 @@
           "id": "article-041",
           "action": "require_existing_profile_fields",
           "source_sha256": "1405c78101c20680c4ede0ad7db835d0e5e7aba7b947fbc33b8fe7764f1e061d"
+        }
+      ]
+    },
+    {
+      "revision": 14,
+      "dataset_id": "articles-v11",
+      "approved_on": "2026-10-22",
+      "previous_dataset_id": "articles-v10",
+      "previous_dataset_sha256": "64e6d6410a42949ce171d4518c6e842e5911cd81f9f1d0262e2e83af5384648b",
+      "previous_cohort_sha256": "ba8bc7367ebb0ce6ea1432ffd323527f6433c62a45ba0cc978d3322a04639ac5",
+      "previous_rules_sha256": "4a50d72f3f4425587750ae76ea5a70f5b1226d31e675b920286f2bb2db91da60",
+      "basis": "User approved review scheme 2: every fixed-article region reaches 80 percent and the bound ending independently reaches 80 percent. Deduplicate repeated review metadata using per-case defaults without changing acceptance/title/comment/post contracts. Preserve all four approved Weixin cases.",
+      "changes": [
+        {
+          "action": "require_all_regions_and_ending",
+          "scope": "95 fixed articles",
+          "body_contract_version": 4
+        },
+        {
+          "action": "deduplicate_review_metadata",
+          "fields": [
+            "basis",
+            "observed_on"
+          ]
         }
       ]
     }

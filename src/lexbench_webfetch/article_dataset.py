@@ -32,6 +32,12 @@ def _acceptance(rule: dict) -> dict:
     reviews = rule.get("stable_text_review")
     if not isinstance(reviews, list) or not rule.get("excluded_regions"):
         raise ValueError("Article rules need stable-region review and exclusions")
+    defaults = rule.get("stable_text_review_defaults", {})
+    if (not isinstance(defaults, dict) or set(defaults) - {"basis", "observed_on"}
+            or any(not isinstance(v, str) or not v.strip() for v in defaults.values())):
+        raise ValueError("Invalid stable review defaults")
+    reviews = [{**defaults, **review} if isinstance(review, dict) else review
+               for review in reviews]
     anchor_ids = [anchor["id"] for anchor in acceptance.get("stable_text_anchors", [])]
     if (any(not isinstance(review, dict) for review in reviews)
             or len(reviews) != len(anchor_ids)
@@ -232,9 +238,11 @@ def compile_case(case: dict, rule: dict, evidence_home: Path) -> dict:
         next_line = bounds[1] + 1
     if next_line != len(lines) + 1:
         raise ValueError("Article regions must include the complete source ending")
-    contract.update(regions=regions, segmentation_method=(
+    contract.update(version=4, ending={"text": scope["end"]},
+                    regions=regions, segmentation_method=(
                         "reviewed_source_semantics" if semantic else "reviewed_source_lines"),
-                    minimum_region_passes=max(1, len(regions) - 1))
+                    minimum_region_passes=len(regions),
+                    minimum_floor=contract["minimum_coverage"])
     task = {
         **_base_case(case, rule, acceptance),
         "ground_truth_main_content": body,
