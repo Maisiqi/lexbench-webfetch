@@ -19,6 +19,57 @@ def clean_reference_text(text: str) -> str:
     return text.translate({0x200B:None, 0xFEFF:None, 0x00AD:None})
 
 
+
+def markdown_body_content(text: str) -> str:
+    """Exclude a declared leading YAML metadata mapping from page prose.
+
+    Require both front-matter delimiters and a mapping key. Ordinary horizontal
+    rules, fenced examples, and unclosed headers remain body content. The caller
+    retains original answer bytes separately from this acceptance surface.
+    """
+    block = re.match(
+        r"\A\ufeff?---[ \t]*\r?\n(?P<metadata>.*?)\r?\n(?:---|\.\.\.)[ \t]*(?:\r?\n|\Z)",
+        text, re.S,
+    )
+    if block is None:
+        return text
+    key = re.compile(r"^(?:[A-Za-z_][\w.:-]*|\"[^\"\n]+\"|'[^'\n]+')[ \t]*:")
+    lines = block['metadata'].splitlines()
+    if not any(key.match(line) for line in lines) or any(
+        line.strip() and not line[0].isspace()
+        and not line.startswith('#') and not key.match(line)
+        for line in lines
+    ):
+        return text
+    return text[block.end():]
+
+
+
+def markdown_heading_text(text: str) -> str:
+    """Remove ATX presentation markers while retaining visible heading words."""
+    output = []
+    fence = None
+    for line in text.splitlines(keepends=True):
+        opening = re.match(r"^[ ]{0,3}(`{3,}|~{3,})", line)
+        if fence is not None:
+            output.append(line)
+            if re.match(r"^[ ]{0,3}" + re.escape(fence[0]) + "{" + str(len(fence)) + r",}[ \t]*(?:\r?\n|$)", line):
+                fence = None
+            continue
+        if opening:
+            fence = opening[1]
+            output.append(line)
+            continue
+        heading = re.match(r"^[ ]{0,3}#{1,6}(?:[ \t]+|(?=\r?$))(.*)", line)
+        if heading:
+            suffix = '\r\n' if line.endswith('\r\n') else '\n' if line.endswith('\n') else ''
+            title = re.sub(r"[ \t]+#+[ \t]*$", "", heading[1].rstrip('\r\n'))
+            output.append(title + suffix)
+        else:
+            output.append(line)
+    return ''.join(output)
+
+
 def normalize_reference_anchor(text: str) -> str:
     """Normalize capture layout while retaining evidence-bearing punctuation.
 
@@ -45,9 +96,9 @@ def is_html_document_or_fragment(text: str) -> bool:
     """
     elements = "|".join(sorted(HTML_BLOCK_ELEMENTS | {"html", "body"}))
     return bool(re.match(
-        rf"\s*(?:<!doctype\s+html\b[^>]*>\s*)?<(?:{elements})\b",
+        rf"\s*(?:(?:<!--.*?-->|<!doctype\s+html\b[^>]*>)\s*)*<(?:{elements})\b",
         text,
-        re.I,
+        re.I | re.S,
     ))
 
 
@@ -108,6 +159,7 @@ class MarkdownLink:
     is_image: bool
     start: int
     end: int
+    title: str = ""
 
 
 _MAX_MARKDOWN_LINK_SPAN = 8192
@@ -189,6 +241,7 @@ def markdown_links(text: str) -> list[MarkdownLink]:
             continue
         raw_label = text[start + 1:label_end]
         raw_destination = text[destination_start + 1:destination_end].strip()
+        native_title = ""
         if raw_destination.startswith("<") and ">" in raw_destination:
             destination = raw_destination[1:raw_destination.index(">")]
         else:
@@ -199,7 +252,8 @@ def markdown_links(text: str) -> list[MarkdownLink]:
             # serializers may also fail to escape a repeated delimiter.
             titled = re.match(r"(?s)^(.*?)\s+(['\"])(.*)\2$", raw_destination)
             destination = re.sub(r"\s+", "", titled[1] if titled else raw_destination)
-        links.append(MarkdownLink(raw_label, destination, image, index, destination_end + 1))
+            native_title = titled[3] if titled else ""
+        links.append(MarkdownLink(raw_label, destination, image, index, destination_end + 1, native_title))
         index = destination_end + 1
     return links
 
@@ -296,6 +350,27 @@ def visible_mixed_html_text(text: str) -> str:
         r"|(?:\\</?[A-Za-z][^<>\n]*>|</?[A-Za-z][^<>\n]*\\>)|\\[\\<>]",
         protect, text,
     )
+    # Extracted documentation can name a raw-text element in ordinary prose
+    # without escaping its angle brackets. Recognize that explicit grammatical
+    # mention only when it has no matching closing tag; real raw-text blocks
+    # (including incomplete blocks without this prose cue) remain hidden.
+    def element_mention(match):
+        from bs4 import BeautifulSoup
+        sentinel = marker + 'element-context' + marker
+        prefix = BeautifulSoup(protected[:match.start()] + sentinel, 'html.parser')
+        context = prefix.find(string=lambda value: sentinel in value)
+        html_owners = HTML_BLOCK_ELEMENTS | {
+            'html', 'body', 'a', 'b', 'code', 'em', 'i', 'span', 'strong',
+            'script', 'style', 'template'}
+        if context is None or any(parent.name in html_owners for parent in context.parents):
+            return match[0]
+        if re.search(r'</' + match['element'] + r'\s*>', protected[match.end():], re.I):
+            return match[0]
+        return protect(match)
+
+    protected = re.sub(
+        r'\b(?:the|an?) +<(?P<element>script|style)> +(?:element|tag)\b',
+        element_mention, protected, flags=re.I)
     if not re.search(
         r"</?(?:a|article|aside|b|blockquote|br|code|dd|div|dl|dt|em|footer|"
         r"h[1-6]|header|hr|i|li|main|nav|ol|p|pre|section|span|strong|table|"

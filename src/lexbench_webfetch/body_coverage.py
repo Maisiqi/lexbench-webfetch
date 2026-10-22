@@ -6,6 +6,31 @@ from itertools import combinations
 from math import ceil
 
 
+def native_markup_body_text(content, fallback):
+    """Read existing HTML layout in native Markdown, preserving literal code."""
+    import html
+    from .dynamic_lists import visible_html_text
+    protected = {}
+    prefix = "NATIVEBODYLITERAL"
+    while prefix in content:
+        prefix += "X"
+    def protect(match):
+        token = prefix + str(len(protected)) + "END"
+        protected[token] = html.unescape(match[0])
+        return token
+    masked = re.sub(r"(`+|~{3,}).*?\1|\\<[^>\n]+>", protect, content, flags=re.S)
+    if not re.search(r"<(?:table|thead|tbody|tfoot|tr|th|td|ul|ol|li|h[1-6]|p|div|section|article|br|span|strong|em|b|a)\b", masked, re.I):
+        return fallback
+    from bs4 import ParserRejectedMarkup
+    try:
+        visible = visible_html_text(masked, preserve_links=True)
+    except ParserRejectedMarkup:
+        return fallback
+    for token, literal in reversed(list(protected.items())):
+        visible = visible.replace(token, literal)
+    return visible
+
+
 def tokens(text):
     from .metrics import normalize_for_match
     return re.findall(r'[\u3400-\u9fff]|[^\W_\u3400-\u9fff]+', normalize_for_match(text))

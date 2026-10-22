@@ -14,9 +14,14 @@ from lexbench_webfetch.scoring_regressions import active_scoring_regressions
 
 @pytest.mark.parametrize("identifier,row", active_scoring_regressions().items())
 def test_declared_acceptance_scenarios(identifier, row):
-    metrics = score_attempt(row['case'], row['artifact'].encode(), ok=row['ok'],
-                            metadata=row.get('metadata'), title=row.get('title'),
-                            final_url=row.get('final_url'))
+    arguments = dict(ok=row['ok'], metadata=row.get('metadata'), title=row.get('title'),
+                     final_url=row.get('final_url'))
+    if row.get('expected_validation_error'):
+        with pytest.raises(ValueError, match=row['expected_validation_error']):
+            score_attempt(row['case'], row['artifact'].encode(), **arguments)
+        assert row['expected_task_pass'] is False
+        return
+    metrics = score_attempt(row['case'], row['artifact'].encode(), **arguments)
     assert task_passed(row['ok'], metrics, row['case'].get('task_kind', 'body')) == row['expected_task_pass']
     if 'expected_task_measured' in row:
         assert task_measured(metrics) == row['expected_task_measured']
@@ -124,3 +129,11 @@ def test_cli_rejects_non_object_answer_metadata(tmp_path, metadata):
     assert result.returncode == 1
     assert "metadata must be a JSON object" in result.stderr
     assert "Traceback" not in result.stderr
+
+
+def test_explicit_delivered_files_recompute_acceptance_over_prior_metrics():
+    metrics = score_attempt({'url': 'https://example.test/', 'task_kind': 'file'}, b'', ok=True,
+        metadata={'file_evaluation': {'pass': True}}, previous_metrics={'raw_file_pass': True},
+        delivered_files=[b'not a PNG'])
+    assert metrics['raw_file_pass'] is False
+    assert not task_passed(True, metrics, 'file')
