@@ -15,7 +15,7 @@ CONTRACT = {
 
 
 def check(content, contract=CONTRACT):
-    return verify_article_comments(content, contract, None, case_id='example', url='https://example.test')
+    return verify_article_comments(content, contract, case_id='example', url='https://example.test')
 
 
 COMMENTS = '\n\n**Alice**\nFirst actual reply.\n\n**Bob**\nSecond actual reply.'

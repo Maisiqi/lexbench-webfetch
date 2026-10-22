@@ -19,7 +19,7 @@ def native_markup_body_text(content, fallback):
         protected[token] = html.unescape(match[0])
         return token
     masked = re.sub(r"(`+|~{3,}).*?\1|\\<[^>\n]+>", protect, content, flags=re.S)
-    if not re.search(r"<(?:table|thead|tbody|tfoot|tr|th|td|ul|ol|li|h[1-6]|p|div|section|article|br|span|strong|em|b|a)\b", masked, re.I):
+    if not re.search(r"<(?:table|thead|tbody|tfoot|tr|th|td|ul|ol|li|h[1-6]|p|div|section|article|details|summary|br|span|strong|em|b|a)\b", masked, re.I):
         return fallback
     from bs4 import ParserRejectedMarkup
     try:

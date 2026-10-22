@@ -71,7 +71,7 @@ def _qualify_components(case: dict, rule: dict, task: dict, evidence_home: Path)
     review = rule.get("comment_coverage_review")
     if "comment_contract" not in rule and review is None:
         return task
-    from .article_comments import qualify_article_comments
+    from .article_qualification import qualify_article_comments
     contract = rule.get("comment_contract")
     if review is not None:
         if (not isinstance(review, dict) or review.get("status") not in (
@@ -92,8 +92,7 @@ def _qualify_components(case: dict, rule: dict, task: dict, evidence_home: Path)
         if not isinstance(review, dict) or review.get("status") not in (
                 "observed_absent", "visible_placeholders_only"):
             raise ValueError("Omitted comment rules require reviewed absence evidence")
-        contract = review.get("historical_contract", {
-            "version": 1, "mode": "observed_absent", "max_reference_age_seconds": 900})
+
     proof = rule.get("comment_qualification_reference", {})
     if not isinstance(proof.get("path"), str) or not proof.get("sha256"):
         raise ValueError("Comment contracts require independent qualification evidence")
@@ -135,7 +134,8 @@ def _qualify_components(case: dict, rule: dict, task: dict, evidence_home: Path)
 
 
 def _compile_post_collection(case: dict, rule: dict, evidence_home: Path) -> dict:
-    from .article_posts import validate_post_contract, verify_article_posts
+    from .article_posts import validate_post_contract
+    from .article_qualification import qualify_article_posts
     if case.get("page_type") != "collection":
         raise ValueError("Post collection rules require an explicitly reviewed collection")
     contract = rule["post_contract"]
@@ -154,28 +154,16 @@ def _compile_post_collection(case: dict, rule: dict, evidence_home: Path) -> dic
             or any(type(count) is not int or count < 1 for count in counts)
             or not isinstance(records, list) or not records or len(records) != counts[-1]):
         raise ValueError("Article collections require independent initial-load record review")
-    # Historical evidence qualifies the frozen floor; it is not a runtime reference.
-    qualification_contract = contract
-    if contract["version"] == 2:
-        if contract["minimum_posts"] > min(counts):
-            raise ValueError("Post minimum exceeds independently observed record counts")
-        qualification_contract = {
-            key: value for key, value in contract.items() if key != "minimum_posts"
-        }
-        qualification_contract.update(version=1, required_ratio=1.0,
-                                      max_reference_age_seconds=900)
-        sources = rule.get("post_coverage_review", {}).get("source_evidence", [])
-        if not sources:
-            raise ValueError("Static post coverage requires source evidence")
-        for source in sources:
-            captured = contained_path(evidence_home, source["path"], reject_symlinks=True).read_bytes()
-            if hashlib.sha256(captured).hexdigest() != source["sha256"]:
-                raise ValueError("Changed article collection source evidence")
-    qualification = verify_article_posts(
-        "", qualification_contract, reference, case_id=case["id"], url=case["url"],
-        reference_context={"id": reference.get("context_id"),
-                           "started_at": reference.get("observed_at")})
-    if qualification["article_reference_status"] != "verified":
+    sources = rule.get("post_coverage_review", {}).get("source_evidence", [])
+    if not sources:
+        raise ValueError("Static post coverage requires source evidence")
+    for source in sources:
+        captured = contained_path(evidence_home, source["path"], reject_symlinks=True).read_bytes()
+        if hashlib.sha256(captured).hexdigest() != source["sha256"]:
+            raise ValueError("Changed article collection source evidence")
+    qualification = qualify_article_posts(
+        contract, reference, case_id=case["id"], url=case["url"])
+    if qualification["status"] != "qualified":
         raise ValueError("Every source record needs complete owned post and quote text")
     task = _base_case(case, rule, _acceptance(rule))
     task.update(ground_truth_main_content="", source_benchmark={

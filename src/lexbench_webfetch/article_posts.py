@@ -1,17 +1,14 @@
-"""Post ownership checks for reference matching and fixed coverage contracts."""
-import hashlib
-import json
-import math
+"""Post ownership checks for fixed initial coverage contracts."""
 import re
 import unicodedata
-from datetime import datetime
 from urllib.parse import urljoin, urlsplit
 
 import soupsieve
 
-from .body_coverage import body_requirements, evaluate_body_requirements, tokens, compact_ngrams
-from .dynamic_lists import _scoped_html, named_entry_identity, visible_html_text
-from .reference_quality import is_html_document_or_fragment, markdown_links, visible_markdown_links
+from .body_coverage import tokens
+from .dynamic_lists import named_entry_identity, visible_html_text
+from .article_text import article_html, is_article_html, article_markdown, POST_CONTROLS
+from .reference_quality import markdown_links, visible_markdown_links
 
 
 def validate_post_contract(contract):
@@ -19,11 +16,11 @@ def validate_post_contract(contract):
     try:
         allowed = {'version', 'hosts', 'entry_path', 'html_record_selector',
                    'html_permalink_selector', 'html_author_selector', 'html_body_selector',
-                   'html_quote_selector', 'quote_markers', 'required_ratio', 'max_reference_age_seconds',
+                   'html_quote_selector', 'quote_markers',
                    'allow_empty_outer_with_quotes', 'minimum_posts'}
         if not isinstance(contract, dict) or set(contract) - allowed:
             raise ValueError('unknown frozen post contract fields')
-        if type(contract['version']) is not int or contract['version'] not in (1, 2) or not isinstance(contract['hosts'], list) or not contract['hosts']:
+        if type(contract['version']) is not int or contract['version'] != 2 or not isinstance(contract['hosts'], list) or not contract['hosts']:
             raise ValueError('invalid version or hosts')
         if any(not isinstance(h, str) or not h or '/' in h for h in contract['hosts']):
             raise ValueError('invalid hosts')
@@ -33,17 +30,7 @@ def validate_post_contract(contract):
                 raise ValueError('empty selector')
             soupsieve.compile(contract[key])
         soupsieve.compile(contract.get('html_quote_selector', 'blockquote'))
-        if contract['version'] == 1:
-            if 'minimum_posts' in contract:
-                raise ValueError('fixed count is not a reference contract field')
-            for key in ('required_ratio', 'max_reference_age_seconds'):
-                v = contract[key]
-                if type(v) not in (int, float) or not math.isfinite(v) or v <= 0:
-                    raise ValueError('invalid numeric bound')
-            if contract['required_ratio'] > 1:
-                raise ValueError('invalid ratio')
-        elif (type(contract.get('minimum_posts')) is not int or contract['minimum_posts'] < 1
-              or 'required_ratio' in contract or 'max_reference_age_seconds' in contract):
+        if type(contract.get('minimum_posts')) is not int or contract['minimum_posts'] < 1:
             raise ValueError('invalid fixed coverage bound')
         if type(contract.get('allow_empty_outer_with_quotes', False)) is not bool:
             raise ValueError('invalid empty outer opt-in')
@@ -54,7 +41,7 @@ def validate_post_contract(contract):
         raise ValueError('invalid post contract') from error
 
 
-def _identity(value, contract, base):
+def post_identity(value, contract, base):
     destination = urljoin(base, value)
     p = urlsplit(destination)
     p.port  # Force validation; hostname alone accepts malformed port text.
@@ -64,95 +51,8 @@ def _identity(value, contract, base):
     return named_entry_identity(destination, contract)
 
 
-def _utc(value):
-    stamp = datetime.fromisoformat(value.replace('Z', '+00:00'))
-    if stamp.tzinfo is None or stamp.utcoffset().total_seconds() != 0:
-        raise ValueError('UTC timestamp required')
-    return stamp
-
-
-def _part_contract(part):
-    text = part['text']
-    contract = body_requirements(text)
-    if 'source_line_ranges' in part:
-        lines, cursor, regions = text.splitlines(), 1, []
-        ranges = part['source_line_ranges']
-        if not isinstance(ranges, list) or not 1 <= len(ranges) <= 5:
-            raise ValueError('invalid source ranges')
-        for span in ranges:
-            if (not isinstance(span, list) or len(span) != 2 or any(type(n) is not int for n in span)
-                    or span[0] != cursor or not span[0] <= span[1] <= len(lines)):
-                raise ValueError('ranges must partition the whole body part')
-            region = body_requirements('\n'.join(lines[span[0]-1:span[1]]),
-                                       structure_hint='whole_declared_component')['regions']
-            if len(region) != 1:
-                raise ValueError('empty source region')
-            regions.append({**region[0], 'id': f'post-region-{len(regions)+1}'})
-            cursor = span[1] + 1
-        if cursor != len(lines)+1:
-            raise ValueError('ranges omit the end')
-        contract['regions'] = regions
-    if any(not compact_ngrams(r['text'], 6) for r in contract['regions']):
-        raise ValueError('body regions require six-character matching units')
-    contract['minimum_region_passes'] = len(contract['regions'])
-    contract['minimum_floor'] = contract['minimum_coverage']
-    return contract
-
-
-def _reference_status(reference, context, contract, case_id, url):
-    if reference is None:
-        return 'missing'
-    try:
-        if (type(reference['version']) is not int or reference['version'] != 1 or reference['case_id'] != case_id or reference['url'] != url
-                or reference['scope'] != 'initial_load_only'
-                or not isinstance(reference['context_id'], str) or not reference['context_id']):
-            return 'invalid'
-        observed = _utc(reference['observed_at'])
-        records, seen = reference['records'], set()
-        if not isinstance(records, list) or not records:
-            return 'invalid'
-        for row in records:
-            key = _identity(row['url'], contract, url)
-            if key in seen or not isinstance(row['author'], str) or not tokens(row['author']):
-                return 'invalid'
-            seen.add(key)
-            parts = row['body_parts']
-            if (not isinstance(parts, list) or not parts or parts[0].get('kind') != 'post'
-                    or any(p.get('kind') != 'quote' for p in parts[1:])):
-                return 'invalid'
-            for index, part in enumerate(parts):
-                if (part['kind'] not in {'post', 'quote'} or part['complete_initial_text'] is not True
-                        or not isinstance(part['text'], str)):
-                    return 'invalid'
-                if 'author' in part and (not isinstance(part['author'], str) or not tokens(part['author'])):
-                    return 'invalid'
-                if 'empty_outer_text' in part:
-                    # This independent observation cannot excuse omitted prose or
-                    # an empty quote. Every owned quote still needs attribution.
-                    if (not contract.get('allow_empty_outer_with_quotes', False)
-                            or part['empty_outer_text'] is not True or index != 0
-                            or part['text'] != '' or 'source_line_ranges' in part or len(parts) < 2
-                            or any(not isinstance(p.get('author'), str) or not tokens(p['author'])
-                                   for p in parts[1:])):
-                        return 'invalid'
-                    continue
-                if not tokens(part['text']):
-                    return 'invalid'
-                _part_contract(part)
-        if not isinstance(context, dict) or context.get('id') != reference['context_id']:
-            return 'context_mismatch'
-        age = (_utc(context['started_at'])-observed).total_seconds()
-        if age < 0:
-            return 'context_mismatch'
-        if age > contract['max_reference_age_seconds']:
-            return 'stale'
-    except (KeyError, TypeError, ValueError, AttributeError):
-        return 'invalid'
-    return 'verified'
-
-
 def _owned_body_text(node, contract):
-    surface = _scoped_html(str(node))
+    surface = article_html(str(node))
     # Field-node ownership alone does not exclude a nested card's text.
     for nested in list(surface.select(contract['html_record_selector'])):
         if nested.parent is not None:
@@ -160,28 +60,8 @@ def _owned_body_text(node, contract):
     return visible_html_text(str(surface))
 
 
-def _is_post_html(content):
-    """Classify HTML after complete leading non-content blocks only."""
-    remaining = content.lstrip()
-    # Attributes may contain a greater-than sign inside quoted values.
-    attributes = r"(?:[^>\"']|\"[^\"]*\"|'[^']*')*"
-    while True:
-        prefix = re.match(
-            r'<!--.*?-->|<(noscript|style|script)\b' + attributes
-            + r'>.*?</\1\s*>|<(?:meta|link)\b' + attributes + r'>',
-            remaining, re.I | re.S,
-        )
-        if not prefix:
-            return is_html_document_or_fragment(remaining)
-        remaining = remaining[prefix.end():].lstrip()
-
-
 def _html_records(content, contract):
-    soup, rows = _scoped_html(content), []
-    # With scripting enabled, fallback markup is not displayed article text.
-    for fallback in list(soup.select('noscript')):
-        if fallback.parent is not None:
-            fallback.decompose()
+    soup, rows = article_html(content), []
     selector = contract.get('html_quote_selector', 'blockquote')
     for card in soup.select(contract['html_record_selector']):
         def owned(node):
@@ -192,7 +72,7 @@ def _html_records(content, contract):
             return owned(node) and not any(node is q or q in node.parents for q in quotes)
         fields = [[x for x in card.select(contract[key]) if outer(x)] for key in
                   ('html_permalink_selector', 'html_author_selector', 'html_body_selector')]
-        optional_body = contract['version'] == 2 and contract.get('allow_empty_outer_with_quotes', False)
+        optional_body = contract.get('allow_empty_outer_with_quotes', False)
         if (any(len(x) != 1 for x in fields[:2])
                 or len(fields[2]) != 1 and not (optional_body and not fields[2])):
             rows.append({})
@@ -207,21 +87,20 @@ def _html_records(content, contract):
                          for x in quotes]
         quote_bodies = []
         for quote in quotes:
-            if contract['version'] == 2:
-                # Prefer an explicit quote body field. If the site's quote uses
-                # a different shape, exclude attribution and interface fields
-                # before accepting its remaining visible text as prose.
-                bodies = [node for node in quote.select(contract['html_body_selector'])
-                          if owned(node) and node.find_parent(
-                              lambda parent: soupsieve.match(selector, parent)) is quote]
-                copy = _scoped_html(str(bodies[0] if len(bodies) == 1 else quote))
-                metadata = (contract['html_author_selector'] + ', '
-                            + contract['html_permalink_selector']
-                            + ', time, button, [role="button"]')
-                for field in list(copy.select(metadata)):
-                    if field.parent is not None:
-                        field.decompose()
-                quote_bodies.append(_owned_body_text(copy, contract))
+            # Prefer an explicit quote body field. If the site's quote uses
+            # a different shape, exclude attribution and interface fields
+            # before accepting its remaining visible text as prose.
+            bodies = [node for node in quote.select(contract['html_body_selector'])
+                      if owned(node) and node.find_parent(
+                          lambda parent: soupsieve.match(selector, parent)) is quote]
+            copy = article_html(str(bodies[0] if len(bodies) == 1 else quote))
+            metadata = (contract['html_author_selector'] + ', '
+                        + contract['html_permalink_selector']
+                        + ', time, button, [role="button"]')
+            for field in list(copy.select(metadata)):
+                if field.parent is not None:
+                    field.decompose()
+            quote_bodies.append(_owned_body_text(copy, contract))
             quote.extract()
         rows.append({'url': link.get('href', ''), 'author': author.get_text(' ', strip=True),
                      'post': _owned_body_text(body, contract) if body is not None else '', 'quote': quote_text,
@@ -243,10 +122,16 @@ def _markdown_records(content, contract, url):
     content = visible_html_text(content, preserve_source_whitespace=True, preserve_links=True)
     content = content.replace(paragraph_marker, '')
     lines, headers = content.splitlines(), []
+    header_level = None
     for index, line in enumerate(lines):
+        heading = re.match(r'^\s*(#{1,6})\s+', line)
         links = [link for link in markdown_links(line) if not link.is_image]
         if not links or line.lstrip().startswith('>'):
+            if heading and header_level is not None and len(heading[1]) <= header_level:
+                break
             continue
+        if header_level is None and heading:
+            header_level = len(heading[1])
         if len(links) > 1:
             first, last = links[0], links[-1]
             prefix, suffix = line[:first.start].strip(), line[last.end:].strip()
@@ -267,7 +152,7 @@ def _markdown_records(content, contract, url):
                             and profile.hostname in contract['hosts']
                             and not profile.username and not profile.password
                             and not re.fullmatch(contract['entry_path'], profile.path.rstrip('/'))):
-                        _identity(last.destination, contract, url)
+                        post_identity(last.destination, contract, url)
                         destination = last.destination
                 except ValueError:
                     pass
@@ -279,7 +164,7 @@ def _markdown_records(content, contract, url):
         if suffix.strip(' |—–-:*_') or (prefix and not explicit_header):
             continue
         try:
-            _identity(link.destination, contract, url)
+            post_identity(link.destination, contract, url)
         except ValueError:
             # An explicit linked post heading still ends the previous post,
             # even when its own URL is invalid. Ordinary inline links do not.
@@ -289,7 +174,7 @@ def _markdown_records(content, contract, url):
         author = re.sub(r'^(?:#{1,6}|[-*+]|\d+[.)])(?:\s+|$)', '', prefix).strip()
         if not author:
             author = visible_markdown_links(link.label)
-        if (contract['version'] == 2 and not re.sub(
+        if (not re.sub(
                 r'^(?:#{1,6}|[-*+]|\d+[.)])(?:\s+|$)', '', prefix).strip()
                 and re.fullmatch(r'(?:today|yesterday|date|time|permalink|view post|post|'
                                  r'今天|昨天|详情|查看帖子|\d{4}[-/]\d{1,2}[-/]\d{1,2})',
@@ -305,7 +190,11 @@ def _markdown_records(content, contract, url):
         end = headers[n+1][0] if n+1 < len(headers) else len(lines)
         post, quotes, current = [], [], None
         quote_mode, paragraph_break = None, False
+        header_heading = re.match(r'^\s*(#{1,6})\s+', lines[start])
         for line in lines[start+1:end]:
+            heading = re.match(r'^\s*(#{1,6})\s+', line)
+            if heading and header_heading and len(heading[1]) <= len(header_heading[1]):
+                break
             if line.strip().strip('*_').rstrip(':：').casefold() in markers:
                 if current is not None:
                     quotes.append('\n'.join(current))
@@ -345,25 +234,8 @@ def _markdown_records(content, contract, url):
 
 
 def _initial_surface(content):
-    """Remove closed disclosure content before either HTML or Markdown parsing."""
-    if not re.search(r'<details\b', content, re.I):
-        return content
-    soup = _scoped_html(content)
-    for details in list(soup.select('details:not([open])')):
-        if details.parent is None:
-            continue
-        summary = details.find('summary', recursive=False)
-        for child in list(details.contents):
-            if child is not summary:
-                child.extract()
-    return str(soup)
-
-
-_POST_CONTROLS = {'reply', 'replies', 'like', 'likes', 'share', 'report', 'repost',
-                  'reposts', 'bookmark', 'bookmarks', 'views', 'view', 'permalink',
-                  'load more', 'show more', 'read more', 'sign in', 'log in',
-                  '回复', '点赞', '分享', '转发', '收藏', '查看', '展开', '查看更多',
-                  '加载更多', '登录', '注册', 'today', 'yesterday', '今天', '昨天'}
+    """Apply shared closed-disclosure visibility to mixed representations."""
+    return str(article_html(content)) if re.search(r'<details\b', content, re.I) else content
 
 
 def _has_post_prose(text):
@@ -385,7 +257,7 @@ def _has_post_prose(text):
             continue
         labels = [part.strip().casefold().strip(':：*_')
                   for part in re.split(r'\s*[|·•]\s*', line)]
-        if all(re.sub(r'(?:^\d+\s*|\s*\d+$)', '', label).strip() in _POST_CONTROLS
+        if all(re.sub(r'(?:^\d+\s*|\s*\d+$)', '', label).strip() in POST_CONTROLS
                for label in labels):
             continue
         return True
@@ -394,13 +266,17 @@ def _has_post_prose(text):
 
 def _verify_fixed_posts(content, contract, url):
     content = _initial_surface(content)
-    rows = (_html_records(content, contract) if _is_post_html(content)
-            else _markdown_records(content, contract, url))
+    if is_article_html(content):
+        native = article_html(content).select(contract['html_record_selector'])
+        rows = (_html_records(content, contract) if native
+                else _markdown_records(article_markdown(content), contract, url))
+    else:
+        rows = _markdown_records(content, contract, url)
     seen, checks = set(), []
     for row in rows:
         check = {'url': row.get('url'), 'pass': False}
         try:
-            key = _identity(row['url'], contract, url)
+            key = post_identity(row['url'], contract, url)
             author_pass = bool(row.get('author', '').strip())
             body_pass = _has_post_prose(row.get('post', ''))
             attributed_quote = any(
@@ -430,70 +306,7 @@ def _verify_fixed_posts(content, contract, url):
             'article_post_minimum_count': contract['minimum_posts']}
 
 
-def verify_article_posts(content, contract, reference, *, case_id, url, reference_context=None):
-    """Apply the versioned fixed coverage or independent reference contract."""
+def verify_article_posts(content, contract, *, case_id, url):
+    """Check fixed visible-post coverage without a runtime reference."""
     validate_post_contract(contract)
-    if contract['version'] == 2:
-        return _verify_fixed_posts(content, contract, url)
-    status = _reference_status(reference, reference_context, contract, case_id, url)
-    result = {'article_reference_status': status, 'article_reference_sha256': None,
-              'article_posts_pass': False, 'article_post_results': [], 'article_post_count': 0,
-              'article_post_confirmed_count': 0, 'article_post_reference_count': 0}
-    if status != 'verified':
-        return result
-    result['article_reference_sha256'] = hashlib.sha256(json.dumps(
-        reference, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-    expected = {_identity(x['url'], contract, url): x for x in reference['records']}
-    rows = (_html_records(content, contract) if _is_post_html(content)
-            else _markdown_records(content, contract, url))
-    seen, checks = set(), []
-    for row in rows:
-        check = {'url': row.get('url'), 'pass': False, 'body_part_results': []}
-        try:
-            key = _identity(row['url'], contract, url)
-            if key in seen:
-                check['reason'] = 'duplicate'
-            elif key not in expected:
-                check['reason'] = 'unknown'
-            else:
-                ref = expected[key]
-                author, header = tokens(ref['author']), tokens(row.get('author', row.get('author_header', '')))
-                author_pass = (header == author if 'author' in row else any(
-                    header[i:i+len(author)] == author for i in range(len(header)-len(author)+1)))
-                if len(ref['body_parts']) == 1 and 'whole_post' in row:
-                    # Literal greater-than lines can be original post prose,
-                    # rather than a quoted post, when no quote was observed.
-                    row = {**row, 'post': row['whole_post'], 'quote': []}
-                quote_index = 0
-                for part in ref['body_parts']:
-                    actual = row['post'] if part['kind'] == 'post' else (
-                        row['quote'][quote_index] if quote_index < len(row['quote']) else '')
-                    quote_author_pass = True
-                    if part['kind'] == 'quote' and part.get('author'):
-                        candidates = (row.get('quote_authors', [])[quote_index]
-                                      if quote_index < len(row.get('quote_authors', [])) else [actual])
-                        quote_author_pass = any(tokens(part['author']) == tokens(a) for a in candidates)
-                        if 'author_header' in row:
-                            # The explicit first quote line owns attribution;
-                            # mentions in body prose cannot substitute for it.
-                            actual = (row['quote_bodies_after_author'][quote_index]
-                                      if quote_index < len(row['quote_bodies_after_author']) else '')
-                    quote_index += part['kind'] == 'quote'
-                    if part.get('empty_outer_text') is True:
-                        coverage = {'body_coverage_pass': not actual.strip(), 'empty_outer_text': True}
-                    else:
-                        coverage = evaluate_body_requirements(actual, _part_contract(part))
-                    check['body_part_results'].append({'kind': part['kind'], 'author_pass': quote_author_pass, **coverage})
-                check['author_pass'] = author_pass
-                check['pass'] = (author_pass and len(row['quote']) == quote_index
-                                 and all(x['body_coverage_pass'] and x['author_pass'] for x in check['body_part_results']))
-            seen.add(key)
-        except (KeyError, ValueError):
-            check['reason'] = 'invalid_record'
-        checks.append(check)
-    confirmed = sum(x['pass'] for x in checks)
-    result.update(article_post_results=checks, article_post_count=len(rows),
-                  article_post_reference_count=len(expected), article_post_confirmed_count=confirmed,
-                  article_posts_pass=(bool(rows) and all(x['pass'] for x in checks)
-                                      and confirmed >= math.ceil(len(expected)*contract['required_ratio'])))
-    return result
+    return _verify_fixed_posts(content, contract, url)

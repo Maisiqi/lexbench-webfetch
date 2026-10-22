@@ -5,36 +5,12 @@ and five changing post collections. `cohort.json` preserves candidate identities
 and revision history; `rules.json` contains all 100 verified contracts. Public
 tasks, the catalog and input manifest bind the complete executable dataset.
 Full reference bodies and source observations remain external.
-See the [PR review decisions](../../../../../docs/reviews/pr-5.md) for revision 10 evidence and tradeoffs.
 
-Revision 2 adopted five separately approved specific articles (044, 053, 063,
-091 and 104). Revision 3 removed 042, 062, 083 and 097 at the user's request.
-Revision 4 applies the user's authorization to replace unsuitable cases and
-complete exactly 100: it replaces 001, 002, 003, 079 and 082 after direct source
-review and removes 004. All original entries and prior cohort hashes remain
-in the history. Search-only candidates 043 and 105 were removed before initial
-approval. Revision 5 separates actual title checks, adds named semantic body regions and
-independent initial-comment contracts for all 95 fixed cases. It corrects 049 to
-the canonical OSCHINA article URL, revises 090 to the same URL's current 2026
-Pew fact sheet, and replaces 061 with the independently reviewed National
-Gallery of Art article. The other 93 fixed-body references are byte-identical.
-Revision 6 caps body regions at five by merging adjacent reviewed components.
-All 95 body references and title/comment/post contracts remain byte-identical
-to revision 5; 57 cases have fewer regions. Wider regions reduce sensitivity
-to a small missing paragraph, while complete-region omissions still fail.
-Revision 7 replaces runtime comment matching with fixed coverage rules on the
-20 cases with actual initially displayed comment text. The other 75 fixed cases
-have no comment rule: 74 have no displayed records, and 069 shows only hidden/spam
-placeholders. Every classification retains hash-bound independent evidence.
-Body text, title contracts, body regions and all five post contracts are unchanged.
-Revision 8 raises comment floors: baselines of at most five require every record;
-larger baselines require 80%, rounded up. Only numeric comment floors change.
-Revision 9 replaces the five runtime-reference post contracts with fixed coverage
-contracts: minima 4, 8, 4, 4 and 16 for 038, 039, 040, 041 and 101 respectively.
-All 95 fixed tasks remain byte-identical. The five collections preserve their
-URLs, page-identity checks and stable anchors; only their post contracts and explanatory review text change.
-Revision 10 removes ten brittle exact anchors in 010, 027 and 093 and bounds text comment parsing in all 20 comment cases using reviewed body endings and subsequent section labels. Body references, titles, numeric floors and post contracts remain unchanged.
-Previous `articles-v1` through `articles-v6` inputs and all four earlier suites remain unchanged.
+Candidate identities and source revisions are recorded in `cohort.json`; gaps in
+case numbering preserve the original candidate IDs. Earlier authoring inputs
+remain immutable. Reproduce pre-release version-1 runtime contracts with the
+frozen scorer at commit `a01aaa04cd86c5084d38088795053142b0973c73`; current APIs
+accept version-2 coverage contracts only.
 
 The four original Weixin cases could not be independently observed because of
 an authoring-tool site-safety restriction. The final suite uses different
@@ -64,7 +40,7 @@ can count its links. Existing frozen suites and input versions remain unchanged.
 Open the fixed URL and observe its first automatic load, including ordinary
 already-loaded content below the viewport. Do not expand, switch tabs within
 the page, log in, paginate, accept a wall or scroll to trigger loading.
-The user permits reference authors to close a login, subscription or similar
+Reference authors may close a login, subscription or similar
 obstruction through its ordinary dismissal control. Preserve before/after
 evidence and verify that the article was already loaded and its text did not
 change; do not use dismissal to unlock or load additional content. This is a
@@ -122,10 +98,16 @@ These are the repository's fragment-coverage tolerances, not a claim that every
 character is reproduced. Test loss of complete opening, middle and final
 components; do not use whole-document averages to hide a missing ending.
 
+Shared HTML visibility exposes only the first direct summary of a closed native
+`details` element. Its hidden descendants cannot satisfy body, anchor or record
+checks; an open element retains its visible content.
+
 An independently observed visible input placeholder or button value may use an
 anchor's `visible_control` selector and attribute. This opt-in applies only to
 that anchor, never to body coverage. Hidden controls, passwords, accessibility
-metadata and unobserved attributes are not visible text references.
+metadata and unobserved attributes are not visible text references. The same
+visible label in Markdown can match; the selector is an additional HTML
+extraction path, not a requirement to preserve original site markup.
 
 ## Titles and original body text
 
@@ -162,6 +144,20 @@ cannot establish it. These hints are not additional required output anchors;
 they keep article text and subsequent recommendations from supplying comments. Bare names and
 metadata-only text are ambiguous and are not guessed as valid comments.
 
+Cleaned HTML may use the structured text parser only when reviewed native record
+containers are absent. This projection preserves headings and links and excludes
+navigation, sidebars and footers; a failed native ownership check cannot be
+rescued by selecting a larger fallback count. Without explicit section boundaries,
+mixed author formats, unknown author headings and repeated body endings can be
+indistinguishable from body subheadings, links or quoted text. The scorer does not
+promise to resolve those ambiguous representations. An explicit comment heading
+allows repeated body endings before that heading to be disambiguated.
+
+Whole-label control and placeholder exclusions are an article-only policy in
+`article_text.py`, shared by comment and post parsers. They are not substring
+filters or a general multilingual content policy. New labels need accepted and
+rejected controls; this refactor preserves the existing frozen contract policy.
+
 The minimum equals the independently reviewed valid record count when that count
 is at most five; otherwise it equals 80% of that count, rounded up. The baseline
 is frozen at authoring time, not refreshed for each test. This tests comment coverage:
@@ -175,9 +171,8 @@ No fresh comment reference is acquired or required at scoring time. Historical
 qualification still binds the complete independent source files by SHA-256 and
 supports the presence/absence decision. Absent pages retain that evidence but
 have no runtime comment contract. A date-only historical observation does not
-invent a precise timestamp. Version 1 comment verification remains supported for
-older frozen datasets; its runtime references and reply ownership requirements
-do not apply to version 2 coverage rules.
+invent a precise timestamp. Historical qualification validates saved evidence without imposing runtime
+freshness or reply matching requirements.
 
 ## Changing post collections
 
@@ -203,13 +198,6 @@ the checked fields, or freshness. A website changing its initial display or
 structure requires review and a dataset revision, not an automatic conclusion
 that an extraction method failed.
 
-Legacy version 1 post contracts remain supported for previous frozen datasets.
-They require `--list-reference` and `--reference-context`, including matching
-context identity and a fresh independent observation. They compare all declared
-owned text components against that reference. Missing, stale or mismatched
-references leave legacy cases unmeasured. The execution harness must establish
-comparable page states; freshness alone does not establish comparability.
-
 ## References and validation
 
 Keep complete references, DOM captures, screenshots and review results outside
@@ -234,3 +222,23 @@ Title-only, navigation-only, wrong article, repeated opening, omitted body
 regions, missing titles/comments and absent mandatory groups must fail. Keep controls synthetic in CI;
 real reference validation results stay outside Git. Do not call evaluated
 products while authoring. Run `make check` and submit a feature-branch PR.
+
+To compile all verified cases from an independently acquired evidence directory:
+
+```sh
+uv run --frozen python - /absolute/path/evidence /absolute/path/dataset.json <<'PYTHON'
+import json
+import sys
+from pathlib import Path
+from lexbench_webfetch.article_dataset import compile_dataset
+
+dataset = compile_dataset(Path(sys.argv[1]))
+Path(sys.argv[2]).write_text(json.dumps(dataset, ensure_ascii=False, indent=2) + "\n")
+PYTHON
+```
+
+Compilation requires the exact hash-bound source files declared in the rules.
+It does not download pages or call providers. Runtime scoring needs the compiled
+input and response, not the historical source bundle. Source-capture controls
+are supplementary external evidence; repository tests use reproducible synthetic
+accepted and rejected responses.

@@ -445,9 +445,9 @@ def task_passed(ok: bool, metrics: dict, task_kind: str | None = None) -> bool:
     if (metrics.get('page_identity_required')
             and metrics.get('page_identity_status') != 'verified'):
         return False
-    if (not task_measured(metrics, task_kind) or metrics.get('deadline_overrun')
-            or any(metrics.get(key) is False for key in (
-                'article_posts_pass', 'article_title_pass', 'article_comments_pass'))):
+    if any(value is not True for value in metrics.get('required_components', {}).values()):
+        return False
+    if not task_measured(metrics, task_kind) or metrics.get('deadline_overrun'):
         return False
     if "stable_task_pass" in metrics:
         combined = (metrics.get("content_pass")
@@ -467,14 +467,6 @@ def task_measured(metrics: dict, task_kind: str | None = None) -> bool:
         return False
     if metrics.get('rule_review_status') == 'unresolved':
         return False
-    if ('article_reference_status' in metrics
-            and metrics['article_reference_status'] != 'verified'):
-        return False
-    if ('article_comments_reference_status' in metrics
-            and metrics['article_comments_reference_status'] != 'verified'):
-        return False
-    # A completed call missing required page observations is a measured failure.
-    # Missing benchmark rules remain unmeasured through rule_review_status above.
     kind = task_kind or metrics.get('task_kind', 'body')
     if (metrics.get('page_identity_required')
             and metrics.get('page_identity_status') == 'unavailable'

@@ -15,9 +15,9 @@ from lexbench_webfetch.scoring import score_attempt
 class ArticleComponentIntegration(unittest.TestCase):
     def setUp(self):
         self.comment = {
-            "version": 1, "record_selector": ".comment", "author_selector": ".author",
+            "version": 2, "record_selector": ".comment", "author_selector": ".author",
             "body_selector": ".text", "section_markers": ["Comments"],
-            "max_reference_age_seconds": 900,
+            "minimum_comments": 1,
         }
         self.title = {"version": 1, "alternatives": ["Life and dignity"],
                       "html_selector": "h1"}
@@ -29,36 +29,23 @@ class ArticleComponentIntegration(unittest.TestCase):
                          "stable_text_role": "required", "stable_text_anchors": []},
                      "source_benchmark": {"title_contract": self.title,
                                           "comment_contract": self.comment}}
-        self.ref = {"version": 1, "case_id": "article-test", "url": self.case["url"],
-                    "scope": "initial_load_only", "context_id": "source-run",
-                    "observed_at": "2026-10-20T03:00:00Z", "observation_complete": True,
-                    "source_observation_counts": [1, 1], "records": [
-                        {"id": "c1", "author": "Reader", "text": "A thoughtful book.",
-                         "parent_id": None, "complete_initial_text": True}]}
-        self.ctx = {"id": "source-run", "started_at": "2026-10-20T03:00:05Z"}
         self.complete = "# Life and dignity\n\nThe author writes Life and dignity again.\n\nComments\n\n## Reader\nA thoughtful book."
 
-    def run_score(self, content, reference=True):
-        return evaluate_response(self.case, content.encode(),
-                                 comments_reference=self.ref if reference else None,
-                                 reference_context=self.ctx)
+    def run_score(self, content):
+        return evaluate_response(self.case, content.encode())
 
     def test_title_body_and_comments_are_independently_required(self):
         self.assertTrue(self.run_score(self.complete)["passed"])
         self.assertFalse(self.run_score(self.complete.split("Comments")[0])["passed"])
         self.assertFalse(self.run_score(self.complete.replace("# Life and dignity\n", ""))["passed"])
-        self.assertFalse(self.run_score(self.complete.replace("A thoughtful book.", "Different prose."))["passed"])
+        self.assertFalse(self.run_score(self.complete.replace("A thoughtful book.", ""))["passed"])
         # Original repetition is valid and remains untouched.
         self.assertIn("The author writes Life and dignity again.", self.complete)
 
-    def test_missing_and_stale_comment_reference_are_unmeasured(self):
-        missing = self.run_score(self.complete, reference=False)
-        self.assertFalse(missing["passed"])
-        self.assertFalse(missing["measured"])
-        self.ctx["started_at"] = "2026-10-20T04:00:00Z"
-        stale = self.run_score(self.complete)
-        self.assertFalse(stale["passed"])
-        self.assertFalse(stale["measured"])
+    def test_removed_runtime_reference_arguments_are_rejected(self):
+        for argument in ('comments_reference', 'reference_context'):
+            with self.subTest(argument=argument), self.assertRaises(TypeError):
+                evaluate_response(self.case, self.complete.encode(), **{argument: {}})
 
     def test_public_projection_keeps_component_contracts(self):
         projected = public_task(self.case)
@@ -81,19 +68,6 @@ class ArticleComponentIntegration(unittest.TestCase):
         self.assertNotIn("article_comments_reference_status", metrics)
         self.assertNotIn("article_title_pass", metrics)
 
-    def test_cli_accepts_separate_independent_comment_reference(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            for filename, value in [("task.json", self.case), ("comments.json", self.ref),
-                                    ("context.json", self.ctx)]:
-                (root / filename).write_text(json.dumps(value))
-            (root / "answer.md").write_text(self.complete)
-            result = subprocess.run([sys.executable, "-m", "lexbench_webfetch.cli", "score",
-                "--task", str(root / "task.json"), "--response", str(root / "answer.md"),
-                "--comments-reference", str(root / "comments.json"),
-                "--reference-context", str(root / "context.json")],
-                text=True, capture_output=True, check=True)
-            self.assertTrue(json.loads(result.stdout)["passed"])
 
 
 class StaticCommentCoverageIntegration(unittest.TestCase):
@@ -102,7 +76,6 @@ class StaticCommentCoverageIntegration(unittest.TestCase):
         original.setUp()
         self.case = copy.deepcopy(original.case)
         self.contract = self.case["source_benchmark"]["comment_contract"]
-        self.contract.pop("max_reference_age_seconds")
         self.contract.update(version=2, minimum_comments=2)
         self.complete = "# Life and dignity\n\nArticle prose.\n\nComments\n\n## New reader\nA new comment today.\n\n## Another reader\nA different response."
 

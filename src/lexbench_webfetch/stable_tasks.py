@@ -139,8 +139,8 @@ def _visible(text, schema=None, *, normalized_html=False):
 
         text = visible_html_text(text)
     if schema == "name_description" and not normalized_html and not projected_html and re.search(r"<(?:div|section|article|span|script|template)\b", text, re.I):
-        from .dynamic_lists import _scoped_html
-        text = _scoped_html(text).get_text(separator="\n")
+        from .dynamic_lists import scoped_html
+        text = scoped_html(text).get_text(separator="\n")
         projected_html = True
     text = clean_reference_text(text)
     # An actual inline HTML break in Markdown is layout. Preserve escaped
@@ -626,7 +626,7 @@ def _non_record_visible(content, contract, records, base_url):
     """Remove owned record links, without erasing identical navigation text."""
     from urllib.parse import urljoin
 
-    from .dynamic_lists import _scoped_html, named_entry_identity, _canonical_entry_path, visible_html_text
+    from .dynamic_lists import scoped_html, named_entry_identity, _canonical_entry_path, visible_html_text
     from .reference_quality import markdown_links, visible_markdown_links, visible_mixed_html_text
 
     identities = {named_entry_identity(r['fields']['url'], contract)
@@ -662,7 +662,7 @@ def _non_record_visible(content, contract, records, base_url):
             if target.scheme in {'http', 'https'} and target.hostname and not is_record(owner['href']):
                 image.name = 'span'
                 image.string = image['alt']
-        soup = _scoped_html(str(soup))
+        soup = scoped_html(str(soup))
         for node in list(soup.select('a[href]')):
             if node.parent is None or node.attrs is None:
                 continue
@@ -803,7 +803,7 @@ def _validate_visible_control(control):
 def _ordinary_control_text(soup, control):
     """Read only declared rendered-label attributes, never accessibility metadata.
 
-    Explicit hidden nodes are removed by _scoped_html. External stylesheet
+    Explicit hidden nodes are removed by scoped_html. External stylesheet
     visibility must be established by the independent source review.
     """
     parts = []
@@ -1225,8 +1225,8 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
     if any("visible_control" in a for a in contract.get("stable_text_anchors", [])):
         from .reference_quality import is_html_document_or_fragment
         if is_html_document_or_fragment(content):
-            from .dynamic_lists import _scoped_html
-            control_soup = _scoped_html(content)
+            from .dynamic_lists import scoped_html
+            control_soup = scoped_html(content)
     non_record_visible = None
     if schema == 'named_link' and any(a.get('match_scope') == 'non_record_lines'
                                       for a in contract.get('stable_text_anchors', [])):

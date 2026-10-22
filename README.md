@@ -47,7 +47,7 @@ These are five separately versioned populations, with 550 task entries in total.
 
 Each suite ships a readable `tasks.json`, a catalog with original task-definition hashes, and a manifest binding the exact executable dataset and reference files. See [data layout and rights](docs/data.md). Task wording and frozen acceptance rules retain their original language.
 
-The [article suite](src/lexbench_webfetch/definitions/evaluation/articles/README.md), `articles-v7`, contains 95 fixed articles and five changing post collections. It checks observed titles separately, preserves original body repetitions, and divides complete displayed bodies into at most five named groups of natural sections. Cases with evidenced initially displayed comment text require all observed valid author-and-text records for baselines of at most five, or 80% rounded up for larger baselines. Names, text and reply relationships are not frozen; interaction-triggered comments are excluded. This detects missing comment coverage, not every individual omission. Pages without visible comment text retain evidence but have no comment rule. Changing post collections count distinct post links with an author and visible text, allowing attributed quotes for empty outer text. Their frozen floors use the same all-up-to-five / 80%-rounded-up policy; no runtime post reference is required. Post coverage does not prove full text, current membership or freshness. The cohort preserves revision history; complete references stay outside Git.
+The [article suite](src/lexbench_webfetch/definitions/evaluation/articles/README.md), `articles-v7`, adds 95 fixed articles and five changing post collections. It checks displayed article content and required page components, including initial comment and post coverage, to catch title-only or body-only extraction. Complete references remain outside Git.
 
 ## Quickstart
 
@@ -86,7 +86,6 @@ uv run --frozen lexbench-webfetch score --task examples/task.json --response exa
 
 The first answer passes; the second fails. Use `--metadata /absolute/path/metadata.json` to include structured answer fields such as `links` or `images`; the file must contain a JSON object. Metadata cannot supply a file-acceptance verdict. Supply the complete task JSON from a verified dataset for a real result. Public task projections bind reference bodies by hash and cannot replace those complete rules. File tasks use repeated `--file /absolute/path/file` arguments; acceptance is derived from the actual bytes, signature, length and declared hash, not a supplied pass flag. Optional ordered-tree tasks require `uv sync --frozen --extra tree`.
 
-Legacy version-1 article post-collection tasks use `--list-reference /absolute/path/reference.json` and `--reference-context /absolute/path/context.json`. The caller-owned context contains `id` and UTC `started_at`; missing, mismatched or stale independent references leave the case unmeasured. Current version-2 post contracts do not require either runtime input. See the [article authoring guide](src/lexbench_webfetch/definitions/evaluation/articles/README.md).
 
 Compile the audited access-restriction rules with independently captured references:
 

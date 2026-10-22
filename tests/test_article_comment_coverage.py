@@ -3,7 +3,8 @@ from copy import deepcopy
 
 import pytest
 
-from lexbench_webfetch.article_comments import qualify_article_comments, validate_comment_contract, verify_article_comments
+from lexbench_webfetch.article_comments import validate_comment_contract, verify_article_comments
+from lexbench_webfetch.article_qualification import qualify_article_comments
 
 CONTRACT = {'version': 2, 'minimum_comments': 2, 'record_selector': '.comment',
             'author_selector': '.author', 'body_selector': '.text',
@@ -11,7 +12,7 @@ CONTRACT = {'version': 2, 'minimum_comments': 2, 'record_selector': '.comment',
 
 
 def check(content, contract=CONTRACT):
-    return verify_article_comments(content, contract, None, case_id='case', url='https://example.test/')
+    return verify_article_comments(content, contract, case_id='case', url='https://example.test/')
 
 
 def card(author, body, identity=''):

@@ -149,11 +149,24 @@ def _scoped_html(content):
                 or declarations.get('visibility') in {'hidden', 'collapse'}
                 or declarations.get('opacity') in {'0', '0.0', '0%'}):
             node.decompose()
+    # Native closed disclosures render only the first direct summary. Apply
+    # this before extracting any body, anchor or record text.
+    for details in list(soup.select('details:not([open])')):
+        if details.parent is None:
+            continue
+        summary = details.find('summary', recursive=False)
+        for child in list(details.contents):
+            if child is not summary:
+                child.extract()
     # An image description is not a visible news/product title. Explicit
     # title_selector extraction below already uses actual text nodes only.
     for node in soup.select('img'):
         node.attrs.pop('alt', None)
     return soup
+
+
+# Public shared visibility surface; retain the private name for existing callers.
+scoped_html = _scoped_html
 
 
 def visible_html_text(

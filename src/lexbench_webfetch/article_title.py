@@ -3,23 +3,15 @@ import re
 
 import soupsieve
 
-from .dynamic_lists import _scoped_html
+from .article_text import article_html, is_article_html, without_markdown_images
 from .metrics import normalize_for_match
-from .reference_quality import (is_html_document_or_fragment, markdown_links,
-                                visible_mixed_html_text)
+from .reference_quality import visible_mixed_html_text
 
 
 def _title_key(text):
     normalized = normalize_for_match(text).strip()
     # DOM line breaks around punctuation are layout, not different wording.
     return re.sub(r'\s*([，。！？、；：,.!?;:])\s*', r'\1', normalized)
-
-
-def _without_markdown_images(text):
-    for link in reversed(markdown_links(text)):
-        replacement = ('' if link.is_image else _without_markdown_images(link.label))
-        text = text[:link.start] + replacement + text[link.end:]
-    return text
 
 
 def validate_title_contract(contract):
@@ -51,17 +43,6 @@ def validate_title_contract(contract):
         raise ValueError('invalid article title contract') from error
 
 
-def _remove_closed_details(soup):
-    for details in list(soup.select('details:not([open])')):
-        if details.parent is None:
-            continue
-        summary = details.find('summary', recursive=False)
-        for child in list(details.contents):
-            if child is not summary:
-                child.extract()
-    return soup
-
-
 def verify_article_title(content, contract):
     """Require a visible selected HTML title or an exact standalone text line.
 
@@ -75,8 +56,8 @@ def verify_article_title(content, contract):
         raise ValueError('article title content must be text')
     expected = {_title_key(text) for text in contract['alternatives']}
     candidates = []
-    if is_html_document_or_fragment(content):
-        soup = _remove_closed_details(_scoped_html(content))
+    if is_article_html(content):
+        soup = article_html(content)
         for selector in contract.get('excluded_html_selectors', []):
             for node in list(soup.select(selector)):
                 if node.parent is not None:
@@ -87,8 +68,7 @@ def verify_article_title(content, contract):
     else:
         fence = None
         if re.search(r'<details\b', content, re.I):
-            from bs4 import BeautifulSoup
-            content = str(_remove_closed_details(BeautifulSoup(content, 'html.parser')))
+            content = str(article_html(content))
         for line in visible_mixed_html_text(content).splitlines():
             marker = re.match(r'^ {0,3}(`{3,}|~{3,})', line)
             if marker:
@@ -104,7 +84,7 @@ def verify_article_title(content, contract):
             text = re.sub(r'^#{1,6}[ \t]+', '', text)
             text = re.sub(r'[ \t]+#+[ \t]*$', '', text)
             # Inline markup can format a title but cannot supply hidden text.
-            candidates.append(_without_markdown_images(text))
+            candidates.append(without_markdown_images(text))
         surface = 'standalone_text_line'
     matched = next((text for text in candidates if _title_key(text) in expected), None)
     return {'article_title_pass': matched is not None,

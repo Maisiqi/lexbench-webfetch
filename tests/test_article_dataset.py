@@ -118,17 +118,17 @@ class ArticleContracts(unittest.TestCase):
         raw = (json.dumps(reference) + "\n").encode()
         (self.root / "comments.json").write_bytes(raw)
         rule = copy.deepcopy(self.rule)
-        rule["comment_contract"] = {"version": 1, "mode": "observed_absent",
-                                    "max_reference_age_seconds": 900}
+        rule["comment_coverage_review"] = {"status": "observed_absent",
+                                           "basis": "Independent initial page has no comments."}
         with self.assertRaisesRegex(ValueError, "independent qualification evidence"):
             compile_case(self.case, rule, self.root)
         rule["comment_qualification_reference"] = {
             "path": "comments.json", "sha256": hashlib.sha256(raw).hexdigest()}
         task = compile_case(self.case, rule, self.root)
-        # Historical qualification does not provide a fresh runtime reference.
+        # Historical qualification establishes absence without a runtime reference.
         unavailable = evaluate_response(task, (self.prefix + self.body).encode())
-        self.assertFalse(unavailable["passed"])
-        self.assertFalse(unavailable["measured"])
+        self.assertTrue(unavailable["passed"])
+        self.assertTrue(unavailable["measured"])
         (self.root / "source.html").write_bytes(source + b"changed")
         with self.assertRaisesRegex(ValueError, "Changed article comment source evidence"):
             compile_case(self.case, rule, self.root)
@@ -323,14 +323,14 @@ class ArticleContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "separate record review"):
             compile_case({**self.case, "page_type": "collection"}, self.rule, self.root)
 
-    def test_post_collection_uses_runtime_reference_without_frozen_members(self):
+    def test_post_collection_uses_fixed_coverage_with_independent_qualification(self):
         case = {**self.case, "url": "https://example.test/feed", "page_type": "collection"}
         contract = {
-            "version": 1, "hosts": ["example.test"], "entry_path": r"/research/[a-z]+",
+            "version": 2, "hosts": ["example.test"], "entry_path": r"/research/[a-z]+",
             "html_record_selector": "article", "html_permalink_selector": "a.permalink",
             "html_author_selector": ".author", "html_body_selector": ".post-body",
             "html_quote_selector": "blockquote", "quote_markers": ["Quote"],
-            "required_ratio": 0.8, "max_reference_age_seconds": 900,
+            "minimum_posts": 2,
         }
         reference = {
             "version": 1, "case_id": case['id'], "url": case['url'],
@@ -350,6 +350,10 @@ class ArticleContracts(unittest.TestCase):
         rule.update(target_kind='post_collection', post_contract=contract,
                     qualification_reference={'path': 'qualification.json',
                                              'sha256': hashlib.sha256(raw).hexdigest()})
+        source = self.root / 'independent-source.txt'
+        source.write_text('Two independently displayed posts with visible author and text.')
+        rule['post_coverage_review'] = {'source_evidence': [
+            {'path': source.name, 'sha256': hashlib.sha256(source.read_bytes()).hexdigest()}]}
         task = compile_case(case, rule, self.root)
         validate_case(EvalCase(**task))
         projected = public_task(task)
@@ -358,11 +362,11 @@ class ArticleContracts(unittest.TestCase):
             self.assertNotIn(record['url'], json.dumps(projected))
             self.assertNotIn(record['body_parts'][0]['text'], json.dumps(projected))
         self.assertNotIn('qualification_proof', projected['source_benchmark'])
-        source = self.root / 'list-references'
-        source.mkdir()
+        refs = self.root / 'list-references'
+        refs.mkdir()
         self.assertIsNone(load_list_reference(task, self.root))
-        (source / f"{case['id']}.json").write_bytes(raw)
-        self.assertEqual(load_list_reference(task, self.root), reference)
+        (refs / f"{case['id']}.json").write_bytes(raw)
+        self.assertIsNone(load_list_reference(task, self.root))
 
         def response(records):
             text = '<h1>Comet field report</h1><nav>Article archive</nav>'
@@ -373,25 +377,17 @@ class ArticleContracts(unittest.TestCase):
                          '</article>')
             return text.encode()
 
-        context = {'id': reference['context_id'], 'started_at': '2026-10-19T00:00:10Z'}
         original = response(reference['records'])
-        complete = evaluate_response(task, original, list_reference=reference,
-                                     reference_context=context)
+        complete = evaluate_response(task, original)
         self.assertTrue(complete['passed'])
         self.assertTrue(complete['measured'])
-        for kwargs in ({}, {'list_reference': reference}, {
-                'list_reference': reference, 'reference_context': {**context, 'id': 'another-run'}}):
-            with self.subTest(kwargs=kwargs.keys()):
-                result = evaluate_response(task, original, **kwargs)
-                self.assertFalse(result['passed'])
-                self.assertFalse(result['measured'])
-        swapped = copy.deepcopy(reference['records'])
-        swapped[0]['body_parts'], swapped[1]['body_parts'] = (
-            swapped[1]['body_parts'], swapped[0]['body_parts'])
-        wrong = evaluate_response(task, response(swapped), list_reference=reference,
-                                  reference_context=context)
-        self.assertFalse(wrong['passed'])
-        self.assertTrue(wrong['measured'])
+        insufficient = evaluate_response(task, response(reference['records'][:1]))
+        self.assertFalse(insufficient['passed'])
+        self.assertTrue(insufficient['measured'])
+        updated = copy.deepcopy(reference['records'])
+        for row in updated:
+            row['body_parts'][0]['text'] = 'New visible discussion text.'
+        self.assertTrue(evaluate_response(task, response(updated))['passed'])
 
         rescored = score_attempt(self.task, (self.prefix + self.body).encode(), ok=True,
                                  previous_metrics=complete['metrics'])
@@ -410,7 +406,7 @@ class ArticleContracts(unittest.TestCase):
         static_task = compile_case(case, static, self.root)
         self.assertEqual(static_task['source_benchmark']['post_contract']['minimum_posts'], 2)
         static['post_contract']['minimum_posts'] = 3
-        with self.assertRaisesRegex(ValueError, 'exceeds independently observed'):
+        with self.assertRaises(ValueError):
             compile_case(case, static, self.root)
         static['post_contract']['minimum_posts'] = 2
         source.write_text('Changed capture')
@@ -420,6 +416,7 @@ class ArticleContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'requires source evidence'):
             compile_case(case, static, self.root)
 
+        source.write_text('Two independently displayed posts with visible author and text.')
         incomplete = copy.deepcopy(reference)
         incomplete['records'][0]['body_parts'][0]['complete_initial_text'] = False
         raw = json.dumps(incomplete).encode()

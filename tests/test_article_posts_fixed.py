@@ -16,7 +16,7 @@ class FixedPostTests(unittest.TestCase):
         }
 
     def score(self, content):
-        return verify_article_posts(content, self.contract, None,
+        return verify_article_posts(content, self.contract,
                                     case_id='fixed', url='https://example.com/feed')
 
     def html(self, number=1, author='New author', text='New content', quote=''):
