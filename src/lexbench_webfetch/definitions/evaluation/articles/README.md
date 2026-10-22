@@ -158,8 +158,9 @@ permalink captions that cannot identify an author. Empty lists are valid; omitte
 fields and normalized duplicates are rejected. Rules and observations share whole
 label normalization for Unicode width, whitespace, case and emphasis decoration.
 `rules.json` is the sole authoring source; compiled tasks carry these lists without
-runtime defaults or another policy file. Historical inputs remain reproducible
-with their original commits. Syntax recognition (HTML/Markdown, timestamps and
+runtime defaults or another policy file. Earlier authoring inputs are retained as
+provenance, not a supported compatibility promise; they may lack fields required
+by the current scorer. Syntax recognition (HTML/Markdown, timestamps and
 count decorations) remains parser code.
 
 The minimum equals the independently reviewed valid record count when that count
@@ -230,7 +231,7 @@ products while authoring. Run `make check` and submit a feature-branch PR.
 To compile all verified cases from an independently acquired evidence directory:
 
 ```sh
-uv run --frozen python -m lexbench_webfetch.cli compile-articles \
+uv run --frozen lexbench-webfetch compile-articles \
   --evidence-home /absolute/path/evidence --output /absolute/path/new-dataset.json
 ```
 
@@ -240,3 +241,49 @@ input and response, not the historical source bundle. Compilation refuses to
 overwrite existing outputs or pinned reference inputs. Source-capture controls
 are supplementary external evidence; repository tests use reproducible synthetic
 accepted and rejected responses.
+
+### Updating the public bindings
+
+`compile-articles` creates only the external dataset; it does not publish a suite
+revision. Before compiling a revision, update `cohort.json` and `rules.json`
+together, including the dataset ID, inventory, revision and prior-input provenance.
+Keep the previous external input directory unchanged. Place the new output in a
+new external directory as `dataset.json`; never commit its reference bodies.
+
+Generate the public bindings in this order under `definitions/evaluation/articles`
+(relative to `src/lexbench_webfetch`). Preserve case order from the compiled dataset.
+Use UTF-8 JSON with `ensure_ascii=False`, `indent=2` and one trailing newline for
+these generated files; compute file hashes from the final bytes, not parsed JSON.
+
+1. **`dataset-catalog.json`:** retain `schema_version: 1` and
+   `kind: frozen_dataset_catalog`. Copy `id`, `name` and `case_count` from the
+   dataset, set `dataset` to `dataset.json`, and hash that file into
+   `dataset_sha256`. For each case copy `id`, `name`, `url`, `category`, `track`
+   and `task_prompt`. Set `definition_sha256` to SHA-256 of the complete case
+   serialized with `json.dumps(case, ensure_ascii=False, sort_keys=True,
+   separators=(",", ":")).encode("utf-8")`. Set `reference_sha256` to SHA-256 of
+   `ground_truth_main_content.encode("utf-8")`, or JSON `null` for an empty body.
+2. **`tasks.json`:** copy the dataset's top-level fields, replacing `cases` with
+   `[lexbench_webfetch.benchmark.public_task(case) for case in dataset["cases"]]`.
+   Use that projection rather than copying full cases: it removes external source
+   evidence and replaces full reference text with bindings.
+3. **`source-inputs.json`:** retain `schema_version: 2` and
+   `kind: frozen_reference_inputs`; set `id` to the new dataset ID plus `-` and
+   the first 12 dataset-hash characters. Set `catalog` to `dataset-catalog.json`
+   and `catalog_sha256` to its final file hash. Set `dataset` to `dataset.json`,
+   `dataset_sha256` to the dataset hash, `files` to `{"dataset.json": <dataset hash>}`
+   and `trees` to `{}`. No captures belong in this bundle.
+4. **`definitions/registry.json`:** change only the `articles` entry. Copy the
+   new `dataset_id` and `case_count`; update its `files` hashes for `tasks.json`,
+   `dataset-catalog.json` and `source-inputs.json`. Keep its directory unchanged.
+5. Update the version in the top-level English/Chinese READMEs and this guide.
+   Run the checks below against the new external directory, then review all
+   generated changes together in the feature-branch PR. A hash match alone does
+   not replace independent evidence review or accepted/rejected scoring controls.
+
+```sh
+uv run --frozen lexbench-webfetch validate --suite articles
+uv run --frozen lexbench-webfetch verify-inputs --suite articles \
+  --source /absolute/path/new-input-directory
+make check
+```

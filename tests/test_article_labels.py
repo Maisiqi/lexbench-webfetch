@@ -112,3 +112,15 @@ def test_post_whole_labels_share_rule_and_observation_normalization():
     assert check('How to log in securely.')
     assert not check('Visible body.', 'ＶＩＥＷ　　ＰＯＳＴ')
     assert check('Visible body.', 'View Post researcher')
+
+
+def test_comment_emphasis_normalization_preserves_distinct_source_ids():
+    from lexbench_webfetch.article_comments import valid_comment_records
+    contract = {**C, 'ignored_labels': ['reply']}
+    assert valid_comment_records([{'author': 'Reader', 'text': '_reply_'}], contract) == []
+    rows = [{'author': 'Reader', 'text': 'Useful observation'},
+            {'author': 'Reader', 'text': '_Useful observation_'}]
+    assert len(valid_comment_records(rows, contract)) == 1
+    identified = [dict(row, source_id=str(i)) for i, row in enumerate(rows)]
+    assert len(valid_comment_records(identified, contract)) == 2
+    assert len(valid_comment_records([{'author': 'Reader', 'text': 'A useful reply.'}], contract)) == 1
