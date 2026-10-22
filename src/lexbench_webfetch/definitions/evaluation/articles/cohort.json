@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v9",
+  "id": "articles-v10",
   "status": "qualified",
   "case_count": 100,
   "approved_on": "2026-10-20",
@@ -16,28 +16,28 @@
   "cases": [
     {
       "id": "article-001",
-      "candidate_id": "article-candidate-001-r4",
-      "name": "Island Hopping in Japan",
-      "url": "https://www.japan.travel/en/guide/island-hopping/",
-      "platform": "JNTO Travel Japan",
+      "candidate_id": "article-001-weixin-v10",
+      "name": "脑电合成自然语音！LeCun转发Nature子刊新成果，代码开源",
+      "url": "https://mp.weixin.qq.com/s/BcV3-3glmdsVF--fpPRU2g",
+      "platform": "微信公众号",
       "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     },
     {
       "id": "article-002",
-      "candidate_id": "article-candidate-002-r4",
-      "name": "Machine Learning Crash Course",
-      "url": "https://developers.googleblog.com/machine-learning-crash-course/",
-      "platform": "Google Developers Blog",
+      "candidate_id": "article-002-weixin-v10",
+      "name": "龙虾冲浪终于不迷路了！网页智能体新框架Avenir-Web开源即SOTA",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247887827&idx=3&sn=6f15e73e3e9766986b064a1fce6fe955",
+      "platform": "微信公众号",
       "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     },
     {
       "id": "article-003",
-      "candidate_id": "article-candidate-003-r4",
-      "name": "What you need to do deep learning",
-      "url": "https://www.fast.ai/posts/2017-11-16-what-you-need.html",
-      "platform": "fast.ai",
+      "candidate_id": "article-003-weixin-v10",
+      "name": "200+推文涨粉8000：我的推特增长策略",
+      "url": "https://mp.weixin.qq.com/s/2y463r9G4hnsIc0c2ig7dA",
+      "platform": "微信公众号",
       "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     },
@@ -664,10 +664,10 @@
     },
     {
       "id": "article-077",
-      "candidate_id": "article-candidate-077",
-      "name": "A beginner’s guide to Javascript Closure",
-      "url": "https://rishabhthakur.hashnode.dev/closures-in-javascript",
-      "platform": "Hashnode",
+      "candidate_id": "article-077-weixin-v10",
+      "name": "乔姆斯基：ChatGPT 的虚假承诺",
+      "url": "https://mp.weixin.qq.com/s/e9KDOZ3vwd10PFvH6hbtmg",
+      "platform": "微信公众号",
       "page_type": "article",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     },
@@ -915,7 +915,7 @@
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     }
   ],
-  "revision": 12,
+  "revision": 13,
   "revisions": [
     {
       "revision": 2,
@@ -2785,6 +2785,120 @@
         {
           "id": "article-101",
           "action": "bind_non_author_labels_in_contract"
+        }
+      ]
+    },
+    {
+      "revision": 13,
+      "dataset_id": "articles-v10",
+      "approved_on": "2026-10-22",
+      "previous_dataset_id": "articles-v9",
+      "previous_cohort_sha256": "a15b097e3180b40af449a508d008c0a231332ded07b0efda9e611217e88da27a",
+      "previous_rules_sha256": "98cbce41a7ee97f46fd8a3cef58bcc94d8e5b443fc060a420a08fb2b342f00ea",
+      "previous_dataset_sha256": "2202a684149817daa34564cbff1a8c9d26431d4ee58bc85f4984e06db99e95eb",
+      "basis": "User approved four archive-based Weixin rules. Preserve 100 cases, all existing comment contracts and collection floors. Add evidenced missing profile fields to 038/041.",
+      "changes": [
+        {
+          "id": "article-001",
+          "action": "replace",
+          "previous": {
+            "id": "article-001",
+            "candidate_id": "article-candidate-001-r4",
+            "name": "Island Hopping in Japan",
+            "url": "https://www.japan.travel/en/guide/island-hopping/",
+            "platform": "JNTO Travel Japan",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
+          },
+          "replacement": {
+            "id": "article-001",
+            "candidate_id": "article-001-weixin-v10",
+            "name": "脑电合成自然语音！LeCun转发Nature子刊新成果，代码开源",
+            "url": "https://mp.weixin.qq.com/s/BcV3-3glmdsVF--fpPRU2g",
+            "platform": "微信公众号",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
+          },
+          "basis": "User-approved Weixin coverage; replaced a singleton platform without a comment contract."
+        },
+        {
+          "id": "article-002",
+          "action": "replace",
+          "previous": {
+            "id": "article-002",
+            "candidate_id": "article-candidate-002-r4",
+            "name": "Machine Learning Crash Course",
+            "url": "https://developers.googleblog.com/machine-learning-crash-course/",
+            "platform": "Google Developers Blog",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
+          },
+          "replacement": {
+            "id": "article-002",
+            "candidate_id": "article-002-weixin-v10",
+            "name": "龙虾冲浪终于不迷路了！网页智能体新框架Avenir-Web开源即SOTA",
+            "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247887827&idx=3&sn=6f15e73e3e9766986b064a1fce6fe955",
+            "platform": "微信公众号",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
+          },
+          "basis": "User-approved Weixin coverage; replaced a singleton platform without a comment contract."
+        },
+        {
+          "id": "article-003",
+          "action": "replace",
+          "previous": {
+            "id": "article-003",
+            "candidate_id": "article-candidate-003-r4",
+            "name": "What you need to do deep learning",
+            "url": "https://www.fast.ai/posts/2017-11-16-what-you-need.html",
+            "platform": "fast.ai",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
+          },
+          "replacement": {
+            "id": "article-003",
+            "candidate_id": "article-003-weixin-v10",
+            "name": "200+推文涨粉8000：我的推特增长策略",
+            "url": "https://mp.weixin.qq.com/s/2y463r9G4hnsIc0c2ig7dA",
+            "platform": "微信公众号",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
+          },
+          "basis": "User-approved Weixin coverage; replaced a singleton platform without a comment contract."
+        },
+        {
+          "id": "article-077",
+          "action": "replace",
+          "previous": {
+            "id": "article-077",
+            "candidate_id": "article-candidate-077",
+            "name": "A beginner’s guide to Javascript Closure",
+            "url": "https://rishabhthakur.hashnode.dev/closures-in-javascript",
+            "platform": "Hashnode",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
+          },
+          "replacement": {
+            "id": "article-077",
+            "candidate_id": "article-077-weixin-v10",
+            "name": "乔姆斯基：ChatGPT 的虚假承诺",
+            "url": "https://mp.weixin.qq.com/s/e9KDOZ3vwd10PFvH6hbtmg",
+            "platform": "微信公众号",
+            "page_type": "article",
+            "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
+          },
+          "basis": "User-approved Weixin coverage; replaced a singleton platform without a comment contract."
+        },
+        {
+          "id": "article-038",
+          "action": "require_existing_profile_fields",
+          "source_sha256": "226d68f680863e6e9c12945e96880ccc5dbc255bd8b2bbbfbd5306faa7f718e6"
+        },
+        {
+          "id": "article-041",
+          "action": "require_existing_profile_fields",
+          "source_sha256": "1405c78101c20680c4ede0ad7db835d0e5e7aba7b947fbc33b8fe7764f1e061d"
         }
       ]
     }

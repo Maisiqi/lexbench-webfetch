@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "id": "articles-v9",
+  "id": "articles-v10",
   "name": "Article retrieval",
   "tool": "web_fetch",
   "case_count": 100,
-  "site_count": 78,
+  "site_count": 75,
   "runs_per_case": 1,
   "timeout_ms": 45000,
   "workers": 1,
@@ -14,14 +14,14 @@
   },
   "interaction_policy": "initial_load_only_no_click_input_scroll_pagination_login_or_ocr",
   "source_bindings": {
-    "cohort_sha256": "a15b097e3180b40af449a508d008c0a231332ded07b0efda9e611217e88da27a",
-    "rules_sha256": "98cbce41a7ee97f46fd8a3cef58bcc94d8e5b443fc060a420a08fb2b342f00ea"
+    "cohort_sha256": "ba8bc7367ebb0ce6ea1432ffd323527f6433c62a45ba0cc978d3322a04639ac5",
+    "rules_sha256": "4a50d72f3f4425587750ae76ea5a70f5b1226d31e675b920286f2bb2db91da60"
   },
   "cases": [
     {
       "id": "article-001",
-      "name": "Island Hopping in Japan",
-      "url": "https://www.japan.travel/en/guide/island-hopping/",
+      "name": "脑电合成自然语音！LeCun转发Nature子刊新成果，代码开源",
+      "url": "https://mp.weixin.qq.com/s/BcV3-3glmdsVF--fpPRU2g",
       "category": "article",
       "track": "articles",
       "task_kind": "body",
@@ -33,362 +33,62 @@
         "schema": "body_text",
         "minimum_records": 0,
         "page_patterns": [
-          "Island\\ Hopping\\ in\\ Japan"
+          "脑电合成自然语音！LeCun转发Nature子刊新成果，代码开源"
         ],
         "stable_text_role": "required",
         "stable_text_anchors": [
           {
-            "id": "body-component-2",
+            "id": "publisher",
             "alternatives": [
-              "The Japanese archipelago is made up of literally thousands of islands to explore"
+              "量子位"
             ]
           },
           {
-            "id": "body-component-3",
+            "id": "attribution",
             "alternatives": [
-              "Japan is made up of 14,125 islands. The country stretches from the Sea of Okhotsk in the north all the way down to the"
+              "Xupeng 投稿"
             ]
           },
           {
-            "id": "body-component-4",
+            "id": "profile",
             "alternatives": [
-              "Japan's tropical island paradise"
+              "追踪人工智能新趋势，关注科技行业新突破"
             ]
           },
           {
-            "id": "body-component-5",
+            "id": "profile-kind",
             "alternatives": [
-              "Okinawa, the Ryukyu Kingdom"
+              "公众号"
             ]
           },
           {
-            "id": "body-component-6",
+            "id": "submission",
             "alternatives": [
-              "Before Okinawa Prefecture was formed in 1879, it was an independent country known as the Ryukyu Kingdom. Ryukyu culture"
+              "投稿请发邮件到"
             ]
           },
           {
-            "id": "body-component-7",
+            "id": "control-1",
             "alternatives": [
-              "Okinawa's beaches are beautiful year round, with clear waters filled with tropical fish. It is Japan's premier"
+              "赞"
             ]
           },
           {
-            "id": "body-component-8",
+            "id": "control-2",
             "alternatives": [
-              "Whales and dolphins are a common sight off the coast of the Izu Islands"
+              "分享"
             ]
           },
           {
-            "id": "body-component-9",
+            "id": "control-3",
             "alternatives": [
-              "Tropical Island Hopping from Tokyo"
+              "推荐"
             ]
           },
           {
-            "id": "body-component-10",
+            "id": "control-4",
             "alternatives": [
-              "If you're visiting Tokyo, island hopping is still an option."
-            ]
-          },
-          {
-            "id": "body-component-11",
-            "alternatives": [
-              "During the Edo period (1603-1867), the islands were a place where criminals were exiled. You can access them by plane"
-            ]
-          },
-          {
-            "id": "body-component-12",
-            "alternatives": [
-              "Dense forests and turtle nesting grounds give Yakushima Island an otherworldly feel"
-            ]
-          },
-          {
-            "id": "body-component-13",
-            "alternatives": [
-              "Islands around Kagoshima and Kyushu"
-            ]
-          },
-          {
-            "id": "body-component-14",
-            "alternatives": [
-              "is a tiny island that is part of Kagoshima Prefecture, famous for dense cedar forests and incredible hiking. The island"
-            ]
-          },
-          {
-            "id": "body-component-15",
-            "alternatives": [
-              "also has plenty to explore. Unlike mountainous Yakushima Island, Tanegashima Island is flatter and is a great spot to"
-            ]
-          },
-          {
-            "id": "body-component-16",
-            "alternatives": [
-              "Much more than sandy beaches"
-            ]
-          },
-          {
-            "id": "body-component-17",
-            "alternatives": [
-              "Not all of Japan's islands are beach destinations. Hokkaido is Japan's northernmost island, with unspoiled nature."
-            ]
-          },
-          {
-            "id": "body-component-18",
-            "alternatives": [
-              "Off the coast of Niigata is Sado Island, which features the Earth Celebration, a music festival hosted by a local Kodo"
-            ]
-          },
-          {
-            "id": "body-component-19",
-            "alternatives": [
-              "A beach break is always just a short flight away in Japan"
-            ]
-          },
-          {
-            "id": "body-component-20",
-            "alternatives": [
-              "Navigating Japan's many Islands"
-            ]
-          },
-          {
-            "id": "body-component-21",
-            "alternatives": [
-              "While many of these islands are in remote locations, you can reach them easily from major cities. Flights to Naha"
-            ]
-          },
-          {
-            "id": "shell-1",
-            "alternatives": [
-              "Trade"
-            ]
-          },
-          {
-            "id": "shell-2",
-            "alternatives": [
-              "Meetings & Events"
-            ]
-          },
-          {
-            "id": "shell-3",
-            "alternatives": [
-              "Newsletter Sign-up"
-            ]
-          },
-          {
-            "id": "shell-4",
-            "alternatives": [
-              "Coronavirus (COVID-19) Advisory Information"
-            ]
-          },
-          {
-            "id": "shell-5",
-            "alternatives": [
-              "Select Language"
-            ]
-          },
-          {
-            "id": "shell-6",
-            "alternatives": [
-              "Destinations"
-            ]
-          },
-          {
-            "id": "shell-7",
-            "alternatives": [
-              "Things to Do"
-            ]
-          },
-          {
-            "id": "shell-8",
-            "alternatives": [
-              "Plan Your Trip"
-            ]
-          },
-          {
-            "id": "shell-9",
-            "alternatives": [
-              "Blog"
-            ]
-          },
-          {
-            "id": "shell-10",
-            "alternatives": [
-              "News"
-            ]
-          },
-          {
-            "id": "shell-11",
-            "alternatives": [
-              "OVERVIEW"
-            ]
-          },
-          {
-            "id": "shell-12",
-            "alternatives": [
-              "KEYWORDS"
-            ]
-          },
-          {
-            "id": "shell-13",
-            "alternatives": [
-              "HOME"
-            ]
-          },
-          {
-            "id": "shell-14",
-            "alternatives": [
-              "Stories & Guides"
-            ]
-          },
-          {
-            "id": "shell-15",
-            "alternatives": [
-              "Keywords"
-            ]
-          },
-          {
-            "id": "shell-16",
-            "alternatives": [
-              "Story & Guide"
-            ]
-          },
-          {
-            "id": "shell-17",
-            "alternatives": [
-              "Beaches & Islands"
-            ]
-          },
-          {
-            "id": "shell-18",
-            "alternatives": [
-              "Island Activities"
-            ]
-          },
-          {
-            "id": "shell-19",
-            "alternatives": [
-              "Travel Tips"
-            ]
-          },
-          {
-            "id": "shell-20",
-            "alternatives": [
-              "Did this information help you?"
-            ]
-          },
-          {
-            "id": "shell-21",
-            "alternatives": [
-              "Yes"
-            ]
-          },
-          {
-            "id": "shell-22",
-            "alternatives": [
-              "No"
-            ]
-          },
-          {
-            "id": "shell-23",
-            "alternatives": [
-              "Recommended for You"
-            ]
-          },
-          {
-            "id": "shell-24",
-            "alternatives": [
-              "Helpful Links"
-            ]
-          },
-          {
-            "id": "shell-25",
-            "alternatives": [
-              "First-time Visitors"
-            ]
-          },
-          {
-            "id": "shell-26",
-            "alternatives": [
-              "Weather in Japan"
-            ]
-          },
-          {
-            "id": "shell-27",
-            "alternatives": [
-              "Japan Tours & Activities"
-            ]
-          },
-          {
-            "id": "shell-28",
-            "alternatives": [
-              "FAQ"
-            ]
-          },
-          {
-            "id": "shell-29",
-            "alternatives": [
-              "Japan Photo & Video Library Links"
-            ]
-          },
-          {
-            "id": "shell-30",
-            "alternatives": [
-              "Related JNTO Sites"
-            ]
-          },
-          {
-            "id": "shell-31",
-            "alternatives": [
-              "JNTO Corporate Website"
-            ]
-          },
-          {
-            "id": "shell-32",
-            "alternatives": [
-              "Japan Convention Bureau"
-            ]
-          },
-          {
-            "id": "shell-33",
-            "alternatives": [
-              "About JNTO"
-            ]
-          },
-          {
-            "id": "shell-34",
-            "alternatives": [
-              "Who We Are"
-            ]
-          },
-          {
-            "id": "shell-35",
-            "alternatives": [
-              "Contact us"
-            ]
-          },
-          {
-            "id": "shell-36",
-            "alternatives": [
-              "Brochure Request"
-            ]
-          },
-          {
-            "id": "shell-37",
-            "alternatives": [
-              "Privacy Policy"
-            ]
-          },
-          {
-            "id": "shell-38",
-            "alternatives": [
-              "Cookie Policy"
-            ]
-          },
-          {
-            "id": "shell-39",
-            "alternatives": [
-              "Terms of Use"
+              "写留言"
             ]
           }
         ]
@@ -404,86 +104,86 @@
           {
             "id": "body-region-1",
             "text_binding": {
-              "sha256": "131a3f335b911e486bbb4b9cf692a03d4f6db854eba78ca87227e37527ac5612",
-              "chars": 930
+              "sha256": "1f52ad7ea739a741c7a73bdb9d5f01a6454405ae6cf1a489bb3cf6a2021bd735",
+              "chars": 2141
             },
             "source_text_binding": {
-              "sha256": "a0e4ffb114b187c3715029c49cb1bda52997c66ae1309d59a9d645fa9da2fab5",
-              "chars": 952
+              "sha256": "077d3c5a4bd8cab4c0be5424d257d5b86bce911a74e2d72a15b7d57ec2c976a7",
+              "chars": 1202
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "开篇：GUIDE Island Hopping in Japan The Japanese archipelago is ma",
+            "label": "开篇与解码难题",
             "source_line_range": [
               1,
-              8
+              19
             ]
           },
           {
             "id": "body-region-2",
             "text_binding": {
-              "sha256": "69538b0cc4bcd5f908efff9bebf24f3edcc861556dbe23005ae6e2d08b78f1ed",
-              "chars": 1252
+              "sha256": "ac9a9d99d77a8a2dffdfa0cf2fb14b7bba4e11837d79e67a398d03b6df3ef3b4",
+              "chars": 1701
             },
             "source_text_binding": {
-              "sha256": "aeb3a99911b8d55d0f11e17d99a4bfa9a61b698d093d33519ea656c7c1755c4c",
-              "chars": 1283
+              "sha256": "7f5b4e69584f85aa1794309e529d42a0797cff775c02532e3ec4ba69a0876f94",
+              "chars": 1021
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "Okinawa, the Ryukyu Kingdom",
+            "label": "解码框架与合成器",
             "source_line_range": [
-              9,
-              16
+              20,
+              37
             ]
           },
           {
             "id": "body-region-3",
             "text_binding": {
-              "sha256": "c656b2e7bbc6e801703f25f6de2e86f24a101985f0e63ca50a2f2057ae84babe",
-              "chars": 1056
+              "sha256": "cb8616678661f6607c21b37f20b74304a5e8cfc2aad0ff5aa0f7c5a20f103f71",
+              "chars": 879
             },
             "source_text_binding": {
-              "sha256": "595b0d541d1afb44d233ede9b42fb192497935054ac0316d25eb96064843c21e",
-              "chars": 1082
+              "sha256": "aceb161ec61f156f783c7c9e3625b9e2ad901074da20c5e62abdfc8079da37f3",
+              "chars": 520
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "Tropical Island Hopping from Tokyo",
+            "label": "因果模型的研究结果",
             "source_line_range": [
-              17,
-              24
+              38,
+              46
             ]
           },
           {
             "id": "body-region-4",
             "text_binding": {
-              "sha256": "15b97565a81252872150c68cbc36bde8af93239ed26ccfb8adb54321993eef5d",
-              "chars": 2123
+              "sha256": "262632f27c4fe6736c93915a39e150f7654164590b00579cc9816fa50bea243f",
+              "chars": 1828
             },
             "source_text_binding": {
-              "sha256": "643d91a67abe485c043187d14faf0228b7740d7ea6099339890f9558914df8e3",
-              "chars": 2175
+              "sha256": "0023e51ef478ac8a945afd661a63ca224a4b96fe4c70ae66ebc033d9e1c271e5",
+              "chars": 1031
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "Islands around Kagoshima and Kyushu — Much more than sandy beaches",
+            "label": "左右脑、采样与局限",
             "source_line_range": [
-              25,
-              38
+              47,
+              63
             ]
           },
           {
             "id": "body-region-5",
             "text_binding": {
-              "sha256": "ea64b141f2ba6c395dc3ed7e9b941796ef794ccc3a5089c0e81af656acbc4ee3",
-              "chars": 779
+              "sha256": "a5404db263a8434322c5bf58f2a1ecc40d6fe7b8c82ae3d3f27262775ee6c6f3",
+              "chars": 163
             },
             "source_text_binding": {
-              "sha256": "1483148f47d6dc5bb71fc0a9184e3a68c6f1a6b16375c86c54a053cd1997a541",
-              "chars": 797
+              "sha256": "201376d36dc8660192e9c0803feaf46441549ae08fd10b4a1e02d17a3ad69265",
+              "chars": 157
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "Navigating Japan's many Islands",
+            "label": "论文与项目来源",
             "source_line_range": [
-              39,
-              41
+              64,
+              66
             ]
           }
         ]
@@ -492,20 +192,20 @@
         "title_contract": {
           "version": 1,
           "alternatives": [
-            "Island Hopping in Japan"
+            "脑电合成自然语音！LeCun转发Nature子刊新成果，代码开源"
           ],
-          "html_selector": "h1.mod-keyvisual__heading .mod-keyvisual__heading-text,h1,h2,[role=\"heading\"]"
+          "html_selector": "#activity-name,h1,h2,[role=\"heading\"]"
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete H1 and #anchor_1 ordinary source text, including five direct-text image captions. Complete serialization length391110 matches capture. NativeAX independently includes all captions, every geographical section and final transport paragraph. Read-only geometry source_innerText retains all text; displayed h/p blocks have no masks and are bounded only by enclosing whole-document wrapper. Article begins836px and ends5824px inside7340px document wrapper; no clipped or expanded body. Untouched fixed cookie notice occupies x30.20/y72/w650/h458.12 above article, without an article backdrop. H1 is ordinary rendered HTML, independently in heading geometry and AX; notice does not make its text hidden DOM. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
+        "reason": "Reviewed user-supplied archived initial state and user no-interaction attestation. User approved the four rules before publication; no independent live browser access claimed."
       }
     },
     {
       "id": "article-002",
-      "name": "Machine Learning Crash Course",
-      "url": "https://developers.googleblog.com/machine-learning-crash-course/",
+      "name": "龙虾冲浪终于不迷路了！网页智能体新框架Avenir-Web开源即SOTA",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247887827&idx=3&sn=6f15e73e3e9766986b064a1fce6fe955",
       "category": "article",
       "track": "articles",
       "task_kind": "body",
@@ -517,428 +217,56 @@
         "schema": "body_text",
         "minimum_records": 0,
         "page_patterns": [
-          "Machine\\ Learning\\ Crash\\ Course"
+          "龙虾冲浪终于不迷路了！网页智能体新框架Avenir\\-Web开源即SOTA"
         ],
         "stable_text_role": "required",
         "stable_text_anchors": [
           {
-            "id": "body-component-2",
+            "id": "publisher",
             "alternatives": [
-              "Posted by Barry Rosenberg, Google Engineering Education Team"
+              "量子位"
             ]
           },
           {
-            "id": "body-component-3",
+            "id": "attribution",
             "alternatives": [
-              "Today, we're happy to share our Machine Learning Crash Course"
+              "Avenir-Web 团队 投稿"
             ]
           },
           {
-            "id": "body-component-4",
+            "id": "profile",
             "alternatives": [
-              "What does the course cover?"
+              "追踪人工智能新趋势，关注科技行业新突破"
             ]
           },
           {
-            "id": "body-component-5",
+            "id": "profile-kind",
             "alternatives": [
-              "MLCC covers many machine learning fundamentals, starting with loss and gradient descent, then building through"
+              "公众号"
             ]
           },
           {
-            "id": "body-component-6",
+            "id": "control-1",
             "alternatives": [
-              "How much does it cost?"
+              "赞"
             ]
           },
           {
-            "id": "body-component-7",
+            "id": "control-2",
             "alternatives": [
-              "MLCC is free."
+              "分享"
             ]
           },
           {
-            "id": "body-component-8",
+            "id": "control-3",
             "alternatives": [
-              "I don't get it. Why are you offering MLCC to everyone?"
+              "推荐"
             ]
           },
           {
-            "id": "body-component-9",
+            "id": "control-4",
             "alternatives": [
-              "We believe that the potential of machine learning is so vast that every technical person should learn machine learning"
-            ]
-          },
-          {
-            "id": "body-component-10",
-            "alternatives": [
-              "Does the real world make an appearance in the course?"
-            ]
-          },
-          {
-            "id": "body-component-11",
-            "alternatives": [
-              "Yes, MLCC ends with short lessons on designing real-world machine learning systems. MLCC also contains sections"
-            ]
-          },
-          {
-            "id": "body-component-12",
-            "alternatives": [
-              "Do I have enough mathematical background to understand MLCC?"
-            ]
-          },
-          {
-            "id": "body-component-13",
-            "alternatives": [
-              "Understanding a little algebra and a little elementary statistics (mean and standard deviation) is helpful. If you"
-            ]
-          },
-          {
-            "id": "body-component-14",
-            "alternatives": [
-              "Is this a programming course?"
-            ]
-          },
-          {
-            "id": "body-component-15",
-            "alternatives": [
-              "MLCC contains some Python programming exercises. However, those exercises comprise only a small percentage of the"
-            ]
-          },
-          {
-            "id": "body-component-16",
-            "alternatives": [
-              "I'm new to Python. Will the programming exercises be too hard for me?"
-            ]
-          },
-          {
-            "id": "body-component-17",
-            "alternatives": [
-              "Many of the Google engineers who took MLCC didn't know any Python but still completed the exercises. That's because"
-            ]
-          },
-          {
-            "id": "body-component-18",
-            "alternatives": [
-              "But how will I learn machine learning concepts without programming?"
-            ]
-          },
-          {
-            "id": "body-component-19",
-            "alternatives": [
-              "MLCC relies on a variety of media and hands-on interactive tools to build intuition in fundamental machine learning"
-            ]
-          },
-          {
-            "id": "body-component-20",
-            "alternatives": [
-              "How can I show off my machine learning skills?"
-            ]
-          },
-          {
-            "id": "body-component-21",
-            "alternatives": [
-              "As your knowledge about Machine Learning grows, you can test your skill by helping others. We're also kicking off a"
-            ]
-          },
-          {
-            "id": "body-component-22",
-            "alternatives": [
-              "Currently, DonorsChoose.org relies on a large number of volunteers to screen the proposals. The Kaggle competition"
-            ]
-          },
-          {
-            "id": "body-component-23",
-            "alternatives": [
-              "Is MLCC Google's only machine learning educational project?"
-            ]
-          },
-          {
-            "id": "body-component-24",
-            "alternatives": [
-              "MLCC is merely one of many ways to learn about machine learning. To explore the universe of machine learning"
-            ]
-          },
-          {
-            "id": "shell-1",
-            "alternatives": [
-              "COMMUNITY/EVENTS"
-            ]
-          },
-          {
-            "id": "shell-2",
-            "alternatives": [
-              "LEARN"
-            ]
-          },
-          {
-            "id": "shell-3",
-            "alternatives": [
-              "BLOG"
-            ]
-          },
-          {
-            "id": "shell-4",
-            "alternatives": [
-              "YOUTUBE"
-            ]
-          },
-          {
-            "id": "shell-5",
-            "alternatives": [
-              "Search"
-            ]
-          },
-          {
-            "id": "shell-6",
-            "alternatives": [
-              "MARCH 2, 2018"
-            ]
-          },
-          {
-            "id": "shell-7",
-            "alternatives": [
-              "Share"
-            ]
-          },
-          {
-            "id": "shell-8",
-            "alternatives": [
-              "POSTED IN:"
-            ]
-          },
-          {
-            "id": "shell-9",
-            "alternatives": [
-              "Announcements"
-            ]
-          },
-          {
-            "id": "shell-10",
-            "alternatives": [
-              "MLCC"
-            ]
-          },
-          {
-            "id": "shell-11",
-            "alternatives": [
-              "crash course"
-            ]
-          },
-          {
-            "id": "shell-12",
-            "alternatives": [
-              "TensorFlow"
-            ]
-          },
-          {
-            "id": "shell-13",
-            "alternatives": [
-              "education"
-            ]
-          },
-          {
-            "id": "shell-14",
-            "alternatives": [
-              "Machine Learning"
-            ]
-          },
-          {
-            "id": "shell-15",
-            "alternatives": [
-              "Resources"
-            ]
-          },
-          {
-            "id": "shell-16",
-            "alternatives": [
-              "PREVIOUS"
-            ]
-          },
-          {
-            "id": "shell-17",
-            "alternatives": [
-              "NEXT"
-            ]
-          },
-          {
-            "id": "shell-18",
-            "alternatives": [
-              "Related Posts"
-            ]
-          },
-          {
-            "id": "shell-19",
-            "alternatives": [
-              "Connect"
-            ]
-          },
-          {
-            "id": "shell-20",
-            "alternatives": [
-              "Bluesky"
-            ]
-          },
-          {
-            "id": "shell-21",
-            "alternatives": [
-              "Instagram"
-            ]
-          },
-          {
-            "id": "shell-22",
-            "alternatives": [
-              "LinkedIn"
-            ]
-          },
-          {
-            "id": "shell-23",
-            "alternatives": [
-              "X (Twitter)"
-            ]
-          },
-          {
-            "id": "shell-24",
-            "alternatives": [
-              "YouTube"
-            ]
-          },
-          {
-            "id": "shell-25",
-            "alternatives": [
-              "Programs"
-            ]
-          },
-          {
-            "id": "shell-26",
-            "alternatives": [
-              "Google Developer Program"
-            ]
-          },
-          {
-            "id": "shell-27",
-            "alternatives": [
-              "Google Developer Groups"
-            ]
-          },
-          {
-            "id": "shell-28",
-            "alternatives": [
-              "Google Developer Experts"
-            ]
-          },
-          {
-            "id": "shell-29",
-            "alternatives": [
-              "Accelerators"
-            ]
-          },
-          {
-            "id": "shell-30",
-            "alternatives": [
-              "Women Techmakers"
-            ]
-          },
-          {
-            "id": "shell-31",
-            "alternatives": [
-              "Google Cloud & NVIDIA"
-            ]
-          },
-          {
-            "id": "shell-32",
-            "alternatives": [
-              "Developer consoles"
-            ]
-          },
-          {
-            "id": "shell-33",
-            "alternatives": [
-              "Google API Console"
-            ]
-          },
-          {
-            "id": "shell-34",
-            "alternatives": [
-              "Google Cloud Platform Console"
-            ]
-          },
-          {
-            "id": "shell-35",
-            "alternatives": [
-              "Google Play Console"
-            ]
-          },
-          {
-            "id": "shell-36",
-            "alternatives": [
-              "Firebase Console"
-            ]
-          },
-          {
-            "id": "shell-37",
-            "alternatives": [
-              "Actions on Google Console"
-            ]
-          },
-          {
-            "id": "shell-38",
-            "alternatives": [
-              "Cast SDK Developer Console"
-            ]
-          },
-          {
-            "id": "shell-39",
-            "alternatives": [
-              "Chrome Web Store Dashboard"
-            ]
-          },
-          {
-            "id": "shell-40",
-            "alternatives": [
-              "Google Home Developer Console"
-            ]
-          },
-          {
-            "id": "shell-41",
-            "alternatives": [
-              "Android"
-            ]
-          },
-          {
-            "id": "shell-42",
-            "alternatives": [
-              "Chrome"
-            ]
-          },
-          {
-            "id": "shell-43",
-            "alternatives": [
-              "Firebase"
-            ]
-          },
-          {
-            "id": "shell-44",
-            "alternatives": [
-              "Google Cloud Platform"
-            ]
-          },
-          {
-            "id": "shell-45",
-            "alternatives": [
-              "All products"
-            ]
-          },
-          {
-            "id": "shell-46",
-            "alternatives": [
-              "Terms"
-            ]
-          },
-          {
-            "id": "shell-47",
-            "alternatives": [
-              "Privacy"
+              "写留言"
             ]
           }
         ]
@@ -954,86 +282,86 @@
           {
             "id": "body-region-1",
             "text_binding": {
-              "sha256": "346114f02c91b632b297776803e4f4b301727b853a57f321312bfd985cbcc6c0",
-              "chars": 819
+              "sha256": "7aa38fcbf2e02dcdfb33d1eb013e4be1b16bafb61ca154de6bfd78b1ec3d6049",
+              "chars": 979
             },
             "source_text_binding": {
-              "sha256": "788de9f11a9ca6fdbbfaa2262d0153f39f9ca42273dd1aa59fe85cdad5058791",
-              "chars": 840
+              "sha256": "21a9cdaa5699633235b1ef17a7ab4d1b2a09f48b86bbbd32ccdf478ef68f8aa3",
+              "chars": 686
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "开篇：Machine Learning Crash Course — What does the course cover?",
+            "label": "开篇与三大难题",
             "source_line_range": [
               1,
-              10
+              12
             ]
           },
           {
             "id": "body-region-2",
             "text_binding": {
-              "sha256": "27b29e12acb9fbcf0866b8b7827f633de3e455c8779a9a510c288828c07a6db6",
-              "chars": 521
+              "sha256": "e69a746386fa5293d22fe1fd67395da718beb6aec830a2db3a5d4e34baee208f",
+              "chars": 632
             },
             "source_text_binding": {
-              "sha256": "b7569dcefeff7a8dab9eff25228964ff76cf14e8569e9a8ee401b8d693bfd933",
-              "chars": 540
+              "sha256": "9e8cc7ee126d0b5bd90b3bf20fab7d10ebbf2a1e671b55b69304eeb5bd5d36e0",
+              "chars": 419
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "How much does it cost? — Does the real world make an appearance in the course?",
+            "label": "规划与定位模块",
             "source_line_range": [
-              11,
-              22
+              13,
+              23
             ]
           },
           {
             "id": "body-region-3",
             "text_binding": {
-              "sha256": "80bc76d561d402065c76207c7654dd13e48875947c7587dfb015c4ea1b5322b9",
-              "chars": 958
+              "sha256": "9e5cb5dd4a8723fc209274f8ee03f1ad41ba3bc48c0e41391db3842242192862",
+              "chars": 491
             },
             "source_text_binding": {
-              "sha256": "ba899ffbcdcba4501c838f05f227a120e12c3e1a4a430660eb84d4184a7d692e",
-              "chars": 984
+              "sha256": "760a323f646e5fb83da5d0b0b41b45ba96c47590cd53a5afe06cb7c89e5fe37f",
+              "chars": 364
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "Do I have enough mathematical background to understand MLCC? — I'm new to Python. Will the programming exercises be too hard for me?",
+            "label": "任务跟踪与记忆模块",
             "source_line_range": [
-              23,
-              34
+              24,
+              29
             ]
           },
           {
             "id": "body-region-4",
             "text_binding": {
-              "sha256": "24f2f20bf0f597cb044cf8c9ac270f00ae6031528a8ec1c74fdf53c08b1e7813",
-              "chars": 255
+              "sha256": "83e16b978b342dfb5932da45edb5409b44c452af431d4ed7da5788adcc9fa23e",
+              "chars": 1091
             },
             "source_text_binding": {
-              "sha256": "fa4ca797e832a5bbe9cca4f9efe89ea4fb2843bf39f1581556f5cc4c8498666a",
-              "chars": 260
+              "sha256": "19fc5a85233cdca840403926d24110a7218c4f3d10f8cc755f169c845d6f3464",
+              "chars": 746
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "But how will I learn machine learning concepts without programming?",
+            "label": "实验与消融结果",
             "source_line_range": [
-              35,
-              38
+              30,
+              42
             ]
           },
           {
             "id": "body-region-5",
             "text_binding": {
-              "sha256": "ab3cda3e753cc0c5c59b9671b32cd61c41bbebe39139269275ae38fba038e3f9",
-              "chars": 1144
+              "sha256": "182556f9736687c21dcb9336acda28880ecece21a1c0c69e1b8d48db61905202",
+              "chars": 92
             },
             "source_text_binding": {
-              "sha256": "d6e041dd770ec27c66c588421717ea0a10a49d873c626f1bdb0c643826436f4b",
-              "chars": 1167
+              "sha256": "32ad2b205db444077db65915f9cf78773ad10d824698313b74231d251aca7618",
+              "chars": 90
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "How can I show off my machine learning skills? — Is MLCC Google's only machine learning educational project?",
+            "label": "论文与项目来源",
             "source_line_range": [
-              39,
-              47
+              43,
+              44
             ]
           }
         ]
@@ -1042,20 +370,20 @@
         "title_contract": {
           "version": 1,
           "alternatives": [
-            "Machine Learning Crash Course"
+            "龙虾冲浪终于不迷路了！网页智能体新框架Avenir-Web开源即SOTA"
           ],
-          "html_selector": "h1.glue-headline.glue-headline--headline-1,h1,h2,[role=\"heading\"]"
+          "html_selector": "#activity-name,h1,h2,[role=\"heading\"]"
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete originalHTML29673chars equals capture html_length. Ordinary title, explicit byline, introduction and all ten question-and-answer sections are direct children of .blog-detail-container; native AX independently includes complete final MLCC/GoogleAI links. Read-only visible-prose geometry independently verifies initial full container and final prose. No dialogs, frames, expansion controls or clipping gates; source initially directly displayed, no interactions. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
+        "reason": "Reviewed user-supplied archived initial state and user no-interaction attestation. User approved the four rules before publication; no independent live browser access claimed."
       }
     },
     {
       "id": "article-003",
-      "name": "What you need to do deep learning",
-      "url": "https://www.fast.ai/posts/2017-11-16-what-you-need.html",
+      "name": "200+推文涨粉8000：我的推特增长策略",
+      "url": "https://mp.weixin.qq.com/s/2y463r9G4hnsIc0c2ig7dA",
       "category": "article",
       "track": "articles",
       "task_kind": "body",
@@ -1067,344 +395,44 @@
         "schema": "body_text",
         "minimum_records": 0,
         "page_patterns": [
-          "What\\ you\\ need\\ to\\ do\\ deep\\ learning"
+          "200\\+推文涨粉8000：我的推特增长策略"
         ],
         "stable_text_role": "required",
         "stable_text_anchors": [
           {
-            "id": "body-component-2",
+            "id": "publisher",
             "alternatives": [
-              "This post has been translated into"
+              "安小竹的自留地"
             ]
           },
           {
-            "id": "body-component-3",
+            "id": "original",
             "alternatives": [
-              "I want to answer some questions that I’m commonly asked:"
+              "原创"
             ]
           },
           {
-            "id": "body-component-4",
+            "id": "control-1",
             "alternatives": [
-              "The hardware you need"
+              "赞"
             ]
           },
           {
-            "id": "body-component-5",
+            "id": "control-2",
             "alternatives": [
-              "We are indebted to the gaming industry"
+              "分享"
             ]
           },
           {
-            "id": "body-component-6",
+            "id": "control-3",
             "alternatives": [
-              "The video game industry is larger (in terms of revenue)"
+              "推荐"
             ]
           },
           {
-            "id": "body-component-7",
+            "id": "control-4",
             "alternatives": [
-              "Not all GPUs are the same"
-            ]
-          },
-          {
-            "id": "body-component-8",
-            "alternatives": [
-              "Most deep learning practitioners are not programming GPUs directly; we are using software libraries (such as PyTorch or"
-            ]
-          },
-          {
-            "id": "body-component-9",
-            "alternatives": [
-              "are the two main ways for programming GPUs. CUDA is by far the most developed, has the most extensive ecosystem, and is"
-            ]
-          },
-          {
-            "id": "body-component-10",
-            "alternatives": [
-              "Nvidia dominates the market for GPUs, with the next closest competitor being the"
-            ]
-          },
-          {
-            "id": "body-component-11",
-            "alternatives": [
-              "If you don’t have a GPU…"
-            ]
-          },
-          {
-            "id": "body-component-12",
-            "alternatives": [
-              "If your computer doesn’t have a GPU or has a non-Nvidia GPU, you have several great options:"
-            ]
-          },
-          {
-            "id": "body-component-13",
-            "alternatives": [
-              ", through your browser: Crestle is a service (developed by fast.ai student Anurag Goel) that gives you an already set"
-            ]
-          },
-          {
-            "id": "body-component-14",
-            "alternatives": [
-              "Set up an AWS cloud instance through your console: You can create an AWS instance (which remotely provides you with"
-            ]
-          },
-          {
-            "id": "body-component-15",
-            "alternatives": [
-              "Build your own box. Here’s a"
-            ]
-          },
-          {
-            "id": "body-component-16",
-            "alternatives": [
-              "Deep Confusion: Misadventures in Building a Deep Learning Machine by Mariya Yao"
-            ]
-          },
-          {
-            "id": "body-component-17",
-            "alternatives": [
-              "by Sravya Tirukkovalur"
-            ]
-          },
-          {
-            "id": "body-component-18",
-            "alternatives": [
-              "Building your own deep learning box by Brendan Fortuner"
-            ]
-          },
-          {
-            "id": "body-component-19",
-            "alternatives": [
-              "The software you need"
-            ]
-          },
-          {
-            "id": "body-component-20",
-            "alternatives": [
-              "Deep learning is a relatively young field, and the libraries and tools are changing quickly. For instance, Theano,"
-            ]
-          },
-          {
-            "id": "body-component-21",
-            "alternatives": [
-              "Python is by far the most commonly used language for deep learning. There are a number of deep learning libraries"
-            ]
-          },
-          {
-            "id": "body-component-22",
-            "alternatives": [
-              "Dynamic vs. Static Graph Computation"
-            ]
-          },
-          {
-            "id": "body-component-23",
-            "alternatives": [
-              "prioritize the speed at which programmers can experiment and iterate"
-            ]
-          },
-          {
-            "id": "body-component-24",
-            "alternatives": [
-              "One distinction amongst deep learning libraries is whether they use"
-            ]
-          },
-          {
-            "id": "body-component-25",
-            "alternatives": [
-              "Google’s TensorFlow mostly uses a static computation graph, whereas Facebook’s PyTorch uses dynamic computation. (Note:"
-            ]
-          },
-          {
-            "id": "body-component-26",
-            "alternatives": [
-              "easier to debug"
-            ]
-          },
-          {
-            "id": "body-component-27",
-            "alternatives": [
-              "dynamic computation is much better suited for natural language processing"
-            ]
-          },
-          {
-            "id": "body-component-28",
-            "alternatives": [
-              "traditional Object Oriented Programming style (which feels more natural to us)"
-            ]
-          },
-          {
-            "id": "body-component-29",
-            "alternatives": [
-              "TensorFlow’s use of unusual conventions like scope and sessions can be confusing and are more to learn"
-            ]
-          },
-          {
-            "id": "body-component-30",
-            "alternatives": [
-              "Google has put far more resources into marketing TensorFlow than anyone else, and I think this is one of the reasons"
-            ]
-          },
-          {
-            "id": "body-component-31",
-            "alternatives": [
-              "of our updated course, which uses PyTorch as well as our own fastai library, is happening currently. It will be"
-            ]
-          },
-          {
-            "id": "body-component-32",
-            "alternatives": [
-              "What you need for production: not a GPU"
-            ]
-          },
-          {
-            "id": "body-component-33",
-            "alternatives": [
-              "Many people overcomplicate the idea of using deep learning in production and believe that they need much more complex"
-            ]
-          },
-          {
-            "id": "body-component-34",
-            "alternatives": [
-              "It is incredibly rare to need to train in production. Even if you want to update your model weights daily, you don’t"
-            ]
-          },
-          {
-            "id": "body-component-35",
-            "alternatives": [
-              "You can use whatever webserver you like (e.g. Flask) and set up inference as a simple API call."
-            ]
-          },
-          {
-            "id": "body-component-36",
-            "alternatives": [
-              "GPUs only provide a speed-up if you are effectively able to batch your data. Even if you are getting 32 requests per"
-            ]
-          },
-          {
-            "id": "body-component-37",
-            "alternatives": [
-              "For big companies, it may make sense to use GPUs in production for serving– however, it will be clear when your reach"
-            ]
-          },
-          {
-            "id": "body-component-38",
-            "alternatives": [
-              "The background you need: 1 year of coding"
-            ]
-          },
-          {
-            "id": "body-component-39",
-            "alternatives": [
-              "One of the frustrations that inspired Jeremy and I to create"
-            ]
-          },
-          {
-            "id": "body-component-40",
-            "alternatives": [
-              "so shallow and high-level as to not give you the information or skills needed to actually use deep learning in the"
-            ]
-          },
-          {
-            "id": "body-component-41",
-            "alternatives": [
-              "highly theoretical and assume a graduate level math background. This is a prohibitive barrier for many folks, and even"
-            ]
-          },
-          {
-            "id": "body-component-42",
-            "alternatives": [
-              "is unique in that the only pre-requisite is 1 year of programming experience, yet it still teaches you how to create"
-            ]
-          },
-          {
-            "id": "body-component-43",
-            "alternatives": [
-              "If you don’t know how to code, I highly recommend learning, and Python is a great language to start with if you are"
-            ]
-          },
-          {
-            "id": "body-component-44",
-            "alternatives": [
-              "The data you need: far less than you think"
-            ]
-          },
-          {
-            "id": "body-component-45",
-            "alternatives": [
-              "Although many have claimed that you need Google-size data sets to do deep learning, this is false. The power of"
-            ]
-          },
-          {
-            "id": "body-component-46",
-            "alternatives": [
-              "Face Recognition with Dlib"
-            ]
-          },
-          {
-            "id": "body-component-47",
-            "alternatives": [
-              "A note about access"
-            ]
-          },
-          {
-            "id": "body-component-48",
-            "alternatives": [
-              "For the vast majority of people I talk with, the barriers to entry for deep learning are far lower than they expected"
-            ]
-          },
-          {
-            "id": "shell-1",
-            "alternatives": [
-              "fast.ai"
-            ]
-          },
-          {
-            "id": "shell-2",
-            "alternatives": [
-              "About"
-            ]
-          },
-          {
-            "id": "shell-3",
-            "alternatives": [
-              "ADVICE"
-            ]
-          },
-          {
-            "id": "shell-4",
-            "alternatives": [
-              "TECHNICAL"
-            ]
-          },
-          {
-            "id": "shell-5",
-            "alternatives": [
-              "AUTHOR"
-            ]
-          },
-          {
-            "id": "shell-6",
-            "alternatives": [
-              "Rachel Thomas"
-            ]
-          },
-          {
-            "id": "shell-7",
-            "alternatives": [
-              "PUBLISHED"
-            ]
-          },
-          {
-            "id": "shell-8",
-            "alternatives": [
-              "November 16, 2017"
-            ]
-          },
-          {
-            "id": "shell-9",
-            "alternatives": [
-              "On this page"
+              "写留言"
             ]
           }
         ]
@@ -1420,86 +448,86 @@
           {
             "id": "body-region-1",
             "text_binding": {
-              "sha256": "aa172a2a5c642cb662b866d9b594c599c0143b32c8e2aa12b1ba7446cddf5a3a",
-              "chars": 4508
+              "sha256": "ddec67310f5e81704ba9b4c1d3ea43393c6fdd83de7d5d0cec7914ebe399bdd1",
+              "chars": 364
             },
             "source_text_binding": {
-              "sha256": "442317d5c079fb1f798f786baf5b1feb1ee1a1669eed13329563d65f302ccda8",
-              "chars": 4619
+              "sha256": "af7792e73fc1238a3b2ae865bc9d9f1d7d4a802481df98066cb16f62d600154a",
+              "chars": 224
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "开篇：What you need to do deep learning — The hardware you need",
+            "label": "增长背景与平台机制",
             "source_line_range": [
               1,
-              36
+              3
             ]
           },
           {
             "id": "body-region-2",
             "text_binding": {
-              "sha256": "5a0bbccfbd695d03ff84d499c151f150207e8f31cc3b7b230f3ad7b9bb94b985",
-              "chars": 4444
+              "sha256": "2a7cd7cf7a41bc36dbfd94d5b23405dbed409b9f7ccbf896ec1dccfecb98639d",
+              "chars": 759
             },
             "source_text_binding": {
-              "sha256": "e2759147a45ccdd9b610066175844d31998aa3734dd5e20bea74e8ec38216c2c",
-              "chars": 4574
+              "sha256": "aa3cb5eb4a3838901ed9f6c5510e5d7ec2d92153cbf2a9ec289f9657dd7e9c7a",
+              "chars": 428
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "The software you need",
+            "label": "发推目的与关系质量",
             "source_line_range": [
-              37,
-              62
+              4,
+              6
             ]
           },
           {
             "id": "body-region-3",
             "text_binding": {
-              "sha256": "ee15cfcf696c8f12fa23285a0d28d20f0d3dd4702da73676b04a407575f0b635",
-              "chars": 1380
+              "sha256": "30ef0c18960c7d8384966b36d36ccbf6f2a9b14de3bdec2f324cf3d9c5a91c02",
+              "chars": 403
             },
             "source_text_binding": {
-              "sha256": "419328ce6065dfa2f45738a72c25583b6772f339107c57f61f4c68392f8ecbf2",
-              "chars": 1418
+              "sha256": "3c56a38569ec859a2c76df6bb59a2f7996a21f87d90a2760c6c10eede5f3225c",
+              "chars": 240
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "What you need for production: not a GPU",
+            "label": "现实生活与分享心态",
             "source_line_range": [
-              63,
-              74
+              7,
+              9
             ]
           },
           {
             "id": "body-region-4",
             "text_binding": {
-              "sha256": "9b509fe0bba503e07ec2aad737fa0f909bb0176414e26308efd230164f27e1d7",
-              "chars": 1526
+              "sha256": "0afd34dc0503a5be52d8205182854a8687fef9e1d3bbb29da93288a8ded784a9",
+              "chars": 469
             },
             "source_text_binding": {
-              "sha256": "a064eeb9f418413adbaf352bc530e523d2defc03aa68363e6f3c9b09534a4080",
-              "chars": 1555
+              "sha256": "817ff2137e7a8bd99649c1c5127d7fff010ae5ec093903328d70905901394eb8",
+              "chars": 263
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "The background you need: 1 year of coding",
+            "label": "内容、语气与信息密度",
             "source_line_range": [
-              75,
-              86
+              10,
+              12
             ]
           },
           {
             "id": "body-region-5",
             "text_binding": {
-              "sha256": "8cba8f2fceece69527356dc5f8a5029912b4a41592f8a8dde6746c7943da999e",
-              "chars": 1447
+              "sha256": "4714b1020479ef6430167e8679fca14a601c43e76a2d7155e2b72c438c794f2b",
+              "chars": 573
             },
             "source_text_binding": {
-              "sha256": "4cdee1af89903008fe98380cf7f9e51a43bed74141340fd4c75d8f635d0db6c1",
-              "chars": 1476
+              "sha256": "d6327795a19f7b8b25fef15c46456455cc220a9286f3c31fb11a1b6a1e36ce5a",
+              "chars": 327
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "The data you need: far less than you think — A note about access",
+            "label": "冷启动、互动与开头技巧",
             "source_line_range": [
-              87,
-              95
+              13,
+              13
             ]
           }
         ]
@@ -1508,14 +536,14 @@
         "title_contract": {
           "version": 1,
           "alternatives": [
-            "What you need to do deep learning"
+            "200+推文涨粉8000：我的推特增长策略"
           ],
-          "html_selector": "h1.title,h1,h2,[role=\"heading\"]"
+          "html_selector": "#activity-name,h1,h2,[role=\"heading\"]"
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "User authorized suitable article substitutions to reach100qualified cases. Independent saved direct initial source reviewed without clicks, expansion, login or scroll. Complete originalHTML55371chars equals capture html_length. H1 plus every ordinary #quarto-document-content paragraph, full hardware/software/production/background/data/access sections, all list items and ordinary Face Recognition with Dlib figcaption retained. Geometry observes13523chars47blocks, all ordinary text without content masks; nativeAX independently confirms full concluding access paragraph. No modal, iframe, login or expansion gate. Empty image-only paragraphs, SVG/image lettering excluded. Heading Anchor links are accessibility control names for empty ordinary DOM anchors, not extra article prose. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
+        "reason": "Reviewed user-supplied archived initial state and user no-interaction attestation. User approved the four rules before publication; no independent live browser access claimed."
       }
     },
     {
@@ -13182,6 +12210,36 @@
             "alternatives": [
               "Ads Info"
             ]
+          },
+          {
+            "id": "profile-1",
+            "alternatives": [
+              "Agents that use the Browser"
+            ]
+          },
+          {
+            "id": "profile-2",
+            "alternatives": [
+              "Science & Technology"
+            ]
+          },
+          {
+            "id": "profile-3",
+            "alternatives": [
+              "San Francisco"
+            ]
+          },
+          {
+            "id": "profile-4",
+            "alternatives": [
+              "browser-use.com"
+            ]
+          },
+          {
+            "id": "profile-5",
+            "alternatives": [
+              "Joined November 2024"
+            ]
           }
         ]
       },
@@ -13914,6 +12972,36 @@
             "id": "media-tab",
             "alternatives": [
               "Videos"
+            ]
+          },
+          {
+            "id": "profile-1",
+            "alternatives": [
+              "Agents that use the Browser"
+            ]
+          },
+          {
+            "id": "profile-2",
+            "alternatives": [
+              "Science & Technology"
+            ]
+          },
+          {
+            "id": "profile-3",
+            "alternatives": [
+              "San Francisco"
+            ]
+          },
+          {
+            "id": "profile-4",
+            "alternatives": [
+              "browser-use.com"
+            ]
+          },
+          {
+            "id": "profile-5",
+            "alternatives": [
+              "Joined November 2024"
             ]
           }
         ]
@@ -26966,8 +26054,8 @@
     },
     {
       "id": "article-077",
-      "name": "A beginner’s guide to Javascript Closure",
-      "url": "https://rishabhthakur.hashnode.dev/closures-in-javascript",
+      "name": "乔姆斯基：ChatGPT 的虚假承诺",
+      "url": "https://mp.weixin.qq.com/s/e9KDOZ3vwd10PFvH6hbtmg",
       "category": "article",
       "track": "articles",
       "task_kind": "body",
@@ -26979,128 +26067,62 @@
         "schema": "body_text",
         "minimum_records": 0,
         "page_patterns": [
-          "Closures in Javascript"
+          "乔姆斯基：ChatGPT\\ 的虚假承诺"
         ],
         "stable_text_role": "required",
         "stable_text_anchors": [
           {
-            "id": "stable-2",
+            "id": "publisher",
             "alternatives": [
-              "A beginner's guide to Javascript Closure"
+              "语言治理"
             ]
           },
           {
-            "id": "stable-3",
+            "id": "original",
             "alternatives": [
-              "Rishabh Thakur"
+              "原创"
             ]
           },
           {
-            "id": "stable-4",
+            "id": "profile",
             "alternatives": [
-              "Rishabh Thakur's Blog"
+              "发布最前沿的语言研究信息，发现平淡生活里语言的奥秘。"
             ]
           },
           {
-            "id": "stable-5",
+            "id": "profile-kind",
             "alternatives": [
-              "Write"
+              "公众号"
             ]
           },
           {
-            "id": "stable-6",
+            "id": "read-original",
             "alternatives": [
-              "Published"
+              "阅读原文"
             ]
           },
           {
-            "id": "stable-7",
+            "id": "control-1",
             "alternatives": [
-              "View as Markdown"
+              "赞"
             ]
           },
           {
-            "id": "stable-8",
+            "id": "control-2",
             "alternatives": [
-              "#closure"
+              "分享"
             ]
           },
           {
-            "id": "stable-9",
+            "id": "control-3",
             "alternatives": [
-              "#javascript"
+              "推荐"
             ]
           },
           {
-            "id": "stable-10",
+            "id": "control-4",
             "alternatives": [
-              "#iwritecode"
-            ]
-          },
-          {
-            "id": "stable-11",
-            "alternatives": [
-              "#learncodeonline"
-            ]
-          },
-          {
-            "id": "stable-12",
-            "alternatives": [
-              "#lexical-scope"
-            ]
-          },
-          {
-            "id": "stable-13",
-            "alternatives": [
-              "Comments"
-            ]
-          },
-          {
-            "id": "stable-14",
-            "alternatives": [
-              "Join the discussion"
-            ]
-          },
-          {
-            "id": "stable-15",
-            "alternatives": [
-              "More from this blog"
-            ]
-          },
-          {
-            "id": "stable-16",
-            "alternatives": [
-              "Members"
-            ]
-          },
-          {
-            "id": "stable-17",
-            "alternatives": [
-              "Archive"
-            ]
-          },
-          {
-            "id": "stable-18",
-            "alternatives": [
-              "Privacy"
-            ]
-          },
-          {
-            "id": "stable-19",
-            "alternatives": [
-              "Terms"
-            ]
-          },
-          {
-            "id": "stable-20",
-            "alternatives": [
-              "Sitemap"
-            ]
-          },
-          {
-            "id": "stable-21",
-            "alternatives": [
-              "RSS"
+              "写留言"
             ]
           }
         ]
@@ -27110,41 +26132,92 @@
         "unit": "region_compact_hexagram_recall",
         "minimum_coverage": 0.8,
         "minimum_floor": 0.6,
-        "minimum_region_passes": 1,
+        "minimum_region_passes": 4,
         "segmentation_method": "reviewed_source_semantics",
         "regions": [
           {
             "id": "body-region-1",
             "text_binding": {
-              "sha256": "ae43fd815b3c068271d605efa9187c3cf9a655545c0553e99c69bee95d152603",
-              "chars": 2506
+              "sha256": "070fd57d60fc5fec3013cdb37b86eb1201e0b9cbc201610c8b322ce8ceeb723d",
+              "chars": 1742
             },
             "source_text_binding": {
-              "sha256": "e7efd1264b871380f46267eedff83d81a5700a763878bb92eb377fcaef6fc640",
-              "chars": 2739
+              "sha256": "840441828586645939960a966c0bdae607fa527107eeeac1724729c96121caef",
+              "chars": 983
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "Introduction to javascript Closures",
+            "label": "导语与人类思维对比",
             "source_line_range": [
               1,
-              79
+              9
             ]
           },
           {
             "id": "body-region-2",
             "text_binding": {
-              "sha256": "dcf12555bce0efd24e66b6f63b2821cd4ebc2afa70854b7831f3fa067aa331b4",
-              "chars": 1095
+              "sha256": "f4bdb882c30f987f1fbf1a711d9d616f0d4634429265cde0cfbf522b297a4966",
+              "chars": 1403
             },
             "source_text_binding": {
-              "sha256": "7704a9dcc23220a4c0c866d781d97c6db03b27199d718bae066bc7ac35391fec",
-              "chars": 1193
+              "sha256": "6236e3228fbb20a3b8f51012db6899dbfdb1cad0dbb22d59769fe920a7ec6d8b",
+              "chars": 803
             },
             "segmentation_method": "reviewed_source_semantics",
-            "label": "More Javascript Closure Example",
+            "label": "语言学习与因果解释",
             "source_line_range": [
-              80,
-              108
+              10,
+              13
+            ]
+          },
+          {
+            "id": "body-region-3",
+            "text_binding": {
+              "sha256": "e2a7fa0235695ec5efa053ed7706ac0e4c0a7e56334f8a12dfb752705e4a52dc",
+              "chars": 1449
+            },
+            "source_text_binding": {
+              "sha256": "05372e82687deb40e96a08a9ca471f2cfe1c50d8326be7818b5ecf3ee8b339b2",
+              "chars": 820
+            },
+            "segmentation_method": "reviewed_source_semantics",
+            "label": "预测、语言与科学解释",
+            "source_line_range": [
+              14,
+              17
+            ]
+          },
+          {
+            "id": "body-region-4",
+            "text_binding": {
+              "sha256": "b26287ad475c78c7ade9ebab6f3ef179b89414dfbf0b0ce298d72cc91c632e7c",
+              "chars": 1173
+            },
+            "source_text_binding": {
+              "sha256": "291c77c503be72ef55727f0f9f0bcd7b1e9d70d6531f13cf606315a700a5b1f9",
+              "chars": 674
+            },
+            "segmentation_method": "reviewed_source_semantics",
+            "label": "道德判断与结论",
+            "source_line_range": [
+              18,
+              22
+            ]
+          },
+          {
+            "id": "body-region-5",
+            "text_binding": {
+              "sha256": "90fe8b801791b2a465e891901833a71e6bd400a3f4d64572dfc73e6a94d2ec07",
+              "chars": 49
+            },
+            "source_text_binding": {
+              "sha256": "18148b55454aec60dde2786d13902a081e1aa3d3dd79af15cac63f2a78b85d47",
+              "chars": 33
+            },
+            "segmentation_method": "reviewed_source_semantics",
+            "label": "文章来源说明",
+            "source_line_range": [
+              23,
+              23
             ]
           }
         ]
@@ -27153,14 +26226,14 @@
         "title_contract": {
           "version": 1,
           "alternatives": [
-            "Closures in Javascript"
+            "乔姆斯基：ChatGPT 的虚假承诺"
           ],
-          "html_selector": "h1,h2,[role=\"heading\"],h1,h2,[role=\"heading\"]"
+          "html_selector": "#activity-name,h1,h2,[role=\"heading\"]"
         }
       },
       "rule_review": {
         "status": "reviewed",
-        "reason": "All five sections and four rendered code blocks reviewed to two summary bullets in full-page screenshot. Excludes hidden command palette, collapsed on-page navigation and changing blog recommendations. Revision 7 uses fixed comment coverage only where actual initial comment prose is evidenced; historical comments are not runtime targets."
+        "reason": "Reviewed user-supplied archived initial state and user no-interaction attestation. User approved the four rules before publication; no independent live browser access claimed."
       }
     },
     {

@@ -1,6 +1,6 @@
 # Article suite authoring
 
-The registered `articles` suite (`articles-v9`) contains 100 qualified URLs: 95 fixed articles
+The registered `articles` suite (`articles-v10`) contains 100 qualified URLs: 95 fixed articles
 and five changing post collections. `cohort.json` preserves candidate identities
 and revision history; `rules.json` contains all 100 verified contracts. Public
 tasks, the catalog and input manifest bind the complete executable dataset.
@@ -11,9 +11,7 @@ case numbering preserve the original candidate IDs. Earlier authoring inputs
 remain immutable. Pre-release version-1 runtime contracts are unsupported. Earlier frozen input
 bytes are preserved; published results must identify their scorer version.
 
-The four original Weixin cases could not be independently observed because of
-an authoring-tool site-safety restriction. The final suite uses different
-publishers and does not claim Weixin coverage or evaluated Web Fetch failure.
+Four Weixin cases use user-supplied webarchives and an explicit initial-load, no-interaction attestation. The archives, source markup and full body references remain external and hash-bound. This provenance does not claim independent live browser access. They replace four singleton-platform cases without comment contracts.
 Retained folded pages have explicit complete-displayed-excerpt scope; they do
 not claim the hidden continuation of the original article.
 

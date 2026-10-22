@@ -1,41 +1,41 @@
 {
   "schema_version": 1,
   "kind": "frozen_dataset_catalog",
-  "id": "articles-v9",
+  "id": "articles-v10",
   "name": "Article retrieval",
-  "dataset": "dataset.json",
-  "dataset_sha256": "2202a684149817daa34564cbff1a8c9d26431d4ee58bc85f4984e06db99e95eb",
   "case_count": 100,
+  "dataset": "dataset.json",
+  "dataset_sha256": "64e6d6410a42949ce171d4518c6e842e5911cd81f9f1d0262e2e83af5384648b",
   "cases": [
     {
       "id": "article-001",
-      "name": "Island Hopping in Japan",
-      "url": "https://www.japan.travel/en/guide/island-hopping/",
+      "name": "脑电合成自然语音！LeCun转发Nature子刊新成果，代码开源",
+      "url": "https://mp.weixin.qq.com/s/BcV3-3glmdsVF--fpPRU2g",
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "b3b76003675f5ffa65c65d2a42937fa1d6bcc949f4feee7c27356623a2125bfc",
-      "reference_sha256": "35680b2a699024e05f733261322142c2f538d7d42bbc846c394678e2a4de66b2"
+      "definition_sha256": "00f45b57e4759df71d693062d1dfcab161474eea6e6531735167ef8cc145632f",
+      "reference_sha256": "47ce6626ced3ab1aaf907df1b1bab1f4e6f94eac959264e19437c329bb529093"
     },
     {
       "id": "article-002",
-      "name": "Machine Learning Crash Course",
-      "url": "https://developers.googleblog.com/machine-learning-crash-course/",
+      "name": "龙虾冲浪终于不迷路了！网页智能体新框架Avenir-Web开源即SOTA",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247887827&idx=3&sn=6f15e73e3e9766986b064a1fce6fe955",
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "f1371afa65cb6ac84e36df775c96a700c5fcec0728cf0b4764d5d8aa07612dab",
-      "reference_sha256": "b26051c414e210ebc36b003f1cf2a53175c3fb412683927f11a597fc9e7de42b"
+      "definition_sha256": "10de1dcbc3b619023567964b73d35f3e980e85f9888812f7fd407ed6a21b9546",
+      "reference_sha256": "aa0b767cc6bd3e25effac4e1fe3a8baa2010e9450eea0190b2b81a94d6c4ead4"
     },
     {
       "id": "article-003",
-      "name": "What you need to do deep learning",
-      "url": "https://www.fast.ai/posts/2017-11-16-what-you-need.html",
+      "name": "200+推文涨粉8000：我的推特增长策略",
+      "url": "https://mp.weixin.qq.com/s/2y463r9G4hnsIc0c2ig7dA",
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "e589ef875de64e54abc6aaee229aef5428ca3a98f8f138063167e6aa5ca92fd5",
-      "reference_sha256": "7f467b0711d62565c7d8b4dccfefd7ee92b45edbe3b107b42f555fe0ff676e45"
+      "definition_sha256": "b4c8b6d6b08dd340769f7fe3cd687d0c3224d562e47e98f5312961937683ff87",
+      "reference_sha256": "d1bc3046a1401a37a7ceaddb6c25415391d17cac7c3563f552bc3dd809f485b8"
     },
     {
       "id": "article-005",
@@ -374,7 +374,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "b7cbea5635d3af37aea007d61ecdf534ecdf5e218b27aa78119f8db834651178",
+      "definition_sha256": "aa79dd1da9ce56a9262e2943ef04b57f5d579d968b10df814a3445844cc0bb0f",
       "reference_sha256": null
     },
     {
@@ -404,7 +404,7 @@
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "8193f68154404a32a181cb717e7a953aaa8714ff07301025065a92019eaafc26",
+      "definition_sha256": "43eb7a7f04e0b43b701ffe0c294ed3c58a19d761371896bb2b3d730cf9eeeaf0",
       "reference_sha256": null
     },
     {
@@ -729,13 +729,13 @@
     },
     {
       "id": "article-077",
-      "name": "A beginner’s guide to Javascript Closure",
-      "url": "https://rishabhthakur.hashnode.dev/closures-in-javascript",
+      "name": "乔姆斯基：ChatGPT 的虚假承诺",
+      "url": "https://mp.weixin.qq.com/s/e9KDOZ3vwd10PFvH6hbtmg",
       "category": "article",
       "track": "articles",
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。",
-      "definition_sha256": "2acb3a2446650a0145c5ed40a293d40e1fc05590888de76f4543dfb7a27e183a",
-      "reference_sha256": "3d9fdb98b48404c04ef5f45526946fbb8c39fd977f26c16f0ac869851fb3e463"
+      "definition_sha256": "61d047bd34ad88ec27606fc86e4fada6fe716c4039acf457af2b753104ea1c52",
+      "reference_sha256": "b429d030c9cc2aab1dcf9cce3a7b8fd1b85b6cd7dc6f0188d9fb72e260c53406"
     },
     {
       "id": "article-078",

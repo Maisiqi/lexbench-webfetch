@@ -472,7 +472,7 @@ class ArticleContracts(unittest.TestCase):
                             for change in revision['changes']))
         self.assertTrue(all(c['platform'] != '搜狗微信' for c in cohort['cases']))
         final = next(r for r in cohort['revisions'] if r['revision'] == 4)
-        self.assertEqual(cohort['revisions'][-1]['revision'], 12)
+        self.assertEqual(cohort['revisions'][-1]['revision'], 13)
         self.assertEqual({c['id'] for c in final['changes'] if c['action'] == 'replace'},
                          {'article-001', 'article-002', 'article-003', 'article-079', 'article-082'})
         self.assertEqual([c['id'] for c in final['changes'] if c['action'] == 'remove'],
@@ -480,7 +480,7 @@ class ArticleContracts(unittest.TestCase):
         self.assertTrue(all(rule['status'] == 'verified' for rule in rules))
         self.assertEqual(sum(rule['target_kind'] == 'post_collection' for rule in rules), 5)
         fixed = [r for r in rules if r['target_kind'] == 'fixed_article']
-        self.assertEqual(cohort['id'], 'articles-v9')
+        self.assertEqual(cohort['id'], 'articles-v10')
         self.assertEqual(len(fixed), 95)
         self.assertEqual(sum('title_contract' in r for r in fixed), 90)
         self.assertEqual(sum('comment_contract' in r for r in fixed), 20)

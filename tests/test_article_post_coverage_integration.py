@@ -42,3 +42,14 @@ def test_cli_accepts_collection_without_reference_arguments(tmp_path):
                              '--task', str(task), '--response', str(answer)],
                             capture_output=True, text=True, check=True)
     assert json.loads(result.stdout)['passed']
+
+
+@pytest.mark.parametrize('number', [38, 41])
+def test_required_profile_fields_cannot_be_replaced_by_posts(number):
+    case, stable, posts = fixture(number)
+    full = stable + '\n\n' + '\n\n'.join(posts)
+    assert evaluate_response(case, full.encode())['passed']
+    fields = ['Agents that use the Browser', 'Science & Technology',
+              'San Francisco', 'browser-use.com', 'Joined November 2024']
+    for field in fields:
+        assert not evaluate_response(case, full.replace(field, '').encode())['passed']
