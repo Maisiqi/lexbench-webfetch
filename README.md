@@ -47,7 +47,7 @@ These are five separately versioned populations, with 550 task entries in total.
 
 Each suite ships a readable `tasks.json`, a catalog with original task-definition hashes, and a manifest binding the exact executable dataset and reference files. See [data layout and rights](docs/data.md). Task wording and frozen acceptance rules retain their original language.
 
-The [article suite](src/lexbench_webfetch/definitions/evaluation/articles/README.md), `articles-v11`, adds 95 fixed articles and five changing post collections. It checks displayed article content and required page components, including initial comment and post coverage, to catch title-only or body-only extraction. Fixed articles require 80% coverage in every declared body region and the reviewed ending. This tolerates formatting differences but does not prove every small module or its order. Complete references remain outside Git.
+The [article suite](src/lexbench_webfetch/definitions/evaluation/articles/README.md), `articles-v11`, adds 95 fixed articles and five changing post collections. It checks displayed article content and required page components, including initial comment and post coverage, to catch title-only or body-only extraction. Fixed articles require 80% coverage in every declared body region and the reviewed ending. This tolerates formatting differences but does not prove every small module or its order. Changing comments and post lists use structural checks (record counts, attribution and nonempty text), not verification of the full contents of each record. Complete references remain outside Git.
 
 ## Quickstart
 

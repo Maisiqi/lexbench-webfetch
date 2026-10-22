@@ -33,3 +33,11 @@ end-position or semantic completeness guarantee.
 Deduplication removes 7,671 repeated review fields: rules.json decreases from
 3,078,113 to 2,211,902 bytes. Expanding defaults reproduces every prior review
 row; acceptance, title, comment and collection contracts remain unchanged.
+
+## Follow-up at f38bccb
+
+The [follow-up review](https://github.com/lexmount/lexbench-webfetch/pull/5#issuecomment-6340008998) correctly distinguishes coverage limits from newly introduced bugs. Reproduction through the public scorer again accepts attributed distinct records with body `x` for all five collections, while removing their records fails. The main READMEs now disclose the structural scope directly rather than requiring readers to find it in the detailed contract. No score, floor or case is changed by that clarification.
+
+Replacing the five collections with fixed articles/posts would change the requested page population and is pending the user's decision. No replacement has been authorized or made. The user has explicitly retained the five-region/80%-plus-ending fixed-body scope rather than adding per-module checks.
+
+A private handoff package has been prepared outside Git: it contains the frozen v11 scoring input for all 100 cases, the four original Weixin webarchives, their qualified extracts and scope evidence, and a checksum manifest. All 17 data files were checked after packaging. It does not contain the remaining 96 historical browser captures. It is not yet delivered to the reviewer or hosted at a shared location. Raw archives can contain session-bearing resource URLs; preparing a local package is not authorization to publish them.
