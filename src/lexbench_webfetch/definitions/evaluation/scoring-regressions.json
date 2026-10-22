@@ -54197,6 +54197,174 @@
       "artifact": "# [Orchard Live](https://example.test/item/one)\n- Date: October 10, 2026\n- Venue: [Grand Hall](https://foreign.test/venue/one)\n- City: Springfield",
       "ok": true,
       "expected_task_pass": true
+    },
+    {
+      "id": "visible-control-visible-button",
+      "category": "answer-surface",
+      "root_cause": "visible_control_attribute_scope",
+      "failure_mode": "false-negative",
+      "case": {
+        "id": "visible-control-regression",
+        "url": "https://example.test/archive",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "control",
+              "alternatives": [
+                "Search archive"
+              ],
+              "visible_control": {
+                "selector": "input",
+                "attribute": "value"
+              }
+            }
+          ]
+        }
+      },
+      "artifact": "<p>Archive content.</p><input type=\"submit\" value=\"Search archive\">",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "stable_task_pass": true
+      }
+    },
+    {
+      "id": "visible-control-hidden-button",
+      "category": "answer-surface",
+      "root_cause": "visible_control_attribute_scope",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "visible-control-regression",
+        "url": "https://example.test/archive",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "control",
+              "alternatives": [
+                "Search archive"
+              ],
+              "visible_control": {
+                "selector": "input",
+                "attribute": "value"
+              }
+            }
+          ]
+        }
+      },
+      "artifact": "<p>Archive content.</p><input type=\"submit\" value=\"Search archive\" hidden>",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "stable_task_pass": false
+      }
+    },
+    {
+      "id": "native-disclosure-closed-details",
+      "category": "answer-surface",
+      "root_cause": "closed_disclosure_visibility",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "native-disclosure-regression",
+        "url": "https://example.test/article",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "visible-label",
+              "alternatives": [
+                "Visible explanation"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "<details><summary>Overview</summary>Visible explanation</details>",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "stable_task_pass": false
+      }
+    },
+    {
+      "id": "native-disclosure-open-details",
+      "category": "answer-surface",
+      "root_cause": "closed_disclosure_visibility",
+      "failure_mode": "false-negative",
+      "case": {
+        "id": "native-disclosure-regression",
+        "url": "https://example.test/article",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "visible-label",
+              "alternatives": [
+                "Visible explanation"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "<details open><summary>Overview</summary>Visible explanation</details>",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "stable_task_pass": true
+      }
+    },
+    {
+      "id": "native-disclosure-closed-summary",
+      "category": "answer-surface",
+      "root_cause": "closed_disclosure_visibility",
+      "failure_mode": "false-negative",
+      "case": {
+        "id": "native-disclosure-regression",
+        "url": "https://example.test/article",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "visible-label",
+              "alternatives": [
+                "Visible explanation"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "<details><summary>Visible explanation</summary>Hidden body</details>",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "stable_task_pass": true
+      }
     }
   ],
   "superseded_cases": {
