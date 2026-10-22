@@ -6,7 +6,7 @@ import re
 import soupsieve
 
 from .article_text import (author_key, article_html, without_markdown_images, is_article_html,
-                           article_markdown, TIMESTAMP_LINE, FENCE, label_key,
+                           article_markdown, TIMESTAMP_LINE, mask_markdown_code, label_key,
                            validate_labels, declared_labels)
 from .body_coverage import tokens
 from .dynamic_lists import visible_html_text
@@ -209,15 +209,10 @@ def _coverage_text_records(content, contract):
     plain navigation label must not turn article captions into authors.
     """
     # Code may be comment text, but cannot introduce fake record boundaries.
-    fences = {}
-    prefix = '\ue000coverage-fence'
+    content, fences = mask_markdown_code(content, retain=True)
+    prefix = '\ue000coverage-paragraph'
     while prefix in content:
         prefix += '_'
-    def protect(match):
-        key = prefix + str(len(fences))
-        fences[key] = match.group(0)
-        return '\n' + key + '\n'
-    content = FENCE.sub(protect, content)
     content = without_markdown_images(content)
     paragraph_marker = prefix + 'paragraph'
     content = re.sub(r'\n[ \t]*\n', '\n' + paragraph_marker + '\n', content)

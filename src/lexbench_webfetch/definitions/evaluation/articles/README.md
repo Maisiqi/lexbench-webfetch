@@ -287,3 +287,9 @@ uv run --frozen lexbench-webfetch verify-inputs --suite articles \
   --source /absolute/path/new-input-directory
 make check
 ```
+
+Markdown fenced and indented code blocks cannot provide article titles, comment
+authors or post records. Code inside an already attributed comment remains its
+body text. Post author validation applies after every extraction route, including
+preceding-line attribution, native HTML and quoted posts: task-declared metadata
+labels, standalone timestamps and invisible-only names cannot supply attribution.

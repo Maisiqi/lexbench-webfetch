@@ -8,7 +8,7 @@ import soupsieve
 from .body_coverage import tokens
 from .dynamic_lists import named_entry_identity, visible_html_text
 from .article_text import (article_html, is_article_html, article_markdown, TIMESTAMP_LINE,
-                           DATE_LINE, FENCE, label_key, validate_labels, declared_labels)
+                           mask_markdown_code, author_key, label_key, validate_labels, declared_labels)
 from .reference_quality import markdown_links, visible_markdown_links
 
 
@@ -166,11 +166,6 @@ def _post_headers(lines, contract, url):
         author = re.sub(r'^(?:#{1,6}|[-*+]|\d+[.)])(?:\s+|$)', '', prefix).strip()
         if not author:
             author = visible_markdown_links(link.label)
-        if (not re.sub(
-                r'^(?:#{1,6}|[-*+]|\d+[.)])(?:\s+|$)', '', prefix).strip()
-                and (label_key(author) in declared_labels(contract, 'non_author_labels')
-                     or DATE_LINE.fullmatch(author))):
-            author = ''
         if not prefix and index and lines[index-1].strip() and not lines[index-1].startswith('>'):
             author = visible_markdown_links(lines[index-1])
             header = author+'\n'+header
@@ -181,7 +176,7 @@ def _post_headers(lines, contract, url):
 def _markdown_records(content, contract, url):
     # Fenced source snippets cannot introduce post identities or supply post prose.
     # Comments keep code as owned text; posts deliberately require unfenced prose.
-    content = FENCE.sub('', content)
+    content, _ = mask_markdown_code(content)
     # HTML visibility projection drops empty lines. Preserve Markdown paragraph
     # boundaries across that projection so a blockquote cannot absorb a later
     # unquoted paragraph. Choose a marker absent from the answer itself.
@@ -270,6 +265,16 @@ def _has_post_prose(text, contract):
     return False
 
 
+def _valid_post_author(value, contract):
+    if author_key(value) is None:
+        return False
+    label = label_key(value)
+    return (label not in declared_labels(contract, 'non_author_labels')
+            and label not in declared_labels(contract, 'ignored_labels')
+            and label not in declared_labels(contract, 'unavailable_notices')
+            and not TIMESTAMP_LINE.fullmatch(label))
+
+
 def _verify_fixed_posts(content, contract, url):
     content = _initial_surface(content)
     if is_article_html(content):
@@ -283,10 +288,10 @@ def _verify_fixed_posts(content, contract, url):
         check = {'url': row.get('url'), 'pass': False}
         try:
             key = post_identity(row['url'], contract, url)
-            author_pass = bool(row.get('author', '').strip())
+            author_pass = _valid_post_author(row.get('author', ''), contract)
             body_pass = _has_post_prose(row.get('post', ''), contract)
             attributed_quote = any(
-                _has_post_prose(text, contract) and len(authors) == 1 and bool(authors[0].strip())
+                _has_post_prose(text, contract) and len(authors) == 1 and _valid_post_author(authors[0], contract)
                 for text, authors in zip(row.get('quote_bodies_after_author', []),
                                          row.get('quote_authors', [])))
             check.update(author_pass=author_pass, body_pass=body_pass,

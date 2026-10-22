@@ -3,7 +3,7 @@ import re
 
 import soupsieve
 
-from .article_text import article_html, is_article_html, without_markdown_images
+from .article_text import article_html, is_article_html, without_markdown_images, mask_markdown_code
 from .metrics import normalize_for_match
 from .reference_quality import visible_mixed_html_text
 
@@ -66,20 +66,10 @@ def verify_article_title(content, contract):
                       for node in soup.select(contract['html_selector'])]
         surface = 'reviewed_html_title_selector'
     else:
-        fence = None
+        content, _ = mask_markdown_code(content)
         if re.search(r'<details\b', content, re.I):
             content = str(article_html(content))
         for line in visible_mixed_html_text(content).splitlines():
-            marker = re.match(r'^ {0,3}(`{3,}|~{3,})', line)
-            if marker:
-                run = marker[1]
-                if fence is None:
-                    fence = run
-                elif run[0] == fence[0] and len(run) >= len(fence):
-                    fence = None
-                continue
-            if fence is not None:
-                continue
             text = line.strip()
             text = re.sub(r'^#{1,6}[ \t]+', '', text)
             text = re.sub(r'[ \t]+#+[ \t]*$', '', text)

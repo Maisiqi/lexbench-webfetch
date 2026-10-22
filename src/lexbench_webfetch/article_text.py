@@ -64,8 +64,46 @@ TIMESTAMP_LINE = re.compile(
     r'|\d{1,2}:\d{2}(?::\d{2})?(?:\s*[AP]M)?'
     r'|\d+\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)\s+ago'
     r'|\d+\s*(?:秒|分钟|小时|天|周|个月|年)前|刚刚)', re.I)
-DATE_LINE = re.compile(r'\d{4}[-/]\d{1,2}[-/]\d{1,2}')
-FENCE = re.compile(r'(?ms)^\s*(`{3,}|~{3,}).*?^\s*\1[^\n]*$')
+
+
+def mask_markdown_code(content, *, retain=False):
+    """Shield fenced and indented literals before article record recognition.
+
+    Retained blocks may belong to an existing comment, but their headings and
+    links cannot introduce a title, section or author. Tabs use four-column stops.
+    """
+    prefix = '\ue000article-code'
+    while prefix in content:
+        prefix += '_'
+    lines = content.splitlines(keepends=True)
+    output, blocks = [], {}
+    i = 0
+    while i < len(lines):
+        start = i
+        line = lines[i]
+        fence = re.match(r'^ {0,3}(`{3,}|~{3,})(.*)$', line.rstrip('\r\n'))
+        if fence and not (fence[1][0] == '`' and '`' in fence[2]):
+            run = fence[1]
+            i += 1
+            closing = re.compile(r'^ {0,3}' + re.escape(run[0]) + '{' + str(len(run)) + r',}[ \t]*$')
+            while i < len(lines):
+                end = bool(closing.fullmatch(lines[i].rstrip('\r\n')))
+                i += 1
+                if end:
+                    break
+        elif line.strip() and line.expandtabs(4).startswith('    '):
+            # Treat serializer indentation as literal, never as record syntax.
+            i += 1
+            while i < len(lines) and (not lines[i].strip() or lines[i].expandtabs(4).startswith('    ')):
+                i += 1
+        else:
+            output.append(line)
+            i += 1
+            continue
+        key = prefix + str(len(blocks))
+        blocks[key] = ''.join(lines[start:i])
+        output.append('\n' + (key if retain else '') + '\n')
+    return ''.join(output), blocks
 
 
 def article_markdown(content):
