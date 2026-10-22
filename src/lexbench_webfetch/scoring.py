@@ -23,8 +23,8 @@ SCORING_SOURCE_FILES = tuple(Path(__file__).with_name(name) for name in (
     "ordered_tree.py", "composite_tasks.py", "dynamic_reference.py",
     "file_acceptance.py", "evaluation.py", "models.py", "paths.py", "article_posts.py",
     "article_comments.py", "article_title.py", "article_text.py", "required_components.py",
-    "resource_urls.py", "rule_policy.py",
-)) + (Path(__file__).with_name("definitions") / "evaluation" / "scorer-policy-v1.json",)
+    "resource_urls.py",
+))
 SCORING_SOURCE_SHA256 = hashlib.sha256(b"\0".join(
     path.read_bytes() for path in SCORING_SOURCE_FILES)).hexdigest()
 
@@ -302,21 +302,19 @@ def score_attempt(
             resource_contract, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
     benchmark = case.get("source_benchmark", {})
     if rule_review.get("status") != "unresolved":
-        from .required_components import COMPONENTS, verify_component
+        from .required_components import COMPONENTS
         required = {}
-        for field, (name, pass_metric, digest_metric, basis) in COMPONENTS.items():
+        for field, component in COMPONENTS.items():
             if field not in benchmark:
                 continue
             component_contract = benchmark[field]
-            component_result = verify_component(
-                field, content, component_contract, case_id=case["id"], url=case["url"])
+            component_result = component.verify(content, component_contract, case["url"])
             result.update(component_result)
-            required[name] = component_result[pass_metric] is True
-            result[digest_metric] = hashlib.sha256(json.dumps(
+            required[component.name] = component_result[component.pass_metric] is True
+            result[component.digest_metric] = hashlib.sha256(json.dumps(
                 component_contract, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
-            if basis:
-                result["content_decision_basis"] = basis
         if required:
+            result["content_decision_basis"] = "base_acceptance_and_required_components"
             result["required_components"] = required
             result["content_pass"] = bool(result["content_pass"] and all(required.values()))
     if (rule_review.get("status") != "unresolved" and not contract

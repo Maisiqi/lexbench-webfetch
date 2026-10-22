@@ -13,11 +13,11 @@ POSTS = {'version': 2, 'minimum_posts': 2, 'hosts': ['example.test'], 'entry_pat
 
 
 def comments(text):
-    return verify_article_comments(text, COMMENTS, case_id='a', url='https://example.test/a')
+    return verify_article_comments(text, COMMENTS)
 
 
 def posts(text):
-    return verify_article_posts(text, POSTS, case_id='p', url='https://example.test/feed')
+    return verify_article_posts(text, POSTS, url='https://example.test/feed')
 
 
 CLEAN_COMMENTS = '<p>Article ending.</p><h2>Comments</h2><h3>Alice</h3><p>First reply.</p><h3>Bob</h3><p>Second reply.</p>'
@@ -84,3 +84,22 @@ def test_mixed_author_like_body_link_does_not_inflate_heading_records():
     text = ('Article ending.\n## Comments\n### Alice\nFirst reply.\n\n'
             '[Documentation](https://example.test/docs)\nMore words.')
     assert comments(text)['article_comment_count'] == 1
+
+
+@pytest.mark.parametrize('literal', ['### Fake author\nNot a second comment.',
+                                   '```\n### Fake author\nNot a second comment.\n```'])
+def test_cleaned_pre_cannot_create_comment_records(literal):
+    html = '<p>Article ending.</p><h2>Comments</h2><h3>Alice</h3><p>Real reply.</p><pre>' + literal + '</pre>'
+    assert comments(html)['article_comment_count'] == 1
+    assert not comments(html)['article_comments_pass']
+
+
+def test_cleaned_table_cell_cannot_create_comment_record():
+    html = ('<p>Article ending.</p><h2>Comments</h2><h3>Alice</h3><p>Real reply.</p>'
+            '<table><tr><td>### Fake author</td></tr><tr><td>Not a comment.</td></tr></table>')
+    assert comments(html)['article_comment_count'] == 1
+
+
+def test_partial_native_fields_cannot_borrow_unowned_cleaned_records():
+    html = '<div class="comment"><h3>Alice</h3><p>Unidentified field.</p></div>' + CLEAN_COMMENTS
+    assert not comments(html)['article_comments_pass']

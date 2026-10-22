@@ -26,7 +26,7 @@ def test_current_collection_coverage_without_runtime_reference(number, minimum):
     full = evaluate_response(case, (stable+'\n\n'+'\n\n'.join(posts)).encode())
     assert full['passed'] and full['measured']
     assert 'article_reference_status' not in full['metrics']
-    assert full['metrics']['content_decision_basis'] == 'stable_and_fixed_post_coverage'
+    assert full['metrics']['content_decision_basis'] == 'base_acceptance_and_required_components'
     for text in (stable, stable+'\n\n'+'\n\n'.join(posts[:-1]), '\n\n'.join(posts)):
         result = evaluate_response(case, text.encode())
         assert not result['passed']

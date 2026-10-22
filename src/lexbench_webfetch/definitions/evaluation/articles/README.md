@@ -1,6 +1,6 @@
 # Article suite authoring
 
-The registered `articles` suite (`articles-v7`) contains 100 qualified URLs: 95 fixed articles
+The registered `articles` suite (`articles-v8`) contains 100 qualified URLs: 95 fixed articles
 and five changing post collections. `cohort.json` preserves candidate identities
 and revision history; `rules.json` contains all 100 verified contracts. Public
 tasks, the catalog and input manifest bind the complete executable dataset.
@@ -8,9 +8,8 @@ Full reference bodies and source observations remain external.
 
 Candidate identities and source revisions are recorded in `cohort.json`; gaps in
 case numbering preserve the original candidate IDs. Earlier authoring inputs
-remain immutable. Reproduce pre-release version-1 runtime contracts with the
-frozen scorer at commit `a01aaa04cd86c5084d38088795053142b0973c73`; current APIs
-accept version-2 coverage contracts only.
+remain immutable. Pre-release version-1 runtime contracts are unsupported. Earlier frozen input
+bytes are preserved; published results must identify their scorer version.
 
 The four original Weixin cases could not be independently observed because of
 an authoring-tool site-safety restriction. The final suite uses different
@@ -153,10 +152,14 @@ indistinguishable from body subheadings, links or quoted text. The scorer does n
 promise to resolve those ambiguous representations. An explicit comment heading
 allows repeated body endings before that heading to be disambiguated.
 
-Whole-label control and placeholder exclusions are an article-only policy in
-`../scorer-policy-v1.json`, consumed through `article_text.py` by comment and post parsers. They are not substring
-filters or a general multilingual content policy. New labels need accepted and
-rejected controls; this refactor preserves the existing frozen contract policy.
+Each current comment/post contract declares `ignored_labels` and
+`unavailable_notices`; only normalized whole labels match. `labels.json` records
+the reviewed authoring defaults and is hash-bound to this suite's inputs. Runtime
+scoring reads labels from the task, never from a global policy file. Adding a
+language or site changes its task data, not the scorer. Explicit empty lists
+remain empty. Older v2 inputs lacking these fields retain frozen compatibility
+defaults; do not expand those defaults to onboard new sites. Syntax recognition
+(HTML/Markdown, timestamps and count decorations) remains parser code.
 
 The minimum equals the independently reviewed valid record count when that count
 is at most five; otherwise it equals 80% of that count, rounded up. The baseline
@@ -239,6 +242,7 @@ PYTHON
 
 Compilation requires the exact hash-bound source files declared in the rules.
 It does not download pages or call providers. Runtime scoring needs the compiled
-input and response, not the historical source bundle. Source-capture controls
+input and response, not the historical source bundle. The input bundle also binds
+`labels.json` for authoring provenance; all runtime labels are in the compiled tasks. Source-capture controls
 are supplementary external evidence; repository tests use reproducible synthetic
 accepted and rejected responses.

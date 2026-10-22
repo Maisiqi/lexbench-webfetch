@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v7",
+  "id": "articles-v8",
   "status": "qualified",
   "case_count": 100,
   "approved_on": "2026-10-20",
@@ -915,7 +915,7 @@
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     }
   ],
-  "revision": 10,
+  "revision": 11,
   "revisions": [
     {
       "revision": 2,
@@ -2613,6 +2613,144 @@
             "热门话题",
             "热股榜"
           ]
+        }
+      ]
+    },
+    {
+      "revision": 11,
+      "dataset_id": "articles-v8",
+      "approved_on": "2026-10-22",
+      "previous_dataset_id": "articles-v7",
+      "previous_git_commit": "41388ad5a97c916d4c2a9ca06f6be2a0d9dd32ea",
+      "previous_dataset_sha256": "9a3749c04a840b7f0543ecab61d06c83abf26a06c2dfcf1066501ca0306bfc1c",
+      "previous_cohort_sha256": "c75681dc17bf915aa24bc79b81636d65a112c347d4c6f96c90505f7f089e4d9d",
+      "previous_rules_sha256": "755c9fea31d4ccc0b9a6f11fd334ef889f7645f69c46130919147f03eb14c284",
+      "basis": "Bind existing whole-label exclusions in each comment/post contract rather than global scorer policy. Preserve original source scope, matching tolerances and record floors.",
+      "changes": [
+        {
+          "id": "article-005",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-009",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-014",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-017",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-023",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-025",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-027",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-030",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-032",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-038",
+          "action": "bind_record_labels_in_contract",
+          "component": "post_contract"
+        },
+        {
+          "id": "article-039",
+          "action": "bind_record_labels_in_contract",
+          "component": "post_contract"
+        },
+        {
+          "id": "article-040",
+          "action": "bind_record_labels_in_contract",
+          "component": "post_contract"
+        },
+        {
+          "id": "article-041",
+          "action": "bind_record_labels_in_contract",
+          "component": "post_contract"
+        },
+        {
+          "id": "article-044",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-047",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-049",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-052",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-053",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-068",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-092",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-093",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-095",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-098",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
+        },
+        {
+          "id": "article-101",
+          "action": "bind_record_labels_in_contract",
+          "component": "post_contract"
+        },
+        {
+          "id": "article-103",
+          "action": "bind_record_labels_in_contract",
+          "component": "comment_contract"
         }
       ]
     }

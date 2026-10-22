@@ -1,5 +1,4 @@
 """Shared article-only visible text and identity policy."""
-from .rule_policy import SCORER_POLICY
 import re
 import unicodedata
 from .dynamic_lists import scoped_html
@@ -59,13 +58,14 @@ def is_article_html(content):
         remaining = remaining[prefix.end():].lstrip()
 
 
-# Article-specific whole-label policy; never applied as substring filtering.
-ARTICLE_CONTROLS = frozenset(SCORER_POLICY["article_labels"]["ARTICLE_CONTROLS"])
-COMMENT_CONTROLS = frozenset(SCORER_POLICY["article_labels"]["COMMENT_CONTROLS"])
-COMMENT_PLACEHOLDERS = frozenset(SCORER_POLICY["article_labels"]["COMMENT_PLACEHOLDERS"])
+# Frozen v2-input compatibility defaults. New authored contracts declare labels.
+# Never expand these lists to onboard a site; labels belong to its input contract.
+ARTICLE_CONTROLS = frozenset({'load more', 'read more', '登录', 'log in', '点赞', 'sign in', 'likes', 'replies', 'report', 'reply', '回复', 'show more', '加载更多', '展开', '查看更多', 'like', 'share', '注册'})
+COMMENT_CONTROLS = frozenset({'read more', '登录', '加载更多', '添加评论', 'like', 'share', 'register', 'report', 'show more', 'sign in', '注册', '点赞', 'leave a reply', 'likes', '登录后评论', 'reply', '查看更多', 'load more', 'log in', 'replies', '回复', 'login', 'add a comment', '展开', '展开回复', '发表评论'})
+COMMENT_PLACEHOLDERS = frozenset({'this comment has been hidden (marked as spam)', '[内容不可见]', '[deleted]', 'this comment has been hidden', '[removed]', '[已删除]'})
 
 
-POST_CONTROLS = frozenset(SCORER_POLICY["article_labels"]["POST_CONTROLS"])
+POST_CONTROLS = frozenset({'read more', '登录', '加载更多', '转发', '分享', 'like', '查看', 'share', 'report', 'show more', 'sign in', '收藏', '注册', '点赞', 'bookmarks', 'likes', 'reply', '今天', '查看更多', 'views', 'yesterday', 'load more', 'log in', 'replies', 'reposts', 'repost', 'today', 'view', '回复', '昨天', '展开', 'bookmark', 'permalink'})
 
 
 def article_markdown(content):
@@ -85,6 +85,20 @@ def article_markdown(content):
             return str(node)
         if not isinstance(node, Tag):
             return ''
+        if node.name == 'pre':
+            literal = node.get_text()
+            longest = max((len(run) for run in re.findall(r'`+', literal)), default=0)
+            fence = '`' * max(3, longest + 1)
+            return '\n\n' + fence + '\n' + literal + '\n' + fence + '\n\n'
+        if node.name == 'code':
+            # Inline literal syntax must not create a record or section boundary.
+            literal = node.get_text().replace('\n', ' ')
+            return '`' + literal.replace('`', '\\`') + '`'
+        if node.name == 'tr':
+            cells = [render(child).replace('\n', ' ').strip()
+                     for child in node.children if isinstance(child, Tag)
+                     and child.name in ('td', 'th')]
+            return '\n| ' + ' | '.join(cells) + ' |\n'
         text = ''.join(render(child) for child in node.children)
         if node.name == 'img':
             return ''
@@ -102,3 +116,19 @@ def article_markdown(content):
             return '\n\n' + text.strip() + '\n\n'
         return text
     return render(soup)
+
+
+def validate_labels(contract):
+    """Reject malformed task-declared labels rather than silently widening scope."""
+    for field in ('ignored_labels', 'unavailable_notices'):
+        if field in contract:
+            labels = contract[field]
+            if (not isinstance(labels, list) or any(not isinstance(label, str)
+                    or not label.strip() for label in labels) or len(set(labels)) != len(labels)):
+                raise ValueError('Invalid task-declared ' + field)
+
+
+def declared_labels(contract, field, legacy):
+    """Use an explicit task list, including an explicit empty list, verbatim."""
+    return frozenset(' '.join(unicodedata.normalize('NFKC', label).split()).casefold().strip(':：')
+                     for label in contract.get(field, legacy))

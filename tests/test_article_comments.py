@@ -82,6 +82,6 @@ def test_runtime_explicitly_rejects_legacy_contracts_and_reference_argument():
     with pytest.raises(ValueError):
         validate_comment_contract(legacy)
     with pytest.raises(ValueError):
-        verify_article_comments('', legacy, case_id='article', url=REFERENCE['url'])
+        verify_article_comments('', legacy)
     with pytest.raises(TypeError):
-        verify_article_comments('', CONTRACT, REFERENCE, case_id='article', url=REFERENCE['url'])
+        verify_article_comments('', CONTRACT, REFERENCE)

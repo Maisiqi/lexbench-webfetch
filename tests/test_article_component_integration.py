@@ -85,7 +85,7 @@ class StaticCommentCoverageIntegration(unittest.TestCase):
         self.assertTrue(result["measured"])
         self.assertNotIn("article_comments_reference_status", result["metrics"])
         self.assertEqual(result["metrics"]["content_decision_basis"],
-                         "body_title_stable_and_comment_coverage")
+                         "base_acceptance_and_required_components")
 
     def test_missing_comment_section_and_below_floor_are_measured_failures(self):
         for content in (self.complete.split("Comments")[0],

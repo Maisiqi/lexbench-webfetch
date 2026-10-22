@@ -47,7 +47,7 @@ flowchart LR
 
 每组提供可读的 `tasks.json`、包含原始完整任务哈希的目录，以及绑定可执行数据集和参考文件的清单。详见[数据结构与使用权](data.md)。任务原文和冻结的验收规则保留原语言。
 
-[文章分类](../src/lexbench_webfetch/definitions/evaluation/articles/README.md)的 `articles-v7` 增加了 95 个固定文章和 5 个变化的帖子集合案例。它检查已展示的文章内容及必需页面组成部分，包括初始评论和帖子覆盖，识别只抓到标题或只抓到正文的遗漏。完整参考保存在 Git 之外。
+[文章分类](../src/lexbench_webfetch/definitions/evaluation/articles/README.md)的 `articles-v8` 增加了 95 个固定文章和 5 个变化的帖子集合案例。它检查已展示的文章内容及必需页面组成部分，包括初始评论和帖子覆盖，识别只抓到标题或只抓到正文的遗漏。完整参考保存在 Git 之外。
 
 ## 快速开始
 

@@ -1,5 +1,4 @@
 """Post ownership checks for fixed initial coverage contracts."""
-from .rule_policy import SCORER_POLICY
 import re
 import unicodedata
 from urllib.parse import urljoin, urlsplit
@@ -8,7 +7,7 @@ import soupsieve
 
 from .body_coverage import tokens
 from .dynamic_lists import named_entry_identity, visible_html_text
-from .article_text import article_html, is_article_html, article_markdown, POST_CONTROLS
+from .article_text import article_html, is_article_html, article_markdown, POST_CONTROLS, validate_labels, declared_labels
 from .reference_quality import markdown_links, visible_markdown_links
 
 
@@ -18,7 +17,7 @@ def validate_post_contract(contract):
         allowed = {'version', 'hosts', 'entry_path', 'html_record_selector',
                    'html_permalink_selector', 'html_author_selector', 'html_body_selector',
                    'html_quote_selector', 'quote_markers',
-                   'allow_empty_outer_with_quotes', 'minimum_posts'}
+                   'allow_empty_outer_with_quotes', 'minimum_posts', 'ignored_labels', 'unavailable_notices'}
         if not isinstance(contract, dict) or set(contract) - allowed:
             raise ValueError('unknown frozen post contract fields')
         if type(contract['version']) is not int or contract['version'] != 2 or not isinstance(contract['hosts'], list) or not contract['hosts']:
@@ -35,6 +34,7 @@ def validate_post_contract(contract):
             raise ValueError('invalid fixed coverage bound')
         if type(contract.get('allow_empty_outer_with_quotes', False)) is not bool:
             raise ValueError('invalid empty outer opt-in')
+        validate_labels(contract)
         markers = contract.get('quote_markers', [])
         if not isinstance(markers, list) or any(not isinstance(x, str) or not x.strip() for x in markers):
             raise ValueError('invalid quote markers')
@@ -112,7 +112,7 @@ def _html_records(content, contract):
 
 def _markdown_records(content, contract, url):
     # A fenced reference or source dump is not a rendered article record.
-    content = re.sub(r'(?ms)^\s*(```|~~~).*?^\s*\1[^\n]*$', '', content)
+    content = re.sub(r'(?ms)^\s*(`{3,}|~{3,}).*?^\s*\1[^\n]*$', '', content)
     # HTML visibility projection drops empty lines. Preserve Markdown paragraph
     # boundaries across that projection so a blockquote cannot absorb a later
     # unquoted paragraph. Choose a marker absent from the answer itself.
@@ -177,7 +177,7 @@ def _markdown_records(content, contract, url):
             author = visible_markdown_links(link.label)
         if (not re.sub(
                 r'^(?:#{1,6}|[-*+]|\d+[.)])(?:\s+|$)', '', prefix).strip()
-                and re.fullmatch(SCORER_POLICY["article_patterns"]["post_non_author_label"],
+                and re.fullmatch('(?:today|yesterday|date|time|permalink|view post|post|今天|昨天|详情|查看帖子|\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})',
                                  author, re.I)):
             author = ''
         if not prefix and index and lines[index-1].strip() and not lines[index-1].startswith('>'):
@@ -238,22 +238,25 @@ def _initial_surface(content):
     return str(article_html(content)) if re.search(r'<details\b', content, re.I) else content
 
 
-def _has_post_prose(text):
+def _has_post_prose(text, contract=None):
     """Reject metadata-only serialized fields, without filtering prose mentions.
 
     This narrow whole-line filter cannot distinguish date-only prose from a
     serializer timestamp; it does not authenticate or compare dynamic text.
     """
+    contract = contract or {}
+    controls = declared_labels(contract, "ignored_labels", POST_CONTROLS)
+    unavailable = declared_labels(contract, "unavailable_notices", [])
     for line in text.splitlines():
         line = unicodedata.normalize('NFKC', visible_markdown_links(line)).strip()
-        if not line:
+        if not line or line.casefold().strip(":：") in unavailable:
             continue
         if re.fullmatch(
-                SCORER_POLICY["article_patterns"]["post_timestamp"], line, re.I):
+                '(?:\\d{4}[-/]\\d{1,2}[-/]\\d{1,2}(?:[ T]\\d{1,2}:\\d{2}(?::\\d{2})?(?:Z|[+-]\\d{2}:?\\d{2})?)?|\\d{1,2}:\\d{2}(?::\\d{2})?(?:\\s*[AP]M)?|\\d+\\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)\\s+ago|\\d+\\s*(?:秒|分钟|小时|天|周|个月|年)前|刚刚)', line, re.I):
             continue
         labels = [part.strip().casefold().strip(':：*_')
                   for part in re.split(r'\s*[|·•]\s*', line)]
-        if all(re.sub(r'(?:^\d+\s*|\s*\d+$)', '', label).strip() in POST_CONTROLS
+        if all(re.sub(r'(?:^\d+\s*|\s*\d+$)', '', label).strip() in controls
                for label in labels):
             continue
         return True
@@ -274,9 +277,9 @@ def _verify_fixed_posts(content, contract, url):
         try:
             key = post_identity(row['url'], contract, url)
             author_pass = bool(row.get('author', '').strip())
-            body_pass = _has_post_prose(row.get('post', ''))
+            body_pass = _has_post_prose(row.get('post', ''), contract)
             attributed_quote = any(
-                _has_post_prose(text) and len(authors) == 1 and bool(authors[0].strip())
+                _has_post_prose(text, contract) and len(authors) == 1 and bool(authors[0].strip())
                 for text, authors in zip(row.get('quote_bodies_after_author', []),
                                          row.get('quote_authors', [])))
             check.update(author_pass=author_pass, body_pass=body_pass,
@@ -302,7 +305,7 @@ def _verify_fixed_posts(content, contract, url):
             'article_post_minimum_count': contract['minimum_posts']}
 
 
-def verify_article_posts(content, contract, *, case_id, url):
+def verify_article_posts(content, contract, *, url):
     """Check fixed visible-post coverage without a runtime reference."""
     validate_post_contract(contract)
     return _verify_fixed_posts(content, contract, url)

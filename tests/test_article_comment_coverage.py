@@ -12,7 +12,7 @@ CONTRACT = {'version': 2, 'minimum_comments': 2, 'record_selector': '.comment',
 
 
 def check(content, contract=CONTRACT):
-    return verify_article_comments(content, contract, case_id='case', url='https://example.test/')
+    return verify_article_comments(content, contract)
 
 
 def card(author, body, identity=''):

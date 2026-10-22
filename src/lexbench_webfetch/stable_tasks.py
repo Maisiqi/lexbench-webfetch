@@ -626,7 +626,7 @@ def _non_record_visible(content, contract, records, base_url):
     """Remove owned record links, without erasing identical navigation text."""
     from urllib.parse import urljoin
 
-    from .dynamic_lists import scoped_html, named_entry_identity, _canonical_entry_path, visible_html_text
+    from .dynamic_lists import scoped_html, named_entry_identity, canonical_entry_path, visible_html_text
     from .reference_quality import markdown_links, visible_markdown_links, visible_mixed_html_text
 
     identities = {named_entry_identity(r['fields']['url'], contract)
@@ -641,7 +641,7 @@ def _non_record_visible(content, contract, records, base_url):
             return (named_entry_identity(absolute, contract) in identities
                     or (parts.hostname in contract['hosts']
                         and re.fullmatch(contract['entry_path'],
-                                         _canonical_entry_path(parts.path).rstrip('/')) is not None))
+                                         canonical_entry_path(parts.path).rstrip('/')) is not None))
         except ValueError:
             return False
 

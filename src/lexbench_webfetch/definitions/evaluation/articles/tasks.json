@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v7",
+  "id": "articles-v8",
   "name": "Article retrieval",
   "tool": "web_fetch",
   "case_count": 100,
@@ -14,8 +14,9 @@
   },
   "interaction_policy": "initial_load_only_no_click_input_scroll_pagination_login_or_ocr",
   "source_bindings": {
-    "cohort_sha256": "c75681dc17bf915aa24bc79b81636d65a112c347d4c6f96c90505f7f089e4d9d",
-    "rules_sha256": "755c9fea31d4ccc0b9a6f11fd334ef889f7645f69c46130919147f03eb14c284"
+    "cohort_sha256": "4cb46611bcc061e81136779a2b5631ac949304a11f0d8bab988de4080caff6c3",
+    "rules_sha256": "d38c600db75acb3cbc608adf61fb1f76c46d0cca2234f6aeeab66b5372b6a199",
+    "labels_sha256": "96fa81c9af82a091173cb5f78e2129f647d9ba4d6d17dc9963472bd6d1553998"
   },
   "cases": [
     {
@@ -1632,7 +1633,43 @@
               "Terms",
               "Privacy"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -2950,7 +2987,43 @@
               "热门话题",
               "热股榜"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -4499,7 +4572,43 @@
               "加个关注，精彩更新不错过~",
               "相关推荐"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -5664,7 +5773,43 @@
               "加载中",
               "关于澎湃"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -7864,7 +8009,43 @@
               "回顶部",
               "Copyright ©"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -8515,7 +8696,43 @@
             "end_markers": [
               "我要发表看法"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -9186,7 +9403,43 @@
               "Ready for more?",
               "Privacy"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -9722,7 +9975,43 @@
             "end_markers": [
               "Comments are closed for this article."
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -10519,7 +10808,43 @@
               "Code of Conduct",
               "More from"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -12878,7 +13203,43 @@
             "Quote"
           ],
           "minimum_posts": 4,
-          "allow_empty_outer_with_quotes": true
+          "allow_empty_outer_with_quotes": true,
+          "ignored_labels": [
+            "bookmark",
+            "bookmarks",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "permalink",
+            "read more",
+            "replies",
+            "reply",
+            "report",
+            "repost",
+            "reposts",
+            "share",
+            "show more",
+            "sign in",
+            "today",
+            "view",
+            "views",
+            "yesterday",
+            "今天",
+            "分享",
+            "加载更多",
+            "回复",
+            "展开",
+            "收藏",
+            "昨天",
+            "查看",
+            "查看更多",
+            "注册",
+            "点赞",
+            "登录",
+            "转发"
+          ],
+          "unavailable_notices": []
         }
       },
       "rule_review": {
@@ -13138,7 +13499,43 @@
             "Quote"
           ],
           "minimum_posts": 8,
-          "allow_empty_outer_with_quotes": true
+          "allow_empty_outer_with_quotes": true,
+          "ignored_labels": [
+            "bookmark",
+            "bookmarks",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "permalink",
+            "read more",
+            "replies",
+            "reply",
+            "report",
+            "repost",
+            "reposts",
+            "share",
+            "show more",
+            "sign in",
+            "today",
+            "view",
+            "views",
+            "yesterday",
+            "今天",
+            "分享",
+            "加载更多",
+            "回复",
+            "展开",
+            "收藏",
+            "昨天",
+            "查看",
+            "查看更多",
+            "注册",
+            "点赞",
+            "登录",
+            "转发"
+          ],
+          "unavailable_notices": []
         }
       },
       "rule_review": {
@@ -13340,7 +13737,43 @@
             "Quote"
           ],
           "minimum_posts": 4,
-          "allow_empty_outer_with_quotes": true
+          "allow_empty_outer_with_quotes": true,
+          "ignored_labels": [
+            "bookmark",
+            "bookmarks",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "permalink",
+            "read more",
+            "replies",
+            "reply",
+            "report",
+            "repost",
+            "reposts",
+            "share",
+            "show more",
+            "sign in",
+            "today",
+            "view",
+            "views",
+            "yesterday",
+            "今天",
+            "分享",
+            "加载更多",
+            "回复",
+            "展开",
+            "收藏",
+            "昨天",
+            "查看",
+            "查看更多",
+            "注册",
+            "点赞",
+            "登录",
+            "转发"
+          ],
+          "unavailable_notices": []
         }
       },
       "rule_review": {
@@ -13464,7 +13897,43 @@
             "Quote"
           ],
           "minimum_posts": 4,
-          "allow_empty_outer_with_quotes": true
+          "allow_empty_outer_with_quotes": true,
+          "ignored_labels": [
+            "bookmark",
+            "bookmarks",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "permalink",
+            "read more",
+            "replies",
+            "reply",
+            "report",
+            "repost",
+            "reposts",
+            "share",
+            "show more",
+            "sign in",
+            "today",
+            "view",
+            "views",
+            "yesterday",
+            "今天",
+            "分享",
+            "加载更多",
+            "回复",
+            "展开",
+            "收藏",
+            "昨天",
+            "查看",
+            "查看更多",
+            "注册",
+            "点赞",
+            "登录",
+            "转发"
+          ],
+          "unavailable_notices": []
         }
       },
       "rule_review": {
@@ -13876,7 +14345,43 @@
               "热门话题",
               "热股榜"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -15102,7 +15607,43 @@
               "使用 SegmentFault 发布",
               "服务协议"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -15818,7 +16359,43 @@
               "推荐阅读",
               "关于我们"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -16882,7 +17459,43 @@
               "推荐文章",
               "本篇来自栏目"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -17468,7 +18081,43 @@
               "推荐文章",
               "本篇来自栏目"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -22651,7 +23300,43 @@
               "Got something to say?",
               "More from ALA"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -32222,7 +32907,43 @@
             "end_markers": [
               "Comments are closed for this article."
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -33026,7 +33747,43 @@
               "Code of Conduct",
               "More from"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -33826,7 +34583,43 @@
             "end_markers": [
               "我要发表看法"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -34453,7 +35246,43 @@
               "> 我来回复",
               "关于豆瓣"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {
@@ -35587,7 +36416,43 @@
             "引用"
           ],
           "allow_empty_outer_with_quotes": true,
-          "minimum_posts": 16
+          "minimum_posts": 16,
+          "ignored_labels": [
+            "bookmark",
+            "bookmarks",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "permalink",
+            "read more",
+            "replies",
+            "reply",
+            "report",
+            "repost",
+            "reposts",
+            "share",
+            "show more",
+            "sign in",
+            "today",
+            "view",
+            "views",
+            "yesterday",
+            "今天",
+            "分享",
+            "加载更多",
+            "回复",
+            "展开",
+            "收藏",
+            "昨天",
+            "查看",
+            "查看更多",
+            "注册",
+            "点赞",
+            "登录",
+            "转发"
+          ],
+          "unavailable_notices": []
         }
       },
       "rule_review": {
@@ -36198,7 +37063,43 @@
               "热门话题",
               "热股榜"
             ]
-          }
+          },
+          "ignored_labels": [
+            "add a comment",
+            "leave a reply",
+            "like",
+            "likes",
+            "load more",
+            "log in",
+            "login",
+            "read more",
+            "register",
+            "replies",
+            "reply",
+            "report",
+            "share",
+            "show more",
+            "sign in",
+            "加载更多",
+            "发表评论",
+            "回复",
+            "展开",
+            "展开回复",
+            "查看更多",
+            "注册",
+            "添加评论",
+            "点赞",
+            "登录",
+            "登录后评论"
+          ],
+          "unavailable_notices": [
+            "[deleted]",
+            "[removed]",
+            "[内容不可见]",
+            "[已删除]",
+            "this comment has been hidden",
+            "this comment has been hidden (marked as spam)"
+          ]
         }
       },
       "rule_review": {

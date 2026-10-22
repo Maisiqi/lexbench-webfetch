@@ -76,6 +76,6 @@ def test_runtime_rejects_legacy_post_contract_and_reference_argument():
     with pytest.raises(ValueError):
         validate_post_contract(legacy)
     with pytest.raises(ValueError):
-        verify_article_posts('', legacy, case_id='feed', url=REFERENCE['url'])
+        verify_article_posts('', legacy, url=REFERENCE['url'])
     with pytest.raises(TypeError):
-        verify_article_posts('', CONTRACT, REFERENCE, case_id='feed', url=REFERENCE['url'])
+        verify_article_posts('', CONTRACT, REFERENCE, url=REFERENCE['url'])

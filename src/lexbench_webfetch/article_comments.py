@@ -1,14 +1,14 @@
 """Check fixed initial comment coverage and explicit record ownership."""
 from __future__ import annotations
 
-from .rule_policy import SCORER_POLICY
 import re
 import unicodedata
 
 import soupsieve
 
 from .article_text import (author_key, article_html, without_markdown_images, is_article_html,
-                           article_markdown, COMMENT_CONTROLS, COMMENT_PLACEHOLDERS)
+                           article_markdown, COMMENT_CONTROLS, COMMENT_PLACEHOLDERS,
+                           validate_labels, declared_labels)
 from .body_coverage import tokens
 from .dynamic_lists import visible_html_text
 from .reference_quality import markdown_links, visible_markdown_links
@@ -19,9 +19,11 @@ def validate_comment_contract(contract):
     if not isinstance(contract, dict) or type(contract.get("version")) is not int or contract["version"] != 2:
         raise ValueError("only fixed comment coverage version 2 is supported")
     allowed = {'version', 'minimum_comments', 'record_selector', 'author_selector',
-               'body_selector', 'section_markers', 'id_attribute', 'text_scope'}
+               'body_selector', 'section_markers', 'id_attribute', 'text_scope',
+               'ignored_labels', 'unavailable_notices'}
     if set(contract) - allowed or type(contract.get('minimum_comments')) is not int or contract['minimum_comments'] < 1:
         raise ValueError('comment coverage requires a positive minimum')
+    validate_labels(contract)
     scope = contract.get('text_scope')
     if scope is not None:
         if (not isinstance(scope, dict) or set(scope) != {'body_end', 'end_markers'}
@@ -75,8 +77,8 @@ def _html_records(content, contract):
 def _section_marker_tokens(line):
     """Ignore changing count decorations only on a comment section heading."""
     label = re.sub(r'^\s*#{1,6}\s+', '', line).strip().rstrip(':：')
-    label = re.sub(SCORER_POLICY["article_patterns"]["section_leading_count"], '', label)
-    label = re.sub(SCORER_POLICY["article_patterns"]["section_trailing_count"], '', label)
+    label = re.sub('^[0-9]+(?:\\s*(?:条|则|件)\\s*|\\s+)', '', label)
+    label = re.sub('\\s*(?:\\(\\s*[0-9]+\\s*(?:条|则|件)?\\s*\\)|（\\s*[0-9]+\\s*(?:条|则|件)?\\s*）)\\s*$', '', label)
     return tuple(tokens(label))
 
 
@@ -88,15 +90,18 @@ def _coverage_label(value):
     return ' '.join(unicodedata.normalize('NFKC', value).split()).casefold().strip(':：')
 
 
-def valid_comment_records(rows):
+def valid_comment_records(rows, contract=None):
+    contract = contract or {}
+    controls = declared_labels(contract, 'ignored_labels', COMMENT_CONTROLS)
+    unavailable = declared_labels(contract, 'unavailable_notices', COMMENT_PLACEHOLDERS)
     valid, seen = [], set()
     for row in rows:
         author, body = row.get('author'), row.get('text')
         if (author_key(author) is None or not isinstance(body, str)
                 or author_key(body) is None
-                or _coverage_label(author) in COMMENT_CONTROLS
-                or _coverage_label(body) in COMMENT_CONTROLS
-                or _coverage_label(body) in COMMENT_PLACEHOLDERS):
+                or _coverage_label(author) in controls
+                or _coverage_label(body) in controls
+                or _coverage_label(body) in unavailable):
             continue
         # Preserve separately identified equal comments. Without source IDs,
         # repeated identical records provide no evidence of additional coverage.
@@ -117,7 +122,7 @@ def _comment_time_metadata(line):
     """
     stamp = visible_markdown_links(line).strip()
     return bool(re.fullmatch(
-        SCORER_POLICY["article_patterns"]["comment_timestamp"], stamp, re.I))
+        '(?:\\d{4}[-/]\\d{1,2}[-/]\\d{1,2}(?:[ T]\\d{1,2}:\\d{2}(?::\\d{2})?(?:Z|[+-]\\d{2}:?\\d{2})?)?|\\d{1,2}:\\d{2}(?::\\d{2})?(?:\\s*[AP]M)?|\\d+\\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)\\s+ago|\\d+\\s*(?:秒|分钟|小时|天|周|个月|年)前|刚刚)', stamp, re.I))
 
 
 def _coverage_text_start(lines, contract):
@@ -198,7 +203,7 @@ def _coverage_text_records(content, contract):
         key = prefix + str(len(fences))
         fences[key] = match.group(0)
         return '\n' + key + '\n'
-    content = re.sub(r'(?ms)^\s*(```|~~~).*?^\s*\1[^\n]*$', protect, content)
+    content = re.sub(r'(?ms)^\s*(`{3,}|~{3,}).*?^\s*\1[^\n]*$', protect, content)
     content = without_markdown_images(content)
     paragraph_marker = prefix + 'paragraph'
     content = re.sub(r'\n[ \t]*\n', '\n' + paragraph_marker + '\n', content)
@@ -209,6 +214,7 @@ def _coverage_text_records(content, contract):
     if start is None:
         return []
     end_markers = {_section_marker_tokens(x) for x in contract.get('text_scope', {}).get('end_markers', [])}
+    controls = declared_labels(contract, "ignored_labels", COMMENT_CONTROLS)
     rows, current = [], None
     heading_authors = False
     for offset, line in enumerate(lines[start:], start):
@@ -223,7 +229,7 @@ def _coverage_text_records(content, contract):
         heading = re.fullmatch(r'\s*(#{1,6})\s+(.+?)\s*', line)
         if heading and section_level and len(heading[1]) <= section_level:
             break
-        if _coverage_label(visible_markdown_links(stripped)) in COMMENT_CONTROLS:
+        if _coverage_label(visible_markdown_links(stripped)) in controls:
             current = None
             continue
         if _section_marker_tokens(line) in markers:
@@ -234,7 +240,7 @@ def _coverage_text_records(content, contract):
                 explicit_scope = True
             current = None
             continue
-        pingback = re.fullmatch(SCORER_POLICY["article_patterns"]["pingback_record"], line)
+        pingback = re.fullmatch('\\s*Pingback:\\s+(.+?)\\s*', line)
         if pingback:
             label = visible_markdown_links(pingback[1])
             rows.append({'author': label, 'text': visible_markdown_links(line).strip()})
@@ -275,14 +281,14 @@ def _verify_comment_coverage(content, contract):
                 else _coverage_text_records(article_markdown(content), contract))
     else:
         rows = _coverage_text_records(content, contract)
-    valid = valid_comment_records(rows)
+    valid = valid_comment_records(rows, contract)
     return {'article_comments_mode': 'fixed_coverage',
             'article_comments_pass': len(valid) >= contract['minimum_comments'],
             'article_comment_count': len(valid),
             'article_comment_minimum': contract['minimum_comments']}
 
 
-def verify_article_comments(content, contract, *, case_id, url):
+def verify_article_comments(content, contract):
     """Check fixed visible-comment coverage without a runtime reference."""
     validate_comment_contract(contract)
     return _verify_comment_coverage(content, contract)
