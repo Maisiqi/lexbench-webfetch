@@ -1,11 +1,12 @@
 """Reviewed text boundaries prevent unrelated page records from counting."""
+from article_contract_fixtures import comment_labels
 from copy import deepcopy
 
 import pytest
 
 from lexbench_webfetch.article_comments import validate_comment_contract, verify_article_comments
 
-CONTRACT = {
+CONTRACT = {**comment_labels(),
     'version': 2, 'minimum_comments': 2, 'record_selector': '.comment',
     'author_selector': '.author', 'body_selector': '.body',
     'section_markers': ['Comments', 'Post your reply'],

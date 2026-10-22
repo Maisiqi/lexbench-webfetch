@@ -58,14 +58,14 @@ def is_article_html(content):
         remaining = remaining[prefix.end():].lstrip()
 
 
-# Frozen v2-input compatibility defaults. New authored contracts declare labels.
-# Never expand these lists to onboard a site; labels belong to its input contract.
-ARTICLE_CONTROLS = frozenset({'load more', 'read more', '登录', 'log in', '点赞', 'sign in', 'likes', 'replies', 'report', 'reply', '回复', 'show more', '加载更多', '展开', '查看更多', 'like', 'share', '注册'})
-COMMENT_CONTROLS = frozenset({'read more', '登录', '加载更多', '添加评论', 'like', 'share', 'register', 'report', 'show more', 'sign in', '注册', '点赞', 'leave a reply', 'likes', '登录后评论', 'reply', '查看更多', 'load more', 'log in', 'replies', '回复', 'login', 'add a comment', '展开', '展开回复', '发表评论'})
-COMMENT_PLACEHOLDERS = frozenset({'this comment has been hidden (marked as spam)', '[内容不可见]', '[deleted]', 'this comment has been hidden', '[removed]', '[已删除]'})
-
-
-POST_CONTROLS = frozenset({'read more', '登录', '加载更多', '转发', '分享', 'like', '查看', 'share', 'report', 'show more', 'sign in', '收藏', '注册', '点赞', 'bookmarks', 'likes', 'reply', '今天', '查看更多', 'views', 'yesterday', 'load more', 'log in', 'replies', 'reposts', 'repost', 'today', 'view', '回复', '昨天', '展开', 'bookmark', 'permalink'})
+TIMESTAMP_LINE = re.compile(
+    r'(?:\d{4}[-/]\d{1,2}[-/]\d{1,2}(?:[ T]\d{1,2}:\d{2}'
+    r'(?::\d{2})?(?:Z|[+-]\d{2}:?\d{2})?)?'
+    r'|\d{1,2}:\d{2}(?::\d{2})?(?:\s*[AP]M)?'
+    r'|\d+\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)\s+ago'
+    r'|\d+\s*(?:秒|分钟|小时|天|周|个月|年)前|刚刚)', re.I)
+DATE_LINE = re.compile(r'\d{4}[-/]\d{1,2}[-/]\d{1,2}')
+FENCE = re.compile(r'(?ms)^\s*(`{3,}|~{3,}).*?^\s*\1[^\n]*$')
 
 
 def article_markdown(content):
@@ -118,17 +118,22 @@ def article_markdown(content):
     return render(soup)
 
 
-def validate_labels(contract):
-    """Reject malformed task-declared labels rather than silently widening scope."""
-    for field in ('ignored_labels', 'unavailable_notices'):
-        if field in contract:
-            labels = contract[field]
-            if (not isinstance(labels, list) or any(not isinstance(label, str)
-                    or not label.strip() for label in labels) or len(set(labels)) != len(labels)):
-                raise ValueError('Invalid task-declared ' + field)
+def label_key(text):
+    """Normalize whole-label formatting identically for rules and observations."""
+    return ' '.join(unicodedata.normalize('NFKC', text).split()).casefold().strip(':：*_').strip()
 
 
-def declared_labels(contract, field, legacy):
-    """Use an explicit task list, including an explicit empty list, verbatim."""
-    return frozenset(' '.join(unicodedata.normalize('NFKC', label).split()).casefold().strip(':：')
-                     for label in contract.get(field, legacy))
+def validate_labels(contract, fields=('ignored_labels', 'unavailable_notices')):
+    """Require explicit task labels; an empty list is valid, an omission is not."""
+    for field in fields:
+        labels = contract.get(field)
+        if (not isinstance(labels, list) or any(not isinstance(label, str)
+                or not label_key(label) for label in labels)):
+            raise ValueError('Invalid or missing task-declared ' + field)
+        if len({label_key(label) for label in labels}) != len(labels):
+            raise ValueError('Duplicate task-declared ' + field)
+
+
+def declared_labels(contract, field):
+    """Read the validated, explicit task list without runtime defaults."""
+    return frozenset(label_key(label) for label in contract[field])

@@ -1,4 +1,5 @@
 """Article authoring must reject incomplete references and incomplete answers."""
+from article_contract_fixtures import comment_labels, post_labels
 import copy
 import hashlib
 import html
@@ -169,7 +170,7 @@ class ArticleContracts(unittest.TestCase):
             with self.assertRaises(ValueError):
                 compile_case(self.case, invalid, self.root)
         invalid = copy.deepcopy(rule)
-        invalid["comment_contract"] = {
+        invalid["comment_contract"] = {**comment_labels(),
             "version": 2, "minimum_comments": 1, "record_selector": ".comment",
             "author_selector": ".author", "body_selector": ".body",
             "section_markers": ["Comments"]}
@@ -325,7 +326,7 @@ class ArticleContracts(unittest.TestCase):
 
     def test_post_collection_uses_fixed_coverage_with_independent_qualification(self):
         case = {**self.case, "url": "https://example.test/feed", "page_type": "collection"}
-        contract = {
+        contract = {**post_labels(),
             "version": 2, "hosts": ["example.test"], "entry_path": r"/research/[a-z]+",
             "html_record_selector": "article", "html_permalink_selector": "a.permalink",
             "html_author_selector": ".author", "html_body_selector": ".post-body",
@@ -471,7 +472,7 @@ class ArticleContracts(unittest.TestCase):
                             for change in revision['changes']))
         self.assertTrue(all(c['platform'] != '搜狗微信' for c in cohort['cases']))
         final = next(r for r in cohort['revisions'] if r['revision'] == 4)
-        self.assertEqual(cohort['revisions'][-1]['revision'], 11)
+        self.assertEqual(cohort['revisions'][-1]['revision'], 12)
         self.assertEqual({c['id'] for c in final['changes'] if c['action'] == 'replace'},
                          {'article-001', 'article-002', 'article-003', 'article-079', 'article-082'})
         self.assertEqual([c['id'] for c in final['changes'] if c['action'] == 'remove'],
@@ -479,7 +480,7 @@ class ArticleContracts(unittest.TestCase):
         self.assertTrue(all(rule['status'] == 'verified' for rule in rules))
         self.assertEqual(sum(rule['target_kind'] == 'post_collection' for rule in rules), 5)
         fixed = [r for r in rules if r['target_kind'] == 'fixed_article']
-        self.assertEqual(cohort['id'], 'articles-v8')
+        self.assertEqual(cohort['id'], 'articles-v9')
         self.assertEqual(len(fixed), 95)
         self.assertEqual(sum('title_contract' in r for r in fixed), 90)
         self.assertEqual(sum('comment_contract' in r for r in fixed), 20)

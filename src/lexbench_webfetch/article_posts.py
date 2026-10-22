@@ -7,7 +7,8 @@ import soupsieve
 
 from .body_coverage import tokens
 from .dynamic_lists import named_entry_identity, visible_html_text
-from .article_text import article_html, is_article_html, article_markdown, POST_CONTROLS, validate_labels, declared_labels
+from .article_text import (article_html, is_article_html, article_markdown, TIMESTAMP_LINE,
+                           DATE_LINE, FENCE, label_key, validate_labels, declared_labels)
 from .reference_quality import markdown_links, visible_markdown_links
 
 
@@ -17,7 +18,7 @@ def validate_post_contract(contract):
         allowed = {'version', 'hosts', 'entry_path', 'html_record_selector',
                    'html_permalink_selector', 'html_author_selector', 'html_body_selector',
                    'html_quote_selector', 'quote_markers',
-                   'allow_empty_outer_with_quotes', 'minimum_posts', 'ignored_labels', 'unavailable_notices'}
+                   'allow_empty_outer_with_quotes', 'minimum_posts', 'ignored_labels', 'unavailable_notices', 'non_author_labels'}
         if not isinstance(contract, dict) or set(contract) - allowed:
             raise ValueError('unknown frozen post contract fields')
         if type(contract['version']) is not int or contract['version'] != 2 or not isinstance(contract['hosts'], list) or not contract['hosts']:
@@ -34,7 +35,7 @@ def validate_post_contract(contract):
             raise ValueError('invalid fixed coverage bound')
         if type(contract.get('allow_empty_outer_with_quotes', False)) is not bool:
             raise ValueError('invalid empty outer opt-in')
-        validate_labels(contract)
+        validate_labels(contract, ('ignored_labels', 'unavailable_notices', 'non_author_labels'))
         markers = contract.get('quote_markers', [])
         if not isinstance(markers, list) or any(not isinstance(x, str) or not x.strip() for x in markers):
             raise ValueError('invalid quote markers')
@@ -110,19 +111,9 @@ def _html_records(content, contract):
     return rows
 
 
-def _markdown_records(content, contract, url):
-    # A fenced reference or source dump is not a rendered article record.
-    content = re.sub(r'(?ms)^\s*(`{3,}|~{3,}).*?^\s*\1[^\n]*$', '', content)
-    # HTML visibility projection drops empty lines. Preserve Markdown paragraph
-    # boundaries across that projection so a blockquote cannot absorb a later
-    # unquoted paragraph. Choose a marker absent from the answer itself.
-    paragraph_marker = '\ue000post-paragraph-break\ue001'
-    while paragraph_marker in content:
-        paragraph_marker += '_'
-    content = re.sub(r'\n[ \t]*\n', '\n'+paragraph_marker+'\n', content)
-    content = visible_html_text(content, preserve_source_whitespace=True, preserve_links=True)
-    content = content.replace(paragraph_marker, '')
-    lines, headers = content.splitlines(), []
+def _post_headers(lines, contract, url):
+    """Identify owned permalink headings before parsing their body ranges."""
+    headers = []
     header_level = None
     for index, line in enumerate(lines):
         heading = re.match(r'^\s*(#{1,6})\s+', line)
@@ -177,13 +168,31 @@ def _markdown_records(content, contract, url):
             author = visible_markdown_links(link.label)
         if (not re.sub(
                 r'^(?:#{1,6}|[-*+]|\d+[.)])(?:\s+|$)', '', prefix).strip()
-                and re.fullmatch('(?:today|yesterday|date|time|permalink|view post|post|今天|昨天|详情|查看帖子|\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})',
-                                 author, re.I)):
+                and (label_key(author) in declared_labels(contract, 'non_author_labels')
+                     or DATE_LINE.fullmatch(author))):
             author = ''
         if not prefix and index and lines[index-1].strip() and not lines[index-1].startswith('>'):
             author = visible_markdown_links(lines[index-1])
             header = author+'\n'+header
         headers.append((index, link.destination, header, author))
+    return headers
+
+
+def _markdown_records(content, contract, url):
+    # Fenced source snippets cannot introduce post identities or supply post prose.
+    # Comments keep code as owned text; posts deliberately require unfenced prose.
+    content = FENCE.sub('', content)
+    # HTML visibility projection drops empty lines. Preserve Markdown paragraph
+    # boundaries across that projection so a blockquote cannot absorb a later
+    # unquoted paragraph. Choose a marker absent from the answer itself.
+    paragraph_marker = '\ue000post-paragraph-break\ue001'
+    while paragraph_marker in content:
+        paragraph_marker += '_'
+    content = re.sub(r'\n[ \t]*\n', '\n'+paragraph_marker+'\n', content)
+    content = visible_html_text(content, preserve_source_whitespace=True, preserve_links=True)
+    content = content.replace(paragraph_marker, '')
+    lines = content.splitlines()
+    headers = _post_headers(lines, contract, url)
     rows = []
     markers = {x.casefold().rstrip(':：') for x in contract.get('quote_markers', [])}
     for n, (start, destination, header, author) in enumerate(headers):
@@ -238,25 +247,23 @@ def _initial_surface(content):
     return str(article_html(content)) if re.search(r'<details\b', content, re.I) else content
 
 
-def _has_post_prose(text, contract=None):
+def _has_post_prose(text, contract):
     """Reject metadata-only serialized fields, without filtering prose mentions.
 
     This narrow whole-line filter cannot distinguish date-only prose from a
     serializer timestamp; it does not authenticate or compare dynamic text.
     """
-    contract = contract or {}
-    controls = declared_labels(contract, "ignored_labels", POST_CONTROLS)
-    unavailable = declared_labels(contract, "unavailable_notices", [])
+    controls = declared_labels(contract, "ignored_labels")
+    unavailable = declared_labels(contract, "unavailable_notices")
     for line in text.splitlines():
         line = unicodedata.normalize('NFKC', visible_markdown_links(line)).strip()
-        if not line or line.casefold().strip(":：") in unavailable:
+        if not line or label_key(line) in unavailable:
             continue
-        if re.fullmatch(
-                '(?:\\d{4}[-/]\\d{1,2}[-/]\\d{1,2}(?:[ T]\\d{1,2}:\\d{2}(?::\\d{2})?(?:Z|[+-]\\d{2}:?\\d{2})?)?|\\d{1,2}:\\d{2}(?::\\d{2})?(?:\\s*[AP]M)?|\\d+\\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)\\s+ago|\\d+\\s*(?:秒|分钟|小时|天|周|个月|年)前|刚刚)', line, re.I):
+        if TIMESTAMP_LINE.fullmatch(line):
             continue
-        labels = [part.strip().casefold().strip(':：*_')
+        labels = [label_key(part)
                   for part in re.split(r'\s*[|·•]\s*', line)]
-        if all(re.sub(r'(?:^\d+\s*|\s*\d+$)', '', label).strip() in controls
+        if all(label_key(re.sub(r'(?:^\d+\s*|\s*\d+$)', '', label)) in controls
                for label in labels):
             continue
         return True

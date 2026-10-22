@@ -1,6 +1,6 @@
 # Article suite authoring
 
-The registered `articles` suite (`articles-v8`) contains 100 qualified URLs: 95 fixed articles
+The registered `articles` suite (`articles-v9`) contains 100 qualified URLs: 95 fixed articles
 and five changing post collections. `cohort.json` preserves candidate identities
 and revision history; `rules.json` contains all 100 verified contracts. Public
 tasks, the catalog and input manifest bind the complete executable dataset.
@@ -152,14 +152,15 @@ indistinguishable from body subheadings, links or quoted text. The scorer does n
 promise to resolve those ambiguous representations. An explicit comment heading
 allows repeated body endings before that heading to be disambiguated.
 
-Each current comment/post contract declares `ignored_labels` and
-`unavailable_notices`; only normalized whole labels match. `labels.json` records
-the reviewed authoring defaults and is hash-bound to this suite's inputs. Runtime
-scoring reads labels from the task, never from a global policy file. Adding a
-language or site changes its task data, not the scorer. Explicit empty lists
-remain empty. Older v2 inputs lacking these fields retain frozen compatibility
-defaults; do not expand those defaults to onboard new sites. Syntax recognition
-(HTML/Markdown, timestamps and count decorations) remains parser code.
+Each comment/post contract requires explicit `ignored_labels` and
+`unavailable_notices` lists. Post contracts also require `non_author_labels` for
+permalink captions that cannot identify an author. Empty lists are valid; omitted
+fields and normalized duplicates are rejected. Rules and observations share whole
+label normalization for Unicode width, whitespace, case and emphasis decoration.
+`rules.json` is the sole authoring source; compiled tasks carry these lists without
+runtime defaults or another policy file. Historical inputs remain reproducible
+with their original commits. Syntax recognition (HTML/Markdown, timestamps and
+count decorations) remains parser code.
 
 The minimum equals the independently reviewed valid record count when that count
 is at most five; otherwise it equals 80% of that count, rounded up. The baseline
@@ -229,20 +230,13 @@ products while authoring. Run `make check` and submit a feature-branch PR.
 To compile all verified cases from an independently acquired evidence directory:
 
 ```sh
-uv run --frozen python - /absolute/path/evidence /absolute/path/dataset.json <<'PYTHON'
-import json
-import sys
-from pathlib import Path
-from lexbench_webfetch.article_dataset import compile_dataset
-
-dataset = compile_dataset(Path(sys.argv[1]))
-Path(sys.argv[2]).write_text(json.dumps(dataset, ensure_ascii=False, indent=2) + "\n")
-PYTHON
+uv run --frozen python -m lexbench_webfetch.cli compile-articles \
+  --evidence-home /absolute/path/evidence --output /absolute/path/new-dataset.json
 ```
 
 Compilation requires the exact hash-bound source files declared in the rules.
 It does not download pages or call providers. Runtime scoring needs the compiled
-input and response, not the historical source bundle. The input bundle also binds
-`labels.json` for authoring provenance; all runtime labels are in the compiled tasks. Source-capture controls
+input and response, not the historical source bundle. Compilation refuses to
+overwrite existing outputs or pinned reference inputs. Source-capture controls
 are supplementary external evidence; repository tests use reproducible synthetic
 accepted and rejected responses.

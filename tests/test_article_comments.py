@@ -1,10 +1,11 @@
 """Historical comment qualification is separate from the current runtime."""
+from article_contract_fixtures import comment_labels
 from copy import deepcopy
 import pytest
 from lexbench_webfetch.article_comments import validate_comment_contract, verify_article_comments
 from lexbench_webfetch.article_qualification import qualify_article_comments
 
-CONTRACT = {'version': 2, 'minimum_comments': 1, 'record_selector': '.comment',
+CONTRACT = {**comment_labels(), 'version': 2, 'minimum_comments': 1, 'record_selector': '.comment',
             'author_selector': '.author', 'body_selector': '.text', 'section_markers': ['Comments']}
 REFERENCE = {'version': 1, 'case_id': 'article', 'url': 'https://example.test/article',
              'scope': 'initial_load_only', 'observation_complete': True,

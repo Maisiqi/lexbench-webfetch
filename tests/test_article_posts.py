@@ -1,10 +1,11 @@
 """Historical post qualification never scores an empty runtime answer."""
+from article_contract_fixtures import post_labels
 from copy import deepcopy
 import pytest
 from lexbench_webfetch.article_posts import validate_post_contract, verify_article_posts
 from lexbench_webfetch.article_qualification import qualify_article_posts
 
-CONTRACT = {'version': 2, 'hosts': ['example.test'], 'entry_path': r'/post/\d+',
+CONTRACT = {**post_labels(), 'version': 2, 'hosts': ['example.test'], 'entry_path': r'/post/\d+',
             'html_record_selector': '.post', 'html_permalink_selector': 'a',
             'html_author_selector': '.author', 'html_body_selector': '.body',
             'minimum_posts': 1, 'allow_empty_outer_with_quotes': True}

@@ -1,4 +1,5 @@
 """The standalone scorer must preserve the independent reference boundary."""
+from article_contract_fixtures import post_labels
 import json
 import subprocess
 import sys
@@ -15,7 +16,7 @@ def test_cli_scores_fixed_posts_without_runtime_reference(tmp_path, include_body
         "category": "article", "track": "articles", "task_kind": "body", "expected_any": [],
         "acceptance_contract": {"version": 1, "schema": "body_text", "minimum_records": 0,
                                 "page_patterns": ["Article feed"]},
-        "source_benchmark": {"mode": "article_post_collection", "post_contract": {
+        "source_benchmark": {"mode": "article_post_collection", "post_contract": {**post_labels(),
             "version": 2, "hosts": ["example.test"], "entry_path": r"/post/[0-9]+",
             "html_record_selector": "article", "html_permalink_selector": "a.time",
             "html_author_selector": ".author", "html_body_selector": ".body",
@@ -46,3 +47,38 @@ def test_cli_rejects_removed_reference_arguments(tmp_path, argument):
     ], cwd=tmp_path, text=True, capture_output=True)
     assert result.returncode == 2
     assert "unrecognized arguments" in result.stderr
+
+
+def test_compile_articles_cli_and_output_protection(tmp_path, monkeypatch, capsys):
+    from lexbench_webfetch import cli, article_dataset
+    dataset = {"case_count": 1, "cases": [{"id": "synthetic"}]}
+    def compile_candidate(evidence, definitions):
+        assert evidence == tmp_path / "evidence"
+        return dataset
+    monkeypatch.setattr(article_dataset, "compile_dataset", compile_candidate)
+    output = tmp_path / "candidate.json"
+    monkeypatch.setattr(sys, "argv", ["lexbench-webfetch", "compile-articles",
+        "--evidence-home", str(tmp_path / "evidence"), "--output", str(output)])
+    cli.main()
+    assert json.loads(output.read_text()) == dataset
+    assert json.loads(capsys.readouterr().out)["case_count"] == 1
+    with pytest.raises(SystemExit) as error:
+        cli.main()
+    assert error.value.code == 1
+    assert "already exists" in capsys.readouterr().err
+    assert json.loads(output.read_text()) == dataset
+    output.unlink()
+    (tmp_path / "source-inputs.json").write_text("{}")
+    with pytest.raises(SystemExit):
+        cli.main()
+    assert "immutable" in capsys.readouterr().err
+    assert not output.exists()
+
+
+def test_compile_articles_cli_rejects_missing_evidence(tmp_path):
+    output = tmp_path / "candidate.json"
+    result = subprocess.run([sys.executable, "-m", "lexbench_webfetch.cli",
+        "compile-articles", "--evidence-home", str(tmp_path / "missing"),
+        "--output", str(output)], text=True, capture_output=True)
+    assert result.returncode == 1
+    assert not output.exists()

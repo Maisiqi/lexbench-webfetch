@@ -1,4 +1,5 @@
 """Additive component acceptance must apply through every public scoring boundary."""
+from article_contract_fixtures import comment_labels
 import copy
 import json
 import subprocess
@@ -14,7 +15,7 @@ from lexbench_webfetch.scoring import score_attempt
 
 class ArticleComponentIntegration(unittest.TestCase):
     def setUp(self):
-        self.comment = {
+        self.comment = {**comment_labels(),
             "version": 2, "record_selector": ".comment", "author_selector": ".author",
             "body_selector": ".text", "section_markers": ["Comments"],
             "minimum_comments": 1,

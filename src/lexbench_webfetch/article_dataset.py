@@ -249,18 +249,6 @@ def compile_dataset(evidence_home: Path, definition_dir: Path = DEFINITIONS) -> 
                for name in ("cohort.json", "rules.json")}
     cohort = json.loads(sources["cohort.json"])
     document = json.loads(sources["rules.json"])
-    if "label_defaults_sha256" in document:
-        raw = (definition_dir / "labels.json").read_bytes()
-        if hashlib.sha256(raw).hexdigest() != document["label_defaults_sha256"]:
-            raise ValueError("Changed article label defaults")
-        labels = json.loads(raw)
-        from .article_text import validate_labels
-        if (not isinstance(labels, dict) or labels.get("version") != 1
-                or set(labels) != {"version", "ignored_labels", "unavailable_notices", "post_ignored_labels"}):
-            raise ValueError("Invalid article label defaults")
-        validate_labels(labels)
-        validate_labels({"ignored_labels": labels["post_ignored_labels"]})
-        sources["labels.json"] = raw
     cases, rules = cohort["cases"], document["rules"]
     ids = [case["id"] for case in cases]
     if (cohort.get("schema_version") != 1 or document.get("schema_version") != 1

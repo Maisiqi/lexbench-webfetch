@@ -2,12 +2,11 @@
 from __future__ import annotations
 
 import re
-import unicodedata
 
 import soupsieve
 
 from .article_text import (author_key, article_html, without_markdown_images, is_article_html,
-                           article_markdown, COMMENT_CONTROLS, COMMENT_PLACEHOLDERS,
+                           article_markdown, TIMESTAMP_LINE, FENCE, label_key,
                            validate_labels, declared_labels)
 from .body_coverage import tokens
 from .dynamic_lists import visible_html_text
@@ -77,8 +76,8 @@ def _html_records(content, contract):
 def _section_marker_tokens(line):
     """Ignore changing count decorations only on a comment section heading."""
     label = re.sub(r'^\s*#{1,6}\s+', '', line).strip().rstrip(':：')
-    label = re.sub('^[0-9]+(?:\\s*(?:条|则|件)\\s*|\\s+)', '', label)
-    label = re.sub('\\s*(?:\\(\\s*[0-9]+\\s*(?:条|则|件)?\\s*\\)|（\\s*[0-9]+\\s*(?:条|则|件)?\\s*）)\\s*$', '', label)
+    label = re.sub(r'^[0-9]+(?:\s*(?:条|则|件)\s*|\s+)', '', label)
+    label = re.sub(r'\s*(?:\(\s*[0-9]+\s*(?:条|则|件)?\s*\)|（\s*[0-9]+\s*(?:条|则|件)?\s*）)\s*$', '', label)
     return tuple(tokens(label))
 
 
@@ -86,27 +85,22 @@ def _section_marker_tokens(line):
 # whole labels only: a real comment can discuss logging in or loading a page.
 
 
-def _coverage_label(value):
-    return ' '.join(unicodedata.normalize('NFKC', value).split()).casefold().strip(':：')
-
-
-def valid_comment_records(rows, contract=None):
-    contract = contract or {}
-    controls = declared_labels(contract, 'ignored_labels', COMMENT_CONTROLS)
-    unavailable = declared_labels(contract, 'unavailable_notices', COMMENT_PLACEHOLDERS)
+def valid_comment_records(rows, contract):
+    controls = declared_labels(contract, 'ignored_labels')
+    unavailable = declared_labels(contract, 'unavailable_notices')
     valid, seen = [], set()
     for row in rows:
         author, body = row.get('author'), row.get('text')
         if (author_key(author) is None or not isinstance(body, str)
                 or author_key(body) is None
-                or _coverage_label(author) in controls
-                or _coverage_label(body) in controls
-                or _coverage_label(body) in unavailable):
+                or label_key(author) in controls
+                or label_key(body) in controls
+                or label_key(body) in unavailable):
             continue
         # Preserve separately identified equal comments. Without source IDs,
         # repeated identical records provide no evidence of additional coverage.
         identity = ('id', row.get('source_id') or row.get('id')) if row.get('source_id') or row.get('id') else (
-            'text', author_key(author), _coverage_label(body))
+            'text', author_key(author), label_key(body))
         if identity not in seen:
             seen.add(identity)
             valid.append(row)
@@ -121,8 +115,7 @@ def _comment_time_metadata(line):
     unambiguous representation for that unusual case.
     """
     stamp = visible_markdown_links(line).strip()
-    return bool(re.fullmatch(
-        '(?:\\d{4}[-/]\\d{1,2}[-/]\\d{1,2}(?:[ T]\\d{1,2}:\\d{2}(?::\\d{2})?(?:Z|[+-]\\d{2}:?\\d{2})?)?|\\d{1,2}:\\d{2}(?::\\d{2})?(?:\\s*[AP]M)?|\\d+\\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)\\s+ago|\\d+\\s*(?:秒|分钟|小时|天|周|个月|年)前|刚刚)', stamp, re.I))
+    return bool(TIMESTAMP_LINE.fullmatch(stamp))
 
 
 def _coverage_text_start(lines, contract):
@@ -185,6 +178,27 @@ def _coverage_text_start(lines, contract):
     return (first, 0, True) if found_ending else (None, 0, False)
 
 
+def _text_author(stripped, heading, heading_authors, explicit_scope, new_paragraph):
+    """Recognize one author format without treating inline prose as a new record."""
+    if heading:
+        return heading[2], '', True
+    if heading_authors:
+        return None, '', True
+    links = [link for link in markdown_links(stripped) if not link.is_image]
+    if len(links) == 1 and links[0].start == 0 and links[0].end == len(stripped):
+        return links[0].label, '', False
+    bold = re.fullmatch(r'\*\*(.+?)\*\*[:：]?', stripped)
+    if bold:
+        return bold[1], '', False
+    colon = re.fullmatch(r'([^\n:：]{1,120})[:：]\s*(.*)', stripped)
+    if explicit_scope and colon:
+        if new_paragraph:
+            return colon[1], colon[2], False
+        if not colon[2]:
+            return colon[1], '', False
+    return None, '', False
+
+
 def _coverage_text_records(content, contract):
     """Read explicit author/body formatting without a frozen author list.
 
@@ -203,7 +217,7 @@ def _coverage_text_records(content, contract):
         key = prefix + str(len(fences))
         fences[key] = match.group(0)
         return '\n' + key + '\n'
-    content = re.sub(r'(?ms)^\s*(`{3,}|~{3,}).*?^\s*\1[^\n]*$', protect, content)
+    content = FENCE.sub(protect, content)
     content = without_markdown_images(content)
     paragraph_marker = prefix + 'paragraph'
     content = re.sub(r'\n[ \t]*\n', '\n' + paragraph_marker + '\n', content)
@@ -214,7 +228,7 @@ def _coverage_text_records(content, contract):
     if start is None:
         return []
     end_markers = {_section_marker_tokens(x) for x in contract.get('text_scope', {}).get('end_markers', [])}
-    controls = declared_labels(contract, "ignored_labels", COMMENT_CONTROLS)
+    controls = declared_labels(contract, "ignored_labels")
     rows, current = [], None
     heading_authors = False
     for offset, line in enumerate(lines[start:], start):
@@ -229,7 +243,7 @@ def _coverage_text_records(content, contract):
         heading = re.fullmatch(r'\s*(#{1,6})\s+(.+?)\s*', line)
         if heading and section_level and len(heading[1]) <= section_level:
             break
-        if _coverage_label(visible_markdown_links(stripped)) in controls:
+        if label_key(visible_markdown_links(stripped)) in controls:
             current = None
             continue
         if _section_marker_tokens(line) in markers:
@@ -240,32 +254,15 @@ def _coverage_text_records(content, contract):
                 explicit_scope = True
             current = None
             continue
-        pingback = re.fullmatch('\\s*Pingback:\\s+(.+?)\\s*', line)
+        pingback = re.fullmatch(r'\s*Pingback:\s+(.+?)\s*', line)
         if pingback:
             label = visible_markdown_links(pingback[1])
             rows.append({'author': label, 'text': visible_markdown_links(line).strip()})
             current = None
             continue
-        links = [link for link in markdown_links(stripped) if not link.is_image]
-        linked = len(links) == 1 and links[0].start == 0 and links[0].end == len(stripped)
-        bold = re.fullmatch(r'\*\*(.+?)\*\*[:：]?', stripped)
-        colon = re.fullmatch(r'([^\n:：]{1,120})[:：]\s*(.*)', stripped)
-        # Colon records need a paragraph boundary; prose/code inside a comment
-        # must not create new users merely by containing a colon.
-        author, body = None, ''
-        if heading:
-            author = heading[2]
-            heading_authors = True
-        elif heading_authors:
-            pass
-        elif linked:
-            author = links[0].label
-        elif bold:
-            author = bold[1]
-        elif explicit_scope and colon and (current is None or previous_blank):
-            author, body = colon[1], colon[2]
-        elif explicit_scope and colon and not colon[2]:
-            author = colon[1]
+        author, body, heading_authors = _text_author(
+            stripped, heading, heading_authors, explicit_scope,
+            current is None or previous_blank)
         if author is not None:
             current = {'author': visible_markdown_links(author), 'text': visible_markdown_links(body)}
             rows.append(current)

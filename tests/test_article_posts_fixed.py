@@ -1,4 +1,5 @@
 """Fixed post coverage does not require historical content or a run reference."""
+from article_contract_fixtures import post_labels
 from copy import deepcopy
 import unittest
 
@@ -7,7 +8,7 @@ from lexbench_webfetch.article_posts import validate_post_contract, verify_artic
 
 class FixedPostTests(unittest.TestCase):
     def setUp(self):
-        self.contract = {
+        self.contract = {**post_labels(),
             'version': 2, 'hosts': ['example.com'], 'entry_path': r'/post/\d+',
             'html_record_selector': 'article.post', 'html_permalink_selector': 'a.time',
             'html_author_selector': '.author', 'html_body_selector': '.body',
@@ -107,7 +108,7 @@ class FixedPostTests(unittest.TestCase):
     def test_contract_bounds_and_version_fields(self):
         validate_post_contract(self.contract)
         for value in (0, -1, True, 1.5, None):
-            contract = {**self.contract, 'minimum_posts': value}
+            contract = {**post_labels(), **self.contract, 'minimum_posts': value}
             with self.assertRaises(ValueError):
                 validate_post_contract(contract)
         for key in ('required_ratio', 'max_reference_age_seconds'):

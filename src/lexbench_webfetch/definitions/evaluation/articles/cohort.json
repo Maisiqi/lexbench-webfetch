@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v8",
+  "id": "articles-v9",
   "status": "qualified",
   "case_count": 100,
   "approved_on": "2026-10-20",
@@ -915,7 +915,7 @@
       "task_prompt": "直接获取此网址首次自动加载完成后、无需操作就已展示的文章或帖子内容，包括原有标题、正文、已展示的评论和回复，以及相关稳定页面文字；保留段落、章节、列表、表格和文字链接。不得点击、展开、切换、登录、翻页或滚动触发加载；不要求因此才会出现的正文、评论或回复。"
     }
   ],
-  "revision": 11,
+  "revision": 12,
   "revisions": [
     {
       "revision": 2,
@@ -2751,6 +2751,40 @@
           "id": "article-103",
           "action": "bind_record_labels_in_contract",
           "component": "comment_contract"
+        }
+      ]
+    },
+    {
+      "revision": 12,
+      "dataset_id": "articles-v9",
+      "approved_on": "2026-10-22",
+      "previous_dataset_id": "articles-v8",
+      "previous_git_commit": "664b4d692337876e67459e11ce4500ba1dbdcc8f",
+      "previous_dataset_sha256": "35f81af41d95ca22bcc211301c541a27e96939feb658a81b6aee35a720c620d8",
+      "previous_cohort_sha256": "4cb46611bcc061e81136779a2b5631ac949304a11f0d8bab988de4080caff6c3",
+      "previous_rules_sha256": "d38c600db75acb3cbc608adf61fb1f76c46d0cca2234f6aeeab66b5372b6a199",
+      "retired_label_defaults_sha256": "96fa81c9af82a091173cb5f78e2129f647d9ba4d6d17dc9963472bd6d1553998",
+      "basis": "Use each task contract as the only label source; remove redundant authoring defaults and require explicit label fields. Move unchanged non-author labels into post contracts. Preserve source bodies, acceptance requirements and record floors.",
+      "changes": [
+        {
+          "id": "article-038",
+          "action": "bind_non_author_labels_in_contract"
+        },
+        {
+          "id": "article-039",
+          "action": "bind_non_author_labels_in_contract"
+        },
+        {
+          "id": "article-040",
+          "action": "bind_non_author_labels_in_contract"
+        },
+        {
+          "id": "article-041",
+          "action": "bind_non_author_labels_in_contract"
+        },
+        {
+          "id": "article-101",
+          "action": "bind_non_author_labels_in_contract"
         }
       ]
     }

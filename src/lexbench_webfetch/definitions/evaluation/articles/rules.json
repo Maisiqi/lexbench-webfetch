@@ -25786,7 +25786,20 @@
           "登录",
           "转发"
         ],
-        "unavailable_notices": []
+        "unavailable_notices": [],
+        "non_author_labels": [
+          "today",
+          "yesterday",
+          "date",
+          "time",
+          "permalink",
+          "view post",
+          "post",
+          "今天",
+          "昨天",
+          "详情",
+          "查看帖子"
+        ]
       },
       "acceptance_contract": {
         "version": 1,
@@ -26114,7 +26127,20 @@
           "登录",
           "转发"
         ],
-        "unavailable_notices": []
+        "unavailable_notices": [],
+        "non_author_labels": [
+          "today",
+          "yesterday",
+          "date",
+          "time",
+          "permalink",
+          "view post",
+          "post",
+          "今天",
+          "昨天",
+          "详情",
+          "查看帖子"
+        ]
       },
       "acceptance_contract": {
         "version": 1,
@@ -26758,7 +26784,20 @@
           "登录",
           "转发"
         ],
-        "unavailable_notices": []
+        "unavailable_notices": [],
+        "non_author_labels": [
+          "today",
+          "yesterday",
+          "date",
+          "time",
+          "permalink",
+          "view post",
+          "post",
+          "今天",
+          "昨天",
+          "详情",
+          "查看帖子"
+        ]
       },
       "acceptance_contract": {
         "version": 1,
@@ -27269,7 +27308,20 @@
           "登录",
           "转发"
         ],
-        "unavailable_notices": []
+        "unavailable_notices": [],
+        "non_author_labels": [
+          "today",
+          "yesterday",
+          "date",
+          "time",
+          "permalink",
+          "view post",
+          "post",
+          "今天",
+          "昨天",
+          "详情",
+          "查看帖子"
+        ]
       },
       "acceptance_contract": {
         "version": 1,
@@ -69688,7 +69740,20 @@
           "登录",
           "转发"
         ],
-        "unavailable_notices": []
+        "unavailable_notices": [],
+        "non_author_labels": [
+          "today",
+          "yesterday",
+          "date",
+          "time",
+          "permalink",
+          "view post",
+          "post",
+          "今天",
+          "昨天",
+          "详情",
+          "查看帖子"
+        ]
       },
       "acceptance_contract": {
         "version": 1,
@@ -72994,6 +73059,5 @@
       }
     }
   ],
-  "benchmark_revision": 11,
-  "label_defaults_sha256": "96fa81c9af82a091173cb5f78e2129f647d9ba4d6d17dc9963472bd6d1553998"
+  "benchmark_revision": 12
 }

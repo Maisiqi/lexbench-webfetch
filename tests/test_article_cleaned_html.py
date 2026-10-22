@@ -1,13 +1,14 @@
 """Cleaned HTML retains semantic boundaries, never competes with native records."""
+from article_contract_fixtures import comment_labels, post_labels
 from copy import deepcopy
 import pytest
 from lexbench_webfetch.article_comments import verify_article_comments
 from lexbench_webfetch.article_posts import verify_article_posts
 
-COMMENTS = {'version': 2, 'minimum_comments': 2, 'record_selector': '.comment',
+COMMENTS = {**comment_labels(), 'version': 2, 'minimum_comments': 2, 'record_selector': '.comment',
             'author_selector': '.author', 'body_selector': '.body', 'section_markers': ['Comments'],
             'text_scope': {'body_end': 'Article ending.', 'end_markers': ['Related articles']}}
-POSTS = {'version': 2, 'minimum_posts': 2, 'hosts': ['example.test'], 'entry_path': r'/post/\d+',
+POSTS = {**post_labels(), 'version': 2, 'minimum_posts': 2, 'hosts': ['example.test'], 'entry_path': r'/post/\d+',
          'html_record_selector': 'article.post', 'html_permalink_selector': 'a.permalink',
          'html_author_selector': '.author', 'html_body_selector': '.body'}
 

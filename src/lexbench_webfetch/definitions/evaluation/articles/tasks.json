@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "articles-v8",
+  "id": "articles-v9",
   "name": "Article retrieval",
   "tool": "web_fetch",
   "case_count": 100,
@@ -14,9 +14,8 @@
   },
   "interaction_policy": "initial_load_only_no_click_input_scroll_pagination_login_or_ocr",
   "source_bindings": {
-    "cohort_sha256": "4cb46611bcc061e81136779a2b5631ac949304a11f0d8bab988de4080caff6c3",
-    "rules_sha256": "d38c600db75acb3cbc608adf61fb1f76c46d0cca2234f6aeeab66b5372b6a199",
-    "labels_sha256": "96fa81c9af82a091173cb5f78e2129f647d9ba4d6d17dc9963472bd6d1553998"
+    "cohort_sha256": "a15b097e3180b40af449a508d008c0a231332ded07b0efda9e611217e88da27a",
+    "rules_sha256": "98cbce41a7ee97f46fd8a3cef58bcc94d8e5b443fc060a420a08fb2b342f00ea"
   },
   "cases": [
     {
@@ -13239,7 +13238,20 @@
             "登录",
             "转发"
           ],
-          "unavailable_notices": []
+          "unavailable_notices": [],
+          "non_author_labels": [
+            "today",
+            "yesterday",
+            "date",
+            "time",
+            "permalink",
+            "view post",
+            "post",
+            "今天",
+            "昨天",
+            "详情",
+            "查看帖子"
+          ]
         }
       },
       "rule_review": {
@@ -13535,7 +13547,20 @@
             "登录",
             "转发"
           ],
-          "unavailable_notices": []
+          "unavailable_notices": [],
+          "non_author_labels": [
+            "today",
+            "yesterday",
+            "date",
+            "time",
+            "permalink",
+            "view post",
+            "post",
+            "今天",
+            "昨天",
+            "详情",
+            "查看帖子"
+          ]
         }
       },
       "rule_review": {
@@ -13773,7 +13798,20 @@
             "登录",
             "转发"
           ],
-          "unavailable_notices": []
+          "unavailable_notices": [],
+          "non_author_labels": [
+            "today",
+            "yesterday",
+            "date",
+            "time",
+            "permalink",
+            "view post",
+            "post",
+            "今天",
+            "昨天",
+            "详情",
+            "查看帖子"
+          ]
         }
       },
       "rule_review": {
@@ -13933,7 +13971,20 @@
             "登录",
             "转发"
           ],
-          "unavailable_notices": []
+          "unavailable_notices": [],
+          "non_author_labels": [
+            "today",
+            "yesterday",
+            "date",
+            "time",
+            "permalink",
+            "view post",
+            "post",
+            "今天",
+            "昨天",
+            "详情",
+            "查看帖子"
+          ]
         }
       },
       "rule_review": {
@@ -36452,7 +36503,20 @@
             "登录",
             "转发"
           ],
-          "unavailable_notices": []
+          "unavailable_notices": [],
+          "non_author_labels": [
+            "today",
+            "yesterday",
+            "date",
+            "time",
+            "permalink",
+            "view post",
+            "post",
+            "今天",
+            "昨天",
+            "详情",
+            "查看帖子"
+          ]
         }
       },
       "rule_review": {

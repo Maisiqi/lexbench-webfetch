@@ -1,4 +1,5 @@
 """Static initial-comment coverage does not freeze changing discussion text."""
+from article_contract_fixtures import comment_labels
 from copy import deepcopy
 
 import pytest
@@ -6,7 +7,7 @@ import pytest
 from lexbench_webfetch.article_comments import validate_comment_contract, verify_article_comments
 from lexbench_webfetch.article_qualification import qualify_article_comments
 
-CONTRACT = {'version': 2, 'minimum_comments': 2, 'record_selector': '.comment',
+CONTRACT = {**comment_labels(), 'version': 2, 'minimum_comments': 2, 'record_selector': '.comment',
             'author_selector': '.author', 'body_selector': '.text',
             'section_markers': ['Comments', '评论'], 'id_attribute': 'data-id'}
 
@@ -68,7 +69,7 @@ def test_more_records_than_minimum_pass_and_symbol_content_is_allowed():
 
 
 @pytest.mark.parametrize('changes', [
-    {'minimum_comments': 0}, {'minimum_comments': True}, {'minimum_comments': 1.5},
+    {**comment_labels(), 'minimum_comments': 0}, {**comment_labels(), 'minimum_comments': True}, {**comment_labels(), 'minimum_comments': 1.5},
     {'parent_record_selector': '.comment'}, {'max_reference_age_seconds': 900},
     {'mode': 'observed_absent'}, {'record_selector': '['}, {'section_markers': []},
 ])
