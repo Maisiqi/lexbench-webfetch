@@ -38,6 +38,40 @@ row; acceptance, title, comment and collection contracts remain unchanged.
 
 The [follow-up review](https://github.com/lexmount/lexbench-webfetch/pull/5#issuecomment-6340008998) correctly distinguishes coverage limits from newly introduced bugs. Reproduction through the public scorer again accepts attributed distinct records with body `x` for all five collections, while removing their records fails. The main READMEs now disclose the structural scope directly rather than requiring readers to find it in the detailed contract. No score, floor or case is changed by that clarification.
 
-The user explicitly retained the five changing collections; replacing them with fixed articles/posts is no longer proposed. Retention does not establish acceptance of a stronger content-completeness claim. Per-run independent reference acquisition would change the previously requested reusable-reference workflow and has not been authorized. The structural contract is unchanged while that scope remains unresolved. The user has explicitly retained the five-region/80%-plus-ending fixed-body scope rather than adding per-module checks.
+The user explicitly retained the five changing collections; replacing them with fixed articles/posts is no longer proposed. Retention does not establish acceptance of a stronger content-completeness claim. Per-run independent reference acquisition would change the previously requested reusable-reference workflow and has not been authorized. The user has now confirmed retaining the structural contract for this PR. [Issue #9](https://github.com/lexmount/lexbench-webfetch/issues/9) tracks investigation of stronger dynamic-body coverage; it does not claim that coverage is implemented or that the reviewer approved the scope. The user has explicitly retained the five-region/80%-plus-ending fixed-body scope rather than adding per-module checks.
 
 A private handoff package has been prepared outside Git: it contains the frozen v11 scoring input for all 100 cases, the four original Weixin webarchives, their qualified extracts and scope evidence, and a checksum manifest. All 17 data files were checked after packaging. It does not contain the remaining 96 historical browser captures. It is not yet delivered to the reviewer or hosted at a shared location. Raw archives can contain session-bearing resource URLs; preparing a local package is not authorization to publish them.
+
+
+## Public reproduction follow-up
+
+Private delivery to one reviewer would not provide public reproducibility. The
+required scoring input and the original captures serve different purposes:
+`dataset.json` supplies the frozen scoring references; captures support auditing
+what the source displayed. A verified local scoring package exists separately
+from the larger capture package, but neither is currently publicly distributed.
+
+The v11 input passes `verify-inputs` for all 100 cases. A preliminary scan found
+no token/ticket/session/authentication parameter names in its extracted URLs;
+this is not a complete privacy audit or distribution clearance. The input does
+not include a per-source redistribution permission manifest.
+
+A source-policy check on 2026-10-22 found materially different conditions:
+[Our World in Data](https://ourworldindata.org/faqs),
+[PLOS](https://plos.org/terms-of-use/) and
+[Distill](https://distill.pub/journal/) provide reuse terms that require checking
+the specific content and attribution. [Quanta](https://www.quantamagazine.org/terms-conditions/)
+and [Pew](https://www.pewresearch.org/about/terms-and-conditions/) do not provide
+blanket permission for the proposed full-text bundle in the reviewed terms.
+No separate permission for that distribution is recorded. This is not a legal
+determination of statutory exceptions, and the remaining sources have not all
+been reviewed. The code license does not resolve these differences.
+
+Public distribution therefore remains open. A release must have a documented
+distribution basis, appropriate notices, a stable download location and matching
+hashes before it can be advertised as a reproducible public input package. Moving
+the same files to Release assets does not itself supply that basis. Publishing a
+permitted subset would not reproduce the complete 100-case v11 suite. Do not
+silently remove cases, replace references, alter frozen bytes, or present private
+delivery as completion of this requirement. No scoring changes are justified by
+this distribution gap.
