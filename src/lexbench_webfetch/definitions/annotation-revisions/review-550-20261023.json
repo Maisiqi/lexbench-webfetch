@@ -19,6 +19,10 @@
     "articles": {
       "tasks_sha256": "171241ea0bf3cb3f9482de14a7201885733fa717af56d7ea2b28d86a4516a3bb",
       "source_inputs_sha256": "0d9c729f14dae8abb3323a2cf4734736c4733957c9d74d5484033d204642b91b"
+    },
+    "popular-sites": {
+      "tasks_sha256": "82859ffb301740bcf38fee4fe87a675e8fb21af8dd660f92f74e4cbaede35b33",
+      "source_inputs_sha256": "32c31cfd5458a1dfe06d370fc2411a1eea5d1a05da8ef88e0dcd4fd3b0f3c810"
     }
   },
   "regression_ids": [
@@ -56,7 +60,15 @@
     "reviewed-document-definitions-complete",
     "reviewed-document-definitions-empty-with-padding",
     "reviewed-document-directory-complete",
-    "reviewed-document-directory-navigation-only"
+    "reviewed-document-directory-navigation-only",
+    "explicit-named-links-form-records",
+    "named-scope-heading-owns-records",
+    "named-scope-navigation-cannot-supply-records",
+    "product-owned-price-visible",
+    "product-price-simply-missing",
+    "separate-names-and-bare-urls-are-not-records",
+    "volatile-body-change-preserves-stable-anchor-pass",
+    "volatile-body-content-cannot-replace-stable-page-identity"
   ],
   "changes": [
     {
@@ -4862,9 +4874,427 @@
       "suite": "articles",
       "case_id": "article-090",
       "before_sha256": "ed24f8e3e2f5c2abd2a7ee414d9fb7da7d606c5a7e0f4e265d45829c612f20ae",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "Americans’\\ Use\\ of\\ Social\\ Media\\ in\\ 2026"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "Numbers, Facts and Trends Shaping Your World"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "Newsletters"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "Press"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "My Account"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "Donate"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "Contacted By Us?"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "Research Topics"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "Publications"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "Our Methods"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "Short Reads"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Tools & Datasets"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "Experts"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "About Us"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "Home"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "Internet & Technology"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "Platforms & Services"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "Social Media"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "Politics & Policy"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "International Affairs"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "Immigration & Migration"
+              ]
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "Race & Ethnicity"
+              ]
+            },
+            {
+              "id": "stable-23",
+              "alternatives": [
+                "Religion"
+              ]
+            },
+            {
+              "id": "stable-24",
+              "alternatives": [
+                "Age & Generations"
+              ]
+            },
+            {
+              "id": "stable-25",
+              "alternatives": [
+                "Gender & LGBTQ"
+              ]
+            },
+            {
+              "id": "stable-26",
+              "alternatives": [
+                "Family & Relationships"
+              ]
+            },
+            {
+              "id": "stable-27",
+              "alternatives": [
+                "Economy & Work"
+              ]
+            },
+            {
+              "id": "stable-28",
+              "alternatives": [
+                "Science"
+              ]
+            },
+            {
+              "id": "stable-29",
+              "alternatives": [
+                "News Habits & Media"
+              ]
+            },
+            {
+              "id": "stable-30",
+              "alternatives": [
+                "Methodological Research"
+              ]
+            },
+            {
+              "id": "stable-31",
+              "alternatives": [
+                "About"
+              ]
+            },
+            {
+              "id": "stable-32",
+              "alternatives": [
+                "Terms & Conditions"
+              ]
+            },
+            {
+              "id": "stable-33",
+              "alternatives": [
+                "Privacy Policy"
+              ]
+            },
+            {
+              "id": "stable-34",
+              "alternatives": [
+                "Cookie Policy"
+              ]
+            },
+            {
+              "id": "stable-35",
+              "alternatives": [
+                "Feedback"
+              ]
+            },
+            {
+              "id": "stable-36",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "stable-37",
+              "alternatives": [
+                "Contact Us"
+              ]
+            },
+            {
+              "id": "stable-38",
+              "alternatives": [
+                "(+1) 202-419-4300"
+              ]
+            },
+            {
+              "id": "stable-39",
+              "alternatives": [
+                "Follow Us"
+              ]
+            },
+            {
+              "id": "stable-40",
+              "alternatives": [
+                "Email Newsletters"
+              ]
+            },
+            {
+              "id": "stable-41",
+              "alternatives": [
+                "YouTube"
+              ]
+            },
+            {
+              "id": "stable-42",
+              "alternatives": [
+                "Instagram"
+              ]
+            },
+            {
+              "id": "stable-43",
+              "alternatives": [
+                "Facebook"
+              ]
+            },
+            {
+              "id": "stable-44",
+              "alternatives": [
+                "LinkedIn"
+              ]
+            },
+            {
+              "id": "stable-45",
+              "alternatives": [
+                "X"
+              ]
+            },
+            {
+              "id": "stable-46",
+              "alternatives": [
+                "Bluesky"
+              ]
+            },
+            {
+              "id": "stable-47",
+              "alternatives": [
+                "Threads"
+              ]
+            },
+            {
+              "id": "stable-48",
+              "alternatives": [
+                "RSS Feed"
+              ]
+            },
+            {
+              "id": "stable-49",
+              "alternatives": [
+                "ABOUT PEW RESEARCH CENTER"
+              ]
+            },
+            {
+              "id": "stable-50",
+              "alternatives": [
+                "The Pew Charitable Trusts"
+              ]
+            },
+            {
+              "id": "stable-51",
+              "alternatives": [
+                "901 E St. NW, Suite 300"
+              ]
+            },
+            {
+              "id": "stable-52",
+              "alternatives": [
+                "Washington, DC 20004"
+              ]
+            },
+            {
+              "id": "stable-53",
+              "alternatives": [
+                "USA"
+              ]
+            },
+            {
+              "id": "stable-54",
+              "alternatives": [
+                "ABOUT PEW RESEARCH CENTER Pew Research Center is a nonpartisan, nonadvocacy fact tank that informs the public about the issues, attitudes and trends shaping the world. It does not take policy positions. The Center conducts public opinion polling, demographic research, computational social science research and other data-driven research. Pew Research Center is a subsidiary of The Pew Charitable Trusts , its primary funder."
+              ]
+            },
+            {
+              "id": "review-collection-1",
+              "alternatives": [
+                "Fact Sheets: Tech Adoption Trends"
+              ]
+            },
+            {
+              "id": "review-collection-2",
+              "alternatives": [
+                "Internet/Broadband"
+              ]
+            },
+            {
+              "id": "review-collection-3",
+              "alternatives": [
+                "Mobile"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
-      "body_ending_order": true
+      "body_ending_order": true,
+      "body_projection": {
+        "source_sha256": "6f06ef5bdb5ba95d0516cdb97b2bb4a4fb46eff201c23b83fe987b40246139b9",
+        "source_chars": 2997,
+        "regions": [
+          {
+            "id": "body-region-1",
+            "label": "引言与研究主题",
+            "start": 71,
+            "end": 290,
+            "text_binding": {
+              "sha256": "e5516e85d09c7752eed30eccf9dd2865d815db3b3b487887637858b5b3701ebd",
+              "chars": 214
+            },
+            "source_text_binding": {
+              "sha256": "6ad1a4f8b82e7a48165f231b75bdb40c1de06325b78bc8cc287632c6542548b1",
+              "chars": 218
+            }
+          },
+          {
+            "id": "body-region-2",
+            "label": "Which social media platforms are most common?",
+            "start": 290,
+            "end": 1663,
+            "text_binding": {
+              "sha256": "c6c665d0c673c8517c6b2601c9ae6fe467a465003ca65cabcc93c383d299a4f5",
+              "chars": 1333
+            },
+            "source_text_binding": {
+              "sha256": "6af51981c0e316008fe987afc1b107f99523bbc7d5a9442eda3c005d48775042",
+              "chars": 1372
+            }
+          },
+          {
+            "id": "body-region-3",
+            "label": "Who uses each social media platform?",
+            "start": 1663,
+            "end": 2359,
+            "text_binding": {
+              "sha256": "3029100632089a81941a0732d5785100a978f0413083bdc417cefd7827415e23",
+              "chars": 625
+            },
+            "source_text_binding": {
+              "sha256": "bf458edfc8c91b743d10581f9b5ffd4567c321867b02a352212d30eaff5f2566",
+              "chars": 695
+            }
+          },
+          {
+            "id": "body-region-4",
+            "label": "Find out more",
+            "start": 2359,
+            "end": 2997,
+            "text_binding": {
+              "sha256": "d3c964c3a87e7e968c30cc15b0a78e23b47968a3b46202144d7fe2de3c02037c",
+              "chars": 614
+            },
+            "source_text_binding": {
+              "sha256": "fbc0fda35fa8353e09df2a74746b6e32b784fc11549496a853846987e41a23d3",
+              "chars": 637
+            }
+          }
+        ],
+        "ending": {
+          "start": 2860,
+          "end": 2996,
+          "text_binding": {
+            "sha256": "4b1519629f212403efd30fed8148224624999fd79382ac1f3b5c492bae3ebd9e",
+            "chars": 136
+          }
+        }
+      }
     },
     {
       "suite": "articles",
@@ -13701,6 +14131,4432 @@
         }
       },
       "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-057-nih-gov",
+      "before_sha256": "ab1a9b01ae68d5e8ac3b2f59d1a100dfa34abb63ba755ab22fe4abffe401a247",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 9,
+          "hosts": [
+            "www.nih.gov",
+            "grants.nih.gov"
+          ],
+          "entry_path": "/(?:challenges/[^/]+|grants/guide/notice-files/[^/]+\\.html|news-events/news-releases/[^/]+|virtual-tour|about-nih/(?:who-we-are/nih-director|what-we-do/impact-nih-research)|health-information/nih-clinical-research-trials-you|research-training/(?:training-opportunities|accelerating-medicines-partnership-amp|medical-research-initiatives)|heal)/?",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "FAQs"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "NIH Home"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "Follow Us"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "Contact Us"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "En Español"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "Press Room"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "Disclaimers"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "Jobs at NIH"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "Labs at NIH"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "No Fear Act"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "www.nih.gov"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "Virtual Tour"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "Accessibility"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Visit USA.gov"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "Privacy Policy"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "Clinical Trials"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "NIH at a Glance"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "Training at NIH"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "The NIH Director"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "NIH HEAL Initiative"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "NIH on Social Media"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "Visitor Information"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "Funding for Research"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "NIH Website Archives"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "Impact of NIH Research"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "Nondiscrimination Notice"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "Freedom of Information Act"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "Office of Inspector General"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "Medical Research Initiatives"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "National Institutes of Health"
+              ]
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 11,
+            "source_observation_counts": [
+              11,
+              11,
+              11
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 9,
+            "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+            "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Initially loaded named resource and news cards; requires actual informative links and excludes footer institutional/legal links. Domain-root resources are still retained as stable named text rather than invented deep URLs."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-030-weather-com",
+      "before_sha256": "9136499fbc3eb623a92ce5fe5a6654d7d2c761013c30cad8e15c7e08c658ed18",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 11,
+          "hosts": [
+            "weather.com"
+          ],
+          "entry_path": "/(?:[0-9]{4}/[0-9]{2}/[0-9]{2}/.+|atmosphere/reviews/[^/]+)/?",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "TV"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "More"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "Radar"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "Hourly"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "Monthly"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "Sign in"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "Sitemap"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "Feedback"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "AdChoices"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "Allergies"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "Forecasts"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "News Room"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Tornadoes"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "Wildfires"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "Atmosphere"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "Cold & Flu"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "Air Quality"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "Alexa Skill"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "Data Rights"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "Get Premium"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "Data Vendors"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "Terms of Use"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "Trust Center"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "Weather Labs"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "Cookie Notice"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "Home & Garden"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "Privacy Policy"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "Privacy & Legal"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "Advertise With Us"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "Health & Wellness"
+              ]
+            },
+            {
+              "id": "stable-anchor-32",
+              "alternatives": [
+                "Weather Data APIs"
+              ]
+            },
+            {
+              "id": "stable-anchor-33",
+              "alternatives": [
+                "Accessibility Statement"
+              ]
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 13,
+            "source_observation_counts": [
+              18,
+              13,
+              13
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 11,
+            "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+            "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Loaded named editorial weather/news/review cards. Forecast-location routes, topic landing pages, paid external ads and navigation are excluded; headline/date/location/temperature values are not frozen. This improves news coverage but is not a weather-field completeness guarantee."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-081-namu-wiki",
+      "before_sha256": "8f6f51858b9a409f56e9eddab2a0f51397d1d1eb594b63bcd988f30f28b957b8",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 68,
+          "hosts": [
+            "namu.wiki"
+          ],
+          "entry_path": "/w/.+",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "대문"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "문법"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "분류"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "설정"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "신고"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "역사"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "통계"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "파일"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "FAQ"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "게시판"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "연습장"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "기본방침"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "업데이트"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "편집지침"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "공지 목록"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "문서 목록"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "문서 열람"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "최근 변경"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "최근 토론"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "특수 문서"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "나무위키 프로젝트"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "나무위키의 도움말"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "Privacy Policy"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "Términos de uso"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "나무위키는 누구나 기여할 수 있는 위키입니다."
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "검증되지 않았거나 편향된 내용이 있을 수 있습니다."
+              ]
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 85,
+            "source_observation_counts": [
+              85,
+              85,
+              85
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 68,
+            "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+            "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Main wiki directory of rules/help/projects and currently loaded discussion document links, distinct article destinations rather than a brand homepage. Query search/sidebar and site utility routes excluded."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-036-hao123-com",
+      "before_sha256": "77837bade0588728b15d3e3f79d0da43fec2ef636ef1b4126aa51f15204b4dbb",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 8,
+          "hosts": [
+            "baijiahao.baidu.com"
+          ],
+          "entry_path": "/s",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "体育"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "娱乐"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "小说"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "微博"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "抖音"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "推荐"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "搜狐"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "文娱"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "新浪"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "时尚"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "汽车"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "淘宝"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "游戏"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "生活"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "电影"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "电视"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "登录"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "直播"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "社会"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "科技"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "网易"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "腾讯"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "视频"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "财经"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "全站地图"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "关于本站"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "意见反馈"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "搜索热点"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "服务协议"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "百度地图"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "hao123"
+              ]
+            }
+          ],
+          "identity_query_keys": [
+            "id"
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 9,
+            "source_observation_counts": [
+              13,
+              13,
+              9
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 8,
+            "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+            "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Initially loaded news card destinations from the actual third-party article publisher; site directory links and Baidu search queries cannot count as articles."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-075-volcengine-com",
+      "before_sha256": "855f4df32c634c5d881047fac517f7cdf067156ee91b05230afc2c8329c85878",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 13,
+          "hosts": [
+            "www.volcengine.com",
+            "volcengine.com"
+          ],
+          "entry_path": "/product/(?:doubao|dramart|trae|ark|agentkit|hiagent|SecurityIntelligent|ml-platform|ecs|TOS|rds-mysql|AICC|llm-scan|aipp|agentsentry|feilian)/?",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "体验"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "可信"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "可控"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "安全"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "定价"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "应用"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "推理"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "更多"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "注册"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "登录"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "训练"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "运营"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "API"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "控制台"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "智能体"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "举报平台"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "云服务器"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "人才招聘"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "优惠活动"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "全部产品"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "关于我们"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "友情链接"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "在线咨询"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "备案服务"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "对象存储"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "文档中心"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "服务咨询"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "服务条款"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "模型广场"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "火山方舟"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "联系我们"
+              ]
+            },
+            {
+              "id": "stable-anchor-32",
+              "alternatives": [
+                "营业执照"
+              ]
+            },
+            {
+              "id": "stable-anchor-33",
+              "alternatives": [
+                "解决方案"
+              ]
+            },
+            {
+              "id": "stable-anchor-34",
+              "alternatives": [
+                "隐私政策"
+              ]
+            },
+            {
+              "id": "stable-anchor-35",
+              "alternatives": [
+                "云信任中心"
+              ]
+            },
+            {
+              "id": "stable-anchor-36",
+              "alternatives": [
+                "建议与反馈"
+              ]
+            },
+            {
+              "id": "stable-anchor-37",
+              "alternatives": [
+                "服务与支持"
+              ]
+            },
+            {
+              "id": "stable-anchor-38",
+              "alternatives": [
+                "豆包大模型"
+              ]
+            },
+            {
+              "id": "stable-anchor-39",
+              "alternatives": [
+                "机器学习平台"
+              ]
+            },
+            {
+              "id": "stable-anchor-40",
+              "alternatives": [
+                "火山引擎"
+              ]
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 16,
+            "source_observation_counts": [
+              16,
+              16,
+              16
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 13,
+            "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+            "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Sixteen distinct named product routes in actual main product/security sections; excludes catalog/contact/trust/report URLs. Three routes repeat in footer but fall below required floor."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-042-github-com",
+      "before_sha256": "42e0ea2a673015fe01d16ecdf593a25df899c8a8382724a11130d939cf76aaa1",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 12,
+          "hosts": [
+            "github.com"
+          ],
+          "entry_path": "/(?:features/(?:ai/github-app|copilot|actions|codespaces|issues|discussions|code-review)|mobile|marketplace|security/advanced-security(?:/(?:code-security|software-supply-chain|secret-protection))?|sponsors)/?",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "AI"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "Blog"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "Docs"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "Shop"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "Team"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "About"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "Terms"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "Skills"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "Status"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "Company"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "Pricing"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "Privacy"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Roadmap"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "Sign in"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "Sign up"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "Sitemap"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "Partners"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "Platform"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "Security"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "Ecosystem"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "Education"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "Resources"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "Enterprise"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "GitHub CLI"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "Why GitHub"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "Developer API"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "GitHub Mobile"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "Compare GitHub"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "Contact GitHub"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "GitHub Desktop"
+              ]
+            },
+            {
+              "id": "stable-anchor-32",
+              "alternatives": [
+                "Community Forum"
+              ]
+            },
+            {
+              "id": "stable-anchor-33",
+              "alternatives": [
+                "GitHub features"
+              ]
+            },
+            {
+              "id": "stable-anchor-34",
+              "alternatives": [
+                "Premium Support"
+              ]
+            },
+            {
+              "id": "stable-anchor-35",
+              "alternatives": [
+                "Customer Stories"
+              ]
+            },
+            {
+              "id": "stable-anchor-36",
+              "alternatives": [
+                "GitHub Marketplace"
+              ]
+            },
+            {
+              "id": "stable-anchor-37",
+              "alternatives": [
+                "The ReadME Project"
+              ]
+            },
+            {
+              "id": "stable-anchor-38",
+              "alternatives": [
+                "GitHub Copilot"
+              ]
+            },
+            {
+              "id": "stable-anchor-39",
+              "alternatives": [
+                "GitHub Actions"
+              ]
+            },
+            {
+              "id": "stable-anchor-40",
+              "alternatives": [
+                "GitHub Codespaces"
+              ]
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 14,
+            "source_observation_counts": [
+              14,
+              14,
+              14
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 12,
+            "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+            "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Named feature links in the initially loaded workflow, security and collaboration modules; unique destinations merge Projects and Issues."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-046-zoom-us",
+      "before_sha256": "257e57946bbb9e2314cddec8c8af72dc58a1f054a869f122cdd753f8577784e1",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 12,
+          "hosts": [
+            "www.zoom.com"
+          ],
+          "entry_path": "/en/products/(?:ai-assistant(?:/features/ai-note-taking)?|virtual-meetings|meeting-rooms|voip-phone|collaborative-docs|contact-center|cx-insights|bonsai|workvivo|ai-productivity-suite|webinars|brighthire|virtual-agent)/?",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "About"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "Phone"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "Press"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "Rooms"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "Terms"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "Account"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "English"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "Privacy"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "Sign In"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "Feedback"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "Meetings"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "Partners"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Site Map"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "Webinars"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "Customers"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "Investors"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "Media Kit"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "Contact Us"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "What’s new"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "Zoom Cares"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "Integrations"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "Sign Up Free"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "Trust Center"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "Accessibility"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "Collaboration"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "Contact Sales"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "Support Center"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "Zoom Community"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "Download Center"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "Plans & Pricing"
+              ]
+            },
+            {
+              "id": "stable-anchor-32",
+              "alternatives": [
+                "Legal & Compliance"
+              ]
+            },
+            {
+              "id": "stable-anchor-33",
+              "alternatives": [
+                "Find out what's possible"
+              ]
+            },
+            {
+              "id": "stable-anchor-34",
+              "alternatives": [
+                "One platform. Endless ways to work together."
+              ]
+            },
+            {
+              "id": "stable-anchor-35",
+              "alternatives": [
+                "Trusted by millions. Built for you."
+              ]
+            },
+            {
+              "id": "stable-anchor-36",
+              "alternatives": [
+                "Businesses achieve more with Zoom"
+              ]
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 14,
+            "source_observation_counts": [
+              14,
+              14,
+              14
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 12,
+            "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+            "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Named product links in the first product navigation and page modules. Product destinations only, no pricing/report/news URLs."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-032-canva-com",
+      "before_sha256": "48e23321dfbcb384d19ed86f229811c5e00b529f364c0b8d79f996a60a98abb1",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 16,
+          "hosts": [
+            "www.canva.com"
+          ],
+          "entry_path": "/(?:magic-layers|features/(?:magic-eraser|background-remover|image-upscaler|add-subtitles-to-video)|magic-write|presentations(?:/templates)?|pro/(?:brand-kit|animator|magic-resize)|mobile-videos/templates|video-editor|videos|collection/stock-videos|print|invitations|ai-image-generator|visual-suite)/?",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "Plans"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "Print"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "Terms"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "Tools"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "Events"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "Log in"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "Pricing"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "Privacy"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "Product"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "Sign up"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "Sitemap"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "Affinity"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Business"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "Canva AI"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "Creators"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "Features"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "Newsroom"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "Security"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "Community"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "Education"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "Affiliates"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "Canva home"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "Enterprise"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "Learn blog"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "Nonprofits"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "About Canva"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "Help Center"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "Design School"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "Trust Center"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "Accessibility"
+              ]
+            },
+            {
+              "id": "stable-anchor-32",
+              "alternatives": [
+                "Contact Sales"
+              ]
+            },
+            {
+              "id": "stable-anchor-33",
+              "alternatives": [
+                "Canva Developers"
+              ]
+            },
+            {
+              "id": "stable-anchor-34",
+              "alternatives": [
+                "Apps Marketplace"
+              ]
+            },
+            {
+              "id": "stable-anchor-35",
+              "alternatives": [
+                "Visual Suite"
+              ]
+            },
+            {
+              "id": "stable-anchor-36",
+              "alternatives": [
+                "Start designing"
+              ]
+            },
+            {
+              "id": "stable-anchor-37",
+              "alternatives": [
+                "What will you design today?"
+              ]
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 19,
+            "source_observation_counts": [
+              19,
+              19,
+              19
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 16,
+            "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+            "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Initially visible named feature/tool cards; excludes seasonal licensed collections, events, footer tools and promotional claims."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-063-paypal-com",
+      "before_sha256": "4c22c09a94806449d479c5a688bc110fb02b34ebbd0902746594da5abf2e110e",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 8,
+          "hosts": [
+            "www.paypal.com"
+          ],
+          "entry_path": "/us/digital-wallet/(?:manage-money/(?:paypal-debit-card|paypal-cashback-mastercard|start-saving|crypto)|ways-to-pay/(?:buy-now-pay-later(?:/pay-later-in-store)?|credit-services/paypal-credit)|security-and-protection|send-receive-money/(?:send-money|request-money|pool-money))/?",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "Business"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "Personal"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "Send Money"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "Get the app"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "Pay Monthly"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "Browse Offers"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "Explore Crypto"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "Get the Debit Card"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "Get the PayPal app"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "See How You're Safe"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "PayPal Rewards terms"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "Shop in stores and online"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "Safety and privacy are our priority"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Pay in 4"
+              ]
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 10,
+            "source_observation_counts": [
+              10,
+              10,
+              10
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 8,
+            "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+            "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Payment, transfer and money-management feature destinations with their observed labels. Terms, fee/disclosure links and transient offers excluded."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-081-elsevier-com",
+      "before_sha256": "7f8fe4a2b668fb138605a4f24624ae9128d1ca26058a10dda01ace6452a7b7c1",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 8,
+          "hosts": [
+            "www.elsevier.com"
+          ],
+          "entry_path": "/products/(?:leapspace|sciencedirect|scopus|clinicalkey/clinicalkey-ai|sherpath/sherpath-ai|complete-anatomy|reaxys|embase|knovel)/?",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "Embase"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "Health"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "Knovel"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "Reaxys"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "Scopus"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "Industry"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "Open access"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "Useful links"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "Accessibility"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "Cookie Policy"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "ScienceDirect"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "About Elsevier"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Privacy policy"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "Publish a book"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "Publish with us"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "Customer support"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "Elsevier Connect"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "Submit your paper"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "View all products"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "More from Elsevier"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "Terms & Conditions"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "Researcher & Author"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "Academic & Government"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "Discover our products"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "Resources for Editors"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "Shop Books & Journals"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "Resources for Reviewers"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "Advancing human progress"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "Publish your article in a journal"
+              ]
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 9,
+            "source_observation_counts": [
+              9,
+              9,
+              9
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 8,
+            "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+            "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Nine product cards in Academic/Government, Health and Industry modules; footer all-products navigation is excluded."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-008-whatsapp-com",
+      "before_sha256": "5aa49abff2f5f86962eb647035decc3096969c6af7a0b68a35eb140cc4ebf8b4",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "current-stable-c737a59e7210",
+              "alternatives": [
+                "Message privately",
+                "私密地收发消息"
+              ],
+              "source_evidence_sha256": "3d379cb138e21709683e314d07bac7576279bfedea8796af61c4baecbaff0584"
+            },
+            {
+              "id": "current-stable-8a47066bf393",
+              "alternatives": [
+                "Download",
+                "下载"
+              ],
+              "source_evidence_sha256": "3d379cb138e21709683e314d07bac7576279bfedea8796af61c4baecbaff0584"
+            },
+            {
+              "id": "body-functional-module-1",
+              "alternatives": [
+                "voice and video calls"
+              ]
+            },
+            {
+              "id": "body-functional-module-2",
+              "alternatives": [
+                "WhatsApp for Mac"
+              ]
+            },
+            {
+              "id": "body-functional-module-3",
+              "alternatives": [
+                "end-to-end encryption"
+              ]
+            },
+            {
+              "id": "body-functional-module-4",
+              "alternatives": [
+                "group conversations"
+              ]
+            },
+            {
+              "id": "body-functional-module-5",
+              "alternatives": [
+                "stickers and GIFs"
+              ]
+            },
+            {
+              "id": "body-functional-module-6",
+              "alternatives": [
+                "WhatsApp Business"
+              ]
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-041-discord-com",
+      "before_sha256": "3233f7323d180c38773f7185cbf8aa0f023d669eabce720a6c430b023a2b6667",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "Blog"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "Jobs"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "About"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "Brand"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "Nitro"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "Terms"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "Log In"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "Quests"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "Safety"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "Status"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "Company"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "Privacy"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Product"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "Support"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "Creators"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "Feedback"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "Language"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "Licenses"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "Newsroom"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "Policies"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "Community"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "Resources"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "Developers"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "Gift Cards"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "Guidelines"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "App Directory"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "Cookie Settings"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "MAKE YOUR GROUP CHATS MORE FUN"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "Group chat that’s all fun & games"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "stream like you’re in the same room"
+              ]
+            },
+            {
+              "id": "stable-anchor-32",
+              "alternatives": [
+                "Hop in when you're free, no need to call"
+              ]
+            },
+            {
+              "id": "body-functional-module-1",
+              "alternatives": [
+                "custom emoji"
+              ]
+            },
+            {
+              "id": "body-functional-module-2",
+              "alternatives": [
+                "soundboard effects"
+              ]
+            },
+            {
+              "id": "body-functional-module-3",
+              "alternatives": [
+                "low latency streaming"
+              ]
+            },
+            {
+              "id": "body-functional-module-4",
+              "alternatives": [
+                "voice or text chats"
+              ]
+            },
+            {
+              "id": "body-functional-module-5",
+              "alternatives": [
+                "built-in games"
+              ]
+            },
+            {
+              "id": "body-functional-module-6",
+              "alternatives": [
+                "switch between devices"
+              ]
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-068-youdao-com",
+      "before_sha256": "c6aaae3751ba5ab7474e7247d6f6585df6224ae70b7d4f680d5dd2e39555f969",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "下载"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "企业"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "登录"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "全部产品"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "关于有道"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "加入有道"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "同道计划"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "廉正举报"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "有道介绍"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "有道宝库"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "有道小P"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "有道智选"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "有道领世"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "有道龙虾"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "服务条款"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "查看详情"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "校园招聘"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "用户资质"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "相关资质"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "社会招聘"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "社会责任"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "联系我们"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "营业执照"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "隐私政策"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "投资者关系"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "有道小图灵"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "有道精品课"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "有道词典笔"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "网易云课堂"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "不良信息举报"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "网易有道翻译"
+              ]
+            },
+            {
+              "id": "stable-anchor-32",
+              "alternatives": [
+                "有道AI硬件"
+              ]
+            },
+            {
+              "id": "stable-anchor-33",
+              "alternatives": [
+                "有道人工翻译"
+              ]
+            },
+            {
+              "id": "stable-anchor-34",
+              "alternatives": [
+                "有道智慧教育"
+              ]
+            },
+            {
+              "id": "body-functional-module-1",
+              "alternatives": [
+                "网易有道词典APP"
+              ]
+            },
+            {
+              "id": "body-functional-module-2",
+              "alternatives": [
+                "Hi Echo"
+              ]
+            },
+            {
+              "id": "body-functional-module-3",
+              "alternatives": [
+                "有道纵横棋院"
+              ]
+            },
+            {
+              "id": "body-functional-module-4",
+              "alternatives": [
+                "中国大学MOOC"
+              ]
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-042-kdocs-cn",
+      "before_sha256": "c3e1f02ffce9b2e23007f5d0a1335be1d22ceca7fb1d1712a14144d6eda4dd93",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "会员"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "微信"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "文字"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "演示"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "企业版"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "小程序"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "桌面端"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "模板库"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "流程图"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "移动端"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "企业专区"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "免费使用"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "多维表格"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "客户案例"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "帮助中心"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "开放平台"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "快捷方式"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "思维导图"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "意见反馈"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "智能表单"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "智能表格"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "标签整理"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "立即下载"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "立即体验"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "营业执照"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "解决方案"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "下载客户端"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "支持与合作"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "在线智能文档"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "WPS Docs"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "金山文档隐私政策"
+              ]
+            },
+            {
+              "id": "stable-anchor-32",
+              "alternatives": [
+                "金山文档 | WPS云文档"
+              ]
+            },
+            {
+              "id": "stable-anchor-33",
+              "alternatives": [
+                "一键分享，多人协作"
+              ]
+            },
+            {
+              "id": "body-functional-module-1",
+              "alternatives": [
+                "WPS AI"
+              ]
+            },
+            {
+              "id": "body-functional-module-2",
+              "alternatives": [
+                "精确搜索"
+              ]
+            },
+            {
+              "id": "body-functional-module-3",
+              "alternatives": [
+                "网页收藏插件"
+              ]
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-065-lingxing-com",
+      "before_sha256": "05281971dc04d8d8b66792db2731edd82f9a452a9a68428f3f1c8f2209c056be",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "中文"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "价格"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "咨询"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "演示"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "首页"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "登录"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "白皮书"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "免费试用"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "关于领星"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "加入我们"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "快速响应"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "新闻中心"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "服务中心"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "核心功能"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "案例中心"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "物流追踪"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "获取报价"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "解决方案"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "跨境资讯"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "全周期服务"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "全方位保障"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "全生态产品"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "资源与支持"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "亚马逊ERP"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "多平台ERP"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "海外仓WMS"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "财务精准管理"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "进销存一体管理"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "领星ERP"
+              ]
+            },
+            {
+              "id": "body-functional-module-1",
+              "alternatives": [
+                "多维度数据报表"
+              ]
+            },
+            {
+              "id": "body-functional-module-2",
+              "alternatives": [
+                "全流程广告管理"
+              ]
+            },
+            {
+              "id": "body-functional-module-3",
+              "alternatives": [
+                "高效运营与售后"
+              ]
+            },
+            {
+              "id": "body-functional-module-4",
+              "alternatives": [
+                "AI智能应用"
+              ]
+            },
+            {
+              "id": "body-functional-module-5",
+              "alternatives": [
+                "风险全维管理"
+              ]
+            },
+            {
+              "id": "body-functional-module-6",
+              "alternatives": [
+                "手机端随时用"
+              ]
+            },
+            {
+              "id": "body-functional-module-7",
+              "alternatives": [
+                "利润报表"
+              ]
+            },
+            {
+              "id": "body-functional-module-8",
+              "alternatives": [
+                "产品表现报表"
+              ]
+            },
+            {
+              "id": "body-functional-module-9",
+              "alternatives": [
+                "BI自定义数据分析"
+              ]
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-029-360-com",
+      "before_sha256": "5a5bf058d1ce8ffc2439531a6eab9edf8ea70ca1b3bc08f385f5bf363a1afe23",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "注册"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "游戏"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "登录"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "社区"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "产品动态"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "产品支持"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "企业安全"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "企业服务"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "免费试用"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "公司公告"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "公司简介"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "关注我们"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "安全资讯"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "官方客服"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "意见反馈"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "手机软件"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "数字安全"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "新闻动态"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "服务支持"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "校园招聘"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "热门软件"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "用户服务"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "社会招聘"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "立即体验"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "纳米AI"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "联系我们"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "投资者关系"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "软件下载中心"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "安全浏览器"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "360安全卫士"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "360极速浏览器"
+              ]
+            },
+            {
+              "id": "body-functional-module-1",
+              "alternatives": [
+                "终端管理"
+              ]
+            },
+            {
+              "id": "body-functional-module-2",
+              "alternatives": [
+                "上网管理"
+              ]
+            },
+            {
+              "id": "body-functional-module-3",
+              "alternatives": [
+                "勒索防护"
+              ]
+            },
+            {
+              "id": "body-functional-module-4",
+              "alternatives": [
+                "行为管理"
+              ]
+            },
+            {
+              "id": "body-functional-module-5",
+              "alternatives": [
+                "360杀毒"
+              ]
+            },
+            {
+              "id": "body-functional-module-6",
+              "alternatives": [
+                "360安全云"
+              ]
+            },
+            {
+              "id": "body-functional-module-7",
+              "alternatives": [
+                "360压缩"
+              ]
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-089-yuque-com",
+      "before_sha256": "bd038aeba25f479f1266158098a8d652a50bf55ac068134fdead31f1cdc7cd89",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "画板"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "互动交流"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "文档协同"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "权限管理"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "特色卡片"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "目录编排"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "知识管理"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "个人免费使用"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "团队免费使用"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "组件化编辑器"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "专业好用的编辑器"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "像书一样的知识库"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "Edge 插件"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Chrome 插件"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "Help Center"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "Security"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "Terms"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "Join us"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "Pricing"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "Support"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "Download",
+                "下载"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "Feedback"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "Developer"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "Contact us"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "Media reports"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "Product information"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "Login / Register"
+              ]
+            },
+            {
+              "id": "body-functional-module-1",
+              "alternatives": [
+                "工作表 / 数据表"
+              ]
+            },
+            {
+              "id": "body-functional-module-2",
+              "alternatives": [
+                "ISO 安全认证体系"
+              ]
+            },
+            {
+              "id": "body-functional-module-3",
+              "alternatives": [
+                "公安部三级等级保护"
+              ]
+            },
+            {
+              "id": "body-functional-module-4",
+              "alternatives": [
+                "支付宝底层安全能力"
+              ]
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-059-jianying-com",
+      "before_sha256": "01f71512470ea59d1a3a7b026a847c6c0057213352f3103a56394fd83e1a4299",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "蒙版"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "专业版"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "关键帧"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "多机位"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "电脑端"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "移动端"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "AI补帧"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "专业剪辑"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "创作课堂"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "剪映AI"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "即梦AI"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "图片设计"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "多时间线"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "政企宣传"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "智能抠像"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "智能调色"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "美颜美体"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "营业执照"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "营销推广"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "超清画质"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "隐私协议"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "音频剪辑"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "影视综二创"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "自媒体口播"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "用户协议 |"
+              ]
+            },
+            {
+              "id": "body-functional-module-1",
+              "alternatives": [
+                "营销成片"
+              ]
+            },
+            {
+              "id": "body-functional-module-2",
+              "alternatives": [
+                "AI音乐"
+              ]
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-012-feishu-cn",
+      "before_sha256": "e0bf253c55d7c62cad300e9485e878284736dcba98a2f94694d39ec46e4d141f",
+      "set": {
+        "document_structure": {
+          "version": 1,
+          "headings": [
+            {
+              "id": "feature-1",
+              "text": "豆包工作",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-2",
+              "text": "智能会议纪要",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-3",
+              "text": "即时消息",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-4",
+              "text": "视频会议",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-5",
+              "text": "云文档",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-6",
+              "text": "知识库",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-7",
+              "text": "邮箱",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-8",
+              "text": "审批",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-9",
+              "text": "任务",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-10",
+              "text": "多维表格",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-11",
+              "text": "飞书项目",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-12",
+              "text": "飞书 aPaaS",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-13",
+              "text": "豆包工作伙伴",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-14",
+              "text": "飞书妙搭",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-15",
+              "text": "飞书集成平台",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-16",
+              "text": "飞书招聘",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-17",
+              "text": "飞书绩效",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-18",
+              "text": "飞书人事",
+              "level": 2,
+              "body_required": true
+            }
+          ],
+          "minimum_heading_coverage": 1.0,
+          "minimum_body_chars": 1
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-087-instructure-com",
+      "before_sha256": "4e0807143530a2a7d955e31ba712cfd153a33b23462dcaf5dd05abffbedbef03",
+      "set": {
+        "document_structure": {
+          "version": 1,
+          "headings": [
+            {
+              "id": "feature-1",
+              "text": "K–12",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-2",
+              "text": "Higher education",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-3",
+              "text": "Business and government",
+              "level": 3,
+              "body_required": true
+            }
+          ],
+          "minimum_heading_coverage": 1.0,
+          "minimum_body_chars": 1
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-075-telegram-org",
+      "before_sha256": "fafd92fd33aca438a9027674c4adeba477b3f144db27ed7a87facf78caf05426",
+      "set": {
+        "document_structure": {
+          "version": 1,
+          "headings": [
+            {
+              "id": "feature-1",
+              "text": "Simple",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-2",
+              "text": "Private",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-3",
+              "text": "Synced",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-4",
+              "text": "Fast",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-5",
+              "text": "Powerful",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-6",
+              "text": "Open",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-7",
+              "text": "Secure",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-8",
+              "text": "Social",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-9",
+              "text": "Expressive",
+              "level": 3,
+              "body_required": true
+            }
+          ],
+          "minimum_heading_coverage": 1.0,
+          "minimum_body_chars": 1
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-021-netflix-com",
+      "before_sha256": "fca8a2ddd09e972e8318150f54e8e7da198563431c1d4cc97bb0343693f3af5a",
+      "set": {
+        "document_structure": {
+          "version": 1,
+          "headings": [
+            {
+              "id": "feature-1",
+              "text": "Enjoy on your TV",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-2",
+              "text": "Download your shows to watch offline",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-3",
+              "text": "Watch everywhere",
+              "level": 3,
+              "body_required": true
+            },
+            {
+              "id": "feature-4",
+              "text": "Create profiles for kids",
+              "level": 3,
+              "body_required": true
+            }
+          ],
+          "minimum_heading_coverage": 1.0,
+          "minimum_body_chars": 1
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-049-brave-com",
+      "before_sha256": "7312bd59b6f4fbd90d4ffd42efbae951ec5e089140a313b4dc5151c068620ad9",
+      "set": {
+        "document_structure": {
+          "version": 1,
+          "headings": [
+            {
+              "id": "feature-1",
+              "text": "Private search",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "feature-2",
+              "text": "Powerful VPN",
+              "level": 4,
+              "body_required": true
+            },
+            {
+              "id": "feature-3",
+              "text": "Brave vs Chrome",
+              "level": 4,
+              "body_required": true
+            },
+            {
+              "id": "feature-4",
+              "text": "Brave vs Firefox",
+              "level": 4,
+              "body_required": true
+            },
+            {
+              "id": "feature-5",
+              "text": "Brave Search vs Google",
+              "level": 4,
+              "body_required": true
+            },
+            {
+              "id": "feature-6",
+              "text": "Brave Search vs DuckDuckGo",
+              "level": 4,
+              "body_required": true
+            }
+          ],
+          "minimum_heading_coverage": 1.0,
+          "minimum_body_chars": 1
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-044-spotify-com",
+      "before_sha256": "64e8a9f28b9cc4d110a7fc04ee75cca7e27fda8f7751a52f0bbd85e46c914157",
+      "set": {
+        "content_score_applicable": true,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "body-list-1",
+              "kind": "named_link",
+              "minimum_records": 16,
+              "hosts": [
+                "open.spotify.com"
+              ],
+              "entry_path": "/album/[A-Za-z0-9]+",
+              "start_pattern": "^(?:#{1,6}\\s+)?Trending\\ songs\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s+)?Popular\\ artists\\s*$"
+            },
+            {
+              "id": "body-list-2",
+              "kind": "named_link",
+              "minimum_records": 8,
+              "hosts": [
+                "open.spotify.com"
+              ],
+              "entry_path": "/artist/[A-Za-z0-9]+",
+              "start_pattern": "^(?:#{1,6}\\s+)?Popular\\ artists\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s+)?Popular\\ albums\\ and\\ singles\\s*$"
+            },
+            {
+              "id": "body-list-3",
+              "kind": "named_link",
+              "minimum_records": 8,
+              "hosts": [
+                "open.spotify.com"
+              ],
+              "entry_path": "/album/[A-Za-z0-9]+",
+              "start_pattern": "^(?:#{1,6}\\s+)?Popular\\ albums\\ and\\ singles\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s+)?Company\\s*$"
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-050-openai-com",
+      "before_sha256": "b44b3e24b6776b3980b6e0edfc2b622ca3de89b37d9451ea9a37d43f1e20d742",
+      "set": {
+        "content_score_applicable": true,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "body-list-1",
+              "kind": "named_link",
+              "minimum_records": 5,
+              "hosts": [
+                "openai.com"
+              ],
+              "entry_path": "/index/[a-z0-9/-]+",
+              "start_pattern": "^(?:#{1,6}\\s+)?Recent\\ news\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s+)?Stories\\s*$"
+            },
+            {
+              "id": "body-list-2",
+              "kind": "named_link",
+              "minimum_records": 3,
+              "hosts": [
+                "openai.com"
+              ],
+              "entry_path": "/index/[a-z0-9/-]+",
+              "start_pattern": "^(?:#{1,6}\\s+)?Stories\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s+)?Latest\\ research\\s*$"
+            },
+            {
+              "id": "body-list-3",
+              "kind": "named_link",
+              "minimum_records": 3,
+              "hosts": [
+                "openai.com"
+              ],
+              "entry_path": "/index/[a-z0-9/-]+",
+              "start_pattern": "^(?:#{1,6}\\s+)?Latest\\ research\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s+)?OpenAI\\ for\\ business\\s*$"
+            },
+            {
+              "id": "body-list-4",
+              "kind": "named_link",
+              "minimum_records": 3,
+              "hosts": [
+                "openai.com"
+              ],
+              "entry_path": "/index/[a-z0-9/-]+",
+              "start_pattern": "^(?:#{1,6}\\s+)?OpenAI\\ for\\ business\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s+)?Get\\ started\\ with\\ ChatGPT\\s*$"
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-039-1688-com",
+      "before_sha256": "614b8ec1794099063f6cb99b3adea7af1a417ff82042daee5920a19e49534f68",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "product",
+          "minimum_records": 19,
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "女装"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "男装"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "箱包"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "配饰"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "找工厂"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "以图搜款"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "先采后付"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "办公文化"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "家用电器"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "家纺家饰"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "居家日用"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "收纳清洁"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "数码电脑"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "汽车用品"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "立即登录"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "精选货源"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "运动户外"
+              ]
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 23,
+            "source_observation_counts": [
+              25,
+              23,
+              23
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 19,
+            "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+            "reason": "Independent initially loaded main product grids; count denominator includes unsupported money-unit products, no frozen names/prices."
+          }
+        }
+      },
+      "remove": []
     }
   ],
   "review_inputs": {
@@ -13724,6 +18580,12 @@
       "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-01.html": "65e7e62258e10a91db6c400f847dfe7ed2535025325a186c4bb1b86b0ba9a0a9",
       "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-02.html": "fbcf4565a72c7c5126b481d6c126f56565a4974cc2b427461a5c2c074f53a518",
       "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-03.html": "65e7e62258e10a91db6c400f847dfe7ed2535025325a186c4bb1b86b0ba9a0a9"
+    },
+    "popular-sites": {
+      "review-evidence/popular-sites/homepages-selected-observations-20260916.json": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2"
+    },
+    "articles": {
+      "review-evidence/articles/article-090/body.html": "0667feb4e6b962f0073241c2b277367e5869f72bc0e5ebab52fee555d82f1b1d"
     }
   }
 }

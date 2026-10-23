@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "67b9a35e6a0748b9373e454df2dcac1a2735732bc1a074d676e4bc4b08a0d43c",
+      "revision_sha256": "6e8a1fd6470a16b504519328ed80f42e94be2ba172430651723173ca875ee713",
       "changes": [
         {
           "suite": "webfetch",
@@ -11257,13 +11257,18 @@
         {
           "suite": "articles",
           "case_id": "article-090",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Move source-verified collection navigation out of the introduction prose region and retain its three previously unbound labels as required stable information. Preserve the current same-URL annual fact sheet, all remaining regions, original reference and existing requirements.",
+          "changes_sha256": "6da00423b7b7ba97fe84ccfe1d94608fcde402d3de7de3444377125eb984bf3d",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-090"
+            },
+            {
+              "path": "review-evidence/articles/article-090/body.html",
+              "sha256": "0667feb4e6b962f0073241c2b277367e5869f72bc0e5ebab52fee555d82f1b1d",
+              "scope": "Collection parent-term and term-list anchors precede the introductory paragraph inside the source content container."
             }
           ],
           "regression_ids": [
@@ -11271,7 +11276,10 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "reviewed-body-scope-complete",
+            "reviewed-body-scope-missing-conclusion",
+            "reviewed-body-scope-missing-footer"
           ]
         },
         {
@@ -13647,6 +13655,614 @@
             "reviewed-document-directory-complete",
             "reviewed-document-directory-navigation-only",
             "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-057-nih-gov",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "e0183e8fc3fa78a2ba904470a072ec92f6841cf548a821b9eb92fb5b76377219",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-057-nih-gov; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-030-weather-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "7ae34887339d6faed2224b2db37cb911962a043ec382f3b13b53745a33d1c797",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-030-weather-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-081-namu-wiki",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "01a3b2471a8eaa26a55ae56adccee92fb1898cbd486fff1fc6053a35b2099965",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-081-namu-wiki; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-036-hao123-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "a3e2e6c4f6b74aa2c9326a1183426853d9d1c1c9faa8a0baf41374f6988a046b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-036-hao123-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-075-volcengine-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "e1ba43c13d8bff63945c9f34532b5051ee129405b1b3797f121b8955ba94ea24",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-075-volcengine-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-042-github-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "55279cf095dcff458e17c055b4cb5ca6926cc0f1a9387d4a4671b5bd954ebce6",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-042-github-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-046-zoom-us",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "a009a1d1d7d6682c07298f3fab44219a648bc09f83af956004c1dbf9d986f26d",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-046-zoom-us; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-032-canva-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "139dce70cac206ca6de84d7ffeebc61748df5ba3ce4c881b992f2c1f2e79fa08",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-032-canva-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-063-paypal-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "dd2d7dea3377e621e33f9ba893774d280a8d817c0cd6347880a176ca18323bed",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-063-paypal-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-081-elsevier-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "a80635ad649280c744c546260f8f7fdf4872ad673cd0afe03798788b678aade6",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-081-elsevier-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-008-whatsapp-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "c778da6877188b9773df36d532b62d262cfdfd109f2adddf48d4f4ff502ce328",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-008-whatsapp-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-041-discord-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "2e083956b1e08abebc3037011c447580c6718329bbc87fa2f282da9fd7090a0a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-041-discord-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-068-youdao-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "10f235af8fdf1a78556876ab446f99b7b8bfae0a8e3fe0def0a691d238d83f48",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-068-youdao-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-042-kdocs-cn",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "9211115f53767a95c21bedc98dd6ece6e76030a1fe5f219f4942792d01cfce24",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-042-kdocs-cn; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-065-lingxing-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "ef4b56f3536fc6ed5859f4728a88f94180e0f29fe0bfd1896d722b457ac7d03f",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-065-lingxing-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-029-360-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "bc8de56798ca218c7d7281dbda1f624e67e297a0dde0be63c9b7d67a8e0b1b88",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-029-360-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-089-yuque-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "ce19b7181cd27df1e20a8de8d9635c2fb3affcd307a4088b30d6b9d9b980e508",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-089-yuque-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-059-jianying-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "2d00c55b0b73eb4cf2c2c3dd831686760a52377eca6f9b9e304c4b0e8f936efb",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-059-jianying-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-012-feishu-cn",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "0620ac167cfccba8e7d3e556899d3601e1118b6421ec9db2965f88812161a398",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-012-feishu-cn; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "mutable-document-structure-complete",
+            "mutable-document-structure-missing-sections"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-087-instructure-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "83b9f3f95fc3c5bd327b43a758b38dd0a04d110dfcad2349aa9ddc4e26d2d290",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-087-instructure-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "mutable-document-structure-complete",
+            "mutable-document-structure-missing-sections"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-075-telegram-org",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "71c4d9a5d03d7496f03b9a0d24fb3ce9a3c3c784e3aa856a56f8d27ead00bdc3",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-075-telegram-org; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "mutable-document-structure-complete",
+            "mutable-document-structure-missing-sections"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-021-netflix-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "5a94f7adb8a2cbf28337917b3770c494aba801d86ccf53428f31061031c30756",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-021-netflix-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "mutable-document-structure-complete",
+            "mutable-document-structure-missing-sections"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-049-brave-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "d188e5d68611a707b2af49a836b759ef036ee4f3eff73099747843e041ed1672",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-049-brave-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "mutable-document-structure-complete",
+            "mutable-document-structure-missing-sections"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-044-spotify-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "666b47b0eec79375ca2dfd0fd96351a26e9365d8bfa96ca05a21598c0e31ad3f",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for global-homepage-044-spotify-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "named-scope-heading-owns-records",
+            "named-scope-navigation-cannot-supply-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-050-openai-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "c8ca66195bccbdc13f569c662e353c04a19cb5b23ac215f297a308c2bfc4f901",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-050-openai-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "named-scope-heading-owns-records",
+            "named-scope-navigation-cannot-supply-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-039-1688-com",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged.",
+          "changes_sha256": "3e41b0bd15781002e3f74882d069686adcbd8e96ad15daa432c5698bdad7d5bd",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen parent task identity, URL, stable navigation and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/homepages-selected-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved anonymous initial observations for china-homepage-039-1688-com; actual visible_text, ordered text_nodes/elements and labelled links. Format projections do not invent DOM ownership or inherited anchor text."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "product-owned-price-visible",
+            "product-price-simply-missing"
           ]
         }
       ]

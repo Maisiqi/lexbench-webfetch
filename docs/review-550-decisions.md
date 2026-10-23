@@ -21,6 +21,7 @@ The source paths below are relative to the external article evidence home, as de
 | 087 | `page.html` places the further-reading links in a list inside `div.markdown`, following the conclusion. | Retain the article's further reading. The saved source supports authored reading material, not an unrelated recommendation widget. |
 | 088 | `observation-root-02/complete-body.html` places the BibTeX section in `dt-appendix.centered > div.l-body`. | Preserve the article-specific citation metadata. The final paragraph of The Big Picture now receives the ending check; neither discarding all appendices nor treating a final brace as meaningful prose completeness is justified. |
 | 051 | The saved `body.html` contains both an `h3` and an `h2` for the repeated about section. The bound reference also contains both copies. | Do not silently deduplicate the expected source text on the assumption that the scorer introduced the duplication. Verify the capture boundary and source ownership before deciding which occurrence belongs in the prose contract. |
+| 090 | `revision-r5/body.html` places the first two lines in the fact-sheet collection's parent-term and term-list navigation, before the introductory paragraph. | Exclude these lines from prose coverage and require the collection label, Internet/Broadband and Mobile separately. Preserve the existing Social Media requirement, same URL, annual fact-sheet reference and all other regions. Registered in `review-550-20261023` with separately bound HTML evidence. |
 
 The scope changes for 035, 037, 047, 063 and 099 are now registered in
 `review-550-20261023`. Their
@@ -157,3 +158,22 @@ This implementation correction does not finish case 248's scope review. The
 19 distinct destinations still include navigation alongside the ten observed
 Picks stories; target scope must be qualified separately before changing its
 annotation or quota.
+
+## Homepage content beyond navigation
+
+Twenty-six source-qualified homepage corrections are registered. They require
+observed destinations, functional modules, section prose or product fields in
+addition to every original stable anchor and forbidden term. Three saved
+observations per case pass full scoring; their 78 source-derived missing-content
+controls fail. Labelled-link inventories prove the observed labels and
+destinations, but do not establish original DOM ownership. These controls are
+not presented as independently captured navigation-only DOMs. Saved observations
+are separately bound review evidence and do not replace frozen parent inputs.
+
+Independent integration review rejected removal of 13 mandatory anchors across
+five initial candidates. Restoring them preserves all passing sources for Zoom,
+Canva, PayPal and Elsevier. Figma's three observations lack the required
+"The full-stack creative canvas" text, so its candidate remains withheld.
+Dingtalk and USPS likewise retain unresolved source gaps. Proposed bulk
+forbidden-word removals remain withheld because the available evidence has not
+qualified their false-positive and false-negative behavior.
