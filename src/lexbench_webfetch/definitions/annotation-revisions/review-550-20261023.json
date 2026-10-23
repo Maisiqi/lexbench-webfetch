@@ -86,7 +86,9 @@
     "scoped-list-empty-name",
     "mutable-document-custom-heading-complete",
     "mutable-document-custom-heading-hidden",
-    "heading-only-body-region-missing-heading"
+    "heading-only-body-region-missing-heading",
+    "source-backed-diagnostic-source-discusses-status",
+    "source-backed-diagnostic-status-heading"
   ],
   "changes": [
     {
@@ -237,7 +239,15 @@
       "suite": "webfetch",
       "case_id": "live-030-rfc-9110",
       "before_sha256": "58b5a6368da964807b43b3743ac37b91bf09bf678c7afb7553339128cfb742ca",
-      "set": {},
+      "set": {
+        "forbidden_any": [
+          "Access denied",
+          "Attention Required! | Cloudflare",
+          "CAPTCHA",
+          "Page not found",
+          "无法访问此站点"
+        ]
+      },
       "remove": [],
       "body_thresholds": {
         "minimum_coverage": 0.8,
@@ -19754,7 +19764,8 @@
       "review-evidence/webfetch/retail-initial-20261023/heading-ancestors.json": "2aa591886b6bade2ca866f662f9d466320294a2a447c12254ad62779ae3bcc0f",
       "review-evidence/webfetch/feishu-initial-20261023/capture.json": "f8d39bc8c999f016589bd4d9cc6dbfa17447127f977bf6ac694ec11dd33ddda1",
       "review-evidence/webfetch/feishu-initial-20261023/article.html": "7a35ab873f47030a8902aae0905fc8b1dbb1034888abcdbc1dad7c80078b9c79",
-      "review-evidence/webfetch/feishu-initial-20261023/article.txt": "357757e6bc244aa4e567a263110b66ed0ecb641218753c05f298cb0e323d19d4"
+      "review-evidence/webfetch/feishu-initial-20261023/article.txt": "357757e6bc244aa4e567a263110b66ed0ecb641218753c05f298cb0e323d19d4",
+      "review-evidence/webfetch/rfc9110-forbidden-review/source.html": "d431760660ea44e130f6e919dab216df2d0b3a490567a98089267523368fe1e5"
     }
   }
 }

@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "87ff3be83a4862b63ca0b3eedaef05388440bf0c36023fc64e0c3428c812a647",
+      "revision_sha256": "ae5a08e814e232893d309646c4b6d5614a71db2fbcafd233fc68a1aaa7596f3d",
       "changes": [
         {
           "suite": "webfetch",
@@ -6154,13 +6154,18 @@
         {
           "suite": "webfetch",
           "case_id": "live-030-rfc-9110",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove only the source-attested 404 Not Found exclusion: the RFC legitimately specifies that status. Exact-bound full reference fails only that exclusion and passes after removal; bare error, identity-plus-error and unrelated padded error answers still fail the unchanged body/fact gates. Separate section-omission weaknesses remain under review.",
+          "changes_sha256": "09a796fc8920fddec242b1ec81566237954a6092e734bc18a2fbe4d41418e9bd",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for live-030-rfc-9110"
+            },
+            {
+              "path": "review-evidence/webfetch/rfc9110-forbidden-review/source.html",
+              "sha256": "d431760660ea44e130f6e919dab216df2d0b3a490567a98089267523368fe1e5",
+              "scope": "Independent official RFC 9110 HTML at the unchanged task URL, including its legitimate 404 Not Found section. Original reference hash verified independently; original body thresholds and required facts preserved."
             }
           ],
           "regression_ids": [
@@ -6173,7 +6178,9 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
           ]
         },
         {

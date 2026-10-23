@@ -379,3 +379,20 @@ and the complete list reference, and require the title immediately before item
 moving it after the list fails. The repeated word iframe in list rows cannot
 substitute for the leading title. Tree 016 retains its three short regions:
 they are actual initially displayed nodes, and deleting any one fails.
+
+## RFC status examples and long-section omissions
+
+The exact-bound RFC 9110 HTML-task reference fails the unchanged rule solely
+because its legitimate 404 Not Found discussion triggers a forbidden term.
+Remove that one exclusion for live-030-rfc-9110, retaining all body regions,
+thresholds and facts. The complete reference then passes; a bare error page,
+an error with page identity and an error with unrelated padding still fail.
+Independent official HTML confirms that the status is substantive RFC content.
+
+A separate measured weakness remains: removing the 3,478-character GET section
+still satisfies the current regional body coverage. Retaining its heading while
+removing its prose also passes that component. These are body-component findings,
+not original full-score positives: the original forbidden-term defect prevented
+the complete reference itself from passing. Long-document section requirements
+remain under review; the five-region threshold alone does not guarantee that
+every section is present.
