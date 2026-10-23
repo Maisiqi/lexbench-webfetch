@@ -159,6 +159,32 @@ This implementation correction does not finish case 248's scope review. The
 Picks stories; target scope must be qualified separately before changing its
 annotation or quota.
 
+The subsequent source-scope correction is now registered: AGP Picks starts at
+its standalone section title and ends at its own View all control. Perspectify
+likewise uses standalone section boundaries. The original quotas and remaining
+groups stay unchanged. The saved page passes with group counts 10/4/7/6;
+navigation-only Picks and one repeated story fail with zero and one record.
+No publisher-domain restriction or navigation-path blacklist is introduced.
+
+## Repository and documentation entry pages
+
+Access-restrictions 027 and 050 now require eight of ten observed commit rows,
+each with age, message, author, file count and changed-line counts. Both saved
+observations per case pass, as do normalized Markdown and changed commit
+messages. Removing the commit rows, omitting a column or keeping only seven rows
+fails. These are record-structure checks; they do not independently verify each
+commit destination or require every branch and tag entry. All original stable
+requirements remain.
+
+Case 047 is a tracker entry page with documentation and help links, not a long
+explanatory article. Its correction requires four of five product-documentation
+entries and all three observed help entries, without an invented prose-length
+floor. Two saved-source positives pass and body-entry omissions fail. Existing
+common-query headings remain mandatory; individual common-query destinations
+are not separately verified. The four corrections use seven separately bound
+source captures and pass 25 full-score controls plus four section-boundary
+regressions.
+
 ## Homepage content beyond navigation
 
 Twenty-six source-qualified homepage corrections are registered. They require

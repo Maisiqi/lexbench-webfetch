@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "6e8a1fd6470a16b504519328ed80f42e94be2ba172430651723173ca875ee713",
+      "revision_sha256": "48d5e5df0812fcf72699642c16e022c514885a7cf3f7bada7d5e0cfd84b1e359",
       "changes": [
         {
           "suite": "webfetch",
@@ -14263,6 +14263,119 @@
             "volatile-body-content-cannot-replace-stable-page-identity",
             "product-owned-price-visible",
             "product-price-simply-missing"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-027",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Unchanged frozen parent URL, stable requirements and forbidden terms. Supplemental captures are separately bound review evidence."
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-027/round-01.html",
+              "sha256": "a8a594253de6ac37ca097ca650c04fb336a503fd6b2974dc13478791ea628697",
+              "scope": "Independent review input: historical initial HTTP response, registered separately from frozen task input manifests."
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-027/round-02.html",
+              "sha256": "a8a594253de6ac37ca097ca650c04fb336a503fd6b2974dc13478791ea628697",
+              "scope": "Independent review input: historical initial HTTP response, registered separately from frozen task input manifests."
+            }
+          ],
+          "changes_sha256": "dea290b1080eb7e41f54b4224d86818c889141963f32d65df9226a386e85a93f",
+          "reason": "Require current commit row metadata without freezing messages; preserve stable identity requirements. Href identity is not independently checked.",
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "table-multiline-complete",
+            "table-multiline-missing-field"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-050",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Unchanged frozen parent URL, stable requirements and forbidden terms. Supplemental captures are separately bound review evidence."
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-050/round-01.html",
+              "sha256": "e80dc9f8a69d97af54f4b6bf9f653ce713c2d99d1cb420b67a5eb5a419cb3df4",
+              "scope": "Independent review input: historical initial HTTP response, registered separately from frozen task input manifests."
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-050/round-02.html",
+              "sha256": "7d7904d21592a62244e7584bae4140b317c56944afb15cc8711cefa11bc5d105",
+              "scope": "Independent review input: historical initial HTTP response, registered separately from frozen task input manifests."
+            }
+          ],
+          "changes_sha256": "dea290b1080eb7e41f54b4224d86818c889141963f32d65df9226a386e85a93f",
+          "reason": "Require current commit row metadata without freezing messages; preserve stable identity requirements. Href identity is not independently checked.",
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "table-multiline-complete",
+            "table-multiline-missing-field"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-047",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Unchanged frozen parent URL, stable requirements and forbidden terms. Supplemental captures are separately bound review evidence."
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-047/round-01.html",
+              "sha256": "ab467852a898a10014aa5f1a9ae0141a32651b6a45fc2ccfcf27d604b6a16bde",
+              "scope": "Independent review input: historical initial HTTP response, registered separately from frozen task input manifests."
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-047/round-02.html",
+              "sha256": "1524a8b9f1d08be706ecaeec3c2b8a8e8345ae72582ea4415684a3644b5506ad",
+              "scope": "Independent review input: historical initial HTTP response, registered separately from frozen task input manifests."
+            }
+          ],
+          "changes_sha256": "5982e68ac9741c9553b9dbbb5fcdfee48aea9e6cf32ac8a96ec6292c6c612f94",
+          "reason": "Require actual product documentation and help entries; preserve navigation requirements.",
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-248",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Unchanged frozen parent URL, stable requirements and forbidden terms. Supplemental captures are separately bound review evidence."
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-248/round-01.html",
+              "sha256": "4054f1cc3c7f69c8894bf9f923b6f8b26c1f2b3f8f3e1a1f162c4fe52058cf24",
+              "scope": "Independent review input: historical initial HTTP response, registered separately from frozen task input manifests."
+            }
+          ],
+          "changes_sha256": "0f7ecf6ce5c65d5113b61b231d156e38fbdfd3998231211f68b654e3360c0db4",
+          "reason": "Count only news links inside their own visible section boundaries, retaining all existing fields and minimums.",
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity",
+            "reviewed-risk-picks-complete",
+            "reviewed-risk-picks-navigation-only",
+            "reviewed-risk-picks-duplicate-news",
+            "reviewed-risk-picks-inline-navigation-title"
           ]
         }
       ]

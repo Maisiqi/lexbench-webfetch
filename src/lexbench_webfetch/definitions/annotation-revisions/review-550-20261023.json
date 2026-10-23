@@ -68,7 +68,13 @@
     "product-price-simply-missing",
     "separate-names-and-bare-urls-are-not-records",
     "volatile-body-change-preserves-stable-anchor-pass",
-    "volatile-body-content-cannot-replace-stable-page-identity"
+    "volatile-body-content-cannot-replace-stable-page-identity",
+    "reviewed-risk-picks-complete",
+    "reviewed-risk-picks-duplicate-news",
+    "reviewed-risk-picks-inline-navigation-title",
+    "reviewed-risk-picks-navigation-only",
+    "table-multiline-complete",
+    "table-multiline-missing-field"
   ],
   "changes": [
     {
@@ -18557,6 +18563,425 @@
         }
       },
       "remove": []
+    },
+    {
+      "suite": "access-restrictions",
+      "case_id": "risk-diverse-027",
+      "before_sha256": "6a9c81041cb723fd4e6ab4c176e290d0da3b63603f0286f5da71851c0dfc8fb3",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "table_row",
+          "minimum_records": 8,
+          "stable_text_anchors": [
+            {
+              "id": "stable-01",
+              "alternatives": [
+                "kernel/git/torvalds/linux.git"
+              ]
+            },
+            {
+              "id": "stable-02",
+              "alternatives": [
+                "Linux kernel source tree"
+              ]
+            },
+            {
+              "id": "stable-03",
+              "alternatives": [
+                "Linus Torvalds"
+              ]
+            },
+            {
+              "id": "stable-04",
+              "alternatives": [
+                "about"
+              ]
+            },
+            {
+              "id": "stable-05",
+              "alternatives": [
+                "summary"
+              ]
+            },
+            {
+              "id": "stable-06",
+              "alternatives": [
+                "refs"
+              ]
+            },
+            {
+              "id": "stable-07",
+              "alternatives": [
+                "log"
+              ]
+            },
+            {
+              "id": "stable-08",
+              "alternatives": [
+                "tree"
+              ]
+            },
+            {
+              "id": "stable-09",
+              "alternatives": [
+                "commit"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "diff"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "stats"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Clone"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
+              ]
+            }
+          ],
+          "table_columns": [
+            {
+              "name": "age",
+              "label": "Age",
+              "type": "token",
+              "pattern": "\\d+\\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)",
+              "selector": "td:nth-of-type(1)"
+            },
+            {
+              "name": "message",
+              "label": "Commit message",
+              "type": "text",
+              "selector": "td:nth-of-type(2) > a:first-child"
+            },
+            {
+              "name": "author",
+              "label": "Author",
+              "type": "text",
+              "selector": "td:nth-of-type(3)"
+            },
+            {
+              "name": "files",
+              "label": "Files",
+              "type": "integer",
+              "selector": "td:nth-of-type(4)"
+            },
+            {
+              "name": "lines",
+              "label": "Lines",
+              "type": "token",
+              "pattern": "-\\d+\\s*/\\s*\\+\\d+",
+              "selector": "td:nth-of-type(5)"
+            }
+          ],
+          "record_identity_fields": [
+            "message"
+          ],
+          "table_scope": {
+            "row_selector": "table.list tr:has(td:nth-of-type(5))",
+            "cell_selector": "td",
+            "exclude_selector": ".msg-avail,.decoration",
+            "start_pattern": "^Age\\s*$",
+            "end_pattern": "^Clone\\s*$",
+            "plain_row_pattern": "^(?P<age>[^\\t\\n]+)\\t(?P<message>[^\\t\\n]+)\\t(?P<author>[^\\t\\n]+)\\t(?P<files>\\d+)\\t(?P<lines>-\\d+\\s*/\\s*\\+\\d+)$"
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "access-restrictions",
+      "case_id": "risk-diverse-050",
+      "before_sha256": "b818f6095722665a5d3a929a434f902b777ff986af2a377d7205c701503c690a",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "table_row",
+          "minimum_records": 8,
+          "stable_text_anchors": [
+            {
+              "id": "stable-01",
+              "alternatives": [
+                "index"
+              ]
+            },
+            {
+              "id": "stable-02",
+              "alternatives": [
+                "current"
+              ]
+            },
+            {
+              "id": "stable-03",
+              "alternatives": [
+                "Tracking development of slackware-current"
+              ]
+            },
+            {
+              "id": "stable-04",
+              "alternatives": [
+                "alien@slackware.com"
+              ]
+            },
+            {
+              "id": "stable-05",
+              "alternatives": [
+                "summary"
+              ]
+            },
+            {
+              "id": "stable-06",
+              "alternatives": [
+                "refs"
+              ]
+            },
+            {
+              "id": "stable-07",
+              "alternatives": [
+                "log"
+              ]
+            },
+            {
+              "id": "stable-08",
+              "alternatives": [
+                "tree"
+              ]
+            },
+            {
+              "id": "stable-09",
+              "alternatives": [
+                "commit"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "diff"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "stats"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Clone"
+              ]
+            }
+          ],
+          "table_columns": [
+            {
+              "name": "age",
+              "label": "Age",
+              "type": "token",
+              "pattern": "\\d+\\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)",
+              "selector": "td:nth-of-type(1)"
+            },
+            {
+              "name": "message",
+              "label": "Commit message",
+              "type": "text",
+              "selector": "td:nth-of-type(2) > a:first-child"
+            },
+            {
+              "name": "author",
+              "label": "Author",
+              "type": "text",
+              "selector": "td:nth-of-type(3)"
+            },
+            {
+              "name": "files",
+              "label": "Files",
+              "type": "integer",
+              "selector": "td:nth-of-type(4)"
+            },
+            {
+              "name": "lines",
+              "label": "Lines",
+              "type": "token",
+              "pattern": "-\\d+\\s*/\\s*\\+\\d+",
+              "selector": "td:nth-of-type(5)"
+            }
+          ],
+          "record_identity_fields": [
+            "message"
+          ],
+          "table_scope": {
+            "row_selector": "table.list tr:has(td:nth-of-type(5))",
+            "cell_selector": "td",
+            "exclude_selector": ".msg-avail,.decoration",
+            "start_pattern": "^Age\\s*$",
+            "end_pattern": "^Clone\\s*$",
+            "plain_row_pattern": "^(?P<age>[^\\t\\n]+)\\t(?P<message>[^\\t\\n]+)\\t(?P<author>[^\\t\\n]+)\\t(?P<files>\\d+)\\t(?P<lines>-\\d+\\s*/\\s*\\+\\d+)$"
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "access-restrictions",
+      "case_id": "risk-diverse-047",
+      "before_sha256": "5183aadf5355622310bf26e29d4500f5046b960a86ca665a5b610dddbb4708f2",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "product-documentation",
+              "kind": "named_link",
+              "minimum_records": 4,
+              "hosts": [
+                "pve.proxmox.com",
+                "pdm.proxmox.com",
+                "pbs.proxmox.com",
+                "pmg.proxmox.com",
+                "pom.proxmox.com"
+              ],
+              "entry_path": "(?:/(?:pve-docs|docs|pmg-docs))?",
+              "start_pattern": "Product Documentation:",
+              "end_pattern": "Get Help:"
+            },
+            {
+              "id": "help-entries",
+              "kind": "named_link",
+              "minimum_records": 3,
+              "hosts": [
+                "my.proxmox.com",
+                "forum.proxmox.com",
+                "www.proxmox.com"
+              ],
+              "entry_path": "(?:/en/services/support-services/support)?",
+              "start_pattern": "Get Help:"
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "access-restrictions",
+      "case_id": "risk-diverse-248",
+      "before_sha256": "0d2bafa7c17788bee25fa665f044dd4aa01138163fa67c21c41ceb53dfa348b7",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "agp-picks",
+              "kind": "named_link",
+              "minimum_records": 8,
+              "hosts": [
+                "*"
+              ],
+              "entry_path": "/.+",
+              "start_pattern": "(?m)^(?:#{1,6}\\s*)?(?:\\[\\s*)?AGP Picks(?:\\s*\\]|\\s*$)",
+              "end_pattern": "(?m)^(?:\\[\\s*)?View all(?:\\s*\\]|\\s*$)",
+              "record_name_exclusions": [
+                "AGP Picks",
+                "View all"
+              ]
+            },
+            {
+              "id": "agp-wire",
+              "kind": "named_link",
+              "minimum_records": 4,
+              "hosts": [
+                "theglobaleuropean.com"
+              ],
+              "entry_path": "/agp-article/[0-9]+-[^/]+",
+              "start_pattern": "(?m)^## AGP Wire\\s*$",
+              "end_pattern": "Perspectify News",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                },
+                {
+                  "id": "source",
+                  "kind": "text",
+                  "minimum_chars": 2
+                },
+                {
+                  "id": "summary",
+                  "kind": "text",
+                  "minimum_chars": 20
+                }
+              ]
+            },
+            {
+              "id": "perspectify",
+              "kind": "named_link",
+              "minimum_records": 7,
+              "hosts": [
+                "*"
+              ],
+              "entry_path": "/.+",
+              "record_line_pattern": "^##\\s+",
+              "start_pattern": "(?m)^\\s*(?:##\\s+)?Perspectify News\\s*$",
+              "end_pattern": "(?m)^## (?:Press Releases|@ Journalists!)\\s*$",
+              "required_fields": [
+                {
+                  "id": "time",
+                  "kind": "date_or_time"
+                },
+                {
+                  "id": "label",
+                  "kind": "text",
+                  "pattern": "(?:Left-wing|Center-left|Neutral|Public Broadcaster|Gov't Institution|Center-right|Right-wing|Pro-Government|Gov't Propaganda|Press Release Service|Indeterminate)"
+                },
+                {
+                  "id": "source",
+                  "kind": "text",
+                  "minimum_chars": 2
+                }
+              ]
+            },
+            {
+              "id": "press-releases",
+              "kind": "named_link",
+              "minimum_records": 5,
+              "hosts": [
+                "theglobaleuropean.com"
+              ],
+              "entry_path": "/article/[0-9]+-[^/]+",
+              "start_pattern": "Press Releases",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                },
+                {
+                  "id": "source",
+                  "kind": "text",
+                  "minimum_chars": 2
+                },
+                {
+                  "id": "summary",
+                  "kind": "text",
+                  "minimum_chars": 20
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "remove": []
     }
   ],
   "review_inputs": {
@@ -18586,6 +19011,15 @@
     },
     "articles": {
       "review-evidence/articles/article-090/body.html": "0667feb4e6b962f0073241c2b277367e5869f72bc0e5ebab52fee555d82f1b1d"
+    },
+    "access-restrictions": {
+      "review-evidence/access-restrictions/risk-diverse-027/round-01.html": "a8a594253de6ac37ca097ca650c04fb336a503fd6b2974dc13478791ea628697",
+      "review-evidence/access-restrictions/risk-diverse-027/round-02.html": "a8a594253de6ac37ca097ca650c04fb336a503fd6b2974dc13478791ea628697",
+      "review-evidence/access-restrictions/risk-diverse-050/round-01.html": "e80dc9f8a69d97af54f4b6bf9f653ce713c2d99d1cb420b67a5eb5a419cb3df4",
+      "review-evidence/access-restrictions/risk-diverse-050/round-02.html": "7d7904d21592a62244e7584bae4140b317c56944afb15cc8711cefa11bc5d105",
+      "review-evidence/access-restrictions/risk-diverse-047/round-01.html": "ab467852a898a10014aa5f1a9ae0141a32651b6a45fc2ccfcf27d604b6a16bde",
+      "review-evidence/access-restrictions/risk-diverse-047/round-02.html": "1524a8b9f1d08be706ecaeec3c2b8a8e8345ae72582ea4415684a3644b5506ad",
+      "review-evidence/access-restrictions/risk-diverse-248/round-01.html": "4054f1cc3c7f69c8894bf9f923b6f8b26c1f2b3f8f3e1a1f162c4fe52058cf24"
     }
   }
 }

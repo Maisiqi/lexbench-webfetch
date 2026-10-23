@@ -58794,6 +58794,138 @@
       "artifact": "[Install](https://example.test/docs/install)\n[Usage](https://example.test/docs/usage)\nTopics\nUnrelated filler\nFooter",
       "ok": true,
       "expected_task_pass": false
+    },
+    {
+      "id": "reviewed-risk-picks-complete",
+      "category": "body-scope",
+      "root_cause": "navigation_links_must_not_supply_news_section_counts",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "agp-picks",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "*"
+              ],
+              "entry_path": "/.+",
+              "start_pattern": "(?m)^(?:#{1,6}\\s*)?(?:\\[\\s*)?AGP Picks(?:\\s*\\]|\\s*$)",
+              "end_pattern": "(?m)^(?:\\[\\s*)?View all(?:\\s*\\]|\\s*$)",
+              "record_name_exclusions": [
+                "AGP Picks",
+                "View all"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[ AGP Picks ](https://publisher.example/picks)\n[First news](https://news.example/about)\n[Second news](https://other.example/story)\n[ View all ](https://publisher.example/picks)\n[AGP Executive Report](https://example.test/executive-report)\n[About](https://example.test/about)\n[Support](https://example.test/support)\n",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "reviewed-risk-picks-navigation-only",
+      "category": "body-scope",
+      "root_cause": "navigation_links_must_not_supply_news_section_counts",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "agp-picks",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "*"
+              ],
+              "entry_path": "/.+",
+              "start_pattern": "(?m)^(?:#{1,6}\\s*)?(?:\\[\\s*)?AGP Picks(?:\\s*\\]|\\s*$)",
+              "end_pattern": "(?m)^(?:\\[\\s*)?View all(?:\\s*\\]|\\s*$)",
+              "record_name_exclusions": [
+                "AGP Picks",
+                "View all"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[ AGP Picks ](https://publisher.example/picks)\n[ View all ](https://publisher.example/picks)\n[AGP Executive Report](https://example.test/executive-report)\n[About](https://example.test/about)\n[Support](https://example.test/support)\n",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "reviewed-risk-picks-duplicate-news",
+      "category": "body-scope",
+      "root_cause": "navigation_links_must_not_supply_news_section_counts",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "agp-picks",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "*"
+              ],
+              "entry_path": "/.+",
+              "start_pattern": "(?m)^(?:#{1,6}\\s*)?(?:\\[\\s*)?AGP Picks(?:\\s*\\]|\\s*$)",
+              "end_pattern": "(?m)^(?:\\[\\s*)?View all(?:\\s*\\]|\\s*$)",
+              "record_name_exclusions": [
+                "AGP Picks",
+                "View all"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[ AGP Picks ](https://publisher.example/picks)\n[First](https://news.example/about)\n[Same](https://news.example/about#part)\n[ View all ](https://publisher.example/picks)\n[AGP Executive Report](https://example.test/executive-report)\n[About](https://example.test/about)\n[Support](https://example.test/support)\n",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "reviewed-risk-picks-inline-navigation-title",
+      "category": "body-scope",
+      "root_cause": "navigation_links_must_not_supply_news_section_counts",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "task_kind": "body",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "agp-picks",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "*"
+              ],
+              "entry_path": "/.+",
+              "start_pattern": "(?m)^(?:#{1,6}\\s*)?(?:\\[\\s*)?AGP Picks(?:\\s*\\]|\\s*$)",
+              "end_pattern": "(?m)^(?:\\[\\s*)?View all(?:\\s*\\]|\\s*$)",
+              "record_name_exclusions": [
+                "AGP Picks",
+                "View all"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Menu [ AGP Picks ](https://publisher.example/picks)\n[First news](https://news.example/about)\n[Second news](https://other.example/story)\n[ View all ](https://publisher.example/picks)\n",
+      "ok": true,
+      "expected_task_pass": false
     }
   ],
   "superseded_cases": {
