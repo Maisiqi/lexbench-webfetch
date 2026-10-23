@@ -88,10 +88,10 @@ saved-source positives also pass with the registered revision applied.
 
 The source-heading inventory also needed correction: Node's heading is wrapped
 in an anchor, and the initial candidate generator incorrectly removed that
-wrapper and its text. It is not evidence of a heading-free document. The remaining
-19-case classification is still under review. This correction does not change
-the original 63 heading inventories. Feishu's template data alone does not prove
-initial rendered visibility; its proposed headings remain unqualified.
+wrapper and its text. It is not evidence of a heading-free document. The other 19 cases required separate classification. This correction does not
+change the original 63 heading inventories. Feishu's template data alone was
+insufficient to prove initial visibility; its later rendered qualification is
+documented below.
 
 Node's actual `main` element supplies its heading and body, so its separate
 contract is now registered as the 64th document correction. The saved-source
@@ -104,7 +104,9 @@ Directory negatives retain actual navigation while removing body directory
 links; existing facts and length still pass but the target-link gate fails.
 API-name lists, empty descriptions and unrelated padding fail the definition
 contract. Original fact thresholds and stable anchors are preserved. This
-brings the mutable-document review to 81 of 82; Feishu remains under review.
+initially brought the mutable-document review to 81 of 82. The subsequently
+registered Feishu correction completes these 82 document amendments; its source
+conditions and remaining verification limits are documented below.
 
 ## Dynamic tables
 
@@ -198,9 +200,15 @@ are separately bound review evidence and do not replace frozen parent inputs.
 
 Independent integration review rejected removal of 13 mandatory anchors across
 five initial candidates. Restoring them preserves all passing sources for Zoom,
-Canva, PayPal and Elsevier. Figma's three observations lack the required
-"The full-stack creative canvas" text, so its candidate remains withheld.
-Dingtalk and USPS likewise retain unresolved source gaps. Proposed bulk
+Canva, PayPal and Elsevier. Figma's three earlier observations lacked the required
+"The full-stack creative canvas" text. A later initial browser observation
+confirms that heading, so it must remain. However, the proposed eight-of-ten
+carousel quota is rejected: actual ancestor geometry shows horizontal clipping,
+with several loaded cards outside the displayed carousel. DOM presence and
+nonzero element rectangles do not prove initial visibility. DingTalk's original
+version and meeting labels are also confirmed visible. USPS's current featured
+cards differ from the old passport promotion. Revised homepage candidates
+remain under review; no carousel quota is registered. Proposed bulk
 forbidden-word removals remain withheld because the available evidence has not
 qualified their false-positive and false-negative behavior.
 
@@ -331,3 +339,43 @@ review inputs; original frozen manifests remain unchanged.
 2345 already requires ten records from an observed inventory of ten external
 articles. Neither lowering that requirement nor restricting links to the
 homepage host is supported, so that task is unchanged.
+
+## Initial retail sections and rendered Feishu headings
+
+The retail returns task previously accepted three facts plus unrelated padding.
+The actual initial page has four disclosed prose sections and eight closed
+accordion labels. Require their headings, six stable prose clauses and half the
+observed body length, while preserving original facts and adding the observed
+online-return heading alias. Hidden accordion answers are not required. All 28
+source and omission controls pass, including actual compact main HTML. The
+original full-page HTML was truncated in scripts and is not used as an HTML
+positive. This checks sections and clauses, not verbatim completeness.
+
+Feishu uses source-evidenced custom heading elements rather than native h2/h3.
+Optional per-heading HTML selectors recognize those elements only when their
+text also matches; hidden elements and closed details remain excluded. Native
+headings and extracted text remain supported. All eight declared headings are
+source-backed; the existing section-coverage threshold remains the acceptance
+threshold. Original five facts and stable anchors remain, with a 1263-character
+body floor. The FAQ question is visible, but its collapsed answer is excluded.
+The observation used an existing signed-in session with no login or expansion;
+the task has no anonymous-access requirement. This is not proof of anonymous
+reachability. The observed article matches the old embedded body after removing
+whitespace/punctuation and two old renderer icon placeholders.
+
+## Dynamic headings, controls and child-document scope
+
+Blueprint 105's Quick start heading and Grid.js 025's View Source button are now
+required stable text rather than prose regions. Other body regions remain
+independently required at 80%. The role operation also supports table_row
+contracts while preserving table fields, row counts, identity and old anchors;
+unsupported schemas still fail without partially changing the case.
+
+Iframe 015 explicitly targets the child list, excluding parent navigation and
+the sibling interactive frame. Its 41 parent header/navigation/footer anchors
+contradicted that scope. Remove those out-of-scope anchors, retain item facts
+and the complete list reference, and require the title immediately before item
+0. Actual child HTML and text support this boundary; removing the title or
+moving it after the list fails. The repeated word iframe in list rows cannot
+substitute for the leading title. Tree 016 retains its three short regions:
+they are actual initially displayed nodes, and deleting any one fails.

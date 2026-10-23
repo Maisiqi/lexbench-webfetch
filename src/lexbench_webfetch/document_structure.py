@@ -32,7 +32,9 @@ def validate_document_structure(contract):
         raise ValueError('Document structure requires evidenced headings')
     ids, texts = set(), set()
     for heading in headings:
-        if not isinstance(heading, dict) or set(heading) != {'id', 'text', 'level', 'body_required'}:
+        if (not isinstance(heading, dict)
+                or not {'id', 'text', 'level', 'body_required'} <= set(heading)
+                or set(heading) - {'id', 'text', 'level', 'body_required', 'html_selector'}):
             raise ValueError('Invalid document heading fields')
         if (not isinstance(heading['id'], str) or not heading['id'].strip()
                 or heading['id'] in ids or not isinstance(heading['text'], str)
@@ -43,13 +45,23 @@ def validate_document_structure(contract):
             raise ValueError('Invalid document heading level or body requirement')
         if contract.get('type') == 'definition' and (heading['level'] != 1 or not heading['body_required']):
             raise ValueError('Definitions require a local description and level 1')
+        if 'html_selector' in heading:
+            selector = heading['html_selector']
+            if (contract.get('type') == 'definition' or not isinstance(selector, str)
+                    or not selector.strip()):
+                raise ValueError('Invalid document heading selector')
+            import soupsieve
+            try:
+                soupsieve.compile(selector)
+            except soupsieve.SelectorSyntaxError as error:
+                raise ValueError('Invalid document heading selector') from error
         ids.add(heading['id'])
         texts.add(_key(heading['text']))
     if not any(h['body_required'] for h in headings):
         raise ValueError('A document contract needs at least one substantive section')
 
 
-def _html_events(content):
+def _html_events(content, headings=()):
     from bs4 import Comment, NavigableString
     from .dynamic_lists import scoped_html
     # Accessibility-tree hiding is not visual hiding. Reuse the shared
@@ -67,11 +79,21 @@ def _html_events(content):
         if (links and all(str(a.get('href', '')).startswith('#') for a in links)
                 and _key(node.get_text()) == _key(''.join(a.get_text() for a in links))):
             node.decompose()
+    selected = {}
+    for heading in headings:
+        if 'html_selector' not in heading:
+            continue
+        for node in root.select(heading['html_selector']):
+            if _key(node.get_text(' ', strip=True)) == _key(heading['text']):
+                selected[id(node)] = heading['level']
     events = []
     consumed = set()
     for node in root.descendants:
-        if getattr(node, 'name', None) in {'h1', 'h2', 'h3', 'h4', 'h5', 'h6'}:
-            events.append((node.get_text(' ', strip=True), int(node.name[-1])))
+        if id(node) in consumed:
+            continue
+        if id(node) in selected or getattr(node, 'name', None) in {'h1', 'h2', 'h3', 'h4', 'h5', 'h6'}:
+            level = selected[id(node)] if id(node) in selected else int(node.name[-1])
+            events.append((node.get_text(' ', strip=True), level))
             consumed.update(id(child) for child in node.descendants)
         elif (isinstance(node, NavigableString) and not isinstance(node, Comment)
               and id(node) not in consumed and node.strip()):
@@ -165,7 +187,7 @@ def evaluate_document_structure(content, contract, *, html_document=False):
         events = (_definition_html_events(content) if html_document else
                   _text_events(content, contract['headings'], key_function))
     else:
-        events = (_html_events(content) if html_document else
+        events = (_html_events(content, contract['headings']) if html_document else
                   _text_events(content, contract['headings']))
     declared = {key_function(h['text']): h for h in contract['headings']}
     # Serializers may change heading levels. The declared source hierarchy

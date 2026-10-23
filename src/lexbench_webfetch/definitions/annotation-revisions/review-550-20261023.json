@@ -83,7 +83,10 @@
     "reviewed-region-role-missing-prose",
     "reviewed-region-role-missing-labels",
     "scoped-list-new-short-names",
-    "scoped-list-empty-name"
+    "scoped-list-empty-name",
+    "mutable-document-custom-heading-complete",
+    "mutable-document-custom-heading-hidden",
+    "heading-only-body-region-missing-heading"
   ],
   "changes": [
     {
@@ -1011,13 +1014,49 @@
       "suite": "dynamic-content",
       "case_id": "dynamic-015-015-testpages-iframe-list",
       "before_sha256": "9a2c378b3ebf3e805b6150131db491efb9b78b78dc5374ca235f69c00474c381",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "anchor-1",
+              "alternatives": [
+                "iFrame List Item 0"
+              ]
+            },
+            {
+              "id": "anchor-2",
+              "alternatives": [
+                "iFrame List Item 50"
+              ]
+            },
+            {
+              "id": "anchor-3",
+              "alternatives": [
+                "iFrame List Item 99"
+              ]
+            }
+          ],
+          "page_patterns": [
+            "(?i)\\biframe\\s+iframe\\s+list\\s+item\\s+0\\b"
+          ]
+        }
+      },
       "remove": [],
       "body_thresholds": {
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 2
-      }
+      },
+      "body_regions_to_stable_text": [
+        {
+          "region_id": "body-region-1",
+          "anchor_id": "review-iframe-title",
+          "text": "iframe"
+        }
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -1077,7 +1116,14 @@
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 3
-      }
+      },
+      "body_regions_to_stable_text": [
+        {
+          "region_id": "body-region-3",
+          "anchor_id": "review-short-view-source",
+          "text": "view source"
+        }
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -1591,7 +1637,14 @@
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 5
-      }
+      },
+      "body_regions_to_stable_text": [
+        {
+          "region_id": "body-region-3",
+          "anchor_id": "review-short-quick-start",
+          "text": "quick start"
+        }
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -19426,6 +19479,222 @@
         }
       },
       "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "web-retail-returns",
+      "before_sha256": "d14d4379cda770116884ecb721afbf37eefa00aad4ec9b9381f96917100da95f",
+      "set": {
+        "required_facts": [
+          {
+            "id": "online-returns",
+            "alternatives": [
+              "Returning & Exchanging Online Orders",
+              "Returning or Exchanging Online Orders"
+            ]
+          },
+          {
+            "id": "store-returns",
+            "alternatives": [
+              "In-store purchases must be returned to a store location"
+            ]
+          },
+          {
+            "id": "furniture-returns",
+            "alternatives": [
+              "Returning Furniture"
+            ]
+          },
+          {
+            "id": "mail-fee",
+            "alternatives": [
+              "fee will be deducted from your refund"
+            ]
+          },
+          {
+            "id": "store-eligibility",
+            "alternatives": [
+              "Most products are eligible to be returned to a store location"
+            ]
+          },
+          {
+            "id": "furniture-condition",
+            "alternatives": [
+              "Furniture items in a saleable condition"
+            ]
+          },
+          {
+            "id": "international-route",
+            "alternatives": [
+              "Returning an international order"
+            ]
+          },
+          {
+            "id": "product-issues",
+            "alternatives": [
+              "all product-related issues"
+            ]
+          },
+          {
+            "id": "holiday-window",
+            "alternatives": [
+              "an extended return and exchange window"
+            ]
+          }
+        ],
+        "document_structure": {
+          "version": 1,
+          "headings": [
+            {
+              "id": "initial-section-1",
+              "text": "Return or Exchange by Mail",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "initial-section-2",
+              "text": "Make a Free Return in Store",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "initial-section-3",
+              "text": "Unlimited Furniture Delivery Orders",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "initial-section-4",
+              "text": "Holiday Extended Return Policy",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "initial-section-5",
+              "text": "Our Return Policy",
+              "level": 3,
+              "body_required": false
+            },
+            {
+              "id": "initial-section-6",
+              "text": "Returning or Exchanging Online Orders",
+              "level": 3,
+              "body_required": false
+            },
+            {
+              "id": "initial-section-7",
+              "text": "Returning In-Store Purchases",
+              "level": 3,
+              "body_required": false
+            },
+            {
+              "id": "initial-section-8",
+              "text": "Returning Furniture & Select Decor",
+              "level": 3,
+              "body_required": false
+            },
+            {
+              "id": "initial-section-9",
+              "text": "Returning Wedding Gowns and Bridal Sets",
+              "level": 3,
+              "body_required": false
+            },
+            {
+              "id": "initial-section-10",
+              "text": "Returning Gifts or Registry Purchases",
+              "level": 3,
+              "body_required": false
+            },
+            {
+              "id": "initial-section-11",
+              "text": "Returning Curated By Anthropologie Purchases",
+              "level": 3,
+              "body_required": false
+            },
+            {
+              "id": "initial-section-12",
+              "text": "Returning DoorDash Purchases",
+              "level": 3,
+              "body_required": false
+            }
+          ],
+          "minimum_heading_coverage": 1.0,
+          "minimum_body_chars": 542
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "lm-feishu-help",
+      "before_sha256": "7d302a4b1d8fc4f999b0e63d78cfb067f024ab9cb3acb7918ec0f89c5381b9e6",
+      "set": {
+        "document_structure": {
+          "version": 1,
+          "headings": [
+            {
+              "id": "section-1",
+              "text": "一、功能简介",
+              "level": 2,
+              "body_required": true,
+              "html_selector": ".ace-line.heading-h2[data-node=\"true\"]"
+            },
+            {
+              "id": "section-2",
+              "text": "二、操作流程",
+              "level": 2,
+              "body_required": true,
+              "html_selector": ".ace-line.heading-h2[data-node=\"true\"]"
+            },
+            {
+              "id": "section-3",
+              "text": "查看整体使用数据",
+              "level": 2,
+              "body_required": true,
+              "html_selector": ".ace-line.heading-h2[data-node=\"true\"]"
+            },
+            {
+              "id": "section-4",
+              "text": "查看使用详情",
+              "level": 2,
+              "body_required": true,
+              "html_selector": ".ace-line.heading-h2[data-node=\"true\"]"
+            },
+            {
+              "id": "section-5",
+              "text": "三、指标说明",
+              "level": 2,
+              "body_required": true,
+              "html_selector": ".ace-line.heading-h2[data-node=\"true\"]"
+            },
+            {
+              "id": "section-6",
+              "text": "通用指标",
+              "level": 3,
+              "body_required": true,
+              "html_selector": ".ace-line.heading-h3[data-node=\"true\"]"
+            },
+            {
+              "id": "section-7",
+              "text": "单个 AI 功能专有指标",
+              "level": 3,
+              "body_required": true,
+              "html_selector": ".ace-line.heading-h3[data-node=\"true\"]"
+            },
+            {
+              "id": "section-8",
+              "text": "四、常见问题",
+              "level": 2,
+              "body_required": true,
+              "html_selector": ".ace-line.heading-h2[data-node=\"true\"]"
+            }
+          ],
+          "minimum_heading_coverage": 0.8,
+          "minimum_body_chars": 1263
+        },
+        "min_content_chars": 1263
+      },
+      "remove": []
     }
   ],
   "review_inputs": {
@@ -19448,7 +19717,12 @@
       "review-evidence/dynamic-content/dynamic-035-035-vuetify-virtual-table/round-03.html": "da6259731727ec8994c43b95f4bdbe5e4d90d7cc8c44f86dea9a4f03d15d6356",
       "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-01.html": "65e7e62258e10a91db6c400f847dfe7ed2535025325a186c4bb1b86b0ba9a0a9",
       "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-02.html": "fbcf4565a72c7c5126b481d6c126f56565a4974cc2b427461a5c2c074f53a518",
-      "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-03.html": "65e7e62258e10a91db6c400f847dfe7ed2535025325a186c4bb1b86b0ba9a0a9"
+      "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-03.html": "65e7e62258e10a91db6c400f847dfe7ed2535025325a186c4bb1b86b0ba9a0a9",
+      "review-evidence/dynamic-short-105/rendered.txt": "0236fdc711f8081776960e5aa1b4af8ee35f8287ac496d85c38c7f2e896e10f1",
+      "review-evidence/dynamic-short-015/source-0.txt": "8651cdeafe5c49aa00ef83990ca5cfdfd86bd581b9bc2325b1ff1c34b2a0e095",
+      "review-evidence/dynamic-short-015/source-1.txt": "666800d65890d2fb2be98e1dd79c03e5c5d98495756ff01475a39e3b3085c5d5",
+      "review-evidence/dynamic-short-015/source-2.html": "5290f199f72c5c3bfd31e34297bf53440e77105b51824d61172c5701adac9b5b",
+      "review-evidence/dynamic-short-025/source-0.txt": "f3aae4c0ddc7927701d59dde5070fb3564c6a8863904b296a58fbf1fdab0bae3"
     },
     "popular-sites": {
       "review-evidence/popular-sites/homepages-selected-observations-20260916.json": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
@@ -19473,7 +19747,14 @@
       "review-evidence/access-restrictions/risk-diverse-159/region-role-round-2.html": "1a7bc3d4a5cf55ab30e22a6038d2e642f21b305650eb8caf08b7b557dc459200"
     },
     "webfetch": {
-      "review-evidence/webfetch/challenge-first-load-observations-20260916.json": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b"
+      "review-evidence/webfetch/challenge-first-load-observations-20260916.json": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+      "review-evidence/webfetch/retail-initial-20261023/capture.json": "a9b899da3f5aa711881dfbe512a1c3196b558af0046215a2b1149c22cbb69baf",
+      "review-evidence/webfetch/retail-initial-20261023/page.txt": "7577b64d36a04f946de3523ac21823935f2246b3e3adfa613f4f507901a73ffe",
+      "review-evidence/webfetch/retail-initial-20261023/main-dom.json": "f47e52aa80839eecf36132a6e63c078d597c24327e9938e1fa118a0b9d8a4f32",
+      "review-evidence/webfetch/retail-initial-20261023/heading-ancestors.json": "2aa591886b6bade2ca866f662f9d466320294a2a447c12254ad62779ae3bcc0f",
+      "review-evidence/webfetch/feishu-initial-20261023/capture.json": "f8d39bc8c999f016589bd4d9cc6dbfa17447127f977bf6ac694ec11dd33ddda1",
+      "review-evidence/webfetch/feishu-initial-20261023/article.html": "7a35ab873f47030a8902aae0905fc8b1dbb1034888abcdbc1dad7c80078b9c79",
+      "review-evidence/webfetch/feishu-initial-20261023/article.txt": "357757e6bc244aa4e567a263110b66ed0ecb641218753c05f298cb0e323d19d4"
     }
   }
 }

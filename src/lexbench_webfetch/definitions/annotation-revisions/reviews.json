@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "2fc16bbc5702ce7c814e3c72d9a65c85d399b1ed58f7d9e891b02658f1c81b84",
+      "revision_sha256": "87ff3be83a4862b63ca0b3eedaef05388440bf0c36023fc64e0c3428c812a647",
       "changes": [
         {
           "suite": "webfetch",
@@ -6917,13 +6917,28 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-015-015-testpages-iframe-list",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Correct confirmed parent-navigation requirements outside the explicitly selected iframe-list child; preserve original item facts and complete list reference. Require the title immediately before item 0 so repeated row text cannot replace it.",
+          "changes_sha256": "26de1d99f35909b57dc50c74442da9889117180cfeab7899e35864412d0caa35",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for dynamic-015-015-testpages-iframe-list"
+            },
+            {
+              "path": "review-evidence/dynamic-short-015/source-0.txt",
+              "sha256": "8651cdeafe5c49aa00ef83990ca5cfdfd86bd581b9bc2325b1ff1c34b2a0e095",
+              "scope": "Correct confirmed parent-navigation requirements outside the explicitly selected iframe-list child; preserve original item facts and complete list reference. Require the title immediately before item 0 so repeated row text cannot replace it. Independent saved source, bound separately from frozen parent."
+            },
+            {
+              "path": "review-evidence/dynamic-short-015/source-1.txt",
+              "sha256": "666800d65890d2fb2be98e1dd79c03e5c5d98495756ff01475a39e3b3085c5d5",
+              "scope": "Correct confirmed parent-navigation requirements outside the explicitly selected iframe-list child; preserve original item facts and complete list reference. Require the title immediately before item 0 so repeated row text cannot replace it. Independent saved source, bound separately from frozen parent."
+            },
+            {
+              "path": "review-evidence/dynamic-short-015/source-2.html",
+              "sha256": "5290f199f72c5c3bfd31e34297bf53440e77105b51824d61172c5701adac9b5b",
+              "scope": "Correct confirmed parent-navigation requirements outside the explicitly selected iframe-list child; preserve original item facts and complete list reference. Require the title immediately before item 0 so repeated row text cannot replace it. Independent saved source, bound separately from frozen parent."
             }
           ],
           "regression_ids": [
@@ -6936,7 +6951,8 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "heading-only-body-region-missing-heading"
           ]
         },
         {
@@ -7042,13 +7058,18 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-025-025-tabulator-vertical-virtual-dom",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Reclassify the observed View Source button as required stable text while preserving table schema, every field, minimum, identity, old anchors and remaining title/prose regions.",
+          "changes_sha256": "3145e644a469cb1b38d73d1c8bf8da5850a6c0fab1f1ffba7d113bd8c9357de4",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for dynamic-025-025-tabulator-vertical-virtual-dom"
+            },
+            {
+              "path": "review-evidence/dynamic-short-025/source-0.txt",
+              "sha256": "f3aae4c0ddc7927701d59dde5070fb3564c6a8863904b296a58fbf1fdab0bae3",
+              "scope": "Reclassify the observed View Source button as required stable text while preserving table schema, every field, minimum, identity, old anchors and remaining title/prose regions. Independent saved source, bound separately from frozen parent."
             }
           ],
           "regression_ids": [
@@ -7061,7 +7082,10 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "table-multiline-complete",
+            "table-multiline-missing-field",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -7250,13 +7274,18 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-105-blueprint-docs",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. The standalone Quick start heading is retained as exact-bound required stable text; all four substantive body regions remain independently required at 80%.",
+          "changes_sha256": "03bc17b3a9ce8b3c398d0b225be8589403bb3f83fdaccc2a39cd7c93f22fabd7",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for dynamic-105-blueprint-docs"
+            },
+            {
+              "path": "review-evidence/dynamic-short-105/rendered.txt",
+              "sha256": "0236fdc711f8081776960e5aa1b4af8ee35f8287ac496d85c38c7f2e896e10f1",
+              "scope": "Independent saved rendered main content; old evidence rendered_sha256 verified. Quick start is a required h2; full source passes, missing heading/installation/prose fail."
             }
           ],
           "regression_ids": [
@@ -7269,7 +7298,8 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "heading-only-body-region-missing-heading"
           ]
         },
         {
@@ -14583,6 +14613,68 @@
             "separate-names-and-bare-urls-are-not-records",
             "variable-list-23-of-30-does-not-meet-80-percent-source-threshold",
             "variable-list-24-of-30-meets-source-threshold-without-claiming-completeness"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "web-retail-returns",
+          "reason": "Preserve original three facts and forbidden terms; add the observed online heading alias. Require all four initially disclosed prose sections and eight closed accordion labels without demanding hidden accordion content. Six stable clauses cover disclosed paragraphs while omitting mutable prices, dates and phone numbers. Body floor is half the observed 1084 non-heading characters. Actual visible text, heading Markdown projection and compact main HTML pass; per-section missing prose and original three facts plus padding fail. This measures section/clause coverage, not verbatim completeness.",
+          "changes_sha256": "382ca56db08f36b156f314b893ab3a460ed986f10fd500ef5afcd4a19f3ce9d6",
+          "sources": [
+            {
+              "path": "review-evidence/webfetch/retail-initial-20261023/capture.json",
+              "sha256": "a9b899da3f5aa711881dfbe512a1c3196b558af0046215a2b1149c22cbb69baf",
+              "scope": "Actual initial same-URL browser observation, no clicks, scrolling, expansion or login. Visible text and metadata plus complete compact main DOM. Original full-page HTML truncated in scripts is not used as an HTML positive."
+            },
+            {
+              "path": "review-evidence/webfetch/retail-initial-20261023/page.txt",
+              "sha256": "7577b64d36a04f946de3523ac21823935f2246b3e3adfa613f4f507901a73ffe",
+              "scope": "Actual initial same-URL browser observation, no clicks, scrolling, expansion or login. Visible text and metadata plus complete compact main DOM. Original full-page HTML truncated in scripts is not used as an HTML positive."
+            },
+            {
+              "path": "review-evidence/webfetch/retail-initial-20261023/main-dom.json",
+              "sha256": "f47e52aa80839eecf36132a6e63c078d597c24327e9938e1fa118a0b9d8a4f32",
+              "scope": "Actual initial same-URL browser observation, no clicks, scrolling, expansion or login. Visible text and metadata plus complete compact main DOM. Original full-page HTML truncated in scripts is not used as an HTML positive."
+            },
+            {
+              "path": "review-evidence/webfetch/retail-initial-20261023/heading-ancestors.json",
+              "sha256": "2aa591886b6bade2ca866f662f9d466320294a2a447c12254ad62779ae3bcc0f",
+              "scope": "Actual initial same-URL browser observation, no clicks, scrolling, expansion or login. Visible text and metadata plus complete compact main DOM. Original full-page HTML truncated in scripts is not used as an HTML positive."
+            }
+          ],
+          "regression_ids": [
+            "mutable-document-structure-complete",
+            "mutable-document-structure-missing-sections",
+            "mutable-document-structure-toc-padding",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "lm-feishu-help",
+          "reason": "Require eight source-evidenced custom headings with local body and a 1263-character floor; preserve all five facts and stable anchors. Existing task requests initial loaded article without expanding sections and does not require anonymous access. The observed session is signed in; article text matches the old embedded body except two renderer icon placeholders, and the collapsed FAQ question is visible. Do not require its hidden answer or claim anonymous reachability.",
+          "changes_sha256": "f4572deeaa740b01fa34fedfbb16e04dc437cdaa956c811bec374742d5199a2b",
+          "sources": [
+            {
+              "path": "review-evidence/webfetch/feishu-initial-20261023/capture.json",
+              "sha256": "f8d39bc8c999f016589bd4d9cc6dbfa17447127f977bf6ac694ec11dd33ddda1",
+              "scope": "Initial article-only browser capture in an existing signed-in session, no login/click/scroll/expansion performed. Not anonymous evidence. Custom heading attributes are in rendered DOM; FAQ summary visible and answer closed. Task does not require anonymous access."
+            },
+            {
+              "path": "review-evidence/webfetch/feishu-initial-20261023/article.html",
+              "sha256": "7a35ab873f47030a8902aae0905fc8b1dbb1034888abcdbc1dad7c80078b9c79",
+              "scope": "Initial article-only browser capture in an existing signed-in session, no login/click/scroll/expansion performed. Not anonymous evidence. Custom heading attributes are in rendered DOM; FAQ summary visible and answer closed. Task does not require anonymous access."
+            },
+            {
+              "path": "review-evidence/webfetch/feishu-initial-20261023/article.txt",
+              "sha256": "357757e6bc244aa4e567a263110b66ed0ecb641218753c05f298cb0e323d19d4",
+              "scope": "Initial article-only browser capture in an existing signed-in session, no login/click/scroll/expansion performed. Not anonymous evidence. Custom heading attributes are in rendered DOM; FAQ summary visible and answer closed. Task does not require anonymous access."
+            }
+          ],
+          "regression_ids": [
+            "mutable-document-custom-heading-complete",
+            "mutable-document-custom-heading-hidden",
+            "mutable-document-structure-missing-fact"
           ]
         }
       ]

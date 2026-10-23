@@ -16,7 +16,7 @@ def move_regions_to_stable_text(case, moves):
     contract = deepcopy(case.get('acceptance_contract'))
     if (not isinstance(body, dict) or body.get('version') != 3
             or 'ending' in body or not isinstance(contract, dict)
-            or contract.get('schema') != 'body_text'
+            or contract.get('schema') not in ('body_text', 'table_row')
             or contract.get('stable_text_role', 'required') != 'required'
             or not isinstance(moves, list) or not moves
             or body.get('minimum_floor') != body.get('minimum_coverage')
