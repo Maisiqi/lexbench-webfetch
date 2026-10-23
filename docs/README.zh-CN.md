@@ -53,9 +53,12 @@ cd lexbench-webfetch
 uv sync --frozen
 uv run --frozen lexbench-webfetch list
 uv run --frozen lexbench-webfetch validate
+uv run --frozen lexbench-webfetch version
 ```
 
 这一步检查公开任务定义，无需浏览器、API Key 或 Browser Eval。它不访问网站，也不计算评测分数。
+
+`version` 会校验并显示当前题库版本，包括各子集题数、冻结输入哈希和评分器哈希。`benchmark-v主版本.次版本.补丁版本` 标签固定对应的仓库提交；报告另行绑定实际使用的题目和评分规则。
 
 复现冻结任务集需要取得获准使用的原始输入。所需文件及哈希列在 `src/lexbench_webfetch/definitions/registry.json` 中。本仓库不分发第三方页面快照，目前也没有公开的完整输入下载包。
 
@@ -68,6 +71,13 @@ uv run --frozen lexbench-webfetch export \
 ```
 
 导出工具只复制清单内的文件，并打印可执行数据集路径。缺文件、内容变化或符号链接都会使校验失败，已有输出目录不会被复用。
+
+## 固定评测版本
+
+报告绑定评测版本、冻结题目和评分源码。升级软件包不会改变历史结果。
+用 `lexbench-webfetch release` 在外部输入目录生成 `benchmark-release.json`，
+用 `compare-releases` 检查两个版本能否直接比较、是否需要统一重评，或应按不同大版本分别展示。
+具体规则见[评测版本管理](versions.md)。
 
 ## 对保存的响应评分
 
