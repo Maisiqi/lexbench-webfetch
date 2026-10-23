@@ -179,6 +179,22 @@ def annotation_changes(before, after, path=''):
     return [] if before == after else [{'path': path, 'before': before, 'after': after}]
 
 
+def review_input_files(definition, identifier):
+    """Bind additional review evidence separately from the immutable parent inputs."""
+    manifests = definition.get('review_inputs', {})
+    if (not isinstance(manifests, dict) or set(manifests) - set(definition['parents'])
+            or any(not isinstance(files, dict) for files in manifests.values())):
+        raise ValueError('Invalid revision review-input manifest')
+    for files in manifests.values():
+        for relative, sha256 in files.items():
+            contained_path(SUITES, relative)
+            if (not isinstance(relative, str) or not relative.startswith('review-evidence/')
+                    or Path(relative).as_posix() != relative
+                    or not isinstance(sha256, str) or not re.fullmatch('[0-9a-f]{64}', sha256)):
+                raise ValueError('Review evidence requires a namespaced path and SHA-256')
+    return manifests.get(identifier, {})
+
+
 def _review_annotation(definition, revision_path, identifier, root, changes):
     from .scoring_regressions import check_scoring_regressions
     reviews_path = contained_path(SUITES, 'annotation-revisions/reviews.json', reject_symlinks=True)
@@ -193,6 +209,10 @@ def _review_annotation(definition, revision_path, identifier, root, changes):
     if len(keys) != len(set(keys)) or set(keys) != {(item['suite'], item['case_id']) for item in definition['changes']}:
         raise ValueError('Annotation review task inventory differs')
     declared_inputs = input_files(read(root/'source-inputs.json'))
+    review_inputs = review_input_files(definition, identifier)
+    if set(declared_inputs) & set(review_inputs):
+        raise ValueError('Review evidence cannot replace parent inputs')
+    declared_inputs.update(review_inputs)
     records = []
     for change, old, new in changes:
         item = entries[keys.index((identifier, change['case_id']))]
@@ -215,10 +235,12 @@ def _review_annotation(definition, revision_path, identifier, root, changes):
         records.append({'suite': identifier, 'case_id': change['case_id'],
                         'reason': item['reason'], 'sources': sources, 'changes': delta,
                         'regression_ids': controls,
-                        'source_coverage': ('reference_source_declared' if any(source['path'] != 'dataset.json' for source in sources)
+                        'source_coverage': ('revision_review_source_declared' if any(source['path'] in review_inputs for source in sources)
+                                            else 'reference_source_declared' if any(source['path'] != 'dataset.json' for source in sources)
                                             else 'task_and_source_hashes_only')})
     return {'revision': definition['id'], 'revision_sha256': digest(revision_path),
-            'review_sha256': digest(reviews_path), 'changes': records}
+            'review_sha256': digest(reviews_path), 'changes': records,
+            **({'review_inputs': review_inputs} if review_inputs else {})}
 
 
 def apply_annotation_revision(identifier: str, dataset: dict, revision: str) -> dict:
@@ -431,8 +453,11 @@ def check_revision_references(dataset: dict, review: dict, source: Path) -> dict
             'cases': results}
 
 
-def export(identifier: str, source: Path, output: Path, *, revision: str | None = None) -> Path:
+def export(identifier: str, source: Path, output: Path, *, revision: str | None = None,
+           review_source: Path | None = None) -> Path:
     """Copy only declared inputs after verification; never overwrite a run or input tree."""
+    if review_source is not None and revision is None:
+        raise ValueError('Review evidence requires an annotation revision')
     verify_inputs(identifier, source)
     if output.exists() or output.is_symlink():
         raise ValueError("Output must be a new directory")
@@ -450,6 +475,18 @@ def export(identifier: str, source: Path, output: Path, *, revision: str | None 
         if revision is not None:
             dataset_path = stage / manifest['dataset']
             revised, review = _apply_annotation_revision(identifier, read(dataset_path), revision)
+            extra_inputs = review.get('review_inputs', {})
+            if extra_inputs and review_source is None:
+                raise ValueError('This revision requires --review-source with its declared review evidence')
+            for relative, sha256 in extra_inputs.items():
+                original = contained_path(review_source, relative, reject_symlinks=True)
+                if not original.is_file() or digest(original) != sha256:
+                    raise ValueError('Review evidence is missing or changed: ' + relative)
+                target = contained_path(stage, relative, reject_symlinks=True)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(original, target)
+                if digest(target) != sha256:
+                    raise ValueError('Review evidence changed during export: ' + relative)
             review['reference_controls'] = check_revision_references(revised, review, stage)
             if any(item['status'] == 'failed' for item in review['reference_controls']['cases']):
                 raise ValueError('Revised contract rejects its frozen reference or accepts an error page')

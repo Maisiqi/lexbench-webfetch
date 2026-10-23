@@ -166,6 +166,7 @@ def _validate_group(group: dict) -> None:
         "link_column",
         "combined_columns",
         "include_table_accessible_names",
+        "group_caption",
     }
     if (
         not isinstance(group, dict)
@@ -195,6 +196,21 @@ def _validate_group(group: dict) -> None:
         kind != "table" or type(group["include_table_accessible_names"]) is not bool
     ):
         raise ValueError("Accessible table names require a boolean table option")
+    if "group_caption" in group:
+        option = group["group_caption"]
+        keys = {"table_selector", "row_selector", "cell_selector", "caption_selector", "pattern", "field"}
+        if (kind != "table" or not isinstance(option, dict) or set(option) != keys
+                or not fields_are_valid([option.get("field")])
+                or not option["field"].get("aliases")
+                or option["field"]["id"] in {c.get("id") for c in group.get("required_columns", [])}
+                or any(not isinstance(option[k], str) or not option[k].strip() for k in keys - {"field"})):
+            raise ValueError("Invalid table group caption")
+        import soupsieve
+        for key in keys - {"field", "pattern"}:
+            soupsieve.compile(option[key])
+        pattern = re.compile(option["pattern"])
+        if set(pattern.groupindex) != {"value"} or pattern.groups != 1 or pattern.search(""):
+            raise ValueError("Table caption must capture one nonempty value")
     if "combined_columns" in group and kind != "table":
         raise ValueError("Combined columns require a table group")
     minimum = group.get("minimum_records")
@@ -1501,6 +1517,10 @@ def evaluate_composite_acceptance(
         if group.get("include_table_accessible_names"):
             from .dynamic_lists import table_accessible_names_html
             source = table_accessible_names_html(source)
+        if "group_caption" in group:
+            from .dynamic_lists import grouped_table_surface
+            source = grouped_table_surface(source, group)
+            group = {**group, "required_columns": [*group["required_columns"], group["group_caption"]["field"]]}
         if group["kind"] in {"table", "linked_table"}:
             source = table_text_surface(source)
         ownership_marker = None

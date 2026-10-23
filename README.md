@@ -85,10 +85,16 @@ or the five dynamic collections. See [annotation versions](docs/data.md).
 
 The ongoing `review-550-20261023` revision combines these quota and ending
 corrections, adjusts five article body boundaries and selects substantive endings
-for six more articles. It also adds section and body-length requirements to 64
-mutable documents, with two source-backed hidden-content corrections. It is a partial review,
+for nine more articles. It also strengthens 81 mutable document and entry pages
+using source-qualified sections, definitions, directories or explicit facts,
+and corrects six dynamic tables. It is a partial review,
 not certification of all 550 cases. See [review decisions](docs/review-550-decisions.md)
 for source evidence, rejected proposals and remaining work.
+
+When a revision declares separate review evidence, also pass
+`--review-source /path/to/review-evidence-package`. Export verifies and copies
+only its declared files. This evidence supplements the review without replacing
+the original frozen input version. See [annotation versions](docs/data.md).
 
 ## Score a saved answer
 

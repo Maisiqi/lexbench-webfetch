@@ -13,11 +13,13 @@ def _key(text):
 
 def validate_document_structure(contract):
     if not isinstance(contract, dict) or set(contract) - {
-        'version', 'headings', 'minimum_heading_coverage', 'minimum_body_chars',
+        'version', 'headings', 'minimum_heading_coverage', 'minimum_body_chars', 'type',
     }:
         raise ValueError('Invalid document_structure fields')
     if contract.get('version') != 1 or isinstance(contract.get('version'), bool):
         raise ValueError('Unsupported document_structure version')
+    if 'type' in contract and contract['type'] != 'definition':
+        raise ValueError('Unsupported document structure type')
     threshold = contract.get('minimum_heading_coverage')
     if (isinstance(threshold, bool) or not isinstance(threshold, (int, float))
             or not math.isfinite(threshold) or not 0 < threshold <= 1):
@@ -39,6 +41,8 @@ def validate_document_structure(contract):
         if (isinstance(heading['level'], bool) or not isinstance(heading['level'], int)
                 or not 1 <= heading['level'] <= 6 or not isinstance(heading['body_required'], bool)):
             raise ValueError('Invalid document heading level or body requirement')
+        if contract.get('type') == 'definition' and (heading['level'] != 1 or not heading['body_required']):
+            raise ValueError('Definitions require a local description and level 1')
         ids.add(heading['id'])
         texts.add(_key(heading['text']))
     if not any(h['body_required'] for h in headings):
@@ -75,7 +79,7 @@ def _html_events(content):
     return events
 
 
-def _text_events(content, headings):
+def _text_events(content, headings, key_function=_key):
     # Markdown code contributes body content, but cannot declare section titles.
     lines, eligible = [], []
     fence = None
@@ -96,7 +100,7 @@ def _text_events(content, headings):
         level_match = re.match(r'^(#{1,6})\s+(.+?)(?:\s+#+)?$', line) if fence is None else None
         lines.append(level_match[2] if level_match else line)
         eligible.append((fence is None, len(level_match[1]) if level_match else None))
-    declared = {_key(h['text']): h for h in headings}
+    declared = {key_function(h['text']): h for h in headings}
     prefixes = {key[:i] for key in declared for i in range(1, len(key) + 1)}
     events, index = [], 0
     while index < len(lines):
@@ -111,7 +115,7 @@ def _text_events(content, headings):
         for end in range(index, min(index + 12, len(lines))):
             if not eligible[end][0] or (end > index and eligible[end][1] is not None):
                 break
-            joined += _key(lines[end])
+            joined += key_function(lines[end])
             if joined in declared:
                 match = (end, declared[joined])
                 break
@@ -127,32 +131,66 @@ def _text_events(content, headings):
     return events
 
 
+
+def _definition_key(text):
+    # Preserve signature punctuation and argument order; tolerate inline-code
+    # formatting and serializer whitespace, not bare API names.
+    return re.sub(r'[\s`¶]', '', unicodedata.normalize('NFKC', text).casefold())
+
+
+def _definition_html_events(content):
+    from .dynamic_lists import scoped_html
+    soup = scoped_html(content)
+    root = soup.select_one('main') or soup.select_one('article') or soup.body or soup
+    for node in root.select('nav,header,footer,aside,[role="navigation"],.toc,#toc,.reference-toc'):
+        node.decompose()
+    events = []
+    for term in root.select('dt'):
+        for anchor in term.select('.headerlink'):
+            anchor.decompose()
+        events.append((term.get_text('', strip=False).strip(), 1))
+        description = term.find_next_sibling()
+        # A term cannot borrow unrelated paragraphs or another term's dd.
+        if description is not None and description.name == 'dd':
+            events.append((description.get_text(' ', strip=True), None))
+    return events
+
 def evaluate_document_structure(content, contract, *, html_document=False):
     if not contract:
         return {}
     validate_document_structure(contract)
-    events = (_html_events(content) if html_document
-              else _text_events(content, contract['headings']))
-    declared = {_key(h['text']): h for h in contract['headings']}
+    definitions = contract.get('type') == 'definition'
+    key_function = _definition_key if definitions else _key
+    if definitions:
+        events = (_definition_html_events(content) if html_document else
+                  _text_events(content, contract['headings'], key_function))
+    else:
+        events = (_html_events(content) if html_document else
+                  _text_events(content, contract['headings']))
+    declared = {key_function(h['text']): h for h in contract['headings']}
     # Serializers may change heading levels. The declared source hierarchy
     # determines which subsequent text belongs to a registered section.
-    events = [(text, declared[_key(text)]['level']
-               if level is not None and _key(text) in declared else level)
+    events = [(text, declared[key_function(text)]['level']
+               if level is not None and key_function(text) in declared else level)
               for text, level in events]
     supported = set()
     found = set()
+    definition_body_indices = set()
     for index, (text, level) in enumerate(events):
-        heading = declared.get(_key(text)) if level is not None else None
+        heading = declared.get(key_function(text)) if level is not None else None
         if heading is None:
             continue
         found.add(heading['id'])
         end = next((i for i in range(index + 1, len(events))
                     if events[i][1] is not None and events[i][1] <= level), len(events))
+        if definitions:
+            definition_body_indices.update(i for i in range(index + 1, end) if events[i][1] is None)
         has_body = any(event_level is None and bool(_key(value))
                        for value, event_level in events[index + 1:end])
         if has_body or not heading['body_required']:
             supported.add(heading['id'])
-    body_chars = sum(len(text) for text, level in events if level is None)
+    body_chars = sum(len(text) for i, (text, level) in enumerate(events)
+                     if level is None and (not definitions or i in definition_body_indices))
     coverage = len(supported) / len(declared)
     return {
         'document_structure_pass': (coverage >= contract['minimum_heading_coverage']

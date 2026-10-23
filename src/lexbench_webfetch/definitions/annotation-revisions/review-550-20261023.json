@@ -46,7 +46,17 @@
     "mutable-document-structure-missing-sections",
     "mutable-document-structure-toc-padding",
     "mutable-document-structure-missing-fact",
-    "mutable-document-structure-hidden-sections"
+    "mutable-document-structure-hidden-sections",
+    "reviewed-table-grouped-complete",
+    "reviewed-table-grouped-current-values",
+    "reviewed-table-grouped-caption-missing",
+    "reviewed-table-grouped-explanation-missing",
+    "reviewed-table-accessible-status-complete",
+    "reviewed-table-accessible-status-missing",
+    "reviewed-document-definitions-complete",
+    "reviewed-document-definitions-empty-with-padding",
+    "reviewed-document-directory-complete",
+    "reviewed-document-directory-navigation-only"
   ],
   "changes": [
     {
@@ -425,24 +435,386 @@
       "suite": "dynamic-content",
       "case_id": "dynamic-027-ej2-syncfusion-com-react",
       "before_sha256": "6bab7f289f5da0404f225cb181610fb38edf769f121cae6d82c806e559012029",
-      "set": {},
+      "set": {
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "stable_text_anchors": [
+            {
+              "id": "phase1-stable-170ee316128a",
+              "alternatives": [
+                ". You can start editing by double-clicking a row or the toolbar `Edit` button. Once in edit mode, you have the ability to modify the values of the selected row. When saving the record, the Grid will refresh the specific edited row without affecting the expanded group state."
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "1fb031740ed9de3f13769110579acda9753244fa0bb9871966f8b2a762715810"
+            },
+            {
+              "id": "phase1-stable-4ed15d88fae1",
+              "alternatives": [
+                "Columns can be grouped by simply dragging the column header and drop on the group drop area."
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "1fb031740ed9de3f13769110579acda9753244fa0bb9871966f8b2a762715810"
+            },
+            {
+              "id": "phase1-stable-057d4aea8a93",
+              "alternatives": [
+                "Example of Grouping in React Grid"
+              ],
+              "source_location": "body > h1",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "1fb031740ed9de3f13769110579acda9753244fa0bb9871966f8b2a762715810"
+            },
+            {
+              "id": "phase1-stable-9e7b6f352efb",
+              "alternatives": [
+                "Grid component features are segregated into individual feature-wise modules. To use grouping and editing features, we need to inject"
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "1fb031740ed9de3f13769110579acda9753244fa0bb9871966f8b2a762715810"
+            },
+            {
+              "id": "phase1-stable-a0a69a5582df",
+              "alternatives": [
+                "In this demo, editing options can be enabled by setting"
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "1fb031740ed9de3f13769110579acda9753244fa0bb9871966f8b2a762715810"
+            },
+            {
+              "id": "phase1-stable-35c0c3b851a2",
+              "alternatives": [
+                "In this demo, to group a specify column, drag and drop the column in the group drop area."
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "1fb031740ed9de3f13769110579acda9753244fa0bb9871966f8b2a762715810"
+            },
+            {
+              "id": "phase1-stable-a851b0ebc680",
+              "alternatives": [
+                "Looking for the full React Data Grid component overview, features, pricing, and documentation? Visit our"
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "1fb031740ed9de3f13769110579acda9753244fa0bb9871966f8b2a762715810"
+            },
+            {
+              "id": "phase1-stable-52b02dde5c4f",
+              "alternatives": [
+                "More information on the grouping feature configuration can be found in this"
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "1fb031740ed9de3f13769110579acda9753244fa0bb9871966f8b2a762715810"
+            },
+            {
+              "id": "phase1-stable-8c3ea626804d",
+              "alternatives": [
+                "The Grid control has options to group the records based on the required column. When grouping is applied, grouped records are organized into a hierarchical structure to facilitate easier expansion and collapse of records. To enable grouping, set"
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "1fb031740ed9de3f13769110579acda9753244fa0bb9871966f8b2a762715810"
+            },
+            {
+              "id": "phase1-stable-55d0020cfa1d",
+              "alternatives": [
+                "This sample demonstrates grouping feature of the Grid component. In this sample, the Grid data is grouped against ShipCountry column. To group any other column simply drag the column header and drop on the group drop area."
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "1fb031740ed9de3f13769110579acda9753244fa0bb9871966f8b2a762715810"
+            }
+          ],
+          "schema": "body_text",
+          "minimum_records": 0
+        },
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "grouped-orders",
+              "kind": "table",
+              "minimum_records": 10,
+              "identity_column": "order_id",
+              "required_columns": [
+                {
+                  "id": "order_id",
+                  "kind": "integer",
+                  "aliases": [
+                    "Order ID",
+                    "OrderID"
+                  ]
+                },
+                {
+                  "id": "customer",
+                  "kind": "text",
+                  "aliases": [
+                    "Customer Name",
+                    "CustomerName"
+                  ]
+                },
+                {
+                  "id": "freight",
+                  "kind": "price",
+                  "aliases": [
+                    "Freight"
+                  ]
+                },
+                {
+                  "id": "date",
+                  "kind": "date_or_time",
+                  "aliases": [
+                    "Order Date",
+                    "OrderDate"
+                  ]
+                }
+              ],
+              "group_caption": {
+                "table_selector": ".e-gridcontent table",
+                "row_selector": "tr.e-row",
+                "cell_selector": "td.e-rowcell:not(.e-hide)",
+                "caption_selector": "tr.e-groupcaptionrow",
+                "pattern": "Ship Country:\\s*(?P<value>[^:]+?)\\s*-\\s*\\d+ items",
+                "field": {
+                  "id": "country",
+                  "kind": "text",
+                  "aliases": [
+                    "Ship Country"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_thresholds": {
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 2
+      },
+      "body_projection": {
+        "source_sha256": "701f5df83963431f1274c025d2985342084b333e91a51abdf8f46ced110c341c",
+        "source_chars": 1873,
+        "regions": [
+          {
+            "id": "body-region-1",
+            "label": "Non-row target text 1",
+            "start": 0,
+            "end": 392,
+            "text_binding": {
+              "sha256": "4dc497ede41dedaf3792b7715efe5044a060efbfacf46aa09c6a826d44d21a27",
+              "chars": 371
+            },
+            "source_text_binding": {
+              "sha256": "9f6fb35d5afc2aad6ccc1337b134c6f76c0184bc517a91d632505a7f4ee4dabf",
+              "chars": 391
+            }
+          },
+          {
+            "id": "body-region-2",
+            "label": "Non-row target text 2",
+            "start": 1018,
+            "end": 1873,
+            "text_binding": {
+              "sha256": "97fe0b02a6da6a3bd0c26c24e8a6f2b110d5df556d1b261fe01298a5e05cb463",
+              "chars": 821
+            },
+            "source_text_binding": {
+              "sha256": "5d1a94dd79d2707744a7eacefaf395b2fef808333a306981529bd62a4214dc2a",
+              "chars": 855
+            }
+          }
+        ]
       }
     },
     {
       "suite": "dynamic-content",
       "case_id": "dynamic-028-ej2-syncfusion-com-react",
       "before_sha256": "e296e26e28bcf8fabafae0e00daf23311c01d1589fed0776473b908cc9d7d942",
-      "set": {},
+      "set": {
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "table_row",
+          "minimum_records": 10,
+          "stable_text_anchors": [
+            {
+              "id": "phase1-stable-cfbf84ad6a58",
+              "alternatives": [
+                "Changed default pager details information using the"
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "ae83c240fca4bc4c3c2073652014050dd6180fad35401ca8835482c36c9f455d"
+            },
+            {
+              "id": "phase1-stable-d51e4e3d4ad9",
+              "alternatives": [
+                "Example of Paging in React Grid"
+              ],
+              "source_location": "body > h1",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "ae83c240fca4bc4c3c2073652014050dd6180fad35401ca8835482c36c9f455d"
+            },
+            {
+              "id": "phase1-stable-90b19870ca6a",
+              "alternatives": [
+                "Grid component features are segregated into individual feature-wise modules. To use paging feature, we need to inject"
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "ae83c240fca4bc4c3c2073652014050dd6180fad35401ca8835482c36c9f455d"
+            },
+            {
+              "id": "phase1-stable-ea70f0db3da9",
+              "alternatives": [
+                "In this demo, the Grid is rendered with"
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "ae83c240fca4bc4c3c2073652014050dd6180fad35401ca8835482c36c9f455d"
+            },
+            {
+              "id": "phase1-stable-a851b0ebc680",
+              "alternatives": [
+                "Looking for the full React Data Grid component overview, features, pricing, and documentation? Visit our"
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "ae83c240fca4bc4c3c2073652014050dd6180fad35401ca8835482c36c9f455d"
+            },
+            {
+              "id": "phase1-stable-317246fc7589",
+              "alternatives": [
+                "More information on the paging feature configuration can be found in this"
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "ae83c240fca4bc4c3c2073652014050dd6180fad35401ca8835482c36c9f455d"
+            },
+            {
+              "id": "phase1-stable-4a3d94ced073",
+              "alternatives": [
+                "Paging allows you to display the contents of the Grid component in page segments. By default, paging is disabled. To enable paging, set"
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "ae83c240fca4bc4c3c2073652014050dd6180fad35401ca8835482c36c9f455d"
+            },
+            {
+              "id": "phase1-stable-55ab079208b1",
+              "alternatives": [
+                "The Pager component has been enhanced to be more responsive. It now includes the ability to automatically resize itself and dynamically show or hide pager items based on the width of the Grid."
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "ae83c240fca4bc4c3c2073652014050dd6180fad35401ca8835482c36c9f455d"
+            },
+            {
+              "id": "phase1-stable-b5b1f36f01b3",
+              "alternatives": [
+                "This sample demonstrates the Grid paging feature. In this sample, click the numeric items to navigate to particular page. You can also change the page size using the dropdown."
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "ae83c240fca4bc4c3c2073652014050dd6180fad35401ca8835482c36c9f455d"
+            },
+            {
+              "id": "phase1-stable-e9f61e2b2e3d",
+              "alternatives": [
+                "property enables a dropdown in pager which allows you to change the number of records in the Grid dynamically."
+              ],
+              "source_location": "body > p",
+              "observation_status": "三次混合会话观察均可见（含全新匿名环境和已有正常会话）",
+              "source_evidence_sha256": "ae83c240fca4bc4c3c2073652014050dd6180fad35401ca8835482c36c9f455d"
+            }
+          ],
+          "table_columns": [
+            {
+              "name": "order_id",
+              "label": "Order ID",
+              "type": "integer"
+            },
+            {
+              "name": "customer",
+              "label": "Customer Name",
+              "type": "text"
+            },
+            {
+              "name": "date",
+              "label": "Order Date",
+              "type": "token",
+              "pattern": "\\d{1,2}/\\d{1,2}/\\d{4}(?: \\d{2}:\\d{2} [AP]M)?"
+            },
+            {
+              "name": "freight",
+              "label": "Freight",
+              "type": "currency_usd"
+            },
+            {
+              "name": "country",
+              "label": "Ship Country",
+              "type": "text"
+            }
+          ],
+          "record_identity_fields": [
+            "order_id"
+          ],
+          "table_scope": {
+            "row_selector": ".e-gridcontent tr.e-row",
+            "cell_selector": "td.e-rowcell",
+            "start_pattern": "^Order ID\\s*$",
+            "end_pattern": "^Description\\s*$",
+            "plain_row_pattern": "^(?P<order_id>[^\\t\\n]+)\\t(?P<customer>[^\\t\\n]+)\\t(?P<date>[^\\t\\n]+)\\t(?P<freight>[^\\t\\n]+)\\t(?P<country>[^\\t\\n]+)$"
+          }
+        }
+      },
       "remove": [],
       "body_thresholds": {
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 2
+      },
+      "body_projection": {
+        "source_sha256": "0318325d86327f2c869d66f12655fa29708860a84cc70a91be3956c423fb5354",
+        "source_chars": 1486,
+        "regions": [
+          {
+            "id": "body-region-1",
+            "label": "Non-row target text 1",
+            "start": 0,
+            "end": 367,
+            "text_binding": {
+              "sha256": "be38795fd49f434db539abf6e9976351ffcf0d77d86e95a0d666685b3c1042b1",
+              "chars": 344
+            },
+            "source_text_binding": {
+              "sha256": "e43235ca10a61e75f140a24c0b02679d7867edd4e172116fc8022f3110b4a6b3",
+              "chars": 366
+            }
+          },
+          {
+            "id": "body-region-2",
+            "label": "Non-row target text 2",
+            "start": 919,
+            "end": 1486,
+            "text_binding": {
+              "sha256": "2c780ab57220269d60d67b2739a4e98cec42c2bb56271e05f5472c7dda3c7e4c",
+              "chars": 544
+            },
+            "source_text_binding": {
+              "sha256": "12e11661c2828f6b6b1049f93b996cfbe4e6259bbff9bd607b7fa7c6e4032028",
+              "chars": 567
+            }
+          }
+        ]
       }
     },
     {
@@ -485,12 +857,79 @@
       "suite": "dynamic-content",
       "case_id": "dynamic-055-arco-design-vue",
       "before_sha256": "53f0cdd1eab003746a595c409d0a10a618e1dd799e5f76a087bb5b9a2ac627dc",
-      "set": {},
+      "set": {
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "basic",
+              "kind": "table",
+              "minimum_records": 4,
+              "required_columns": [
+                {
+                  "id": "name",
+                  "aliases": [
+                    "Name"
+                  ],
+                  "kind": "text"
+                },
+                {
+                  "id": "salary",
+                  "aliases": [
+                    "Salary"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "address",
+                  "aliases": [
+                    "Address"
+                  ],
+                  "kind": "text"
+                },
+                {
+                  "id": "email",
+                  "aliases": [
+                    "Email"
+                  ],
+                  "kind": "text",
+                  "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+                }
+              ],
+              "identity_column": "name",
+              "start_pattern": "^#?\\s*基本用法\\s*$",
+              "end_pattern": "^#?\\s*行选择器\\s*$"
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_thresholds": {
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 2
+      },
+      "body_projection": {
+        "source_sha256": "2ca4df7562bbd06eb179723de7aab37edeae75a6c35a6279a68af7ba01c77bee",
+        "source_chars": 1347,
+        "regions": [
+          {
+            "id": "body-region-1",
+            "label": "Non-row target text 1",
+            "start": 0,
+            "end": 62,
+            "text_binding": {
+              "sha256": "0addb0110d5505f85fb7ef15ea314e37660c6e2774aee4419b220e3e55b4a578",
+              "chars": 70
+            },
+            "source_text_binding": {
+              "sha256": "2b0808f65a5505da2cdafc353f2df5171eea1c3de6a2623415cf7d5f6089d52a",
+              "chars": 61
+            }
+          }
+        ]
       }
     },
     {
@@ -629,24 +1068,389 @@
       "suite": "dynamic-content",
       "case_id": "dynamic-034-034-vuetify-server-table",
       "before_sha256": "d277c66dbe13a033e58d9fc7c52bae16d1c8c1a420d9e94c844b9aaa0c764079",
-      "set": {},
+      "set": {
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "paginate-sort",
+              "kind": "table",
+              "minimum_records": 4,
+              "required_columns": [
+                {
+                  "id": "dessert",
+                  "aliases": [
+                    "Dessert (100g serving)"
+                  ],
+                  "kind": "text"
+                },
+                {
+                  "id": "calories",
+                  "aliases": [
+                    "Calories"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "fat",
+                  "aliases": [
+                    "Fat (g)"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "carbs",
+                  "aliases": [
+                    "Carbs (g)"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "protein",
+                  "aliases": [
+                    "Protein (g)"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "iron",
+                  "aliases": [
+                    "Iron (%)"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                }
+              ],
+              "identity_column": "dessert",
+              "start_pattern": "^#?\\s*Server-side paginate and sort\\s*$",
+              "end_pattern": "^#?\\s*Server-side search\\s*$"
+            },
+            {
+              "id": "search",
+              "kind": "table",
+              "minimum_records": 4,
+              "required_columns": [
+                {
+                  "id": "dessert",
+                  "aliases": [
+                    "Dessert (100g serving)"
+                  ],
+                  "kind": "text"
+                },
+                {
+                  "id": "calories",
+                  "aliases": [
+                    "Calories"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "fat",
+                  "aliases": [
+                    "Fat (g)"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "carbs",
+                  "aliases": [
+                    "Carbs (g)"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "protein",
+                  "aliases": [
+                    "Protein (g)"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "iron",
+                  "aliases": [
+                    "Iron (%)"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                }
+              ],
+              "identity_column": "dessert",
+              "start_pattern": "^#?\\s*Server-side search\\s*$",
+              "end_pattern": "^#?\\s*Loading\\s*$"
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_thresholds": {
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 5
+      },
+      "body_projection": {
+        "source_sha256": "35954335be53f0e64e94e8a432d30a051fdcf0d71650cf9035cdcf0d4459d5b8",
+        "source_chars": 1643,
+        "regions": [
+          {
+            "id": "body-region-1",
+            "label": "Non-row target text 1",
+            "start": 0,
+            "end": 508,
+            "text_binding": {
+              "sha256": "488dea1efd29a6e34810bbf19749f7395ba71f0234d95e75188d8ed3a4c15373",
+              "chars": 476
+            },
+            "source_text_binding": {
+              "sha256": "a0f3d45d62685435a3b024531bc448bab9ca0dc63d7a43eb07e05dd81bce7ed1",
+              "chars": 507
+            }
+          },
+          {
+            "id": "body-region-2",
+            "label": "Non-row target text 2",
+            "start": 636,
+            "end": 1119,
+            "text_binding": {
+              "sha256": "541a4978cf6084ff4a3a1232f80c7819eb395278d8f0edebd09fe0c50784d928",
+              "chars": 462
+            },
+            "source_text_binding": {
+              "sha256": "7553946dcb799b164fc46006119fbfdeffd8630c9e03c3cacc88c2d569016089",
+              "chars": 482
+            }
+          },
+          {
+            "id": "body-region-3",
+            "label": "Non-row target text 3",
+            "start": 1247,
+            "end": 1643,
+            "text_binding": {
+              "sha256": "88078c65ea5f5f821f0ab2c22c016790824e8acf400577f76ce424750cf744e6",
+              "chars": 379
+            },
+            "source_text_binding": {
+              "sha256": "4029bd8ad9efd51468ab659ab86d8ca47ce053952aec5c788eb5352d98585d07",
+              "chars": 396
+            }
+          }
+        ]
       }
     },
     {
       "suite": "dynamic-content",
       "case_id": "dynamic-035-035-vuetify-virtual-table",
       "before_sha256": "02c29d26063003c80393ed015a8bdc177f707cb85377b161d2f1a58c54f9703a",
-      "set": {},
+      "set": {
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "boats",
+              "kind": "table",
+              "minimum_records": 20,
+              "required_columns": [
+                {
+                  "id": "boat",
+                  "aliases": [
+                    "Boat Type"
+                  ],
+                  "kind": "text"
+                },
+                {
+                  "id": "speed",
+                  "aliases": [
+                    "Speed(knots)"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "length",
+                  "aliases": [
+                    "Length(m)"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "price",
+                  "aliases": [
+                    "Price($)"
+                  ],
+                  "kind": "price"
+                },
+                {
+                  "id": "year",
+                  "aliases": [
+                    "Year"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                }
+              ],
+              "identity_column": "boat",
+              "start_pattern": "^#?\\s*Basic example\\s*$",
+              "end_pattern": "^#?\\s*Expanded rows\\s*$"
+            },
+            {
+              "id": "people",
+              "kind": "table",
+              "minimum_records": 20,
+              "required_columns": [
+                {
+                  "id": "id",
+                  "aliases": [
+                    "ID"
+                  ],
+                  "kind": "integer",
+                  "pattern": "^\\d+(?:\\.\\d+)?$"
+                },
+                {
+                  "id": "title",
+                  "aliases": [
+                    "Title"
+                  ],
+                  "kind": "text"
+                },
+                {
+                  "id": "name",
+                  "aliases": [
+                    "Name"
+                  ],
+                  "kind": "text"
+                },
+                {
+                  "id": "email",
+                  "aliases": [
+                    "Email"
+                  ],
+                  "kind": "text",
+                  "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+                },
+                {
+                  "id": "role",
+                  "aliases": [
+                    "Role"
+                  ],
+                  "kind": "text"
+                }
+              ],
+              "identity_column": "id",
+              "start_pattern": "^#?\\s*Basic example\\s*$",
+              "end_pattern": "^#?\\s*Expanded rows\\s*$"
+            },
+            {
+              "id": "expanded",
+              "kind": "table",
+              "minimum_records": 20,
+              "required_columns": [
+                {
+                  "id": "name",
+                  "aliases": [
+                    "Name"
+                  ],
+                  "kind": "text"
+                },
+                {
+                  "id": "type",
+                  "aliases": [
+                    "Type"
+                  ],
+                  "kind": "text"
+                },
+                {
+                  "id": "children",
+                  "aliases": [
+                    "Children"
+                  ],
+                  "kind": "text",
+                  "pattern": "^\\d+ items$"
+                }
+              ],
+              "identity_column": "name",
+              "start_pattern": "^#?\\s*Expanded rows\\s*$",
+              "end_pattern": "^#?\\s*Ready for more\\?\\s*$"
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_thresholds": {
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 5
+      },
+      "body_projection": {
+        "source_sha256": "6559116ff0ce6a067a4c2df65bf93abb7ebf5bbe47598b07106b804b069c11ed",
+        "source_chars": 3921,
+        "regions": [
+          {
+            "id": "body-region-1",
+            "label": "Non-row target text 1",
+            "start": 0,
+            "end": 523,
+            "text_binding": {
+              "sha256": "15d1012a9fb1dfe04c2dc81e0f536b9731341f59eaccaf20144a5cd4608358ee",
+              "chars": 499
+            },
+            "source_text_binding": {
+              "sha256": "8f350d7319b23947e77ac819b3e3f14e3e956478d7075637fd8b5731afba04c9",
+              "chars": 522
+            }
+          },
+          {
+            "id": "body-region-2",
+            "label": "Non-row target text 2",
+            "start": 1396,
+            "end": 1593,
+            "text_binding": {
+              "sha256": "eab39c78bc7552f3691fd49b0cbadb4a0d209cf44c46e9ed910ed4dec8c970d8",
+              "chars": 189
+            },
+            "source_text_binding": {
+              "sha256": "58dd62b337156031da241e37f25bb141fbc63e1b7987ac967b544ae71a4ac5e3",
+              "chars": 196
+            }
+          },
+          {
+            "id": "body-region-3",
+            "label": "Non-row target text 3",
+            "start": 3027,
+            "end": 3210,
+            "text_binding": {
+              "sha256": "d8ba4311d1b1b79a3e76446eee5183f7831434de24dffb0008d9c9b63d0e75cb",
+              "chars": 176
+            },
+            "source_text_binding": {
+              "sha256": "298e6bfbffe29fd12854d6764ba159f3994bb5b4b653b068ee6acf0db3f46d6c",
+              "chars": 182
+            }
+          },
+          {
+            "id": "body-region-4",
+            "label": "Non-row target text 4",
+            "start": 3802,
+            "end": 3921,
+            "text_binding": {
+              "sha256": "2789833e0313dca4087b294912bd5659f3a6927a27272a965c97f70783af9a02",
+              "chars": 112
+            },
+            "source_text_binding": {
+              "sha256": "78b790df9ab3ec9120710dfed882a77e84be0973cec2de7f71aee5e665653782",
+              "chars": 119
+            }
+          }
+        ]
       }
     },
     {
@@ -665,12 +1469,77 @@
       "suite": "dynamic-content",
       "case_id": "dynamic-043-en-stable-grommet-table",
       "before_sha256": "38fac07376b694058f428bc5ac338cafdb836694562e4c7290002cdeeb289258",
-      "set": {},
+      "set": {
+        "min_content_chars": 1,
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "completion",
+              "kind": "table",
+              "minimum_records": 4,
+              "required_columns": [
+                {
+                  "id": "name",
+                  "aliases": [
+                    "Name"
+                  ],
+                  "kind": "text"
+                },
+                {
+                  "id": "complete",
+                  "aliases": [
+                    "Complete"
+                  ],
+                  "kind": "text",
+                  "pattern": "^Bar meter with value (?:100|[0-9]{1,2}) out of 100$"
+                }
+              ],
+              "identity_column": "name",
+              "include_table_accessible_names": true
+            }
+          ]
+        },
+        "required_facts": [
+          {
+            "id": "table-name-column",
+            "alternatives": [
+              "Name"
+            ]
+          },
+          {
+            "id": "table-complete-column",
+            "alternatives": [
+              "Complete"
+            ]
+          }
+        ]
+      },
       "remove": [],
       "body_thresholds": {
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 1
+      },
+      "body_projection": {
+        "source_sha256": "c055e3041af1a49e06bd3686ee98ecadb3f14621ecd1757ab531b8b44c8339ab",
+        "source_chars": 39,
+        "regions": [
+          {
+            "id": "body-region-1",
+            "label": "Non-row target text 1",
+            "start": 0,
+            "end": 14,
+            "text_binding": {
+              "sha256": "fbfb7dbd992cc0d67d53da8de8dd59443fc6bfac18b4eacd3fb55136fe2f50a6",
+              "chars": 13
+            },
+            "source_text_binding": {
+              "sha256": "1cd4735dc013b8758d4b37bc52cb06b69920a8fd8f84cc928ea32a30d85a8d12",
+              "chars": 13
+            }
+          }
+        ]
       }
     },
     {
@@ -1927,7 +2796,91 @@
       "before_sha256": "60fdd5fb02a0f6278d092ba7d93a0e70f497625b39603737312d67e0071d8ecc",
       "set": {},
       "remove": [],
-      "body_ending_order": true
+      "body_ending_order": true,
+      "body_projection": {
+        "source_sha256": "095d44071cb07b3682397f09bea75ce9e282de6c4029cbbc50bb38653aec5502",
+        "source_chars": 7879,
+        "regions": [
+          {
+            "id": "body-region-1",
+            "label": "为什么要了解 js 中的事件循环 — 浏览器 vs node",
+            "start": 0,
+            "end": 577,
+            "text_binding": {
+              "sha256": "3679eb0617580d77fd5ba92cf9e9e80e70030d7d13bac4cb7c9f132f348f6116",
+              "chars": 901
+            },
+            "source_text_binding": {
+              "sha256": "168077b8e9573bc85c5c577370599151d25d490fc87aef2198c691814994a73e",
+              "chars": 575
+            }
+          },
+          {
+            "id": "body-region-2",
+            "label": "浏览器端",
+            "start": 577,
+            "end": 2952,
+            "text_binding": {
+              "sha256": "d122db60d7e536fe99d7166ebc9f5c179ffb4b6eb74734195556683d709b597a",
+              "chars": 3485
+            },
+            "source_text_binding": {
+              "sha256": "c8538f820a0a7f02e8bd10446ed58db9cbbebf96f4c13e81cddbf325b773de01",
+              "chars": 2373
+            }
+          },
+          {
+            "id": "body-region-3",
+            "label": "实践一下 — node端",
+            "start": 2952,
+            "end": 4834,
+            "text_binding": {
+              "sha256": "7cae199af5553af0e5e3999079802ddba7dc6d1a3e3926b144f0a69cbe874c84",
+              "chars": 2243
+            },
+            "source_text_binding": {
+              "sha256": "2349582b676027b539bd3fdfa529e5fd7df698c29a17316da83faf22ab90a1df",
+              "chars": 1881
+            }
+          },
+          {
+            "id": "body-region-4",
+            "label": "实践一下",
+            "start": 4834,
+            "end": 7355,
+            "text_binding": {
+              "sha256": "e33db0e89b2132d78c52786436734821ce076673d556e229e63bc1b86e90a553",
+              "chars": 2552
+            },
+            "source_text_binding": {
+              "sha256": "6df7147755687b31711860d172b66f9b6d918817c1f2f89f15910a65e9acb272",
+              "chars": 2520
+            }
+          },
+          {
+            "id": "body-region-5",
+            "label": "引用",
+            "start": 7355,
+            "end": 7879,
+            "text_binding": {
+              "sha256": "17fc0d6ab3d0256f824ec3e4fb84727568516961eab9d4c30a733335176225d0",
+              "chars": 521
+            },
+            "source_text_binding": {
+              "sha256": "c869274f27a5c0642d40586068943ff503f4c283a95fda862c39301b8555f713",
+              "chars": 524
+            }
+          }
+        ],
+        "ending": {
+          "start": 6944,
+          "end": 7355,
+          "text_binding": {
+            "sha256": "1a302720afd8fd3100e791bd154ca87dc1c83fdc3b4530f610e101128369c46a",
+            "chars": 410
+          }
+        }
+      }
     },
     {
       "suite": "articles",
@@ -3061,7 +4014,91 @@
       "before_sha256": "ad8b3fd87309b7a3f8401e27909169b68e45a7478c06c6bcce30efe3bb718643",
       "set": {},
       "remove": [],
-      "body_ending_order": true
+      "body_ending_order": true,
+      "body_projection": {
+        "source_sha256": "71a2f2c426e2f8c81858096d1f01590176f7436d07bdcc5f4194197ec34dfb2b",
+        "source_chars": 7855,
+        "regions": [
+          {
+            "id": "body-region-1",
+            "label": "开篇：The PostgreSQL Global Development Group today announced the ",
+            "start": 0,
+            "end": 1643,
+            "text_binding": {
+              "sha256": "40e74bea06f8b20a125b3fda0a73c6123e95be625ae62064a387becc3517d600",
+              "chars": 1610
+            },
+            "source_text_binding": {
+              "sha256": "db5bfaf42ea05aef39c63c273ce6a646c16f560f2910ea87233c7ae0d8786322",
+              "chars": 1641
+            }
+          },
+          {
+            "id": "body-region-2",
+            "label": "System-wide performance gains",
+            "start": 1643,
+            "end": 2962,
+            "text_binding": {
+              "sha256": "fd54de95be21a807de35b31db61d68c7c4d2f373ab92055208a3eeb0656a48d8",
+              "chars": 1287
+            },
+            "source_text_binding": {
+              "sha256": "b9876c6ca80f8c7a1f6b11c973a6764db52f4f0831458fa6bf80360bdde8768e",
+              "chars": 1317
+            }
+          },
+          {
+            "id": "body-region-3",
+            "label": "Further expansion of a robust developer experience",
+            "start": 2962,
+            "end": 4992,
+            "text_binding": {
+              "sha256": "e4caa821a57e2fef8b69c89c1ae182c8987c91b46356ed7213568993dd05665a",
+              "chars": 1981
+            },
+            "source_text_binding": {
+              "sha256": "c2b65bf15cd94d5828fdc03cba8d072b7160a0f0148898707d7340b80f1f5a53",
+              "chars": 2028
+            }
+          },
+          {
+            "id": "body-region-4",
+            "label": "Logical replication enhancements for high availability and major version upgrades",
+            "start": 4992,
+            "end": 5800,
+            "text_binding": {
+              "sha256": "6413a9b94f2c433a68c170ec037fa85bbc302b69ac5f4faeee128d40daa67820",
+              "chars": 792
+            },
+            "source_text_binding": {
+              "sha256": "d0f3dbde746cab762f2221d86a052e276fd9765327a9e6f705924a974c8a8272",
+              "chars": 806
+            }
+          },
+          {
+            "id": "body-region-5",
+            "label": "More options for managing security and operations — Links",
+            "start": 5800,
+            "end": 7855,
+            "text_binding": {
+              "sha256": "56eeed9a6440d288e66a03dec0b102882c0e648357873be7288b84bad1a088d8",
+              "chars": 2005
+            },
+            "source_text_binding": {
+              "sha256": "98cd0eafca91452322a6b8143b3d276a13530e0ec568bc6cc1b8d0f877e5e1a6",
+              "chars": 2055
+            }
+          }
+        ],
+        "ending": {
+          "start": 7063,
+          "end": 7260,
+          "text_binding": {
+            "sha256": "eb8c755e05a5ab883985b66265b5f930ada6f87ffe3f9ef17faba8bffdfe9daf",
+            "chars": 196
+          }
+        }
+      }
     },
     {
       "suite": "articles",
@@ -3635,7 +4672,91 @@
       "before_sha256": "67cc39d7f103b8a11b9540ed34cf2127e8e766b227176fe8ec2bc221af1372a1",
       "set": {},
       "remove": [],
-      "body_ending_order": true
+      "body_ending_order": true,
+      "body_projection": {
+        "source_sha256": "f65f46da439b203616fbaab8eae597fb7816883d0d50cb1a7eb1eaa92b5e920f",
+        "source_chars": 14020,
+        "regions": [
+          {
+            "id": "body-region-1",
+            "label": "Introduction ¶",
+            "start": 0,
+            "end": 871,
+            "text_binding": {
+              "sha256": "3b96eea32c8174b04dd9c8383f723617cb400e3e5b27b04935fd49490aef56d4",
+              "chars": 852
+            },
+            "source_text_binding": {
+              "sha256": "f3b3e2da4f7e46940f9550a974425a52c757cbf73853579120a62e6954d03454",
+              "chars": 869
+            }
+          },
+          {
+            "id": "body-region-2",
+            "label": "Context¶",
+            "start": 871,
+            "end": 4802,
+            "text_binding": {
+              "sha256": "fd9880111429b4eacf8759434f5ea99796c15d8db141d2beb644602e9e2a4d5d",
+              "chars": 3689
+            },
+            "source_text_binding": {
+              "sha256": "382e79394becff29d798e8f5554d52be4895ffaab5a4de9066edb5361873c091",
+              "chars": 3929
+            }
+          },
+          {
+            "id": "body-region-3",
+            "label": "Example: Google Web Search ¶",
+            "start": 4802,
+            "end": 12091,
+            "text_binding": {
+              "sha256": "0268e7e16b908b67a4417d569abebc98f9246f8db59a921ac0e3fe1b633b5337",
+              "chars": 6046
+            },
+            "source_text_binding": {
+              "sha256": "423f6d5e1248a953dd90198bbeb0f3791901fb6da4c9dfebfb541adfd52befc4",
+              "chars": 7287
+            }
+          },
+          {
+            "id": "body-region-4",
+            "label": "Adapting code for Contexts ¶",
+            "start": 12091,
+            "end": 13085,
+            "text_binding": {
+              "sha256": "bef23184e20ffc551f617c8e5a5b7da1f7408025688b2429aff8050ddfd8ae77",
+              "chars": 975
+            },
+            "source_text_binding": {
+              "sha256": "9cfb3b4972644adfd5c050aec81f4edbea33c6445c4423df1a5a6bd2b45886d0",
+              "chars": 992
+            }
+          },
+          {
+            "id": "body-region-5",
+            "label": "Conclusion ¶ — Further reading ¶",
+            "start": 13085,
+            "end": 14020,
+            "text_binding": {
+              "sha256": "ccf8cac8465dbddc738ab1fa7bb9e15d48a64e37f087748dff58fdb4665dc1dd",
+              "chars": 917
+            },
+            "source_text_binding": {
+              "sha256": "e8f490fef61924cc2e319e915b4d161946ac7da84a3ed119ee8d8ea53f3103ce",
+              "chars": 935
+            }
+          }
+        ],
+        "ending": {
+          "start": 13098,
+          "end": 13896,
+          "text_binding": {
+            "sha256": "564ad6f4eeaa1d512f61d3949544ba95d3aabb5c6a3ab7c16a72f08157cb252f",
+            "chars": 797
+          }
+        }
+      }
     },
     {
       "suite": "articles",
@@ -11790,6 +12911,819 @@
         }
       },
       "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "lm-python-tutorial",
+      "before_sha256": "35c2ea895fb8595d4c61f0a960cce8804fb2915ac8275688eb0498d21402a3d3",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "target-directory-1",
+              "kind": "named_link",
+              "minimum_records": 13,
+              "hosts": [
+                "docs.python.org"
+              ],
+              "entry_path": "(?:/3/tutorial/appendix\\.html|/3/tutorial/appetite\\.html|/3/tutorial/classes\\.html|/3/tutorial/controlflow\\.html|/3/tutorial/datastructures\\.html|/3/tutorial/errors\\.html|/3/tutorial/floatingpoint\\.html|/3/tutorial/inputoutput\\.html|/3/tutorial/interactive\\.html|/3/tutorial/interpreter\\.html|/3/tutorial/introduction\\.html|/3/tutorial/modules\\.html|/3/tutorial/stdlib\\.html|/3/tutorial/stdlib2\\.html|/3/tutorial/venv\\.html|/3/tutorial/whatnow\\.html)"
+            }
+          ]
+        },
+        "min_content_chars": 3045
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-005-python-asyncio-documentation",
+      "before_sha256": "406d7148acb621d78a7612fffcc83e79df7d2923c401841beda611a4e4410328",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "target-directory-1",
+              "kind": "named_link",
+              "minimum_records": 16,
+              "hosts": [
+                "docs.python.org"
+              ],
+              "entry_path": "(?:/3/library/asyncio\\-api\\-index\\.html|/3/library/asyncio\\-dev\\.html|/3/library/asyncio\\-eventloop\\.html|/3/library/asyncio\\-exceptions\\.html|/3/library/asyncio\\-extending\\.html|/3/library/asyncio\\-future\\.html|/3/library/asyncio\\-graph\\.html|/3/library/asyncio\\-llapi\\-index\\.html|/3/library/asyncio\\-platforms\\.html|/3/library/asyncio\\-policy\\.html|/3/library/asyncio\\-protocol\\.html|/3/library/asyncio\\-queue\\.html|/3/library/asyncio\\-runner\\.html|/3/library/asyncio\\-stream\\.html|/3/library/asyncio\\-subprocess\\.html|/3/library/asyncio\\-sync\\.html|/3/library/asyncio\\-task\\.html|/3/library/asyncio\\-threading\\.html|/3/library/asyncio\\-tools\\.html)"
+            }
+          ]
+        },
+        "min_content_chars": 1359
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-022-until-september-10-get-pycharm-f",
+      "before_sha256": "3ef2701ca26f3b729adbf99769cc49e76a4ba326595f3faea73b4e2150f5b775",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "target-directory-1",
+              "kind": "named_link",
+              "minimum_records": 11,
+              "hosts": [
+                "docs.djangoproject.com"
+              ],
+              "entry_path": "(?:/en/stable/intro/contributing|/en/stable/intro/install|/en/stable/intro/overview|/en/stable/intro/reusable\\-apps|/en/stable/intro/tutorial01|/en/stable/intro/tutorial02|/en/stable/intro/tutorial03|/en/stable/intro/tutorial04|/en/stable/intro/tutorial05|/en/stable/intro/tutorial06|/en/stable/intro/tutorial07|/en/stable/intro/tutorial08|/en/stable/intro/whatsnext)"
+            }
+          ]
+        },
+        "min_content_chars": 623
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-024-cascading-style-sheets-level-2-r",
+      "before_sha256": "87ba2d62886f500361abfce7f71b4f646c36f1293e987e10e7caa83bf6399d7a",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "target-directory-1",
+              "kind": "named_link",
+              "minimum_records": 21,
+              "hosts": [
+                "www.w3.org"
+              ],
+              "entry_path": "(?:/TR/CSS2/about\\.html|/TR/CSS2/aural\\.html|/TR/CSS2/box\\.html|/TR/CSS2/cascade\\.html|/TR/CSS2/changes\\.html|/TR/CSS2/colors\\.html|/TR/CSS2/conform\\.html|/TR/CSS2/css2\\.pdf|/TR/CSS2/css2\\.ps\\.gz|/TR/CSS2/css2\\.tgz|/TR/CSS2/css2\\.txt|/TR/CSS2/css2\\.zip|/TR/CSS2/fonts\\.html|/TR/CSS2/generate\\.html|/TR/CSS2/grammar\\.html|/TR/CSS2/indexlist\\.html|/TR/CSS2/intro\\.html|/TR/CSS2/media\\.html|/TR/CSS2/page\\.html|/TR/CSS2/propidx\\.html|/TR/CSS2/refs\\.html|/TR/CSS2/sample\\.html|/TR/CSS2/selector\\.html|/TR/CSS2/syndata\\.html|/TR/CSS2/tables\\.html|/TR/CSS2/text\\.html|/TR/CSS2/ui\\.html|/TR/CSS2/visudet\\.html|/TR/CSS2/visufx\\.html|/TR/CSS2/visuren\\.html|/TR/CSS2/zindex\\.html)"
+            }
+          ]
+        },
+        "min_content_chars": 21584
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-035-part-i-tutorial",
+      "before_sha256": "fa82aaabd5b7ce09efaaa2238305bbb7b737f4f178b60934aae3deaf18892d59",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "target-directory-1",
+              "kind": "named_link",
+              "minimum_records": 19,
+              "hosts": [
+                "www.postgresql.org"
+              ],
+              "entry_path": "(?:/docs/current/admin\\.html|/docs/current/client\\-interfaces\\.html|/docs/current/sql\\.html|/docs/current/tutorial\\-accessdb\\.html|/docs/current/tutorial\\-advanced\\-intro\\.html|/docs/current/tutorial\\-advanced\\.html|/docs/current/tutorial\\-agg\\.html|/docs/current/tutorial\\-arch\\.html|/docs/current/tutorial\\-concepts\\.html|/docs/current/tutorial\\-conclusion\\.html|/docs/current/tutorial\\-createdb\\.html|/docs/current/tutorial\\-delete\\.html|/docs/current/tutorial\\-fk\\.html|/docs/current/tutorial\\-inheritance\\.html|/docs/current/tutorial\\-install\\.html|/docs/current/tutorial\\-join\\.html|/docs/current/tutorial\\-populate\\.html|/docs/current/tutorial\\-select\\.html|/docs/current/tutorial\\-sql\\-intro\\.html|/docs/current/tutorial\\-sql\\.html|/docs/current/tutorial\\-start\\.html|/docs/current/tutorial\\-table\\.html|/docs/current/tutorial\\-transactions\\.html|/docs/current/tutorial\\-update\\.html|/docs/current/tutorial\\-views\\.html|/docs/current/tutorial\\-window\\.html)"
+            }
+          ]
+        },
+        "min_content_chars": 640
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-040-documentation-overview",
+      "before_sha256": "8d91d27c7097aaa35ddf3236149ed1db4a1151515d713cfd0f89ae7a3e8ea1d9",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "target-directory-1",
+              "kind": "named_link",
+              "minimum_records": 37,
+              "hosts": [
+                "curl.se"
+              ],
+              "entry_path": "(?:|/about\\.html|/ch|/dev|/dev/advisory\\.html|/dev/vuln\\-disclosure\\.html|/docs/audits\\.html|/docs/bugs\\.html|/docs/caextract\\.html|/docs/code\\-of\\-conduct\\.html|/docs/companies\\.html|/docs/comparison\\-table\\.html|/docs/copyright\\.html|/docs/faq\\.html|/docs/features\\.html|/docs/history\\.html|/docs/http\\-cookies\\.html|/docs/http3\\.html|/docs/httpscripting\\.html|/docs/install\\.html|/docs/knownbugs\\.html|/docs/libs\\.html|/docs/manpage\\.html|/docs/mk\\-ca\\-bundle\\.html|/docs/projdocs\\.html|/docs/protdocs\\.html|/docs/reldocs\\.html|/docs/releases\\.html|/docs/security\\.html|/docs/ssl\\-compared\\.html|/docs/sslcerts\\.html|/docs/survey|/docs/thanks\\.html|/docs/thename\\.html|/docs/todo\\.html|/docs/tooldocs\\.html|/docs/tutorial\\.html|/docs/url\\-syntax\\.html|/docs/verify\\.html|/docs/versions\\.html|/docs/videos|/docs/vulnerabilities\\.html|/docs/whodocs\\.html|/donation\\.html|/libcurl|/logo|/sponsors\\.html)"
+            }
+          ]
+        },
+        "min_content_chars": 757
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-051-email-an-email-and-mime-handling",
+      "before_sha256": "0b9994e0378a9a12d642002a66c786f22bb870c7c699d4c869be6303b55a7468",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "target-directory-1",
+              "kind": "named_link",
+              "minimum_records": 12,
+              "hosts": [
+                "docs.python.org"
+              ],
+              "entry_path": "(?:/3/library/email\\.charset\\.html|/3/library/email\\.compat32\\-message\\.html|/3/library/email\\.contentmanager\\.html|/3/library/email\\.encoders\\.html|/3/library/email\\.errors\\.html|/3/library/email\\.examples\\.html|/3/library/email\\.generator\\.html|/3/library/email\\.header\\.html|/3/library/email\\.headerregistry\\.html|/3/library/email\\.iterators\\.html|/3/library/email\\.message\\.html|/3/library/email\\.mime\\.html|/3/library/email\\.parser\\.html|/3/library/email\\.policy\\.html|/3/library/email\\.utils\\.html)"
+            }
+          ]
+        },
+        "min_content_chars": 2946
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "lm-rust-learn",
+      "before_sha256": "88d740d9ab8bc92fada1544e6eca28afcf6937ada1e99fe6e41a65ee0afbc313",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "target-directory-1",
+              "kind": "named_link",
+              "minimum_records": 10,
+              "hosts": [
+                "doc.rust-lang.org"
+              ],
+              "entry_path": "(?:/book|/cargo/index\\.html|/edition\\-guide/index\\.html|/embedded\\-book|/error\\-index\\.html|/nightly/unstable\\-book/index\\.html|/nomicon/index\\.html|/reference/index\\.html|/rust\\-by\\-example|/rustc/index\\.html|/rustdoc/index\\.html|/std/index\\.html)"
+            },
+            {
+              "id": "target-directory-2",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "github.com"
+              ],
+              "entry_path": "(?:/rust\\-lang/rustlings)"
+            },
+            {
+              "id": "target-directory-3",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "rust-cli.github.io"
+              ],
+              "entry_path": "(?:/book/index\\.html)"
+            }
+          ]
+        },
+        "min_content_chars": 1088
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-039-welcome-to-redis-docs",
+      "before_sha256": "d558adf6850a773ae2779ca639e38da3103d7ed6e0dac3962021fff9fe726d11",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "target-directory-1",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "github.com"
+              ],
+              "entry_path": "(?:/redis/docs)"
+            },
+            {
+              "id": "target-directory-2",
+              "kind": "named_link",
+              "minimum_records": 35,
+              "hosts": [
+                "redis.io"
+              ],
+              "entry_path": "(?:/blog|/chat|/docs/latest/ai\\-agent\\-resources|/docs/latest/develop|/docs/latest/develop/ai|/docs/latest/develop/ai/context\\-engine|/docs/latest/develop/ai/context\\-engine/langcache|/docs/latest/develop/ai/redisvl|/docs/latest/develop/clients/dotnet|/docs/latest/develop/clients/go|/docs/latest/develop/clients/hiredis|/docs/latest/develop/clients/jedis|/docs/latest/develop/clients/lettuce|/docs/latest/develop/clients/nodejs|/docs/latest/develop/clients/php|/docs/latest/develop/clients/redis\\-py|/docs/latest/develop/clients/ruby|/docs/latest/develop/clients/rust|/docs/latest/develop/data\\-types/json|/docs/latest/develop/data\\-types/streams|/docs/latest/develop/get\\-started/search\\-tutorial/vector\\-search|/docs/latest/develop/tools|/docs/latest/develop/tools/cli|/docs/latest/develop/tools/insight|/docs/latest/develop/tools/redis\\-for\\-vscode|/docs/latest/integrate/amazon\\-bedrock|/docs/latest/integrate/datadog\\-with\\-redis\\-cloud|/docs/latest/integrate/dynatrace\\-with\\-redis\\-cloud|/docs/latest/integrate/langchain\\-redis|/docs/latest/integrate/new\\-relic\\-with\\-redis\\-cloud|/docs/latest/integrate/prometheus\\-with\\-redis\\-enterprise|/docs/latest/integrate/redis\\-data\\-integration/quick\\-start\\-guide|/docs/latest/integrate/redis\\-mcp|/docs/latest/integrate/riot|/docs/latest/integrate/spring\\-framework\\-cache|/docs/latest/operate|/docs/latest/operate/kubernetes|/docs/latest/operate/oss_and_stack|/docs/latest/operate/rc|/docs/latest/operate/rc/databases/create\\-database/create\\-flex\\-database|/docs/latest/operate/rs|/try/sandbox|/tutorials)"
+            },
+            {
+              "id": "target-directory-3",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "support.redislabs.com"
+              ],
+              "entry_path": "(?:/hc/en\\-us)"
+            },
+            {
+              "id": "target-directory-4",
+              "kind": "named_link",
+              "minimum_records": 1,
+              "hosts": [
+                "university.redis.io"
+              ],
+              "entry_path": "(?:/academy)"
+            }
+          ]
+        },
+        "min_content_chars": 1297
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-033-nasa-science",
+      "before_sha256": "0b43660df24696b4c3f87ee1ebdab72fa74bc88b699d1ba76b46e199f3ae5881",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "science-news",
+              "kind": "named_link",
+              "minimum_records": 7,
+              "hosts": [
+                "science.nasa.gov"
+              ],
+              "entry_path": "/(?:earth/earth-observatory|blogs/.+|science-research|missions/[^/]+)/[^/]+",
+              "start_pattern": "^(?:#{1,6}\\s*)?Latest News\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s*)?Featured Missions\\s*$"
+            },
+            {
+              "id": "featured-missions",
+              "kind": "named_link",
+              "minimum_records": 3,
+              "hosts": [
+                "science.nasa.gov"
+              ],
+              "entry_path": "/mission/[^/]+",
+              "start_pattern": "^(?:#{1,6}\\s*)?Featured Missions\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s*)?Dive Deeper\\s*$"
+            }
+          ]
+        },
+        "min_content_chars": 2044
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-036-build-on-the-openai-api-platform",
+      "before_sha256": "eab1966f082039e3742532a2d74ede8ecafec331e6d2c696030caca9d1f14e68",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "build-paths",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "developers.openai.com"
+              ],
+              "entry_path": "/api/docs/guides/(?:text|agents/quickstart)",
+              "start_pattern": "^(?:#{1,6}\\s*)?Build paths\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s*)?Models\\s*$"
+            },
+            {
+              "id": "current-model-cards",
+              "kind": "named_link",
+              "minimum_records": 4,
+              "hosts": [
+                "developers.openai.com"
+              ],
+              "entry_path": "/api/docs/models/[^/]+",
+              "start_pattern": "^(?:#{1,6}\\s*)?Models\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s*)?Start building\\s*$"
+            },
+            {
+              "id": "building-guides",
+              "kind": "named_link",
+              "minimum_records": 7,
+              "hosts": [
+                "developers.openai.com"
+              ],
+              "entry_path": "/api/docs/guides/[^/]+",
+              "start_pattern": "^(?:#{1,6}\\s*)?Start building\\s*$"
+            }
+          ]
+        },
+        "min_content_chars": 2236
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-037-breadcrumb",
+      "before_sha256": "6c4ba3c92691017ad9d969325f0253ce002f1552b09f50ad13c55e1ed3c2ef1e",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "climate-content-cards",
+              "kind": "named_link",
+              "minimum_records": 4,
+              "hosts": [
+                "www.noaa.gov"
+              ],
+              "entry_path": "/(?:news|stories|explainers)/[^/]+"
+            },
+            {
+              "id": "focus-areas",
+              "kind": "named_link",
+              "minimum_records": 8,
+              "hosts": [
+                "www.noaa.gov"
+              ],
+              "entry_path": "/(?:education|sanctuaries|charting|marine-aviation|research|satellites|fisheries|ocean-coasts|weather)",
+              "start_pattern": "^(?:#{1,6}\\s*)?Focus Areas\\s*//\\s*$"
+            }
+          ]
+        },
+        "min_content_chars": 1726
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-010-navigation-menu",
+      "before_sha256": "d9824c82b55aed4f1484a3435c77230d151271ae228538ea8c68159388d122c2",
+      "set": {
+        "required_facts": [
+          {
+            "id": "正文核对点-1",
+            "alternatives": [
+              "is a web scraping framework to extract structured data from"
+            ]
+          },
+          {
+            "id": "正文核对点-2",
+            "alternatives": [
+              "It is cross-platform, and requires Python 3.10+. It is maintained"
+            ]
+          },
+          {
+            "id": "正文核对点-3",
+            "alternatives": [
+              "If you wish to contribute, see"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-1",
+            "alternatives": [
+              "pip install scrapy"
+            ]
+          }
+        ],
+        "min_content_chars": 201
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-014-navigation-menu",
+      "before_sha256": "e1f9841d949f1cb7fbb84a4a6167864f22e1fbc5ecb9426f6e3070a11f5be3ea",
+      "set": {
+        "required_facts": [
+          {
+            "id": "正文核对点-1",
+            "alternatives": [
+              "PostgreSQL Database Management System"
+            ]
+          },
+          {
+            "id": "正文核对点-2",
+            "alternatives": [
+              "and functions. This distribution also contains C language bindings."
+            ]
+          },
+          {
+            "id": "正文核对点-3",
+            "alternatives": [
+              "look at our web site located at"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-1",
+            "alternatives": [
+              "Copyright and license information"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-2",
+            "alternatives": [
+              "building PostgreSQL from the source code"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-3",
+            "alternatives": [
+              "latest version of this software"
+            ]
+          }
+        ],
+        "min_content_chars": 471
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-003-the-rust-programming-language",
+      "before_sha256": "7601cad523c88ed348dfcc13bb277da7dbd6040e6d552e1d9ef803677ed1c628",
+      "set": {
+        "required_facts": [
+          {
+            "id": "page-title",
+            "alternatives": [
+              "Fearless Concurrency"
+            ]
+          },
+          {
+            "id": "正文核对点-1",
+            "alternatives": [
+              "Handling concurrent programming safely and efficiently is another of Rust’s"
+            ]
+          },
+          {
+            "id": "正文核对点-2",
+            "alternatives": [
+              "rather than being more precise by saying"
+            ]
+          },
+          {
+            "id": "正文核对点-3",
+            "alternatives": [
+              "user-defined types as well as types provided by the standard"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-1",
+            "alternatives": [
+              "Message-passing"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-2",
+            "alternatives": [
+              "Shared-state"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-3",
+            "alternatives": [
+              "Sync"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-4",
+            "alternatives": [
+              "Send"
+            ]
+          }
+        ],
+        "min_content_chars": 1472
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-007-html-hypertext-markup-language-s",
+      "before_sha256": "905624625e7286d6952b543b53fe3273d7ee519c579d213e5a3e2b4877bf46a8",
+      "set": {
+        "required_facts": [
+          {
+            "id": "anchor-1",
+            "alternatives": [
+              "html — HyperText Markup Language support"
+            ]
+          },
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "This module defines utilities to manipulate HTML"
+            ]
+          },
+          {
+            "id": "anchor-3",
+            "alternatives": [
+              "Convert all named and numeric character references"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-1",
+            "alternatives": [
+              "html.escape",
+              "html. escape"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-2",
+            "alternatives": [
+              "html.unescape",
+              "html. unescape"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-3",
+            "alternatives": [
+              "html.parser"
+            ]
+          },
+          {
+            "id": "body-semantic-unit-4",
+            "alternatives": [
+              "html.entities"
+            ]
+          }
+        ],
+        "min_content_chars": 543
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "live-021-python-common-pathname-manipulations",
+      "before_sha256": "8f496d51e024105b0dd97b18ad1b59bc09c9ca5d2e06ac0e9821435e5f65e88c",
+      "set": {
+        "min_content_chars": 9952,
+        "document_structure": {
+          "version": 1,
+          "type": "definition",
+          "minimum_heading_coverage": 0.8,
+          "minimum_body_chars": 9952,
+          "headings": [
+            {
+              "id": "os.path.abspath",
+              "text": "os.path.abspath(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.basename",
+              "text": "os.path.basename(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.commonpath",
+              "text": "os.path.commonpath(paths)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.commonprefix",
+              "text": "os.path.commonprefix(list, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.dirname",
+              "text": "os.path.dirname(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.exists",
+              "text": "os.path.exists(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.lexists",
+              "text": "os.path.lexists(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.expanduser",
+              "text": "os.path.expanduser(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.expandvars",
+              "text": "os.path.expandvars(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.getatime",
+              "text": "os.path.getatime(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.getmtime",
+              "text": "os.path.getmtime(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.getctime",
+              "text": "os.path.getctime(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.getsize",
+              "text": "os.path.getsize(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.isabs",
+              "text": "os.path.isabs(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.isfile",
+              "text": "os.path.isfile(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.isdir",
+              "text": "os.path.isdir(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.isjunction",
+              "text": "os.path.isjunction(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.islink",
+              "text": "os.path.islink(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.ismount",
+              "text": "os.path.ismount(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.isdevdrive",
+              "text": "os.path.isdevdrive(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.isreserved",
+              "text": "os.path.isreserved(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.join",
+              "text": "os.path.join(path, /, *paths)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.normcase",
+              "text": "os.path.normcase(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.normpath",
+              "text": "os.path.normpath(path)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.realpath",
+              "text": "os.path.realpath(path, /, *, strict=False)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.ALLOW_MISSING",
+              "text": "os.path.ALLOW_MISSING",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.relpath",
+              "text": "os.path.relpath(path, start=os.curdir)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.samefile",
+              "text": "os.path.samefile(path1, path2, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.sameopenfile",
+              "text": "os.path.sameopenfile(fp1, fp2)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.samestat",
+              "text": "os.path.samestat(stat1, stat2, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.split",
+              "text": "os.path.split(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.splitdrive",
+              "text": "os.path.splitdrive(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.splitroot",
+              "text": "os.path.splitroot(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.splitext",
+              "text": "os.path.splitext(path, /)",
+              "level": 1,
+              "body_required": true
+            },
+            {
+              "id": "os.path.supports_unicode_filenames",
+              "text": "os.path.supports_unicode_filenames",
+              "level": 1,
+              "body_required": true
+            }
+          ]
+        }
+      },
+      "remove": []
     }
-  ]
+  ],
+  "review_inputs": {
+    "dynamic-content": {
+      "review-evidence/dynamic-content/dynamic-027-ej2-syncfusion-com-react/round-01.html": "ce2d443c5e350a33269177fa1f84a72f596d8c5ef1bd6945325fc6266e9f209e",
+      "review-evidence/dynamic-content/dynamic-027-ej2-syncfusion-com-react/round-02.html": "c9fbc9ccec81431c63a2270bb6ae6f4136b1b719763349e75f5ffd24d67136ad",
+      "review-evidence/dynamic-content/dynamic-027-ej2-syncfusion-com-react/round-03.html": "f43ccd873fb32ad58a2be1e8aab875d81607e49a0bd2097fe9d248321718e1ed",
+      "review-evidence/dynamic-content/dynamic-028-ej2-syncfusion-com-react/round-01.html": "0af6df2792efd132a5f6395ddd2179299ab403b4cb420052d9200f7d1a759a58",
+      "review-evidence/dynamic-content/dynamic-028-ej2-syncfusion-com-react/round-02.html": "5018daed0654132e941fcdae32a961d0df6a3d3ca367932703ac4f76b404deec",
+      "review-evidence/dynamic-content/dynamic-028-ej2-syncfusion-com-react/round-03.html": "90d1134704fd2ec7907a21967bd76479e1287494c120e48f50466a5a8b36bdb8",
+      "review-evidence/dynamic-content/dynamic-055-arco-design-vue/round-01.html": "f405f10391c839b4c3e20befdd5f328d02368911e7b78e85cca019bc4be0876d",
+      "review-evidence/dynamic-content/dynamic-055-arco-design-vue/round-02.html": "f405f10391c839b4c3e20befdd5f328d02368911e7b78e85cca019bc4be0876d",
+      "review-evidence/dynamic-content/dynamic-055-arco-design-vue/round-03.html": "f405f10391c839b4c3e20befdd5f328d02368911e7b78e85cca019bc4be0876d",
+      "review-evidence/dynamic-content/dynamic-055-arco-design-vue/source-index.css": "78f00af8bc907f2e01c1ae8b2ef49fc791e224e3dafdb9951c791f2d20560f1b",
+      "review-evidence/dynamic-content/dynamic-034-034-vuetify-server-table/round-01.html": "a54dc550067093fed78ddbb929005d605bd68272a638f092dd713a9dc3c08498",
+      "review-evidence/dynamic-content/dynamic-034-034-vuetify-server-table/round-02.html": "ece9a12e266a86d4624183c2b8d0cd49f0bb1c90689945d03af8551206760180",
+      "review-evidence/dynamic-content/dynamic-034-034-vuetify-server-table/round-03.html": "b290bd32a27672d42d6b33f5b2f03504bb05f08c2e95dc9785633577b58dcf78",
+      "review-evidence/dynamic-content/dynamic-035-035-vuetify-virtual-table/round-01.html": "c96cbbd07ef656f61f59034150217d05e0bf3f26c03e0be05540e54e927ac219",
+      "review-evidence/dynamic-content/dynamic-035-035-vuetify-virtual-table/round-02.html": "ff0402ec396498882ef47c7b52a46b33eb13a0c812e8c0d74558c5cbc338d282",
+      "review-evidence/dynamic-content/dynamic-035-035-vuetify-virtual-table/round-03.html": "da6259731727ec8994c43b95f4bdbe5e4d90d7cc8c44f86dea9a4f03d15d6356",
+      "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-01.html": "65e7e62258e10a91db6c400f847dfe7ed2535025325a186c4bb1b86b0ba9a0a9",
+      "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-02.html": "fbcf4565a72c7c5126b481d6c126f56565a4974cc2b427461a5c2c074f53a518",
+      "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-03.html": "65e7e62258e10a91db6c400f847dfe7ed2535025325a186c4bb1b86b0ba9a0a9"
+    }
+  }
 }

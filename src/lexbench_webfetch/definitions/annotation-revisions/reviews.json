@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "f818ae389e1a6f6285b5ba7da7763c16ed0bf3b58226e80f55e81891921096ba",
+      "revision_sha256": "67b9a35e6a0748b9373e454df2dcac1a2735732bc1a074d676e4bc4b08a0d43c",
       "changes": [
         {
           "suite": "webfetch",
@@ -6629,51 +6629,73 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-027-ej2-syncfusion-com-react",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "reason": "Replace historical dynamic row text with visible-field and initial-row-count requirements. Preserve all stable anchors and exact-bound static prose; do not count unrendered virtual rows or hidden example code. The saved rendered observations are newly declared review evidence, not additions silently attributed to the original frozen inputs.",
+          "changes_sha256": "ba26a5fab05b1107397ccb07b475a900775ed8070b097b835d2dd7a2b0296a88",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
-              "scope": "Existing hash-bound body regions and declared target scope for dynamic-027-ej2-syncfusion-com-react"
+              "scope": "Unchanged parent tasks and hash-bound original body reference; projection retains static prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-027-ej2-syncfusion-com-react/round-01.html",
+              "sha256": "ce2d443c5e350a33269177fa1f84a72f596d8c5ef1bd6945325fc6266e9f209e",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-027-ej2-syncfusion-com-react/round-02.html",
+              "sha256": "c9fbc9ccec81431c63a2270bb6ae6f4136b1b719763349e75f5ffd24d67136ad",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-027-ej2-syncfusion-com-react/round-03.html",
+              "sha256": "f43ccd873fb32ad58a2be1e8aab875d81607e49a0bd2097fe9d248321718e1ed",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
             }
           ],
           "regression_ids": [
-            "all-body-regions-2-complete",
-            "all-body-regions-2-boundary",
-            "all-body-regions-2-below-boundary",
-            "all-body-regions-2-weak-region",
-            "all-body-regions-2-missing-region",
-            "all-body-regions-5-complete",
-            "all-body-regions-5-boundary",
-            "all-body-regions-5-below-boundary",
-            "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "reviewed-table-grouped-complete",
+            "reviewed-table-grouped-current-values",
+            "reviewed-table-grouped-caption-missing",
+            "reviewed-table-grouped-explanation-missing",
+            "reviewed-table-accessible-status-complete",
+            "reviewed-table-accessible-status-missing"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-028-ej2-syncfusion-com-react",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "reason": "Replace historical dynamic row text with visible-field and initial-row-count requirements. Preserve all stable anchors and exact-bound static prose; do not count unrendered virtual rows or hidden example code. The saved rendered observations are newly declared review evidence, not additions silently attributed to the original frozen inputs.",
+          "changes_sha256": "fbbd56fd5d283bf73df665fda1463fafa83d9f4ce12aff6f759d45a13d90fb1c",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
-              "scope": "Existing hash-bound body regions and declared target scope for dynamic-028-ej2-syncfusion-com-react"
+              "scope": "Unchanged parent tasks and hash-bound original body reference; projection retains static prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-028-ej2-syncfusion-com-react/round-01.html",
+              "sha256": "0af6df2792efd132a5f6395ddd2179299ab403b4cb420052d9200f7d1a759a58",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-028-ej2-syncfusion-com-react/round-02.html",
+              "sha256": "5018daed0654132e941fcdae32a961d0df6a3d3ca367932703ac4f76b404deec",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-028-ej2-syncfusion-com-react/round-03.html",
+              "sha256": "90d1134704fd2ec7907a21967bd76479e1287494c120e48f50466a5a8b36bdb8",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
             }
           ],
           "regression_ids": [
-            "all-body-regions-2-complete",
-            "all-body-regions-2-boundary",
-            "all-body-regions-2-below-boundary",
-            "all-body-regions-2-weak-region",
-            "all-body-regions-2-missing-region",
-            "all-body-regions-5-complete",
-            "all-body-regions-5-boundary",
-            "all-body-regions-5-below-boundary",
-            "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "reviewed-table-grouped-complete",
+            "reviewed-table-grouped-current-values",
+            "reviewed-table-grouped-caption-missing",
+            "reviewed-table-grouped-explanation-missing",
+            "reviewed-table-accessible-status-complete",
+            "reviewed-table-accessible-status-missing"
           ]
         },
         {
@@ -6754,26 +6776,42 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-055-arco-design-vue",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "reason": "Replace historical dynamic row text with visible-field and initial-row-count requirements. Preserve all stable anchors and exact-bound static prose; do not count unrendered virtual rows or hidden example code. The saved rendered observations are newly declared review evidence, not additions silently attributed to the original frozen inputs.",
+          "changes_sha256": "25a65d7add51857835280abb9e6e675347d8bea3502b5c6888ac2212a98faa44",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
-              "scope": "Existing hash-bound body regions and declared target scope for dynamic-055-arco-design-vue"
+              "scope": "Unchanged parent tasks and hash-bound original body reference; projection retains static prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-055-arco-design-vue/round-01.html",
+              "sha256": "f405f10391c839b4c3e20befdd5f328d02368911e7b78e85cca019bc4be0876d",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-055-arco-design-vue/round-02.html",
+              "sha256": "f405f10391c839b4c3e20befdd5f328d02368911e7b78e85cca019bc4be0876d",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-055-arco-design-vue/round-03.html",
+              "sha256": "f405f10391c839b4c3e20befdd5f328d02368911e7b78e85cca019bc4be0876d",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-055-arco-design-vue/source-index.css",
+              "sha256": "78f00af8bc907f2e01c1ae8b2ef49fc791e224e3dafdb9951c791f2d20560f1b",
+              "scope": "Saved stylesheet corroborates overflow-hidden code containers with inline zero height."
             }
           ],
           "regression_ids": [
-            "all-body-regions-2-complete",
-            "all-body-regions-2-boundary",
-            "all-body-regions-2-below-boundary",
-            "all-body-regions-2-weak-region",
-            "all-body-regions-2-missing-region",
-            "all-body-regions-5-complete",
-            "all-body-regions-5-boundary",
-            "all-body-regions-5-below-boundary",
-            "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "reviewed-table-grouped-complete",
+            "reviewed-table-grouped-current-values",
+            "reviewed-table-grouped-caption-missing",
+            "reviewed-table-grouped-explanation-missing",
+            "reviewed-table-accessible-status-complete",
+            "reviewed-table-accessible-status-missing"
           ]
         },
         {
@@ -7054,51 +7092,73 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-034-034-vuetify-server-table",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Replace historical dynamic row text with visible-field and initial-row-count requirements. Preserve all stable anchors and exact-bound static prose; do not count unrendered virtual rows or hidden example code. The saved rendered observations are newly declared review evidence, not additions silently attributed to the original frozen inputs.",
+          "changes_sha256": "e83ce5e995b2fe204c843f59d70c2fb1a6229d93a9ae6b1078481b0b82e94673",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
-              "scope": "Existing hash-bound body regions and declared target scope for dynamic-034-034-vuetify-server-table"
+              "scope": "Unchanged parent tasks and hash-bound original body reference; projection retains static prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-034-034-vuetify-server-table/round-01.html",
+              "sha256": "a54dc550067093fed78ddbb929005d605bd68272a638f092dd713a9dc3c08498",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-034-034-vuetify-server-table/round-02.html",
+              "sha256": "ece9a12e266a86d4624183c2b8d0cd49f0bb1c90689945d03af8551206760180",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-034-034-vuetify-server-table/round-03.html",
+              "sha256": "b290bd32a27672d42d6b33f5b2f03504bb05f08c2e95dc9785633577b58dcf78",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
             }
           ],
           "regression_ids": [
-            "all-body-regions-2-complete",
-            "all-body-regions-2-boundary",
-            "all-body-regions-2-below-boundary",
-            "all-body-regions-2-weak-region",
-            "all-body-regions-2-missing-region",
-            "all-body-regions-5-complete",
-            "all-body-regions-5-boundary",
-            "all-body-regions-5-below-boundary",
-            "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "reviewed-table-grouped-complete",
+            "reviewed-table-grouped-current-values",
+            "reviewed-table-grouped-caption-missing",
+            "reviewed-table-grouped-explanation-missing",
+            "reviewed-table-accessible-status-complete",
+            "reviewed-table-accessible-status-missing"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-035-035-vuetify-virtual-table",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Replace historical dynamic row text with visible-field and initial-row-count requirements. Preserve all stable anchors and exact-bound static prose; do not count unrendered virtual rows or hidden example code. The saved rendered observations are newly declared review evidence, not additions silently attributed to the original frozen inputs.",
+          "changes_sha256": "06b763628dff32ba35c38f8938cc580907b250a7ae6f68a6e3e81ae88e7b08d4",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
-              "scope": "Existing hash-bound body regions and declared target scope for dynamic-035-035-vuetify-virtual-table"
+              "scope": "Unchanged parent tasks and hash-bound original body reference; projection retains static prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-035-035-vuetify-virtual-table/round-01.html",
+              "sha256": "c96cbbd07ef656f61f59034150217d05e0bf3f26c03e0be05540e54e927ac219",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-035-035-vuetify-virtual-table/round-02.html",
+              "sha256": "ff0402ec396498882ef47c7b52a46b33eb13a0c812e8c0d74558c5cbc338d282",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-035-035-vuetify-virtual-table/round-03.html",
+              "sha256": "da6259731727ec8994c43b95f4bdbe5e4d90d7cc8c44f86dea9a4f03d15d6356",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
             }
           ],
           "regression_ids": [
-            "all-body-regions-2-complete",
-            "all-body-regions-2-boundary",
-            "all-body-regions-2-below-boundary",
-            "all-body-regions-2-weak-region",
-            "all-body-regions-2-missing-region",
-            "all-body-regions-5-complete",
-            "all-body-regions-5-boundary",
-            "all-body-regions-5-below-boundary",
-            "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "reviewed-table-grouped-complete",
+            "reviewed-table-grouped-current-values",
+            "reviewed-table-grouped-caption-missing",
+            "reviewed-table-grouped-explanation-missing",
+            "reviewed-table-accessible-status-complete",
+            "reviewed-table-accessible-status-missing"
           ]
         },
         {
@@ -7129,26 +7189,37 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-043-en-stable-grommet-table",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "reason": "Replace historical dynamic row text with visible-field and initial-row-count requirements. Preserve all stable anchors and exact-bound static prose; do not count unrendered virtual rows or hidden example code. The saved rendered observations are newly declared review evidence, not additions silently attributed to the original frozen inputs.",
+          "changes_sha256": "e67002ac1390c96580e8d6ebaf4a3dcf57117659dedce2cfadd45cd54f03bbac",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
-              "scope": "Existing hash-bound body regions and declared target scope for dynamic-043-en-stable-grommet-table"
+              "scope": "Unchanged parent tasks and hash-bound original body reference; projection retains static prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-01.html",
+              "sha256": "65e7e62258e10a91db6c400f847dfe7ed2535025325a186c4bb1b86b0ba9a0a9",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-02.html",
+              "sha256": "fbcf4565a72c7c5126b481d6c126f56565a4974cc2b427461a5c2c074f53a518",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
+            },
+            {
+              "path": "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-03.html",
+              "sha256": "65e7e62258e10a91db6c400f847dfe7ed2535025325a186c4bb1b86b0ba9a0a9",
+              "scope": "Separately bound saved initial rendered observation; visible rows, fields and surrounding prose."
             }
           ],
           "regression_ids": [
-            "all-body-regions-2-complete",
-            "all-body-regions-2-boundary",
-            "all-body-regions-2-below-boundary",
-            "all-body-regions-2-weak-region",
-            "all-body-regions-2-missing-region",
-            "all-body-regions-5-complete",
-            "all-body-regions-5-boundary",
-            "all-body-regions-5-below-boundary",
-            "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "reviewed-table-grouped-complete",
+            "reviewed-table-grouped-current-values",
+            "reviewed-table-grouped-caption-missing",
+            "reviewed-table-grouped-explanation-missing",
+            "reviewed-table-accessible-status-complete",
+            "reviewed-table-accessible-status-missing"
           ]
         },
         {
@@ -9794,8 +9865,8 @@
         {
           "suite": "articles",
           "case_id": "article-014",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Use the final event-loop analysis before the author bibliography; keep every bibliography entry. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change.",
+          "changes_sha256": "9d7ebc261545a1f7a365b14ddc57e8ca86d3e58b6c9a931d4912343067e4a434",
           "sources": [
             {
               "path": "dataset.json",
@@ -9808,7 +9879,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "reviewed-body-scope-complete",
+            "reviewed-body-scope-missing-conclusion"
           ]
         },
         {
@@ -10408,8 +10481,8 @@
         {
           "suite": "articles",
           "case_id": "article-050",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Use the release-feature conclusion, not the project profile or donation link; preserve the release resources. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change.",
+          "changes_sha256": "acbf5f52a3873af42215b6b4e2ba6ed088e012de3a6ff4e7afb26b0cf7d1f65a",
           "sources": [
             {
               "path": "dataset.json",
@@ -10422,7 +10495,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "reviewed-body-scope-complete",
+            "reviewed-body-scope-missing-conclusion"
           ]
         },
         {
@@ -11118,8 +11193,8 @@
         {
           "suite": "articles",
           "case_id": "article-087",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Use the explicit Conclusion paragraphs, while retaining the authored Further reading list. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change.",
+          "changes_sha256": "3a4890a366be30b87f5477bca1c582852c5684fc0877b1862cf4a9c8e8a7643d",
           "sources": [
             {
               "path": "dataset.json",
@@ -11132,7 +11207,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "reviewed-body-scope-complete",
+            "reviewed-body-scope-missing-conclusion"
           ]
         },
         {
@@ -13145,6 +13222,431 @@
             "mutable-document-structure-toc-padding",
             "mutable-document-structure-missing-fact",
             "mutable-document-structure-hidden-sections"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "lm-python-tutorial",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "f10062d407aefd6ab57e475ee916800d6c642ecfc829a8d27e1cfa62966fa893",
+          "sources": [
+            {
+              "path": "sources/lm-python-tutorial/current-source.html.txt",
+              "sha256": "06ad84433f3fa9b9a1938ddc82077a7457dde881fcc66d5d6f586b0b29991dee",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/lm-python-tutorial/reference.txt",
+              "sha256": "ac1c8ffbbbed1193e32b33155b1cdbf28f107ec18c819e81fec316534d9172b9",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-005-python-asyncio-documentation",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "d8ba39e0422b4d9f3677344dc048f85b0f5ae751292b6d2d41d25b95dd9f2a8e",
+          "sources": [
+            {
+              "path": "sources/live-005-python-asyncio-documentation/current-source.html.txt",
+              "sha256": "ed557e6693b602f725eded3a54bbd49eb008201ef1a90ba349f59cae6ba695b8",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-005-python-asyncio-documentation/reference.txt",
+              "sha256": "91a43f92fe5a2084a3271e5b1dad0c3890f2a2a065d647cfd66bdc4a257594c4",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-022-until-september-10-get-pycharm-f",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "54a09dabc60dd4cc0279ac7042e99b3ee8af66c549f325d95f2f771a9999f2c6",
+          "sources": [
+            {
+              "path": "sources/live-022-until-september-10-get-pycharm-f/current-source.html.txt",
+              "sha256": "37624346a0802d5fb5d48a09cdc742bc3e3c3cf2b647d13e4dd2370186750928",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-022-until-september-10-get-pycharm-f/reference.txt",
+              "sha256": "212b55e4a8f69a812a587b67b40aa5f6926fcd9fbc104aa41d25d9adde2fdd3f",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-024-cascading-style-sheets-level-2-r",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "c4cf3092386f4c658aefeac96e74d76b6d63ed213c0f1b39b73196a78362c1ed",
+          "sources": [
+            {
+              "path": "sources/live-024-cascading-style-sheets-level-2-r/current-source.html.txt",
+              "sha256": "1e43327015ed94d3e6a3bb5b3948dc5e56f54ed76cfd2ef4918ad8f8ca86c5dd",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-024-cascading-style-sheets-level-2-r/reference.txt",
+              "sha256": "5f326b8ed12b5e559079908f1ddb97faa2ed6072948032f5cee40eab63726059",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-035-part-i-tutorial",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "5e0f0484c5b4eb8870026c0d9c1f3ab1826ca1c5560cff6ae37ce3c2270c84fc",
+          "sources": [
+            {
+              "path": "sources/live-035-part-i-tutorial/current-source.html.txt",
+              "sha256": "688afbf484e95ba62909f9ea5b7678501052a5ae7f5b5ac840e3a724e79838bc",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-035-part-i-tutorial/reference.txt",
+              "sha256": "4e0e8a9c0c36ae70556d26dc7fe92eac0af4fd504ddde22671165ab76194bd2a",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-040-documentation-overview",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "acfba81d8084e015925efe50ebea0c558b3ab4e0ed59aca806bd194c4ac50042",
+          "sources": [
+            {
+              "path": "sources/live-040-documentation-overview/current-source.html.txt",
+              "sha256": "e7ae0135882c0911eb952a7ccfeb7119899ceeee654ab68f5a4868d315bf0072",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-040-documentation-overview/reference.txt",
+              "sha256": "f9a1c4348fd86bc8579275b434ca0310dc6a2c651ba1f1f8f8818866d77abe5b",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-051-email-an-email-and-mime-handling",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "9ec36ce5d7b56407c7bc7ddc63dd19f2cd8c52fce6fea67b984fcff88a66d31e",
+          "sources": [
+            {
+              "path": "sources/live-051-email-an-email-and-mime-handling/current-source.html.txt",
+              "sha256": "b26da57b855021983a59e8a3bd067324aa7517f71a75e8f729652a8d5d166c4e",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-051-email-an-email-and-mime-handling/reference.txt",
+              "sha256": "0847d46feb1558e534f62f3343a00e68ee93353be15098195eaea779b16af8a7",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "lm-rust-learn",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "de3fb8a2e548a81d715d13ea15dc05a2ca279a41e01ee8c9e23359ab50125fbe",
+          "sources": [
+            {
+              "path": "sources/lm-rust-learn/current-source.html.txt",
+              "sha256": "1e616cf429b83439b1c32db1ad6e7907abe2bc20fa998d87318cc1ded6ffcf77",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/lm-rust-learn/reference.txt",
+              "sha256": "87265e23d47e43f2da8b098824f6879cce013bee55e1d7eb7752c2833daad26b",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-039-welcome-to-redis-docs",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "211f850efd24c340222105fae21ca6af0a357aef0fb027271ad60917e73f6774",
+          "sources": [
+            {
+              "path": "sources/live-039-welcome-to-redis-docs/current-source.html.txt",
+              "sha256": "b733bb687adfe53074e52d8bfb09cb7b5d44330c5ee38b732605096eba6f7d4a",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-039-welcome-to-redis-docs/reference.txt",
+              "sha256": "3361eb5e52041d343cb58cc75e7716a88a70c85f894a93c07e965f5d3a1fb75e",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-033-nasa-science",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "3b410240375533c7d51249de680ca9c0191a64af71c66917a810cdfe7440b39f",
+          "sources": [
+            {
+              "path": "sources/live-033-nasa-science/current-source.html.txt",
+              "sha256": "9275e91ca5c3864983bc3af195c4b7469829f8e13b657e7beeed0b29167b0972",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-033-nasa-science/reference.txt",
+              "sha256": "948f805b35895817b403a927a9d71a22c09823ac1770f7fd1994b650dd0cda46",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-036-build-on-the-openai-api-platform",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "7b6372d477cba160b25819a0e768dcb21fda15a579f6e3787302bc68891453a1",
+          "sources": [
+            {
+              "path": "sources/live-036-build-on-the-openai-api-platform/current-source.html.txt",
+              "sha256": "ab39886b539dbfe17d99c434b4c8f7323c95e548a3337e9d0c48d6cfecd3b8bd",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-036-build-on-the-openai-api-platform/reference.txt",
+              "sha256": "2d8f74b76070490ec14ce387643e51495b9b840e2ac8479fc555f9ddba2859c8",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-037-breadcrumb",
+          "reason": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors.",
+          "changes_sha256": "9ddbc369096a48c43745f7ea1e26d966d24cb399a86d86b3935f8480d2ee5ae0",
+          "sources": [
+            {
+              "path": "sources/live-037-breadcrumb/current-source.html.txt",
+              "sha256": "58b4384ca1e53a66c69bc5a171bddad7e3b629c839b0b31757ae9361e3fc7683",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-037-breadcrumb/reference.txt",
+              "sha256": "ab62f0273ab9f9b792c99d2d021bb1fe7f6ff7fcf6af9935de7b65cc4443d2e8",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-010-navigation-menu",
+          "reason": "Require additional source-backed concepts in this heading-free document and preserve the existing requirements; no artificial headings are introduced.",
+          "changes_sha256": "a057626733aeca1c31265171966e9576de1f2e5c2614c5bb39eba75084a0a90f",
+          "sources": [
+            {
+              "path": "sources/live-010-navigation-menu/current-source.html.txt",
+              "sha256": "8344fc64926cae805733c0f0c6ab01ffa1bd5a85a71944f29aa5864562e87741",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-010-navigation-menu/reference.txt",
+              "sha256": "81862b8427914538c896b7ba2050caf5a1722a748e05065cf7828335905163ee",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-014-navigation-menu",
+          "reason": "Require additional source-backed concepts in this heading-free document and preserve the existing requirements; no artificial headings are introduced.",
+          "changes_sha256": "90607783aa89a18fb0a88af4830785f9e67eabb17bf26b0eecbadd07e53c9be0",
+          "sources": [
+            {
+              "path": "sources/live-014-navigation-menu/current-source.html.txt",
+              "sha256": "aad84d2bf5a010d32919855ddbf7779259cc97bc5c6cb92c57116305cb58cdae",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-014-navigation-menu/reference.txt",
+              "sha256": "d784716f9466d5d9e1583271cbb8fe48a1d0ab9537a026a3917f957ef1ae3059",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-003-the-rust-programming-language",
+          "reason": "Require additional source-backed concepts in this heading-free document and preserve the existing requirements; no artificial headings are introduced.",
+          "changes_sha256": "82cf1dc6921b27dac51e4e28fcbb95629618406bcfbb4fc581a9105ed7d1dc2d",
+          "sources": [
+            {
+              "path": "sources/live-003-the-rust-programming-language/current-source.html.txt",
+              "sha256": "668269927d1f1a2cfdc8d2de6b5727ea1ce505f4aa3cddd8854ffb5c77093070",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-003-the-rust-programming-language/reference.txt",
+              "sha256": "8de7885c4ca78ede2ecaa0994e5f65cd5566c6401264aba82093b289cb08c2c1",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-007-html-hypertext-markup-language-s",
+          "reason": "Require additional source-backed concepts in this heading-free document and preserve the existing requirements; no artificial headings are introduced.",
+          "changes_sha256": "ad0a88d305ceabe9250408a3774d09c99fcc0b4b27c666ff420594c2ac392ca8",
+          "sources": [
+            {
+              "path": "sources/live-007-html-hypertext-markup-language-s/current-source.html.txt",
+              "sha256": "44d628efcb463d1fde6a5d83584c3191d34a2a45bb921bf36010d25152f75aec",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-007-html-hypertext-markup-language-s/reference.txt",
+              "sha256": "d0c055677330ce4f19b4bec7310817c9f3cb5b075f8357a1379116b30bfe5f0b",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-021-python-common-pathname-manipulations",
+          "reason": "Require source-qualified definitions with their local descriptions and a reviewed body-length floor; API names plus unrelated filler do not satisfy definitions.",
+          "changes_sha256": "48423daf758da60dc04d7b9a3f2a4d3b8475fd6a368428dc4d18548a599682d0",
+          "sources": [
+            {
+              "path": "sources/live-021-python-common-pathname-manipulations/current-source.html.txt",
+              "sha256": "f222612f43fbfa8a0295b2748d498b975d95df9dd622e4b107aee6921693584c",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            },
+            {
+              "path": "sources/live-021-python-common-pathname-manipulations/reference.txt",
+              "sha256": "b141e5a767ee51780ff865d7d7acb6699555729964cf4ccbf370618a76957701",
+              "scope": "Frozen document source for target directory, definition or explicit body facts; existing navigation requirements remain."
+            }
+          ],
+          "regression_ids": [
+            "reviewed-document-definitions-complete",
+            "reviewed-document-definitions-empty-with-padding",
+            "reviewed-document-directory-complete",
+            "reviewed-document-directory-navigation-only",
+            "mutable-document-structure-missing-fact"
           ]
         }
       ]

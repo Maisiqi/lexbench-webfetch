@@ -62,7 +62,7 @@ or semantic completeness. It does not repair an incorrectly selected ending.
 
 The ongoing `review-550-20261023` revision currently combines those 148 quota
 changes and 95 ordered-ending changes. Five articles also receive source-reviewed
-body boundaries, and six more receive substantive conclusion selections with
+body boundaries, and nine more receive substantive conclusion selections with
 their original body regions preserved. This is a partial review revision, not certification of all 550
 cases. See [review decisions](review-550-decisions.md).
 
@@ -73,6 +73,30 @@ table-of-contents entries and headings without their required body cannot fill
 the section quota. This checks structural coverage, not semantic accuracy.
 Two cases also remove a mandatory phrase proven to be in an initially hidden
 tab panel or closed disclosure; all other existing requirements remain.
+
+Seventeen further cases use source-qualified target directories, resource cards,
+explicit body facts or API definitions, bringing the mutable-document review to
+81 of 82 cases. Definition contracts explicitly set `type: "definition"`:
+signatures need adjacent descriptions (`dt` followed by `dd` in HTML, or complete
+signature lines followed by prose in text/Markdown). API names and unrelated
+padding do not count as definitions. Existing mandatory facts remain mandatory.
+
+Six dynamic tables replace historical row text with initial-row-count and
+visible-field contracts while retaining source-bound static prose. Grouped
+tables may explicitly declare caption fields belonging to subsequent rows in
+the same table section; expanded ordinary columns remain valid serializations.
+No unrendered virtual rows or hidden example code enter the target count.
+
+Additional source observations are declared separately in the revision's
+`review_inputs`, mapping each suite to `review-evidence/` paths and SHA-256
+digests. Per-case reviews cite these paths explicitly, with
+`revision_review_source_declared` distinguishing them from parent inputs.
+Export requires `--review-source` when the selected suite has such inputs. It
+rejects missing, changed or symlinked evidence, copies only declared files and
+runs reference controls against the resulting package. Original manifests and
+parent dataset bytes remain unchanged. A declaration or successful file check
+alone does not certify target completeness; the recorded source controls state
+their actual scope.
 
 Its `body_projection` operation selects one to five ordered, nonoverlapping
 character ranges from the hash-bound original body. Ranges use zero-based,

@@ -140,6 +140,79 @@ class FrozenInputs(unittest.TestCase):
                 'regression_ids': data['regression_ids']}]} }})
         return data
 
+    def additional_review_revision(self):
+        definition = self.annotation_revision()
+        self.review_source = self.root / 'independent-review'
+        relative = 'review-evidence/article.html'
+        target = self.review_source / relative
+        target.parent.mkdir(parents=True)
+        target.write_text('<main>unique fact and independently checked fact</main>')
+        definition['review_inputs'] = {'synthetic': {relative: bench.digest(target)}}
+        definition['changes'][0]['set']['required_facts'].append({
+            'id': 'independent', 'alternatives': ['independently checked fact']})
+        path = self.suites / 'annotation-revisions/source-annotation-v2.json'
+        write(path, definition)
+        review_path = self.suites / 'annotation-revisions/reviews.json'
+        reviews = bench.read(review_path)
+        review = reviews['revisions'][definition['id']]
+        review['revision_sha256'] = bench.digest(path)
+        entry = review['changes'][0]
+        old = bench.read(self.suites/'synthetic/tasks.json')['cases'][0]
+        new = {**old, **definition['changes'][0]['set']}
+        entry['changes_sha256'] = hashlib.sha256(json.dumps(
+            bench.annotation_changes(old, new), ensure_ascii=False,
+            sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+        entry['sources'] = [{'path': relative, 'sha256': bench.digest(target),
+                             'scope': 'Separately versioned independent review observation'}]
+        write(review_path, reviews)
+        return target
+
+    def test_independent_review_evidence_is_explicit_bound_and_not_a_parent_replacement(self):
+        target = self.additional_review_revision()
+        original = (self.source/'dataset.json').read_bytes()
+        (self.review_source/'private.log').write_text('not an input')
+        path = bench.export('synthetic', self.source, self.root/'revised',
+                            revision='source-annotation-v2', review_source=self.review_source)
+        report = bench.read(path.parent/'annotation-review.json')
+        self.assertEqual((path.parent/'review-evidence/article.html').read_bytes(), target.read_bytes())
+        self.assertFalse((path.parent/'private.log').exists())
+        self.assertEqual(report['changes'][0]['source_coverage'], 'revision_review_source_declared')
+        self.assertTrue(report['reference_controls']['complete'])
+        self.assertEqual(report['reference_controls']['cases'][0]['reference_candidates'][-1]['source']['path'],
+                         'review-evidence/article.html')
+        self.assertEqual((self.source/'dataset.json').read_bytes(), original)
+        self.assertEqual(bench.verify_inputs('synthetic', self.source)['case_count'], 1)
+
+    def test_additional_review_evidence_cannot_be_omitted_changed_or_symlinked(self):
+        target = self.additional_review_revision()
+        original = target.read_bytes()
+        for mode in ('omitted', 'changed', 'missing', 'symlink'):
+            with self.subTest(mode=mode):
+                if target.exists() or target.is_symlink():
+                    target.unlink()
+                target.write_bytes(original)
+                if mode == 'changed':
+                    target.write_text('changed observation')
+                if mode == 'missing':
+                    target.unlink()
+                if mode == 'symlink':
+                    target.unlink()
+                    target.symlink_to(self.source/'sources/article.json')
+                output = self.root/mode
+                with self.assertRaises(ValueError):
+                    bench.export('synthetic', self.source, output, revision='source-annotation-v2',
+                                 review_source=None if mode == 'omitted' else self.review_source)
+                self.assertFalse(output.exists())
+
+    def test_review_evidence_manifest_rejects_unsafe_or_ambiguous_paths(self):
+        for path in ('dataset.json', '../review-evidence/a', '/review-evidence/a',
+                     'review-evidence/../dataset.json', 'review-evidence//a'):
+            with self.subTest(path=path), self.assertRaises(ValueError):
+                bench.review_input_files({'parents': {'synthetic': {}},
+                    'review_inputs': {'synthetic': {path: '0'*64}}}, 'synthetic')
+        with self.assertRaises(ValueError):
+            bench.export('synthetic', self.source, self.root/'unused', review_source=self.source)
+
     def test_revised_export_has_a_distinct_identity_and_preserves_frozen_inputs(self):
         self.annotation_revision()
         before = (self.source/'dataset.json').read_bytes()

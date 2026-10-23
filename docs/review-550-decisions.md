@@ -51,17 +51,20 @@ source passage constitutes the ending remains separate work. The matcher permits
 footers after the closing passage and does not claim absolute end-position or
 semantic completeness.
 
-Six further ending selections are registered in `review-550-20261023` without
+Nine further ending selections are registered in `review-550-20261023` without
 removing any existing body region or stable requirement. Each selected passage
-was checked against the saved HTML and hash-bound reference. All six complete
-bodies pass; deleting the selected conclusion fails in all six body-layer controls.
+was checked against the saved HTML and hash-bound reference. All nine complete
+bodies pass; deleting the selected conclusion fails in all nine body-layer controls.
 
 | Case | Required ending | Previous non-conclusion tail retained in the existing requirements |
 | --- | --- | --- |
+| 014 | Final event-loop analysis | Author bibliography |
 | 016 | Final museum-interview paragraph | Credits and magazine subscription promotion |
+| 050 | Final release-feature paragraph | Project profile and release resources |
 | 065 | Explicit Conclusion paragraph | Author profile and social links |
 | 080 | Final research discussion paragraph | Citations and publisher independence statement |
 | 081 | Final paragraph of the concluding argument | Data-update notice, endnotes, citation and reuse information |
+| 087 | Explicit Conclusion paragraphs | Author's Further reading list |
 | 088 | Final paragraph of The Big Picture | Acknowledgments, bibliography and BibTeX metadata |
 | 092 | Conclusion's final substantive paragraph and next-article transition | Author profile links |
 
@@ -92,6 +95,36 @@ initial rendered visibility; its proposed headings remain unqualified.
 Node's actual `main` element supplies its heading and body, so its separate
 contract is now registered as the 64th document correction. The saved-source
 positive passes; moving the heading into navigation with padded body text fails.
+
+Seventeen additional cases are registered: nine target directories, three
+resource portals, four heading-free documents with explicit body facts, and
+the `os.path` API definitions. All 17 complete saved-source positives pass.
+Directory negatives retain actual navigation while removing body directory
+links; existing facts and length still pass but the target-link gate fails.
+API-name lists, empty descriptions and unrelated padding fail the definition
+contract. Original fact thresholds and stable anchors are preserved. This
+brings the mutable-document review to 81 of 82; Feishu remains under review.
+
+## Dynamic tables
+
+All six corrections are registered with separately hash-bound saved observations;
+they are not silently attributed to the original frozen input manifest. The
+original body reference remains unchanged, while a projection selects its static
+prose and headers. All 18 saved-source positives pass with the registered rules,
+and removing the tables fails for all 18.
+
+| Case | Reviewed initial target | Correction |
+| --- | --- | --- |
+| 027 | 12 grouped rows, minimum 10 | Four visible fields plus country from the preceding group caption; the CSS-hidden fifth cell is not a visible source field. |
+| 028 | 12 paging rows, minimum 10 | Require all five visible fields and retain the surrounding explanation. |
+| 034 | Two tables, five rows each, minimum four each | Require both tables separately and retain the loading demonstration and explanations. |
+| 035 | Three tables, 25 rendered rows each, minimum 20 each | Exclude empty spacers; do not count the conceptual 10,000-row dataset. The frozen reference itself did not contain those 10,000 rows. |
+| 043 | Four name/completion rows | Require the completion graphic's accessible value in its own cell; replace historical Alan/Eric facts with static Name/Complete headers. |
+| 055 | Five Basic rows, minimum four | Retain the Basic explanation and headers; exclude code hidden by zero height and overflow styling. |
+
+Changed row values pass. For the five tables with companion explanation,
+removing that explanation fails the body layer while the record layer remains
+satisfied. Case 043 is table-only and receives no invented explanation.
 
 ## Body fact gate
 
