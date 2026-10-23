@@ -231,6 +231,25 @@ def inspect_annotation_revision(identifier: str, revision: str) -> dict:
     return _apply_annotation_revision(identifier, read(root/'tasks.json'), revision)[1]
 
 
+def _revise_body_thresholds(case: dict, thresholds: dict) -> None:
+    """Revise quotas without replacing frozen reference text or public bindings."""
+    body = case.get('body_requirements')
+    fields = {'minimum_coverage', 'minimum_floor', 'minimum_region_passes'}
+    if (not isinstance(body, dict) or body.get('version') not in (3, 4)
+            or not isinstance(body.get('regions'), list) or not body['regions']
+            or not isinstance(thresholds, dict) or set(thresholds) != fields
+            or any(type(thresholds[k]) not in (int, float)
+                   for k in ('minimum_coverage', 'minimum_floor'))
+            or not 0 < thresholds['minimum_floor'] <= thresholds['minimum_coverage'] <= 1
+            or type(thresholds['minimum_region_passes']) is not int
+            or not 1 <= thresholds['minimum_region_passes'] <= len(body['regions'])
+            or (body['version'] == 4 and (
+                thresholds['minimum_floor'] != thresholds['minimum_coverage']
+                or thresholds['minimum_region_passes'] != len(body['regions'])))):
+        raise ValueError('Invalid annotation body thresholds')
+    body.update(thresholds)
+
+
 def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
     safe_identifier(revision)
     path = contained_path(SUITES, f'annotation-revisions/{revision}.json', reject_symlinks=True)
@@ -268,6 +287,8 @@ def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
             raise ValueError('Annotation revision cannot change collection inputs')
         old = deepcopy(case)
         case.update(deepcopy(change['set']))
+        if 'body_thresholds' in change:
+            _revise_body_thresholds(case, change['body_thresholds'])
         for field in change['remove']:
             case.pop(field, None)
         reviewed_changes.append((change, old, case))

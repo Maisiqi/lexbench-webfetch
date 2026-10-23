@@ -237,6 +237,3711 @@
           ]
         }
       ]
+    },
+    "body-coverage-20261023": {
+      "revision_sha256": "1886273d402204a8e3fcc5ec183c198729c243c4db0d5b81367afff6ad9f9ff3",
+      "changes": [
+        {
+          "suite": "webfetch",
+          "case_id": "static-simple",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for static-simple"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "stable-wikipedia-ai-revision",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for stable-wikipedia-ai-revision"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "ecommerce-list",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for ecommerce-list"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "javascript-spa",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for javascript-spa"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "html-table",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for html-table"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "redirect",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for redirect"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "stable-rfc-8259-json",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for stable-rfc-8259-json"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "stable-rfc-6455-websocket",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for stable-rfc-6455-websocket"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "stable-browser-use-readme",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for stable-browser-use-readme"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "stable-openclaw-readme",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for stable-openclaw-readme"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "stable-nodejs-readme",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for stable-nodejs-readme"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "stable-wcag21-recommendation",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for stable-wcag21-recommendation"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-030-rfc-9110",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for live-030-rfc-9110"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "stable-xml10-recommendation",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for stable-xml10-recommendation"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-034-travel",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for live-034-travel"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-038-mystery",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for live-038-mystery"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "live-071-science",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for live-071-science"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "document-01",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for document-01"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "document-02",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for document-02"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "document-03",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for document-03"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "document-04",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for document-04"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "document-05",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for document-05"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "document-06",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for document-06"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "document-07",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for document-07"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "document-08",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for document-08"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "document-09",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for document-09"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "document-10",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Existing hash-bound body regions and declared target scope for document-10"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-023-en-mui-data-grid-pagination",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-023-en-mui-data-grid-pagination"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-057-nutui-jd-com-h5",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-057-nutui-jd-com-h5"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-019-selenium-dev-selenium",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-019-selenium-dev-selenium"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-020-webscraper-io-test",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-020-webscraper-io-test"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-027-ej2-syncfusion-com-react",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-027-ej2-syncfusion-com-react"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-028-ej2-syncfusion-com-react",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-028-ej2-syncfusion-com-react"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-040-gridjs-io-docs",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-040-gridjs-io-docs"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-051-youzan-github-io-vant",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-051-youzan-github-io-vant"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-054-ant-protable-api",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-054-ant-protable-api"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-055-arco-design-vue",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-055-arco-design-vue"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-056-vant-ui-github-io-vant",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-056-vant-ui-github-io-vant"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-059-layui-vue-com-zh",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-059-layui-vue-com-zh"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-070-nintendo-feature",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-070-nintendo-feature"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-013-en-stable-patternfly-table",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-013-en-stable-patternfly-table"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-015-015-testpages-iframe-list",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-015-015-testpages-iframe-list"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-016-en-stable-angular-tree",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-016-en-stable-angular-tree"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-018-en-stable-varlet-home",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-018-en-stable-varlet-home"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-021-021-scalar-get-operation",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-021-021-scalar-get-operation"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-022-en-stable-syncfusion-grid",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-022-en-stable-syncfusion-grid"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-025-025-tabulator-vertical-virtual-dom",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-025-025-tabulator-vertical-virtual-dom"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-033-033-vuetify-usage-table",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-033-033-vuetify-usage-table"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-034-034-vuetify-server-table",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-034-034-vuetify-server-table"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-035-035-vuetify-virtual-table",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-035-035-vuetify-virtual-table"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-039-039-angular-autocomplete-examples",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-039-039-angular-autocomplete-examples"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-043-en-stable-grommet-table",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-043-en-stable-grommet-table"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-104-mui-data-grid",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-104-mui-data-grid"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-105-blueprint-docs",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-105-blueprint-docs"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-107-redoc-cafe-api",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-107-redoc-cafe-api"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-108-swagger-petstore3",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for dynamic-108-swagger-petstore3"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-en-syncfusion-filtering",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-en-syncfusion-filtering"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-en-gridjs-search",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-en-gridjs-search"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-en-quasar-table",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-en-quasar-table"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-en-gridjs-sort",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-en-gridjs-sort"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-en-mui-sorting",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-en-mui-sorting"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-en-mui-filtering",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-en-mui-filtering"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-en-syncfusion-sorting",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-en-syncfusion-sorting"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-zh-ant-descriptions",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-zh-ant-descriptions"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-zh-ant-form",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-zh-ant-form"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-fix6-es-mx-lokus-home",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-fix6-es-mx-lokus-home"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-fix3-fr-fr-datapass-stats",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-fix3-fr-fr-datapass-stats"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-fix3-fr-fr-mobilites-durables",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-fix3-fr-fr-mobilites-durables"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-fix3-de-dashboard-deutschland",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Existing hash-bound body regions and declared target scope for replacement-fix3-de-dashboard-deutschland"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-002",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-002"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-001",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-001"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-011",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-011"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-271",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-271"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-new-102",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-new-102"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-030",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-030"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-031",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-031"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-032",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-032"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-034",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-034"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-036",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-036"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-038",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-038"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-040",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-040"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-041",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-041"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-042",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-042"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-045",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-045"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-048",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-048"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-051",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-051"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-055",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-055"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-057",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-057"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-059",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-059"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-101",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-101"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-113",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-113"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-114",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-114"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-117",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-117"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-118",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-118"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-122",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-122"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-123",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-123"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-135",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-135"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-138",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-138"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-139",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-139"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-158",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-158"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-159",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-159"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-160",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-160"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-170",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-170"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-182",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-182"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-185",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-185"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-193",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-193"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-219",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-219"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-220",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-220"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-221",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-221"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-222",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-222"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-223",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-223"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-225",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-225"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-226",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-226"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-011",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-011"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-012",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-012"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-241",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-241"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-242",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-242"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-244",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-244"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-245",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-245"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-262",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-262"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-263",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-263"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-267",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-267"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-268",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-268"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-new-006",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-new-006"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-199",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-199"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-200",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-200"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-201",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-201"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-202",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-202"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-204",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-204"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-205",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-205"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-208",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-208"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-209",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-209"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-210",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-210"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-211",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-211"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-212",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-212"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-213",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-213"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-214",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-214"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-215",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-215"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-216",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-216"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-228",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-228"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-230",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-230"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-231",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-231"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-234",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-234"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-236",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "610b7fc5a4a2d99bf924092244e9f1b79656915f2792790e2c11819aaa7ab903",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-236"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-237",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-237"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-238",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-238"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-239",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-239"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-250",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
+          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
+              "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-250"
+            }
+          ],
+          "regression_ids": [
+            "all-body-regions-2-complete",
+            "all-body-regions-2-boundary",
+            "all-body-regions-2-below-boundary",
+            "all-body-regions-2-weak-region",
+            "all-body-regions-2-missing-region",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ]
+        }
+      ]
     }
   }
 }

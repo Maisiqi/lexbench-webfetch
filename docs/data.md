@@ -38,3 +38,17 @@ The exported dataset receives a new ID and a `definition_revision` binding.
 Without `--revision`, export reproduces the original frozen dataset exactly.
 A score recomputed with revised annotations must retain both definition hashes
 and its original call identities; it is not a new browser run.
+
+The `body-coverage-20261023` revision changes quotas on 148 existing body
+contracts across webfetch, dynamic-content and access-restrictions. Every region
+must reach 80%; it preserves all reference bindings, region boundaries and URLs.
+Its `body_thresholds` operation accepts only `minimum_coverage`, `minimum_floor`
+and `minimum_region_passes` for existing version-3/4 bodies. It operates equally
+on public hash bindings and executable text, so no captured body is embedded in
+the revision. Version-4 ending requirements cannot be weakened by this operation.
+Per-case review hashes cover the resulting field differences and executable
+controls cover complete, boundary, weak-region and missing-region responses.
+
+Annotation revisions are alternatives against their declared frozen parent,
+not a sequence of cumulative patches. Select and disclose the required revision;
+the body-quota revision does not implicitly apply `serialization-20261021`.

@@ -69,6 +69,14 @@ uv run --frozen lexbench-webfetch export \
 
 The export includes only manifest-listed files and prints the executable dataset path. Missing files, changed bytes and symlinks fail validation. Existing output directories are never reused.
 
+For `webfetch`, `dynamic-content` and `access-restrictions`, add
+`--revision body-coverage-20261023` to require at least 80% fragment coverage in
+every existing body region (148 cases). This preserves reference text and the
+five-region limit. Omitting the option retains the original frozen rules.
+This revision changes body quotas only; it does not include other annotation
+revisions or repair incomplete reference scopes. Long regions can still tolerate
+substantial omissions; 80% fragment coverage does not guarantee 80% of characters.
+
 ## Score a saved answer
 
 The benchmark includes its own scorer. It needs no Browser Eval installation:

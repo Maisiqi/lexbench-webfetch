@@ -44,7 +44,7 @@ Initially loaded iframe/subdocument content can qualify with declared ownership.
 
 Do not use OCR, text within images/posters/icons/image buttons, alt text, hidden templates, scripts or still-collapsed content. Exclude content requiring clicks, expansion, typing, pagination or scroll-triggered loading. Challenges, access-denied pages, login notices and loading placeholders are not target body text. A browser-tab title absent from visible page content is not visible stable text.
 
-Ordinary text buttons can qualify without being clicked when visible, stable and relevant. Their acceptance role follows the content contract: diagnostic when body or composite requirements exist, mandatory otherwise. They cannot replace body or list completeness.
+Ordinary text buttons can qualify without being clicked when visible, stable and relevant. Selected stable text is mandatory by default. Diagnostic use needs the explicit per-case coverage justification described in section 6; adding body or composite requirements alone does not make stable text diagnostic. Buttons cannot replace body or list completeness.
 
 ### No interaction during supplementary capture
 
@@ -172,7 +172,10 @@ If only some chapters are verified, declare that scope. A broader original task 
 
 Prefer natural paragraphs, chapters or complete components. Up to five contiguous regions cover beginning, middle and end; short text may use one. Automatic equal splitting is a tool, not a substitute for checking boundaries.
 
-Every region needs at least 60% coverage, and at least `max(1, region_count−1)` regions need 80%. A single region needs 80%.
+The frozen legacy version-3 contracts require every region to reach at least
+60%, with at least `max(1, region_count−1)` regions reaching 80%. A single region
+needs 80%. The following table describes that historical rule, not the stricter
+`body-coverage-20261023` annotation revision.
 
 | Regions | Requirement |
 | --- | --- |
@@ -181,7 +184,14 @@ Every region needs at least 60% coverage, and at least `max(1, region_count−1)
 | 3 | All at least 60%; at least two at 80% |
 | 5 | All at least 60%; at least four at 80% |
 
-Three regions at 90%, 85%, 65% pass; 95%, 95%, 20% fail. An 80% whole-text average or one strong region is insufficient. Any threshold exception needs independent evidence before observing product output.
+Under the legacy rule, three regions at 90%, 85%, 65% pass; 95%, 95%, 20% fail.
+The `body-coverage-20261023` revision requires every existing region to reach
+80%, retaining at most five regions; both examples fail. Use this stricter rule
+for new coverage annotations. An 80% whole-text average or one strong region is
+insufficient. Any threshold exception needs independent evidence before observing
+product output. A changed threshold requires a new version, not rewriting frozen
+inputs. Fragment coverage does not provide an exact bound on omitted characters
+or guarantee complete sections in very long regions.
 
 ### Meaning of coverage
 
@@ -202,13 +212,13 @@ These are design examples, not frozen answers for actual cases.
 | Short post | Post/author identity, suitable phrases and short-body check | Arbitrary phrase quotas or replies used as post text |
 | iframe page | Parent identity and actual subdocument target | Parent title or embed tag only |
 
-Every declared body region and composite group applies. Stable-text groups are diagnostics when either contract exists; cases with neither retain mandatory stable text. Complete footers cannot replace body content, and sufficient links cannot replace a declared body region.
+Every declared body region and composite group applies. Stable-text groups remain mandatory unless the case explicitly declares and justifies a diagnostic role under section 6. Complete footers cannot replace body content, and sufficient links cannot replace a declared body region.
 
 ## 12. Validate both error directions
 
 Exercise the shared scoring entry point, not only visual inspection of configuration. The guide itself does not execute these checks. Complete independent references should pass, including reasonable spaces, line breaks, case, Markdown tables/lists, real relative-link resolution and verified irrelevant tracking differences.
 
-Include positive controls for complete body or records without peripheral phrases. Construct applicable negative controls for missing mandatory stable phrases in anchor-only cases; site/navigation/footer-only outputs; wrong target/language; challenge-only or loading-shell responses; empty names; ownership mismatch; wrong hosts/paths; incomplete or invented links; IDs without links; missing or borrowed fields; duplicate records; wrong-region records; counts one below threshold; missing middle/end; repeated openings; and capture duplicates creating false coverage.
+Include positive controls with all mandatory content and phrases. Omit peripheral phrases in a positive control only when they have an explicitly justified diagnostic role. Construct applicable negative controls for missing mandatory stable phrases, including cases with body or record contracts; site/navigation/footer-only outputs; wrong target/language; challenge-only or loading-shell responses; empty names; ownership mismatch; wrong hosts/paths; incomplete or invented links; IDs without links; missing or borrowed fields; duplicate records; wrong-region records; counts one below threshold; missing middle/end; repeated openings; and capture duplicates creating false coverage.
 
 Normal articles discussing login or CAPTCHA must not fail solely for those words. Exact threshold boundaries use unrounded values; display rounding cannot change verdicts. URL syntax alone cannot establish every new member's authenticity: require the declared provenance and ownership checks.
 
@@ -224,4 +234,4 @@ Keep original pages and observations in external evidence storage. Do not copy p
 
 The final cohort inventory, original evidence, per-case scope and mappings to historical material are bound by paths and hashes. Unused reserves stay outside Git. Dynamic-task methodology supplies independent evidence, rule combinations, link/field/count/body techniques and bidirectional checks, but not its dataset-specific counts or qualification criteria.
 
-Consult the [shared body implementation](../../harness/web_fetch/body_coverage.py) and [format handling](../../harness/web_fetch/metrics.py) for actual metric semantics. This cohort does not inherit an older three-phrase minimum, a mandatory extra visit per case or old candidate counts. It uses only the formal 100 cases, predeclared random reserve selection when needed, page-specific stable text without quotas, necessary evidenced variants, explicit body/record acceptance with stable-text diagnostics, anchor-only fallback, evidence reuse, real links and at least 80% valid name-link count.
+Consult the [shared body implementation](../../../body_coverage.py) and [format handling](../../../metrics.py) for actual metric semantics. This cohort does not inherit an older three-phrase minimum, a mandatory extra visit per case or old candidate counts. It uses only the formal 100 cases, predeclared random reserve selection when needed, page-specific stable text without quotas, necessary evidenced variants, explicit body/record acceptance, required stable text with individually justified diagnostic exceptions, anchor-only fallback, evidence reuse, real links and at least 80% valid name-link count.
