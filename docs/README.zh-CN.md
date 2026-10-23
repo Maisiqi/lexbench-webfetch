@@ -132,6 +132,8 @@ uv run --frozen browser-harness-eval run \
 
 保存的回答元数据可通过 `answer_format` 声明 `plain_text`、`html` 或 `markdown`。该字段描述交付的回答字节，不是原网页的 HTTP Content-Type。`plain_text` 在正文评分时保留 HTML 示例字面文本；`html` 和 `markdown` 沿用现有可见内容解析。不声明则保留自动判断，其他显式值会报错。执行端应随回答保存该字段，离线通过相同的 `score --metadata` 传回；评分器不会从旧结论推断格式。原始响应字节、链接与文件证据保持不变。
 
+名称与链接类型的任务可设置 `entry_scope.required_end: true`，要求文本回答包含 `end_pattern` 声明的结束边界；找不到时，该记录范围不匹配。默认值仍为 false，保留允许只返回正文的任务行为。HTML 回答独立使用声明的选择器确定范围。
+
 离线评分会重新计算派生字段，保留原始参考哈希、调用时限证据和文件指纹。文件结论需要当前文件验收依据；旧的通过标记不能认证本次重评分。汇总在原有成功调用耗时之外，提供全部调用的 `mean_all_attempts_ms`、`all_attempts_p50_ms` 和 `all_attempts_p95_ms`，包含失败调用与超时。
 
 上述修改不改写冻结题目，也不自动认证历史成绩。更正分数仍需建立新的证据修订，绑定评分器版本和回归用例。

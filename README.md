@@ -139,6 +139,8 @@ A task can set `page_identity_required: true` to require its final URL observati
 
 Saved answer metadata may declare `answer_format` as `plain_text`, `html`, or `markdown`. This describes the delivered answer bytes, not the origin HTTP Content-Type. `plain_text` preserves literal HTML examples for prose scoring; `html` and `markdown` use the existing visibility projection. Omission preserves automatic interpretation, and any other explicit value is rejected. Persist this field with the response and pass the same metadata to offline `score --metadata`; format is never recovered from an old verdict. Original response bytes, links and file evidence remain unchanged.
 
+Named-link tasks can set `entry_scope.required_end: true` when a text answer must include the declared `end_pattern` boundary. Without that boundary, the record scope does not match. The default remains false for tasks that accept body-only answers. HTML answers use the declared selector boundary independently.
+
 Offline scoring recomputes derived fields. It retains the original reference hash, deadline evidence and file fingerprints. A file verdict requires current file verification; an old pass flag cannot certify a rescore. Summaries expose `mean_all_attempts_ms`, `all_attempts_p50_ms` and `all_attempts_p95_ms` alongside the existing successful-call timings. The all-attempt population includes failed calls and timeouts.
 
 These changes do not revise frozen tasks or certify historical results. Score corrections require a new evidence revision tied to the scorer and its regression controls.

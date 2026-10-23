@@ -963,8 +963,11 @@ def validate_acceptance_contract(contract: dict) -> None:
         scope = contract.get("entry_scope")
         if scope is not None:
             if (not isinstance(scope, dict) or not scope.get("html_selector")
-                    or set(scope) - {"html_selector", "start_pattern", "end_pattern", "title_selector", "link_selector", "price_selector", "auxiliary_links_end_pattern", "markdown_title_identity_pattern", "markdown_detail_identity_pattern", "markdown_label_pattern", "markdown_card_title_pattern", "markdown_title_column", "markdown_link_column"}
-                    or any(not isinstance(v, str) or not v.strip() for v in scope.values())
+                    or set(scope) - {"html_selector", "start_pattern", "end_pattern", "required_end", "title_selector", "link_selector", "price_selector", "auxiliary_links_end_pattern", "markdown_title_identity_pattern", "markdown_detail_identity_pattern", "markdown_label_pattern", "markdown_card_title_pattern", "markdown_title_column", "markdown_link_column"}
+                    or any(not isinstance(v, str) or not v.strip()
+                           for k, v in scope.items() if k != "required_end")
+                    or ("required_end" in scope and type(scope["required_end"]) is not bool)
+                    or (scope.get("required_end") and not scope.get("end_pattern"))
                     or (("title_selector" in scope) != ("link_selector" in scope))):
                 raise ValueError("Invalid linked record section scope")
             import soupsieve

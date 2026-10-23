@@ -477,6 +477,8 @@ def _scope_named_content(content, scope, *, contract=None, base_url=''):
         end = _text_scope_boundary(content, scope['end_pattern'])
         if end:
             content = content[:end[0]]
+        elif scope.get('required_end', False):
+            return '', [], False
     if scope.get('start_pattern') and contract is not None and base_url:
         navigation = _breadcrumb_scope_end(content, contract, base_url)
         if navigation is not None:

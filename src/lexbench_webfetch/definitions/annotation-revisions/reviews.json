@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "b026f16bf8b6f12e066e40fe0907ab399f590cca59a9465b9f595e23d986916d",
+      "revision_sha256": "bed486aac65ecb9b6554dd1c003e5ce79067855755588beaec04d75747825eb1",
       "changes": [
         {
           "suite": "webfetch",
@@ -6054,13 +6054,18 @@
         {
           "suite": "webfetch",
           "case_id": "stable-browser-use-readme",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove only CAPTCHA from forbidden_any: the hash-verified complete fixed Browser Use README legitimately discusses CAPTCHA. Preserve original facts, body regions, thresholds and every other forbidden phrase. Exact source passes; empty shell, CAPTCHA challenge, Cloudflare challenge and anchors plus unrelated padding remain rejected. Block-page diagnostics stay unchanged.",
+          "changes_sha256": "306867c59faba4caaa077f2c0af217fc2a3735296c2192d6475ff0fcc524d2c2",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for stable-browser-use-readme"
+            },
+            {
+              "path": "review-evidence/webfetch/browser-use-frozen-source.txt",
+              "sha256": "e0125e5233473fcf1266c1bdfb5fb3d5e3545ae027b5f954dcceb3d874e50765",
+              "scope": "Exact hash-verified original frozen reference text, not a fabricated challenge-free version."
             }
           ],
           "regression_ids": [
@@ -6073,7 +6078,10 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "reference-captcha-heading-is-legitimate-body-text",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task"
           ]
         },
         {
@@ -6129,13 +6137,18 @@
         {
           "suite": "webfetch",
           "case_id": "stable-wcag21-recommendation",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove only CAPTCHA from forbidden_any: the hash-verified complete WCAG recommendation legitimately discusses CAPTCHA. Preserve original facts, body regions, thresholds and every other forbidden phrase. Exact source passes; empty shell, CAPTCHA challenge, Cloudflare challenge and anchors plus unrelated padding remain rejected. Block-page diagnostics stay unchanged.",
+          "changes_sha256": "306867c59faba4caaa077f2c0af217fc2a3735296c2192d6475ff0fcc524d2c2",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for stable-wcag21-recommendation"
+            },
+            {
+              "path": "review-evidence/webfetch/wcag21-frozen-source.txt",
+              "sha256": "4e427c638b8372ae21dec876596004451c1bfe43a23ac4331fc3ce8e6f1a1a5c",
+              "scope": "Exact hash-verified original frozen reference text, not a fabricated challenge-free version."
             }
           ],
           "regression_ids": [
@@ -6148,7 +6161,10 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "reference-captcha-heading-is-legitimate-body-text",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task"
           ]
         },
         {
@@ -10105,13 +10121,23 @@
         {
           "suite": "articles",
           "case_id": "article-022",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "53d07cc006120705424ee1ea7bbeaf262b0882df670300c5b2d2cd1bf44a5d74",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-022"
+            },
+            {
+              "path": "review-evidence/long-articles/article-022/text.txt",
+              "sha256": "4fb12c55ce812da78f003c77bb9d9040bb627d098e10b73a2364352889448310",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-022/dom.html",
+              "sha256": "459e2d033379192e44c34d3eac2696b6f657f0988fbde57bb2142a774dc408d8",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -10119,7 +10145,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -10225,13 +10253,23 @@
         {
           "suite": "articles",
           "case_id": "article-028",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "4b7c35835b1d7410ff038e067d8e9039aeef08db81540a6c63322722aed54689",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-028"
+            },
+            {
+              "path": "review-evidence/long-articles/article-028/text.txt",
+              "sha256": "9e51159d0a9ce747ff85126b83eb36e6a73932122e45e98cb2c5264c9062b748",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-028/dom.html",
+              "sha256": "ef772668aae42d85fe333c48264f3580fab180fd52d1f4d4a304902038262c69",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -10239,7 +10277,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -10453,13 +10493,23 @@
         {
           "suite": "articles",
           "case_id": "article-045",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "7f545d2e54e19c83051bcb5a5f8b7790d47b59247780d57bd7ac246fed2a88fa",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-045"
+            },
+            {
+              "path": "review-evidence/long-articles/article-045/text.txt",
+              "sha256": "dd9c554d35316849f82a32edec6786b72695d6fa7d6c44da9d24930aa673efe1",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-045/dom.html",
+              "sha256": "0985125124163f0d36d268c635f334fda4fa6581515dc2f616a7a1f6d4bdd470",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -10467,7 +10517,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -10699,13 +10751,23 @@
         {
           "suite": "articles",
           "case_id": "article-057",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "1c38bba92077515bbba004bf42b696e5b9b58f6ec5561cafa6a05fffbec477db",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-057"
+            },
+            {
+              "path": "review-evidence/long-articles/article-057/text.txt",
+              "sha256": "fa5fa09defa80f1ce2b6e28399732dd6c615db62063c09da152cdd2bd0febb07",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-057/dom.html",
+              "sha256": "578b43dd8257c50845469c24df2aa44db8145bdfe8675b469cb226becdfdd9ec",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -10713,7 +10775,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -10843,13 +10907,23 @@
         {
           "suite": "articles",
           "case_id": "article-065",
-          "reason": "Use the explicit Conclusion paragraph, not the author social-channel links. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change.",
-          "changes_sha256": "dc31095f06d010defd5c2daab34a57627f025335f222c9b7abab01bbf5ab8eed",
+          "reason": "Use the explicit Conclusion paragraph, not the author social-channel links. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "89f00e4f4f882d185d9563bb241470fbc6358f493ccbc0d419f197298baf6897",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-065"
+            },
+            {
+              "path": "review-evidence/long-articles/article-065/text.txt",
+              "sha256": "ba2a0305bdf98f80746eca52dc8fc810289da01593bf373980417fa013e11129",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-065/dom.html",
+              "sha256": "94ed8954ebf52858a070de6adb11f35462aa21905e5eab71ddc9d964713ef525",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -10859,19 +10933,41 @@
             "ordered-body-ending-scattered",
             "ordered-body-ending-omitted",
             "reviewed-body-scope-complete",
-            "reviewed-body-scope-missing-conclusion"
+            "reviewed-body-scope-missing-conclusion",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "articles",
           "case_id": "article-066",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "5762369d4cbdddb4e8a9f1ef5e51a77a33cd01be8f2319e657ba8add42c4fffe",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-066"
+            },
+            {
+              "path": "review-evidence/long-articles/article-066/text.txt",
+              "sha256": "e0e21bc8f6d987dfb77ff116fab23c201aca534b1bea88efe09fd45657c53cc2",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-066/dom.html",
+              "sha256": "7c3159cfa3b884507479feba18743713cd317362eda761d0256ef6471b1ec671",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-066/provenance-0.json",
+              "sha256": "09e69e42084956614e7ccf9d5e889c68fc958777df35531ece108410078fbdcc",
+              "scope": "Independent saved provenance-0 evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-066/provenance-1.json",
+              "sha256": "1360030117b45c01f2617085bab28b8c920b9f7269cc5bbd382ab00b767ff175",
+              "scope": "Independent saved provenance-1 evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -10879,19 +10975,41 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "articles",
           "case_id": "article-067",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "fce20e7ae204c33f20ee828a67a3c7766c5f28c87401986f89ee5dd220d4e2d0",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-067"
+            },
+            {
+              "path": "review-evidence/long-articles/article-067/text.txt",
+              "sha256": "4480be864b4754e4d7a89f9969984027003873994513e399288c3664df76332f",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-067/dom.html",
+              "sha256": "67e324f431065abc66ee215597e95cb2abcb514de912e54a2c0730c12fdd65fc",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-067/provenance-0.json",
+              "sha256": "df5cec7791e396fa4acc28e173fb411a08940d3091ed4e51face455475ac0a93",
+              "scope": "Independent saved provenance-0 evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-067/provenance-1.json",
+              "sha256": "f3a3529ed1e46bc79a7f998e8d595fc0ead80b7f7edef029d1c49fdc9f37f7cc",
+              "scope": "Independent saved provenance-1 evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -10899,7 +11017,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -10925,13 +11045,23 @@
         {
           "suite": "articles",
           "case_id": "article-069",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "1b0f2034576556b2c528be556bb3af35ad4da86b64277d328ec552b2a8fa91f0",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-069"
+            },
+            {
+              "path": "review-evidence/long-articles/article-069/text.txt",
+              "sha256": "6f595c3a15adc5341ebb3d806d01c2ed8ba56d3c3879cc803635f9c3188ace52",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-069/dom.html",
+              "sha256": "457531971947aa4c1933605f232f8ad667b8c22d63b3b172b5de1151797949ba",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -10939,7 +11069,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -10965,13 +11097,23 @@
         {
           "suite": "articles",
           "case_id": "article-071",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "491615a20146cd74441bae35ca6db959b4ca824264aeff4a15baadd53e2a8f19",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-071"
+            },
+            {
+              "path": "review-evidence/long-articles/article-071/text.txt",
+              "sha256": "04cd6c12c65fa6acd0ce7c3aff5281ef64a93dfdd5342640ccc15a8121f71373",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-071/dom.html",
+              "sha256": "4922c394a74148320ce90403be3358c7f3e39150a5eb844e55c87be49f37e89a",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -10979,7 +11121,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -11167,13 +11311,23 @@
         {
           "suite": "articles",
           "case_id": "article-081",
-          "reason": "Use the final paragraph of the concluding argument, not embedding and reuse instructions. Preserve the subsequent data-update notice and endnotes. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change.",
-          "changes_sha256": "83d876f04d905341a3917262cbcb474dbbf94b03d05734aaacf142a56e39a760",
+          "reason": "Use the final paragraph of the concluding argument, not embedding and reuse instructions. Preserve the subsequent data-update notice and endnotes. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "d316c9e003142ee75cfdcb9f4105418fdd46ab7efd51cc4903c4120ffd173a80",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-081"
+            },
+            {
+              "path": "review-evidence/long-articles/article-081/text.txt",
+              "sha256": "da7ab6fe57b35cde3a31f7f75f585115a241185695a81d2df4f98dcbd00d900d",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-081/dom.html",
+              "sha256": "91f92d269a62ed910536d31e950eff2d58a001a9cd9736806f29bc95ab57798c",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -11183,7 +11337,9 @@
             "ordered-body-ending-scattered",
             "ordered-body-ending-omitted",
             "reviewed-body-scope-complete",
-            "reviewed-body-scope-missing-conclusion"
+            "reviewed-body-scope-missing-conclusion",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -11269,13 +11425,23 @@
         {
           "suite": "articles",
           "case_id": "article-087",
-          "reason": "Use the explicit Conclusion paragraphs, while retaining the authored Further reading list. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change.",
-          "changes_sha256": "3a4890a366be30b87f5477bca1c582852c5684fc0877b1862cf4a9c8e8a7643d",
+          "reason": "Use the explicit Conclusion paragraphs, while retaining the authored Further reading list. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "a46a5c6402333d64f2bdc8ce24b501e287723d62787104d1008c2ebeadfd4521",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-087"
+            },
+            {
+              "path": "review-evidence/long-articles/article-087/text.txt",
+              "sha256": "12adbe934719099f07b95c3c5e92f0604181ba6b2ee8a72dad72d218d617f979",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-087/dom.html",
+              "sha256": "325dd315862e83adc56b4191a3f81967eae04973caaf8d6404072d8477c49068",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -11285,19 +11451,31 @@
             "ordered-body-ending-scattered",
             "ordered-body-ending-omitted",
             "reviewed-body-scope-complete",
-            "reviewed-body-scope-missing-conclusion"
+            "reviewed-body-scope-missing-conclusion",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "articles",
           "case_id": "article-088",
-          "reason": "Use the final paragraph of The Big Picture, not the closing BibTeX brace. Preserve acknowledgments, bibliography and citation metadata. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change.",
-          "changes_sha256": "7bcc4b3a40d3217168ff947fa882760768ec8c0ebb6b753057f71397ce5add46",
+          "reason": "Use the final paragraph of The Big Picture, not the closing BibTeX brace. Preserve acknowledgments, bibliography and citation metadata. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "9272bae2a8f5877f4a2c4407f78076794d1b97230ffc45ab49a8b089d5b8e377",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-088"
+            },
+            {
+              "path": "review-evidence/long-articles/article-088/text.txt",
+              "sha256": "dd01ac791c895e9a99f21be7a4efdfdc35fd4722ee5b85915a54d9990655addb",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-088/dom.html",
+              "sha256": "2b60731493d59ae04056cac2c947412dddb32de275a42311d43af04dd8ec63e5",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -11307,7 +11485,9 @@
             "ordered-body-ending-scattered",
             "ordered-body-ending-omitted",
             "reviewed-body-scope-complete",
-            "reviewed-body-scope-missing-conclusion"
+            "reviewed-body-scope-missing-conclusion",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -11381,13 +11561,23 @@
         {
           "suite": "articles",
           "case_id": "article-092",
-          "reason": "Use the final substantive conclusion and next-article transition, not the author profile links. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change.",
-          "changes_sha256": "3af0e44cf0bdcda4d78cc9b643d577df1fab943e9c067ad88a564b69c899fcb5",
+          "reason": "Use the final substantive conclusion and next-article transition, not the author profile links. All existing body regions, reference text and stable requirements remain; only the ending selection and its ordered match change. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "2591b10cb02b3211f823cf72e437ec05aaf72b5a0a5877acf73fe056efeead03",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-092"
+            },
+            {
+              "path": "review-evidence/long-articles/article-092/text.txt",
+              "sha256": "2387f4ee6c093fa719370195e765ae604a9bc7472b933237a6c742422019f2a9",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-092/dom.html",
+              "sha256": "18e46e43046167a2f9246c692bcdcd6dc3a96e93d8c07e1c2ac93ed857fc2d60",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -11397,7 +11587,9 @@
             "ordered-body-ending-scattered",
             "ordered-body-ending-omitted",
             "reviewed-body-scope-complete",
-            "reviewed-body-scope-missing-conclusion"
+            "reviewed-body-scope-missing-conclusion",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -11463,13 +11655,23 @@
         {
           "suite": "articles",
           "case_id": "article-096",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "b65d50b5a6050853e8f4c7b2eab7c1634a4a5fdc886e4032070e25647ee136db",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-096"
+            },
+            {
+              "path": "review-evidence/long-articles/article-096/text.txt",
+              "sha256": "0922c9e8eae809774c5a55100734aee60f49e282be0570487035920df077f793",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-096/dom.html",
+              "sha256": "103ea42eab8c8d99c19b1d13a4e08605e5e4ec0510cb38c62998e20a6dbeac80",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -11477,7 +11679,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -11503,13 +11707,23 @@
         {
           "suite": "articles",
           "case_id": "article-099",
-          "reason": "Exclude sharing and category controls from the body ending while retaining their stable-text requirements and the methodological appendix. All old stable groups remain unchanged. Original full reference remains available for historical F1 diagnostics.",
-          "changes_sha256": "7103f02d7eec55b4ec1365d9d20b99c7d9828978e3f7ba127a687bb2441d9f33",
+          "reason": "Exclude sharing and category controls from the body ending while retaining their stable-text requirements and the methodological appendix. All old stable groups remain unchanged. Original full reference remains available for historical F1 diagnostics. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
+          "changes_sha256": "ab459b9d4e112fb97607b6885fa4b78a8351114aa78f6bad283236a176b888dc",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-099"
+            },
+            {
+              "path": "review-evidence/long-articles/article-099/text.txt",
+              "sha256": "85e7559593ccd72fd9e06622a01dd026986d7006dd845e83faa05ac9820b6ec7",
+              "scope": "Independent saved text evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
+            },
+            {
+              "path": "review-evidence/long-articles/article-099/dom.html",
+              "sha256": "f0ede434d112df1f5c9c141d63e066c59f9292d40497582796e21032ab8886ae",
+              "scope": "Independent saved dom evidence for actual body heading literals and source section boundaries; complete source positive and true-source deletion controls. Supplemental controls/iframe provenance is explicit where applicable, not an original frozen input."
             }
           ],
           "regression_ids": [
@@ -11521,7 +11735,9 @@
             "reviewed-body-scope-complete",
             "reviewed-body-scope-missing-conclusion",
             "reviewed-body-scope-missing-credit",
-            "reviewed-body-scope-missing-footer"
+            "reviewed-body-scope-missing-footer",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -14529,7 +14745,7 @@
         {
           "suite": "webfetch",
           "case_id": "challenge-07",
-          "reason": "Add only the observed /-/zh Amazon product route alternative. Preserve original minimum, all stable anchors, forbidden terms and other revision changes. Full saved-source positive and wrong-host/path/context negatives pass.",
+          "reason": "Add only the observed /-/zh Amazon product route alternative. Preserve original minimum, all stable anchors, forbidden terms and other revision changes. Full saved-source positive and wrong-host/path/context negatives pass. A complete independent initial browser DOM and rendered-ancestor evidence qualify 16 unique records without interaction. Require ceil(80%) = 13; a single new observation is not presented as multiple rounds. Preserve all previous anchors, bans, routes, identity and name validation. Actual HTML and link-preserving Markdown pass at full and boundary counts; below-boundary, three-record and empty-owner controls fail while all outside content remains. Scope Results to Related searches/Need help in text with the generic required_end=true option, and .s-main-slot in HTML: the real footer Amazon Business Card /dp link otherwise pads twelve headphones to thirteen. Retain interleaved deals and ads in controls; no new title blacklist or sr_1 route restriction.",
           "sources": [
             {
               "path": "dataset.json",
@@ -14540,6 +14756,16 @@
               "path": "list-references/challenge-07.json",
               "sha256": "210d66d1f1d432eef2ce71575c82674d0b5b833a150f55930ca62d064ce34e74",
               "scope": "Existing frozen saved named product links explicitly include /-/zh/dp routes. No new count or locale is inferred."
+            },
+            {
+              "path": "review-evidence/webfetch/challenge-initial-20261023/amazon-complete.json",
+              "sha256": "5cf9d71df796e41a357cfd299b3e6a14cb048cc81e8a1b243224afa786a8a716",
+              "scope": "Single actual initial browser observation, no clicks or scrolling; complete DOM plus ancestor visibility evidence. Script/style/SVG-only HTML projection preserves real navigation and ads. Below-fold already rendered content counts; no viewport clipping assumed for body/html."
+            },
+            {
+              "path": "review-evidence/webfetch/challenge-initial-20261023/amazon-visibility.json",
+              "sha256": "417ab2837a3191d6d71b13b5b162db8021e3a63c24f9c999c99fa1855f8fb34a",
+              "scope": "Single actual initial browser observation, no clicks or scrolling; complete DOM plus ancestor visibility evidence. Script/style/SVG-only HTML projection preserves real navigation and ads. Below-fold already rendered content counts; no viewport clipping assumed for body/html."
             }
           ],
           "regression_ids": [
@@ -14548,13 +14774,13 @@
             "explicit-named-links-form-records",
             "separate-names-and-bare-urls-are-not-records"
           ],
-          "changes_sha256": "15483f0877d80bae04a6780d342d51c40cf32c598e0ca90d215f95261bcc28c8"
+          "changes_sha256": "0676a916619853dc779174de73093c15f6a0deaf0afece938eeddc684f48f1ad"
         },
         {
           "suite": "webfetch",
           "case_id": "challenge-09",
-          "reason": "Permit numeric entity titles for this IMDb task with the existing nonempty name-validation option. Preserve original path/count/anchors/bans. This is field validity, not offline truth verification: fabricated numeric titles cannot be distinguished from real entities without contemporaneous reference. Empty/CTA/wrong-host/wrong-path controls remain rejected; no global numeric rule changes.",
-          "changes_sha256": "e9ecbba8d63d1fcbc8309c9422c219299057843f9c9d28c3ea8989947d6d0926",
+          "reason": "Permit numeric entity titles for this IMDb task with the existing nonempty name-validation option. Preserve original path/count/anchors/bans. This is field validity, not offline truth verification: fabricated numeric titles cannot be distinguished from real entities without contemporaneous reference. Empty/CTA/wrong-host/wrong-path controls remain rejected; no global numeric rule changes. A complete independent initial browser DOM and rendered-ancestor evidence qualify 250 unique records without interaction. Require ceil(80%) = 200; a single new observation is not presented as multiple rounds. Preserve all previous anchors, bans, routes, identity and name validation. Actual HTML and link-preserving Markdown pass at full and boundary counts; below-boundary, three-record and empty-owner controls fail while all outside content remains.",
+          "changes_sha256": "34f8be36f49f1dd98ad1a6c4150de829b6ab92b7f2a7073abaf979756b6d3def",
           "sources": [
             {
               "path": "dataset.json",
@@ -14565,6 +14791,16 @@
               "path": "list-references/challenge-09.json",
               "sha256": "9e5bd350d3b01098c4a7f5f610185eb303a9fd355eff27978e32adce8cb55181",
               "scope": "Existing frozen typed title/URL inventory contains 250 movie records; its sole pure-numeric title is the real film 1917, not navigation."
+            },
+            {
+              "path": "review-evidence/webfetch/challenge-initial-20261023/imdb-complete.json",
+              "sha256": "8a3b2a6e52862dfd4434b775fcf38c92ad508fd5732469f06acc0dc50bf23f88",
+              "scope": "Single actual initial browser observation, no clicks or scrolling; complete DOM plus ancestor visibility evidence. Script/style/SVG-only HTML projection preserves real navigation and ads. Below-fold already rendered content counts; no viewport clipping assumed for body/html."
+            },
+            {
+              "path": "review-evidence/webfetch/challenge-initial-20261023/imdb-visibility.json",
+              "sha256": "7ee3cfa1e85246a47ec3f776aad89e73d3594f269e15dddc5d27ec8aea5d8716",
+              "scope": "Single actual initial browser observation, no clicks or scrolling; complete DOM plus ancestor visibility evidence. Script/style/SVG-only HTML projection preserves real navigation and ads. Below-fold already rendered content counts; no viewport clipping assumed for body/html."
             }
           ],
           "regression_ids": [
@@ -14767,6 +15003,50 @@
             "separate-names-and-bare-urls-are-not-records",
             "reviewed-body-scope-missing-conclusion",
             "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "challenge-01",
+          "reason": "A complete independent initial browser DOM and rendered-ancestor evidence qualify 72 unique records without interaction. Require ceil(80%) = 58; a single new observation is not presented as multiple rounds. Preserve all previous anchors, bans, routes, identity and name validation. Actual HTML and link-preserving Markdown pass at full and boundary counts; below-boundary, three-record and empty-owner controls fail while all outside content remains.",
+          "changes_sha256": "bb17531c4ee29fa5a3ea5ebca1ccfd73ba727429c4412d6730c3edc53886b344",
+          "sources": [
+            {
+              "path": "review-evidence/webfetch/challenge-initial-20261023/anthro-complete.json",
+              "sha256": "ef4bf70b90128866419b0fa1454c11dda9a888b5c020941d7fd6dd22b66cb26a",
+              "scope": "Single actual initial browser observation, no clicks or scrolling; complete DOM plus ancestor visibility evidence. Script/style/SVG-only HTML projection preserves real navigation and ads. Below-fold already rendered content counts; no viewport clipping assumed for body/html."
+            },
+            {
+              "path": "review-evidence/webfetch/challenge-initial-20261023/anthro-visibility.json",
+              "sha256": "2d4358ca79141808944d1f3c009459f5c0beda53ec3ff0c485a9285ff9e587b8",
+              "scope": "Single actual initial browser observation, no clicks or scrolling; complete DOM plus ancestor visibility evidence. Script/style/SVG-only HTML projection preserves real navigation and ads. Below-fold already rendered content counts; no viewport clipping assumed for body/html."
+            }
+          ],
+          "regression_ids": [
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "challenge-08",
+          "reason": "A complete independent initial browser DOM and rendered-ancestor evidence qualify 25 unique records without interaction. Require ceil(80%) = 20; a single new observation is not presented as multiple rounds. Preserve all previous anchors, bans, routes, identity and name validation. Actual HTML and link-preserving Markdown pass at full and boundary counts; below-boundary, three-record and empty-owner controls fail while all outside content remains. Twenty-seven rendered post elements contain twenty-five distinct posts; duplicates do not inflate the quota. FACEPLATE-BATCH is actually rendered, not an inert preload.",
+          "changes_sha256": "77f910ff901599c710a7b1ac9b6c2fb093df75672c9549b46baa47ede7378283",
+          "sources": [
+            {
+              "path": "review-evidence/webfetch/challenge-initial-20261023/reddit-complete.json",
+              "sha256": "bd7dba8fe7b5e5a99cbd235886f5bf073593574d7dfd97a7a842917fad515cc2",
+              "scope": "Single actual initial browser observation, no clicks or scrolling; complete DOM plus ancestor visibility evidence. Script/style/SVG-only HTML projection preserves real navigation and ads. Below-fold already rendered content counts; no viewport clipping assumed for body/html."
+            },
+            {
+              "path": "review-evidence/webfetch/challenge-initial-20261023/reddit-render-state.json",
+              "sha256": "f221b690d14ca42b6cbb1b6973b4a122d1a93273c5f1108238b382eb23e2cb27",
+              "scope": "Single actual initial browser observation, no clicks or scrolling; complete DOM plus ancestor visibility evidence. Script/style/SVG-only HTML projection preserves real navigation and ads. Below-fold already rendered content counts; no viewport clipping assumed for body/html."
+            }
+          ],
+          "regression_ids": [
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
           ]
         }
       ]

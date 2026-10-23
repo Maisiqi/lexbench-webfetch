@@ -118,3 +118,14 @@ qualification. Other rule changes still need a full-page reference.
 Annotation revisions are alternatives against their declared frozen parent,
 not a sequence of cumulative patches. Select and disclose the required revision;
 the body-quota revision does not implicitly apply `serialization-20261021`.
+
+## Named-record scope boundaries
+
+`entry_scope.required_end` is an optional boolean, defaulting to false. Setting
+it to true requires a nonempty `end_pattern`; text and Markdown answers without
+a matching end boundary yield no scoped records. This prevents later page
+sections from completing a scoped quota when its boundary is missing. HTML
+answers continue to use `html_selector` as their independent boundary. Keep the
+default for contracts that intentionally accept an isolated body without its
+following section. This option applies to the shared named-record scope and
+does not introduce website-specific matching.

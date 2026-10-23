@@ -88,7 +88,10 @@
     "mutable-document-custom-heading-hidden",
     "heading-only-body-region-missing-heading",
     "source-backed-diagnostic-source-discusses-status",
-    "source-backed-diagnostic-status-heading"
+    "source-backed-diagnostic-status-heading",
+    "reference-captcha-heading-is-legitimate-body-text",
+    "complete-distributed-body-passes",
+    "short-prefix-cannot-pass-full-body-task"
   ],
   "changes": [
     {
@@ -191,7 +194,15 @@
       "suite": "webfetch",
       "case_id": "stable-browser-use-readme",
       "before_sha256": "05cfc4d5ac1bbf1189cdc81459601dca7ef8a45a6d886a25eb07ebe409c8968b",
-      "set": {},
+      "set": {
+        "forbidden_any": [
+          "Access denied",
+          "Attention Required! | Cloudflare",
+          "Page not found",
+          "404 Not Found",
+          "无法访问此站点"
+        ]
+      },
       "remove": [],
       "body_thresholds": {
         "minimum_coverage": 0.8,
@@ -227,7 +238,15 @@
       "suite": "webfetch",
       "case_id": "stable-wcag21-recommendation",
       "before_sha256": "c980470f54a9b4ebb4d91bb3d734df8647c0b234c926cc380edb31919b7dea63",
-      "set": {},
+      "set": {
+        "forbidden_any": [
+          "Access denied",
+          "Attention Required! | Cloudflare",
+          "Page not found",
+          "404 Not Found",
+          "无法访问此站点"
+        ]
+      },
       "remove": [],
       "body_thresholds": {
         "minimum_coverage": 0.8,
@@ -3137,7 +3156,631 @@
       "suite": "articles",
       "case_id": "article-022",
       "before_sha256": "2a0e0fe4aae82c609342630131b9c3c0523345fa3eabea09f17252d49f68af10",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "项目开发规范"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "互联网编程"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "大模型"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "产品"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "解决方案"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "权益"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "定价"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "AI 应用市场"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "伙伴"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "服务"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "文档"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "备案"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "控制台"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "注册"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "登录"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "开发者社区"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "首页"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "模型体验"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "探索云世界"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "问产品"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "动手实践"
+              ]
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "官方博客"
+              ]
+            },
+            {
+              "id": "stable-23",
+              "alternatives": [
+                "考认证"
+              ]
+            },
+            {
+              "id": "stable-24",
+              "alternatives": [
+                "TIANCHI大赛"
+              ]
+            },
+            {
+              "id": "stable-25",
+              "alternatives": [
+                "活动广场"
+              ]
+            },
+            {
+              "id": "stable-26",
+              "alternatives": [
+                "下载"
+              ]
+            },
+            {
+              "id": "stable-27",
+              "alternatives": [
+                "个人"
+              ]
+            },
+            {
+              "id": "stable-28",
+              "alternatives": [
+                "积分"
+              ]
+            },
+            {
+              "id": "stable-29",
+              "alternatives": [
+                "发布"
+              ]
+            },
+            {
+              "id": "stable-30",
+              "alternatives": [
+                "开发与运维"
+              ]
+            },
+            {
+              "id": "stable-31",
+              "alternatives": [
+                "文章"
+              ]
+            },
+            {
+              "id": "stable-32",
+              "alternatives": [
+                "正文"
+              ]
+            },
+            {
+              "id": "stable-33",
+              "alternatives": [
+                "版权"
+              ]
+            },
+            {
+              "id": "stable-34",
+              "alternatives": [
+                "文章标签"
+              ]
+            },
+            {
+              "id": "stable-35",
+              "alternatives": [
+                "关注"
+              ]
+            },
+            {
+              "id": "stable-36",
+              "alternatives": [
+                "相关文章"
+              ]
+            },
+            {
+              "id": "stable-37",
+              "alternatives": [
+                "热门文章"
+              ]
+            },
+            {
+              "id": "stable-38",
+              "alternatives": [
+                "最新文章"
+              ]
+            },
+            {
+              "id": "stable-39",
+              "alternatives": [
+                "相关电子书"
+              ]
+            },
+            {
+              "id": "stable-40",
+              "alternatives": [
+                "更多"
+              ]
+            },
+            {
+              "id": "stable-41",
+              "alternatives": [
+                "下一篇"
+              ]
+            },
+            {
+              "id": "stable-42",
+              "alternatives": [
+                "目录"
+              ]
+            },
+            {
+              "id": "stable-43",
+              "alternatives": [
+                "为什么选择阿里云"
+              ]
+            },
+            {
+              "id": "stable-44",
+              "alternatives": [
+                "什么是云计算"
+              ]
+            },
+            {
+              "id": "stable-45",
+              "alternatives": [
+                "全球基础设施"
+              ]
+            },
+            {
+              "id": "stable-46",
+              "alternatives": [
+                "技术领先"
+              ]
+            },
+            {
+              "id": "stable-47",
+              "alternatives": [
+                "稳定可靠"
+              ]
+            },
+            {
+              "id": "stable-48",
+              "alternatives": [
+                "安全合规"
+              ]
+            },
+            {
+              "id": "stable-49",
+              "alternatives": [
+                "分析师报告"
+              ]
+            },
+            {
+              "id": "stable-50",
+              "alternatives": [
+                "产品和定价"
+              ]
+            },
+            {
+              "id": "stable-51",
+              "alternatives": [
+                "全部产品"
+              ]
+            },
+            {
+              "id": "stable-52",
+              "alternatives": [
+                "免费试用"
+              ]
+            },
+            {
+              "id": "stable-53",
+              "alternatives": [
+                "产品动态"
+              ]
+            },
+            {
+              "id": "stable-54",
+              "alternatives": [
+                "产品定价"
+              ]
+            },
+            {
+              "id": "stable-55",
+              "alternatives": [
+                "配置报价器"
+              ]
+            },
+            {
+              "id": "stable-56",
+              "alternatives": [
+                "云上成本管理"
+              ]
+            },
+            {
+              "id": "stable-57",
+              "alternatives": [
+                "技术内容"
+              ]
+            },
+            {
+              "id": "stable-58",
+              "alternatives": [
+                "技术解决方案"
+              ]
+            },
+            {
+              "id": "stable-59",
+              "alternatives": [
+                "帮助文档"
+              ]
+            },
+            {
+              "id": "stable-60",
+              "alternatives": [
+                "天池大赛"
+              ]
+            },
+            {
+              "id": "stable-61",
+              "alternatives": [
+                "阿里云认证"
+              ]
+            },
+            {
+              "id": "stable-62",
+              "alternatives": [
+                "基础服务"
+              ]
+            },
+            {
+              "id": "stable-63",
+              "alternatives": [
+                "企业增值服务"
+              ]
+            },
+            {
+              "id": "stable-64",
+              "alternatives": [
+                "迁云服务"
+              ]
+            },
+            {
+              "id": "stable-65",
+              "alternatives": [
+                "官网公告"
+              ]
+            },
+            {
+              "id": "stable-66",
+              "alternatives": [
+                "健康看板"
+              ]
+            },
+            {
+              "id": "stable-67",
+              "alternatives": [
+                "信任中心"
+              ]
+            },
+            {
+              "id": "stable-68",
+              "alternatives": [
+                "关注阿里云"
+              ]
+            },
+            {
+              "id": "stable-69",
+              "alternatives": [
+                "法律声明"
+              ]
+            },
+            {
+              "id": "stable-70",
+              "alternatives": [
+                "Cookies政策"
+              ]
+            },
+            {
+              "id": "stable-71",
+              "alternatives": [
+                "廉正举报"
+              ]
+            },
+            {
+              "id": "stable-72",
+              "alternatives": [
+                "安全举报"
+              ]
+            },
+            {
+              "id": "stable-73",
+              "alternatives": [
+                "联系我们"
+              ]
+            },
+            {
+              "id": "stable-74",
+              "alternatives": [
+                "加入我们"
+              ]
+            },
+            {
+              "id": "review-section-90d65e03e0c9",
+              "alternatives": [
+                "一、编程规约"
+              ]
+            },
+            {
+              "id": "review-section-bfa4ff70b4f8",
+              "alternatives": [
+                "(一)命名风格"
+              ]
+            },
+            {
+              "id": "review-section-e4f24da8553a",
+              "alternatives": [
+                "(二)常量定义"
+              ]
+            },
+            {
+              "id": "review-section-dece83e592bb",
+              "alternatives": [
+                "(三)代码格式"
+              ]
+            },
+            {
+              "id": "review-section-bf19afc9cdb0",
+              "alternatives": [
+                "正例： （涉及1-5点）"
+              ]
+            },
+            {
+              "id": "review-section-f9fc1963acbe",
+              "alternatives": [
+                "(四)OOP规约"
+              ]
+            },
+            {
+              "id": "review-section-276d228aed7c",
+              "alternatives": [
+                "(五)集合处理"
+              ]
+            },
+            {
+              "id": "review-section-b409fd53cfec",
+              "alternatives": [
+                "(六)并发处理"
+              ]
+            },
+            {
+              "id": "review-section-cb03b984b841",
+              "alternatives": [
+                "(七)控制语句"
+              ]
+            },
+            {
+              "id": "review-section-3704d82f9fe3",
+              "alternatives": [
+                "(八)注释规约"
+              ]
+            },
+            {
+              "id": "review-section-c841572f53ae",
+              "alternatives": [
+                "(九)其它"
+              ]
+            },
+            {
+              "id": "review-section-966c84af351e",
+              "alternatives": [
+                "二、异常日志"
+              ]
+            },
+            {
+              "id": "review-section-e77768d844c3",
+              "alternatives": [
+                "(一)异常处理"
+              ]
+            },
+            {
+              "id": "review-section-7c6103f7a52c",
+              "alternatives": [
+                "(二)日志规约"
+              ]
+            },
+            {
+              "id": "review-section-5eb8ab3e3d03",
+              "alternatives": [
+                "正例：（条件）"
+              ]
+            },
+            {
+              "id": "review-section-9807cc5b0c60",
+              "alternatives": [
+                "正例：（占位符）"
+              ]
+            },
+            {
+              "id": "review-section-b571c194c1a7",
+              "alternatives": [
+                "三、单元测试"
+              ]
+            },
+            {
+              "id": "review-section-44b9e3e7a1a0",
+              "alternatives": [
+                "四、安全规约"
+              ]
+            },
+            {
+              "id": "review-section-77d35e1a3f3c",
+              "alternatives": [
+                "五、MySQL数据库"
+              ]
+            },
+            {
+              "id": "review-section-0b7de80ab7ef",
+              "alternatives": [
+                "(一)建表规约"
+              ]
+            },
+            {
+              "id": "review-section-7cf323e4dbaf",
+              "alternatives": [
+                "(二)索引规约"
+              ]
+            },
+            {
+              "id": "review-section-e769ab29f2ec",
+              "alternatives": [
+                "(三)SQL语句"
+              ]
+            },
+            {
+              "id": "review-section-13a6c2c36bd1",
+              "alternatives": [
+                "(四)ORM映射"
+              ]
+            },
+            {
+              "id": "review-section-33e861f201b7",
+              "alternatives": [
+                "六、工程结构"
+              ]
+            },
+            {
+              "id": "review-section-28c5d881b6c4",
+              "alternatives": [
+                "(一)应用分层"
+              ]
+            },
+            {
+              "id": "review-section-a4bf2c66ff9a",
+              "alternatives": [
+                "(二)二方库依赖"
+              ]
+            },
+            {
+              "id": "review-section-74b08d47c0a7",
+              "alternatives": [
+                "(三)服务器"
+              ]
+            },
+            {
+              "id": "review-section-c5816950a457",
+              "alternatives": [
+                "附1：版本历史"
+              ]
+            },
+            {
+              "id": "review-section-2e0f73558adb",
+              "alternatives": [
+                "附2：本手册专有名词"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true
     },
@@ -3185,7 +3828,499 @@
       "suite": "articles",
       "case_id": "article-028",
       "before_sha256": "0ccb7da0c701403f393b44e7c48ac4cefc8ab2e3a7022f25a83edd155a8ac7c4",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "AIが“チャット”から“仕事を代行する存在”へ"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-1",
+              "alternatives": [
+                "けたけけ／GPTsクリエイター"
+              ]
+            },
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "投稿"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "ログイン"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "会員登録"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "フォロー"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "いいなと思ったら応援しよう！"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "チップで応援する"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "#AIニュース"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "コメント"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "コメントを投稿するには、ログインまたは会員登録をお願いします。"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "noteプレミアム"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "note pro"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "ヘルプ"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "プライバシー"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "クリエイターへのお問い合わせ"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "フィードバック"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "ご利用規約"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "通常ポイント利用特約"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "加盟店規約"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "資金決済法に基づく表示"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "特商法表記"
+              ]
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "投資情報の免責事項"
+              ]
+            },
+            {
+              "id": "article-title",
+              "alternatives": [
+                "AIが“チャット”から“仕事を代行する存在”へ"
+              ]
+            },
+            {
+              "id": "review-section-6a228ce9b58a",
+              "alternatives": [
+                "この記事でよく出てくる用語ミニ解説"
+              ]
+            },
+            {
+              "id": "review-section-eaab2f60b402",
+              "alternatives": [
+                "🔁 モデル・バージョンアップ"
+              ]
+            },
+            {
+              "id": "review-section-63e1913f680f",
+              "alternatives": [
+                "【Pollo AI】【Pollo 3.0】一貫キャラクター・カメラ制御・マルチショット生成を訴求（04/07）"
+              ]
+            },
+            {
+              "id": "review-section-7589c21ece10",
+              "alternatives": [
+                "【Google DeepMind】【Gemma 4】小型でも高性能なオープンモデルとして発表、公式SNSでも反響を紹介（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-61993a770055",
+              "alternatives": [
+                "【Liquid AI】【LFM2.5-VL-450M】エッジ向けリアルタイム視覚言語モデルを公開（04/09）"
+              ]
+            },
+            {
+              "id": "review-section-6365e33f6aad",
+              "alternatives": [
+                "【PixVerse】【PixVerse C1】映画制作向け初モデルをリリース（04/08）"
+              ]
+            },
+            {
+              "id": "review-section-ee1578e4d756",
+              "alternatives": [
+                "【Suno】【v5.5】新音楽モデルを発表、公式SNSでも改めて紹介（04/08）"
+              ]
+            },
+            {
+              "id": "review-section-4c35144c5da9",
+              "alternatives": [
+                "🔌 モデル対応アップデート"
+              ]
+            },
+            {
+              "id": "review-section-5f52351bf14e",
+              "alternatives": [
+                "【Alibaba Qwen】【Qwen3.6-Plus】OpenRouterで好調、本番API利用を訴求（04/08）"
+              ]
+            },
+            {
+              "id": "review-section-eae7926b96bd",
+              "alternatives": [
+                "【Clawi】【主要LLM対応】Claude・GPT・Gemini・Qwenなど複数モデルを統合（04/05）"
+              ]
+            },
+            {
+              "id": "review-section-8ebf2023da86",
+              "alternatives": [
+                "【Freepik】【Seedance 2.0】日本・全プランへ提供範囲を拡大（04/05〜04/10）"
+              ]
+            },
+            {
+              "id": "review-section-34662dae5411",
+              "alternatives": [
+                "【Gamma】【Connector Suite】OpenAI・Claude・Zapier・n8nなどと連携（04/08）"
+              ]
+            },
+            {
+              "id": "review-section-cd7e04f46580",
+              "alternatives": [
+                "【Gamma】【Atlassian/Rovo】Confluenceからプレゼン生成に対応（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-c37b8e98a307",
+              "alternatives": [
+                "【Firebase】【Kiro】Firebase MCPサーバーをワンクリック導入可能に（04/09）"
+              ]
+            },
+            {
+              "id": "review-section-857ac4c6d4d0",
+              "alternatives": [
+                "【Google】【Gemini 3.1 Pro】Augment Codeのモデルピッカーで利用可能に（04/07）"
+              ]
+            },
+            {
+              "id": "review-section-bf25e489bb42",
+              "alternatives": [
+                "【LangChain】【LangSmith Fleet】Arcadeの7,500以上のMCPツールに対応（04/08）"
+              ]
+            },
+            {
+              "id": "review-section-98c3c7be3cd7",
+              "alternatives": [
+                "【Manus】【Manus for Slack】Slack内DMからエージェントを利用可能に（04/07）"
+              ]
+            },
+            {
+              "id": "review-section-815224b34e30",
+              "alternatives": [
+                "【Medeo】【Seedance 2.0】Medeo x Seedance 2.0提携を発表（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-3720e008318a",
+              "alternatives": [
+                "【Perplexity】【Computer × Plaid】金融口座連携に対応（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-9e5420b185b3",
+              "alternatives": [
+                "【Lovart】【Seedance 2.0】Lovart上でSeedance 2.0対応を告知（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-864d64dbef70",
+              "alternatives": [
+                "【Runway】【Seedance 2.0】Runwayに搭載、全有料プランへ拡大（04/07〜04/10）"
+              ]
+            },
+            {
+              "id": "review-section-b4e265c79df8",
+              "alternatives": [
+                "【Factory】【Droid】GLM-5.1対応でモデル選択肢を拡大（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-5a58d7dfc17e",
+              "alternatives": [
+                "【WaveSpeedAI / YouWareAI】動画・画像モデル対応とAI開発体験を連続更新（04/05〜04/11）"
+              ]
+            },
+            {
+              "id": "review-section-b83ee47c14b0",
+              "alternatives": [
+                "⚙️ プロダクト更新"
+              ]
+            },
+            {
+              "id": "review-section-6a7c1d430bac",
+              "alternatives": [
+                "【Qwen】【Qwen Code v0.14系】リモート操作・Cron Jobs・Qwen3.6-Plus統合を追加（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-225dee56d993",
+              "alternatives": [
+                "【Claude】【Cowork】全有料プランでGA、Enterprise管理機能も追加（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-8f0043487b35",
+              "alternatives": [
+                "【Firecrawl】【v2.9.0】Web操作・PDF処理・SDKを強化（04/08〜04/11）"
+              ]
+            },
+            {
+              "id": "review-section-35b2858d2d74",
+              "alternatives": [
+                "【OpenClaw / Clawi】2026.4.x週次アップデートでDreaming・Gemma 4・Codexハーネス等を追加（04/06〜04/11）"
+              ]
+            },
+            {
+              "id": "review-section-1e2e4f69a426",
+              "alternatives": [
+                "【Genspark】【Plus/Pro】5時間ごとのセッション制限を導入（04/09）"
+              ]
+            },
+            {
+              "id": "review-section-0e3bd0e99860",
+              "alternatives": [
+                "【Firebase】AI Studio連携・ハイブリッドAI推論などRelease Notesを公開（04/08）"
+              ]
+            },
+            {
+              "id": "review-section-4e01540151b4",
+              "alternatives": [
+                "【Firebase Studio】移行ガイドを公開、Google AI Studio/Antigravityを移行先に提示（04/11）"
+              ]
+            },
+            {
+              "id": "review-section-fd2a7b93b509",
+              "alternatives": [
+                "【Google】【Veo 3.1 Fast】価格引き下げを告知（04/08）"
+              ]
+            },
+            {
+              "id": "review-section-f6df62be199d",
+              "alternatives": [
+                "【Google Maps Platform】クレジットカード不要のMaps Demo Keyを提供（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-7000a67c4ace",
+              "alternatives": [
+                "【Google Workspace】Gmail/Calendar/Meet、スケジュール調整・タイムゾーン・CarPlay対応を更新（04/09〜04/11）"
+              ]
+            },
+            {
+              "id": "review-section-3dbfd6a39ba5",
+              "alternatives": [
+                "【NotebookLM】オーディオ概要プレーヤーにスキップ/速度ボタンを追加（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-9fe1e2911821",
+              "alternatives": [
+                "【Stitch by Google】ローンチ後の主要バグ修正を公開（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-da747f281f8c",
+              "alternatives": [
+                "【LangChain】【LangSmith】コストアラートとClaude Agent SDKトレーシングを強化（04/07〜04/10）"
+              ]
+            },
+            {
+              "id": "review-section-48324b06d3b4",
+              "alternatives": [
+                "【LangChain】【LangSmith Deployments / Deep Agents Deploy】A2A・MCP・Agent Protocol対応を拡充（04/09〜04/10）"
+              ]
+            },
+            {
+              "id": "review-section-c778dde2add1",
+              "alternatives": [
+                "【MagicPath】モバイル共有時に公開ファイル内プロトタイプ一覧表示へ対応（04/07）"
+              ]
+            },
+            {
+              "id": "review-section-8718601a106a",
+              "alternatives": [
+                "【OpenClaw】AnthropicのClaudeサブスク適用停止を報告（04/06）"
+              ]
+            },
+            {
+              "id": "review-section-161d5c7d9e7d",
+              "alternatives": [
+                "【OpenAI】【Codex】ChatGPTプランとCodex利用量を更新（04/10）"
+              ]
+            },
+            {
+              "id": "review-section-ce584cdef6d1",
+              "alternatives": [
+                "【OpenAI Devs】【Codex】旧モデル廃止と新対応モデルを告知（04/08）"
+              ]
+            },
+            {
+              "id": "review-section-b9654ca5be65",
+              "alternatives": [
+                "【Factory】【Fast Mode】/fastコマンドで高速モードを提供（04/07）"
+              ]
+            },
+            {
+              "id": "review-section-326a6fc4f776",
+              "alternatives": [
+                "🆕 新登場"
+              ]
+            },
+            {
+              "id": "review-section-f77c44741bee",
+              "alternatives": [
+                "【Abacus AI】【Deep Agent】英語からフルスタック/モバイルアプリをVibe Coding（04/09）"
+              ]
+            },
+            {
+              "id": "review-section-68aff67177c4",
+              "alternatives": [
+                "【Adobe】【Firefly】Generate SpeechとPrecision Flow/AI Markupで制作精度を強化（04/07〜04/10）"
+              ]
+            },
+            {
+              "id": "review-section-cd85507f2eb9",
+              "alternatives": [
+                "【Claude】【Managed Agents】大規模エージェントの構築・デプロイ基盤を発表（04/09）"
+              ]
+            },
+            {
+              "id": "review-section-401485a8015d",
+              "alternatives": [
+                "【Claude】【Claude for Word】Wordサイドバーで下書き・編集・変更履歴付きリバイスに対応（04/11）"
+              ]
+            },
+            {
+              "id": "review-section-08ff66781087",
+              "alternatives": [
+                "【Browser Use】【Skills】Webエージェントが失敗を記憶・学習する機能を公開（04/07）"
+              ]
+            },
+            {
+              "id": "review-section-62761c122844",
+              "alternatives": [
+                "【Browser Use】【Cloud】Hermes/Claude Code連携と無料クラウドブラウザを拡充（04/09〜04/11）"
+              ]
+            },
+            {
+              "id": "review-section-2325fff82375",
+              "alternatives": [
+                "【Pollo AI】【Video Reframe】SNS向け動画リサイズを自動化（04/11）"
+              ]
+            },
+            {
+              "id": "review-section-cdcbd374af4c",
+              "alternatives": [
+                "【Felo】【Note記事自動生成】文章生成からアイキャッチ画像まで一貫作成（04/08）"
+              ]
+            },
+            {
+              "id": "review-section-0b4d0dd2434b",
+              "alternatives": [
+                "【Figma】【Figma Make】30種類以上のファイル添付に対応（04/08）"
+              ]
+            },
+            {
+              "id": "review-section-f1644555713b",
+              "alternatives": [
+                "【Figma】デザインキャンバス上のビデオ再生機能を展開（04/09）"
+              ]
+            },
+            {
+              "id": "review-section-eea921dea678",
+              "alternatives": [
+                "【Clawi】SOUL.md編集とレシート自動記録でエージェント運用を強化（04/07〜04/08）"
+              ]
+            },
+            {
+              "id": "review-section-00065bc290ab",
+              "alternatives": [
+                "【Genspark】【AI Workspace 4.0】Desktop・Office・Workflowsを発表（04/08）"
+              ]
+            },
+            {
+              "id": "review-section-65f6acdf6a65",
+              "alternatives": [
+                "【Gemini】【Notebooks / NotebookLM】GeminiとNotebookLMの統合を展開（04/09〜04/10）"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true
     },
@@ -4013,7 +5148,397 @@
       "suite": "articles",
       "case_id": "article-045",
       "before_sha256": "600d16868ce6baf04bc443e4296ed0c634ca73a0a9cdff85573ddf0bd90a80de",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "大模型基础应用框架 \\(ReACT\\\\SFT\\\\RAG\\) 创新及零售业务落地"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "京东零售技术"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "首页"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "AI会议"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "AI课程"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "AI应用"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "报告"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "HarmonyOS"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "Snowflake"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "更多"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "写点什么"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "登录"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "企业动态"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "行业深度"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "AI&大模型"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "出海"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "后端"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "芯片&算力"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "架构"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "大数据"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "软件工程"
+              ]
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "云计算"
+              ]
+            },
+            {
+              "id": "stable-23",
+              "alternatives": [
+                "大前端"
+              ]
+            },
+            {
+              "id": "stable-24",
+              "alternatives": [
+                "管理/文化"
+              ]
+            },
+            {
+              "id": "stable-26",
+              "alternatives": [
+                "轻点一下，留下你的鼓励"
+              ]
+            },
+            {
+              "id": "stable-27",
+              "alternatives": [
+                "评论"
+              ]
+            },
+            {
+              "id": "stable-28",
+              "alternatives": [
+                "发布"
+              ]
+            },
+            {
+              "id": "stable-29",
+              "alternatives": [
+                "延伸阅读——来自 InfoQ 精选"
+              ]
+            },
+            {
+              "id": "stable-30",
+              "alternatives": [
+                "换一换"
+              ]
+            },
+            {
+              "id": "stable-31",
+              "alternatives": [
+                "查看更多"
+              ]
+            },
+            {
+              "id": "stable-32",
+              "alternatives": [
+                "推荐阅读"
+              ]
+            },
+            {
+              "id": "stable-33",
+              "alternatives": [
+                "电子书"
+              ]
+            },
+            {
+              "id": "stable-34",
+              "alternatives": [
+                "大厂实战PPT下载"
+              ]
+            },
+            {
+              "id": "stable-35",
+              "alternatives": [
+                "立即下载"
+              ]
+            },
+            {
+              "id": "stable-36",
+              "alternatives": [
+                "促进软件开发及相关领域知识与创新的传播"
+              ]
+            },
+            {
+              "id": "stable-37",
+              "alternatives": [
+                "关于我们"
+              ]
+            },
+            {
+              "id": "stable-38",
+              "alternatives": [
+                "我要投稿"
+              ]
+            },
+            {
+              "id": "stable-39",
+              "alternatives": [
+                "合作伙伴"
+              ]
+            },
+            {
+              "id": "stable-40",
+              "alternatives": [
+                "加入我们"
+              ]
+            },
+            {
+              "id": "stable-41",
+              "alternatives": [
+                "关注我们"
+              ]
+            },
+            {
+              "id": "stable-42",
+              "alternatives": [
+                "联系我们"
+              ]
+            },
+            {
+              "id": "stable-43",
+              "alternatives": [
+                "内容投稿"
+              ]
+            },
+            {
+              "id": "stable-44",
+              "alternatives": [
+                "业务合作"
+              ]
+            },
+            {
+              "id": "stable-45",
+              "alternatives": [
+                "反馈投诉"
+              ]
+            },
+            {
+              "id": "stable-46",
+              "alternatives": [
+                "联系电话"
+              ]
+            },
+            {
+              "id": "stable-47",
+              "alternatives": [
+                "地址"
+              ]
+            },
+            {
+              "id": "stable-48",
+              "alternatives": [
+                "InfoQ 近期会议"
+              ]
+            },
+            {
+              "id": "stable-49",
+              "alternatives": [
+                "全球 InfoQ"
+              ]
+            },
+            {
+              "id": "stable-50",
+              "alternatives": [
+                "InfoQ En"
+              ]
+            },
+            {
+              "id": "stable-51",
+              "alternatives": [
+                "InfoQ Jp"
+              ]
+            },
+            {
+              "id": "stable-52",
+              "alternatives": [
+                "InfoQ Fr"
+              ]
+            },
+            {
+              "id": "stable-53",
+              "alternatives": [
+                "InfoQ Br"
+              ]
+            },
+            {
+              "id": "stable-54",
+              "alternatives": [
+                "产品资质"
+              ]
+            },
+            {
+              "id": "review-section-7c038a224bfc",
+              "alternatives": [
+                "一、前言"
+              ]
+            },
+            {
+              "id": "review-section-161f49177c9d",
+              "alternatives": [
+                "二、高效微调（SFT"
+              ]
+            },
+            {
+              "id": "review-section-c5f942de401a",
+              "alternatives": [
+                "2.1 SFT 流程介绍"
+              ]
+            },
+            {
+              "id": "review-section-6a83da6f16c9",
+              "alternatives": [
+                "2.2 九数算法中台 SFT 框架的优势"
+              ]
+            },
+            {
+              "id": "review-section-3481d9d4728e",
+              "alternatives": [
+                "三、检索增强生成（RAG"
+              ]
+            },
+            {
+              "id": "review-section-95e3fc0708c4",
+              "alternatives": [
+                "3.1 RAG 流程介绍"
+              ]
+            },
+            {
+              "id": "review-section-f455149ef4c0",
+              "alternatives": [
+                "3.2 九数算法中台 RAG 技术优势"
+              ]
+            },
+            {
+              "id": "review-section-c0ccea6e88ab",
+              "alternatives": [
+                "四、AI 智能体（AI Agent"
+              ]
+            },
+            {
+              "id": "review-section-151a4fef779c",
+              "alternatives": [
+                "4.1 AI Agent 介绍"
+              ]
+            },
+            {
+              "id": "review-section-11af49fa5be7",
+              "alternatives": [
+                "4.2 京东零售的 AI Agent 应用"
+              ]
+            },
+            {
+              "id": "review-section-de84b371d657",
+              "alternatives": [
+                "五、结语"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true
     },
@@ -4263,7 +5788,337 @@
       "suite": "articles",
       "case_id": "article-057",
       "before_sha256": "2f4325a4e2166c9551bcbf389d7d1e7d8c961e89d0c02926e080e39d54380488",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "How Discord Indexes Trillions of Messages"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "Vicki Niu"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "Senior Software Engineer, Persistence Infrastructure"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "Download"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "Nitro"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "Discover"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "Safety"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "Quests"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "Support"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "Blog"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "Developers"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "Log In"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "Engineering & Developers"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "RELATED ARTICLES"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "search"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "Language"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "English"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "Social"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "Product"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "Status"
+              ]
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "App Directory"
+              ]
+            },
+            {
+              "id": "stable-23",
+              "alternatives": [
+                "Gift Cards"
+              ]
+            },
+            {
+              "id": "stable-24",
+              "alternatives": [
+                "Company"
+              ]
+            },
+            {
+              "id": "stable-25",
+              "alternatives": [
+                "About"
+              ]
+            },
+            {
+              "id": "stable-26",
+              "alternatives": [
+                "Jobs"
+              ]
+            },
+            {
+              "id": "stable-27",
+              "alternatives": [
+                "Brand"
+              ]
+            },
+            {
+              "id": "stable-28",
+              "alternatives": [
+                "Newsroom"
+              ]
+            },
+            {
+              "id": "stable-29",
+              "alternatives": [
+                "Resources"
+              ]
+            },
+            {
+              "id": "stable-30",
+              "alternatives": [
+                "Creators"
+              ]
+            },
+            {
+              "id": "stable-31",
+              "alternatives": [
+                "Community"
+              ]
+            },
+            {
+              "id": "stable-32",
+              "alternatives": [
+                "Official 3rd Party Merch"
+              ]
+            },
+            {
+              "id": "stable-33",
+              "alternatives": [
+                "Feedback"
+              ]
+            },
+            {
+              "id": "stable-34",
+              "alternatives": [
+                "Policies"
+              ]
+            },
+            {
+              "id": "stable-35",
+              "alternatives": [
+                "Terms"
+              ]
+            },
+            {
+              "id": "stable-36",
+              "alternatives": [
+                "Privacy"
+              ]
+            },
+            {
+              "id": "stable-37",
+              "alternatives": [
+                "Cookie Settings"
+              ]
+            },
+            {
+              "id": "stable-38",
+              "alternatives": [
+                "Guidelines"
+              ]
+            },
+            {
+              "id": "stable-39",
+              "alternatives": [
+                "Acknowledgements"
+              ]
+            },
+            {
+              "id": "stable-40",
+              "alternatives": [
+                "Licenses"
+              ]
+            },
+            {
+              "id": "stable-41",
+              "alternatives": [
+                "Company Information"
+              ]
+            },
+            {
+              "id": "review-section-8014288c1b4c",
+              "alternatives": [
+                "Our Redis message indexing queue would drop messages"
+              ]
+            },
+            {
+              "id": "review-section-48221ffeac97",
+              "alternatives": [
+                "Our bulk indexing was fault-intolerant on Elasticsearch index or node failure"
+              ]
+            },
+            {
+              "id": "review-section-883758d4d3b4",
+              "alternatives": [
+                "Large Elasticsearch clusters had large overhead, impacting performance and operability"
+              ]
+            },
+            {
+              "id": "review-section-a14d14af269f",
+              "alternatives": [
+                "No good path to software upgrades or rolling restarts"
+              ]
+            },
+            {
+              "id": "review-section-db905a013228",
+              "alternatives": [
+                "Indices with large guilds grew too large"
+              ]
+            },
+            {
+              "id": "review-section-0fee8be083fc",
+              "alternatives": [
+                "The Solutions"
+              ]
+            },
+            {
+              "id": "review-section-0daa802fbec7",
+              "alternatives": [
+                "Deploy Elasticsearch on Kubernetes"
+              ]
+            },
+            {
+              "id": "review-section-fc1ed447e2b3",
+              "alternatives": [
+                "Multi-cluster “cell” architecture to run smaller Elasticsearch clusters"
+              ]
+            },
+            {
+              "id": "review-section-45ad95c570a0",
+              "alternatives": [
+                "PubSub message queue"
+              ]
+            },
+            {
+              "id": "review-section-740c3303dc05",
+              "alternatives": [
+                "Batch messages by cluster and index before bulk indexing"
+              ]
+            },
+            {
+              "id": "review-section-bde94ad0184f",
+              "alternatives": [
+                "Supporting new search use cases"
+              ]
+            },
+            {
+              "id": "review-section-cb1a60be6ad2",
+              "alternatives": [
+                "Give “Big Freaking Guilds” dedicated Elasticsearch clusters, with multiple shards"
+              ]
+            },
+            {
+              "id": "review-section-f4db168ca147",
+              "alternatives": [
+                "So... how are things going?"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true
     },
@@ -4403,7 +6258,247 @@
       "suite": "articles",
       "case_id": "article-065",
       "before_sha256": "3f447fcc254f9ae2350f002a0f5654201ee297f7c4d1b69a6ffa8e59af831cbf",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "Learn CSS Grid by Building 5 Layouts in 17 minutes"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "Thu Nghiem"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "#CSS"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "Donate"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "Learn Software Engineering Fundamentals – Try Our FREE Curriculum"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "Recommended courses from our partners"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "ADVERTISEMENT"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "If you read this far, thank the author to show them you care."
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "Say Thanks"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "Get started"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "Our mission: to help people learn to code for free."
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "make a tax-deductible donation here"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "Trending Books and Handbooks"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "Mobile App"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "Publication powered by Hashnode"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "About"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "Alumni Network"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "Open Source"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "Shop"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "Support"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "Sponsors"
+              ]
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "Academic Honesty"
+              ]
+            },
+            {
+              "id": "stable-23",
+              "alternatives": [
+                "Code of Conduct"
+              ]
+            },
+            {
+              "id": "stable-24",
+              "alternatives": [
+                "Privacy Policy"
+              ]
+            },
+            {
+              "id": "stable-25",
+              "alternatives": [
+                "Terms of Service"
+              ]
+            },
+            {
+              "id": "stable-26",
+              "alternatives": [
+                "Copyright Policy"
+              ]
+            },
+            {
+              "id": "review-section-8245ec85e49e",
+              "alternatives": [
+                "1: How to Build a Pancake Stack with CSS Grid"
+              ]
+            },
+            {
+              "id": "review-section-6c5afea1bb35",
+              "alternatives": [
+                "2: How to Build a Simple 12 Column Grid Layout with CSS Grid"
+              ]
+            },
+            {
+              "id": "review-section-a8540f4011d7",
+              "alternatives": [
+                "3:  How to Build a Responsive Layout with and without grid-template-areas"
+              ]
+            },
+            {
+              "id": "review-section-b28a4212d646",
+              "alternatives": [
+                "The First option: How to Use the 12 Column Grid"
+              ]
+            },
+            {
+              "id": "review-section-e34a879c8b8b",
+              "alternatives": [
+                "Tablet"
+              ]
+            },
+            {
+              "id": "review-section-9bd88f2485ac",
+              "alternatives": [
+                "Desktop"
+              ]
+            },
+            {
+              "id": "review-section-beb76cf05bd9",
+              "alternatives": [
+                "Real life example"
+              ]
+            },
+            {
+              "id": "review-section-01e80c1e0f05",
+              "alternatives": [
+                "The Second Option: How to Use grid-template-areas"
+              ]
+            },
+            {
+              "id": "review-section-a5c7f0339c33",
+              "alternatives": [
+                "Which should you choose?"
+              ]
+            },
+            {
+              "id": "review-section-a12b9acd8f81",
+              "alternatives": [
+                "4: How to Build a Responsive Layout Without Media Queries in CSS Grid"
+              ]
+            },
+            {
+              "id": "review-section-abc00e08c6b5",
+              "alternatives": [
+                "5: How to Build a 12 x 12 Chess Grid with CSS Grid"
+              ]
+            },
+            {
+              "id": "review-section-89db2ad881f2",
+              "alternatives": [
+                "Conclusion"
+              ]
+            },
+            {
+              "id": "review-section-eb543b4ce0e3",
+              "alternatives": [
+                "__ 🐣 About me __"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true,
       "body_projection": {
@@ -4495,7 +6590,481 @@
       "suite": "articles",
       "case_id": "article-066",
       "before_sha256": "babacef28d0fdacd5b17fbf54749c5d4a0ba72a390b1fbc8f5b30e436a3da6fb",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "A Complete CSS Flexbox Layout Guide"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "Chris Coyier"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "Our comprehensive guide to CSS flexbox layout."
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "ARTICLES"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "GUIDES"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "ALMANAC"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "LINKS"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "PICKS"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "NEWSLETTER"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "SEARCH"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "HOME"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Comments"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "Toggle All Comments (there are a lot)"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "Leave a Reply"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "Comment"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "Name"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "Email"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "Website"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "Save my name, email, and website in this browser for the next time I comment."
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "Post Comment"
+              ],
+              "visible_control": {
+                "selector": "#submit",
+                "attribute": "value"
+              }
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "CSS-Tricks is powered by"
+              ]
+            },
+            {
+              "id": "stable-23",
+              "alternatives": [
+                "DigitalOcean"
+              ]
+            },
+            {
+              "id": "stable-24",
+              "alternatives": [
+                "Get Curated Front-End Roundups Right in Your Inbox"
+              ]
+            },
+            {
+              "id": "stable-25",
+              "alternatives": [
+                "See past issues"
+              ]
+            },
+            {
+              "id": "stable-26",
+              "alternatives": [
+                "email@example.com"
+              ],
+              "visible_control": {
+                "selector": "#bd-email",
+                "attribute": "placeholder"
+              }
+            },
+            {
+              "id": "stable-27",
+              "alternatives": [
+                "Subscribe"
+              ],
+              "visible_control": {
+                "selector": "input[type=\"submit\"][value=\"Subscribe\"]",
+                "attribute": "value"
+              }
+            },
+            {
+              "id": "stable-28",
+              "alternatives": [
+                "CSS-TRICKS"
+              ]
+            },
+            {
+              "id": "stable-29",
+              "alternatives": [
+                "About the site"
+              ]
+            },
+            {
+              "id": "stable-30",
+              "alternatives": [
+                "Contact us"
+              ]
+            },
+            {
+              "id": "stable-31",
+              "alternatives": [
+                "Write for CSS-Tricks!"
+              ]
+            },
+            {
+              "id": "stable-32",
+              "alternatives": [
+                "Advertising"
+              ]
+            },
+            {
+              "id": "stable-33",
+              "alternatives": [
+                "RSS Feeds"
+              ]
+            },
+            {
+              "id": "stable-34",
+              "alternatives": [
+                "SOCIAL"
+              ]
+            },
+            {
+              "id": "stable-35",
+              "alternatives": [
+                "Bluesky"
+              ]
+            },
+            {
+              "id": "stable-36",
+              "alternatives": [
+                "Mastodon"
+              ]
+            },
+            {
+              "id": "stable-37",
+              "alternatives": [
+                "CodePen"
+              ]
+            },
+            {
+              "id": "stable-38",
+              "alternatives": [
+                "X / Twitter"
+              ]
+            },
+            {
+              "id": "stable-39",
+              "alternatives": [
+                "LinkedIn"
+              ]
+            },
+            {
+              "id": "stable-40",
+              "alternatives": [
+                "LEGALESE"
+              ]
+            },
+            {
+              "id": "stable-41",
+              "alternatives": [
+                "CSS-Tricks License"
+              ]
+            },
+            {
+              "id": "stable-42",
+              "alternatives": [
+                "AI Statement"
+              ]
+            },
+            {
+              "id": "initial-code-layer",
+              "alternatives": [
+                "@layer presentation"
+              ]
+            },
+            {
+              "id": "initial-code-background",
+              "alternatives": [
+                "khaki"
+              ]
+            },
+            {
+              "id": "initial-code-order",
+              "alternatives": [
+                "orangered"
+              ]
+            },
+            {
+              "id": "review-section-ff9c75307196",
+              "alternatives": [
+                "CSS Flexbox Table of Contents"
+              ]
+            },
+            {
+              "id": "review-section-e0ae61a2d06e",
+              "alternatives": [
+                "CSS Flexbox Background"
+              ]
+            },
+            {
+              "id": "review-section-f0ed76f940aa",
+              "alternatives": [
+                "Flexbox Terminology"
+              ]
+            },
+            {
+              "id": "review-section-807a0ae04395",
+              "alternatives": [
+                "CSS Flexbox Properties"
+              ]
+            },
+            {
+              "id": "review-section-2d1ac2b3899e",
+              "alternatives": [
+                "Properties for the Parent\n(Flex Container"
+              ]
+            },
+            {
+              "id": "review-section-dfbb889cf19b",
+              "alternatives": [
+                "display"
+              ]
+            },
+            {
+              "id": "review-section-b1025f3fedbe",
+              "alternatives": [
+                "flex-direction"
+              ]
+            },
+            {
+              "id": "review-section-faa8a23c68f6",
+              "alternatives": [
+                "flex-wrap"
+              ]
+            },
+            {
+              "id": "review-section-1cc389fb1282",
+              "alternatives": [
+                "flex-flow"
+              ]
+            },
+            {
+              "id": "review-section-b04c72b92c41",
+              "alternatives": [
+                "justify-content"
+              ]
+            },
+            {
+              "id": "review-section-18f0c6ca144a",
+              "alternatives": [
+                "align-items"
+              ]
+            },
+            {
+              "id": "review-section-6974d66c1ea2",
+              "alternatives": [
+                "align-content"
+              ]
+            },
+            {
+              "id": "review-section-2ea3dfadf604",
+              "alternatives": [
+                "gap, row-gap, column-gap"
+              ]
+            },
+            {
+              "id": "review-section-ed1086c3639a",
+              "alternatives": [
+                "place-items"
+              ]
+            },
+            {
+              "id": "review-section-5839be644458",
+              "alternatives": [
+                "Properties for the Children\n(Flex Items"
+              ]
+            },
+            {
+              "id": "review-section-3eeb7e96e59c",
+              "alternatives": [
+                "order"
+              ]
+            },
+            {
+              "id": "review-section-ce1e553ad7b8",
+              "alternatives": [
+                "flex-grow"
+              ]
+            },
+            {
+              "id": "review-section-843bd0c93664",
+              "alternatives": [
+                "flex-shrink"
+              ]
+            },
+            {
+              "id": "review-section-62e3b38e88e2",
+              "alternatives": [
+                "flex-basis"
+              ]
+            },
+            {
+              "id": "review-section-cd42978ffecb",
+              "alternatives": [
+                "align-self"
+              ]
+            },
+            {
+              "id": "review-section-51013bd54a5a",
+              "alternatives": [
+                "Interactive Walkthrough"
+              ]
+            },
+            {
+              "id": "review-section-8d64550e1e24",
+              "alternatives": [
+                "We Can Add Spacing Between Items"
+              ]
+            },
+            {
+              "id": "review-section-e71114ba0fcd",
+              "alternatives": [
+                "We Can Let the Items Wrap… or Not"
+              ]
+            },
+            {
+              "id": "review-section-b3a84b279c60",
+              "alternatives": [
+                "We Can Set the Direction"
+              ]
+            },
+            {
+              "id": "review-section-339815c57877",
+              "alternatives": [
+                "We Can “Order” Items Around"
+              ]
+            },
+            {
+              "id": "review-section-bde05982a554",
+              "alternatives": [
+                "We Can Shove Things Around"
+              ]
+            },
+            {
+              "id": "review-section-62359d8f908a",
+              "alternatives": [
+                "We Can Size the Items"
+              ]
+            },
+            {
+              "id": "review-section-be1c3c77fe9b",
+              "alternatives": [
+                "CSS Flexbox Examples"
+              ]
+            },
+            {
+              "id": "review-section-fd47534136c9",
+              "alternatives": [
+                "Flexbox Browser Support"
+              ]
+            },
+            {
+              "id": "review-section-43d0ffbef1c7",
+              "alternatives": [
+                "Prefixing Flexbox"
+              ]
+            },
+            {
+              "id": "review-section-d043dfd77338",
+              "alternatives": [
+                "Flexbox Tricks"
+              ]
+            },
+            {
+              "id": "review-section-cf718bd32e73",
+              "alternatives": [
+                "More Flexbox Resources"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true
     },
@@ -4503,7 +7072,343 @@
       "suite": "articles",
       "case_id": "article-067",
       "before_sha256": "90935185e68b9227a602dc9bff55b86d8cecd68e208dd8fc884d4c7d62ed7f34",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "Designing Better Error Messages UX"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "Vitaly Friedman"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "UX"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "Usability"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "Design Patterns"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "Articles"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "Books"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "Events"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "Membership"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "Newsletter"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "More"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Accessibility"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "CSS"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "JavaScript"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "Performance"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "Design"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "Figma"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "Wallpapers"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "React"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "Vue"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "Round-Ups"
+              ]
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "Web Design"
+              ]
+            },
+            {
+              "id": "stable-23",
+              "alternatives": [
+                "Guides"
+              ]
+            },
+            {
+              "id": "stable-24",
+              "alternatives": [
+                "Business"
+              ]
+            },
+            {
+              "id": "stable-25",
+              "alternatives": [
+                "Career"
+              ]
+            },
+            {
+              "id": "stable-26",
+              "alternatives": [
+                "Privacy"
+              ]
+            },
+            {
+              "id": "stable-27",
+              "alternatives": [
+                "Jump to all articles"
+              ]
+            },
+            {
+              "id": "stable-28",
+              "alternatives": [
+                "Share on"
+              ]
+            },
+            {
+              "id": "stable-29",
+              "alternatives": [
+                "Twitter"
+              ]
+            },
+            {
+              "id": "stable-30",
+              "alternatives": [
+                "LinkedIn"
+              ]
+            },
+            {
+              "id": "stable-31",
+              "alternatives": [
+                "ABOUT THE AUTHOR"
+              ]
+            },
+            {
+              "id": "stable-32",
+              "alternatives": [
+                "More about Vitaly"
+              ]
+            },
+            {
+              "id": "stable-33",
+              "alternatives": [
+                "Email Newsletter"
+              ]
+            },
+            {
+              "id": "stable-34",
+              "alternatives": [
+                "Your email"
+              ],
+              "visible_control": {
+                "selector": "#mce-EMAIL-hp",
+                "attribute": "placeholder"
+              }
+            },
+            {
+              "id": "stable-35",
+              "alternatives": [
+                "Meow!"
+              ],
+              "visible_control": {
+                "selector": "input[name=\"subscribe\"]",
+                "attribute": "value"
+              }
+            },
+            {
+              "id": "stable-36",
+              "alternatives": [
+                "Weekly tips on front-end & UX"
+              ]
+            },
+            {
+              "id": "stable-37",
+              "alternatives": [
+                "Explore more on"
+              ]
+            },
+            {
+              "id": "stable-control-38",
+              "alternatives": [
+                "Search articles..."
+              ],
+              "visible_control": {
+                "selector": "#js-search-input",
+                "attribute": "placeholder"
+              }
+            },
+            {
+              "id": "review-section-f672c54a24ef",
+              "alternatives": [
+                "Not All Error Messages Are Equal"
+              ]
+            },
+            {
+              "id": "review-section-93ed7465cdc6",
+              "alternatives": [
+                "Never Rely On Red Color Alone"
+              ]
+            },
+            {
+              "id": "review-section-8de3b51fac89",
+              "alternatives": [
+                "Avoid Auto-Scrolling And Auto-Jumps"
+              ]
+            },
+            {
+              "id": "review-section-6da9660d2e03",
+              "alternatives": [
+                "Never Cover User’s Input"
+              ]
+            },
+            {
+              "id": "review-section-4e77bb588ccd",
+              "alternatives": [
+                "In Forms, Display Error Messages Above Input"
+              ]
+            },
+            {
+              "id": "review-section-1fe8bed64fda",
+              "alternatives": [
+                "In Tables, Display Error Messages Inline"
+              ]
+            },
+            {
+              "id": "review-section-06d1a614e085",
+              "alternatives": [
+                "Don’t Rely On Toast Error Messages"
+              ]
+            },
+            {
+              "id": "review-section-df25a0ae5cac",
+              "alternatives": [
+                "Allow Users To Override An Error Message"
+              ]
+            },
+            {
+              "id": "review-section-a8a450ab7089",
+              "alternatives": [
+                "Establish Stop-Words For Your Error Messages"
+              ]
+            },
+            {
+              "id": "review-section-98857f72d5d8",
+              "alternatives": [
+                "Provide Examples Of Correct Input"
+              ]
+            },
+            {
+              "id": "review-section-bf2735850a93",
+              "alternatives": [
+                "Display Error Summary On The Top"
+              ]
+            },
+            {
+              "id": "review-section-e3bcbb261c4b",
+              "alternatives": [
+                "Wrapping Up"
+              ]
+            },
+            {
+              "id": "review-section-258d74edfb2d",
+              "alternatives": [
+                "Meet “Smart Interface Design Patterns"
+              ]
+            },
+            {
+              "id": "review-section-0249c5b3f776",
+              "alternatives": [
+                "Useful Resources"
+              ]
+            },
+            {
+              "id": "review-section-633bdcf8458f",
+              "alternatives": [
+                "RELATED ARTICLES"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true
     },
@@ -4519,7 +7424,211 @@
       "suite": "articles",
       "case_id": "article-069",
       "before_sha256": "877ee58b67fa987572617f0108f4d8c8b0b4d744908ba300c435f18f3528fa2b",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "The Reformer - Pushing the limits of language modeling"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "Patrick von Platen"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "patrickvonplaten"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "Hugging Face"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "Models"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "Datasets"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "Spaces"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "Buckets"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "Docs"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "Pricing"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "Log In"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Sign Up"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "Back to Articles"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "Update on GitHub"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "This article is also available in Chinese"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "简体中文"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "More Articles from our Blog"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "Community"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "Edit"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "Preview"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "Comment"
+              ]
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "Upload images, audio, and videos by dragging in the text input, pasting, or"
+              ]
+            },
+            {
+              "id": "stable-23",
+              "alternatives": [
+                "clicking here"
+              ]
+            },
+            {
+              "id": "stable-24",
+              "alternatives": [
+                "Models mentioned in this article"
+              ]
+            },
+            {
+              "id": "stable-25",
+              "alternatives": [
+                "TOS"
+              ]
+            },
+            {
+              "id": "stable-26",
+              "alternatives": [
+                "Privacy"
+              ]
+            },
+            {
+              "id": "stable-27",
+              "alternatives": [
+                "About"
+              ]
+            },
+            {
+              "id": "stable-28",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "review-section-08e63367d0ef",
+              "alternatives": [
+                "How the Reformer uses less than 8GB of RAM to train on sequences of half a million tokens"
+              ]
+            },
+            {
+              "id": "review-section-5af7a378b9ad",
+              "alternatives": [
+                "1. Reformer Self-Attention Layer"
+              ]
+            },
+            {
+              "id": "review-section-7bc1a92f5ef8",
+              "alternatives": [
+                "Recap Global Self-Attention"
+              ]
+            },
+            {
+              "id": "review-section-a2415bdb9170",
+              "alternatives": [
+                "local self-attention"
+              ]
+            },
+            {
+              "id": "review-section-567d90e1b945",
+              "alternatives": [
+                "LSH) self-attention"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true
     },
@@ -4535,7 +7644,541 @@
       "suite": "articles",
       "case_id": "article-071",
       "before_sha256": "f10a2a5e03deccd7259b24490255dd1229c71437dc449550f2720a3a2d9c2b96",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "GraphRAG: Unlocking LLM discovery on narrative private data"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "Jonathan Larson"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "Partner Data Architect"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "Steven Truitt"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "Principal Program Manager"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "Microsoft"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "Research"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "Our research"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "Programs & events"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "News"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "About"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Register: Research Forum"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "All Microsoft"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "Return to Blog Home"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "Microsoft Research Blog"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "Share this page"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "PUBLICATION"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "Can Generalist Foundation Models Outcompete Special-Purpose Tuning? Case Study in Medicine"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "Related publications"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "Meet the authors"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "Research Areas"
+              ]
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "Artificial intelligence"
+              ]
+            },
+            {
+              "id": "stable-23",
+              "alternatives": [
+                "Related Tools"
+              ]
+            },
+            {
+              "id": "stable-24",
+              "alternatives": [
+                "Graspologic"
+              ]
+            },
+            {
+              "id": "stable-25",
+              "alternatives": [
+                "Related projects"
+              ]
+            },
+            {
+              "id": "stable-26",
+              "alternatives": [
+                "Project GraphRAG"
+              ]
+            },
+            {
+              "id": "stable-27",
+              "alternatives": [
+                "Follow us:"
+              ]
+            },
+            {
+              "id": "stable-28",
+              "alternatives": [
+                "Share this page:"
+              ]
+            },
+            {
+              "id": "stable-29",
+              "alternatives": [
+                "Microsoft Research Newsletter"
+              ]
+            },
+            {
+              "id": "stable-30",
+              "alternatives": [
+                "Stay connected to the research community at Microsoft."
+              ]
+            },
+            {
+              "id": "stable-31",
+              "alternatives": [
+                "Subscribe today"
+              ]
+            },
+            {
+              "id": "stable-32",
+              "alternatives": [
+                "Microsoft Store"
+              ]
+            },
+            {
+              "id": "stable-33",
+              "alternatives": [
+                "Account profile"
+              ]
+            },
+            {
+              "id": "stable-34",
+              "alternatives": [
+                "Download Center"
+              ]
+            },
+            {
+              "id": "stable-35",
+              "alternatives": [
+                "Microsoft Store support"
+              ]
+            },
+            {
+              "id": "stable-36",
+              "alternatives": [
+                "Returns"
+              ]
+            },
+            {
+              "id": "stable-37",
+              "alternatives": [
+                "Order tracking"
+              ]
+            },
+            {
+              "id": "stable-38",
+              "alternatives": [
+                "Certified Refurbished"
+              ]
+            },
+            {
+              "id": "stable-39",
+              "alternatives": [
+                "Why buy from Microsoft Store"
+              ]
+            },
+            {
+              "id": "stable-40",
+              "alternatives": [
+                "Flexible Payments"
+              ]
+            },
+            {
+              "id": "stable-41",
+              "alternatives": [
+                "Education"
+              ]
+            },
+            {
+              "id": "stable-42",
+              "alternatives": [
+                "Microsoft in education"
+              ]
+            },
+            {
+              "id": "stable-43",
+              "alternatives": [
+                "Devices for education"
+              ]
+            },
+            {
+              "id": "stable-44",
+              "alternatives": [
+                "Microsoft Teams for Education"
+              ]
+            },
+            {
+              "id": "stable-45",
+              "alternatives": [
+                "Microsoft 365 Education"
+              ]
+            },
+            {
+              "id": "stable-46",
+              "alternatives": [
+                "How to buy for your school"
+              ]
+            },
+            {
+              "id": "stable-47",
+              "alternatives": [
+                "Educator training and development"
+              ]
+            },
+            {
+              "id": "stable-48",
+              "alternatives": [
+                "Deals for students and parents"
+              ]
+            },
+            {
+              "id": "stable-49",
+              "alternatives": [
+                "AI for education"
+              ]
+            },
+            {
+              "id": "stable-50",
+              "alternatives": [
+                "Business"
+              ]
+            },
+            {
+              "id": "stable-51",
+              "alternatives": [
+                "Microsoft AI"
+              ]
+            },
+            {
+              "id": "stable-52",
+              "alternatives": [
+                "Microsoft Security"
+              ]
+            },
+            {
+              "id": "stable-53",
+              "alternatives": [
+                "Dynamics 365"
+              ]
+            },
+            {
+              "id": "stable-54",
+              "alternatives": [
+                "Microsoft 365"
+              ]
+            },
+            {
+              "id": "stable-55",
+              "alternatives": [
+                "Microsoft Power Platform"
+              ]
+            },
+            {
+              "id": "stable-56",
+              "alternatives": [
+                "Microsoft Teams"
+              ]
+            },
+            {
+              "id": "stable-57",
+              "alternatives": [
+                "Microsoft Copilot"
+              ]
+            },
+            {
+              "id": "stable-58",
+              "alternatives": [
+                "Small Business"
+              ]
+            },
+            {
+              "id": "stable-59",
+              "alternatives": [
+                "Developer & IT"
+              ]
+            },
+            {
+              "id": "stable-60",
+              "alternatives": [
+                "Azure"
+              ]
+            },
+            {
+              "id": "stable-61",
+              "alternatives": [
+                "Microsoft Developer"
+              ]
+            },
+            {
+              "id": "stable-62",
+              "alternatives": [
+                "Microsoft Learn"
+              ]
+            },
+            {
+              "id": "stable-63",
+              "alternatives": [
+                "Microsoft Tech Community"
+              ]
+            },
+            {
+              "id": "stable-64",
+              "alternatives": [
+                "Visual Studio"
+              ]
+            },
+            {
+              "id": "stable-65",
+              "alternatives": [
+                "Company"
+              ]
+            },
+            {
+              "id": "stable-66",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "stable-67",
+              "alternatives": [
+                "About Microsoft"
+              ]
+            },
+            {
+              "id": "stable-68",
+              "alternatives": [
+                "Company news"
+              ]
+            },
+            {
+              "id": "stable-69",
+              "alternatives": [
+                "Privacy at Microsoft"
+              ]
+            },
+            {
+              "id": "stable-70",
+              "alternatives": [
+                "Investors"
+              ]
+            },
+            {
+              "id": "stable-71",
+              "alternatives": [
+                "Diversity and inclusion"
+              ]
+            },
+            {
+              "id": "stable-72",
+              "alternatives": [
+                "Accessibility"
+              ]
+            },
+            {
+              "id": "stable-73",
+              "alternatives": [
+                "Sustainability"
+              ]
+            },
+            {
+              "id": "stable-74",
+              "alternatives": [
+                "Your Privacy Choices"
+              ]
+            },
+            {
+              "id": "stable-75",
+              "alternatives": [
+                "Consumer Health Privacy"
+              ]
+            },
+            {
+              "id": "stable-76",
+              "alternatives": [
+                "Sitemap"
+              ]
+            },
+            {
+              "id": "stable-77",
+              "alternatives": [
+                "Contact Microsoft"
+              ]
+            },
+            {
+              "id": "stable-78",
+              "alternatives": [
+                "Privacy"
+              ]
+            },
+            {
+              "id": "stable-79",
+              "alternatives": [
+                "Terms of use"
+              ]
+            },
+            {
+              "id": "stable-80",
+              "alternatives": [
+                "Trademarks"
+              ]
+            },
+            {
+              "id": "stable-81",
+              "alternatives": [
+                "Safety & eco"
+              ]
+            },
+            {
+              "id": "stable-82",
+              "alternatives": [
+                "Recycling"
+              ]
+            },
+            {
+              "id": "stable-83",
+              "alternatives": [
+                "About our ads"
+              ]
+            },
+            {
+              "id": "review-section-29021619bb6a",
+              "alternatives": [
+                "Applying RAG to private datasets"
+              ]
+            },
+            {
+              "id": "review-section-c3adbbd6b7b6",
+              "alternatives": [
+                "Whole dataset reasoning"
+              ]
+            },
+            {
+              "id": "review-section-748fe784adaf",
+              "alternatives": [
+                "Creating LLM-generated knowledge graphs"
+              ]
+            },
+            {
+              "id": "review-section-77c87e27c47b",
+              "alternatives": [
+                "Result metrics"
+              ]
+            },
+            {
+              "id": "review-section-dd00d3d3e9f7",
+              "alternatives": [
+                "Next steps"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true
     },
@@ -4657,7 +8300,373 @@
       "suite": "articles",
       "case_id": "article-081",
       "before_sha256": "61e93061580f55b89907279c35bd3b22696366370c8df96c348caefc264fdd4a",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "The\\ short\\ history\\ of\\ global\\ living\\ conditions\\ and\\ why\\ it\\ matters\\ that\\ we\\ know\\ it"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "Max Roser"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "Originally published on December 14, 2016 (last partial update and revision in February 2024)"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "Cite this article"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "Home"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "Our World in Data"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "Browse by topic"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "Data"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "Latest"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "Resources"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "About"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Donate"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "Poverty"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "Literacy"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "Health"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "Freedom"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "Population"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "Education"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "Why do we not know how our world is changing?"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "Why it matters that we do not know how our world is changing"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "The world as 100 people over the last two centuries"
+              ]
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "Download"
+              ]
+            },
+            {
+              "id": "stable-23",
+              "alternatives": [
+                "Subscribe to our newsletters"
+              ]
+            },
+            {
+              "id": "stable-24",
+              "alternatives": [
+                "We send two regular newsletters so you can stay up to date on our work and receive curated highlights from across Our World in Data."
+              ]
+            },
+            {
+              "id": "stable-25",
+              "alternatives": [
+                "Subscribe"
+              ]
+            },
+            {
+              "id": "stable-26",
+              "alternatives": [
+                "Endnotes"
+              ]
+            },
+            {
+              "id": "stable-27",
+              "alternatives": [
+                "Cite this work"
+              ]
+            },
+            {
+              "id": "stable-28",
+              "alternatives": [
+                "BibTeX citation"
+              ]
+            },
+            {
+              "id": "stable-29",
+              "alternatives": [
+                "Past versions"
+              ]
+            },
+            {
+              "id": "stable-30",
+              "alternatives": [
+                "Browse past versions"
+              ]
+            },
+            {
+              "id": "stable-31",
+              "alternatives": [
+                "Reuse this work freely"
+              ]
+            },
+            {
+              "id": "stable-32",
+              "alternatives": [
+                "Our World in Data is free and accessible for everyone."
+              ]
+            },
+            {
+              "id": "stable-33",
+              "alternatives": [
+                "Help us do this work by making a donation."
+              ]
+            },
+            {
+              "id": "stable-34",
+              "alternatives": [
+                "Donate now"
+              ]
+            },
+            {
+              "id": "stable-35",
+              "alternatives": [
+                "Our World in Data is a project of Global Change Data Lab , a nonprofit based in the UK (Reg. Charity No. 1186433). Our charts, articles, and data are licensed under CC BY , unless stated otherwise. The source code for our tools and software is made publicly available for transparency and educational reference under a custom license . Re-use requires permission. Third-party materials, including some charts and data, are subject to third-party licenses. See our FAQs for more details."
+              ]
+            },
+            {
+              "id": "stable-36",
+              "alternatives": [
+                "Global Change Data Lab"
+              ]
+            },
+            {
+              "id": "stable-37",
+              "alternatives": [
+                "CC BY"
+              ]
+            },
+            {
+              "id": "stable-38",
+              "alternatives": [
+                "custom license"
+              ]
+            },
+            {
+              "id": "stable-39",
+              "alternatives": [
+                "FAQs"
+              ]
+            },
+            {
+              "id": "stable-40",
+              "alternatives": [
+                "Explore"
+              ]
+            },
+            {
+              "id": "stable-41",
+              "alternatives": [
+                "Topics"
+              ]
+            },
+            {
+              "id": "stable-42",
+              "alternatives": [
+                "Data Insights"
+              ]
+            },
+            {
+              "id": "stable-43",
+              "alternatives": [
+                "SDG Tracker"
+              ]
+            },
+            {
+              "id": "stable-44",
+              "alternatives": [
+                "Teaching with OWID"
+              ]
+            },
+            {
+              "id": "stable-45",
+              "alternatives": [
+                "About us"
+              ]
+            },
+            {
+              "id": "stable-46",
+              "alternatives": [
+                "Organization"
+              ]
+            },
+            {
+              "id": "stable-47",
+              "alternatives": [
+                "Funding"
+              ]
+            },
+            {
+              "id": "stable-48",
+              "alternatives": [
+                "Team"
+              ]
+            },
+            {
+              "id": "stable-49",
+              "alternatives": [
+                "Jobs"
+              ]
+            },
+            {
+              "id": "stable-50",
+              "alternatives": [
+                "RSS Feeds"
+              ]
+            },
+            {
+              "id": "stable-51",
+              "alternatives": [
+                "Research & Writing"
+              ]
+            },
+            {
+              "id": "stable-52",
+              "alternatives": [
+                "Follow us"
+              ]
+            },
+            {
+              "id": "stable-53",
+              "alternatives": [
+                "Privacy policy"
+              ]
+            },
+            {
+              "id": "stable-54",
+              "alternatives": [
+                "Cookie notice"
+              ]
+            },
+            {
+              "id": "stable-55",
+              "alternatives": [
+                "Legal disclaimer"
+              ]
+            },
+            {
+              "id": "stable-56",
+              "alternatives": [
+                "Grapher license"
+              ]
+            },
+            {
+              "id": "stable-57",
+              "alternatives": [
+                "Send feedback"
+              ]
+            },
+            {
+              "id": "review-section-bd28686e35e7",
+              "alternatives": [
+                "Very few think the world is making progress. In this article, we look at the history of global living conditions and show that the world has made immense progress in important aspects."
+              ]
+            },
+            {
+              "id": "review-section-6d1ae873847e",
+              "alternatives": [
+                "The World Bank has updated its poverty and inequality data since the publication of this article"
+              ]
+            },
+            {
+              "id": "review-section-191b605b20da",
+              "alternatives": [
+                "Translations of this article in other languages"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true,
       "body_projection": {
@@ -4781,7 +8790,319 @@
       "suite": "articles",
       "case_id": "article-087",
       "before_sha256": "67cc39d7f103b8a11b9540ed34cf2127e8e766b227176fe8ec2bc221af1372a1",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "Go Concurrency Patterns: Context"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "Sameer Ajmani"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "The Go Blog"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "Why Go"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "Learn"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "Docs"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "Packages"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "Community"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "Next article"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "Previous article"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "Blog Index"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Use Cases"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "Case Studies"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "Get Started"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "Playground"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "Tour"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "Stack Overflow"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "Help"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "Standard Library"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "About Go Packages"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "pkg.go.dev API"
+              ]
+            },
+            {
+              "id": "stable-22",
+              "alternatives": [
+                "About"
+              ]
+            },
+            {
+              "id": "stable-23",
+              "alternatives": [
+                "Download"
+              ]
+            },
+            {
+              "id": "stable-24",
+              "alternatives": [
+                "Blog"
+              ]
+            },
+            {
+              "id": "stable-25",
+              "alternatives": [
+                "Issue Tracker"
+              ]
+            },
+            {
+              "id": "stable-26",
+              "alternatives": [
+                "Release Notes"
+              ]
+            },
+            {
+              "id": "stable-27",
+              "alternatives": [
+                "Brand Guidelines"
+              ]
+            },
+            {
+              "id": "stable-28",
+              "alternatives": [
+                "Code of Conduct"
+              ]
+            },
+            {
+              "id": "stable-29",
+              "alternatives": [
+                "Connect"
+              ]
+            },
+            {
+              "id": "stable-30",
+              "alternatives": [
+                "Bluesky"
+              ]
+            },
+            {
+              "id": "stable-31",
+              "alternatives": [
+                "Mastodon"
+              ]
+            },
+            {
+              "id": "stable-32",
+              "alternatives": [
+                "Twitter"
+              ]
+            },
+            {
+              "id": "stable-33",
+              "alternatives": [
+                "GitHub"
+              ]
+            },
+            {
+              "id": "stable-34",
+              "alternatives": [
+                "Slack"
+              ]
+            },
+            {
+              "id": "stable-35",
+              "alternatives": [
+                "r/golang"
+              ]
+            },
+            {
+              "id": "stable-36",
+              "alternatives": [
+                "Meetup"
+              ]
+            },
+            {
+              "id": "stable-37",
+              "alternatives": [
+                "Golang Weekly"
+              ]
+            },
+            {
+              "id": "stable-38",
+              "alternatives": [
+                "Copyright"
+              ]
+            },
+            {
+              "id": "stable-39",
+              "alternatives": [
+                "Terms of Service"
+              ]
+            },
+            {
+              "id": "stable-40",
+              "alternatives": [
+                "Privacy Policy"
+              ]
+            },
+            {
+              "id": "stable-41",
+              "alternatives": [
+                "Report an Issue"
+              ]
+            },
+            {
+              "id": "review-section-b605350bc002",
+              "alternatives": [
+                "Introduction"
+              ]
+            },
+            {
+              "id": "review-section-a6e600a10fed",
+              "alternatives": [
+                "Context"
+              ]
+            },
+            {
+              "id": "review-section-45d66d14bb16",
+              "alternatives": [
+                "Derived contexts"
+              ]
+            },
+            {
+              "id": "review-section-01406ab0a320",
+              "alternatives": [
+                "Example: Google Web Search"
+              ]
+            },
+            {
+              "id": "review-section-b8d2b0b6b065",
+              "alternatives": [
+                "The server program"
+              ]
+            },
+            {
+              "id": "review-section-aca4797a7a34",
+              "alternatives": [
+                "Package userip"
+              ]
+            },
+            {
+              "id": "review-section-bc0ca27ed7ac",
+              "alternatives": [
+                "Package google"
+              ]
+            },
+            {
+              "id": "review-section-f6a7a97a7848",
+              "alternatives": [
+                "Adapting code for Contexts"
+              ]
+            },
+            {
+              "id": "review-section-89db2ad881f2",
+              "alternatives": [
+                "Conclusion"
+              ]
+            },
+            {
+              "id": "review-section-4082f515b2f4",
+              "alternatives": [
+                "Further reading"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true,
       "body_projection": {
@@ -4873,7 +9194,181 @@
       "suite": "articles",
       "case_id": "article-088",
       "before_sha256": "d4f8f55e46160eb382fe34a8be4fe8cded6227b3ea55d28deda28c04a3db13dc",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "Attention\\ and\\ Augmented\\ Recurrent\\ Neural\\ Networks"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "CHRIS OLAH"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "SHAN CARTER"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "Google Brain"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "Sept. 8"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "2016"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "Citation:"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "Olah & Carter, 2016"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "Distill"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "ABOUT"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "PRIZE"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "SUBMIT"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "Distill is dedicated to clear explanations of machine learning"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "Archive"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "RSS"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "GitHub"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "Twitter"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "ISSN 2476-0757"
+              ]
+            },
+            {
+              "id": "review-section-c2e004830424",
+              "alternatives": [
+                "Neural Turing\nMachines"
+              ]
+            },
+            {
+              "id": "review-section-340f463033e0",
+              "alternatives": [
+                "Code"
+              ]
+            },
+            {
+              "id": "review-section-03b3ee3ef46e",
+              "alternatives": [
+                "Attentional\nInterfaces"
+              ]
+            },
+            {
+              "id": "review-section-9a63b55240d4",
+              "alternatives": [
+                "Adaptive\nComputation Time"
+              ]
+            },
+            {
+              "id": "review-section-7a2f4f2313d6",
+              "alternatives": [
+                "Neural\nProgrammer"
+              ]
+            },
+            {
+              "id": "review-section-6a1c7bdd1527",
+              "alternatives": [
+                "The big picture"
+              ]
+            },
+            {
+              "id": "review-section-4be0f860ee35",
+              "alternatives": [
+                "Acknowledgments"
+              ]
+            },
+            {
+              "id": "review-section-69824d3b0e70",
+              "alternatives": [
+                "References"
+              ]
+            },
+            {
+              "id": "review-section-b800b31e4545",
+              "alternatives": [
+                "Updates and Corrections"
+              ]
+            },
+            {
+              "id": "review-section-2168a0c8f2e1",
+              "alternatives": [
+                "Citations and Reuse"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true,
       "body_projection": {
@@ -5407,7 +9902,139 @@
       "suite": "articles",
       "case_id": "article-092",
       "before_sha256": "252f8840b24a02e86f14d3eb62c2a04b64400fc5841e06084ca8e0384a793659",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "A crash course in just-in-time \\(JIT\\) compilers"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "Lin Clark"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "A cartoon intro to WebAssembly"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "JavaScript"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "Performance"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "Download Firefox"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "Discover great resources for web development"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "Sign up for the Mozilla Developer Newsletter"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "Privacy Policy"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "Sign up now"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "Comments are closed for this article."
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Creative Commons Attribution Share-Alike License v3.0"
+              ]
+            },
+            {
+              "id": "review-section-08010bfe80bb",
+              "alternatives": [
+                "How JavaScript is run in the browser"
+              ]
+            },
+            {
+              "id": "review-section-56e33515abc9",
+              "alternatives": [
+                "Interpreter pros and cons"
+              ]
+            },
+            {
+              "id": "review-section-19c6bb67a8cd",
+              "alternatives": [
+                "Compiler pros and cons"
+              ]
+            },
+            {
+              "id": "review-section-5db7d8e01554",
+              "alternatives": [
+                "Just-in-time compilers: the best of both worlds"
+              ]
+            },
+            {
+              "id": "review-section-a963b08e6610",
+              "alternatives": [
+                "Baseline compiler"
+              ]
+            },
+            {
+              "id": "review-section-fc2d8a7eeb6a",
+              "alternatives": [
+                "Optimizing compiler"
+              ]
+            },
+            {
+              "id": "review-section-308e795676e3",
+              "alternatives": [
+                "An example optimization: Type specialization"
+              ]
+            },
+            {
+              "id": "review-section-89db2ad881f2",
+              "alternatives": [
+                "Conclusion"
+              ]
+            },
+            {
+              "id": "review-section-d6a1636cb31a",
+              "alternatives": [
+                "About Lin Clark"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true,
       "body_projection": {
@@ -5523,7 +10150,253 @@
       "suite": "articles",
       "case_id": "article-096",
       "before_sha256": "656b70c2b7da9c074c97b3d99a54198f808c4b550a6a5ce6b2a9ce9db3dfc758",
-      "set": {},
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "page_patterns": [
+            "LLM Powered Autonomous Agents"
+          ],
+          "stable_text_role": "required",
+          "stable_text_anchors": [
+            {
+              "id": "stable-2",
+              "alternatives": [
+                "Lil'Log"
+              ]
+            },
+            {
+              "id": "stable-3",
+              "alternatives": [
+                "Posts"
+              ]
+            },
+            {
+              "id": "stable-4",
+              "alternatives": [
+                "Archive"
+              ]
+            },
+            {
+              "id": "stable-5",
+              "alternatives": [
+                "Search"
+              ]
+            },
+            {
+              "id": "stable-6",
+              "alternatives": [
+                "Tags"
+              ]
+            },
+            {
+              "id": "stable-7",
+              "alternatives": [
+                "FAQ"
+              ]
+            },
+            {
+              "id": "stable-8",
+              "alternatives": [
+                "Lilian Weng"
+              ]
+            },
+            {
+              "id": "stable-9",
+              "alternatives": [
+                "June 23, 2023"
+              ]
+            },
+            {
+              "id": "stable-10",
+              "alternatives": [
+                "Estimated Reading Time: 31 min"
+              ]
+            },
+            {
+              "id": "stable-11",
+              "alternatives": [
+                "Table of Contents"
+              ]
+            },
+            {
+              "id": "stable-12",
+              "alternatives": [
+                "Nlp"
+              ]
+            },
+            {
+              "id": "stable-13",
+              "alternatives": [
+                "Language-Model"
+              ]
+            },
+            {
+              "id": "stable-14",
+              "alternatives": [
+                "Agent"
+              ]
+            },
+            {
+              "id": "stable-15",
+              "alternatives": [
+                "Steerability"
+              ]
+            },
+            {
+              "id": "stable-16",
+              "alternatives": [
+                "Prompting"
+              ]
+            },
+            {
+              "id": "stable-17",
+              "alternatives": [
+                "Adversarial Attacks on LLMs"
+              ]
+            },
+            {
+              "id": "stable-18",
+              "alternatives": [
+                "Prompt Engineering"
+              ]
+            },
+            {
+              "id": "stable-19",
+              "alternatives": [
+                "Powered by"
+              ]
+            },
+            {
+              "id": "stable-20",
+              "alternatives": [
+                "Hugo"
+              ]
+            },
+            {
+              "id": "stable-21",
+              "alternatives": [
+                "PaperMod"
+              ]
+            },
+            {
+              "id": "body-challenge-context",
+              "alternatives": [
+                "Finite context length"
+              ]
+            },
+            {
+              "id": "body-challenge-planning",
+              "alternatives": [
+                "Challenges in long-term planning and task decomposition"
+              ]
+            },
+            {
+              "id": "body-challenge-interface",
+              "alternatives": [
+                "Reliability of natural language interface"
+              ]
+            },
+            {
+              "id": "body-citation",
+              "alternatives": [
+                "@article{weng2023agent"
+              ]
+            },
+            {
+              "id": "review-section-31ae75d8b9ed",
+              "alternatives": [
+                "Agent System Overview"
+              ]
+            },
+            {
+              "id": "review-section-8655f759a1dc",
+              "alternatives": [
+                "Component One: Planning"
+              ]
+            },
+            {
+              "id": "review-section-5b9d8898212c",
+              "alternatives": [
+                "Task Decomposition"
+              ]
+            },
+            {
+              "id": "review-section-3b514fe586a6",
+              "alternatives": [
+                "self-reflection"
+              ]
+            },
+            {
+              "id": "review-section-6b0fb20773b8",
+              "alternatives": [
+                "Component Two: Memory"
+              ]
+            },
+            {
+              "id": "review-section-65802f20ecc2",
+              "alternatives": [
+                "Types of Memory"
+              ]
+            },
+            {
+              "id": "review-section-a8bdf9651d89",
+              "alternatives": [
+                "Maximum Inner Product Search (MIPS"
+              ]
+            },
+            {
+              "id": "review-section-ed94d12df7a1",
+              "alternatives": [
+                "Component Three: Tool Use"
+              ]
+            },
+            {
+              "id": "review-section-545fab8e6a83",
+              "alternatives": [
+                "Case Studies"
+              ]
+            },
+            {
+              "id": "review-section-24342a3cb27a",
+              "alternatives": [
+                "Scientific Discovery Agent"
+              ]
+            },
+            {
+              "id": "review-section-b40adc1f99eb",
+              "alternatives": [
+                "Generative Agents Simulation"
+              ]
+            },
+            {
+              "id": "review-section-5e9fa9ab0eca",
+              "alternatives": [
+                "Proof-of-Concept Examples"
+              ]
+            },
+            {
+              "id": "review-section-6a5800844860",
+              "alternatives": [
+                "challenges"
+              ]
+            },
+            {
+              "id": "review-section-2955789aa4f8",
+              "alternatives": [
+                "Citation"
+              ]
+            },
+            {
+              "id": "review-section-07a0b0962107",
+              "alternatives": [
+                "references"
+              ]
+            }
+          ]
+        }
+      },
       "remove": [],
       "body_ending_order": true
     },
@@ -5727,6 +10600,18 @@
               "id": "review-scope-visible-3",
               "alternatives": [
                 "Our projects"
+              ]
+            },
+            {
+              "id": "review-section-45ce123a6486",
+              "alternatives": [
+                "The full top 25"
+              ]
+            },
+            {
+              "id": "review-section-2d4b3e2813c6",
+              "alternatives": [
+                "Appendix"
               ]
             }
           ]
@@ -19246,7 +24131,7 @@
         "acceptance_contract": {
           "version": 1,
           "schema": "named_link",
-          "minimum_records": 3,
+          "minimum_records": 13,
           "hosts": [
             "www.amazon.com"
           ],
@@ -19261,7 +24146,13 @@
               "match_scope": "non_record_lines"
             }
           ],
-          "entry_context": "list_or_card"
+          "entry_context": "list_or_card",
+          "entry_scope": {
+            "html_selector": ".s-main-slot",
+            "start_pattern": "Results",
+            "end_pattern": "Related searches|Need help\\?",
+            "required_end": true
+          }
         }
       },
       "remove": []
@@ -19274,7 +24165,7 @@
         "acceptance_contract": {
           "version": 1,
           "schema": "named_link",
-          "minimum_records": 3,
+          "minimum_records": 200,
           "hosts": [
             "www.imdb.com",
             "imdb.com"
@@ -19926,6 +24817,84 @@
         "content_score_applicable": true
       },
       "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "challenge-01",
+      "before_sha256": "3eec7c031b44dc5829d020e1e8501516f4cb81cb4a1cbc4b8e4124501398303a",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 58,
+          "hosts": [
+            "www.anthropologie.com",
+            "www.anthropologie.com.cn"
+          ],
+          "entry_path": "/shop/[^/]+",
+          "stable_text_anchors": [
+            {
+              "id": "page-text-1",
+              "alternatives": [
+                "Decorative Candles"
+              ]
+            },
+            {
+              "id": "page-text-2",
+              "alternatives": [
+                "Price"
+              ]
+            },
+            {
+              "id": "page-text-3",
+              "alternatives": [
+                "Color"
+              ]
+            },
+            {
+              "id": "page-text-4",
+              "alternatives": [
+                "Brand"
+              ]
+            }
+          ],
+          "entry_context": "list_or_card"
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "challenge-08",
+      "before_sha256": "d6d686dacaaad32dfc1ee48647fde912eb35382b7165f7a2642f747c902bcc66",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 20,
+          "hosts": [
+            "www.reddit.com",
+            "reddit.com"
+          ],
+          "entry_path": "/r/programming/comments/[a-z0-9]+(?:/[^/]+)?",
+          "stable_text_anchors": [
+            {
+              "id": "community-text-1",
+              "alternatives": [
+                "r/programming"
+              ]
+            },
+            {
+              "id": "community-text-2",
+              "alternatives": [
+                "Do you have a question? Check out /r/learnprogramming, /r/cscareerquestions, or Stack Overflow."
+              ]
+            }
+          ],
+          "entry_context": "list_or_card"
+        }
+      },
+      "remove": []
     }
   ],
   "review_inputs": {
@@ -19966,7 +24935,41 @@
       "review-evidence/popular-sites/identity-observations-20260916.json": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2"
     },
     "articles": {
-      "review-evidence/articles/article-090/body.html": "0667feb4e6b962f0073241c2b277367e5869f72bc0e5ebab52fee555d82f1b1d"
+      "review-evidence/articles/article-090/body.html": "0667feb4e6b962f0073241c2b277367e5869f72bc0e5ebab52fee555d82f1b1d",
+      "review-evidence/long-articles/article-022/text.txt": "4fb12c55ce812da78f003c77bb9d9040bb627d098e10b73a2364352889448310",
+      "review-evidence/long-articles/article-022/dom.html": "459e2d033379192e44c34d3eac2696b6f657f0988fbde57bb2142a774dc408d8",
+      "review-evidence/long-articles/article-028/text.txt": "9e51159d0a9ce747ff85126b83eb36e6a73932122e45e98cb2c5264c9062b748",
+      "review-evidence/long-articles/article-028/dom.html": "ef772668aae42d85fe333c48264f3580fab180fd52d1f4d4a304902038262c69",
+      "review-evidence/long-articles/article-057/text.txt": "fa5fa09defa80f1ce2b6e28399732dd6c615db62063c09da152cdd2bd0febb07",
+      "review-evidence/long-articles/article-057/dom.html": "578b43dd8257c50845469c24df2aa44db8145bdfe8675b469cb226becdfdd9ec",
+      "review-evidence/long-articles/article-065/text.txt": "ba2a0305bdf98f80746eca52dc8fc810289da01593bf373980417fa013e11129",
+      "review-evidence/long-articles/article-065/dom.html": "94ed8954ebf52858a070de6adb11f35462aa21905e5eab71ddc9d964713ef525",
+      "review-evidence/long-articles/article-066/text.txt": "e0e21bc8f6d987dfb77ff116fab23c201aca534b1bea88efe09fd45657c53cc2",
+      "review-evidence/long-articles/article-066/dom.html": "7c3159cfa3b884507479feba18743713cd317362eda761d0256ef6471b1ec671",
+      "review-evidence/long-articles/article-066/provenance-0.json": "09e69e42084956614e7ccf9d5e889c68fc958777df35531ece108410078fbdcc",
+      "review-evidence/long-articles/article-066/provenance-1.json": "1360030117b45c01f2617085bab28b8c920b9f7269cc5bbd382ab00b767ff175",
+      "review-evidence/long-articles/article-067/text.txt": "4480be864b4754e4d7a89f9969984027003873994513e399288c3664df76332f",
+      "review-evidence/long-articles/article-067/dom.html": "67e324f431065abc66ee215597e95cb2abcb514de912e54a2c0730c12fdd65fc",
+      "review-evidence/long-articles/article-067/provenance-0.json": "df5cec7791e396fa4acc28e173fb411a08940d3091ed4e51face455475ac0a93",
+      "review-evidence/long-articles/article-067/provenance-1.json": "f3a3529ed1e46bc79a7f998e8d595fc0ead80b7f7edef029d1c49fdc9f37f7cc",
+      "review-evidence/long-articles/article-081/text.txt": "da7ab6fe57b35cde3a31f7f75f585115a241185695a81d2df4f98dcbd00d900d",
+      "review-evidence/long-articles/article-081/dom.html": "91f92d269a62ed910536d31e950eff2d58a001a9cd9736806f29bc95ab57798c",
+      "review-evidence/long-articles/article-087/text.txt": "12adbe934719099f07b95c3c5e92f0604181ba6b2ee8a72dad72d218d617f979",
+      "review-evidence/long-articles/article-087/dom.html": "325dd315862e83adc56b4191a3f81967eae04973caaf8d6404072d8477c49068",
+      "review-evidence/long-articles/article-096/text.txt": "0922c9e8eae809774c5a55100734aee60f49e282be0570487035920df077f793",
+      "review-evidence/long-articles/article-096/dom.html": "103ea42eab8c8d99c19b1d13a4e08605e5e4ec0510cb38c62998e20a6dbeac80",
+      "review-evidence/long-articles/article-045/text.txt": "dd9c554d35316849f82a32edec6786b72695d6fa7d6c44da9d24930aa673efe1",
+      "review-evidence/long-articles/article-045/dom.html": "0985125124163f0d36d268c635f334fda4fa6581515dc2f616a7a1f6d4bdd470",
+      "review-evidence/long-articles/article-069/text.txt": "6f595c3a15adc5341ebb3d806d01c2ed8ba56d3c3879cc803635f9c3188ace52",
+      "review-evidence/long-articles/article-069/dom.html": "457531971947aa4c1933605f232f8ad667b8c22d63b3b172b5de1151797949ba",
+      "review-evidence/long-articles/article-071/text.txt": "04cd6c12c65fa6acd0ce7c3aff5281ef64a93dfdd5342640ccc15a8121f71373",
+      "review-evidence/long-articles/article-071/dom.html": "4922c394a74148320ce90403be3358c7f3e39150a5eb844e55c87be49f37e89a",
+      "review-evidence/long-articles/article-088/text.txt": "dd01ac791c895e9a99f21be7a4efdfdc35fd4722ee5b85915a54d9990655addb",
+      "review-evidence/long-articles/article-088/dom.html": "2b60731493d59ae04056cac2c947412dddb32de275a42311d43af04dd8ec63e5",
+      "review-evidence/long-articles/article-092/text.txt": "2387f4ee6c093fa719370195e765ae604a9bc7472b933237a6c742422019f2a9",
+      "review-evidence/long-articles/article-092/dom.html": "18e46e43046167a2f9246c692bcdcd6dc3a96e93d8c07e1c2ac93ed857fc2d60",
+      "review-evidence/long-articles/article-099/text.txt": "85e7559593ccd72fd9e06622a01dd026986d7006dd845e83faa05ac9820b6ec7",
+      "review-evidence/long-articles/article-099/dom.html": "f0ede434d112df1f5c9c141d63e066c59f9292d40497582796e21032ab8886ae"
     },
     "access-restrictions": {
       "review-evidence/access-restrictions/risk-diverse-027/round-01.html": "a8a594253de6ac37ca097ca650c04fb336a503fd6b2974dc13478791ea628697",
@@ -19995,7 +24998,17 @@
       "review-evidence/webfetch/feishu-initial-20261023/capture.json": "f8d39bc8c999f016589bd4d9cc6dbfa17447127f977bf6ac694ec11dd33ddda1",
       "review-evidence/webfetch/feishu-initial-20261023/article.html": "7a35ab873f47030a8902aae0905fc8b1dbb1034888abcdbc1dad7c80078b9c79",
       "review-evidence/webfetch/feishu-initial-20261023/article.txt": "357757e6bc244aa4e567a263110b66ed0ecb641218753c05f298cb0e323d19d4",
-      "review-evidence/webfetch/rfc9110-forbidden-review/source.html": "d431760660ea44e130f6e919dab216df2d0b3a490567a98089267523368fe1e5"
+      "review-evidence/webfetch/rfc9110-forbidden-review/source.html": "d431760660ea44e130f6e919dab216df2d0b3a490567a98089267523368fe1e5",
+      "review-evidence/webfetch/wcag21-frozen-source.txt": "4e427c638b8372ae21dec876596004451c1bfe43a23ac4331fc3ce8e6f1a1a5c",
+      "review-evidence/webfetch/browser-use-frozen-source.txt": "e0125e5233473fcf1266c1bdfb5fb3d5e3545ae027b5f954dcceb3d874e50765",
+      "review-evidence/webfetch/challenge-initial-20261023/imdb-complete.json": "8a3b2a6e52862dfd4434b775fcf38c92ad508fd5732469f06acc0dc50bf23f88",
+      "review-evidence/webfetch/challenge-initial-20261023/imdb-visibility.json": "7ee3cfa1e85246a47ec3f776aad89e73d3594f269e15dddc5d27ec8aea5d8716",
+      "review-evidence/webfetch/challenge-initial-20261023/anthro-complete.json": "ef4bf70b90128866419b0fa1454c11dda9a888b5c020941d7fd6dd22b66cb26a",
+      "review-evidence/webfetch/challenge-initial-20261023/anthro-visibility.json": "2d4358ca79141808944d1f3c009459f5c0beda53ec3ff0c485a9285ff9e587b8",
+      "review-evidence/webfetch/challenge-initial-20261023/amazon-complete.json": "5cf9d71df796e41a357cfd299b3e6a14cb048cc81e8a1b243224afa786a8a716",
+      "review-evidence/webfetch/challenge-initial-20261023/amazon-visibility.json": "417ab2837a3191d6d71b13b5b162db8021e3a63c24f9c999c99fa1855f8fb34a",
+      "review-evidence/webfetch/challenge-initial-20261023/reddit-complete.json": "bd7dba8fe7b5e5a99cbd235886f5bf073593574d7dfd97a7a842917fad515cc2",
+      "review-evidence/webfetch/challenge-initial-20261023/reddit-render-state.json": "f221b690d14ca42b6cbb1b6973b4a122d1a93273c5f1108238b382eb23e2cb27"
     }
   }
 }

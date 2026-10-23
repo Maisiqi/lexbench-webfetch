@@ -439,3 +439,185 @@ understanding coverage. The saved title/publisher answer passes, while either
 missing field and an empty answer fail. Requiring description text would change
 the declared target rather than repair its implementation. A separate broader
 video-body task would require its own explicit scope and source evidence.
+
+## WCAG terminology is not a challenge page
+
+The hash-verified WCAG 2.1 reference legitimately discusses CAPTCHA. Remove
+only that case's CAPTCHA exclusion; preserve all original body regions, facts,
+thresholds and other exclusions. The complete reference now passes. Empty HTML,
+a CAPTCHA challenge, a Cloudflare challenge and identity anchors followed by
+unrelated padding still fail. Block-page diagnostics remain available; the
+presence of a word alone does not override this case's substantive body checks.
+
+The long-document experiments also qualify the proposed heading-only repair:
+a complete RFC 9110 GET section deletion is detected by its numbered heading,
+but retaining that heading while deleting its body still passes. Additional
+source-bound headings or brief facts can detect missing sections without
+promising complete coverage of each section. Preserve the five-block limit and
+document this limitation instead of claiming that heading presence proves body
+completeness.
+
+The same source-qualified defect exists in the fixed Browser Use README. Its
+original reference hash is
+`e0125e5233473fcf1266c1bdfb5fb3d5e3545ae027b5f954dcceb3d874e50765`.
+The original full reference fails only the CAPTCHA exclusion; removing that
+exclusion makes it pass. CAPTCHA-only, empty and original identity anchors plus
+unrelated padding still fail. This is a case-specific correction, not evidence
+that every case's exclusions can already be removed safely.
+
+## Remaining completion audit against the current report
+
+This checklist follows the report's current fourteen priority items, including
+its explicit withdrawal of small-block scoring and optional stable anchors.
+A registered change is not a claim that the entire item is complete.
+
+| Item | Current evidence and remaining work |
+| --- | --- |
+| 1. Eighty-two document pages | Structural rules registered for all 82; keep source conditions and serialization caveats recorded above. Final source/export audit remains. |
+| 2. Thirty-one homepages | Source-qualified body changes registered; DingTalk proposals rejected on initial visibility evidence. Reconcile all 31 individual decisions before completion. |
+| 3. Four access cases | Commit records, documentation body and Ibiblio body corrections registered; original identity constraints preserved. |
+| 4. Six dynamic tables | Six source-qualified table contracts registered, including rendered-row limits and graphic cell values. |
+| 5. Strict body thresholds | All 148 targeted cases require every retained region at 80%; five-block limit preserved. |
+| 6. Ten challenge quotas | Three earlier quotas registered. Four new successful initial pages under scoped-count testing; three other sites currently return login or verification pages. Do not infer list sizes from these failures. |
+| 7. Short regions and article endings | Registered role/boundary/ending corrections; real short specification cards retained. Final article source-gap decisions remain. |
+| 8. Stable-anchor guidance | Mandatory-anchor interpretation retained; verify all affected guide passages together in final audit. |
+| 9. Twenty-five replacement sources | Existing source audit must be reconciled with registered provenance and counts; temporary candidate evidence alone is not completion. |
+| 10. Forbidden terms | RFC 9110, WCAG and Browser Use demonstrated source conflicts corrected. Broad removal, including 91 homepage cases, remains unqualified and is not claimed complete. |
+| 11. Long-document sections | Source-wide heading and necessary-fact audit in progress. Sampled omission tests alone do not cover all sections. Heading or opening presence does not prove full section coverage. |
+| 12. Broad record scopes | Risk 248, Twitch and Rakuten scopes corrected. Bilibili's explicit single-resource target retained with controls. |
+| 13. Changing links/video description | Third-party news links retained where supported by the task. Video 09 description expansion rejected because the task asks only for title and publisher. |
+| 14. Other fixed length floors | A universal half-reference rule is not yet qualified across non-prose targets; source- and task-specific decisions remain. |
+
+## Article duplication and overlapping requirements
+
+Source-based controls resolve the remaining duplication proposals without a
+behavior change. Article 051 contains two real About sections, one under h3 and
+one under h2. The complete source passes; removing either copy fails the current
+body rule (region coverage falls to 38.2% or 36.05%). Do not treat real repeated
+source content as a scorer-created duplicate.
+
+Articles 053, 082 and 091 contain respectively one, three and two identical
+stable groups. Deduplicating these conjunctions changes diagnostic counts but
+not acceptance; the actual source HTML passes either way. Removing a real
+source phrase from 082 or 091 can still fail its mandatory stable requirement
+while body coverage passes. That is an additional declared obligation, not
+proof that the phrase should be made optional. No redundant cleanup revision is
+needed under the current mandatory-stable policy.
+
+Article 040 already requires four distinct owned post links with author and
+visible post text or attributed quote. Actual complete HTML passes; removing
+posts or their bodies fails. Its descriptive profile label is not a scoring
+switch, so relabeling it does not repair a demonstrated defect.
+
+Article 093 has no exact duplicate alternative sets. Available source captures
+pass the body layer but lack two required embedded-quote groups. They cannot
+establish a complete full-score positive, and a deletion from an already failing
+baseline is not a valid regression proof. Preserve the requirements pending
+qualified evidence about that initially visible embed; do not delete all
+body-overlapping requirements to make these incomplete captures pass. External
+controls are retained in `051-duplicate-controls.json` and
+`body-anchor-overlap.json` in the article-boundary audit evidence.
+
+## Reusable rules, not case-specific repairs
+
+The updated review objective includes the target pages, reference answers and
+scoring design. Prefer existing scoring components across suites: stable text
+for genuine section headings, body coverage for prose, named-link records for
+both products and ranked items, and declared entry scopes for record boundaries.
+Do not add production branches keyed to a case ID or website to pass a sample.
+
+The long-article candidate containing 236 added requirements was not applied.
+Seven opening phrases had been selected in response to particular deletion
+controls, including arbitrary character cutoffs. Withdraw those additions as
+overfitting. The replacement candidate uses only source-owned semantic headings,
+deduplicates them and excludes requirements already present. It reuses stable
+text matching and preserves the existing five-block body check. Heading
+presence is an outline check; repeated headings or retained titles can coexist
+with missing prose, and those limitations remain explicit.
+
+The case-specific error-word corrections above establish real defects, but
+are not the final general policy. Review migration of generic challenge/error
+hints to the existing diagnostic type while retaining substantive acceptance
+rules and explicit task prohibitions. Do not silently reinterpret a declared
+prohibition at score time simply because the reference contains the word.
+
+The four registered challenge-list revisions also reuse existing named-link
+counts and entry scopes. Amazon's footer contamination exposed a general
+question: a declared end marker that is absent currently lets the text scope
+continue to the page end. The consumer audit found existing contracts that intentionally accept a
+missing end marker, so the shared fix is opt-in `required_end`, rather than
+a changed default or a website-specific footer exception.
+
+## Effective length gates, rather than duplicate thresholds
+
+The current combined revision retains a top-level 300-character minimum in 71
+cases, all in webfetch. Inspecting the actual required components resolves the
+apparent gap: 60 already require document-body minima between 546 and 153524
+characters plus their heading checks, and the other 11 use required reference
+body coverage. None of these 71 relies on the 300-character gate alone. Keep the
+existing shared components rather than adding a second half-reference limit
+simply because a legacy outer field still says 300. Length alone would not
+prove that the right body or records were returned. The case-level inventory
+is retained externally as `lexbench-fixed300-effective-gates.json`.
+
+## Registered initial-list quotas
+
+Four further webfetch challenge cases now use their independently observed
+initial record counts: IMDb 250 gives a minimum of 200, Anthropologie 72 gives
+58, Amazon 16 gives 13, and Reddit 25 distinct posts gives 20. These observations
+are single independent current captures, not claimed as repeated visits. All
+forty full-source and count-boundary controls pass for both HTML and
+link-preserving Markdown, including below-threshold, old-three-record and empty
+body cases with outside content retained.
+
+Amazon reuses the shared entry scope: `.s-main-slot` bounds HTML; Results to
+Related searches or Need help bounds text with `required_end: true`. This
+excludes a real footer credit-card product URL that previously supplemented
+twelve headphone results. Existing localized product routes and product-ID
+deduplication remain. The optional strict-end behavior is shared across domains;
+old missing-end contracts retain their default behavior. IMDb retains numeric
+film names. Reddit's 27 rendered elements contain two duplicate posts and count
+as 25, with the automatically loaded batch independently checked as visible.
+
+JD and Zhihu currently redirect to login, and Dianping to verification. These
+are valid rejection controls, not evidence from which to infer list quotas.
+
+## Registered article heading presence
+
+The replacement heading-only revision is now registered for 15 articles with
+229 additional genuine section headings. It preserves all previous stable
+requirements, five-block body thresholds, endings and projection operations.
+All 15 complete independent source representations and all 15 missing-heading
+controls passed their candidate checks; each negative explicitly reports a
+missing newly required heading. Replay against the registered revision also
+passed all 30 source and missing-heading controls.
+The seven test-selected opening phrases from the withdrawn candidate are absent.
+
+The full 22-case heading audit also records why other cases receive no addition:
+078 has no actual body subsection headings; 079's title/dek, 082's four headings
+and 100's only title are already required; 089 adds nothing after removal of the
+sample-selected opening phrase. Cases 072 and 093 retain specific source gaps
+for an existing submit label and embedded quote. Do not manufacture passing
+sources or remove unrelated requirements to hide those gaps. This revision
+checks outline presence, not ownership or completeness of every section's body.
+
+## Integration checkpoint and measured limits
+
+The combined revision currently contains 368 revised cases. After integration
+of the four list quotas, 15 article heading additions and shared required-end
+option, `make check` passed 2838 tests and 338 subtests. This validates the
+current integration, not completion of the remaining source audits.
+
+The RFC 9110 candidate includes 322 numeric and appendix headings. Its complete
+reference passes and removing the complete GET section fails. Keeping the GET
+heading while removing its prose still passes. This is direct evidence that
+heading presence cannot certify section-body completeness. The review explicitly
+accepts approximate coverage for very long documents while retaining at most
+five body blocks; retain that limitation rather than introducing selected
+sentence requirements to defeat individual deletion controls.
+
+Current original-URL visits to Huawei and Microsoft cloud redirect to Chinese
+pages, so they cannot qualify English required text. The score-only annotation
+revision rejects changes to collection inputs such as URLs. A language-specific
+URL needs a separately versioned input and verified initial navigation; do not
+remove English requirements based solely on a different-language capture.
