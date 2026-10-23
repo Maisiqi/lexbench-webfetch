@@ -216,13 +216,18 @@ def _contains_rendered_html_table(content):
     return bool(re.search(r'<table\b[^>]*>[\s\S]*?</table\s*>', candidate, re.I))
 
 
-def table_text_surface(content):
+def table_text_surface(content, *, exclude_selector=None):
     """Preserve owned HTML cells/links and adjacent split Markdown bodies."""
     from bs4 import BeautifulSoup
     content = _without_example_fences(content)
     if _contains_rendered_html_table(content):
         from .dynamic_lists import scoped_html
-        content = str(scoped_html(content))
+        soup = scoped_html(content)
+        if exclude_selector:
+            for node in list(soup.select(exclude_selector)):
+                if node.parent is not None:
+                    node.decompose()
+        content = str(soup)
         content = re.sub(
             r"<h([1-6])\b[^>]*>[\s\S]*?</h\1\s*>",
             lambda m: "\n" + BeautifulSoup(m[0], "html.parser").get_text(" ", strip=True) + "\n",

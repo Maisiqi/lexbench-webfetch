@@ -87,6 +87,10 @@ visible-field contracts while retaining source-bound static prose. Grouped
 tables may explicitly declare caption fields belonging to subsequent rows in
 the same table section; expanded ordinary columns remain valid serializations.
 No unrendered virtual rows or hidden example code enter the target count.
+Composite `table` and `linked_table` groups may explicitly declare
+`table_scope: {"exclude_selector": ".auxiliary-details"}` to exclude
+source-verified auxiliary HTML nodes before reading cells and links. The option
+is limited to tables; absent scopes and Markdown retain their existing behavior.
 
 Additional source observations are declared separately in the revision's
 `review_inputs`, mapping each suite to `review-evidence/` paths and SHA-256

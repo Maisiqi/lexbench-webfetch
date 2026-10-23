@@ -166,6 +166,7 @@ def _validate_group(group: dict) -> None:
         "link_column",
         "combined_columns",
         "include_table_accessible_names",
+        "table_scope",
         "group_caption",
     }
     if (
@@ -253,6 +254,15 @@ def _validate_group(group: dict) -> None:
         if pattern := group.get("entry_identity_pattern"):
             if re.compile(pattern).groups != 1:
                 raise ValueError("Composite link identity must capture once")
+    if "table_scope" in group:
+        scope = group["table_scope"]
+        if (kind not in {"table", "linked_table"} or not isinstance(scope, dict)
+                or set(scope) != {"exclude_selector"}
+                or not isinstance(scope["exclude_selector"], str)
+                or not scope["exclude_selector"].strip()):
+            raise ValueError("Invalid composite table scope")
+        import soupsieve
+        soupsieve.compile(scope["exclude_selector"])
     if kind in {"table", "linked_table"}:
         columns = group.get("required_columns")
         if (
@@ -1527,7 +1537,7 @@ def evaluate_composite_acceptance(
             source = grouped_table_surface(source, group)
             group = {**group, "required_columns": [*group["required_columns"], group["group_caption"]["field"]]}
         if group["kind"] in {"table", "linked_table"}:
-            source = table_text_surface(source)
+            source = table_text_surface(source, exclude_selector=group.get("table_scope", {}).get("exclude_selector"))
         ownership_marker = None
         if group["kind"] == "named_link" and group.get("required_fields") and table_content:
             from .dynamic_lists import _document_html
