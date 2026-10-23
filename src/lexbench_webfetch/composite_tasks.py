@@ -165,6 +165,7 @@ def _validate_group(group: dict) -> None:
         "fixed_values",
         "link_column",
         "combined_columns",
+        "include_table_accessible_names",
     }
     if (
         not isinstance(group, dict)
@@ -190,6 +191,10 @@ def _validate_group(group: dict) -> None:
             if key == "markdown_label_pattern" and "label" not in compiled.groupindex:
                 raise ValueError("Markdown card label pattern requires a label group")
     kind = group["kind"]
+    if "include_table_accessible_names" in group and (
+        kind != "table" or type(group["include_table_accessible_names"]) is not bool
+    ):
+        raise ValueError("Accessible table names require a boolean table option")
     if "combined_columns" in group and kind != "table":
         raise ValueError("Combined columns require a table group")
     minimum = group.get("minimum_records")
@@ -1493,6 +1498,9 @@ def evaluate_composite_acceptance(
     results = []
     for group in contract["groups"]:
         source = table_content if table_content is not None and group["kind"] in {"table", "linked_table"} else content
+        if group.get("include_table_accessible_names"):
+            from .dynamic_lists import table_accessible_names_html
+            source = table_accessible_names_html(source)
         if group["kind"] in {"table", "linked_table"}:
             source = table_text_surface(source)
         ownership_marker = None

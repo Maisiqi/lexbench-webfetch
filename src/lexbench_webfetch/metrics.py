@@ -461,6 +461,8 @@ def task_passed(ok: bool, metrics: dict, task_kind: str | None = None) -> bool:
         raise ValueError('Historical scoring metrics require their frozen scorer or a complete offline rescore')
     if metrics.get('forbidden_requirement_hits') or metrics.get('forbidden_requirement_pass') is False:
         return False
+    if metrics.get('document_structure_pass') is False:
+        return False
     if (metrics.get('page_identity_required')
             and metrics.get('page_identity_status') != 'verified'):
         return False
@@ -692,6 +694,7 @@ def evaluate_content(
     base_url: str = "",
     named_links: list[dict] | None = None,
     body_requirements: dict | None = None,
+    document_structure: dict | None = None,
     composite_acceptance: dict | None = None,
     allow_reference_block_exemptions: bool = False,
 ) -> dict[str, Any]:
@@ -884,6 +887,19 @@ def evaluate_content(
             result["stable_content_pass"] = False
             if "content_too_short" not in result["stable_task_errors"]:
                 result["stable_task_errors"].append("content_too_short")
+        # Body identity anchors supplement declared body facts; they do not
+        # replace them. Structured collections intentionally use their own
+        # current-record contract instead of historical content markers.
+        if acceptance_contract.get("schema") == "body_text":
+            for error, passed in (
+                ("required_facts_missing", fact_coverage >= fact_coverage_threshold),
+                ("expected_content_missing", legacy_pass),
+            ):
+                if not passed:
+                    result["stable_task_pass"] = False
+                    result["stable_content_pass"] = False
+                    if error not in result["stable_task_errors"]:
+                        result["stable_task_errors"].append(error)
         result["content_pass"] = bool(
             declared_body_pass and declared_pattern_pass and result["stable_task_pass"] and not forbidden
         )
@@ -902,6 +918,13 @@ def evaluate_content(
         result.update(composite)
         result["content_pass"] = bool(result["content_pass"] and composite["composite_acceptance_pass"])
         result["content_decision_basis"] = "stable_and_composite_acceptance_contract"
+    if document_structure:
+        from .document_structure import evaluate_document_structure
+        structure = evaluate_document_structure(
+            prose_content, document_structure, html_document=is_html,
+        )
+        result.update(structure)
+        result["content_pass"] = bool(result["content_pass"] and structure['document_structure_pass'])
     return result
 
 

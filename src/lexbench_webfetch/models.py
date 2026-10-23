@@ -43,6 +43,7 @@ class EvalCase:
     composite_acceptance: dict[str, Any] = field(default_factory=dict)
     mutable_body_policy: dict[str, Any] = field(default_factory=dict)
     body_requirements: dict[str, Any] = field(default_factory=dict)
+    document_structure: dict[str, Any] = field(default_factory=dict)
     retrieval_hints: dict[str, Any] = field(default_factory=dict)
     source_review_url: str = ""
     evaluation_url: str = ""

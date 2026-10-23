@@ -77,6 +77,19 @@ This revision changes body quotas only; it does not include other annotation
 revisions or repair incomplete reference scopes. Long regions can still tolerate
 substantial omissions; 80% fragment coverage does not guarantee 80% of characters.
 
+For `articles`, `--revision article-ending-order-20261023` additionally requires
+an ordered local ending match for the 95 fixed articles. It preserves the
+existing fragment gates and allows small token edits, preventing scattered
+phrases from impersonating a closing sentence. It does not change body boundaries
+or the five dynamic collections. See [annotation versions](docs/data.md).
+
+The ongoing `review-550-20261023` revision combines these quota and ending
+corrections, adjusts five article body boundaries and selects substantive endings
+for six more articles. It also adds section and body-length requirements to 64
+mutable documents, with two source-backed hidden-content corrections. It is a partial review,
+not certification of all 550 cases. See [review decisions](docs/review-550-decisions.md)
+for source evidence, rejected proposals and remaining work.
+
 ## Score a saved answer
 
 The benchmark includes its own scorer. It needs no Browser Eval installation:

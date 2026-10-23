@@ -57598,6 +57598,724 @@
       "expected_metrics": {
         "body_coverage_pass": false
       }
+    },
+    {
+      "id": "ordered-body-ending-complete",
+      "category": "acceptance-contract",
+      "root_cause": "Scattered fragments do not establish an ordered local closing passage.",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "body_requirements": {
+          "version": 5,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.8,
+          "minimum_region_passes": 1,
+          "segmentation_method": "whole_declared_component",
+          "regions": [
+            {
+              "id": "body-region-1",
+              "text": "a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima",
+              "source_text": "A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima",
+              "segmentation_method": "whole_declared_component"
+            }
+          ],
+          "ending": {
+            "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima"
+          }
+        }
+      },
+      "artifact": "A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "body_coverage_pass": true
+      }
+    },
+    {
+      "id": "ordered-body-ending-formatting",
+      "category": "acceptance-contract",
+      "root_cause": "Scattered fragments do not establish an ordered local closing passage.",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "body_requirements": {
+          "version": 5,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.8,
+          "minimum_region_passes": 1,
+          "segmentation_method": "whole_declared_component",
+          "regions": [
+            {
+              "id": "body-region-1",
+              "text": "a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima",
+              "source_text": "A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima",
+              "segmentation_method": "whole_declared_component"
+            }
+          ],
+          "ending": {
+            "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima"
+          }
+        }
+      },
+      "artifact": "A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. **ALPHA BRAVO CHARLIE DELTA ECHO FOXTROT GOLF HOTEL INDIA JULIET KILO LIMA**\nFooter",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "body_coverage_pass": true
+      }
+    },
+    {
+      "id": "ordered-body-ending-local-insertion",
+      "category": "acceptance-contract",
+      "root_cause": "Scattered fragments do not establish an ordered local closing passage.",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "body_requirements": {
+          "version": 5,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.8,
+          "minimum_region_passes": 1,
+          "segmentation_method": "whole_declared_component",
+          "regions": [
+            {
+              "id": "body-region-1",
+              "text": "a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima",
+              "source_text": "A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima",
+              "segmentation_method": "whole_declared_component"
+            }
+          ],
+          "ending": {
+            "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima"
+          }
+        }
+      },
+      "artifact": "A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. alpha bravo charlie delta echo foxtrot additional golf hotel india juliet kilo lima",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "body_coverage_pass": true
+      }
+    },
+    {
+      "id": "ordered-body-ending-scattered",
+      "category": "acceptance-contract",
+      "root_cause": "Scattered fragments do not establish an ordered local closing passage.",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "body_requirements": {
+          "version": 5,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.8,
+          "minimum_region_passes": 1,
+          "segmentation_method": "whole_declared_component",
+          "regions": [
+            {
+              "id": "body-region-1",
+              "text": "a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima",
+              "source_text": "A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima",
+              "segmentation_method": "whole_declared_component"
+            }
+          ],
+          "ending": {
+            "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima"
+          }
+        }
+      },
+      "artifact": "A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. alpha bravo charlie delta A separate section describes a river flowing through mountains.  A separate section describes a river flowing through mountains.  A separate section describes a river flowing through mountains.  A separate section describes a river flowing through mountains. echo foxtrot golf hotel A separate section describes a river flowing through mountains.  A separate section describes a river flowing through mountains.  A separate section describes a river flowing through mountains.  A separate section describes a river flowing through mountains. india juliet kilo lima",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "body_coverage_pass": false
+      }
+    },
+    {
+      "id": "ordered-body-ending-omitted",
+      "category": "acceptance-contract",
+      "root_cause": "Scattered fragments do not establish an ordered local closing passage.",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "body_requirements": {
+          "version": 5,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.8,
+          "minimum_region_passes": 1,
+          "segmentation_method": "whole_declared_component",
+          "regions": [
+            {
+              "id": "body-region-1",
+              "text": "a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion a telescope observes distant galaxies and documents stellar motion alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima",
+              "source_text": "A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima",
+              "segmentation_method": "whole_declared_component"
+            }
+          ],
+          "ending": {
+            "text": "alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima"
+          }
+        }
+      },
+      "artifact": "A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. A telescope observes distant galaxies and documents stellar motion. ",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "body_coverage_pass": false
+      }
+    },
+    {
+      "id": "reviewed-body-scope-complete",
+      "category": "acceptance-contract",
+      "root_cause": "Prose conclusion coverage and required visible page information are separate gates.",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "body_requirements": {
+          "version": 5,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.8,
+          "minimum_region_passes": 1,
+          "segmentation_method": "whole_declared_component",
+          "regions": [
+            {
+              "id": "body-region-1",
+              "text": "the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration independent observations confirmed the measured migration routes",
+              "source_text": "The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. Independent observations confirmed the measured migration routes.",
+              "segmentation_method": "whole_declared_component"
+            }
+          ],
+          "ending": {
+            "text": "Independent observations confirmed the measured migration routes."
+          }
+        },
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "credit",
+              "alternatives": [
+                "Illustration credit: Research Studio."
+              ]
+            },
+            {
+              "id": "footer",
+              "alternatives": [
+                "Share this story and browse other projects."
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Illustration credit: Research Studio.\nThe team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. Independent observations confirmed the measured migration routes.\nShare this story and browse other projects.",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "reviewed-body-scope-missing-conclusion",
+      "category": "acceptance-contract",
+      "root_cause": "Prose conclusion coverage and required visible page information are separate gates.",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "body_requirements": {
+          "version": 5,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.8,
+          "minimum_region_passes": 1,
+          "segmentation_method": "whole_declared_component",
+          "regions": [
+            {
+              "id": "body-region-1",
+              "text": "the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration independent observations confirmed the measured migration routes",
+              "source_text": "The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. Independent observations confirmed the measured migration routes.",
+              "segmentation_method": "whole_declared_component"
+            }
+          ],
+          "ending": {
+            "text": "Independent observations confirmed the measured migration routes."
+          }
+        },
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "credit",
+              "alternatives": [
+                "Illustration credit: Research Studio."
+              ]
+            },
+            {
+              "id": "footer",
+              "alternatives": [
+                "Share this story and browse other projects."
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Illustration credit: Research Studio.\nThe team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. \nShare this story and browse other projects.",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "reviewed-body-scope-missing-credit",
+      "category": "acceptance-contract",
+      "root_cause": "Prose conclusion coverage and required visible page information are separate gates.",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "body_requirements": {
+          "version": 5,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.8,
+          "minimum_region_passes": 1,
+          "segmentation_method": "whole_declared_component",
+          "regions": [
+            {
+              "id": "body-region-1",
+              "text": "the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration independent observations confirmed the measured migration routes",
+              "source_text": "The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. Independent observations confirmed the measured migration routes.",
+              "segmentation_method": "whole_declared_component"
+            }
+          ],
+          "ending": {
+            "text": "Independent observations confirmed the measured migration routes."
+          }
+        },
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "credit",
+              "alternatives": [
+                "Illustration credit: Research Studio."
+              ]
+            },
+            {
+              "id": "footer",
+              "alternatives": [
+                "Share this story and browse other projects."
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. Independent observations confirmed the measured migration routes.\nShare this story and browse other projects.",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "reviewed-body-scope-missing-footer",
+      "category": "acceptance-contract",
+      "root_cause": "Prose conclusion coverage and required visible page information are separate gates.",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "body_requirements": {
+          "version": 5,
+          "unit": "region_compact_hexagram_recall",
+          "minimum_coverage": 0.8,
+          "minimum_floor": 0.8,
+          "minimum_region_passes": 1,
+          "segmentation_method": "whole_declared_component",
+          "regions": [
+            {
+              "id": "body-region-1",
+              "text": "the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration the team studied how birds navigate during migration independent observations confirmed the measured migration routes",
+              "source_text": "The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. Independent observations confirmed the measured migration routes.",
+              "segmentation_method": "whole_declared_component"
+            }
+          ],
+          "ending": {
+            "text": "Independent observations confirmed the measured migration routes."
+          }
+        },
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "credit",
+              "alternatives": [
+                "Illustration credit: Research Studio."
+              ]
+            },
+            {
+              "id": "footer",
+              "alternatives": [
+                "Share this story and browse other projects."
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Illustration credit: Research Studio.\nThe team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. The team studied how birds navigate during migration. Independent observations confirmed the measured migration routes.",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "mutable-document-structure-complete",
+      "category": "body-scope",
+      "root_cause": "identity_and_toc_cannot_substitute_for_document_sections",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/document",
+        "task_kind": "body",
+        "required_facts": [
+          {
+            "id": "visible-fact",
+            "alternatives": [
+              "Required visible fact"
+            ]
+          }
+        ],
+        "document_structure": {
+          "version": 1,
+          "minimum_heading_coverage": 0.8,
+          "minimum_body_chars": 100,
+          "headings": [
+            {
+              "id": "0",
+              "text": "Installation",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "1",
+              "text": "Usage",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "2",
+              "text": "Configuration",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "3",
+              "text": "Examples",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "4",
+              "text": "Reference",
+              "level": 2,
+              "body_required": true
+            }
+          ]
+        }
+      },
+      "artifact": "Required visible fact\n## Installation\nThis section explains a useful part of the document.\n\n## Usage\nThis section explains a useful part of the document.\n\n## Configuration\nThis section explains a useful part of the document.\n\n## Examples\nThis section explains a useful part of the document.\n\n## Reference\nThis section explains a useful part of the document.",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "mutable-document-structure-eighty-percent",
+      "category": "body-scope",
+      "root_cause": "identity_and_toc_cannot_substitute_for_document_sections",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/document",
+        "task_kind": "body",
+        "required_facts": [
+          {
+            "id": "visible-fact",
+            "alternatives": [
+              "Required visible fact"
+            ]
+          }
+        ],
+        "document_structure": {
+          "version": 1,
+          "minimum_heading_coverage": 0.8,
+          "minimum_body_chars": 100,
+          "headings": [
+            {
+              "id": "0",
+              "text": "Installation",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "1",
+              "text": "Usage",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "2",
+              "text": "Configuration",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "3",
+              "text": "Examples",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "4",
+              "text": "Reference",
+              "level": 2,
+              "body_required": true
+            }
+          ]
+        }
+      },
+      "artifact": "Required visible fact\n## Installation\nThis section explains a useful part of the document.\n\n## Usage\nThis section explains a useful part of the document.\n\n## Configuration\nThis section explains a useful part of the document.\n\n## Examples\nThis section explains a useful part of the document.",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "mutable-document-structure-missing-sections",
+      "category": "body-scope",
+      "root_cause": "identity_and_toc_cannot_substitute_for_document_sections",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/document",
+        "task_kind": "body",
+        "required_facts": [
+          {
+            "id": "visible-fact",
+            "alternatives": [
+              "Required visible fact"
+            ]
+          }
+        ],
+        "document_structure": {
+          "version": 1,
+          "minimum_heading_coverage": 0.8,
+          "minimum_body_chars": 100,
+          "headings": [
+            {
+              "id": "0",
+              "text": "Installation",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "1",
+              "text": "Usage",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "2",
+              "text": "Configuration",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "3",
+              "text": "Examples",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "4",
+              "text": "Reference",
+              "level": 2,
+              "body_required": true
+            }
+          ]
+        }
+      },
+      "artifact": "Required visible fact\n## Installation\nThis section explains a useful part of the document.\n\n## Usage\nThis section explains a useful part of the document.\n\n## Configuration\nThis section explains a useful part of the document.",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "mutable-document-structure-toc-padding",
+      "category": "body-scope",
+      "root_cause": "identity_and_toc_cannot_substitute_for_document_sections",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/document",
+        "task_kind": "body",
+        "required_facts": [
+          {
+            "id": "visible-fact",
+            "alternatives": [
+              "Required visible fact"
+            ]
+          }
+        ],
+        "document_structure": {
+          "version": 1,
+          "minimum_heading_coverage": 0.8,
+          "minimum_body_chars": 100,
+          "headings": [
+            {
+              "id": "0",
+              "text": "Installation",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "1",
+              "text": "Usage",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "2",
+              "text": "Configuration",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "3",
+              "text": "Examples",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "4",
+              "text": "Reference",
+              "level": 2,
+              "body_required": true
+            }
+          ]
+        }
+      },
+      "artifact": "Required visible fact\n[Installation](#section)\n[Usage](#section)\n[Configuration](#section)\n[Examples](#section)\n[Reference](#section)\nUnrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. Unrelated filler. ",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "mutable-document-structure-missing-fact",
+      "category": "body-scope",
+      "root_cause": "identity_and_toc_cannot_substitute_for_document_sections",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/document",
+        "task_kind": "body",
+        "required_facts": [
+          {
+            "id": "visible-fact",
+            "alternatives": [
+              "Required visible fact"
+            ]
+          }
+        ],
+        "document_structure": {
+          "version": 1,
+          "minimum_heading_coverage": 0.8,
+          "minimum_body_chars": 100,
+          "headings": [
+            {
+              "id": "0",
+              "text": "Installation",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "1",
+              "text": "Usage",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "2",
+              "text": "Configuration",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "3",
+              "text": "Examples",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "4",
+              "text": "Reference",
+              "level": 2,
+              "body_required": true
+            }
+          ]
+        }
+      },
+      "artifact": "## Installation\nThis section explains a useful part of the document.\n\n## Usage\nThis section explains a useful part of the document.\n\n## Configuration\nThis section explains a useful part of the document.\n\n## Examples\nThis section explains a useful part of the document.\n\n## Reference\nThis section explains a useful part of the document.",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "mutable-document-structure-hidden-sections",
+      "category": "body-scope",
+      "root_cause": "identity_and_toc_cannot_substitute_for_document_sections",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/document",
+        "task_kind": "body",
+        "required_facts": [
+          {
+            "id": "visible-fact",
+            "alternatives": [
+              "Required visible fact"
+            ]
+          }
+        ],
+        "document_structure": {
+          "version": 1,
+          "minimum_heading_coverage": 0.8,
+          "minimum_body_chars": 100,
+          "headings": [
+            {
+              "id": "0",
+              "text": "Installation",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "1",
+              "text": "Usage",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "2",
+              "text": "Configuration",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "3",
+              "text": "Examples",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "4",
+              "text": "Reference",
+              "level": 2,
+              "body_required": true
+            }
+          ]
+        }
+      },
+      "artifact": "<main><p>Required visible fact</p><div hidden><h2>Installation</h2><p>Section explanation text.</p><h2>Usage</h2><p>Section explanation text.</p><h2>Configuration</h2><p>Section explanation text.</p><h2>Examples</h2><p>Section explanation text.</p><h2>Reference</h2><p>Section explanation text.</p></div></main>",
+      "ok": true,
+      "expected_task_pass": false
     }
   ],
   "superseded_cases": {

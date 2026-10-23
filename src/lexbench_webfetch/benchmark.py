@@ -21,6 +21,7 @@ PUBLIC_TASK_FIELDS = (
     "fact_coverage_threshold", "expected_resources", "resource_output_contract",
     "content_score_applicable", "required_patterns", "acceptance_contract",
     "composite_acceptance", "mutable_body_policy", "body_requirements", "retrieval_hints",
+    "document_structure",
     "source_review_url", "evaluation_url", "expected_final_url", "page_identity_required",
     "expected_document_language", "document_language_match",
     "expected_document_language_present", "target_language", "target_region",
@@ -235,7 +236,7 @@ def _revise_body_thresholds(case: dict, thresholds: dict) -> None:
     """Revise quotas without replacing frozen reference text or public bindings."""
     body = case.get('body_requirements')
     fields = {'minimum_coverage', 'minimum_floor', 'minimum_region_passes'}
-    if (not isinstance(body, dict) or body.get('version') not in (3, 4)
+    if (not isinstance(body, dict) or body.get('version') not in (3, 4, 5)
             or not isinstance(body.get('regions'), list) or not body['regions']
             or not isinstance(thresholds, dict) or set(thresholds) != fields
             or any(type(thresholds[k]) not in (int, float)
@@ -243,11 +244,31 @@ def _revise_body_thresholds(case: dict, thresholds: dict) -> None:
             or not 0 < thresholds['minimum_floor'] <= thresholds['minimum_coverage'] <= 1
             or type(thresholds['minimum_region_passes']) is not int
             or not 1 <= thresholds['minimum_region_passes'] <= len(body['regions'])
-            or (body['version'] == 4 and (
+            or (body['version'] in (4, 5) and (
                 thresholds['minimum_floor'] != thresholds['minimum_coverage']
                 or thresholds['minimum_region_passes'] != len(body['regions'])))):
         raise ValueError('Invalid annotation body thresholds')
     body.update(thresholds)
+
+
+def _revise_body_ending_order(case: dict, enabled: bool) -> None:
+    """Add local ordered matching while retaining every frozen body reference."""
+    from .body_coverage import compact_ngrams
+    body = case.get('body_requirements')
+    ending = body.get('ending') if isinstance(body, dict) else None
+    binding = ending.get('text_binding') if isinstance(ending, dict) else None
+    valid_ending = isinstance(ending, dict) and (
+        isinstance(ending.get('text'), str) and bool(compact_ngrams(ending['text'], 6))
+        or isinstance(binding, dict) and isinstance(binding.get('sha256'), str)
+        and re.fullmatch('[0-9a-f]{64}', binding['sha256']) is not None
+        and type(binding.get('chars')) is int and binding['chars'] >= 6)
+    if (enabled is not True or not isinstance(body, dict) or body.get('version') != 4
+            or not valid_ending
+            or not isinstance(body.get('regions'), list) or not body['regions']
+            or body.get('minimum_region_passes') != len(body['regions'])
+            or body.get('minimum_floor') != body.get('minimum_coverage')):
+        raise ValueError('Ordered ending revision requires a strict version 4 body')
+    body['version'] = 5
 
 
 def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
@@ -272,11 +293,15 @@ def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
     result = deepcopy(dataset)
     cases = {case['id']: case for case in result['cases']}
     allowed = {'expected_resources', 'required_facts', 'forbidden_any', 'diagnostic_any',
-               'composite_acceptance', 'acceptance_contract', 'required_patterns'}
+               'composite_acceptance', 'acceptance_contract', 'required_patterns',
+               'document_structure', 'content_score_applicable', 'min_content_chars',
+               'fact_coverage_threshold'}
     changes = [row for row in definition['changes'] if row['suite'] == identifier]
     if not changes or len({row['case_id'] for row in changes}) != len(changes):
         raise ValueError('Annotation revision has an invalid task inventory')
     reviewed_changes = []
+    reference_hashes = {row['id']: row.get('reference_sha256')
+                        for row in read(root / 'dataset-catalog.json')['cases']}
     for change in changes:
         case = cases.get(change['case_id'])
         public = public_task(case) if case is not None else None
@@ -289,6 +314,11 @@ def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
         case.update(deepcopy(change['set']))
         if 'body_thresholds' in change:
             _revise_body_thresholds(case, change['body_thresholds'])
+        if 'body_ending_order' in change:
+            _revise_body_ending_order(case, change['body_ending_order'])
+        if 'body_projection' in change:
+            from .body_revisions import project_body_reference
+            project_body_reference(case, change['body_projection'], reference_hashes[case['id']])
         for field in change['remove']:
             case.pop(field, None)
         reviewed_changes.append((change, old, case))
@@ -301,17 +331,38 @@ def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
     return result, review
 
 
+def _body_reference_additions(changes):
+    """Recognize body-only edits plus strictly appended stable-text requirements."""
+    if not changes:
+        return None
+    added = []
+    for change in changes:
+        if change['path'].startswith('/body_requirements/'):
+            continue
+        if change['path'] != '/acceptance_contract/stable_text_anchors':
+            return None
+        before, after = change.get('before'), change.get('after')
+        if (not isinstance(before, list) or not isinstance(after, list)
+                or len(after) <= len(before) or after[:len(before)] != before):
+            return None
+        added.extend(after[len(before):])
+    return added
+
+
 def check_revision_references(dataset: dict, review: dict, source: Path) -> dict:
     """Run frozen reference and error-page controls without treating absent text as a pass."""
     from html import escape
     from .scoring import score_attempt, SCORING_SOURCE_SHA256
     from .metrics import task_passed
+    from .body_coverage import evaluate_body_requirements
+    from .stable_tasks import evaluate_stable_task
     cases = {case['id']: case for case in dataset['cases']}
     results = []
     for item in review['changes']:
         case = cases[item['case_id']]
+        added_anchors = _body_reference_additions(item.get('changes'))
         candidates = []
-        for field in ('ground_truth_main_content', 'reference_answer'):
+        for field in ('reference_answer', 'ground_truth_main_content'):
             if isinstance(case.get(field), str) and case[field].strip():
                 candidates.append((case[field].encode(), {'path': 'dataset.json', 'field': field}))
         for binding in item['sources']:
@@ -341,9 +392,25 @@ def check_revision_references(dataset: dict, review: dict, source: Path) -> dict
             candidates.append((raw, {'path': binding['path'], 'sha256': binding['sha256']}))
         controls = []
         for raw, binding in candidates:
-            metrics = score_attempt(case, raw, ok=True)
+            # An explicitly bound main body does not contain every page header,
+            # title or comment. It can qualify a body-only change, not a whole
+            # page contract. Other annotation edits still need a full-task pass.
+            scoped_body = (added_anchors is not None and isinstance(case.get('body_requirements'), dict)
+                           and binding.get('field') == 'ground_truth_main_content')
+            if scoped_body:
+                passed = evaluate_body_requirements(raw.decode(), case['body_requirements'])['body_coverage_pass']
+                if added_anchors:
+                    added = evaluate_stable_task(raw.decode(), {
+                        'version': 1, 'schema': 'body_text', 'minimum_records': 0,
+                        'stable_text_anchors': added_anchors}, case.get('url', ''))
+                    passed = passed and added['stable_task_pass']
+                scope = 'body_and_added_stable_text' if added_anchors else 'body_only'
+            else:
+                metrics = score_attempt(case, raw, ok=True)
+                passed = task_passed(True, metrics, case.get('task_kind', 'body'))
+                scope = 'full_task'
             controls.append({'source': binding, 'answer_sha256': hashlib.sha256(raw).hexdigest(),
-                             'passed': task_passed(True, metrics, case.get('task_kind', 'body'))})
+                             'scope': scope, 'passed': passed})
             if controls[-1]['passed']:
                 break
         negative = b'<html><body>Verify you are human. Access Denied. CAPTCHA.</body></html>'
@@ -353,11 +420,15 @@ def check_revision_references(dataset: dict, review: dict, source: Path) -> dict
                   else 'passed' if any(control['passed'] for control in controls)
                   else 'failed' if controls else 'unavailable')
         results.append({'case_id': case['id'], 'status': status, 'reference_candidates': controls,
+                        'verification_scope': next((c['scope'] for c in controls if c['passed']), 'unavailable'),
                         'error_page_passed': negative_pass,
                         'reason': ('The frozen inputs retain source hashes but no executable reference answer.'
                                    if not controls else '')})
     return {'scoring_source_sha256': SCORING_SOURCE_SHA256,
-            'complete': all(result['status'] == 'passed' for result in results), 'cases': results}
+            'complete': all(result['status'] == 'passed' and result['verification_scope'] == 'full_task'
+                            for result in results),
+            'changed_rules_complete': all(result['status'] == 'passed' for result in results),
+            'cases': results}
 
 
 def export(identifier: str, source: Path, output: Path, *, revision: str | None = None) -> Path:

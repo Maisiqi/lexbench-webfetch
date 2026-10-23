@@ -23,7 +23,7 @@ SCORING_SOURCE_FILES = tuple(Path(__file__).with_name(name) for name in (
     "ordered_tree.py", "composite_tasks.py", "dynamic_reference.py",
     "file_acceptance.py", "evaluation.py", "models.py", "paths.py", "article_posts.py",
     "article_comments.py", "article_title.py", "article_text.py", "required_components.py",
-    "resource_urls.py",
+    "resource_urls.py", "document_structure.py",
 ))
 SCORING_SOURCE_SHA256 = hashlib.sha256(b"\0".join(
     path.read_bytes() for path in SCORING_SOURCE_FILES)).hexdigest()
@@ -129,7 +129,7 @@ def score_attempt(
 
     keys = ("required_facts", "forbidden_any", "diagnostic_any", "min_content_chars",
             "fact_coverage_threshold", "ground_truth_main_content", "required_patterns",
-            "acceptance_contract", "body_requirements", "composite_acceptance")
+            "acceptance_contract", "body_requirements", "composite_acceptance", "document_structure")
     task_kind = case.get("task_kind", "body")
     rule_review = case.get("rule_review") or {}
     scoring_values = {key: case[key] for key in keys if key in case}

@@ -43,11 +43,53 @@ The `body-coverage-20261023` revision changes quotas on 148 existing body
 contracts across webfetch, dynamic-content and access-restrictions. Every region
 must reach 80%; it preserves all reference bindings, region boundaries and URLs.
 Its `body_thresholds` operation accepts only `minimum_coverage`, `minimum_floor`
-and `minimum_region_passes` for existing version-3/4 bodies. It operates equally
+and `minimum_region_passes` for existing version-3/4/5 bodies. It operates equally
 on public hash bindings and executable text, so no captured body is embedded in
-the revision. Version-4 ending requirements cannot be weakened by this operation.
+the revision. Version-4/5 ending requirements cannot be weakened by this operation.
 Per-case review hashes cover the resulting field differences and executable
 controls cover complete, boundary, weak-region and missing-region responses.
+
+For articles, `article-ending-order-20261023` upgrades the 95 fixed bodies from
+version 4 to 5 with `body_ending_order: true`. Reference text, region boundaries,
+the existing fragment gates and the five collection contracts remain unchanged.
+Version 5 additionally compares the ending against a contiguous response passage
+in token order. Insertions, omissions and substitutions each consume one token
+of the 20% edit budget; text before or after the passage is free. Latin words and
+individual CJK characters use the existing body tokenizer. Thus footers and
+formatting are allowed, but distant fragments cannot be assembled into a closing
+sentence. This checks an ordered local passage, not its absolute page position
+or semantic completeness. It does not repair an incorrectly selected ending.
+
+The ongoing `review-550-20261023` revision currently combines those 148 quota
+changes and 95 ordered-ending changes. Five articles also receive source-reviewed
+body boundaries, and six more receive substantive conclusion selections with
+their original body regions preserved. This is a partial review revision, not certification of all 550
+cases. See [review decisions](review-550-decisions.md).
+
+It also adds source-qualified `document_structure` contracts to 64 mutable
+documents: 80% of declared headings must have the required local body, and
+the delivered document must meet its reviewed half-length floor. Navigation,
+table-of-contents entries and headings without their required body cannot fill
+the section quota. This checks structural coverage, not semantic accuracy.
+Two cases also remove a mandatory phrase proven to be in an initially hidden
+tab panel or closed disclosure; all other existing requirements remain.
+
+Its `body_projection` operation selects one to five ordered, nonoverlapping
+character ranges from the hash-bound original body. Ranges use zero-based,
+half-open Python character offsets. The source hash, length and projected text
+bindings are verified when exporting executable inputs; the original reference
+remains available for historical diagnostics. Attribution, notices and footer
+information moved out of prose remain required where applicable.
+Version-3 projections retain version 3 and omit the `ending` field; they do not
+invent a closing passage for static text accompanying a dynamic collection.
+Version-4/5 projections require an ending and produce version 5.
+
+Export qualification distinguishes `full_task`, `body_only` and
+`body_and_added_stable_text` controls. A bound body reference can qualify body
+changes and strictly appended stable anchors, but cannot certify unchanged page
+navigation, comments or other full-page requirements. `changed_rules_complete`
+reports qualification of the changed layers; `complete` requires full-task
+qualification. Other rule changes still need a full-page reference.
 
 Annotation revisions are alternatives against their declared frozen parent,
 not a sequence of cumulative patches. Select and disclose the required revision;
