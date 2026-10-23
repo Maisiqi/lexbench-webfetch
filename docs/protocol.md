@@ -38,4 +38,25 @@ Historical `fetch_log_final_url` and `video_values` formats remain replay reader
 
 A flattened link label establishes multiple record fields only when its visible text retains field separators, such as line breaks or spaced vertical bars. URL slugs, English ticket-action labels and US city/state spelling cannot establish missing field boundaries. Ambiguous labels remain unqualified even when a reader can guess their intended layout. Named table columns with duplicate matching headers remain ambiguous; a navigation line without a table structure is not a column header.
 
+A named-link group may declare `markdown_label_pattern` with a named `label` capture when a card places metadata before its visible name. The capture selects text already present in that link; it cannot supply a name from the URL. `record_start_pattern` bounds cards whose fields precede their title link. Fields before a later card start or another target link cannot complete the current record.
+
+Text field patterns consume their matched spans, so distinct declared fields may share a physical line. Matching one field cannot reuse its value for a second requirement. Unlabeled text still needs its own evidence; relative-date controls such as “Today” do not establish a venue or source.
+
+Required facts use body text by default. An information task may declare `match_scope: "body_or_title"` for a fact that explicitly requests a page title. This permits the delivered title field, an HTML document title, or a scalar top-level Markdown front-matter title. Keywords and descriptions cannot supply the title, and title metadata cannot supply other facts.
+
 Contract-declared field aliases support Unicode labels. The built-in English metadata-role recognition is a limited legacy fallback, not an automatic translation dictionary. Declare the language-specific labels needed by a task rather than treating every colon in prose as a metadata separator. Body matching treats unfenced table tags as HTML, including in mixed prose. Literal code needs an explicit code fence or escape; a standalone table tag cannot disable HTML visibility rules for hidden elements or attributes.
+
+### Reference controls for annotation revisions
+
+A revision export runs the frozen reference through the public scorer and task
+predicate, then checks that an error page fails. The resulting
+`annotation-review.json` records the source and answer hashes, outcomes and scorer
+identity. Resource references use URLs retained by an independent source capture,
+serialized in the requested answer format; they are not generated from expected
+URLs. A known reference that fails the revised contract blocks export.
+
+Some historical input bundles retain observation hashes without the original
+page bytes or an executable reference answer. Their control is `unavailable`,
+never passed, and the review's `complete` flag remains false. Exporting these
+frozen inputs preserves their historical definition; it does not certify the
+missing evidence or create a new independent source observation.

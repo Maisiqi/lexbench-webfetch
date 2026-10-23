@@ -1,17 +1,11 @@
 <div align="center">
 
-<img src="docs/assets/overview.svg" alt="LexBench Web Fetch task suites and acceptance rules" width="100%">
-
-# LexBench Web Fetch
-
-### What does a fetch actually return?
-
-Versioned tasks and acceptance rules for retrieving web content, structured records and files.
+<img src="docs/assets/overview.png" alt="LexBench Web Fetch — Measure what comes back." width="100%">
 
 [English](README.md) · [简体中文](docs/README.zh-CN.md)
 
 [![CI](https://github.com/lexmount/lexbench-webfetch/actions/workflows/ci.yml/badge.svg)](https://github.com/lexmount/lexbench-webfetch/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/code-MIT-51735b)](LICENSE)
+[![License: Apache 2.0](https://img.shields.io/badge/code-Apache--2.0-51735b)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-356a91)](pyproject.toml)
 
 [Tasks](#task-suites) · [Quickstart](#quickstart) · [Evaluation protocol](docs/protocol.md) · [Contributing](CONTRIBUTING.md)
@@ -110,6 +104,16 @@ uv run --frozen browser-harness-eval run \
 
 Run these two commands from Browser Eval. Ordinary runs are diagnostic; a formal live-site comparison additionally requires its pre-call/post-call reference certification. The benchmark input checker verifies frozen bytes, not present-day website validity. See the [Browser Eval integration guide](https://github.com/lexmount/browser-eval/blob/main/docs/benchmarks.md).
 
+## Scoring behavior
+
+Version 0.3 matches Latin words at word boundaries for facts, markers and stable anchors. Required body facts use the returned content; a separate document title cannot supply missing body text. Chinese phrases retain literal matching, and numeric and currency checks keep their value boundaries.
+
+A task can set `page_identity_required: true` to require its final URL observations. Missing or mismatched observations then fail acceptance. Dynamic tasks can also set `document_language_match: "exact"` when the complete language tag matters; the default is `"primary"`. These checks apply across interfaces. Frozen tasks that do not require URL metadata keep their content-based acceptance rules.
+
+Offline scoring recomputes derived fields. It retains the original reference hash, deadline evidence and file fingerprints. A file verdict requires current file verification; an old pass flag cannot certify a rescore. Summaries expose `mean_all_attempts_ms`, `all_attempts_p50_ms` and `all_attempts_p95_ms` alongside the existing successful-call timings. The all-attempt population includes failed calls and timeouts.
+
+These changes do not revise frozen tasks or certify historical results. Score corrections require a new evidence revision tied to the scorer and its regression controls.
+
 ## Repository contents
 
 | Path | Purpose |
@@ -123,8 +127,24 @@ Run these two commands from Browser Eval. Ordinary runs are diagnostic; a formal
 
 Browser adapters, credentials, measured runs, report renderers and hosting configuration belong to the execution harness or its evidence storage. This repository owns task models, deterministic acceptance scoring, file-byte checks and task compilation. Browser Eval imports these implementations as a pinned dependency. This repository publishes no measured leaderboard.
 
-## Contribute and cite
+## Contribute
 
 Read [CONTRIBUTING](CONTRIBUTING.md) before changing a task or proposing a result. Run `make check` to validate the definitions and test the input tools. Report security issues through [SECURITY](SECURITY.md).
 
-Cite [LexBench Web Fetch](CITATION.cff) and record the exact commit and suite. Cite any execution harness separately. Project-owned code and definitions use the [MIT license](LICENSE); third-party source material retains its own terms, described in [THIRD_PARTY](THIRD_PARTY.md).
+Project-owned code and definitions use the [Apache 2.0 license](LICENSE); third-party source material retains its own terms, described in [THIRD_PARTY](THIRD_PARTY.md).
+
+## Cite LexBench Web Fetch
+
+If you use the task definitions or scoring tools in published work, cite this repository and record the exact commit and suite used. GitHub's citation menu reads [CITATION.cff](CITATION.cff). For version 0.3.0:
+
+```bibtex
+@software{lexbench_webfetch_2026,
+  author = {{LexBench Web Fetch contributors}},
+  title = {LexBench Web Fetch},
+  year = {2026},
+  version = {0.3.0},
+  url = {https://github.com/lexmount/lexbench-webfetch}
+}
+```
+
+Cite [Browser Eval](https://github.com/lexmount/browser-eval#cite-browser-eval) separately when using its execution harness, and cite upstream sources or benchmarks according to their attribution terms. This repository citation does not replace those citations. When using another version, update the version and year in the example and identify its tag or commit.

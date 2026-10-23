@@ -696,17 +696,28 @@ def _non_record_visible(content, contract, records, base_url):
     return None
 
 
-def _stable_literal_match(surface, value, registered_words=()):
+def _stable_literal_match(surface, value, registered_words=(), *, phrase_boundaries=False):
     """An atomic Latin label is a word, not part of another word.
 
     Native camel boundaries and fully covered chains of registered labels
     preserve adjacent UI text without accepting arbitrary word fragments.
     Longer declared text retains the existing exact-phrase containment rule.
     """
-    from .metrics import fact_in_text, normalize_for_match
+    from .metrics import WORD_CHARACTERS, fact_in_text, normalize_for_match
+    from .reference_quality import visible_markdown_links
+    surface = visible_markdown_links(surface)
+    surface = re.sub(r'(?<=[^\W\d_])(?=\d+\s+of\s+\d+\b)', ' ', surface)
     expected = normalize_for_match(_visible(value))
     folded = normalize_for_match(surface)
-    if not fact_in_text(folded, expected):
+    from .reference_quality import separate_case_labels as camel
+    alphabetic_boundaries = (not re.fullmatch(r'[A-Za-z]+', value)
+                             and (phrase_boundaries or bool(re.search(r'[^\x00-\x7f]', value))))
+    surfaces = (folded, normalize_for_match(camel(surface))) if alphabetic_boundaries else (folded,)
+    # Native serializers can join an all-caps preceding label to a complete
+    # notice. Apply the same case boundary used for atomic labels before the
+    # Unicode phrase gate, while retaining complete-word matching on both ends.
+    if not any(fact_in_text(text, expected, latin_boundaries=alphabetic_boundaries)
+               for text in surfaces):
         return False
     # Arabic labels are whitespace-delimited words too. A longer inflected
     # word cannot supply an independently registered ordinary navigation label.
@@ -716,16 +727,14 @@ def _stable_literal_match(surface, value, registered_words=()):
     if not re.fullmatch(r"[A-Za-z]+", value):
         return True
     boundary = lambda needle, text: bool(re.search(
-        r"(?<![a-z])" + re.escape(needle) + r"(?![a-z])", text))
+        rf"(?<![{WORD_CHARACTERS}])" + re.escape(needle) + rf"(?![{WORD_CHARACTERS}])", text))
     if boundary(expected, folded):
         return True
-    camel = lambda text: re.sub(
-        r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", " ", text)
     if boundary(normalize_for_match(camel(value)),
                 normalize_for_match(camel(surface))):
         return True
     labels = {normalize_for_match(word) for word in registered_words}
-    for token in set(re.findall(r"[a-z]+", folded)):
+    for token in set(re.findall(rf"[{WORD_CHARACTERS}]+", folded)):
         if expected not in token:
             continue
         states = {(0, False)}

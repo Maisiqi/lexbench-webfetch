@@ -54199,6 +54199,2859 @@
       "expected_task_pass": true
     },
     {
+      "id": "body-only-word-boundary-answer-title-supplies-required-fact",
+      "category": "answer-surface",
+      "root_cause": "metadata_title_supplies_missing_body_fact",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "required_facts": [
+          {
+            "id": "title",
+            "alternatives": [
+              "Exact page title"
+            ]
+          }
+        ]
+      },
+      "artifact": "Body",
+      "title": "Exact page title",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "fact_coverage": 0.0,
+        "content_chars": 4
+      }
+    },
+    {
+      "id": "body-only-word-boundary-answer-title-does-not-inflate-body-length",
+      "category": "answer-surface",
+      "root_cause": "answer_surface_omission",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "required_facts": [
+          {
+            "id": "title",
+            "alternatives": [
+              "Exact page title"
+            ]
+          }
+        ],
+        "min_content_chars": 20
+      },
+      "artifact": "Body",
+      "title": "Exact page title",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_metrics": {
+        "fact_coverage": 0.0,
+        "length_pass": false,
+        "content_chars": 4
+      }
+    },
+    {
+      "id": "latin-boundary-fact-Home-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "Home"
+            ]
+          }
+        ]
+      },
+      "artifact": "(Home)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-fact-Home-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "Home"
+            ]
+          }
+        ]
+      },
+      "artifact": "homepage",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-marker-Home-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "Home"
+        ]
+      },
+      "artifact": "(Home)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-marker-Home-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "Home"
+        ]
+      },
+      "artifact": "homepage",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-anchor-Home-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "Home"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "(Home)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-anchor-Home-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "Home"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "homepage",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-fact-Live-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "Live"
+            ]
+          }
+        ]
+      },
+      "artifact": "(Live)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-fact-Live-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "Live"
+            ]
+          }
+        ]
+      },
+      "artifact": "deliver",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-marker-Live-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "Live"
+        ]
+      },
+      "artifact": "(Live)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-marker-Live-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "Live"
+        ]
+      },
+      "artifact": "deliver",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-anchor-Live-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "Live"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "(Live)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-anchor-Live-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "Live"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "deliver",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-fact-News-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "News"
+            ]
+          }
+        ]
+      },
+      "artifact": "(News)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-fact-News-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "News"
+            ]
+          }
+        ]
+      },
+      "artifact": "newsletter",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-marker-News-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "News"
+        ]
+      },
+      "artifact": "(News)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-marker-News-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "News"
+        ]
+      },
+      "artifact": "newsletter",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-anchor-News-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "News"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "(News)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-anchor-News-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "News"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "newsletter",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-fact-Print-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "Print"
+            ]
+          }
+        ]
+      },
+      "artifact": "(Print)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-fact-Print-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "Print"
+            ]
+          }
+        ]
+      },
+      "artifact": "blueprint",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-marker-Print-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "Print"
+        ]
+      },
+      "artifact": "(Print)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-marker-Print-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "Print"
+        ]
+      },
+      "artifact": "blueprint",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-anchor-Print-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "Print"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "(Print)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-anchor-Print-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "Print"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "blueprint",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-fact-url-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "url"
+            ]
+          }
+        ]
+      },
+      "artifact": "(url)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-fact-url-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "url"
+            ]
+          }
+        ]
+      },
+      "artifact": "curl",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-marker-url-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "url"
+        ]
+      },
+      "artifact": "(url)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-marker-url-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "url"
+        ]
+      },
+      "artifact": "curl",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-anchor-url-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "url"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "(url)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-anchor-url-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "url"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "curl",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-fact-café-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "café"
+            ]
+          }
+        ]
+      },
+      "artifact": "(café)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-fact-café-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "café"
+            ]
+          }
+        ]
+      },
+      "artifact": "caféteria",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-marker-café-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "café"
+        ]
+      },
+      "artifact": "(café)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-marker-café-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [
+          "café"
+        ]
+      },
+      "artifact": "caféteria",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "latin-boundary-anchor-café-whole",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "café"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "(café)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "latin-boundary-anchor-café-fragment",
+      "category": "format-normalization",
+      "root_cause": "latin_word_fragment_false_match",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "expected_any": [],
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "answer",
+              "alternatives": [
+                "café"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "caféteria",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "body-fact-title-absent",
+      "category": "answer-surface",
+      "root_cause": "metadata_title_supplies_missing_body_fact",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "required_facts": [
+          {
+            "id": "install",
+            "alternatives": [
+              "widget --start"
+            ]
+          }
+        ]
+      },
+      "artifact": "unrelated text",
+      "title": "widget --start",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "body-fact-title-present",
+      "category": "answer-surface",
+      "root_cause": "metadata_title_supplies_missing_body_fact",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "required_facts": [
+          {
+            "id": "install",
+            "alternatives": [
+              "widget --start"
+            ]
+          }
+        ]
+      },
+      "artifact": "widget --start",
+      "title": "widget --start",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "query-sensitive-dynamic-matching-final-page-and-language-remain-eligible",
+      "category": "acceptance-contract",
+      "root_cause": "undeclared_query_parameters_may_select_other_content",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/start",
+        "evaluation_url": "https://example.test/start",
+        "expected_final_url": "https://example.test/en/catalog",
+        "target_language": "en-US",
+        "target_region": "US",
+        "track": "dynamic",
+        "task_kind": "body",
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "identity",
+              "alternatives": [
+                "Catalog"
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "Catalog",
+      "ok": true,
+      "final_url": "https://example.test/en/catalog?session=123#items",
+      "metadata": {
+        "route": "dynamic_selected_text",
+        "document_language": "en"
+      },
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "page_identity_status": "mismatch",
+        "final_url_consistent": false,
+        "language_consistent": true
+      }
+    },
+    {
+      "id": "answer-body-fact-remains-valid-with-an-unrelated-document-title",
+      "category": "answer-surface",
+      "root_cause": "answer_surface_omission",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "required_facts": [
+          {
+            "id": "heading",
+            "alternatives": [
+              "Exact page title"
+            ]
+          }
+        ]
+      },
+      "artifact": "Exact page title\nRequired body",
+      "title": "Unrelated title metadata",
+      "ok": true,
+      "expected_task_pass": true,
+      "expected_metrics": {
+        "fact_coverage": 1.0
+      }
+    },
+    {
+      "id": "explicit-contract-missing-page-identity-counts-as-failure",
+      "category": "task-predicate",
+      "root_cause": "unknown_identity_masks_independent_requirement_failure",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/start",
+        "track": "risk_control",
+        "task_kind": "body",
+        "expected_any": [
+          "Expected body"
+        ],
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "body",
+              "alternatives": [
+                "Expected body"
+              ]
+            }
+          ]
+        },
+        "source_benchmark": {
+          "risk_control": {
+            "navigation_contract": {
+              "requested_url": "https://example.test/start",
+              "observed_final_url": "https://example.test/final"
+            }
+          }
+        },
+        "page_identity_required": true
+      },
+      "artifact": "Expected body",
+      "ok": true,
+      "expected_task_pass": false,
+      "expected_task_measured": true,
+      "expected_metrics": {
+        "page_identity_status": "unavailable",
+        "length_pass": true
+      }
+    },
+    {
+      "id": "resource-log-with-no-answer",
+      "category": "answer-surface",
+      "root_cause": "resource_network_diagnostics_are_not_answers",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "task_kind": "resource",
+        "content_score_applicable": false,
+        "expected_resources": [
+          {
+            "id": "video",
+            "urls": [
+              "https://example.test/target.mp4"
+            ]
+          }
+        ]
+      },
+      "artifact": "{\"network\": [{\"url\": \"https://example.test/target.mp4\"}]}",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "resource-log-with-delivered-answer",
+      "category": "answer-surface",
+      "root_cause": "resource_network_diagnostics_are_not_answers",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "task_kind": "resource",
+        "content_score_applicable": false,
+        "expected_resources": [
+          {
+            "id": "video",
+            "urls": [
+              "https://example.test/target.mp4"
+            ]
+          }
+        ]
+      },
+      "artifact": "{\"network\": [{\"url\": \"https://example.test/target.mp4\"}], \"resources\": [\"https://example.test/target.mp4\"]}",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "forbidden-latin-word-fragment",
+      "category": "format-normalization",
+      "root_cause": "forbidden_accented_latin_word_boundaries",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "forbidden_any": [
+          "café"
+        ]
+      },
+      "artifact": "caféteria",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "forbidden-latin-whole-word",
+      "category": "format-normalization",
+      "root_cause": "forbidden_accented_latin_word_boundaries",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "forbidden_any": [
+          "café"
+        ]
+      },
+      "artifact": "A café.",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "neutral-frame-resource-absent",
+      "category": "answer-surface",
+      "root_cause": "neutral_inline_frame_document_url",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "task_kind": "resource",
+        "content_score_applicable": false,
+        "expected_resources": [
+          {
+            "id": "frame",
+            "urls": [
+              "https://frames.test/path/clip.mp4"
+            ]
+          }
+        ]
+      },
+      "artifact": "<iframe data-frame-url=\"https://frames.test/path/index.html\" srcdoc=\"&lt;video src=&quot;other.mp4&quot;&gt;&lt;/video&gt;\"></iframe>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "neutral-frame-resource-present",
+      "category": "answer-surface",
+      "root_cause": "neutral_inline_frame_document_url",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "task_kind": "resource",
+        "content_score_applicable": false,
+        "expected_resources": [
+          {
+            "id": "frame",
+            "urls": [
+              "https://frames.test/path/clip.mp4"
+            ]
+          }
+        ]
+      },
+      "artifact": "<iframe data-frame-url=\"https://frames.test/path/index.html\" srcdoc=\"&lt;video src=&quot;clip.mp4&quot;&gt;&lt;/video&gt;\"></iframe>",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "category": "acceptance-contract",
+      "root_cause": "required_file_identity_missing_must_not_shrink_population",
+      "case": {
+        "url": "https://example.test/file",
+        "task_kind": "file",
+        "page_identity_required": true
+      },
+      "artifact": "File delivered",
+      "ok": true,
+      "expected_task_measured": true,
+      "id": "file-missing-required-identity-is-measured-failure",
+      "failure_mode": "false-positive",
+      "expected_task_pass": false
+    },
+    {
+      "category": "acceptance-contract",
+      "root_cause": "required_file_identity_missing_must_not_shrink_population",
+      "case": {
+        "url": "https://example.test/file",
+        "task_kind": "file",
+        "page_identity_required": true
+      },
+      "artifact": "File delivered",
+      "ok": true,
+      "expected_task_measured": true,
+      "id": "file-with-required-identity-and-current-verdict-passes",
+      "failure_mode": "false-negative",
+      "final_url": "https://example.test/file",
+      "metadata": {
+        "file_evaluation": {
+          "pass": true
+        }
+      },
+      "expected_task_pass": true
+    },
+    {
+      "id": "json-url-list-answer-matches",
+      "category": "answer-surface",
+      "root_cause": "resource_network_diagnostics_are_not_answers",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/page",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "video",
+            "urls": [
+              "/target.mp4"
+            ]
+          }
+        ]
+      },
+      "artifact": "[\"/target.mp4\"]",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "json-url-list-answer-does-not-match",
+      "category": "answer-surface",
+      "root_cause": "resource_network_diagnostics_are_not_answers",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/page",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "video",
+            "urls": [
+              "/target.mp4"
+            ]
+          }
+        ]
+      },
+      "artifact": "[\"/other.mp4\"]",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "word-boundary-mixed-script-complete",
+      "category": "format-normalization",
+      "root_cause": "alphabetic_boundary_omits_greek_cyrillic",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "stats"
+            ]
+          }
+        ]
+      },
+      "artifact": "(stats)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "word-boundary-mixed-script-fragment",
+      "category": "format-normalization",
+      "root_cause": "alphabetic_boundary_omits_greek_cyrillic",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "stats"
+            ]
+          }
+        ]
+      },
+      "artifact": "αstats",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "word-boundary-greek-complete",
+      "category": "format-normalization",
+      "root_cause": "alphabetic_boundary_omits_greek_cyrillic",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "Αθήνα"
+            ]
+          }
+        ]
+      },
+      "artifact": "(Αθήνα)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "word-boundary-greek-fragment",
+      "category": "format-normalization",
+      "root_cause": "alphabetic_boundary_omits_greek_cyrillic",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "Αθήνα"
+            ]
+          }
+        ]
+      },
+      "artifact": "Αθήνας",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "word-boundary-cyrillic-complete",
+      "category": "format-normalization",
+      "root_cause": "alphabetic_boundary_omits_greek_cyrillic",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/article",
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "новости"
+            ]
+          }
+        ]
+      },
+      "artifact": "(новости)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "word-boundary-cyrillic-fragment",
+      "category": "format-normalization",
+      "root_cause": "alphabetic_boundary_omits_greek_cyrillic",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/article",
+        "required_facts": [
+          {
+            "id": "answer",
+            "alternatives": [
+              "новости"
+            ]
+          }
+        ]
+      },
+      "artifact": "новостик",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "xml-declaration-frame-target",
+      "category": "structured-extraction",
+      "root_cause": "xml_declaration_discards_visible_frame_resources",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/spec",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "image",
+            "urls": [
+              "/target.png"
+            ]
+          }
+        ]
+      },
+      "artifact": "<![UNRECOGNIZED[ XML source ]]><iframe srcdoc=\"&lt;img src=&quot;/target.png&quot;&gt;\"></iframe>",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "xml-declaration-frame-non-target",
+      "category": "structured-extraction",
+      "root_cause": "xml_declaration_discards_visible_frame_resources",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/spec",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "image",
+            "urls": [
+              "/target.png"
+            ]
+          }
+        ]
+      },
+      "artifact": "<![UNRECOGNIZED[ XML source ]]><iframe srcdoc=\"&lt;img src=&quot;/other.png&quot;&gt;\"></iframe>",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "native-serialization-complete-notice",
+      "category": "format-normalization",
+      "root_cause": "visible_label_boundaries_in_native_serialization",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "required_facts": [
+          {
+            "id": "label",
+            "alternatives": [
+              "Example Corp. Avenida N°5, Santiago de Chile"
+            ]
+          }
+        ]
+      },
+      "artifact": "ALL RIGHTS RESERVEDExample Corp. Avenida N°5, Santiago de Chile",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "native-serialization-changed-notice",
+      "category": "format-normalization",
+      "root_cause": "visible_label_boundaries_in_native_serialization",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "required_facts": [
+          {
+            "id": "label",
+            "alternatives": [
+              "Example Corp. Avenida N°5, Santiago de Chile"
+            ]
+          }
+        ]
+      },
+      "artifact": "ALL RIGHTS RESERVEDExample Corp. Avenida N°6, Santiago de Chile",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "native-serialization-stock-label",
+      "category": "format-normalization",
+      "root_cause": "visible_label_boundaries_in_native_serialization",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "required_facts": [
+          {
+            "id": "label",
+            "alternatives": [
+              "In stock"
+            ]
+          }
+        ]
+      },
+      "artifact": "In stockAdd to basket",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "native-serialization-stock-word-fragment",
+      "category": "format-normalization",
+      "root_cause": "visible_label_boundaries_in_native_serialization",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "required_facts": [
+          {
+            "id": "label",
+            "alternatives": [
+              "In stock"
+            ]
+          }
+        ]
+      },
+      "artifact": "In stockholders",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "native-serialization-carousel-label",
+      "category": "format-normalization",
+      "root_cause": "visible_label_boundaries_in_native_serialization",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "required_facts": [
+          {
+            "id": "label",
+            "alternatives": [
+              "Careers"
+            ]
+          }
+        ]
+      },
+      "artifact": "[Careers9 of 9](/careers)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "native-serialization-carousel-digit-word",
+      "category": "format-normalization",
+      "root_cause": "visible_label_boundaries_in_native_serialization",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "required_facts": [
+          {
+            "id": "label",
+            "alternatives": [
+              "Careers"
+            ]
+          }
+        ]
+      },
+      "artifact": "[Careers9](/careers)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "native-serialization-cyrillic-label",
+      "category": "format-normalization",
+      "root_cause": "visible_label_boundaries_in_native_serialization",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "required_facts": [
+          {
+            "id": "label",
+            "alternatives": [
+              "Наука"
+            ]
+          }
+        ]
+      },
+      "artifact": "[Технологии](/technology)[Наука](/science)Все темы",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "native-serialization-cyrillic-word-fragment",
+      "category": "format-normalization",
+      "root_cause": "visible_label_boundaries_in_native_serialization",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "required_facts": [
+          {
+            "id": "label",
+            "alternatives": [
+              "Наука"
+            ]
+          }
+        ]
+      },
+      "artifact": "Наукам",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "native-serialization-punctuation-markup",
+      "category": "format-normalization",
+      "root_cause": "visible_label_boundaries_in_native_serialization",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "required_facts": [
+          {
+            "id": "label",
+            "alternatives": [
+              "toute l’actu dès 7h30"
+            ]
+          }
+        ]
+      },
+      "artifact": "_:_toute l’actu dès 7h30",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "resource-serialization-markup-entity",
+      "category": "format-normalization",
+      "root_cause": "markdown_destination_entities_decoded_once",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/gallery",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "photo",
+            "urls": [
+              "https://cdn.example.test/photo.jpg?width=640&height=480"
+            ]
+          }
+        ],
+        "resource_output_contract": {
+          "candidate_scope": "image_answer_fields",
+          "unexpected": "reject"
+        }
+      },
+      "artifact": "![Photo](https://cdn.example.test/photo.jpg?width=640&amp;height=480)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "resource-serialization-different-size",
+      "category": "format-normalization",
+      "root_cause": "markdown_destination_entities_decoded_once",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/gallery",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "photo",
+            "urls": [
+              "https://cdn.example.test/photo.jpg?width=640&height=480"
+            ]
+          }
+        ],
+        "resource_output_contract": {
+          "candidate_scope": "image_answer_fields",
+          "unexpected": "reject"
+        }
+      },
+      "artifact": "![Photo](https://cdn.example.test/photo.jpg?width=641&amp;height=480)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "named-scope-heading-owns-records",
+      "category": "structured-extraction",
+      "root_cause": "heading_scope_and_empty_nested_card_layout",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/search",
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "entry_scope": {
+            "html_selector": ".results a[href]",
+            "start_pattern": "^Find games$",
+            "end_pattern": "^See all"
+          }
+        }
+      },
+      "artifact": "Find games\n[Help](/help)\nSee all\n### Find games\n[Alpha](/item/1)\n[Beta](/item/2)\nSee all",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "named-scope-navigation-cannot-supply-records",
+      "category": "structured-extraction",
+      "root_cause": "heading_scope_and_empty_nested_card_layout",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/search",
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "entry_scope": {
+            "html_selector": ".results a[href]",
+            "start_pattern": "^Find games$",
+            "end_pattern": "^See all"
+          }
+        }
+      },
+      "artifact": "Find games\n[Alpha](/item/1)\n[Beta](/item/2)\nSee all\n### Find games\n[Gamma](/item/3)\nSee all\n[Delta](/item/4)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "named-scope-empty-layout-is-not-name",
+      "category": "structured-extraction",
+      "root_cause": "heading_scope_and_empty_nested_card_layout",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/search",
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "entry_scope": {
+            "html_selector": ".results a[href]",
+            "start_pattern": "^Find games$",
+            "end_pattern": "^See all"
+          }
+        }
+      },
+      "artifact": "### Find games\n- [![](/cover.jpg)\n\n - **\n\nAlpha game\n2026.3.26\n8,500円\nPublisher\n**](/item/1)\n- [Beta](/item/2)\nSee all",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "named-scope-image-without-visible-name",
+      "category": "structured-extraction",
+      "root_cause": "heading_scope_and_empty_nested_card_layout",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/search",
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "entry_scope": {
+            "html_selector": ".results a[href]",
+            "start_pattern": "^Find games$",
+            "end_pattern": "^See all"
+          }
+        }
+      },
+      "artifact": "### Find games\n- [![](/cover.jpg)\n\n - **\n\n2026.3.26\n**](/item/1)\n- [Beta](/item/2)\nSee all",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "native-card-bullet-complete",
+      "category": "structured-extraction",
+      "root_cause": "typed_card_fields_serialized_as_sibling_bullets",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "homes",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "required_fields": [
+                {
+                  "id": "price",
+                  "kind": "price"
+                },
+                {
+                  "id": "bedrooms",
+                  "kind": "integer",
+                  "pattern": "\\bbds\\b"
+                },
+                {
+                  "id": "bathrooms",
+                  "kind": "integer",
+                  "pattern": "\\bba\\b"
+                },
+                {
+                  "id": "area",
+                  "kind": "area"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "- [$900](/item/1)\n- **3** bds\n- **2** ba\n- **900** sqft\nActive[House A](/item/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "native-card-bullet-missing-area",
+      "category": "structured-extraction",
+      "root_cause": "typed_card_fields_serialized_as_sibling_bullets",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "homes",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "required_fields": [
+                {
+                  "id": "price",
+                  "kind": "price"
+                },
+                {
+                  "id": "bedrooms",
+                  "kind": "integer",
+                  "pattern": "\\bbds\\b"
+                },
+                {
+                  "id": "bathrooms",
+                  "kind": "integer",
+                  "pattern": "\\bba\\b"
+                },
+                {
+                  "id": "area",
+                  "kind": "area"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "- [House A](/item/1)\n- [House B](/item/2)\n- $900\n- 3 bds\n- 2 ba",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "native-card-bullet-other-section",
+      "category": "structured-extraction",
+      "root_cause": "typed_card_fields_serialized_as_sibling_bullets",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "homes",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "required_fields": [
+                {
+                  "id": "price",
+                  "kind": "price"
+                },
+                {
+                  "id": "bedrooms",
+                  "kind": "integer",
+                  "pattern": "\\bbds\\b"
+                },
+                {
+                  "id": "bathrooms",
+                  "kind": "integer",
+                  "pattern": "\\bba\\b"
+                },
+                {
+                  "id": "area",
+                  "kind": "area"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "- [House A](/item/1)\n# Other section\n- $900\n- 3 bds\n- 2 ba\n- 900 sqft",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "native-card-text-same-line-region",
+      "category": "structured-extraction",
+      "root_cause": "declared_text_patterns_consume_distinct_value_spans",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "required_fields": [
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "minimum_chars": 2
+                },
+                {
+                  "id": "region",
+                  "kind": "text",
+                  "pattern": ",\\s*(?:TX|AL)\\b"
+                },
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[Concert](/item/1)\n2026-10-16\nExample Hall Tuscaloosa, AL",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "native-card-text-region-without-venue",
+      "category": "structured-extraction",
+      "root_cause": "declared_text_patterns_consume_distinct_value_spans",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "required_fields": [
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "minimum_chars": 2
+                },
+                {
+                  "id": "region",
+                  "kind": "text",
+                  "pattern": ",\\s*(?:TX|AL)\\b"
+                },
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[Concert](/item/1)\n2026-10-16\n, AL",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "native-card-text-no-region",
+      "category": "structured-extraction",
+      "root_cause": "declared_text_patterns_consume_distinct_value_spans",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "required_fields": [
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "minimum_chars": 2
+                },
+                {
+                  "id": "region",
+                  "kind": "text",
+                  "pattern": ",\\s*(?:TX|AL)\\b"
+                },
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[Concert](/item/1)\n2026-10-16\nExample Hall",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "source-backed-diagnostic-source-discusses-status",
+      "category": "acceptance-contract",
+      "root_cause": "source_body_term_is_not_an_explicit_exclusion",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/spec",
+        "required_facts": [
+          {
+            "id": "content",
+            "alternatives": [
+              "response specification"
+            ]
+          }
+        ],
+        "diagnostic_any": [
+          "404 Not Found"
+        ]
+      },
+      "artifact": "The HTTP standard explains 404 Not Found in the response specification.",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "source-backed-diagnostic-status-heading",
+      "category": "acceptance-contract",
+      "root_cause": "source_body_term_is_not_an_explicit_exclusion",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/spec",
+        "required_facts": [
+          {
+            "id": "content",
+            "alternatives": [
+              "response specification"
+            ]
+          }
+        ],
+        "diagnostic_any": [
+          "404 Not Found"
+        ]
+      },
+      "artifact": "404 Not Found",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "declared-whole-card-complete",
+      "category": "structured-extraction",
+      "root_cause": "declared_visible_title_and_fields_inside_one_card_link",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "markdown_label_pattern": "(?m)^(?:Today\\n)?2026-10-16\\n(?P<label>[^\\n]+)\\n",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "minimum_chars": 2
+                },
+                {
+                  "id": "region",
+                  "kind": "text",
+                  "pattern": ",\\s*AL\\b"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[![](/cover.jpg)\nToday\n2026-10-16\nEvening Concert\nExample Hall Tuscaloosa, AL](/item/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "declared-whole-card-no-name",
+      "category": "structured-extraction",
+      "root_cause": "declared_visible_title_and_fields_inside_one_card_link",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "markdown_label_pattern": "(?m)^(?:Today\\n)?2026-10-16\\n(?P<label>[^\\n]+)\\n",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "minimum_chars": 2
+                },
+                {
+                  "id": "region",
+                  "kind": "text",
+                  "pattern": ",\\s*AL\\b"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[![](/cover.jpg)\nToday\n2026-10-16\nExample Hall Tuscaloosa, AL](/item/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "declared-whole-card-no-venue",
+      "category": "structured-extraction",
+      "root_cause": "declared_visible_title_and_fields_inside_one_card_link",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "markdown_label_pattern": "(?m)^(?:Today\\n)?2026-10-16\\n(?P<label>[^\\n]+)\\n",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "minimum_chars": 2
+                },
+                {
+                  "id": "region",
+                  "kind": "text",
+                  "pattern": ",\\s*AL\\b"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[![](/cover.jpg)\nToday\n2026-10-16\nEvening Concert\n, AL](/item/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "declared-whole-card-no-region",
+      "category": "structured-extraction",
+      "root_cause": "declared_visible_title_and_fields_inside_one_card_link",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "markdown_label_pattern": "(?m)^(?:Today\\n)?2026-10-16\\n(?P<label>[^\\n]+)\\n",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "minimum_chars": 2
+                },
+                {
+                  "id": "region",
+                  "kind": "text",
+                  "pattern": ",\\s*AL\\b"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "[![](/cover.jpg)\nToday\n2026-10-16\nEvening Concert\nExample Hall](/item/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "declared-card-prelude-owned",
+      "category": "structured-extraction",
+      "root_cause": "declared_card_start_owns_pre_title_fields",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "record_start_pattern": "(?m)^- 2026-10-[0-9]{2}$",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "aliases": [
+                    "Venue"
+                  ]
+                },
+                {
+                  "id": "region",
+                  "kind": "text",
+                  "aliases": [
+                    "Region"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "- 2026-10-16\nVenue: Hall A\nRegion: Alabama\n[Concert](/item/1)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "declared-card-prelude-separate-card",
+      "category": "structured-extraction",
+      "root_cause": "declared_card_start_owns_pre_title_fields",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "record_start_pattern": "(?m)^- 2026-10-[0-9]{2}$",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "aliases": [
+                    "Venue"
+                  ]
+                },
+                {
+                  "id": "region",
+                  "kind": "text",
+                  "aliases": [
+                    "Region"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "- 2026-10-16\nVenue: Hall A\nRegion: Alabama\n- 2026-10-17\n[Concert](/item/1)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "declared-card-prelude-next-card-fields",
+      "category": "structured-extraction",
+      "root_cause": "declared_card_start_owns_pre_title_fields",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/",
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "events",
+              "kind": "named_link",
+              "hosts": [
+                "example.test"
+              ],
+              "entry_path": "/item/[0-9]+",
+              "minimum_records": 1,
+              "record_start_pattern": "(?m)^- 2026-10-[0-9]{2}$",
+              "required_fields": [
+                {
+                  "id": "date",
+                  "kind": "date_or_time"
+                },
+                {
+                  "id": "venue",
+                  "kind": "text",
+                  "aliases": [
+                    "Venue"
+                  ]
+                },
+                {
+                  "id": "region",
+                  "kind": "text",
+                  "aliases": [
+                    "Region"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "artifact": "- 2026-10-16\nVenue: Hall A\n[Concert](/item/1)\n- 2026-10-17\nRegion: Alabama\n[Other](/item/2)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "declared-information-explicit-title",
+      "category": "acceptance-contract",
+      "root_cause": "information_title_scope_does_not_promote_unrelated_metadata",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/video",
+        "required_facts": [
+          {
+            "id": "video-title",
+            "alternatives": [
+              "Example video"
+            ],
+            "match_scope": "body_or_title"
+          },
+          {
+            "id": "publisher",
+            "alternatives": [
+              "Example Channel"
+            ]
+          }
+        ]
+      },
+      "artifact": "---\ntitle: \"Example video\"\n---\nExample Channel",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "declared-information-keywords-not-title",
+      "category": "acceptance-contract",
+      "root_cause": "information_title_scope_does_not_promote_unrelated_metadata",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/video",
+        "required_facts": [
+          {
+            "id": "video-title",
+            "alternatives": [
+              "Example video"
+            ],
+            "match_scope": "body_or_title"
+          },
+          {
+            "id": "publisher",
+            "alternatives": [
+              "Example Channel"
+            ]
+          }
+        ]
+      },
+      "artifact": "---\ntitle: \"Other video\"\nkeywords: \"Example video\"\n---\nExample Channel",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "declared-information-keywords-not-publisher",
+      "category": "acceptance-contract",
+      "root_cause": "information_title_scope_does_not_promote_unrelated_metadata",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/video",
+        "required_facts": [
+          {
+            "id": "video-title",
+            "alternatives": [
+              "Example video"
+            ],
+            "match_scope": "body_or_title"
+          },
+          {
+            "id": "publisher",
+            "alternatives": [
+              "Example Channel"
+            ]
+          }
+        ]
+      },
+      "artifact": "---\ntitle: \"Example video\"\nkeywords: \"Example Channel\"\n---\nOther body",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "named-section-boundary-complete-software",
+      "category": "acceptance-contract",
+      "root_cause": "declared_result_section_ends_at_the_next_independent_section",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/search",
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "entry_scope": {
+            "html_selector": ".results a[href]",
+            "start_pattern": "^Find games$",
+            "end_pattern": "^Find pages$"
+          }
+        }
+      },
+      "artifact": "### Find games\n[Alpha](/item/1)\n[Beta](/item/2)\n### Find pages\n[Other page](/item/3)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "named-section-boundary-next-section-not-software",
+      "category": "acceptance-contract",
+      "root_cause": "declared_result_section_ends_at_the_next_independent_section",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/search",
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "example.test"
+          ],
+          "entry_path": "/item/[0-9]+",
+          "entry_scope": {
+            "html_selector": ".results a[href]",
+            "start_pattern": "^Find games$",
+            "end_pattern": "^Find pages$"
+          }
+        }
+      },
+      "artifact": "### Find games\n[Alpha](/item/1)\n### Find pages\n[Other page](/item/2)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "declared-photo-query-unsplash-resize",
+      "category": "acceptance-contract",
+      "root_cause": "resource_alias_must_bind_asset_and_declared_presentation_parameters",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/photo",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "main-image",
+            "kind": "image",
+            "urls": [
+              "https://images.unsplash.com/photo-1493673272479-a20888bcee10",
+              "https://unsplash.com/photos/mSK5nNsAsLY/download"
+            ],
+            "url_patterns": [
+              "^https://images\\.unsplash\\.com/photo\\-1493673272479\\-a20888bcee10(?:\\?(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=format|ixlib=[A-Za-z0-9._-]+|ixid=[A-Za-z0-9_+/=%-]+)(?:&(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=format|ixlib=[A-Za-z0-9._-]+|ixid=[A-Za-z0-9_+/=%-]+))*)?$"
+            ]
+          }
+        ],
+        "resource_output_contract": {
+          "candidate_scope": "image_answer_fields",
+          "unexpected": "allow"
+        }
+      },
+      "artifact": "![Photo](https://images.unsplash.com/photo-1493673272479-a20888bcee10?auto=format&w=640&q=80)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "declared-photo-query-unsplash-overlay",
+      "category": "acceptance-contract",
+      "root_cause": "resource_alias_must_bind_asset_and_declared_presentation_parameters",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/photo",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "main-image",
+            "kind": "image",
+            "urls": [
+              "https://images.unsplash.com/photo-1493673272479-a20888bcee10",
+              "https://unsplash.com/photos/mSK5nNsAsLY/download"
+            ],
+            "url_patterns": [
+              "^https://images\\.unsplash\\.com/photo\\-1493673272479\\-a20888bcee10(?:\\?(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=format|ixlib=[A-Za-z0-9._-]+|ixid=[A-Za-z0-9_+/=%-]+)(?:&(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=format|ixlib=[A-Za-z0-9._-]+|ixid=[A-Za-z0-9_+/=%-]+))*)?$"
+            ]
+          }
+        ],
+        "resource_output_contract": {
+          "candidate_scope": "image_answer_fields",
+          "unexpected": "allow"
+        }
+      },
+      "artifact": "![Photo](https://images.unsplash.com/photo-1493673272479-a20888bcee10?w=640&mark=https://other.test/logo.png)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "declared-photo-query-unsplash-other-asset",
+      "category": "acceptance-contract",
+      "root_cause": "resource_alias_must_bind_asset_and_declared_presentation_parameters",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/photo",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "main-image",
+            "kind": "image",
+            "urls": [
+              "https://images.unsplash.com/photo-1493673272479-a20888bcee10",
+              "https://unsplash.com/photos/mSK5nNsAsLY/download"
+            ],
+            "url_patterns": [
+              "^https://images\\.unsplash\\.com/photo\\-1493673272479\\-a20888bcee10(?:\\?(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=format|ixlib=[A-Za-z0-9._-]+|ixid=[A-Za-z0-9_+/=%-]+)(?:&(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=format|ixlib=[A-Za-z0-9._-]+|ixid=[A-Za-z0-9_+/=%-]+))*)?$"
+            ]
+          }
+        ],
+        "resource_output_contract": {
+          "candidate_scope": "image_answer_fields",
+          "unexpected": "allow"
+        }
+      },
+      "artifact": "![Photo](https://images.unsplash.com/photo-1493673272480-a20888bcee10?w=640)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "declared-photo-query-pexels-resize",
+      "category": "acceptance-contract",
+      "root_cause": "resource_alias_must_bind_asset_and_declared_presentation_parameters",
+      "failure_mode": "false-negative",
+      "case": {
+        "url": "https://example.test/photo",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "main-image",
+            "kind": "image",
+            "urls": [
+              "https://images.pexels.com/photos/12377231/pexels-photo-12377231.jpeg"
+            ],
+            "url_patterns": [
+              "^https://images\\.pexels\\.com/photos/12377231/pexels\\-photo\\-12377231\\.jpeg(?:\\?(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=(?:compress|format|compress,format)|dl=[A-Za-z0-9._-]+)(?:&(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=(?:compress|format|compress,format)|dl=[A-Za-z0-9._-]+))*)?$"
+            ]
+          }
+        ],
+        "resource_output_contract": {
+          "candidate_scope": "image_answer_fields",
+          "unexpected": "allow"
+        }
+      },
+      "artifact": "![Photo](https://images.pexels.com/photos/12377231/pexels-photo-12377231.jpeg?auto=compress&w=640&q=80)",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "declared-photo-query-pexels-overlay",
+      "category": "acceptance-contract",
+      "root_cause": "resource_alias_must_bind_asset_and_declared_presentation_parameters",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/photo",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "main-image",
+            "kind": "image",
+            "urls": [
+              "https://images.pexels.com/photos/12377231/pexels-photo-12377231.jpeg"
+            ],
+            "url_patterns": [
+              "^https://images\\.pexels\\.com/photos/12377231/pexels\\-photo\\-12377231\\.jpeg(?:\\?(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=(?:compress|format|compress,format)|dl=[A-Za-z0-9._-]+)(?:&(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=(?:compress|format|compress,format)|dl=[A-Za-z0-9._-]+))*)?$"
+            ]
+          }
+        ],
+        "resource_output_contract": {
+          "candidate_scope": "image_answer_fields",
+          "unexpected": "allow"
+        }
+      },
+      "artifact": "![Photo](https://images.pexels.com/photos/12377231/pexels-photo-12377231.jpeg?w=640&mark=https://other.test/logo.png)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "declared-photo-query-pexels-other-asset",
+      "category": "acceptance-contract",
+      "root_cause": "resource_alias_must_bind_asset_and_declared_presentation_parameters",
+      "failure_mode": "false-positive",
+      "case": {
+        "url": "https://example.test/photo",
+        "task_kind": "resource",
+        "expected_resources": [
+          {
+            "id": "main-image",
+            "kind": "image",
+            "urls": [
+              "https://images.pexels.com/photos/12377231/pexels-photo-12377231.jpeg"
+            ],
+            "url_patterns": [
+              "^https://images\\.pexels\\.com/photos/12377231/pexels\\-photo\\-12377231\\.jpeg(?:\\?(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=(?:compress|format|compress,format)|dl=[A-Za-z0-9._-]+)(?:&(?:(?:w|h)=[1-9][0-9]*|q=(?:100|[1-9][0-9]?)|dpr=[1-9][0-9]*(?:\\.[0-9]+)?|fm=(?:jpg|jpeg|png|webp|avif|gif)|fit=(?:crop|clip|fill|fillmax|max|min|scale)|crop=(?:faces|edges|entropy|top|bottom|left|right|focalpoint)|cs=(?:srgb|tinysrgb)|auto=(?:compress|format|compress,format)|dl=[A-Za-z0-9._-]+))*)?$"
+            ]
+          }
+        ],
+        "resource_output_contract": {
+          "candidate_scope": "image_answer_fields",
+          "unexpected": "allow"
+        }
+      },
+      "artifact": "![Photo](https://images.pexels.com/photos/12377232/pexels-photo-12377232.jpeg?w=640)",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "localized-required-navigation-english",
+      "category": "acceptance-contract",
+      "root_cause": "Equivalent observed navigation labels must satisfy their declared group without dropping required navigation or substantive records.",
+      "failure_mode": "false-negative",
+      "case": {
+        "id": "localized-training",
+        "url": "https://example.test/training",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "title",
+              "alternatives": [
+                "Training exercises"
+              ]
+            },
+            {
+              "id": "home",
+              "alternatives": [
+                "首页",
+                "Home"
+              ]
+            },
+            {
+              "id": "login",
+              "alternatives": [
+                "登录",
+                "Login"
+              ]
+            }
+          ]
+        },
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "exercises",
+              "kind": "table",
+              "minimum_records": 2,
+              "required_columns": [
+                {
+                  "id": "number",
+                  "kind": "text",
+                  "aliases": [
+                    "ID"
+                  ],
+                  "pattern": "^[A-Z][0-9]+$"
+                },
+                {
+                  "id": "name",
+                  "kind": "text",
+                  "aliases": [
+                    "Name"
+                  ]
+                }
+              ],
+              "identity_column": "number"
+            }
+          ]
+        }
+      },
+      "artifact": "Training exercises\nHome\nLogin\n\n| ID | Name |\n| --- | --- |\n| A1 | Addition |\n| A2 | Multiplication |\n",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "localized-required-navigation-chinese",
+      "category": "acceptance-contract",
+      "root_cause": "Equivalent observed navigation labels must satisfy their declared group without dropping required navigation or substantive records.",
+      "failure_mode": "false-negative",
+      "case": {
+        "id": "localized-training",
+        "url": "https://example.test/training",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "title",
+              "alternatives": [
+                "Training exercises"
+              ]
+            },
+            {
+              "id": "home",
+              "alternatives": [
+                "首页",
+                "Home"
+              ]
+            },
+            {
+              "id": "login",
+              "alternatives": [
+                "登录",
+                "Login"
+              ]
+            }
+          ]
+        },
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "exercises",
+              "kind": "table",
+              "minimum_records": 2,
+              "required_columns": [
+                {
+                  "id": "number",
+                  "kind": "text",
+                  "aliases": [
+                    "ID"
+                  ],
+                  "pattern": "^[A-Z][0-9]+$"
+                },
+                {
+                  "id": "name",
+                  "kind": "text",
+                  "aliases": [
+                    "Name"
+                  ]
+                }
+              ],
+              "identity_column": "number"
+            }
+          ]
+        }
+      },
+      "artifact": "Training exercises\n首页\n登录\n\n| ID | Name |\n| --- | --- |\n| A1 | Addition |\n| A2 | Multiplication |\n",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "localized-required-navigation-missing",
+      "category": "acceptance-contract",
+      "root_cause": "Equivalent observed navigation labels must satisfy their declared group without dropping required navigation or substantive records.",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "localized-training",
+        "url": "https://example.test/training",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "title",
+              "alternatives": [
+                "Training exercises"
+              ]
+            },
+            {
+              "id": "home",
+              "alternatives": [
+                "首页",
+                "Home"
+              ]
+            },
+            {
+              "id": "login",
+              "alternatives": [
+                "登录",
+                "Login"
+              ]
+            }
+          ]
+        },
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "exercises",
+              "kind": "table",
+              "minimum_records": 2,
+              "required_columns": [
+                {
+                  "id": "number",
+                  "kind": "text",
+                  "aliases": [
+                    "ID"
+                  ],
+                  "pattern": "^[A-Z][0-9]+$"
+                },
+                {
+                  "id": "name",
+                  "kind": "text",
+                  "aliases": [
+                    "Name"
+                  ]
+                }
+              ],
+              "identity_column": "number"
+            }
+          ]
+        }
+      },
+      "artifact": "Training exercises\nHome\n\n| ID | Name |\n| --- | --- |\n| A1 | Addition |\n| A2 | Multiplication |\n",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "localized-required-navigation-without-records",
+      "category": "acceptance-contract",
+      "root_cause": "Equivalent observed navigation labels must satisfy their declared group without dropping required navigation or substantive records.",
+      "failure_mode": "false-positive",
+      "case": {
+        "id": "localized-training",
+        "url": "https://example.test/training",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "title",
+              "alternatives": [
+                "Training exercises"
+              ]
+            },
+            {
+              "id": "home",
+              "alternatives": [
+                "首页",
+                "Home"
+              ]
+            },
+            {
+              "id": "login",
+              "alternatives": [
+                "登录",
+                "Login"
+              ]
+            }
+          ]
+        },
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "exercises",
+              "kind": "table",
+              "minimum_records": 2,
+              "required_columns": [
+                {
+                  "id": "number",
+                  "kind": "text",
+                  "aliases": [
+                    "ID"
+                  ],
+                  "pattern": "^[A-Z][0-9]+$"
+                },
+                {
+                  "id": "name",
+                  "kind": "text",
+                  "aliases": [
+                    "Name"
+                  ]
+                }
+              ],
+              "identity_column": "number"
+            }
+          ]
+        }
+      },
+      "artifact": "Training exercises\nHome\nLogin",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
       "id": "visible-control-visible-button",
       "category": "answer-surface",
       "root_cause": "visible_control_attribute_scope",
@@ -54368,17 +57221,21 @@
     }
   ],
   "superseded_cases": {
-    "owned-specific-image-alt-is-an-accessible-record-name": "specific-image-alternative-does-not-create-visible-record-name",
-    "nested-image-accessible-names-identify-linked-records": "image-alternatives-do-not-create-visible-record-names",
-    "dynamic-final-page-mismatch-cannot-be-counted-as-a-pass": "content-policy-dynamic-final-page-mismatch-cannot-be-counted-as-a-pass",
+    "inline-linked-card-visible-fields": "inline-linked-card-visible-fields-ambiguous-boundaries-rejected",
+    "explicit-contract-missing-page-identity-with-valid-body-stays-unknown": "explicit-contract-missing-page-identity-counts-as-failure",
+    "answer-title-does-not-inflate-body-length": "body-only-word-boundary-answer-title-does-not-inflate-body-length",
+    "required-final-url-missing-is-a-measured-failure": "content-policy-required-final-url-missing-is-a-measured-failure",
     "dynamic-search-query-mismatch-is-a-different-page": "content-policy-dynamic-search-query-mismatch-is-a-different-page",
+    "inline-accessible-card-visible-fields": "inline-accessible-card-visible-fields-ambiguous-boundaries-rejected",
     "dynamic-source-document-language-mismatch-is-not-verified": "content-policy-dynamic-source-document-language-mismatch-is-not-verified",
     "dynamic-undeclared-source-language-rejects-declared-language": "content-policy-dynamic-undeclared-source-language-rejects-declared-language",
-    "required-final-url-missing-is-a-measured-failure": "content-policy-required-final-url-missing-is-a-measured-failure",
+    "answer-title-supplies-required-fact": "body-only-word-boundary-answer-title-supplies-required-fact",
+    "dynamic-final-page-mismatch-cannot-be-counted-as-a-pass": "content-policy-dynamic-final-page-mismatch-cannot-be-counted-as-a-pass",
+    "body-unfenced-native-table-code-retained": "body-unfenced-table-is-markup-not-literal-code",
+    "nested-image-accessible-names-identify-linked-records": "image-alternatives-do-not-create-visible-record-names",
+    "owned-specific-image-alt-is-an-accessible-record-name": "specific-image-alternative-does-not-create-visible-record-name",
     "required-final-url-present-keeps-valid-body": "content-policy-required-final-url-present-keeps-valid-body",
-    "inline-linked-card-visible-fields": "inline-linked-card-visible-fields-ambiguous-boundaries-rejected",
-    "inline-accessible-card-visible-fields": "inline-accessible-card-visible-fields-ambiguous-boundaries-rejected",
-    "body-unfenced-native-table-code-retained": "body-unfenced-table-is-markup-not-literal-code"
+    "dynamic-matching-final-page-and-language-remain-eligible": "query-sensitive-dynamic-matching-final-page-and-language-remain-eligible"
   },
   "superseded_controls": {
     "frozen_scorer_sha256": "ceb62fb821e6777d24a015ff713f406faecfff6181b0601b8e3ea2adffbf7c10",

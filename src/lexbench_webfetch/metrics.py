@@ -78,6 +78,8 @@ def _metadata_resource_candidates(
     if isinstance(value, dict):
         for child_key, child in value.items():
             child_key = str(child_key)
+            if child_key.casefold() in {"network", "request", "requests", "logs", "debug", "diagnostics"}:
+                continue
             candidates.extend(_metadata_resource_candidates(
                 child, key=child_key.casefold(), path=f"{path}.{child_key}",
             ))
@@ -154,7 +156,14 @@ def _image_content_candidates(content: str) -> list[tuple[str, str]]:
                           for url in srcset_urls(html.unescape(match[1])))
     # HTML attributes are decoded above. Do not also admit their raw entity
     # spelling as a second bare candidate; plain URL answers remain literal.
+    from .reference_quality import markdown_links
     bare_content = re.sub(r"<img\b[^>]*>", "", content, flags=re.I | re.S)
+    markup_links = markdown_links(bare_content)
+    for link in markup_links:
+        if not link.is_image and _looks_like_image_url(link.destination):
+            candidates.append((link.destination, "content.markdown_image_file"))
+    for link in reversed(markup_links):
+        bare_content = bare_content[:link.start] + " " + bare_content[link.end:]
     # Explicit image markup is typed evidence. A standalone HTTP URL may also
     # be the entire answer, including an extensionless CDN address. Every URL
     # with that syntax is admitted alike, without consulting target resources.
@@ -174,6 +183,16 @@ class _VisibleInlineFrames(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.documents: list[tuple[str, str | None]] = []
 
+    def parse_marked_section(self, i: int, report: int = 1) -> int:
+        # HTMLParser rejects XML conditional sections that are valid opaque
+        # declarations in returned documents. Skip their declared extent while
+        # retaining visible frames both before and after them.
+        try:
+            return super().parse_marked_section(i, report)
+        except AssertionError:
+            end = self.rawdata.find("]>", i + 3)
+            return end + 2 if end >= 0 else -1
+
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if tag.casefold() != "iframe":
             return
@@ -188,7 +207,7 @@ class _VisibleInlineFrames(HTMLParser):
             return
         source = values.get("srcdoc")
         if source:
-            self.documents.append((source, values.get("data-moli-frame-url")))
+            self.documents.append((source, values.get("data-frame-url") or values.get("data-moli-frame-url")))
 
 
 def _inline_frame_candidates(
@@ -199,13 +218,15 @@ def _inline_frame_candidates(
 ) -> list[tuple[str, str]]:
     """Read resource URLs from visible native ``srcdoc`` serialization.
 
-    Moli's official ``--with-frames`` output keeps child documents inside the
-    returned HTML.  This is still provider output; the scorer only resolves
-    URLs that the browser serialized, and ignores hidden synchronization or ad
-    frames.  The same parser applies to any provider returning inline frames.
+    Returned inline documents are provider output. Resolve their declared
+    document URLs and ignore hidden synchronization or advertising frames.
+    Historical serialized attributes remain readable without rewriting evidence.
     """
+    if not re.search(r'<iframe\b', content, re.I):
+        return []
     parser = _VisibleInlineFrames()
     parser.feed(content)
+    parser.close()
     candidates: list[tuple[str, str]] = []
     for document, declared_base in parser.documents[:100]:
         try:
@@ -247,20 +268,19 @@ def _native_json_resource_candidates(
     *,
     base_url: str,
 ) -> list[tuple[str, str]]:
-    """Read URLs from a browser's native JSON page and network record.
-
-    The accepted surface is deliberately structural: serialized page HTML and
-    network entries named ``url`` or ``final_url``. It never reads expected
-    answers to choose a field or invents a URL from a playback identifier.
-    """
+    """Read declared answer fields, keeping request and network logs diagnostic."""
     try:
         payload = json.loads(content)
     except (json.JSONDecodeError, TypeError):
         return []
+    if isinstance(payload, list):
+        # A URL list is itself an answer; a list of request/log objects is not.
+        return [(value, "content.native_json_resource_list") for value in payload
+                if isinstance(value, str)] if all(isinstance(value, str) for value in payload) else []
     if not isinstance(payload, dict):
         return []
     candidates: list[tuple[str, str]] = []
-    html = payload.get("html")
+    html = payload.get("html") or payload.get("content")
     if isinstance(html, str):
         candidates.extend(
             (match[1], "content.native_json_html_url")
@@ -275,17 +295,10 @@ def _native_json_resource_candidates(
         candidates.extend(_inline_frame_candidates(
             html, base_url=base_url, images_only=False,
         ))
-    pending = [payload.get("network")]
-    while pending:
-        value = pending.pop()
-        if isinstance(value, dict):
-            for key, item in value.items():
-                if key in {"url", "final_url"} and isinstance(item, str):
-                    candidates.append((item, f"content.native_json_network.{key}"))
-                elif isinstance(item, (dict, list)):
-                    pending.append(item)
-        elif isinstance(value, list):
-            pending.extend(value)
+    for key in ("resources", "links", "images", "videos", "media", "extras"):
+        if key in payload:
+            candidates.extend(_metadata_resource_candidates(
+                payload[key], key="links", path=f"content.native_json.{key}"))
     return candidates
 
 
@@ -357,17 +370,23 @@ def evaluate_resources(
         answer_fields = {key: metadata[key] for key in ('links','images','videos','media','extras') if key in metadata}
         candidates.extend(_metadata_resource_candidates(answer_fields))
         if not typed_json_answer:
-            from .reference_quality import markdown_link_destinations
-            candidates.extend((url, "content.bare_url") for url in
-                              re.findall(r"https?://[^\s<>'\")\]]+", content))
-            candidates.extend((match[1], "content.html_url") for match in
-                              re.findall(r"(?:src|href)\s*=\s*([\"'])(.*?)\1", content, re.I))
-            candidates.extend((url, "content.markdown_link")
-                              for url in markdown_link_destinations(content))
-            candidates.extend((url, "content.visible_file")
-                              for url in _visible_relative_resource_urls(content))
-            candidates.extend(_inline_frame_candidates(content, base_url=base_url, images_only=False))
-            candidates.extend(_native_json_resource_candidates(content, base_url=base_url))
+            try:
+                structured = json.loads(content)
+            except (ValueError, TypeError):
+                structured = None
+            if isinstance(structured, (dict, list)):
+                candidates.extend(_native_json_resource_candidates(content, base_url=base_url))
+            else:
+                from .reference_quality import markdown_link_destinations
+                candidates.extend((url, "content.bare_url") for url in
+                                  re.findall(r"https?://[^\s<>'\")\]]+", content))
+                candidates.extend((match[1], "content.html_url") for match in
+                                  re.findall(r"(?:src|href)\s*=\s*([\"'])(.*?)\1", content, re.I))
+                candidates.extend((url, "content.markdown_link")
+                                  for url in markdown_link_destinations(content))
+                candidates.extend((url, "content.visible_file")
+                                  for url in _visible_relative_resource_urls(content))
+                candidates.extend(_inline_frame_candidates(content, base_url=base_url, images_only=False))
     normalized_candidates, candidate_evidence = _normalized_candidates(candidates, base_url=base_url)
     results = []
     allowed_urls: set[str] = set()
@@ -468,20 +487,8 @@ def task_measured(metrics: dict, task_kind: str | None = None) -> bool:
     if metrics.get('rule_review_status') == 'unresolved':
         return False
     kind = task_kind or metrics.get('task_kind', 'body')
-    if (metrics.get('page_identity_required')
-            and metrics.get('page_identity_status') == 'unavailable'
-            and metrics.get('request_ok') is not False):
-        # Combined pass flags already include identity. Only independent
-        # failed requirements can prove failure while identity is unknown.
-        definite_failure = bool(
-            metrics.get('deadline_overrun')
-            or any(error != 'page_identity_not_verified'
-                   for error in metrics.get('stable_task_errors', []))
-            or (kind == 'body' and (metrics.get('length_pass') is False
-                                   or metrics.get('body_coverage_pass') is False))
-        )
-        if not definite_failure:
-            return False
+    if metrics.get('page_identity_required') and metrics.get('page_identity_status') != 'verified':
+        return True
     return kind != 'file' or isinstance(metrics.get('raw_file_pass'), bool)
 
 
@@ -501,6 +508,9 @@ def normalize_for_match(value: str) -> str:
     # escapes are presentation syntax, not part of the page's wording.
     normalized = re.sub(r'\\([!"#$%&\'()*+,\-./:;<=>?@\[\\\]^_`{|}~])', r'\1', normalized)
     normalized = re.sub(r'`([^`\n]+)`', r'\1', normalized)
+    # Standalone punctuation emitted with emphasis is formatting, including
+    # when the following word is adjacent. Preserve numeric/operator syntax.
+    normalized = re.sub(r'(?<!\w)([_*])([:;,.!?])\1(?=\w)', r'\2 ', normalized)
     normalized = re.sub(r'\*\*(?=\S)([^*\n]*\S)\*\*', r'\1', normalized)
     def strip_single_emphasis(match: re.Match) -> str:
         inner = match.group(2)
@@ -567,12 +577,28 @@ def normalize_for_match(value: str) -> str:
     return re.sub(r'(?<=\w) *> *(?=\w)', '>', normalized)
 
 
-def fact_in_text(text: str, fact: str) -> bool:
+# Alphabets whose adjacent letters form a word. CJK keeps declared phrase
+# containment because those writing systems do not require word separators.
+WORD_CHARACTERS = r'a-z0-9_\u00c0-\u024f\u1e00-\u1eff\u0370-\u052f\u1f00-\u1fff\u2de0-\u2dff\ua640-\ua69f'
+
+
+def _word_letter(char: str) -> bool:
+    return any(script in unicodedata.name(char, '') for script in ('LATIN', 'GREEK', 'CYRILLIC'))
+
+
+def fact_in_text(text: str, fact: str, *, latin_boundaries: bool = True) -> bool:
     """Match an explicitly registered normalized fact without fuzzy semantics."""
     if not fact:
         return False
     left = r'(?<![0-9.+\-])' if fact[0].isdigit() or fact[0] in '$£€¥' else ''
     right = r'(?![0-9]|\.[0-9])' if fact[-1].isdigit() else ''
+    # Latin words must not match fragments of longer words. Keep CJK phrase
+    # matching and the stricter numeric/currency boundaries intact.
+    latin_word = WORD_CHARACTERS
+    if latin_boundaries and _word_letter(fact[0]):
+        left = rf'(?<![{latin_word}])'
+    if latin_boundaries and _word_letter(fact[-1]):
+        right = rf'(?![{latin_word}])'
     for match in re.finditer(left + re.escape(fact) + right, text):
         if fact[0] in '$£€¥' and text[:match.start()].rstrip().endswith(('-', '+')):
             continue
@@ -581,11 +607,14 @@ def fact_in_text(text: str, fact: str) -> bool:
 
 
 def forbidden_in_text(text: str, phrase: str) -> bool:
-    """Match ASCII word boundaries without segmenting CJK phrases."""
+    """Match Latin word boundaries without segmenting CJK phrases."""
     if not phrase:
         return False
-    left = r'(?<![a-z0-9_])' if phrase[0].isascii() and phrase[0].isalnum() else ''
-    right = r'(?![a-z0-9_])' if phrase[-1].isascii() and phrase[-1].isalnum() else ''
+    latin_word = WORD_CHARACTERS
+    left = rf'(?<![{latin_word}])' if (phrase[0].isascii() and phrase[0].isalnum()
+            or _word_letter(phrase[0])) else ''
+    right = rf'(?![{latin_word}])' if (phrase[-1].isascii() and phrase[-1].isalnum()
+             or _word_letter(phrase[-1])) else ''
     return bool(re.search(left + re.escape(phrase) + right, text))
 
 
@@ -687,10 +716,12 @@ def evaluate_content(
     truncation_hits = declared_truncation_hits(answer_text)
     folded = normalize_for_match(answer_text)
     content_folded = normalize_for_match(visible_content)
-    matched = [marker for marker in expected if (text := normalize_for_match(marker)) and text in content_folded]
+    from .stable_tasks import _stable_literal_match
+    matched = [marker for marker in expected
+               if _stable_literal_match(visible_content, marker, phrase_boundaries=True)]
     facts = required_facts or []
     from .dynamic_entry_matching import matching_entry_facts
-    entry_hits = matching_entry_facts(folded, facts, normalize_for_match, fact_in_text)
+    entry_hits = matching_entry_facts(content_folded, facts, normalize_for_match, fact_in_text)
     fact_results = []
     from .stable_tasks import _stable_literal_match
     registered_fact_words = tuple(value for fact in facts
@@ -699,17 +730,22 @@ def evaluate_content(
     for index, fact in enumerate(facts):
         alternatives = [str(item) for item in fact.get("alternatives", [])]
         identifier = str(fact.get("id") or f"fact-{index + 1}")
+        scope = fact.get("match_scope", "body")
+        if scope not in {"body", "body_or_title"}:
+            raise ValueError("Unknown required-fact matching scope")
+        targets = [visible_content]
+        if scope == "body_or_title":
+            from .reference_quality import delivered_page_title
+            targets.append(delivered_page_title(content, title))
         hits = (entry_hits[identifier] if identifier in entry_hits else
                 [item for item in alternatives
-                 if (_stable_literal_match(answer_text, item, registered_fact_words)
-                     if re.fullmatch(r'[A-Za-z]+|[\u0600-\u06ff]+', item)
-                     else fact_in_text(folded, normalize_for_match(item)))])
+                 if any(_stable_literal_match(target, item, registered_fact_words, phrase_boundaries=True) for target in targets)])
         fact_results.append({
             "id": identifier,
             "alternatives": alternatives,
             "matched": hits,
             "pass": bool(hits),
-            **({'match_scope': 'entry'} if identifier in entry_hits else {}),
+            **({'match_scope': 'entry'} if identifier in entry_hits else {'match_scope': scope} if scope != 'body' else {}),
         })
     fact_hits = sum(item["pass"] for item in fact_results)
     fact_coverage = round(fact_hits / len(fact_results), 4) if fact_results else 1.0
@@ -923,6 +959,8 @@ def summarize(records: list[dict[str, Any]]) -> dict[str, Any]:
             "mean_content_ms": round(statistics.mean(content_successful_elapsed), 2) if content_successful_elapsed else None,
             "transport_p50_ms": percentile(transport_successful_elapsed, 0.50),
             "transport_p95_ms": percentile(transport_successful_elapsed, 0.95),
+            "mean_all_attempts_ms": round(statistics.mean(elapsed), 2),
+            "all_attempts_p50_ms": percentile(elapsed, 0.50),
             "all_attempts_p95_ms": percentile(elapsed, 0.95),
             "median_content_chars": round(
                 statistics.median(item["metrics"]["content_chars"] for item in items), 1

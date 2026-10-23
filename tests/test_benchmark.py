@@ -44,6 +44,20 @@ class PublicDefinitions(unittest.TestCase):
         self.assertEqual(public['source_verification'], {'mime': 'image/png', 'file_sha256': 'a'*64})
         self.assertNotIn('private source capture', json.dumps(public))
 
+    def test_registered_revision_keeps_original_suites_and_has_new_dataset_ids(self):
+        import copy
+        revision = bench.read(bench.SUITES/'annotation-revisions/serialization-20261021.json')
+        changed = 0
+        for identifier in revision['parents']:
+            _, root = bench.suite(identifier)
+            data = bench.read(root/'tasks.json');before=copy.deepcopy(data)
+            new = bench.apply_annotation_revision(identifier, data, revision['id'])
+            self.assertEqual(data, before)
+            self.assertNotEqual(new['id'], data['id'])
+            self.assertEqual(len(new['cases']), len(data['cases']))
+            changed += sum(a != b for a,b in zip(new['cases'],data['cases']))
+        self.assertEqual(changed, len(revision['changes']))
+
     def test_unknown_suite_is_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Unknown suite'):
             bench.validate('not-a-suite')
@@ -95,6 +109,101 @@ class FrozenInputs(unittest.TestCase):
         self.assertEqual({p.relative_to(output).as_posix() for p in output.rglob('*') if p.is_file()},
                          {'dataset.json', 'sources/article.json'})
         self.assertEqual(bench.verify_inputs('synthetic', output)['case_count'], 1)
+
+    def annotation_revision(self):
+        from lexbench_webfetch.scoring_regressions import load_scoring_regressions
+        task = bench.read(self.suites/'synthetic/tasks.json')['cases'][0]
+        encoded = json.dumps(task, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()
+        data = {'schema_version': 1, 'kind': 'score_only_annotation_revision',
+                'id': 'source-annotation-v2', 'parents': {'synthetic': {
+                    'tasks_sha256': bench.digest(self.suites/'synthetic/tasks.json'),
+                    'source_inputs_sha256': bench.digest(self.suites/'synthetic/source-inputs.json')}},
+                'regression_ids': [next(iter(load_scoring_regressions()))],
+                'changes': [{'suite': 'synthetic', 'case_id': 'article',
+                             'before_sha256': hashlib.sha256(encoded).hexdigest(),
+                             'set': {'required_facts': [{'id': 'main', 'alternatives': ['unique fact']}]},
+                             'remove': []}]}
+        revision_path = self.suites/'annotation-revisions/source-annotation-v2.json'
+        write(revision_path, data)
+        delta = [{'path': '/required_facts', 'after': [{'id': 'main', 'alternatives': ['unique fact']}]}]
+        data['regression_ids'] = ['source-backed-diagnostic-source-discusses-status',
+                                  'source-backed-diagnostic-status-heading']
+        write(revision_path, data)
+        write(self.suites/'annotation-revisions/reviews.json', {'schema_version': 1, 'revisions': {
+            data['id']: {'revision_sha256': bench.digest(revision_path), 'changes': [{
+                'suite': 'synthetic', 'case_id': 'article',
+                'reason': 'The frozen independent reference explicitly requires unique fact.',
+                'changes_sha256': hashlib.sha256(json.dumps(delta, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest(),
+                'sources': [{'path': 'sources/article.json',
+                             'sha256': bench.digest(self.source/'sources/article.json'),
+                             'scope': 'Independent synthetic article reference'}],
+                'regression_ids': data['regression_ids']}]} }})
+        return data
+
+    def test_revised_export_has_a_distinct_identity_and_preserves_frozen_inputs(self):
+        self.annotation_revision()
+        before = (self.source/'dataset.json').read_bytes()
+        path = bench.export('synthetic', self.source, self.root/'revised', revision='source-annotation-v2')
+        revised = bench.read(path)
+        self.assertEqual(revised['id'], 'test--source-annotation-v2')
+        self.assertEqual(revised['definition_revision']['parent_dataset_id'], 'test')
+        self.assertEqual(revised['cases'][0]['required_facts'][0]['alternatives'], ['unique fact'])
+        review = bench.read(path.parent/'annotation-review.json')
+        self.assertEqual(review['changes'][0]['changes'][0]['path'], '/required_facts')
+        self.assertTrue(review['changes'][0]['sources'])
+        self.assertTrue(review['reference_controls']['complete'])
+        self.assertEqual(review['reference_controls']['cases'][0]['status'], 'passed')
+        self.assertEqual((self.source/'dataset.json').read_bytes(), before)
+        self.assertEqual(bench.verify_inputs('synthetic', self.source)['case_count'], 1)
+        old = bench.export('synthetic', self.source, self.root/'unchanged')
+        self.assertEqual(old.read_bytes(), before)
+
+    def test_revised_export_rejects_wrong_parent_unknown_controls_and_collection_changes(self):
+        import copy
+        definition = self.annotation_revision()
+        for defect in ['parent', 'task', 'controls', 'collection']:
+            with self.subTest(defect=defect):
+                bad = copy.deepcopy(definition)
+                if defect == 'parent': bad['parents']['synthetic']['tasks_sha256'] = '0'*64
+                elif defect == 'task': bad['changes'][0]['before_sha256'] = '0'*64
+                elif defect == 'controls': bad['regression_ids'] = ['unknown']
+                else: bad['changes'][0]['set']['url'] = 'https://other.test/'
+                write(self.suites/'annotation-revisions/source-annotation-v2.json', bad)
+                output = self.root/defect
+                with self.assertRaises(ValueError):
+                    bench.export('synthetic', self.source, output, revision='source-annotation-v2')
+                self.assertFalse(output.exists())
+
+    def test_revised_export_rejects_unreviewed_or_unproven_changes(self):
+        import copy
+        definition = self.annotation_revision()
+        for defect in ('missing-review', 'diff', 'source', 'missing-source-binding', 'reason', 'one-direction', 'failing-control'):
+            with self.subTest(defect=defect):
+                self.annotation_revision()
+                review_path = self.suites/'annotation-revisions/reviews.json'
+                review = bench.read(review_path) if review_path.exists() else {'revisions': {}}
+                if defect == 'missing-review':
+                    if review_path.exists(): review_path.unlink()
+                elif review['revisions']:
+                    item = review['revisions']['source-annotation-v2']['changes'][0]
+                    if defect == 'diff': item['changes_sha256'] = '0'*64
+                    elif defect == 'source': item['sources'][0]['sha256'] = '0'*64
+                    elif defect == 'missing-source-binding': item['sources'] = [{'scope': 'No bound input'}]
+                    elif defect == 'reason': item['reason'] = ''
+                    elif defect == 'one-direction': item['regression_ids'] = ['source-backed-diagnostic-status-heading']
+                    write(review_path, review)
+                output = self.root/('invalid-'+defect)
+                if defect == 'failing-control':
+                    from lexbench_webfetch.scoring_regressions import load_scoring_regressions
+                    controls = copy.deepcopy(load_scoring_regressions())
+                    controls['source-backed-diagnostic-source-discusses-status']['expected_task_pass'] = False
+                    with patch('lexbench_webfetch.scoring_regressions.load_scoring_regressions', return_value=controls):
+                        with self.assertRaises(ValueError):
+                            bench.export('synthetic', self.source, output, revision=definition['id'])
+                else:
+                    with self.assertRaises(ValueError):
+                        bench.export('synthetic', self.source, output, revision=definition['id'])
+                self.assertFalse(output.exists())
 
     def test_existing_output_is_preserved(self):
         output = self.root / 'existing'
@@ -179,6 +288,49 @@ class FrozenInputs(unittest.TestCase):
         for value in ('../secret', '/absolute', 'sources/../../secret', 'sources\\secret'):
             with self.subTest(value=value), self.assertRaises(ValueError):
                 bench.contained_path(self.source, value, reject_symlinks=True)
+
+
+
+class ReferenceControls(unittest.TestCase):
+    def test_reference_checks_reject_missing_required_content_and_report_missing_sources(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory)
+            case = {'id': 'article', 'url': 'https://example.test/',
+                    'required_facts': [{'id': 'body', 'alternatives': ['substantive article']}],
+                    'ground_truth_main_content': 'substantive article'}
+            review = {'changes': [{'case_id': 'article', 'sources': [{'path': 'dataset.json'}]}]}
+            result = bench.check_revision_references({'cases': [case]}, review, source)
+            self.assertTrue(result['complete'])
+            self.assertFalse(result['cases'][0]['error_page_passed'])
+            case['ground_truth_main_content'] = 'Home Terms Privacy'
+            self.assertEqual(bench.check_revision_references({'cases': [case]}, review, source)['cases'][0]['status'], 'failed')
+            del case['ground_truth_main_content']
+            missing = bench.check_revision_references({'cases': [case]}, review, source)
+            self.assertFalse(missing['complete'])
+            self.assertEqual(missing['cases'][0]['status'], 'unavailable')
+
+    def test_missing_reference_cannot_hide_an_accepted_error_page(self):
+        with tempfile.TemporaryDirectory() as directory:
+            case = {'id': 'unchecked', 'url': 'https://example.test/', 'min_content_chars': 1}
+            review = {'changes': [{'case_id': 'unchecked', 'sources': [{'path': 'dataset.json'}]}]}
+            result = bench.check_revision_references({'cases': [case]}, review, Path(directory))
+            self.assertTrue(result['cases'][0]['error_page_passed'])
+            self.assertEqual(result['cases'][0]['status'], 'failed')
+            self.assertFalse(result['complete'])
+
+    def test_media_reference_uses_observed_urls_in_an_image_answer(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory)
+            digest = write(source / 'observed.json', {'resource_candidates': [
+                {'tag': 'a', 'attribute': 'href', 'url': 'https://example.test/download/42'}]})
+            case = {'id': 'image', 'url': 'https://example.test/', 'task_kind': 'resource',
+                    'content_score_applicable': False,
+                    'expected_resources': [{'id': 'image', 'kind': 'image', 'urls': ['https://example.test/download/42']}],
+                    'resource_output_contract': {'candidate_scope': 'image_answer_fields', 'unexpected': 'allow'}}
+            review = {'changes': [{'case_id': 'image', 'sources': [{'path': 'observed.json', 'sha256': digest}]}]}
+            self.assertTrue(bench.check_revision_references({'cases': [case]}, review, source)['complete'])
+            case['expected_resources'][0]['urls'] = ['https://example.test/download/99']
+            self.assertFalse(bench.check_revision_references({'cases': [case]}, review, source)['complete'])
 
 
 if __name__ == '__main__':

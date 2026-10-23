@@ -1,17 +1,11 @@
 <div align="center">
 
-<img src="assets/overview.svg" alt="LexBench Web Fetch task suites and acceptance rules" width="100%">
-
-# LexBench Web Fetch
-
-### 抓取成功后，究竟拿到了什么？
-
-为网页正文、结构化记录和文件抓取提供版本固定的任务与验收规则。
+<img src="assets/overview.png" alt="LexBench Web Fetch — Measure what comes back." width="100%">
 
 [English](../README.md) · 简体中文
 
 [![CI](https://github.com/lexmount/lexbench-webfetch/actions/workflows/ci.yml/badge.svg)](https://github.com/lexmount/lexbench-webfetch/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/code-MIT-51735b)](../LICENSE)
+[![License: Apache 2.0](https://img.shields.io/badge/code-Apache--2.0-51735b)](../LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-356a91)](../pyproject.toml)
 
 [任务集](#任务集) · [快速开始](#快速开始) · [评测协议](protocol.md) · [参与贡献](../CONTRIBUTING.md)
@@ -110,6 +104,16 @@ uv run --frozen browser-harness-eval run \
 
 普通运行用于诊断。正式比较实时网站时，还需要完成调用前后的参考内容认证。输入校验只能证明文件版本相符，不能证明网站今天仍然符合旧参考。详见 [Browser Eval 接入说明](https://github.com/lexmount/browser-eval/blob/main/docs/benchmarks.md)。
 
+## 评分规则
+
+0.3 版对事实、标记和固定锚点中的拉丁文使用单词边界匹配。正文事实只匹配返回内容，单独返回的文档标题不能补足正文。中文短语仍按原文匹配，数字和货币保留原有的数值边界检查。
+
+任务可设置 `page_identity_required: true`，要求返回的最终网址符合任务声明；缺少网址或网址不符都会判为未通过。动态任务需要区分完整语言标签时，可再设置 `document_language_match: "exact"`，默认值为 `"primary"`，只比较主语言。这些检查适用于所有接口。没有要求网址元数据的冻结任务，继续按原有内容规则验收。
+
+离线评分会重新计算派生字段，保留原始参考哈希、调用时限证据和文件指纹。文件结论需要当前文件验收依据；旧的通过标记不能认证本次重评分。汇总在原有成功调用耗时之外，提供全部调用的 `mean_all_attempts_ms`、`all_attempts_p50_ms` 和 `all_attempts_p95_ms`，包含失败调用与超时。
+
+上述修改不改写冻结题目，也不自动认证历史成绩。更正分数仍需建立新的证据修订，绑定评分器版本和回归用例。
+
 ## 仓库内容
 
 | 路径 | 用途 |
@@ -123,8 +127,24 @@ uv run --frozen browser-harness-eval run \
 
 浏览器适配器、凭据、实测结果、报告生成器和托管配置由执行脚手架或外部证据存储管理。任务模型、确定性验收评分、文件字节校验和任务编译由本仓库维护，Browser Eval 通过固定版本的依赖直接调用。本仓库没有实测排行榜。
 
-## 参与贡献与引用
+## 参与贡献
 
 修改任务或提交结果前，请阅读 [CONTRIBUTING](../CONTRIBUTING.md)。`make check` 会检查任务定义和输入工具。安全问题请参阅 [SECURITY](../SECURITY.md)。
 
-引用 [LexBench Web Fetch](../CITATION.cff) 时，请记录具体提交版本和任务集；执行脚手架单独引用。项目自有代码和任务定义采用 [MIT 许可](../LICENSE)，第三方原始材料保留各自使用条件，详见 [THIRD_PARTY](../THIRD_PARTY.md)。
+项目自有代码和任务定义采用 [Apache 2.0 许可](../LICENSE)，第三方原始材料保留各自使用条件，详见 [THIRD_PARTY](../THIRD_PARTY.md)。
+
+## 引用 LexBench Web Fetch
+
+在公开作品中使用本仓库的任务定义或评分工具时，请引用仓库，并记录具体提交和任务集。GitHub 的引用入口读取 [CITATION.cff](../CITATION.cff)。0.3.0 版可这样引用：
+
+```bibtex
+@software{lexbench_webfetch_2026,
+  author = {{LexBench Web Fetch contributors}},
+  title = {LexBench Web Fetch},
+  year = {2026},
+  version = {0.3.0},
+  url = {https://github.com/lexmount/lexbench-webfetch}
+}
+```
+
+如果还使用了 [Browser Eval](https://github.com/lexmount/browser-eval#cite-browser-eval) 执行脚手架，请单独引用。上游来源或 benchmark 也应按各自的署名要求引用，本仓库的引用不能替代它们。使用其他版本时，请相应修改示例中的版本号和年份，并注明实际 tag 或提交。

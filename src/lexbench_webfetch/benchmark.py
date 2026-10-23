@@ -2,13 +2,14 @@
 from __future__ import annotations
 
 import hashlib
+from copy import deepcopy
 import json
 import os
 import re
 import shutil
 import tempfile
 from pathlib import Path
-from .paths import contained_path
+from .paths import contained_path, safe_identifier
 from .inputs import digest, load_manifest, verify_catalog
 
 SUITES = Path(__file__).parent / "definitions"
@@ -16,11 +17,12 @@ SUITES = Path(__file__).parent / "definitions"
 # Full reference bodies and source-capture/review payloads stay in frozen inputs.
 PUBLIC_TASK_FIELDS = (
     "id", "name", "url", "category", "track", "task_kind", "description", "task_prompt",
-    "expected_any", "required_facts", "forbidden_any", "min_content_chars",
+    "expected_any", "required_facts", "forbidden_any", "diagnostic_any", "min_content_chars",
     "fact_coverage_threshold", "expected_resources", "resource_output_contract",
     "content_score_applicable", "required_patterns", "acceptance_contract",
     "composite_acceptance", "mutable_body_policy", "body_requirements", "retrieval_hints",
-    "source_review_url", "evaluation_url", "expected_final_url", "expected_document_language",
+    "source_review_url", "evaluation_url", "expected_final_url", "page_identity_required",
+    "expected_document_language", "document_language_match",
     "expected_document_language_present", "target_language", "target_region",
 )
 
@@ -125,6 +127,10 @@ def validate(identifier: str) -> dict:
         contained_path(root, relative, reject_symlinks=True)
         if not re.fullmatch(r"[0-9a-f]{64}", expected):
             raise ValueError(f"Invalid input SHA-256: {relative}")
+    for path in sorted((SUITES/'annotation-revisions').glob('*.json')):
+        revision = read(path)
+        if identifier in revision.get('parents', {}):
+            apply_annotation_revision(identifier, tasks, revision['id'])
     return {"suite": identifier, "case_count": len(ids), "dataset_sha256": catalog["dataset_sha256"]}
 
 
@@ -156,7 +162,184 @@ def verify_inputs(identifier: str, source: Path) -> dict:
     return result
 
 
-def export(identifier: str, source: Path, output: Path) -> Path:
+def annotation_changes(before, after, path=''):
+    """Describe changed leaves; lists retain their order and exact values."""
+    if isinstance(before, dict) and isinstance(after, dict):
+        rows = []
+        for key in sorted(before.keys() | after.keys()):
+            child = path + '/' + key.replace('~', '~0').replace('/', '~1')
+            if key not in before: rows.append({'path': child, 'after': after[key]})
+            elif key not in after: rows.append({'path': child, 'before': before[key]})
+            else: rows.extend(annotation_changes(before[key], after[key], child))
+        return rows
+    if isinstance(before, list) and isinstance(after, list) and len(before) == len(after):
+        return [row for index, (old, new) in enumerate(zip(before, after))
+                for row in annotation_changes(old, new, path + '/' + str(index))]
+    return [] if before == after else [{'path': path, 'before': before, 'after': after}]
+
+
+def _review_annotation(definition, revision_path, identifier, root, changes):
+    from .scoring_regressions import check_scoring_regressions
+    reviews_path = contained_path(SUITES, 'annotation-revisions/reviews.json', reject_symlinks=True)
+    if not reviews_path.is_file():
+        raise ValueError('Annotation revision requires per-task evidence and controls')
+    reviews = read(reviews_path)
+    review = reviews.get('revisions', {}).get(definition['id'], {})
+    if reviews.get('schema_version') != 1 or review.get('revision_sha256') != digest(revision_path):
+        raise ValueError('Annotation review differs from the declared revision')
+    entries = review.get('changes', [])
+    keys = [(item['suite'], item['case_id']) for item in entries]
+    if len(keys) != len(set(keys)) or set(keys) != {(item['suite'], item['case_id']) for item in definition['changes']}:
+        raise ValueError('Annotation review task inventory differs')
+    declared_inputs = input_files(read(root/'source-inputs.json'))
+    records = []
+    for change, old, new in changes:
+        item = entries[keys.index((identifier, change['case_id']))]
+        delta = annotation_changes(public_task(old), public_task(new))
+        encoded = json.dumps(delta, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()
+        if item.get('changes_sha256') != hashlib.sha256(encoded).hexdigest():
+            raise ValueError('Annotation includes unreviewed field changes: ' + change['case_id'])
+        if not isinstance(item.get('reason'), str) or not item['reason'].strip():
+            raise ValueError('Annotation requires a per-task reason')
+        sources = item.get('sources', [])
+        if not sources or any(source.get('path') not in declared_inputs
+                              or declared_inputs[source['path']] != source.get('sha256')
+                              or not isinstance(source.get('scope'), str) or not source['scope'].strip()
+                              for source in sources):
+            raise ValueError('Annotation source is not bound by its frozen inputs')
+        controls = item.get('regression_ids', [])
+        if not controls or set(controls) - set(definition['regression_ids']):
+            raise ValueError('Annotation controls differ from its declared revision')
+        check_scoring_regressions(controls)
+        records.append({'suite': identifier, 'case_id': change['case_id'],
+                        'reason': item['reason'], 'sources': sources, 'changes': delta,
+                        'regression_ids': controls,
+                        'source_coverage': ('reference_source_declared' if any(source['path'] != 'dataset.json' for source in sources)
+                                            else 'task_and_source_hashes_only')})
+    return {'revision': definition['id'], 'revision_sha256': digest(revision_path),
+            'review_sha256': digest(reviews_path), 'changes': records}
+
+
+def apply_annotation_revision(identifier: str, dataset: dict, revision: str) -> dict:
+    """Apply a reviewed score-only version without changing its frozen parent."""
+    return _apply_annotation_revision(identifier, dataset, revision)[0]
+
+
+def inspect_annotation_revision(identifier: str, revision: str) -> dict:
+    """Inspect exact field differences, frozen sources and passing controls."""
+    _, root = suite(identifier)
+    return _apply_annotation_revision(identifier, read(root/'tasks.json'), revision)[1]
+
+
+def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
+    safe_identifier(revision)
+    path = contained_path(SUITES, f'annotation-revisions/{revision}.json', reject_symlinks=True)
+    definition = read(path)
+    if (definition.get('schema_version') != 1
+            or definition.get('kind') != 'score_only_annotation_revision'
+            or definition.get('id') != revision):
+        raise ValueError('Unsupported annotation revision')
+    from .scoring_regressions import load_scoring_regressions
+    controls = definition.get('regression_ids', [])
+    if not controls or set(controls) - load_scoring_regressions().keys():
+        raise ValueError('Annotation revision requires registered regression controls')
+    entry, root = suite(identifier)
+    parent = definition.get('parents', {}).get(identifier)
+    if parent != {'tasks_sha256': digest(root/'tasks.json'),
+                  'source_inputs_sha256': digest(root/'source-inputs.json')}:
+        raise ValueError('Annotation revision has a different frozen parent')
+    if dataset.get('id') != entry['dataset_id']:
+        raise ValueError('Annotation revision dataset identity differs')
+    result = deepcopy(dataset)
+    cases = {case['id']: case for case in result['cases']}
+    allowed = {'expected_resources', 'required_facts', 'forbidden_any', 'diagnostic_any',
+               'composite_acceptance', 'acceptance_contract', 'required_patterns'}
+    changes = [row for row in definition['changes'] if row['suite'] == identifier]
+    if not changes or len({row['case_id'] for row in changes}) != len(changes):
+        raise ValueError('Annotation revision has an invalid task inventory')
+    reviewed_changes = []
+    for change in changes:
+        case = cases.get(change['case_id'])
+        public = public_task(case) if case is not None else None
+        encoded = json.dumps(public, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()
+        if hashlib.sha256(encoded).hexdigest() != change['before_sha256']:
+            raise ValueError('Annotation revision task differs from frozen parent')
+        if (set(change['set']) | set(change['remove'])) - allowed:
+            raise ValueError('Annotation revision cannot change collection inputs')
+        old = deepcopy(case)
+        case.update(deepcopy(change['set']))
+        for field in change['remove']:
+            case.pop(field, None)
+        reviewed_changes.append((change, old, case))
+    review = _review_annotation(definition, path, identifier, root, reviewed_changes)
+    result['id'] = dataset['id'] + '--' + revision
+    result['definition_revision'] = {
+        'id': revision, 'sha256': digest(path), 'parent_dataset_id': dataset['id'],
+        'parent_tasks_sha256': parent['tasks_sha256'], 'provider_calls_added': 0,
+    }
+    return result, review
+
+
+def check_revision_references(dataset: dict, review: dict, source: Path) -> dict:
+    """Run frozen reference and error-page controls without treating absent text as a pass."""
+    from html import escape
+    from .scoring import score_attempt, SCORING_SOURCE_SHA256
+    from .metrics import task_passed
+    cases = {case['id']: case for case in dataset['cases']}
+    results = []
+    for item in review['changes']:
+        case = cases[item['case_id']]
+        candidates = []
+        for field in ('ground_truth_main_content', 'reference_answer'):
+            if isinstance(case.get(field), str) and case[field].strip():
+                candidates.append((case[field].encode(), {'path': 'dataset.json', 'field': field}))
+        for binding in item['sources']:
+            if binding['path'] == 'dataset.json':
+                continue
+            path = contained_path(source, binding['path'], reject_symlinks=True)
+            if digest(path) != binding['sha256']:
+                raise ValueError('Reference control source hash mismatch: ' + binding['path'])
+            raw = path.read_bytes()
+            if path.suffix == '.json':
+                payload = json.loads(raw)
+                resources = payload.get('resource_candidates') if isinstance(payload, dict) else None
+                if isinstance(resources, list):
+                    image_answer = bool(case.get('expected_resources')) and all(
+                        resource.get('kind') == 'image' for resource in case['expected_resources'])
+                    lines = []
+                    for resource in resources:
+                        url = resource.get('url')
+                        if isinstance(url, str):
+                            lines.append(('<img src="' if image_answer else '<a href="')
+                                         + escape(url, quote=True) + ('">' if image_answer else '">Reference</a>'))
+                    raw = '\n'.join(lines).encode()
+                elif isinstance(payload, dict) and isinstance(payload.get('reference'), str):
+                    raw = payload['reference'].encode()
+                else:
+                    continue
+            candidates.append((raw, {'path': binding['path'], 'sha256': binding['sha256']}))
+        controls = []
+        for raw, binding in candidates:
+            metrics = score_attempt(case, raw, ok=True)
+            controls.append({'source': binding, 'answer_sha256': hashlib.sha256(raw).hexdigest(),
+                             'passed': task_passed(True, metrics, case.get('task_kind', 'body'))})
+            if controls[-1]['passed']:
+                break
+        negative = b'<html><body>Verify you are human. Access Denied. CAPTCHA.</body></html>'
+        metrics = score_attempt(case, negative, ok=True)
+        negative_pass = task_passed(True, metrics, case.get('task_kind', 'body'))
+        status = ('failed' if negative_pass
+                  else 'passed' if any(control['passed'] for control in controls)
+                  else 'failed' if controls else 'unavailable')
+        results.append({'case_id': case['id'], 'status': status, 'reference_candidates': controls,
+                        'error_page_passed': negative_pass,
+                        'reason': ('The frozen inputs retain source hashes but no executable reference answer.'
+                                   if not controls else '')})
+    return {'scoring_source_sha256': SCORING_SOURCE_SHA256,
+            'complete': all(result['status'] == 'passed' for result in results), 'cases': results}
+
+
+def export(identifier: str, source: Path, output: Path, *, revision: str | None = None) -> Path:
     """Copy only declared inputs after verification; never overwrite a run or input tree."""
     verify_inputs(identifier, source)
     if output.exists() or output.is_symlink():
@@ -172,6 +355,14 @@ def export(identifier: str, source: Path, output: Path) -> Path:
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(contained_path(source, relative, reject_symlinks=True), target)
         verify_inputs(identifier, stage)
+        if revision is not None:
+            dataset_path = stage / manifest['dataset']
+            revised, review = _apply_annotation_revision(identifier, read(dataset_path), revision)
+            review['reference_controls'] = check_revision_references(revised, review, stage)
+            if any(item['status'] == 'failed' for item in review['reference_controls']['cases']):
+                raise ValueError('Revised contract rejects its frozen reference or accepts an error page')
+            (stage/'annotation-review.json').write_text(json.dumps(review, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+            dataset_path.write_text(json.dumps(revised, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         # A materialized dataset is intentionally independent of the historical
         # Browser Eval external-input resolver; do not copy source-inputs.json.
         os.rename(stage, output)

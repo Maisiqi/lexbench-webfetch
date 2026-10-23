@@ -5,6 +5,21 @@ from dataclasses import dataclass
 from html import unescape
 
 
+# Cover the alphabets whose word boundaries the literal scorer enforces.
+_CASE_CODEPOINTS = (*range(0x0250), *range(0x0370, 0x0530), *range(0x1E00, 0x2000),
+                    *range(0x2DE0, 0x2E00), *range(0xA640, 0xA6A0))
+_LOWER_LETTERS = re.escape(''.join(chr(n) for n in _CASE_CODEPOINTS if chr(n).islower()))
+_UPPER_LETTERS = re.escape(''.join(chr(n) for n in _CASE_CODEPOINTS if chr(n).isupper()))
+_CASE_BOUNDARY = re.compile(
+    rf'(?<=[{_LOWER_LETTERS}])(?=[{_UPPER_LETTERS}])|'
+    rf'(?<=[{_UPPER_LETTERS}])(?=[{_UPPER_LETTERS}][{_LOWER_LETTERS}])')
+
+
+def separate_case_labels(text: str) -> str:
+    """Restore cased label boundaries without splitting lowercase word fragments."""
+    return _CASE_BOUNDARY.sub(' ', text)
+
+
 HTML_BLOCK_ELEMENTS = frozenset({
     "address", "article", "aside", "blockquote", "caption", "colgroup", "dd",
     "details", "dialog", "div", "dl", "dt", "fieldset", "figcaption", "figure",
@@ -43,6 +58,36 @@ def markdown_body_content(text: str) -> str:
         return text
     return text[block.end():]
 
+
+
+def delivered_page_title(content: str, explicit_title: str | None = None) -> str:
+    """Read a declared title field, never keywords or a description snippet."""
+    if explicit_title and explicit_title.strip():
+        return explicit_title.strip()
+    if is_html_document_or_fragment(content):
+        from bs4 import BeautifulSoup
+        title = BeautifulSoup(content, "html.parser").find("title")
+        return title.get_text(" ", strip=True) if title else ""
+    body = markdown_body_content(content)
+    if body == content:
+        return ""
+    header = content[:len(content)-len(body)]
+    values = re.findall(r"(?m)^title:[ \t]*([^\r\n]*)$", header)
+    if len(values) != 1:
+        return ""
+    value = values[0].strip()
+    if value.startswith('"'):
+        import json
+        try:
+            parsed = json.loads(value)
+        except ValueError:
+            return ""
+        return parsed if isinstance(parsed, str) else ""
+    if value.startswith("'"):
+        return value[1:-1].replace("''", "'") if value.endswith("'") else ""
+    if not value or value[0] in "[{|>" or value.casefold() in {"null", "true", "false", "~"}:
+        return ""
+    return value.split(" #", 1)[0].strip()
 
 
 def markdown_heading_text(text: str) -> str:
@@ -253,7 +298,9 @@ def markdown_links(text: str) -> list[MarkdownLink]:
             titled = re.match(r"(?s)^(.*?)\s+(['\"])(.*)\2$", raw_destination)
             destination = re.sub(r"\s+", "", titled[1] if titled else raw_destination)
             native_title = titled[3] if titled else ""
-        links.append(MarkdownLink(raw_label, destination, image, index, destination_end + 1, native_title))
+        # Character references in a Markdown destination are rendered URL
+        # syntax. Decode once here; bare URL answers retain their literal bytes.
+        links.append(MarkdownLink(raw_label, unescape(destination), image, index, destination_end + 1, native_title))
         index = destination_end + 1
     return links
 
@@ -288,6 +335,9 @@ def visible_markdown_links(text: str) -> str:
         if match.start < start:
             continue
         label = re.sub(r"\s+", " ", visible_markdown_links(match.label)).strip()
+        # A native carousel can append its accessibility position directly
+        # to the label. Keep both values but restore their observable boundary.
+        label = re.sub(r'(?<=[^\W\d_])(?=\d+\s+of\s+\d+$)', ' ', label)
         # Distinct adjacent link labels retain a token boundary. Some native
         # serializers also drop a real DOM text boundary immediately before a
         # path link or a multi-word link label (``out[/r/x]`` / ``or[Stack

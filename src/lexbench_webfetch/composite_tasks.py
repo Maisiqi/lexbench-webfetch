@@ -154,6 +154,8 @@ def _validate_group(group: dict) -> None:
         "link_base_url",
         "record_name_exclusions",
         "record_line_pattern",
+        "record_start_pattern",
+        "markdown_label_pattern",
         "start_pattern",
         "end_pattern",
         "required_fields",
@@ -180,11 +182,13 @@ def _validate_group(group: dict) -> None:
         }
     ):
         raise ValueError("Invalid composite record group")
-    for key in ("start_pattern", "end_pattern", "record_line_pattern"):
+    for key in ("start_pattern", "end_pattern", "record_line_pattern", "record_start_pattern", "markdown_label_pattern"):
         if key in group:
             if not isinstance(group[key], str) or not group[key]:
                 raise ValueError("Invalid composite scope pattern")
-            re.compile(group[key])
+            compiled = re.compile(group[key])
+            if key == "markdown_label_pattern" and "label" not in compiled.groupindex:
+                raise ValueError("Markdown card label pattern requires a label group")
     kind = group["kind"]
     if "combined_columns" in group and kind != "table":
         raise ValueError("Combined columns require a table group")
@@ -433,7 +437,22 @@ def _card_section_context(content: str, begin: int, end: int, title_start: int,
             peer_boundary = (peer_item and (
                 (item_indent is not None and peer_indent <= item_indent)
                 or (item_indent is None and own_heading is None and peer_indent == 0)))
-            if (peer_boundary and not owned_item and absolute > title_start
+            field_item = False
+            if peer_item and not markdown_links(line):
+                # Native cards may serialize their typed fields as sibling
+                # bullets. A complete declared value belongs to this card;
+                # arbitrary peer prose still starts a new section.
+                values = _context_lines(line, "")
+                for spec in group.get("required_fields", []):
+                    if not (spec.get("aliases") or _field_token_pattern(spec)):
+                        continue
+                    found = _field_value(values, spec)
+                    if found:
+                        number, _, start, end = found
+                        if not (values[number][:start] + values[number][end:]).strip():
+                            field_item = True
+                            break
+            if (peer_boundary and not owned_item and not field_item and absolute > title_start
                     and not any(link.start <= absolute < link.end for link in links)):
                 return context[:offset]
             owned_heading = heading and any(
@@ -679,6 +698,12 @@ def _named_link_group(content: str, group: dict, base_url: str, links: list | No
             return previous_start, scalar
 
         def visible_label(link):
+            if pattern := group.get("markdown_label_pattern"):
+                surface = link.label
+                for image in reversed([item for item in markdown_links(surface) if item.is_image]):
+                    surface = surface[:image.start] + surface[image.end:]
+                if match := re.search(pattern, visible_markdown_links(surface)):
+                    return match["label"].strip()
             card_fields = serialized_link_card_fields(link)
             label = card_fields[0] if card_fields else link.label
             for image in reversed([item for item in markdown_links(label) if item.is_image]):
@@ -791,6 +816,16 @@ def _named_link_group(content: str, group: dict, base_url: str, links: list | No
             if index and ordered[index - 1][6] > line_start:
                 line_start = start
             next_line = max(next_line, link_end)
+            if not owner and group.get("record_start_pattern"):
+                starts = list(re.finditer(group["record_start_pattern"], content[:link_start], re.M))
+                if starts:
+                    marker = starts[-1].start()
+                    prior_end = ordered[index - 1][6] if index else 0
+                    if marker >= prior_end:
+                        line_start = marker
+                following = re.search(group["record_start_pattern"], content[link_end:], re.M)
+                if following:
+                    next_line = min(next_line, link_end + following.start())
             if owner:
                 begin, end = owner
                 # The first link can have fields before it in the same card.
@@ -912,7 +947,7 @@ def serialized_link_card_fields(link):
         field = re.sub(r"\\+$", "", raw.strip()).strip()
         heading = re.match(r"^#{1,6}[ \t]+\S", field)
         field = re.sub(r"^#{1,6}(?:[ \t]+|$)", "", field).strip(" *_")
-        if field:
+        if field and not re.fullmatch(r"[-+*_ \t]+", field):
             if not fields:
                 explicit_name = heading is not None
             fields.append(field)
@@ -944,7 +979,9 @@ def _context_lines(context: str, title: str) -> list[str]:
         for image in reversed(markdown_links(label)):
             if image.is_image:
                 label = label[:image.start] + " " + label[image.end:]
-        if _key(visible_markdown_links(label)) != title_key:
+        visible_label = visible_markdown_links(label)
+        if (_key(visible_label) != title_key
+                and title_key not in {_key(line) for line in visible_label.splitlines()}):
             continue
         header = re.match(r"[ \t]*(?P<mark>\*\*|__)(?P<title>[^\n]+?)(?P=mark)(?:\\)*[ \t]*\n", label)
         if not header:
@@ -1012,6 +1049,8 @@ def _field_token_pattern(spec: dict):
     """Typed card fields own a distinct value span, not an entire layout line."""
     if spec.get('aliases'):
         return None
+    if spec['kind'] == 'text' and spec.get('pattern'):
+        return re.compile(spec['pattern'], re.I)
     if spec['kind'] == 'integer' and spec.get('pattern'):
         # A number elsewhere in the card cannot prove a numeric labeled field.
         return re.compile(rf"\b{_AMOUNT}\s*(?:{spec['pattern']})|(?:{spec['pattern']})", re.I)
@@ -1021,6 +1060,10 @@ def _field_token_pattern(spec: dict):
 
 def _text_role_value(value: str, spec: dict) -> str | None:
     """Explicit metadata belongs to its declared role, not another text field."""
+    value = value.strip()
+    if (re.fullmatch(r"today|tomorrow|yesterday", value, re.I)
+            and spec["id"] not in {"date", "date_or_time", "time", "status"}):
+        return None
     roles = {"title", "name", "author", "creator", "owner", "source", "publisher",
              "description", "summary", "date", "time", "version", "downloads",
              "views", "likes", "count", "price", "rating", "size"}
@@ -1124,7 +1167,14 @@ def _field_value(
                 continue
         if token_pattern := _field_token_pattern(spec):
             for match in token_pattern.finditer(value):
-                if _value_matches_spec(match[0], spec):
+                if spec["kind"] == "text" and (
+                    match.start() and value[match.start() - 1].isalnum() and match[0][:1].isalnum()
+                    or match.end() < len(value) and value[match.end()].isalnum() and match[0][-1:].isalnum()
+                ):
+                    continue
+                checked = {key: value for key, value in spec.items()
+                           if key != "pattern"} if spec["kind"] == "text" else spec
+                if _value_matches_spec(match[0], checked):
                     return index, match[0], start + match.start(), start + match.end()
             continue
         checked_spec = {**spec, "minimum_chars": 1} if aliases and spec["kind"] == "text" and "minimum_chars" not in spec else spec
@@ -1176,20 +1226,6 @@ def _fixed_field_value_key(value: str, spec: dict) -> str:
 def _required_fields(context: str, title: str, *, field_specs: list[dict]) -> bool:
     """Require every declared field inside the record block which owns the link."""
     lines = _labeled_field_lines(_context_lines(context, title), field_specs)
-    separated = []
-    patterns = [re.compile(spec["pattern"], re.I) for spec in field_specs
-                if spec["kind"] == "text" and spec.get("pattern") and not spec.get("aliases")]
-    for line in lines:
-        for pattern in patterns:
-            match = pattern.match(line)
-            if match and match.end() and (match.end() == len(line) or not line[match.end()].isalnum()):
-                rest = line[match.end():].strip(" |\t")
-                if rest:
-                    separated.extend((match[0], rest))
-                    break
-        else:
-            separated.append(line)
-    lines = separated
     used: set[int] = set()
     typed_lines: set[int] = set()
     declared = _declared_aliases(field_specs)
@@ -1208,7 +1244,8 @@ def _required_fields(context: str, title: str, *, field_specs: list[dict]) -> bo
         # physical line, but one value cannot satisfy two required fields.
         lines[index] = lines[index][:start] + " " * (end - start) + lines[index][end:]
         if typed:
-            typed_lines.add(index)
+            if spec["kind"] != "text":
+                typed_lines.add(index)
         elif not spec.get("aliases"):
             used.add(index)
     return True
