@@ -396,3 +396,46 @@ not original full-score positives: the original forbidden-term defect prevented
 the complete reference itself from passing. Long-document section requirements
 remain under review; the five-region threshold alone does not guarantee that
 every section is present.
+
+## Current homepage scope corrections
+
+Figma now requires the two non-carousel design/build destinations inside its
+existing body-heading boundaries. All twelve old anchors remain. Complete
+source representations pass, but retaining navigation links while deleting
+either body destination fails. Removing every carousel link still passes.
+A separate initial observation confirms that neither destination nor any
+ancestor is transparent, hidden or clipped. The rejected eight-of-ten carousel
+proposal is not registered.
+
+USPS now requires three named service destinations in its Featured section,
+ending before the postal-store carousel. Card names remain variable. Remove
+only the absent Need a New Passport? promotional question; preserve Schedule
+an Appointment and add the observed Book Passport Appointment alias. Current
+three-card and three earlier four-card sources pass; missing cards, missing
+body links, wrong hosts and missing appointment navigation fail. The original
+DOM position of the removed question is unavailable and is not claimed.
+
+DingTalk remains unchanged. Proposed product-role requirements were withdrawn
+because their carousel scope was unqualified. A second proposal using three
+security headings was also rejected: a new initial observation shows opacity
+zero on their ancestors. Their presence in extracted text and nonzero DOM
+rectangles is insufficient visibility evidence. This preserves a documented
+body-coverage limitation rather than claiming it is fixed.
+
+Ibiblio retains its original identity patterns. Current HTML and visible text
+satisfy them; older Blog-only captures describe a different historical layout.
+An independent defect remains in identity-only acceptance: removing both news
+and projects still passed. Add the three substantive Latest/About/Featured
+headings with local body and a 1090-character floor. Do not freeze news names,
+project names, Welcome copy or Join invitations. Actual registered controls
+accept complete current sources and changed invitation copy while rejecting
+missing sections, navigation-only and title-plus-padding outputs.
+
+## Video basic-information scope
+
+Do not add description requirements to video-09. Its explicit task asks only
+for the video title and publisher and disclaims video-file, subtitle and visual
+understanding coverage. The saved title/publisher answer passes, while either
+missing field and an empty answer fail. Requiring description text would change
+the declared target rather than repair its implementation. A separate broader
+video-body task would require its own explicit scope and source evidence.

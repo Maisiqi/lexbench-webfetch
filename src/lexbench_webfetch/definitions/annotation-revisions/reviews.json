@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "ae5a08e814e232893d309646c4b6d5614a71db2fbcafd233fc68a1aaa7596f3d",
+      "revision_sha256": "b026f16bf8b6f12e066e40fe0907ab399f590cca59a9465b9f595e23d986916d",
       "changes": [
         {
           "suite": "webfetch",
@@ -14681,6 +14681,91 @@
           "regression_ids": [
             "mutable-document-custom-heading-complete",
             "mutable-document-custom-heading-hidden",
+            "mutable-document-structure-missing-fact"
+          ]
+        },
+        {
+          "suite": "access-restrictions",
+          "case_id": "risk-diverse-192",
+          "reason": "Preserve all original identity page_patterns, anchors and navigation. Require current Latest, About and Featured Projects sections with local body and1090 characters, half2180 scoped body. Do not freeze Welcome identity copy, Join community copy, news titles or project names. The historical September Blog homepage lacks archive/free-resource introduction and these exact section headings; it is not current source support. Current full HTML/text pass; removing news+projects, retaining only navigation, or titles+padding fails.",
+          "changes_sha256": "d067941c1bae273eb4c536e6a22e9c150999f682979299863c77f94bb98855e3",
+          "sources": [
+            {
+              "path": "review-evidence/access-restrictions/ibiblio-initial-20261023/capture.json",
+              "sha256": "bfa14b48ecc7006c98f91a5f8aa879e9b1591c35b7b05ef9097e73c4e1e1b01b",
+              "scope": "Actual initial current homepage at unchanged requested URL https://ibiblio.org/, automatic final https://www.ibiblio.org/. No interaction. Three current editorial headings; not inferred from historical Blog layout or another URL."
+            },
+            {
+              "path": "review-evidence/access-restrictions/ibiblio-initial-20261023/page.html",
+              "sha256": "a0a2cfd7d7be040e9dfe1f338039bb355025d26f7860880d67f8d20e0ff7751a",
+              "scope": "Actual initial current homepage at unchanged requested URL https://ibiblio.org/, automatic final https://www.ibiblio.org/. No interaction. Three current editorial headings; not inferred from historical Blog layout or another URL."
+            },
+            {
+              "path": "review-evidence/access-restrictions/ibiblio-initial-20261023/page.txt",
+              "sha256": "601bb048cc1d1f8a47321d41afe162385a82fdeb4759305f6fdaad7b5701c1fc",
+              "scope": "Actual initial current homepage at unchanged requested URL https://ibiblio.org/, automatic final https://www.ibiblio.org/. No interaction. Three current editorial headings; not inferred from historical Blog layout or another URL."
+            }
+          ],
+          "regression_ids": [
+            "mutable-document-structure-complete",
+            "mutable-document-structure-missing-sections",
+            "mutable-document-structure-toc-padding"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-088-figma-com",
+          "reason": "Retain all twelve original stable anchors. Withdraw the earlier eight-of-ten carousel proposal: overflow clipping hides later cards even though innerText and nonzero DOM rects included them. Require the two actual non-carousel design/build named destinations between existing required body headings. Do not freeze new marketing copy or depend on viewport width. A separate new initial observation verifies both functional links and every ancestor have nonzero opacity, visible display/visibility and no clipping overflow. Actual whole-page/main HTML and source-derived Markdown pass; removing either body destination while retaining navigation fails; removing all carousel hrefs still passes.",
+          "changes_sha256": "116d3e093384a8bab86f4d1b6152e5acf3bb72b0d8861fa0f3c124bd7b1c9bcd",
+          "sources": [
+            {
+              "path": "review-evidence/popular-sites/initial-homepages-20261023/figma.json",
+              "sha256": "dc29ea67217b663cdaefb7643db2bf9b0cebce61e91379c9f43978b5a2aacc7d",
+              "scope": "Actual same-URL initial browser observation without clicks or scrolling. Figma geometry proves carousel clipping and supports its rejection. USPS full DOM projection excludes scripts/styles/SVG and is read without truncation."
+            },
+            {
+              "path": "review-evidence/popular-sites/initial-homepages-20261023/figma-carousel-visibility.json",
+              "sha256": "d0d2052d109107c638833b2e90a6d1c759e44cfd30e9e245ca892b21252dbb59",
+              "scope": "Actual same-URL initial browser observation without clicks or scrolling. Figma geometry proves carousel clipping and supports its rejection. USPS full DOM projection excludes scripts/styles/SVG and is read without truncation."
+            },
+            {
+              "path": "review-evidence/popular-sites/initial-homepages-20261023/figma-all-ancestors.json",
+              "sha256": "35f5381ee94ad6a2f91a70f81f132d720e4666829bd6fb4b1717ffe0e20aa726",
+              "scope": "Actual same-URL initial browser observation without clicks or scrolling. Figma geometry proves carousel clipping and supports its rejection. USPS full DOM projection excludes scripts/styles/SVG and is read without truncation."
+            },
+            {
+              "path": "review-evidence/popular-sites/initial-homepages-20261023/figma-functional-visibility.json",
+              "sha256": "813c752e0638c8ceb9fae89cb9d0a4eabbd6b133512304a8563c878867059f16",
+              "scope": "Actual same-URL initial browser observation without clicks or scrolling. Figma geometry proves carousel clipping and supports its rejection. USPS full DOM projection excludes scripts/styles/SVG and is read without truncation."
+            }
+          ],
+          "regression_ids": [
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records",
+            "reviewed-body-scope-missing-conclusion"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-086-usps-com",
+          "reason": "Replace only the absent fixed promotional question Need a New Passport? with structural coverage of three named featured-service destinations, before USPS Stamps. Its original DOM placement is unavailable and is not claimed. Preserve Schedule an Appointment as an alternative and add the current Book Passport Appointment navigation label; all other original anchors and bans remain. Current three-card and three earlier four-card sources pass without freezing card names; deleting a card, body destinations, or appointment navigation fails. Store-carousel and outside-section navigation destinations cannot fill missing featured cards.",
+          "changes_sha256": "e16800c0a8edea758793f166b959bc12ceabe9de829b59e1bc1276fdbbfba5f1",
+          "sources": [
+            {
+              "path": "review-evidence/popular-sites/initial-homepages-20261023/usps.json",
+              "sha256": "7fb188fdb272c4ca47957531eae3ffd547248738197709c746cb153d376f9f85",
+              "scope": "Actual same-URL initial browser observation without clicks or scrolling. Figma geometry proves carousel clipping and supports its rejection. USPS full DOM projection excludes scripts/styles/SVG and is read without truncation."
+            },
+            {
+              "path": "review-evidence/popular-sites/identity-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved USPS initial observations contain four different featured service cards. Unique actual full CTA labels bind original hrefs in their observed text region; no missing-anchor padding. Current complete DOM independently confirms the changed three-card section."
+            }
+          ],
+          "regression_ids": [
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records",
+            "reviewed-body-scope-missing-conclusion",
             "mutable-document-structure-missing-fact"
           ]
         }

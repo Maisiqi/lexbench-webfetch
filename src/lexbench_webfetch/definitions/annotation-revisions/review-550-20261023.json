@@ -19705,6 +19705,227 @@
         "min_content_chars": 1263
       },
       "remove": []
+    },
+    {
+      "suite": "access-restrictions",
+      "case_id": "risk-diverse-192",
+      "before_sha256": "712570892d5647d45ba8a1476ee0104220abfee8301a43f315c34b6bb7db33f4",
+      "set": {
+        "document_structure": {
+          "version": 1,
+          "minimum_heading_coverage": 0.8,
+          "minimum_body_chars": 1090,
+          "headings": [
+            {
+              "id": "section-1",
+              "text": "Latest from ibiblio",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "section-2",
+              "text": "About ibiblio",
+              "level": 2,
+              "body_required": true
+            },
+            {
+              "id": "section-3",
+              "text": "Featured Projects",
+              "level": 2,
+              "body_required": true
+            }
+          ]
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-088-figma-com",
+      "before_sha256": "8c18122d905a2e4dde49dc1d8cb20629c060930335db5bc5626b1e220e451873",
+      "set": {
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "body-design-build-links",
+              "kind": "named_link",
+              "minimum_records": 2,
+              "hosts": [
+                "www.figma.com"
+              ],
+              "entry_path": "/(?:design-explore|build-ship)/?",
+              "start_pattern": "^(?:#{1,6}\\s+)?Design anything you can imagine\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s+)?The products you love are designed in Figma\\s*$"
+            }
+          ]
+        },
+        "content_score_applicable": true
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-086-usps-com",
+      "before_sha256": "5636a5cbbde3e147336a1808092562ac41be3de466d2d5030ebd16a65917748b",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "current-stable-ba118bf7fc9c",
+              "alternatives": [
+                "English"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-94b382b61b9d",
+              "alternatives": [
+                "Español"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-ca5c7d7ac12f",
+              "alternatives": [
+                "Top Searches"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-58f8432d1672",
+              "alternatives": [
+                "PO BOXES"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-848e65416bf9",
+              "alternatives": [
+                "PASSPORTS"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-ad8da143c5c8",
+              "alternatives": [
+                "FREE BOXES"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-cb739cd3144b",
+              "alternatives": [
+                "Search or Enter a Tracking Number"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-fc224ffd7ded",
+              "alternatives": [
+                "Search or Track Packages"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-3b9cc58c0e27",
+              "alternatives": [
+                "Stamps & Supplies"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-4d5928978191",
+              "alternatives": [
+                "Digitally preview your incoming mail."
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-a7552b3f3ff5",
+              "alternatives": [
+                "Use Click-N-Ship"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-3427fe3245ce",
+              "alternatives": [
+                "Schedule an Appointment",
+                "Book Passport Appointment"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-8e00f47849d9",
+              "alternatives": [
+                "USPS Stamps"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-7d6b33876d5e",
+              "alternatives": [
+                "USPS Updates"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-0467a4c79155",
+              "alternatives": [
+                "Text Scams"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-99fbdbe7b738",
+              "alternatives": [
+                "Email Scams"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-7c8e29531a5a",
+              "alternatives": [
+                "Jobs with USPS"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            },
+            {
+              "id": "current-stable-13cd3ea4f993",
+              "alternatives": [
+                "Find Out More"
+              ],
+              "source_evidence_sha256": "556031894e8d797f93fff54372a616cf0618f1cbd664fa7d5cf093fc0acfcd2b"
+            }
+          ]
+        },
+        "composite_acceptance": {
+          "version": 1,
+          "groups": [
+            {
+              "id": "body-featured-service-links",
+              "kind": "named_link",
+              "minimum_records": 3,
+              "hosts": [
+                "www.usps.com",
+                "informeddelivery.usps.com",
+                "cns.usps.com",
+                "cnsb.usps.com",
+                "moversguide.usps.com"
+              ],
+              "entry_path": "(?:/.*)?",
+              "start_pattern": "^(?:#{1,6}\\s+)?Featured USPS® Products & Services\\s*$",
+              "end_pattern": "^(?:#{1,6}\\s+)?USPS Stamps\\s*$"
+            }
+          ]
+        },
+        "content_score_applicable": true
+      },
+      "remove": []
     }
   ],
   "review_inputs": {
@@ -19736,7 +19957,13 @@
     },
     "popular-sites": {
       "review-evidence/popular-sites/homepages-selected-observations-20260916.json": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
-      "review-evidence/popular-sites/linked-homepage-observations-20260916.json": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b"
+      "review-evidence/popular-sites/linked-homepage-observations-20260916.json": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+      "review-evidence/popular-sites/initial-homepages-20261023/figma.json": "dc29ea67217b663cdaefb7643db2bf9b0cebce61e91379c9f43978b5a2aacc7d",
+      "review-evidence/popular-sites/initial-homepages-20261023/figma-carousel-visibility.json": "d0d2052d109107c638833b2e90a6d1c759e44cfd30e9e245ca892b21252dbb59",
+      "review-evidence/popular-sites/initial-homepages-20261023/figma-all-ancestors.json": "35f5381ee94ad6a2f91a70f81f132d720e4666829bd6fb4b1717ffe0e20aa726",
+      "review-evidence/popular-sites/initial-homepages-20261023/figma-functional-visibility.json": "813c752e0638c8ceb9fae89cb9d0a4eabbd6b133512304a8563c878867059f16",
+      "review-evidence/popular-sites/initial-homepages-20261023/usps.json": "7fb188fdb272c4ca47957531eae3ffd547248738197709c746cb153d376f9f85",
+      "review-evidence/popular-sites/identity-observations-20260916.json": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2"
     },
     "articles": {
       "review-evidence/articles/article-090/body.html": "0667feb4e6b962f0073241c2b277367e5869f72bc0e5ebab52fee555d82f1b1d"
@@ -19754,7 +19981,10 @@
       "review-evidence/access-restrictions/risk-diverse-059/region-role-round-1.html": "156cc30b0360d1a4b68cf0b350a7eb8d16b3803bb0bafbc0da273d3d9b99ab11",
       "review-evidence/access-restrictions/risk-diverse-059/region-role-round-2.html": "374f601c7d20a8488dfa1bc65c151dbe55625c5f2a30c2cd6de971e4ee08ab34",
       "review-evidence/access-restrictions/risk-diverse-159/region-role-round-1.html": "837c355c872cd672e7034c98227d4cadc45e1ec89a78ec884e7c2e26f1c61f35",
-      "review-evidence/access-restrictions/risk-diverse-159/region-role-round-2.html": "1a7bc3d4a5cf55ab30e22a6038d2e642f21b305650eb8caf08b7b557dc459200"
+      "review-evidence/access-restrictions/risk-diverse-159/region-role-round-2.html": "1a7bc3d4a5cf55ab30e22a6038d2e642f21b305650eb8caf08b7b557dc459200",
+      "review-evidence/access-restrictions/ibiblio-initial-20261023/capture.json": "bfa14b48ecc7006c98f91a5f8aa879e9b1591c35b7b05ef9097e73c4e1e1b01b",
+      "review-evidence/access-restrictions/ibiblio-initial-20261023/page.html": "a0a2cfd7d7be040e9dfe1f338039bb355025d26f7860880d67f8d20e0ff7751a",
+      "review-evidence/access-restrictions/ibiblio-initial-20261023/page.txt": "601bb048cc1d1f8a47321d41afe162385a82fdeb4759305f6fdaad7b5701c1fc"
     },
     "webfetch": {
       "review-evidence/webfetch/challenge-first-load-observations-20260916.json": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
