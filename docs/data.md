@@ -76,7 +76,8 @@ tab panel or closed disclosure; all other existing requirements remain.
 
 Seventeen further cases use source-qualified target directories, resource cards,
 explicit body facts or API definitions, bringing the mutable-document review to
-81 of 82 cases. Definition contracts explicitly set `type: "definition"`:
+81 cases; the subsequent Feishu section correction completes all 82.
+Definition contracts explicitly set `type: "definition"`:
 signatures need adjacent descriptions (`dt` followed by `dd` in HTML, or complete
 signature lines followed by prose in text/Markdown). API names and unrelated
 padding do not count as definitions. Existing mandatory facts remain mandatory.

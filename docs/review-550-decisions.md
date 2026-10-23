@@ -596,14 +596,15 @@ The seven test-selected opening phrases from the withdrawn candidate are absent.
 The full 22-case heading audit also records why other cases receive no addition:
 078 has no actual body subsection headings; 079's title/dek, 082's four headings
 and 100's only title are already required; 089 adds nothing after removal of the
-sample-selected opening phrase. Cases 072 and 093 retain specific source gaps
-for an existing submit label and embedded quote. Do not manufacture passing
+sample-selected opening phrase. Case 072
+was subsequently qualified with the visible input-value correction below;
+case 093 retains a source gap for an embedded quote. Do not manufacture passing
 sources or remove unrelated requirements to hide those gaps. This revision
 checks outline presence, not ownership or completeness of every section's body.
 
 ## Integration checkpoint and measured limits
 
-The combined revision currently contains 368 revised cases. After integration
+At this checkpoint the combined revision contained 368 revised cases. After integration
 of the four list quotas, 15 article heading additions and shared required-end
 option, `make check` passed 2838 tests and 338 subtests. This validates the
 current integration, not completion of the remaining source audits.
@@ -628,7 +629,7 @@ All 25 dynamic replacement cases now record the actual source positions,
 observed occurrences and source hashes for 75 existing stable-text anchors.
 Eleven missing count-policy descriptions are also filled. Matching alternatives,
 record boundaries, required counts and body scoring are unchanged. The combined
-revision now contains 380 cases because 12 of these metadata-only corrections
+revision reached 380 cases because 12 of these metadata-only corrections
 were not previously registered.
 
 The 124 distinct supporting files are hash-bound external review inputs.
@@ -659,3 +660,32 @@ prose-section requirements. All 309 facts passed against the complete bound
 reference. The external dataset is independent evidence: its RFC public task
 and body bindings match the frozen task, but its whole-file hash is different
 and never substitutes for the frozen input binding.
+
+## Article 072 visible submit control
+
+A fresh complete source and rendered ancestor inspection establish that the
+SUBMIT input automatically loads and is visible. Its value is omitted from
+`innerText`; the old capture also preceded the loaded control. Keep the required
+label and opt into the existing `visible_control` selector/value surface for
+this anchor. No scorer or new scoring type is needed. Twenty-two real article
+headings are also required, with all old anchors and body operations retained.
+
+The complete HTML passes. Deleting the submit input or a required section
+heading fails while body coverage still passes; a shell-only answer fails.
+The hidden Search submit button is not used as evidence for the visible SUBMIT
+control. All four source/control files are independently hash-bound.
+
+## Main synchronization and current checkpoint
+
+The feature branch incorporates main commit `b824b1e` through merge `fb4cf37`.
+The merge preserves main's edition tools and concise README structure, with
+review-specific details retained in this guide and the data guide. The unchanged
+frozen catalog and corrected scorer use a new 2.1.0 catalog declaration bound
+to scorer commit `2e9856240dd4cdd1faa942efaf5747e0b638153a`; no release tag or
+remote publication was created. Optional annotation revisions remain explicit.
+
+The post-merge integration check passed 2902 tests and 338 subtests. This is not
+a claim that the source audit is complete. The combined revision has 381 cases
+after Naver, whose 14 actual full-source and deletion/count controls passed
+against the registered contract. Article 072 subsequently passed its four
+complete-source/button-deletion/heading-deletion/shell controls.

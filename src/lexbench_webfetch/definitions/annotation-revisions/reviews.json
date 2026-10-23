@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "16b9000430c09586886367b49ad1b8e5ea3589b81580b5a53dcc56046b6d6d6f",
+      "revision_sha256": "2f3609d9190db666843d6a04f4f5b585afbbcad51fe87f1abb73a964a85cedfa",
       "changes": [
         {
           "suite": "webfetch",
@@ -11720,13 +11720,33 @@
         {
           "suite": "articles",
           "case_id": "article-072",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
-          "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
+          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Require 22 actual article-owned headings using existing stable text; retain every previous anchor and all body operations. The existing SUBMIT anchor explicitly uses the existing visible_control selector/value support for the initially loaded visible submit input. innerText omits input values; missing text was a serialization gap, not evidence that the control was absent. Full source passes; missing submit input, missing article heading and shell-only answers fail.",
+          "changes_sha256": "aee2be0a8145ca092361dad902d6af606780d60f1bf1bd8cb6578866ab4699ba",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-072"
+            },
+            {
+              "path": "review-evidence/article072-visible-submit/current-capture.json",
+              "sha256": "007aaf502cc65a4cdbbe93a0dbd8b1c77df7d89b8779f19aa0e84d17a02e5674",
+              "scope": "Independent complete current capture; HTML chunks joined without additions."
+            },
+            {
+              "path": "review-evidence/article072-visible-submit/source.html",
+              "sha256": "04aadff335eafe1b08ae49d305373813cd4a1f72b7659ada5e1ded096ed53005",
+              "scope": "Complete current HTML; article-owned headings and visible input value."
+            },
+            {
+              "path": "review-evidence/article072-visible-submit/submit-visibility.json",
+              "sha256": "14d712fa4b470783c25a77d6965815acec6e23193223306542ce3086952a6f1b",
+              "scope": "Actual input and all ancestors have visible display/visibility/opacity and nonzero input bounds; hidden Search control is not the selected SUBMIT input."
+            },
+            {
+              "path": "review-evidence/article072-visible-submit/qualified-controls.json",
+              "sha256": "97fbfadd32d55f867db07d7abb991ce9eadf06bae8d586f6046fcff887fa0016",
+              "scope": "Four full score controls: complete source passes; deleted submit input, deleted Stable Features heading and shell fail."
             }
           ],
           "regression_ids": [
@@ -11734,7 +11754,9 @@
             "ordered-body-ending-formatting",
             "ordered-body-ending-local-insertion",
             "ordered-body-ending-scattered",
-            "ordered-body-ending-omitted"
+            "ordered-body-ending-omitted",
+            "visible-control-visible-button",
+            "visible-control-hidden-button"
           ]
         },
         {
