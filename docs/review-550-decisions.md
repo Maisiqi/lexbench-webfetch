@@ -480,7 +480,7 @@ A registered change is not a claim that the entire item is complete.
 | 5. Strict body thresholds | All 148 targeted cases require every retained region at 80%; five-block limit preserved. |
 | 6. Ten challenge quotas | Seven quotas registered, including four new source-qualified initial-page counts. Three other sites currently return login or verification pages. Do not infer list sizes from these failures. |
 | 7. Short regions and article endings | Registered role/boundary/ending corrections; real short specification cards retained. Final article source-gap decisions remain. |
-| 8. Stable-anchor guidance | Mandatory-anchor interpretation retained; verify all affected guide passages together in final audit. |
+| 8. Stable-anchor guidance | Guide sections 2, 6, 11 and 14 consistently retain mandatory anchors by default. A diagnostic exception requires explicit case-level coverage justification; adding a body or list contract alone never changes the role. |
 | 9. Twenty-five replacement sources | All 25 provenance updates registered, with unchanged matching fields and explicit one-observation limitations. All 124 source files are hash-bound external evidence. |
 | 10. Forbidden terms | RFC 9110, WCAG and Browser Use demonstrated source conflicts corrected. Broad removal, including 91 homepage cases, remains unqualified and is not claimed complete. |
 | 11. Long-document sections | Source-wide heading and necessary-fact audit in progress. Sampled omission tests alone do not cover all sections. Heading or opening presence does not prove full section coverage. |
@@ -509,14 +509,12 @@ visible post text or attributed quote. Actual complete HTML passes; removing
 posts or their bodies fails. Its descriptive profile label is not a scoring
 switch, so relabeling it does not repair a demonstrated defect.
 
-Article 093 has no exact duplicate alternative sets. Available source captures
-pass the body layer but lack two required embedded-quote groups. They cannot
-establish a complete full-score positive, and a deletion from an already failing
-baseline is not a valid regression proof. Preserve the requirements pending
-qualified evidence about that initially visible embed; do not delete all
-body-overlapping requirements to make these incomplete captures pass. External
-controls are retained in `051-duplicate-controls.json` and
-`body-anchor-overlap.json` in the article-boundary audit evidence.
+Article 093 has no exact duplicate alternative sets. The initial parent-only
+capture omitted two embedded-quote groups, but the same observation's automatic
+accessibility capture contains both. The existing qualified projection changes
+only that iframe, passes full scoring, and has a body byte-identical to the
+frozen reference. Preserve the requirements; the evidence reconciliation below
+closes this source gap without relaxing scoring.
 
 ## Reusable rules, not case-specific repairs
 
@@ -598,8 +596,8 @@ The full 22-case heading audit also records why other cases receive no addition:
 and 100's only title are already required; 089 adds nothing after removal of the
 sample-selected opening phrase. Case 072
 was subsequently qualified with the visible input-value correction below;
-case 093 retains a source gap for an embedded quote. Do not manufacture passing
-sources or remove unrelated requirements to hide those gaps. This revision
+case 093 was subsequently qualified using its original automatic embedded-frame
+evidence, as recorded below. This revision
 checks outline presence, not ownership or completeness of every section's body.
 
 ## Integration checkpoint and measured limits
@@ -685,7 +683,67 @@ to scorer commit `2e9856240dd4cdd1faa942efaf5747e0b638153a`; no release tag or
 remote publication was created. Optional annotation revisions remain explicit.
 
 The post-merge integration check passed 2902 tests and 338 subtests. This is not
-a claim that the source audit is complete. The combined revision has 381 cases
+a claim that the source audit is complete. At that checkpoint the combined revision had 381 cases
 after Naver, whose 14 actual full-source and deletion/count controls passed
 against the registered contract. Article 072 subsequently passed its four
 complete-source/button-deletion/heading-deletion/shell controls.
+
+## Authoring-guide consistency check
+
+The current authoring guide consistently requires selected stable text by
+default: ordinary controls (section 2), role selection (section 6), combined
+requirements (section 11) and the final summary (section 14) agree. Diagnostic
+exceptions require an explicit independent coverage justification. The guide
+also distinguishes the historical 60% rule from the revised all-region 80%
+rule and requires the latter for new annotations. Keeping historical semantics
+labelled as historical does not weaken the selected revised contracts.
+
+## Microsoft, Apple and embedded-quote evidence integration
+
+The revision now contains 384 cases. Microsoft requires three named stories
+within its non-carousel content section, preserving all original anchors. All
+14 full-source, count-deletion and structural-boundary controls passed against
+the registered revision. Titles remain variable; adjacent generic buttons cannot
+replace a missing story.
+
+Apple requires three actual visible text-title/CTA cards. Six logo or hidden
+headings are excluded from the current nine tiles. The obsolete MacBook Air
+promotion is no longer mandatory, and Home is accepted as the observed successor
+of TV & Home. Every other anchor remains. Six current HTML/Markdown full and
+reduced-card controls passed. Historical text projections are not used to claim
+historical visibility or establish this count.
+
+Article 093 needs no scoring change. The original automatic AX capture contains
+the embedded author and quotation. Restoring the original iframe in the existing
+qualified projection reproduces the parent DOM after whitespace normalization;
+its qualified body matches the frozen reference byte for byte. Three proposed
+additional headings are card metadata, repository identity and an external
+registration CTA, so they are rejected. Four actual prose headings are already
+mandatory. All source artifacts are hash-bound outside Git.
+
+These changes use existing scoring types. The batch integration check passed
+2902 tests and 338 subtests in 269.94 seconds, including the Samsung alias below.
+
+Samsung adds only the observed Privacy alias for Privacy Policy. Three real
+initial captures pass, and deleting privacy wording fails for all three. Hidden
+product cards are not counted as visible content; no new body quota is claimed.
+Every other contract field is unchanged.
+
+
+## Explicit output exclusions retained after fresh observation
+
+Generic error-page guesses are distinct from explicit task exclusions. Fresh
+initial React cart content contains all sixteen products, the Add to cart
+buttons, the Work in the Netherlands recruitment advert and its image URL slug.
+Fresh Swagger content contains the About cookies on this site banner. The tasks
+explicitly exclude buttons/advertisements and the cookie banner respectively.
+Earlier scoped captures omitted these regions; that absence was insufficient
+evidence to remove their exclusions.
+
+Both independently saved target-only answers pass. Prefixing each of the four
+excluded strings makes its answer fail through the corresponding forbidden
+requirement while all stable requirements still pass. These controls support
+retaining the four current exclusions; they do not establish a universal
+semantic detector for every possible advertisement or banner. Fresh sources and
+controls are preserved in the external evidence collection under
+non-generic-exclusions-20261023.

@@ -95,7 +95,9 @@
     "semantic-title-remains-required",
     "semantic-reference-fact-survives-visual-line-wrap",
     "visible-control-visible-button",
-    "visible-control-hidden-button"
+    "visible-control-hidden-button",
+    "localized-equivalent-stable-anchor-passes",
+    "unrelated-label-does-not-satisfy-equivalent-stable-anchor"
   ],
   "changes": [
     {
@@ -33964,6 +33966,717 @@
         }
       },
       "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-028-microsoft-com",
+      "before_sha256": "035161fdefec0a4ee2894b5d0c0642c9a4dcee6400edde51159a30ed54d478e5",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 3,
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "XBOX"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "Azure"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "Deals"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "Company"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "Copilot"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "Returns"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "Sitemap"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "Support"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "Surface"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "Windows"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "Personal"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "Education"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Investors"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "Recycling"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "Trademarks"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "What's new"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "Microsoft AI"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "Accessibility"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "Visual Studio"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "Developer & IT"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "Small Business"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "About Microsoft"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "Download Center"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "Microsoft Learn"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "Microsoft Store"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "Microsoft Teams"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "Microsoft Security"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "Microsoft Developer"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "Privacy at Microsoft"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "Explore Microsoft products"
+              ]
+            },
+            {
+              "id": "stable-anchor-32",
+              "alternatives": [
+                "Microsoft 365"
+              ]
+            }
+          ],
+          "title_exclusion_patterns": [
+            "^(?:Read the (?:story|article|report)|Learn (?:more|how))$"
+          ],
+          "entry_context": "list_or_card",
+          "hosts": [
+            "news.microsoft.com",
+            "www.microsoft.com",
+            "microsoft.com"
+          ],
+          "entry_path": "(?:/source/.+|/signal/articles/.+|/en-us/corporate-responsibility/.+)",
+          "entry_scope": {
+            "html_selector": "main store-card-feature",
+            "title_selector": "h3",
+            "link_selector": "a[href]",
+            "start_pattern": "^Get to know AI and Copilot$",
+            "end_pattern": "^#{1,2}\\s+.+$",
+            "required_end": true,
+            "markdown_card_title_pattern": "^###\\s+(?P<title>.+)$"
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-056-apple-com",
+      "before_sha256": "44b8dd5d91fd16a4f911d22cafca1671287f30c829130bf582aae87d1ffa7443",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 3,
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "iPad"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "Shop"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "Legal"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "Watch"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "AirTag"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "Events"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "iPhone"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "Vision"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "Wallet"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "Account"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "AirPods"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "Support"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "Apple TV"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Newsroom"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "Site Map"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "App Store"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "Apple One"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "Apple Pay"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "Education"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "Financing"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "Investors"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "TV & Home",
+                "Home"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "Apple Card"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "Apple Cash"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "Gift Cards"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "iCloud.com"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "About Apple"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "Accessories"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "Apple Music"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "Apple Store"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "Environment"
+              ]
+            },
+            {
+              "id": "stable-anchor-33",
+              "alternatives": [
+                "Apple Arcade"
+              ]
+            },
+            {
+              "id": "stable-anchor-34",
+              "alternatives": [
+                "Find a Store"
+              ]
+            },
+            {
+              "id": "stable-anchor-35",
+              "alternatives": [
+                "For Business"
+              ]
+            },
+            {
+              "id": "stable-anchor-36",
+              "alternatives": [
+                "Terms of Use"
+              ]
+            },
+            {
+              "id": "stable-anchor-37",
+              "alternatives": [
+                "Accessibility"
+              ]
+            },
+            {
+              "id": "stable-anchor-38",
+              "alternatives": [
+                "Contact Apple"
+              ]
+            },
+            {
+              "id": "stable-anchor-39",
+              "alternatives": [
+                "Privacy Policy"
+              ]
+            }
+          ],
+          "entry_context": "list_or_card",
+          "hosts": [
+            "apple.com",
+            "www.apple.com"
+          ],
+          "entry_path": "(?:/[^/]+|/us/shop/goto/buy_iphone/carrier_offers)",
+          "entry_scope": {
+            "html_selector": "main .tile-wrapper:has(.typography-tile-headline)",
+            "title_selector": ".typography-tile-headline",
+            "link_selector": ".tile-ctas a:first-child",
+            "start_pattern": "^Support$",
+            "end_pattern": "^Apple Footer$",
+            "required_end": true,
+            "markdown_card_title_pattern": "^#{2,3}\\s+(?P<title>.+)$"
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-038-samsung-com",
+      "before_sha256": "769b391c27e1ac6df73dc59e24524c6f0f4c4e44983afaefa632762cd476d751",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "body_text",
+          "minimum_records": 0,
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "Shop"
+              ]
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "Legal"
+              ]
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "Ethics"
+              ]
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "Mobile"
+              ]
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "Orders"
+              ]
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "Careers"
+              ]
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "Returns"
+              ]
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "Sitemap"
+              ]
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "TV & AV"
+              ]
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "ABOUT US"
+              ]
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "Newsroom"
+              ]
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "Wearables"
+              ]
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "Appliances"
+              ]
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "Contact Us"
+              ]
+            },
+            {
+              "id": "stable-anchor-15",
+              "alternatives": [
+                "Galaxy Tab"
+              ]
+            },
+            {
+              "id": "stable-anchor-16",
+              "alternatives": [
+                "Order Help"
+              ]
+            },
+            {
+              "id": "stable-anchor-17",
+              "alternatives": [
+                "Projectors"
+              ]
+            },
+            {
+              "id": "stable-anchor-18",
+              "alternatives": [
+                "Accessories"
+              ]
+            },
+            {
+              "id": "stable-anchor-19",
+              "alternatives": [
+                "Dishwashers"
+              ]
+            },
+            {
+              "id": "stable-anchor-20",
+              "alternatives": [
+                "Environment"
+              ]
+            },
+            {
+              "id": "stable-anchor-21",
+              "alternatives": [
+                "Galaxy Book"
+              ]
+            },
+            {
+              "id": "stable-anchor-22",
+              "alternatives": [
+                "Galaxy Buds"
+              ]
+            },
+            {
+              "id": "stable-anchor-23",
+              "alternatives": [
+                "SmartThings"
+              ]
+            },
+            {
+              "id": "stable-anchor-24",
+              "alternatives": [
+                "Company Info"
+              ]
+            },
+            {
+              "id": "stable-anchor-25",
+              "alternatives": [
+                "Find a Store"
+              ]
+            },
+            {
+              "id": "stable-anchor-26",
+              "alternatives": [
+                "For Business"
+              ]
+            },
+            {
+              "id": "stable-anchor-27",
+              "alternatives": [
+                "Galaxy Watch"
+              ]
+            },
+            {
+              "id": "stable-anchor-28",
+              "alternatives": [
+                "Support Home"
+              ]
+            },
+            {
+              "id": "stable-anchor-29",
+              "alternatives": [
+                "Accessibility"
+              ]
+            },
+            {
+              "id": "stable-anchor-30",
+              "alternatives": [
+                "Refrigerators"
+              ]
+            },
+            {
+              "id": "stable-anchor-31",
+              "alternatives": [
+                "Samsung Care+"
+              ]
+            },
+            {
+              "id": "stable-anchor-32",
+              "alternatives": [
+                "Privacy Policy",
+                "Privacy"
+              ]
+            },
+            {
+              "id": "stable-anchor-33",
+              "alternatives": [
+                "SUSTAINABILITY"
+              ]
+            },
+            {
+              "id": "stable-anchor-34",
+              "alternatives": [
+                "Apps & Services"
+              ]
+            },
+            {
+              "id": "stable-anchor-35",
+              "alternatives": [
+                "Computers & Monitors"
+              ]
+            }
+          ]
+        }
+      },
+      "remove": []
     }
   ],
   "review_inputs": {
@@ -34127,7 +34840,12 @@
       "review-evidence/popular-sites/initial-homepages-20261023/usps.json": "7fb188fdb272c4ca47957531eae3ffd547248738197709c746cb153d376f9f85",
       "review-evidence/popular-sites/identity-observations-20260916.json": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
       "review-evidence/popular-sites/initial-gap-homepages-20261023/naver.json": "e2486230a5b1a7ed5883702f3e825b309c30e5b0e194118c9618fda8da5cf314",
-      "review-evidence/popular-sites/initial-gap-homepages-20261023/naver-visibility.json": "e0d4fe9c43ad1f0978d3ecfef3f758dd5f3f0e7369554c9fd1f214ad4081f24b"
+      "review-evidence/popular-sites/initial-gap-homepages-20261023/naver-visibility.json": "e0d4fe9c43ad1f0978d3ecfef3f758dd5f3f0e7369554c9fd1f214ad4081f24b",
+      "review-evidence/popular-sites/initial-gap-homepages-20261023/microsoft-alternate.json": "99d762caeb01fd505157c57fe03295b7b01051abea0054da1c3ce5269f55d4d2",
+      "review-evidence/popular-sites/initial-gap-homepages-20261023/apple-v2.json": "7bdce6a48d668eaa8e1ce7191a0fcf26e8696338fe5a85f8118208c19c569759",
+      "review-evidence/popular-sites/initial-gap-homepages-20261023/samsung.json": "c622ba21e4831ce8240ff9f7b8f5185174543282f332f10056f8200e9b15b229",
+      "review-evidence/popular-sites/initial-gap-homepages-20261023/samsung-v2.json": "ea57e90640a4ec5c1b31f01496c4c000461a2ab0fa267f868d6261705cfef28e",
+      "review-evidence/popular-sites/initial-gap-homepages-20261023/samsung-alternate.json": "d50785951ab903c79aa3e68060c53f5edaa755ce585ed7aa40e6192e70637b84"
     },
     "articles": {
       "review-evidence/articles/article-090/body.html": "0667feb4e6b962f0073241c2b277367e5869f72bc0e5ebab52fee555d82f1b1d",
@@ -34168,7 +34886,16 @@
       "review-evidence/article072-visible-submit/current-capture.json": "007aaf502cc65a4cdbbe93a0dbd8b1c77df7d89b8779f19aa0e84d17a02e5674",
       "review-evidence/article072-visible-submit/source.html": "04aadff335eafe1b08ae49d305373813cd4a1f72b7659ada5e1ded096ed53005",
       "review-evidence/article072-visible-submit/submit-visibility.json": "14d712fa4b470783c25a77d6965815acec6e23193223306542ce3086952a6f1b",
-      "review-evidence/article072-visible-submit/qualified-controls.json": "97fbfadd32d55f867db07d7abb991ce9eadf06bae8d586f6046fcff887fa0016"
+      "review-evidence/article072-visible-submit/qualified-controls.json": "97fbfadd32d55f867db07d7abb991ce9eadf06bae8d586f6046fcff887fa0016",
+      "review-evidence/article093-automatic-embed/capture.json": "9c8738756dc6ab89a37792bee179478c0259f1b9191b2b26d3b3b1c57572a49b",
+      "review-evidence/article093-automatic-embed/complete-body.html": "e9d23d698ade0a86d82e9e934ffa22144591d2c1ec2b5544319f19539cbe83c9",
+      "review-evidence/article093-automatic-embed/automatic-load-ax.txt": "0211d9d7e3b415e19c485bc54ed19e1df689e2e0a27e78953b6e12e7f9624f37",
+      "review-evidence/article093-automatic-embed/iframe-quote-reference-a3.json": "902605858653609f595b840d0f0118a5b6d3cee044722a316549255c824bdc53",
+      "review-evidence/article093-automatic-embed/visibility-audit-a3.json": "afc63bdc20b9821427ff2e64c5f25ee1361749b9cf3a9f0c113b596eb4a659d6",
+      "review-evidence/article093-automatic-embed/qualified-body.txt": "d1028f4ddb02cd0fa2db41930b1b2d48f034e2b740074ccacc991acfe3ccbf60",
+      "review-evidence/article093-automatic-embed/qualified-page-projection.html": "0c678d885d7448ae2dc884b8cb846a3f9834a9cfc137a5e24abdff701b2f9b71",
+      "review-evidence/article093-automatic-embed/source-chain-and-heading-decisions.json": "9dc36783ac360b978bd4616de9f0bd0cbff33257b46bb192618ebe1224cc39d9",
+      "review-evidence/article093-automatic-embed/existing-source-scores.json": "a0d9b4e8be3ed3b4b93f7c1483029c916f88a3d221bc595b128cc38d75f663fd"
     },
     "access-restrictions": {
       "review-evidence/access-restrictions/risk-diverse-027/round-01.html": "a8a594253de6ac37ca097ca650c04fb336a503fd6b2974dc13478791ea628697",

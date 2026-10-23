@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "2f3609d9190db666843d6a04f4f5b585afbbcad51fe87f1abb73a964a85cedfa",
+      "revision_sha256": "ff890253e1bc6b71fb0e2e036f0b559c3f28eb9a9f54bbfdcaaddc8b498605a5",
       "changes": [
         {
           "suite": "webfetch",
@@ -12208,13 +12208,58 @@
         {
           "suite": "articles",
           "case_id": "article-093",
-          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
+          "reason": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Reconcile previously overlooked same-observation automatic accessibility evidence for the fixed embedded quote. Parent DOM omits cross-origin frame text; the original AX contains both required strings. The existing derived page projection changes only that observed iframe and passes current scoring; its qualified body exactly equals the frozen reference. Preserve all scoring rules. Existing genuine prose headings are already required; related-card author metadata, repository identity and a registration CTA are not additional prose sections.",
           "changes_sha256": "4db4bdff0daf2b893ac44c1b6b5b011bff324d8db6a031754e7942d3ec13a260",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "1929d5f702a2f7a0a1248694ca6843fba02ecaf7c559c6bf232865a8fb3c4bb6",
               "scope": "Frozen version 4 body and ending for article-093"
+            },
+            {
+              "path": "review-evidence/article093-automatic-embed/capture.json",
+              "sha256": "9c8738756dc6ab89a37792bee179478c0259f1b9191b2b26d3b3b1c57572a49b",
+              "scope": "Original same-run automatically loaded parent/AX capture, or explicitly documented derived projection and frozen-reference verification; no invented quote text or independent live recapture is claimed."
+            },
+            {
+              "path": "review-evidence/article093-automatic-embed/complete-body.html",
+              "sha256": "e9d23d698ade0a86d82e9e934ffa22144591d2c1ec2b5544319f19539cbe83c9",
+              "scope": "Original same-run automatically loaded parent/AX capture, or explicitly documented derived projection and frozen-reference verification; no invented quote text or independent live recapture is claimed."
+            },
+            {
+              "path": "review-evidence/article093-automatic-embed/automatic-load-ax.txt",
+              "sha256": "0211d9d7e3b415e19c485bc54ed19e1df689e2e0a27e78953b6e12e7f9624f37",
+              "scope": "Original same-run automatically loaded parent/AX capture, or explicitly documented derived projection and frozen-reference verification; no invented quote text or independent live recapture is claimed."
+            },
+            {
+              "path": "review-evidence/article093-automatic-embed/iframe-quote-reference-a3.json",
+              "sha256": "902605858653609f595b840d0f0118a5b6d3cee044722a316549255c824bdc53",
+              "scope": "Original same-run automatically loaded parent/AX capture, or explicitly documented derived projection and frozen-reference verification; no invented quote text or independent live recapture is claimed."
+            },
+            {
+              "path": "review-evidence/article093-automatic-embed/visibility-audit-a3.json",
+              "sha256": "afc63bdc20b9821427ff2e64c5f25ee1361749b9cf3a9f0c113b596eb4a659d6",
+              "scope": "Original same-run automatically loaded parent/AX capture, or explicitly documented derived projection and frozen-reference verification; no invented quote text or independent live recapture is claimed."
+            },
+            {
+              "path": "review-evidence/article093-automatic-embed/qualified-body.txt",
+              "sha256": "d1028f4ddb02cd0fa2db41930b1b2d48f034e2b740074ccacc991acfe3ccbf60",
+              "scope": "Original same-run automatically loaded parent/AX capture, or explicitly documented derived projection and frozen-reference verification; no invented quote text or independent live recapture is claimed."
+            },
+            {
+              "path": "review-evidence/article093-automatic-embed/qualified-page-projection.html",
+              "sha256": "0c678d885d7448ae2dc884b8cb846a3f9834a9cfc137a5e24abdff701b2f9b71",
+              "scope": "Original same-run automatically loaded parent/AX capture, or explicitly documented derived projection and frozen-reference verification; no invented quote text or independent live recapture is claimed."
+            },
+            {
+              "path": "review-evidence/article093-automatic-embed/source-chain-and-heading-decisions.json",
+              "sha256": "9dc36783ac360b978bd4616de9f0bd0cbff33257b46bb192618ebe1224cc39d9",
+              "scope": "Original same-run automatically loaded parent/AX capture, or explicitly documented derived projection and frozen-reference verification; no invented quote text or independent live recapture is claimed."
+            },
+            {
+              "path": "review-evidence/article093-automatic-embed/existing-source-scores.json",
+              "sha256": "a0d9b4e8be3ed3b4b93f7c1483029c916f88a3d221bc595b128cc38d75f663fd",
+              "scope": "Original same-run automatically loaded parent/AX capture, or explicitly documented derived projection and frozen-reference verification; no invented quote text or independent live recapture is claimed."
             }
           ],
           "regression_ids": [
@@ -16336,6 +16381,77 @@
           "regression_ids": [
             "explicit-named-links-form-records",
             "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-028-microsoft-com",
+          "reason": "Retain all original stable anchors and bans. Require three actual named stories within the non-carousel Get to know AI and Copilot section; three saved observations and one complete current observation each contain three. Same-moment composed ancestor geometry qualifies all six current title/CTA nodes. Generic HTML title/link ownership and Markdown heading-card parsing preserve titles when CTA labels are generic. Text ends at the next same-or-higher heading, not a frozen campaign title; missing structural end fails. Generic CTA exclusions prevent a neighboring report button from replacing a missing named story. Current full/quota-minus-one/empty controls in both formats and saved full/removed-body-link controls pass. Historical projection binds original observed title/body/link fields without claiming historical DOM geometry. No carousel, hidden business tab, task URL or frozen input changes.",
+          "changes_sha256": "0e54d932919102dbfda37b26d475daea576cc848059c374f62a9c31667675876",
+          "sources": [
+            {
+              "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/microsoft-alternate.json",
+              "sha256": "99d762caeb01fd505157c57fe03295b7b01051abea0054da1c3ce5269f55d4d2",
+              "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
+            },
+            {
+              "path": "review-evidence/popular-sites/identity-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
+            }
+          ],
+          "regression_ids": [
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-056-apple-com",
+          "reason": "Replace the obsolete fixed MacBook Air promotion requirement with coverage of three actual plain-text title/CTA cards. Add Home as the observed current navigation alias of TV & Home; preserve every other original anchor and all bans. Current nine tiles include six image-logo/visuallyhidden headings excluded from the new requirement; same-moment composed ancestor geometry qualifies only the remaining three text headings and their first CTA. No current product title is frozen. Actual full HTML and initial-visible-text Markdown preserve tile boundaries; three-card positives pass and two/zero-card negatives fail, with navigation/footer retained. The Markdown projection uses initial body.innerText navigation rather than closed DOM menus, excludes image and hidden title text, and preserves actual tile boundaries. Three saved historical observations document the earlier MacBook Air promotion and TV & Home label; missing historical DOM/CSS means their eight field-level records are not used as a visibility-qualified quota. Frozen inputs and task URL are unchanged.",
+          "changes_sha256": "2a44b8e49da053e41e38ab6b7f25275d07be9a06ec3d92606f24b07df4db93b6",
+          "sources": [
+            {
+              "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/apple-v2.json",
+              "sha256": "7bdce6a48d668eaa8e1ce7191a0fcf26e8696338fe5a85f8118208c19c569759",
+              "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
+            },
+            {
+              "path": "review-evidence/popular-sites/identity-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
+            }
+          ],
+          "regression_ids": [
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-038-samsung-com",
+          "reason": "Retain the existing body-text/navigation contract without inventing a quota for hidden product/theme cards. Current initial rendered evidence exposes a campaign hero rather than a qualified stable product collection; the reviewer permits retaining marketing homepages with an explanation. Add only Privacy as the actual footer label while retaining Privacy Policy. The latter appears in a cookie banner in one capture and is absent in others, so it is not a reliable mandatory literal. Three saved initial visible-text observations pass with the alias; removing privacy wording fails in all three. Every other anchor, ban, field, task URL and frozen input remains unchanged. This is a navigation-label compatibility fix, not a claim that new body coverage was added.",
+          "changes_sha256": "d2fa87698b688543bd4eee1e4489cfab301d03f62d52d224e8835d9e61f331fa",
+          "sources": [
+            {
+              "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/samsung.json",
+              "sha256": "c622ba21e4831ce8240ff9f7b8f5185174543282f332f10056f8200e9b15b229",
+              "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
+            },
+            {
+              "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/samsung-v2.json",
+              "sha256": "ea57e90640a4ec5c1b31f01496c4c000461a2ab0fa267f868d6261705cfef28e",
+              "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
+            },
+            {
+              "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/samsung-alternate.json",
+              "sha256": "d50785951ab903c79aa3e68060c53f5edaa755ce585ed7aa40e6192e70637b84",
+              "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
+            }
+          ],
+          "regression_ids": [
+            "localized-equivalent-stable-anchor-passes",
+            "unrelated-label-does-not-satisfy-equivalent-stable-anchor"
           ]
         }
       ]
