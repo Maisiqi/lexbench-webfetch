@@ -841,7 +841,7 @@ def validate_acceptance_contract(contract: dict) -> None:
             or contract.get("version") != 1 or not isinstance(contract.get("schema"), str)
             or contract.get("schema") not in SCHEMA_FIELDS):
         raise ValueError("Unsupported stable acceptance contract")
-    if set(contract) - {"version", "schema", "minimum_records", "maximum_records", "page_patterns", "stable_text_anchors", "stable_text_role", "hosts", "entry_path", "entry_identity_pattern", "entry_context", "entry_scope", "name_validation", "identity_query_keys", "field_minimum_records", "record_name_exclusions", "title_exclusion_patterns", "price_patterns", "price_exclusion_patterns", "price_unavailable_patterns", "record_count_policy", "source_record_pair_hashes", "source_record_pairs_sha256", "table_columns", "record_identity_fields", "table_scope", "duplicate_policy", "link_base_url", "text_exclusions", "content_scope"}:
+    if set(contract) - {"version", "schema", "minimum_records", "maximum_records", "page_patterns", "stable_text_anchors", "stable_text_role", "hosts", "entry_path", "entry_identity_pattern", "entry_context", "entry_scope", "name_validation", "identity_query_keys", "identity_query_paths", "field_minimum_records", "record_name_exclusions", "title_exclusion_patterns", "price_patterns", "price_exclusion_patterns", "price_unavailable_patterns", "record_count_policy", "source_record_pair_hashes", "source_record_pairs_sha256", "table_columns", "record_identity_fields", "table_scope", "duplicate_policy", "link_base_url", "text_exclusions", "content_scope"}:
         raise ValueError("Unknown stable acceptance contract fields")
     if contract.get("stable_text_role", "required") not in {"required", "diagnostic"}:
         raise ValueError("Invalid stable text role")
@@ -1066,6 +1066,14 @@ def validate_acceptance_contract(contract: dict) -> None:
         raise ValueError("Invalid linked-record identity query keys")
     if query_keys and contract["schema"] not in {"named_link", "linked_product"}:
         raise ValueError("Identity query keys apply only to linked records")
+    if "identity_query_paths" in contract:
+        query_paths = contract["identity_query_paths"]
+        if (not isinstance(query_paths, list) or not query_paths or not query_keys
+                or contract.get("entry_identity_pattern")
+                or contract["schema"] not in {"named_link", "linked_product"}
+                or any(not isinstance(path, str) or not path.strip() for path in query_paths)):
+            raise ValueError("Invalid linked-record identity query paths")
+        patterns.extend(query_paths)
     if contract["schema"] == "linked_product":
         price_patterns = contract.get("price_patterns")
         price_exclusions = contract.get("price_exclusion_patterns", [])

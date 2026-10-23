@@ -478,15 +478,15 @@ A registered change is not a claim that the entire item is complete.
 | 3. Four access cases | Commit records, documentation body and Ibiblio body corrections registered; original identity constraints preserved. |
 | 4. Six dynamic tables | Six source-qualified table contracts registered, including rendered-row limits and graphic cell values. |
 | 5. Strict body thresholds | All 148 targeted cases require every retained region at 80%; five-block limit preserved. |
-| 6. Ten challenge quotas | Three earlier quotas registered. Four new successful initial pages under scoped-count testing; three other sites currently return login or verification pages. Do not infer list sizes from these failures. |
+| 6. Ten challenge quotas | Seven quotas registered, including four new source-qualified initial-page counts. Three other sites currently return login or verification pages. Do not infer list sizes from these failures. |
 | 7. Short regions and article endings | Registered role/boundary/ending corrections; real short specification cards retained. Final article source-gap decisions remain. |
 | 8. Stable-anchor guidance | Mandatory-anchor interpretation retained; verify all affected guide passages together in final audit. |
-| 9. Twenty-five replacement sources | Existing source audit must be reconciled with registered provenance and counts; temporary candidate evidence alone is not completion. |
+| 9. Twenty-five replacement sources | All 25 provenance updates registered, with unchanged matching fields and explicit one-observation limitations. All 124 source files are hash-bound external evidence. |
 | 10. Forbidden terms | RFC 9110, WCAG and Browser Use demonstrated source conflicts corrected. Broad removal, including 91 homepage cases, remains unqualified and is not claimed complete. |
 | 11. Long-document sections | Source-wide heading and necessary-fact audit in progress. Sampled omission tests alone do not cover all sections. Heading or opening presence does not prove full section coverage. |
 | 12. Broad record scopes | Risk 248, Twitch and Rakuten scopes corrected. Bilibili's explicit single-resource target retained with controls. |
 | 13. Changing links/video description | Third-party news links retained where supported by the task. Video 09 description expansion rejected because the task asks only for title and publisher. |
-| 14. Other fixed length floors | A universal half-reference rule is not yet qualified across non-prose targets; source- and task-specific decisions remain. |
+| 14. Other fixed length floors | All 71 retained top-level 300-character floors were checked: 60 have stronger required document-body minima and 11 require reference body coverage. No case depends on 300 characters alone; do not add a duplicate universal gate. |
 
 ## Article duplication and overlapping requirements
 
@@ -608,7 +608,7 @@ of the four list quotas, 15 article heading additions and shared required-end
 option, `make check` passed 2838 tests and 338 subtests. This validates the
 current integration, not completion of the remaining source audits.
 
-The RFC 9110 candidate includes 322 numeric and appendix headings. Its complete
+The RFC 9110 candidate includes 302 numeric and appendix headings. Its complete
 reference passes and removing the complete GET section fails. Keeping the GET
 heading while removing its prose still passes. This is direct evidence that
 heading presence cannot certify section-body completeness. The review explicitly
@@ -621,3 +621,41 @@ pages, so they cannot qualify English required text. The score-only annotation
 revision rejects changes to collection inputs such as URLs. A language-specific
 URL needs a separately versioned input and verified initial navigation; do not
 remove English requirements based solely on a different-language capture.
+
+## Registered replacement provenance
+
+All 25 dynamic replacement cases now record the actual source positions,
+observed occurrences and source hashes for 75 existing stable-text anchors.
+Eleven missing count-policy descriptions are also filled. Matching alternatives,
+record boundaries, required counts and body scoring are unchanged. The combined
+revision now contains 380 cases because 12 of these metadata-only corrections
+were not previously registered.
+
+The 124 distinct supporting files are hash-bound external review inputs.
+Twenty-eight anchors in 11 cases have only one verified saved occurrence;
+this is explicitly recorded and does not establish repeated temporal stability.
+These additions close missing provenance fields, not the uncertainty about
+long-term stability. They do not certify new captures or historical scores.
+
+## Registered fixed-document headings
+
+Thirteen further fixed documents now require their source-declared section
+headings, preserving every previous fact and the original body regions. The
+registration deduplicates headings already guaranteed by current requirements.
+All 13 full reference representations passed the staged combined rules. The
+two phpBB cases in the 15-case audit already required their category headings.
+PDF figure labels and numbered footnotes were excluded using document heading
+syntax; they are not treated as sections.
+
+These additions reuse required facts and do not introduce a new scoring type.
+Repeated headings may be satisfied by the table of contents, and retaining a
+heading does not prove its section body was retained. The five-block 80% body
+check remains an approximate completeness measure, as requested in the review.
+
+RFC 9110 HTML now also has 306 additional required headings: 291 numbered
+sections, 11 appendix headings and four genuine front/back-matter headings.
+The existing Abstract requirement is retained; TOC and Index do not become
+prose-section requirements. All 309 facts passed against the complete bound
+reference. The external dataset is independent evidence: its RFC public task
+and body bindings match the frozen task, but its whole-file hash is different
+and never substitutes for the frozen input binding.

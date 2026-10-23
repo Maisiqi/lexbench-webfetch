@@ -129,3 +129,15 @@ answers continue to use `html_selector` as their independent boundary. Keep the
 default for contracts that intentionally accept an isolated body without its
 following section. This option applies to the shared named-record scope and
 does not introduce website-specific matching.
+
+## Mixed path and query record identities
+
+Named-link and linked-product contracts may declare a nonempty list of
+`identity_query_paths` regular expressions together with `identity_query_keys`.
+Patterns match the entire decoded, normalized path with trailing slash removed.
+Matching routes require the existing query identity; other routes retain path
+identity. For example, `/detail?id=7` can coexist with `/article/8` without
+accepting `/detail` as a valid record or counting tracking parameters twice.
+Omitting the path policy preserves the existing all-record query requirement.
+It cannot be combined with `entry_identity_pattern`, which defines a separate
+identity rule. No domain-specific handling is involved.

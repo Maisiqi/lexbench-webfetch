@@ -141,6 +141,8 @@ Saved answer metadata may declare `answer_format` as `plain_text`, `html`, or `m
 
 Named-link tasks can set `entry_scope.required_end: true` when a text answer must include the declared `end_pattern` boundary. Without that boundary, the record scope does not match. The default remains false for tasks that accept body-only answers. HTML answers use the declared selector boundary independently.
 
+Linked-record contracts may set `identity_query_paths` alongside `identity_query_keys` to require query identifiers only on matching normalized paths. Other paths identify records by path. Omission retains the requirement for query identifiers on every record; missing, blank or repeated identifiers remain invalid on matching paths.
+
 Offline scoring recomputes derived fields. It retains the original reference hash, deadline evidence and file fingerprints. A file verdict requires current file verification; an old pass flag cannot certify a rescore. Summaries expose `mean_all_attempts_ms`, `all_attempts_p50_ms` and `all_attempts_p95_ms` alongside the existing successful-call timings. The all-attempt population includes failed calls and timeouts.
 
 These changes do not revise frozen tasks or certify historical results. Score corrections require a new evidence revision tied to the scorer and its regression controls.

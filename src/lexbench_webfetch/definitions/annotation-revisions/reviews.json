@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "bed486aac65ecb9b6554dd1c003e5ce79067855755588beaec04d75747825eb1",
+      "revision_sha256": "16b9000430c09586886367b49ad1b8e5ea3589b81580b5a53dcc56046b6d6d6f",
       "changes": [
         {
           "suite": "webfetch",
@@ -5879,13 +5879,28 @@
         {
           "suite": "webfetch",
           "case_id": "stable-wikipedia-ai-revision",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "7cefd741f809534d94527a8ca826e7acfd6f5ba1987d78d6062ccb1258be9c85",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for stable-wikipedia-ai-revision"
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-wikipedia-ai-revision/current-source.html.txt",
+              "sha256": "6e8a90637feeccecfcc60178e75efc5a9aa67a2bd801083f073f61f829e554ed",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-wikipedia-ai-revision/current-capture.json",
+              "sha256": "5ce3d5b5ef571f50c89d661e678d7f928f34b912707b00af8c17e9f3092b2dd1",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-wikipedia-ai-revision/stable-wikipedia-ai-revision.txt",
+              "sha256": "92aeb97b02820f046043dc771243243260835ba3565bcb24c798346107c7d0ef",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -5898,7 +5913,11 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
@@ -6029,13 +6048,28 @@
         {
           "suite": "webfetch",
           "case_id": "stable-rfc-6455-websocket",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "102734fb8df441eecf9ecb4b4f39e097fc324d43465603fd2114fa02869a7b4b",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for stable-rfc-6455-websocket"
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-rfc-6455-websocket/current-source.html.txt",
+              "sha256": "4f4123b855949ad986591341c6d64a52a8bdf391cba2c1f93242ff31048fd9bb",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-rfc-6455-websocket/current-capture.json",
+              "sha256": "07b7838e1240651dd20b0f454bfb1255647b7c5dcc806874e49f99778225ce28",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-rfc-6455-websocket/stable-rfc-6455-websocket.txt",
+              "sha256": "b4e82cb20f4acd3545b61474bb9cbc873f1293c940077aa60a1ac921917e0ed8",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -6048,7 +6082,11 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
@@ -6112,13 +6150,28 @@
         {
           "suite": "webfetch",
           "case_id": "stable-nodejs-readme",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "43e61bf062d2f7932ce00641fdb8993f31fdf716bda432250c0cd6ef85e18e7c",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for stable-nodejs-readme"
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-nodejs-readme/current-source.html.txt",
+              "sha256": "2b0e7c268e71712ca32faeb22674508b50f19232b734eba8da57f8b7f7bf0fff",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-nodejs-readme/current-capture.json",
+              "sha256": "9b69a35011a156f637e504aae964c3c1907c9a488cc6ee6f804fccb79fffe139",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-nodejs-readme/stable-nodejs-readme.txt",
+              "sha256": "5ceadd992886da6a039f6106b7f76af2a6ea599dc8ff65d245d8d351c23f3820",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -6131,14 +6184,18 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
           "suite": "webfetch",
           "case_id": "stable-wcag21-recommendation",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove only CAPTCHA from forbidden_any: the hash-verified complete WCAG recommendation legitimately discusses CAPTCHA. Preserve original facts, body regions, thresholds and every other forbidden phrase. Exact source passes; empty shell, CAPTCHA challenge, Cloudflare challenge and anchors plus unrelated padding remain rejected. Block-page diagnostics stay unchanged.",
-          "changes_sha256": "306867c59faba4caaa077f2c0af217fc2a3735296c2192d6475ff0fcc524d2c2",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove only CAPTCHA from forbidden_any: the hash-verified complete WCAG recommendation legitimately discusses CAPTCHA. Preserve original facts, body regions, thresholds and every other forbidden phrase. Exact source passes; empty shell, CAPTCHA challenge, Cloudflare challenge and anchors plus unrelated padding remain rejected. Block-page diagnostics stay unchanged. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "79e2d087ddb362c7e2048c77b563b38807f855872ebfc3cea537334a7146c2ec",
           "sources": [
             {
               "path": "dataset.json",
@@ -6149,6 +6206,21 @@
               "path": "review-evidence/webfetch/wcag21-frozen-source.txt",
               "sha256": "4e427c638b8372ae21dec876596004451c1bfe43a23ac4331fc3ce8e6f1a1a5c",
               "scope": "Exact hash-verified original frozen reference text, not a fabricated challenge-free version."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-wcag21-recommendation/current-source.html.txt",
+              "sha256": "a8793e95937866bacd03d9b421e4e889bc7811b84d0ddec6ed8c790f8e7f67dd",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-wcag21-recommendation/current-capture.json",
+              "sha256": "e2ba4ffdd1b3bca239a7aaa46e8e974971e8fd84f5de316df7a99c0f7d2d8335",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-wcag21-recommendation/stable-wcag21-recommendation.txt",
+              "sha256": "4e427c638b8372ae21dec876596004451c1bfe43a23ac4331fc3ce8e6f1a1a5c",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -6164,14 +6236,16 @@
             "all-body-regions-5-missing-region",
             "reference-captcha-heading-is-legitimate-body-text",
             "complete-distributed-body-passes",
-            "short-prefix-cannot-pass-full-body-task"
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
           "suite": "webfetch",
           "case_id": "live-030-rfc-9110",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove only the source-attested 404 Not Found exclusion: the RFC legitimately specifies that status. Exact-bound full reference fails only that exclusion and passes after removal; bare error, identity-plus-error and unrelated padded error answers still fail the unchanged body/fact gates. Separate section-omission weaknesses remain under review.",
-          "changes_sha256": "09a796fc8920fddec242b1ec81566237954a6092e734bc18a2fbe4d41418e9bd",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove only the source-attested 404 Not Found exclusion: the RFC legitimately specifies that status. Exact-bound full reference fails only that exclusion and passes after removal; bare error, identity-plus-error and unrelated padded error answers still fail the unchanged body/fact gates. Separate section-omission weaknesses remain under review. Add actual source-owned numbered sections, appendices, and genuine unnumbered front/back matter headings using existing mandatory required_facts; preserve all prior facts, body regions, 80-percent thresholds and operations. Abstract is already required; TOC and Index are navigation indexes. Heading presence does not guarantee complete section prose, and retained-title/body-deletion may pass under approximate five-block coverage.",
+          "changes_sha256": "09d2b501199e8005ba2b960854ccb551719e1aafb9d8be30faff33bf3c74ea5d",
           "sources": [
             {
               "path": "dataset.json",
@@ -6182,6 +6256,21 @@
               "path": "review-evidence/webfetch/rfc9110-forbidden-review/source.html",
               "sha256": "d431760660ea44e130f6e919dab216df2d0b3a490567a98089267523368fe1e5",
               "scope": "Independent official RFC 9110 HTML at the unchanged task URL, including its legitimate 404 Not Found section. Original reference hash verified independently; original body thresholds and required facts preserved."
+            },
+            {
+              "path": "review-evidence/rfc9110-headings/source.html",
+              "sha256": "d431760660ea44e130f6e919dab216df2d0b3a490567a98089267523368fe1e5",
+              "scope": "Independent saved RFC DOM; actual h2-h6 titles and section IDs."
+            },
+            {
+              "path": "review-evidence/rfc9110-headings/external-dataset.json",
+              "sha256": "9511b16bd27cfe6c2d7913917992cec574f73a8b5b642c19283ea542f90dab81",
+              "scope": "Independent older complete dataset; this RFC public task and all region bindings exactly match the current frozen task. The whole dataset hash differs and is not substituted for the frozen dataset binding."
+            },
+            {
+              "path": "review-evidence/rfc9110-headings/numbered-heading-controls.json",
+              "sha256": "f82f3f6dbeb708ba7440ed081701f561c5a602840892071290b4c30f4f3c3757",
+              "scope": "Existing 302-heading full source/GET removal/retained-heading controls; no newly inferred full-body guarantee."
             }
           ],
           "regression_ids": [
@@ -6202,13 +6291,28 @@
         {
           "suite": "webfetch",
           "case_id": "stable-xml10-recommendation",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "bce29fef19818ea1a6041333809be220a7385ea7a3a900b7773cb86bdb900b3e",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for stable-xml10-recommendation"
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-xml10-recommendation/current-source.html.txt",
+              "sha256": "f58a4b9e1e5b8bac13fb55c4e5c7c8c5e2c176aa45ee68e2f1ab2498511927ec",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-xml10-recommendation/current-capture.json",
+              "sha256": "11db5a0527d21dd8d3e2b583e36328ef4a5cf878534e9d26a4833d638c9c46ff",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/stable-xml10-recommendation/stable-xml10-recommendation.txt",
+              "sha256": "6a134efe043e557a4fa4b6cffd66b7349a526cd6e2fab121220941b2d204f2ef",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -6221,7 +6325,11 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
@@ -6302,13 +6410,28 @@
         {
           "suite": "webfetch",
           "case_id": "document-01",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "be8d5d20bed77e76eddc4d9bdb851a47ed2d0a25d30a0ebb118864af6c7571f1",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for document-01"
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-01/source.pdf",
+              "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-01/evidence.json",
+              "sha256": "fac136d028f9ba8b91fe5c674cdc1264f7c0e5de299f0fef5ae4ea85fe78ef3c",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-01/document-01.txt",
+              "sha256": "e7c5718ba5d80706f93a956d1214002deee9f172190d8aae2cd1b3aee1c6dce5",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -6321,19 +6444,38 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
           "suite": "webfetch",
           "case_id": "document-02",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "34d5f7eb4b16219cef30ab7b123bf9cacfedd7035498506bb3bcce0a4e59702c",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for document-02"
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-02/source.pdf",
+              "sha256": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-02/evidence.json",
+              "sha256": "f8b876ace6beaaea4a6be5fb65214a75608b6e7d7e9583963e2ef662526a6e41",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-02/document-02.txt",
+              "sha256": "4c9ff4e8f7bb9c2c09c0038e6c0c9372554d4c5ea6d5d1e441054fcb599e2c26",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -6346,7 +6488,11 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
@@ -6377,13 +6523,28 @@
         {
           "suite": "webfetch",
           "case_id": "document-04",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "0c0953224073e3537c667d449d47ce3171debc880ec4a4391f3874026fab2784",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for document-04"
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-04/source.pdf",
+              "sha256": "3662ff519e485810520552bf301d8c3b2b917fd2f83303f4965d7abed367e113",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-04/evidence.json",
+              "sha256": "e57e18e531524562bee22bd0359f4c8e9dcb01a6a391c337ee47862cfd6ea080",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-04/document-04.txt",
+              "sha256": "1d8d29eea6e0f33ce4332ce417f9e4d0d646136269c27d3cbe965508a86eb790",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -6396,7 +6557,11 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
@@ -6452,13 +6617,28 @@
         {
           "suite": "webfetch",
           "case_id": "document-07",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "0c0953224073e3537c667d449d47ce3171debc880ec4a4391f3874026fab2784",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for document-07"
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-07/source.pdf",
+              "sha256": "3662ff519e485810520552bf301d8c3b2b917fd2f83303f4965d7abed367e113",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-07/evidence.json",
+              "sha256": "e57e18e531524562bee22bd0359f4c8e9dcb01a6a391c337ee47862cfd6ea080",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-07/document-07.txt",
+              "sha256": "1d8d29eea6e0f33ce4332ce417f9e4d0d646136269c27d3cbe965508a86eb790",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -6471,7 +6651,11 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
@@ -6502,13 +6686,28 @@
         {
           "suite": "webfetch",
           "case_id": "document-09",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "6d92914e8b43988763dfdc473857fcad679cc75592bd751c70e1cf1e0d2fd8ad",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
               "scope": "Existing hash-bound body regions and declared target scope for document-09"
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-09/source.bin",
+              "sha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-09/evidence.json",
+              "sha256": "9f8c99c32e495d56268d6aa7cf46cdbda6032a9745af742393dd6d7e12483818",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/webfetch/source-semantic-headings/document-09/document-09.txt",
+              "sha256": "ad3b38b7806783d5066714f7ac9aadcba8cec1605a400c7380173737a8adf902",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -6521,7 +6720,11 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
@@ -7378,13 +7581,33 @@
         {
           "suite": "dynamic-content",
           "case_id": "replacement-en-syncfusion-filtering",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "e61a2f3953634b5a15f2ec504ae82d7db8305c097db453c71418f08758bc3fd0",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-en-syncfusion-filtering"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-en-syncfusion-filtering: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/f92af3dce96657872c21436978bc960fbb2ca12a8a48d50794a4eabb5043cf79.html",
+              "sha256": "f92af3dce96657872c21436978bc960fbb2ca12a8a48d50794a4eabb5043cf79",
+              "scope": "Independent saved provenance for replacement-en-syncfusion-filtering: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/15f8eb6d4262fd46b2a257244d68e4987d2d24b95fc116465c5bdf67c6950884.txt",
+              "sha256": "15f8eb6d4262fd46b2a257244d68e4987d2d24b95fc116465c5bdf67c6950884",
+              "scope": "Independent saved provenance for replacement-en-syncfusion-filtering: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/29bc8117bbe238b9d70020ba90f6190c09743a596d082610869c1343407dc55f.txt",
+              "sha256": "29bc8117bbe238b9d70020ba90f6190c09743a596d082610869c1343407dc55f",
+              "scope": "Independent saved provenance for replacement-en-syncfusion-filtering: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7397,19 +7620,41 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-en-gridjs-search",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "e241aad7d98bfeec1add457d18df3f88739dff16c4c858932aab96225c6bf72c",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-en-gridjs-search"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-en-gridjs-search: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/f15670a9299bce3dbe6aee1cef20b17ab51d5c84ef398149b3fccbc81bcf4baa.html",
+              "sha256": "f15670a9299bce3dbe6aee1cef20b17ab51d5c84ef398149b3fccbc81bcf4baa",
+              "scope": "Independent saved provenance for replacement-en-gridjs-search: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/dedb87ef4e4d9ed9f3a3af3e2428cd74ab1ada716e67ed35a5eba14d73993776.txt",
+              "sha256": "dedb87ef4e4d9ed9f3a3af3e2428cd74ab1ada716e67ed35a5eba14d73993776",
+              "scope": "Independent saved provenance for replacement-en-gridjs-search: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/d568783bc651469271a33a36be2f3e6ee736cfdc89f5d7675e8704cbd46f7046.txt",
+              "sha256": "d568783bc651469271a33a36be2f3e6ee736cfdc89f5d7675e8704cbd46f7046",
+              "scope": "Independent saved provenance for replacement-en-gridjs-search: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7422,19 +7667,51 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-en-quasar-table",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "4062667e8dd6fbe8a355cfc2457e252c8fa538ef2d88d667680537f10dd19fc4",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-en-quasar-table"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-en-quasar-table: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/ed0d972d43b216e2a92d5d44b604bec9b3249311d919eaa1202484d07d503f11.html",
+              "sha256": "ed0d972d43b216e2a92d5d44b604bec9b3249311d919eaa1202484d07d503f11",
+              "scope": "Independent saved provenance for replacement-en-quasar-table: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/bba7f85138e0c40dc2c5871d41aa82d991a47997893298028c7c03cefd0c18b5.txt",
+              "sha256": "bba7f85138e0c40dc2c5871d41aa82d991a47997893298028c7c03cefd0c18b5",
+              "scope": "Independent saved provenance for replacement-en-quasar-table: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/e9a77d099a94cb2086e39ea0ac4345bd8b7c9948786332802a2b74e860aae3b4.txt",
+              "sha256": "e9a77d099a94cb2086e39ea0ac4345bd8b7c9948786332802a2b74e860aae3b4",
+              "scope": "Independent saved provenance for replacement-en-quasar-table: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/85691c6a8f76347a90d940ef2a67f11427cfff43b6e755339db4b17b5cee0070.txt",
+              "sha256": "85691c6a8f76347a90d940ef2a67f11427cfff43b6e755339db4b17b5cee0070",
+              "scope": "Independent saved provenance for replacement-en-quasar-table: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/7ab56d01c78ae227ec44b504bf690dec9e6b51de235a103960b2b6130741b92b.txt",
+              "sha256": "7ab56d01c78ae227ec44b504bf690dec9e6b51de235a103960b2b6130741b92b",
+              "scope": "Independent saved provenance for replacement-en-quasar-table: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7447,19 +7724,41 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-en-gridjs-sort",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "0e5180227396d4faca770e99b4ca520e28947b99f719029a9ba8a018b0673ea2",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-en-gridjs-sort"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-en-gridjs-sort: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/816b24717f1460a0fe2ae4e7c392cc6ea4d2c21cfd2db05d247eedc4b307c64c.html",
+              "sha256": "816b24717f1460a0fe2ae4e7c392cc6ea4d2c21cfd2db05d247eedc4b307c64c",
+              "scope": "Independent saved provenance for replacement-en-gridjs-sort: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/6ac46458905d399cbdf62467bf1c7b53aa05c3cc72aab603cbbf6f23c9b596fd.txt",
+              "sha256": "6ac46458905d399cbdf62467bf1c7b53aa05c3cc72aab603cbbf6f23c9b596fd",
+              "scope": "Independent saved provenance for replacement-en-gridjs-sort: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/516d2ecd94b28bcae95c28c44a857aa379d50ebcb914570a87c16f7053e591d2.txt",
+              "sha256": "516d2ecd94b28bcae95c28c44a857aa379d50ebcb914570a87c16f7053e591d2",
+              "scope": "Independent saved provenance for replacement-en-gridjs-sort: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7472,19 +7771,51 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-en-mui-sorting",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "64cc3ce7549f59479f710b9f5ba2252759313cfa4eba81449806f3b780ce5e90",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-en-mui-sorting"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-en-mui-sorting: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/2c39d2c69b7f1a702e1440b2ac21e9c1358591c30fdf88de7e5bb741561d2014.html",
+              "sha256": "2c39d2c69b7f1a702e1440b2ac21e9c1358591c30fdf88de7e5bb741561d2014",
+              "scope": "Independent saved provenance for replacement-en-mui-sorting: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/e5518a62e12dc175cf23d2bb0818f9951b596d0df614e389fd8bc716d150dba3.txt",
+              "sha256": "e5518a62e12dc175cf23d2bb0818f9951b596d0df614e389fd8bc716d150dba3",
+              "scope": "Independent saved provenance for replacement-en-mui-sorting: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/6d74d9f6d0116b86eb2fe9e913b0e0848ca8f20a2a272cc34eb6ca2ece6caca6.txt",
+              "sha256": "6d74d9f6d0116b86eb2fe9e913b0e0848ca8f20a2a272cc34eb6ca2ece6caca6",
+              "scope": "Independent saved provenance for replacement-en-mui-sorting: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/34d323cd58aec21a75eba82e0bde128f158a016d40580b6fe3f6aec602f177f1.txt",
+              "sha256": "34d323cd58aec21a75eba82e0bde128f158a016d40580b6fe3f6aec602f177f1",
+              "scope": "Independent saved provenance for replacement-en-mui-sorting: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/6ccacc2c43a2f91945a976704d146731b1f2c0a734858445331b194af7777240.txt",
+              "sha256": "6ccacc2c43a2f91945a976704d146731b1f2c0a734858445331b194af7777240",
+              "scope": "Independent saved provenance for replacement-en-mui-sorting: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7497,19 +7828,51 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-en-mui-filtering",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "7f2d6b3edd6a8a68c83636cfc0c9d43eeb134163418d873ef42f7ad54feed556",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-en-mui-filtering"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-en-mui-filtering: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/6bf35ac152865d3f1004c3582b09ca6eae7eaea4e0dc540316938479f6dc2844.html",
+              "sha256": "6bf35ac152865d3f1004c3582b09ca6eae7eaea4e0dc540316938479f6dc2844",
+              "scope": "Independent saved provenance for replacement-en-mui-filtering: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/2c1c340983b14258fd8874119980626ec439d855cb9ba7e396c4b968c5e9a3fb.txt",
+              "sha256": "2c1c340983b14258fd8874119980626ec439d855cb9ba7e396c4b968c5e9a3fb",
+              "scope": "Independent saved provenance for replacement-en-mui-filtering: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/97f18e87984cbad3fc6509b69f8d2de06ed2cfc3bc2c1e7b1c158d5754d67921.txt",
+              "sha256": "97f18e87984cbad3fc6509b69f8d2de06ed2cfc3bc2c1e7b1c158d5754d67921",
+              "scope": "Independent saved provenance for replacement-en-mui-filtering: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/11f2be294a5e2647f1115bb80194432bbaf0ffd5c833e7e4440e19e2bde87227.txt",
+              "sha256": "11f2be294a5e2647f1115bb80194432bbaf0ffd5c833e7e4440e19e2bde87227",
+              "scope": "Independent saved provenance for replacement-en-mui-filtering: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/e12d3ae2e4281884a24c020f61312c4ca85467d7ceba29b78e540d889e7ed898.txt",
+              "sha256": "e12d3ae2e4281884a24c020f61312c4ca85467d7ceba29b78e540d889e7ed898",
+              "scope": "Independent saved provenance for replacement-en-mui-filtering: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7522,19 +7885,41 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-en-syncfusion-sorting",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "a8d72d9fa4ae09248ea37f19800d5a121f33e5a2eb8e8e4b5cde792b6200dec0",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-en-syncfusion-sorting"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-en-syncfusion-sorting: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/afeed04aa040c94796918c2716cd62d1aeb3b9f50ad9e0f3ef7f82f2eeca8c17.html",
+              "sha256": "afeed04aa040c94796918c2716cd62d1aeb3b9f50ad9e0f3ef7f82f2eeca8c17",
+              "scope": "Independent saved provenance for replacement-en-syncfusion-sorting: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/eac0766cad79225e58e3783d841b8375ce356741991a339ea7bfa7afefc2c32d.txt",
+              "sha256": "eac0766cad79225e58e3783d841b8375ce356741991a339ea7bfa7afefc2c32d",
+              "scope": "Independent saved provenance for replacement-en-syncfusion-sorting: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/feb9c496859485532437e4554a2abfeec94ebd786f5970fdddc60a9254ef2fe2.txt",
+              "sha256": "feb9c496859485532437e4554a2abfeec94ebd786f5970fdddc60a9254ef2fe2",
+              "scope": "Independent saved provenance for replacement-en-syncfusion-sorting: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7547,19 +7932,46 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-zh-ant-descriptions",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "ec837c5060d2545b7e72c2de7b8578bcb84026ff7283198c17c1e9e6cb8dd32e",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-zh-ant-descriptions"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-zh-ant-descriptions: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/45c4d38f0de80c7818b733c53d9edee4d56ca21e0f5814c346de6f3fd47e36c2.html",
+              "sha256": "45c4d38f0de80c7818b733c53d9edee4d56ca21e0f5814c346de6f3fd47e36c2",
+              "scope": "Independent saved provenance for replacement-zh-ant-descriptions: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/13df13b7f46cfa1f6864f93856d074fd0cd733f9f1c598f9c88eb02129a65c05.txt",
+              "sha256": "13df13b7f46cfa1f6864f93856d074fd0cd733f9f1c598f9c88eb02129a65c05",
+              "scope": "Independent saved provenance for replacement-zh-ant-descriptions: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/7041188b198a794cbfabe0718028c5c8c6f7f88dfc9fdc9d86e06df84f36f7d6.txt",
+              "sha256": "7041188b198a794cbfabe0718028c5c8c6f7f88dfc9fdc9d86e06df84f36f7d6",
+              "scope": "Independent saved provenance for replacement-zh-ant-descriptions: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/f1174a7e6bb1faf882656ab7cccdde2cfab6d5a6bb194c7a26bf69f4f54950b1.txt",
+              "sha256": "f1174a7e6bb1faf882656ab7cccdde2cfab6d5a6bb194c7a26bf69f4f54950b1",
+              "scope": "Independent saved provenance for replacement-zh-ant-descriptions: reobservation. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7572,19 +7984,46 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-zh-ant-form",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "8a5f5b1646c814bfaff7564351b2e571a877c24e4892bd786b5ce954e6c6c501",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-zh-ant-form"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-zh-ant-form: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/2b2d1ec06af627ff7029ad9300542ec89eecf8648f70d46c0956c9a731639121.html",
+              "sha256": "2b2d1ec06af627ff7029ad9300542ec89eecf8648f70d46c0956c9a731639121",
+              "scope": "Independent saved provenance for replacement-zh-ant-form: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/51ddfac9ee6558a6c4d67d3161ffcb90d97a17a0ac28e3c7a282f5a6ee5226f8.txt",
+              "sha256": "51ddfac9ee6558a6c4d67d3161ffcb90d97a17a0ac28e3c7a282f5a6ee5226f8",
+              "scope": "Independent saved provenance for replacement-zh-ant-form: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/7b76ae464076a1748206dcb55d7aff02d904a85b06c269b7899e52d1a976e16b.txt",
+              "sha256": "7b76ae464076a1748206dcb55d7aff02d904a85b06c269b7899e52d1a976e16b",
+              "scope": "Independent saved provenance for replacement-zh-ant-form: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/737157c11c3e204235441cf7a68e5e751fb2dff8d77a61c770c4ba46fe04d433.txt",
+              "sha256": "737157c11c3e204235441cf7a68e5e751fb2dff8d77a61c770c4ba46fe04d433",
+              "scope": "Independent saved provenance for replacement-zh-ant-form: reobservation. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7597,19 +8036,41 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-fix6-es-mx-lokus-home",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "600e279b9e37ad7eee2543c185efe227653d7b9abf5d8d796cb391637a0459a1",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-fix6-es-mx-lokus-home"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-fix6-es-mx-lokus-home: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/727f3cb17ca28437dc094cd77689051b3576b20d73e72aeb74c10ce9ad69fed6.html",
+              "sha256": "727f3cb17ca28437dc094cd77689051b3576b20d73e72aeb74c10ce9ad69fed6",
+              "scope": "Independent saved provenance for replacement-fix6-es-mx-lokus-home: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/f75b2ca70ff9643dccb38881b8f92764fdfa6ba3c2b7916d06c6f322fb615283.txt",
+              "sha256": "f75b2ca70ff9643dccb38881b8f92764fdfa6ba3c2b7916d06c6f322fb615283",
+              "scope": "Independent saved provenance for replacement-fix6-es-mx-lokus-home: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/c274a36ed5c6ed57eedafa294a6453ebf26204b14224fd547540b476bb941fbd.txt",
+              "sha256": "c274a36ed5c6ed57eedafa294a6453ebf26204b14224fd547540b476bb941fbd",
+              "scope": "Independent saved provenance for replacement-fix6-es-mx-lokus-home: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7622,19 +8083,41 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-fix3-fr-fr-datapass-stats",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "9374a83ef7cfe958693d9d0d55bc8a90e9c9718d00430dae3a093139de175f45",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-fix3-fr-fr-datapass-stats"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-fix3-fr-fr-datapass-stats: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/cb276e16729384f0c6917d947d8de616c8c003cd109564f0e6b66c03eb118d23.html",
+              "sha256": "cb276e16729384f0c6917d947d8de616c8c003cd109564f0e6b66c03eb118d23",
+              "scope": "Independent saved provenance for replacement-fix3-fr-fr-datapass-stats: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/a0776dbfcef2e43fec69821ce4e372e57ccf79ad85f00d32901b34ada2cd9657.txt",
+              "sha256": "a0776dbfcef2e43fec69821ce4e372e57ccf79ad85f00d32901b34ada2cd9657",
+              "scope": "Independent saved provenance for replacement-fix3-fr-fr-datapass-stats: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/033e076a2a107d4b39ee7616e87a7f1e57f4030e19981e7e1e9fa2d93e8719f3.txt",
+              "sha256": "033e076a2a107d4b39ee7616e87a7f1e57f4030e19981e7e1e9fa2d93e8719f3",
+              "scope": "Independent saved provenance for replacement-fix3-fr-fr-datapass-stats: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7647,19 +8130,41 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-fix3-fr-fr-mobilites-durables",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "3191007899e68059b544d46eb09fae1fefce64c136fa48302b871b9ecac4920a",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "d6c3958e02d5d714d23907b968b27b1c85c1c235deda9ccbdb870790d2729c96",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-fix3-fr-fr-mobilites-durables"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-fix3-fr-fr-mobilites-durables: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/6b4881fef919260e80d945aaf36c5b47de9df76c7c0b541c5e2398a8c1d124ab.html",
+              "sha256": "6b4881fef919260e80d945aaf36c5b47de9df76c7c0b541c5e2398a8c1d124ab",
+              "scope": "Independent saved provenance for replacement-fix3-fr-fr-mobilites-durables: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/77b9edd6f3c459802bc84074ac4757cab5e903520726d7ca846cc13aec7e7f66.txt",
+              "sha256": "77b9edd6f3c459802bc84074ac4757cab5e903520726d7ca846cc13aec7e7f66",
+              "scope": "Independent saved provenance for replacement-fix3-fr-fr-mobilites-durables: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/98ce6236db3785683941cbda7af566b15b26eab89a4cdacd88c2e8f782307d10.txt",
+              "sha256": "98ce6236db3785683941cbda7af566b15b26eab89a4cdacd88c2e8f782307d10",
+              "scope": "Independent saved provenance for replacement-fix3-fr-fr-mobilites-durables: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7672,19 +8177,46 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
           "suite": "dynamic-content",
           "case_id": "replacement-fix3-de-dashboard-deutschland",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "f5cd4e884c656336b5cc33d4e42e2aee0514c4600e942e1f33f969310f4ed946",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "changes_sha256": "c97de3b79c50f68f2bbcb894b1d9ce7c1af24113b46c3cf83ca90b29c3eb83fc",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
               "scope": "Existing hash-bound body regions and declared target scope for replacement-fix3-de-dashboard-deutschland"
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-fix3-de-dashboard-deutschland: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/0eb455fdaac730005482c66520e03227580a8dba1a7cf6c70fdf4cf07f11372b.html",
+              "sha256": "0eb455fdaac730005482c66520e03227580a8dba1a7cf6c70fdf4cf07f11372b",
+              "scope": "Independent saved provenance for replacement-fix3-de-dashboard-deutschland: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/8ce8ac558568c5e991fe9b0ee708b2956c88a034dfa11d56b9b0d0bf877ba591.txt",
+              "sha256": "8ce8ac558568c5e991fe9b0ee708b2956c88a034dfa11d56b9b0d0bf877ba591",
+              "scope": "Independent saved provenance for replacement-fix3-de-dashboard-deutschland: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/619c9c0be78bb3a2362833c3bf04186a5966e26f025e26c653699a8f480c01ae.txt",
+              "sha256": "619c9c0be78bb3a2362833c3bf04186a5966e26f025e26c653699a8f480c01ae",
+              "scope": "Independent saved provenance for replacement-fix3-de-dashboard-deutschland: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/2760c182a2a27ff57ecb0b0d839aae458391c05176d59b7e39842b9d51074f52.txt",
+              "sha256": "2760c182a2a27ff57ecb0b0d839aae458391c05176d59b7e39842b9d51074f52",
+              "scope": "Independent saved provenance for replacement-fix3-de-dashboard-deutschland: reobservation. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
             }
           ],
           "regression_ids": [
@@ -7697,7 +8229,9 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
           ]
         },
         {
@@ -9167,13 +9701,28 @@
         {
           "suite": "access-restrictions",
           "case_id": "risk-diverse-201",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "fbddb75ae9c6428f66d483c0e1056818f9ac131036c69949aa0114f770b98046",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
               "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-201"
+            },
+            {
+              "path": "review-evidence/access-restrictions/source-semantic-headings/risk-diverse-201/http-default.bin",
+              "sha256": "b1eaf7d7c57e5a33fd3be3507da1c6bd795ab39fc617b4253891ff26e98b2742",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/access-restrictions/source-semantic-headings/risk-diverse-201/http-default.json",
+              "sha256": "d6b50921db92ece07e06fbcae06b63a64aaa6451bdc9611b2b02d6f72f6fb20e",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/access-restrictions/source-semantic-headings/risk-diverse-201/risk-diverse-201.txt",
+              "sha256": "e56f8d9d2d0ef8bd0708393ead89cc299817fb0380be6829336e8b6f819fe12c",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -9186,7 +9735,11 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
@@ -9317,13 +9870,28 @@
         {
           "suite": "access-restrictions",
           "case_id": "risk-diverse-210",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "bff4dd1783cb91830f76a5f6bf6a6d4b639fea97ab5e73173beb01980a0ae00e",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
               "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-210"
+            },
+            {
+              "path": "review-evidence/access-restrictions/source-semantic-headings/risk-diverse-210/http-default.bin",
+              "sha256": "d4f0a929ff8acd6c96e0548d2b0ad34e773e7054540642d2d83498ee32e97b68",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/access-restrictions/source-semantic-headings/risk-diverse-210/http-default.json",
+              "sha256": "d0123ffa9369ca06919446f442bc9f455eaf073d72b947eaed5fcce1c03e3877",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/access-restrictions/source-semantic-headings/risk-diverse-210/risk-diverse-210.txt",
+              "sha256": "2461cf779a98209cdf274171888717979648fad8fd73458a740f4de9b0c7539e",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -9336,7 +9904,11 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
@@ -9617,13 +10189,28 @@
         {
           "suite": "access-restrictions",
           "case_id": "risk-diverse-237",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
+          "changes_sha256": "519f780665dce2d34f602c31b54db4c25a60850f1257ed92d9cf2448ef95a531",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
               "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-237"
+            },
+            {
+              "path": "review-evidence/access-restrictions/source-semantic-headings/risk-diverse-237/http-default.bin",
+              "sha256": "e00bc46aa694e5131c8e2de15a2a393fa5fcf8351b04be38dd7fc1f32c1f7a6c",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/access-restrictions/source-semantic-headings/risk-diverse-237/http-default.json",
+              "sha256": "9bf7fd9464baaaaebc952bd3e64ff8dc79efdb66c00182240ba3dbe818bb615b",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
+            },
+            {
+              "path": "review-evidence/access-restrictions/source-semantic-headings/risk-diverse-237/risk-diverse-237.txt",
+              "sha256": "1c37a0dcbdc99679823eca20045034005584bf11ccd13e546aafa386953812b2",
+              "scope": "Source-declared semantic headings in the unchanged task URL/reference. No sample-specific body sentence; original <=5 body coverage regions unchanged."
             }
           ],
           "regression_ids": [
@@ -9636,7 +10223,11 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "complete-distributed-body-passes",
+            "short-prefix-cannot-pass-full-body-task",
+            "semantic-title-remains-required",
+            "semantic-reference-fact-survives-visual-line-wrap"
           ]
         },
         {
@@ -15042,6 +15633,682 @@
               "path": "review-evidence/webfetch/challenge-initial-20261023/reddit-render-state.json",
               "sha256": "f221b690d14ca42b6cbb1b6973b4a122d1a93273c5f1108238b382eb23e2cb27",
               "scope": "Single actual initial browser observation, no clicks or scrolling; complete DOM plus ancestor visibility evidence. Script/style/SVG-only HTML projection preserves real navigation and ads. Below-fold already rendered content counts; no viewport clipping assumed for body/html."
+            }
+          ],
+          "regression_ids": [
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-ko-yonhap-economy",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-economy: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/3eca7b62547ccb3718dcf3787f77cb56e84aeef7ae05160d5d9e8828d90fdd9b.html",
+              "sha256": "3eca7b62547ccb3718dcf3787f77cb56e84aeef7ae05160d5d9e8828d90fdd9b",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-economy: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/d475c4b22a6615b4bf7a4f9265f79b4b60fa7dda59b6b8d30111d0f9504eaa55.html",
+              "sha256": "d475c4b22a6615b4bf7a4f9265f79b4b60fa7dda59b6b8d30111d0f9504eaa55",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-economy: scoped count HTML. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/986992e5c8eb124603b7588e3239aa9393ae83f56b6d8ddaf2fb7f33e3299bb4.json",
+              "sha256": "986992e5c8eb124603b7588e3239aa9393ae83f56b6d8ddaf2fb7f33e3299bb4",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-economy: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/60d10e7ed75c7ca8d99cf3ee660218dabf26dd0eb1f03f6b24613e15894ab63d.json",
+              "sha256": "60d10e7ed75c7ca8d99cf3ee660218dabf26dd0eb1f03f6b24613e15894ab63d",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-economy: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/d714698115fba3d9ed4275db3634b06152c67a1adc5817880ae085a86244f95c.txt",
+              "sha256": "d714698115fba3d9ed4275db3634b06152c67a1adc5817880ae085a86244f95c",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-economy: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/b24b7e1fe002624521ba842c7d52d9e49465ae30f4c1b05ab6e92506b04ee00e.txt",
+              "sha256": "b24b7e1fe002624521ba842c7d52d9e49465ae30f4c1b05ab6e92506b04ee00e",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-economy: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "c69738c4a3efa4de12c2e73ae7bd991517fcacfd9e8eeb46242fe142a4f79adb"
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-ja-nintendo-mario",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-mario: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/aa8953aa7ce4276a3eed0535ca082c2925c844f22478a1058b59d673e213dfc6.html",
+              "sha256": "aa8953aa7ce4276a3eed0535ca082c2925c844f22478a1058b59d673e213dfc6",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-mario: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/1c36f09a8d3266f2c9bd7d6954718bbdb6133fcee0dbff84064de55649dbede5.html",
+              "sha256": "1c36f09a8d3266f2c9bd7d6954718bbdb6133fcee0dbff84064de55649dbede5",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-mario: scoped count HTML. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/a6d74de7da504f6f91c089eb920e6b73aae522e73431e8b50e5a775a03fce636.json",
+              "sha256": "a6d74de7da504f6f91c089eb920e6b73aae522e73431e8b50e5a775a03fce636",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-mario: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/97ad6563792616d8032338baf81140703ebc817bf2f6821ce90dfde03a87e914.json",
+              "sha256": "97ad6563792616d8032338baf81140703ebc817bf2f6821ce90dfde03a87e914",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-mario: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/4761369b4a9c513fd2b058aa636bb0f6ddc148557350f1beb5e8b49a0b0cf7c6.txt",
+              "sha256": "4761369b4a9c513fd2b058aa636bb0f6ddc148557350f1beb5e8b49a0b0cf7c6",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-mario: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/6d62fca08b72ad26e79cea741eedb4b50848f83768b47b588f0bc5756cff7e53.txt",
+              "sha256": "6d62fca08b72ad26e79cea741eedb4b50848f83768b47b588f0bc5756cff7e53",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-mario: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "7eccc8e75b4bfc3cb4139d0e89580552256f85cbf4f6f7165841d9ead1916ef7"
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-ja-nintendo-zelda",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-zelda: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/fc76424b41b76fce0f3e9dba5e1effa7db87151310bee4b30f0dcc529b6d42a0.html",
+              "sha256": "fc76424b41b76fce0f3e9dba5e1effa7db87151310bee4b30f0dcc529b6d42a0",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-zelda: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/39164f783dd4df92e2b4d8d36f3713fe28f5cfdc16539146426ec72b573cc62f.html",
+              "sha256": "39164f783dd4df92e2b4d8d36f3713fe28f5cfdc16539146426ec72b573cc62f",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-zelda: scoped count HTML. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/dcfb41fcd4c56c2887a7c7c8e1fe1e5c08028d54ca9ea1ba368c590ae0c30cfe.json",
+              "sha256": "dcfb41fcd4c56c2887a7c7c8e1fe1e5c08028d54ca9ea1ba368c590ae0c30cfe",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-zelda: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/86fb326e526719b8d3fe2100a0521020d389613a2505a4eb4af12536e4ee8f82.json",
+              "sha256": "86fb326e526719b8d3fe2100a0521020d389613a2505a4eb4af12536e4ee8f82",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-zelda: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/6f1332c968677d6d9d1c3c8faf5b49bf7e8889cd3464bde8ae66727cbadb8054.txt",
+              "sha256": "6f1332c968677d6d9d1c3c8faf5b49bf7e8889cd3464bde8ae66727cbadb8054",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-zelda: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/1583e3c1b15334c79f690b9bb95209353517ee8be40c64a005ebf9fc3d04c154.txt",
+              "sha256": "1583e3c1b15334c79f690b9bb95209353517ee8be40c64a005ebf9fc3d04c154",
+              "scope": "Independent saved provenance for replacement-ja-nintendo-zelda: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "72e36e66d3c285580c1714eaadd82c30d3a44d9cfac921be70854bb241a545ee"
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-ko-yonhap-sports",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-sports: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/987496e7b36cc54051dfdc73ab068fdd7b46b4cce654fb8a6231b0b5975f0a1c.html",
+              "sha256": "987496e7b36cc54051dfdc73ab068fdd7b46b4cce654fb8a6231b0b5975f0a1c",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-sports: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/8d42dc45d16e4eaa71bd6377120ca5bfea7b5216c3a5b87e3fda1b4203482434.html",
+              "sha256": "8d42dc45d16e4eaa71bd6377120ca5bfea7b5216c3a5b87e3fda1b4203482434",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-sports: scoped count HTML. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/bdd620ab4a77e36a1bd85208fe711c76582a3e137b59e6064a6f98443f0541ef.json",
+              "sha256": "bdd620ab4a77e36a1bd85208fe711c76582a3e137b59e6064a6f98443f0541ef",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-sports: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/1634c20b73f3f375e8ad6e460aee34b07235c2ae7da33b059dcf211916c276ce.json",
+              "sha256": "1634c20b73f3f375e8ad6e460aee34b07235c2ae7da33b059dcf211916c276ce",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-sports: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/cab9d9f876aefe3f930a832eaab09b72dccc16e79b12ecb080fea92e1dfd57d8.txt",
+              "sha256": "cab9d9f876aefe3f930a832eaab09b72dccc16e79b12ecb080fea92e1dfd57d8",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-sports: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/b1e36f3b2a6cec77136630c49f9e10d087577df1ac83796af68a4ab579323b90.txt",
+              "sha256": "b1e36f3b2a6cec77136630c49f9e10d087577df1ac83796af68a4ab579323b90",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-sports: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/aea2f1a63d860b1ef6491752e173a09232d2c2b0bbfab0b298d8a999dbe17c03.txt",
+              "sha256": "aea2f1a63d860b1ef6491752e173a09232d2c2b0bbfab0b298d8a999dbe17c03",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-sports: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/deefcab2239ece53851675157b081c1bb6c0c100011423f24d3898d8efc1491f.txt",
+              "sha256": "deefcab2239ece53851675157b081c1bb6c0c100011423f24d3898d8efc1491f",
+              "scope": "Independent saved provenance for replacement-ko-yonhap-sports: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "42b4e164a8b1726919701d91c02e00b7d0546e714e19e4c460cdf84039389d8c"
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-fix6-es-mx-lokus-tutorials",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-fix6-es-mx-lokus-tutorials: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/fbcdf0e0b77bebb46801efd70912c6f85e126eab0347905c690c0e143281a9b7.html",
+              "sha256": "fbcdf0e0b77bebb46801efd70912c6f85e126eab0347905c690c0e143281a9b7",
+              "scope": "Independent saved provenance for replacement-fix6-es-mx-lokus-tutorials: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/c9a7079a59bb8eeb6a2d7cce61fd973b15d7630c2e7f469b8c807084e97c7845.json",
+              "sha256": "c9a7079a59bb8eeb6a2d7cce61fd973b15d7630c2e7f469b8c807084e97c7845",
+              "scope": "Independent saved provenance for replacement-fix6-es-mx-lokus-tutorials: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/0e26a52b8a27160d5ad2300c68ea9d4e91cbef9d65e91215f42b5bc352ddf950.txt",
+              "sha256": "0e26a52b8a27160d5ad2300c68ea9d4e91cbef9d65e91215f42b5bc352ddf950",
+              "scope": "Independent saved provenance for replacement-fix6-es-mx-lokus-tutorials: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/6af566a66252bd1a459ce89142522e0e0277c117a5220fb9985c0fa3418289d5.txt",
+              "sha256": "6af566a66252bd1a459ce89142522e0e0277c117a5220fb9985c0fa3418289d5",
+              "scope": "Independent saved provenance for replacement-fix6-es-mx-lokus-tutorials: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "161b53f23a9bf55398bbcbdc3e18e1f921803f9109c27615a439fc14b5f994e3"
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-pt-kabum-computers",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-pt-kabum-computers: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/dbae0199fa9492381412eeb7845c2fea32be3e45bda5bd89eef037f7c5f78e81.html",
+              "sha256": "dbae0199fa9492381412eeb7845c2fea32be3e45bda5bd89eef037f7c5f78e81",
+              "scope": "Independent saved provenance for replacement-pt-kabum-computers: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/7e4386746c4d592647fdb72cce7930482976ab22268c28ac6e31ec67a2050875.html",
+              "sha256": "7e4386746c4d592647fdb72cce7930482976ab22268c28ac6e31ec67a2050875",
+              "scope": "Independent saved provenance for replacement-pt-kabum-computers: scoped count HTML. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/48198824f12f3a28dfbc9c623ca189fc01eb81dbace4b43dfe221e92f79bc161.json",
+              "sha256": "48198824f12f3a28dfbc9c623ca189fc01eb81dbace4b43dfe221e92f79bc161",
+              "scope": "Independent saved provenance for replacement-pt-kabum-computers: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/6b5aaa23eaf84d51f2fd8ede68f3e4d9343d9e3773dd4be2ab24ccf98b66b19e.json",
+              "sha256": "6b5aaa23eaf84d51f2fd8ede68f3e4d9343d9e3773dd4be2ab24ccf98b66b19e",
+              "scope": "Independent saved provenance for replacement-pt-kabum-computers: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/182136cfc3aa84e46e96f92152fafa1f7553572222ff7fae7eb16d9b30d3f94b.txt",
+              "sha256": "182136cfc3aa84e46e96f92152fafa1f7553572222ff7fae7eb16d9b30d3f94b",
+              "scope": "Independent saved provenance for replacement-pt-kabum-computers: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/d92fce70f5a7325dfa77c20f250fa36ff4ecdcf69de4d20f0f2e6fc4f82c7345.txt",
+              "sha256": "d92fce70f5a7325dfa77c20f250fa36ff4ecdcf69de4d20f0f2e6fc4f82c7345",
+              "scope": "Independent saved provenance for replacement-pt-kabum-computers: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/3cb79cb47adcd72a04d08b8a38644e8d4bb903edf59d1357e725ff37d4acc3d2.txt",
+              "sha256": "3cb79cb47adcd72a04d08b8a38644e8d4bb903edf59d1357e725ff37d4acc3d2",
+              "scope": "Independent saved provenance for replacement-pt-kabum-computers: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/662558b3ec67e7f1434609cbb8729e4a4adc66c997f363dedf750a518e96186e.txt",
+              "sha256": "662558b3ec67e7f1434609cbb8729e4a4adc66c997f363dedf750a518e96186e",
+              "scope": "Independent saved provenance for replacement-pt-kabum-computers: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "a796e6b042fc2d80dfe077b5ecdf6a23f384c28ed2f22487154159e436d1447e"
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-pt-kabum-gamer",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-pt-kabum-gamer: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/ce97abe878c61a57929c021f77365c9a08eab01587b893ce2aa7a08c0c24d7ff.html",
+              "sha256": "ce97abe878c61a57929c021f77365c9a08eab01587b893ce2aa7a08c0c24d7ff",
+              "scope": "Independent saved provenance for replacement-pt-kabum-gamer: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/af8a344084066d9a51c2a3f202325bc7e57d9e2f9b1ae00eb99947f8592542dd.html",
+              "sha256": "af8a344084066d9a51c2a3f202325bc7e57d9e2f9b1ae00eb99947f8592542dd",
+              "scope": "Independent saved provenance for replacement-pt-kabum-gamer: scoped count HTML. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/800773894dbeaa6bc8266bd77a94b4af2c040c2d149b7439575ae75076edfeed.json",
+              "sha256": "800773894dbeaa6bc8266bd77a94b4af2c040c2d149b7439575ae75076edfeed",
+              "scope": "Independent saved provenance for replacement-pt-kabum-gamer: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/d193440f73340c2d849cf1d1a3e254fed2f7fa07ac496a96936c9c8e984b9db8.json",
+              "sha256": "d193440f73340c2d849cf1d1a3e254fed2f7fa07ac496a96936c9c8e984b9db8",
+              "scope": "Independent saved provenance for replacement-pt-kabum-gamer: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/15ffb9499bf7ed6b3d87487069d54ef6281a8aaab6c7c3eef04af36e970c285c.txt",
+              "sha256": "15ffb9499bf7ed6b3d87487069d54ef6281a8aaab6c7c3eef04af36e970c285c",
+              "scope": "Independent saved provenance for replacement-pt-kabum-gamer: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/641494578145520523a6f35a299b1c28cccc4fe30a5db9f5694851ded917029c.txt",
+              "sha256": "641494578145520523a6f35a299b1c28cccc4fe30a5db9f5694851ded917029c",
+              "scope": "Independent saved provenance for replacement-pt-kabum-gamer: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/fe2d57484a7bdbc9d48aa2b1817ea45b351e4e535f9001ebee52fc10a2065b93.txt",
+              "sha256": "fe2d57484a7bdbc9d48aa2b1817ea45b351e4e535f9001ebee52fc10a2065b93",
+              "scope": "Independent saved provenance for replacement-pt-kabum-gamer: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/2b0047c7a9c51147e33f8fe3568b63f4b929d3195c0f2c59d135ba787d913599.txt",
+              "sha256": "2b0047c7a9c51147e33f8fe3568b63f4b929d3195c0f2c59d135ba787d913599",
+              "scope": "Independent saved provenance for replacement-pt-kabum-gamer: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "2c172a136d82768087faf3c5ac0c5c91358bb7b1970643f4b31e7e00f85aad80"
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-pt-kabum-peripherals",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-pt-kabum-peripherals: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/866f7ccebcac370ff66f9984fea5545086aa447a72a21857501d560b957404da.html",
+              "sha256": "866f7ccebcac370ff66f9984fea5545086aa447a72a21857501d560b957404da",
+              "scope": "Independent saved provenance for replacement-pt-kabum-peripherals: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/a8f5e5b209ae003840acd5979bf178abe30385ed11523da220d35aea2fa05506.html",
+              "sha256": "a8f5e5b209ae003840acd5979bf178abe30385ed11523da220d35aea2fa05506",
+              "scope": "Independent saved provenance for replacement-pt-kabum-peripherals: scoped count HTML. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/a48ab4d7034db4e6264750cefe1e8ce3a756d365354039ba9b13593ac792e9dd.json",
+              "sha256": "a48ab4d7034db4e6264750cefe1e8ce3a756d365354039ba9b13593ac792e9dd",
+              "scope": "Independent saved provenance for replacement-pt-kabum-peripherals: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/9ed1c9d6e06dce750fec832090486cf83fca7ae53d7d690b56962cbe33cf5105.json",
+              "sha256": "9ed1c9d6e06dce750fec832090486cf83fca7ae53d7d690b56962cbe33cf5105",
+              "scope": "Independent saved provenance for replacement-pt-kabum-peripherals: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/0e741a9b25ad29a1cebcc232c0a3e2b69487d9551a4b3b8e0dc9eb83a1c4d865.txt",
+              "sha256": "0e741a9b25ad29a1cebcc232c0a3e2b69487d9551a4b3b8e0dc9eb83a1c4d865",
+              "scope": "Independent saved provenance for replacement-pt-kabum-peripherals: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/73a77c55deccda505dca2a11e135901ce5d4c962e64f49d5aea779643c555978.txt",
+              "sha256": "73a77c55deccda505dca2a11e135901ce5d4c962e64f49d5aea779643c555978",
+              "scope": "Independent saved provenance for replacement-pt-kabum-peripherals: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/9ce24d1a3574af5ea37390bf8f650c6e45b56d19221492d4d10ec047a93237f9.txt",
+              "sha256": "9ce24d1a3574af5ea37390bf8f650c6e45b56d19221492d4d10ec047a93237f9",
+              "scope": "Independent saved provenance for replacement-pt-kabum-peripherals: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/76650b68cfe8e15af5f804fafa17102665a1bddf111f8fbf692e8b6405803c5c.txt",
+              "sha256": "76650b68cfe8e15af5f804fafa17102665a1bddf111f8fbf692e8b6405803c5c",
+              "scope": "Independent saved provenance for replacement-pt-kabum-peripherals: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "6bba0ef4d8d68cc4d78c38dc09bb046bd022b8e1b97fb1b42713c900da2f3c7a"
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-pt-kabum-smartphones",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-pt-kabum-smartphones: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/b0ec300c87c5a4b1583a999d87bdc697f8919de48ca0279461bc0edca5f3b8fd.html",
+              "sha256": "b0ec300c87c5a4b1583a999d87bdc697f8919de48ca0279461bc0edca5f3b8fd",
+              "scope": "Independent saved provenance for replacement-pt-kabum-smartphones: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/fa0827647b7abe74f603bf953d8ff937f39a27752bd63a6cde7acebd0e776169.html",
+              "sha256": "fa0827647b7abe74f603bf953d8ff937f39a27752bd63a6cde7acebd0e776169",
+              "scope": "Independent saved provenance for replacement-pt-kabum-smartphones: scoped count HTML. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/68930ab30d247fee20e75346e801e5f206b13a846d6a758d16b574e05b414c8b.json",
+              "sha256": "68930ab30d247fee20e75346e801e5f206b13a846d6a758d16b574e05b414c8b",
+              "scope": "Independent saved provenance for replacement-pt-kabum-smartphones: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/a813760e1f36e5c4c7dfe19a3293ea6ca00d1571901dd98468257edafc2833ee.json",
+              "sha256": "a813760e1f36e5c4c7dfe19a3293ea6ca00d1571901dd98468257edafc2833ee",
+              "scope": "Independent saved provenance for replacement-pt-kabum-smartphones: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/b3aebb4b4503c7900b8aa38ed335f5563de9bf931059d49ea1b0e1805e8c1943.txt",
+              "sha256": "b3aebb4b4503c7900b8aa38ed335f5563de9bf931059d49ea1b0e1805e8c1943",
+              "scope": "Independent saved provenance for replacement-pt-kabum-smartphones: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/257f5deb4122b07fcc9f92df72ed793d8fba8a9e16296fdf18fe9572abb633f9.txt",
+              "sha256": "257f5deb4122b07fcc9f92df72ed793d8fba8a9e16296fdf18fe9572abb633f9",
+              "scope": "Independent saved provenance for replacement-pt-kabum-smartphones: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/2b2793c0678418d4da8aaecfc35551d444f9c21a0de434f699c7b456c52d55cc.txt",
+              "sha256": "2b2793c0678418d4da8aaecfc35551d444f9c21a0de434f699c7b456c52d55cc",
+              "scope": "Independent saved provenance for replacement-pt-kabum-smartphones: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/ecc62a26d112916c315f4644dece8b6dcdd17c535823b6ed4e4cdecf6eea130b.txt",
+              "sha256": "ecc62a26d112916c315f4644dece8b6dcdd17c535823b6ed4e4cdecf6eea130b",
+              "scope": "Independent saved provenance for replacement-pt-kabum-smartphones: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "b06c12d431dc4b686a1f2d554446c0442ddc9c68223b0b4981da64876776e674"
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-fix2-ar-mantine-rtl",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-fix2-ar-mantine-rtl: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/2f4b894e16f101ad255aea5a753d046f3be61814e3d13a2aec5e9e57fdd4c5fb.html",
+              "sha256": "2f4b894e16f101ad255aea5a753d046f3be61814e3d13a2aec5e9e57fdd4c5fb",
+              "scope": "Independent saved provenance for replacement-fix2-ar-mantine-rtl: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/b09303222e3d82388ca655433a9a64d8bc565cac6d8a83c2485286e9ba6e7980.json",
+              "sha256": "b09303222e3d82388ca655433a9a64d8bc565cac6d8a83c2485286e9ba6e7980",
+              "scope": "Independent saved provenance for replacement-fix2-ar-mantine-rtl: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/8210f05ac91d30643f7b3d20dc91aad63e8d80a96bbeb260717ad84f7a5da089.json",
+              "sha256": "8210f05ac91d30643f7b3d20dc91aad63e8d80a96bbeb260717ad84f7a5da089",
+              "scope": "Independent saved provenance for replacement-fix2-ar-mantine-rtl: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/7502bcd452ebd8fbbe8b0b43423ce0b1f78c21ac22f6e3cf09e33bfa20dc6799.txt",
+              "sha256": "7502bcd452ebd8fbbe8b0b43423ce0b1f78c21ac22f6e3cf09e33bfa20dc6799",
+              "scope": "Independent saved provenance for replacement-fix2-ar-mantine-rtl: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/a55b512b2b551256fcbc86f1fe376ef848d02f7233f6cf61a3c1bd51f666759d.txt",
+              "sha256": "a55b512b2b551256fcbc86f1fe376ef848d02f7233f6cf61a3c1bd51f666759d",
+              "scope": "Independent saved provenance for replacement-fix2-ar-mantine-rtl: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "cd4a75b2234eef9690c7c94116b81a05d2909072686be1ce200d270a1139916c"
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-fix3-ar-antd-rtl",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-fix3-ar-antd-rtl: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/110138e913202ecd7ec063bbc68e003ff3cc4bc7817785f35821693ad717dffd.html",
+              "sha256": "110138e913202ecd7ec063bbc68e003ff3cc4bc7817785f35821693ad717dffd",
+              "scope": "Independent saved provenance for replacement-fix3-ar-antd-rtl: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/419d45f02e830843d2966c7e0ba3dd3d47f731cd097b1bfbe4ca69754d74376e.json",
+              "sha256": "419d45f02e830843d2966c7e0ba3dd3d47f731cd097b1bfbe4ca69754d74376e",
+              "scope": "Independent saved provenance for replacement-fix3-ar-antd-rtl: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/e909cc63458cc53e61613e5fc515de73def3db25e21fe14c8887d121ab2f3ac0.json",
+              "sha256": "e909cc63458cc53e61613e5fc515de73def3db25e21fe14c8887d121ab2f3ac0",
+              "scope": "Independent saved provenance for replacement-fix3-ar-antd-rtl: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/7502bcd452ebd8fbbe8b0b43423ce0b1f78c21ac22f6e3cf09e33bfa20dc6799.txt",
+              "sha256": "7502bcd452ebd8fbbe8b0b43423ce0b1f78c21ac22f6e3cf09e33bfa20dc6799",
+              "scope": "Independent saved provenance for replacement-fix3-ar-antd-rtl: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/eb4bc04484f585d602f4ca3d154d932b2fb684b6461e810a743d0293a20aa882.txt",
+              "sha256": "eb4bc04484f585d602f4ca3d154d932b2fb684b6461e810a743d0293a20aa882",
+              "scope": "Independent saved provenance for replacement-fix3-ar-antd-rtl: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "41ba1df7125a7c943ec7c90b29d22720b30ac50e4268e3ce98ca37340136a3b7"
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "replacement-fix2-ar-shadcn-rtl",
+          "reason": " Fill existing stable-text source location, actual observed occurrence counts and evidence hashes, plus existing count-policy metadata where absent. Preserve every anchor alternative, matching scope, record minimum and body operation. One saved occurrence is recorded as one, not three; temporal stability is not inferred from a single observation. This closes provenance documentation, not a demonstrated scoring defect.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Unchanged frozen parent task, matching fields and required counts."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536.json",
+              "sha256": "5d0fc1b1f57c03276273d4982204a9a9786550d275cc9cd838bfb332c55f0536",
+              "scope": "Independent saved provenance for replacement-fix2-ar-shadcn-rtl: dynamic-replacement-25-rule-evidence-final-r8-20260923.json. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/9710965eacd66eb950865fa96dd3e065dae91768fa8d5f1a10c27f014517ec7c.html",
+              "sha256": "9710965eacd66eb950865fa96dd3e065dae91768fa8d5f1a10c27f014517ec7c",
+              "scope": "Independent saved provenance for replacement-fix2-ar-shadcn-rtl: target.html. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/4007c0311aa0976490f0cb9cdd7059d1df3a3fe4a5adee3b5df3d60d65b99561.json",
+              "sha256": "4007c0311aa0976490f0cb9cdd7059d1df3a3fe4a5adee3b5df3d60d65b99561",
+              "scope": "Independent saved provenance for replacement-fix2-ar-shadcn-rtl: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/310a958a791ed867d8248d82461b39f0be489b5c0fa48609a42a58e3395ed85f.json",
+              "sha256": "310a958a791ed867d8248d82461b39f0be489b5c0fa48609a42a58e3395ed85f",
+              "scope": "Independent saved provenance for replacement-fix2-ar-shadcn-rtl: scoped count observation metadata. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/7502bcd452ebd8fbbe8b0b43423ce0b1f78c21ac22f6e3cf09e33bfa20dc6799.txt",
+              "sha256": "7502bcd452ebd8fbbe8b0b43423ce0b1f78c21ac22f6e3cf09e33bfa20dc6799",
+              "scope": "Independent saved provenance for replacement-fix2-ar-shadcn-rtl: qualification. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            },
+            {
+              "path": "review-evidence/dynamic-replacements/f6de340422513f2735113eba4edd12fd5f502db9086bf8cf033d96e16cd6f87b.txt",
+              "sha256": "f6de340422513f2735113eba4edd12fd5f502db9086bf8cf033d96e16cd6f87b",
+              "scope": "Independent saved provenance for replacement-fix2-ar-shadcn-rtl: current. Explicit September 2026 capture/catalog evidence; not an original frozen input or new live visit."
+            }
+          ],
+          "regression_ids": [
+            "volatile-body-change-preserves-stable-anchor-pass",
+            "volatile-body-content-cannot-replace-stable-page-identity"
+          ],
+          "changes_sha256": "f9cf5dc46de95169fe5cd6aae4e68fa83ad20780afaa9ff92133ba51bec6d4cf"
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-020-naver-com",
+          "reason": "Retain all 35 original stable anchors and all bans. Require six named feed destinations across changing comic, novel, news, blog, short-video and donation content, using generic path-conditional query identity. Three saved observations provide 12/7/26 records; six is ceil(80% of seven). Current DOM supplies 24 qualified non-carousel destinations, verified against rendered ancestor evidence; its first text-delimited feed group supplies twelve. HTML excludes the hidden series-edition carousel; text requires both existing subscription-home and following-section boundaries. Fourteen full score controls pass: current full/quota positives, below-quota/empty negatives in HTML and Markdown, and each saved full/removed-feed-links pair. Outside navigation, footer and hidden-carousel links cannot replace missing feed records. No task URL, frozen input or original anchor is changed.",
+          "changes_sha256": "6dd37e3fcf36ec0b9a9fcfa37c08409a1ba6136063f06fb6ab4857a62bb2a0be",
+          "sources": [
+            {
+              "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/naver.json",
+              "sha256": "e2486230a5b1a7ed5883702f3e825b309c30e5b0e194118c9618fda8da5cf314",
+              "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
+            },
+            {
+              "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/naver-visibility.json",
+              "sha256": "e0d4fe9c43ad1f0978d3ecfef3f758dd5f3f0e7369554c9fd1f214ad4081f24b",
+              "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
+            },
+            {
+              "path": "review-evidence/popular-sites/identity-observations-20260916.json",
+              "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+              "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
             }
           ],
           "regression_ids": [

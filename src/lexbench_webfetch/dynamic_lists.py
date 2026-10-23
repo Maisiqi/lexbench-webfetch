@@ -98,7 +98,10 @@ def named_entry_identity(url, contract):
         if not match or not match.groups():
             raise ValueError('entry_identity_pattern must match and capture an identity')
         identity = match[1]
-    elif identity_keys := contract.get('identity_query_keys', []):
+    elif ((identity_keys := contract.get('identity_query_keys', []))
+          and ('identity_query_paths' not in contract
+               or any(re.fullmatch(pattern, identity)
+                      for pattern in contract['identity_query_paths']))):
         query_values = {key: [] for key in identity_keys}
         for key, value in parse_qsl(parts.query, keep_blank_values=True):
             if key in query_values:
