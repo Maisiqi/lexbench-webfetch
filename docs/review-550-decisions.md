@@ -140,3 +140,20 @@ claimed as a new fix.
 ## Access-restrictions 192
 
 Reject the claim that diagnostic anchors leave this case with no mandatory checks. Its `page_patterns` independently require the target identity, public library/archive purpose, free resources, subject content and institution. Public-scorer tests accept a minimal synthetic matching identity and reject an error shell and missing required facts. This refutes the claim of an unchecked page; it does not prove exhaustive body coverage or remove the need to assess that separately.
+
+## External-link duplicate counting
+
+The wildcard-host branch of composite named-link groups counted repeated links
+as separate records when no additional record fields were declared. A saved
+source for access-restrictions 248 produced 30 entries but only 19 distinct
+destinations. A source-derived control replacing their destinations with one
+shared URL still passed. Counts now use canonical destination identities after
+name exclusions, matching the intent of a minimum number of distinct records.
+Different hosts remain distinct; fragments and trailing slashes do not create
+new records, and query parameters distinguish records only when explicitly
+declared as identity keys.
+
+This implementation correction does not finish case 248's scope review. The
+19 distinct destinations still include navigation alongside the ten observed
+Picks stories; target scope must be qualified separately before changing its
+annotation or quota.

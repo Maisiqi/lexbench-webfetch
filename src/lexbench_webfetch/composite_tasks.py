@@ -890,6 +890,11 @@ def _named_link_group(content: str, group: dict, base_url: str, links: list | No
         records = [row for identity, row in owned.items() if identity in allowed_rows]
     else:
         records = entries
+        if "*" in group["hosts"]:
+            # Repeated presentations of one destination are one record, even
+            # when their labels differ. Apply exclusions before deduplication.
+            records = list({_link_identity(entry["url"], group): entry
+                            for entry in records}.values())
     return {
         "count": len(records),
         "records": records,

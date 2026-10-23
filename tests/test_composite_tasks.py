@@ -38,6 +38,24 @@ def test_independent_groups_cannot_share_surplus_records():
     assert [row["count"] for row in result["composite_group_results"]] == [3, 1]
 
 
+@pytest.mark.parametrize("destinations,extra,count", [
+    (["https://a.test/item/1", "https://b.test/item/1"], {}, 2),
+    (["https://a.test/item/1", "https://a.test/item/1/#details"], {}, 1),
+    (["https://a.test/item/1?q=a", "https://a.test/item/1?q=b"], {}, 1),
+    (["https://a.test/item/1?q=a", "https://a.test/item/1?q=b"],
+     {"identity_query_keys": ["q"]}, 2),
+])
+def test_wildcard_links_count_distinct_destinations(destinations, extra, count):
+    rules = contract(named("news", r"^# News$", r"^# End$", 2,
+                           hosts=["*"], **extra))
+    text = "# News\n" + "\n".join(
+        f"[Story {index}]({destination})"
+        for index, destination in enumerate(destinations)) + "\n# End"
+    result = evaluate_composite_acceptance(text, rules, base_url="https://example.test/")
+    assert result["composite_group_results"][0]["count"] == count
+    assert result["composite_acceptance_pass"] == (count >= 2)
+
+
 def test_required_fields_must_belong_to_each_link_card():
     rules = contract(
         named(
