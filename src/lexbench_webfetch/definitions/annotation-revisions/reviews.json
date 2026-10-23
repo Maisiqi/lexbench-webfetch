@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "48d5e5df0812fcf72699642c16e022c514885a7cf3f7bada7d5e0cfd84b1e359",
+      "revision_sha256": "2f4483cd4a97a6c1e1efb9e01d313ed974542e33b60fe402f40716e9a58a5dbe",
       "changes": [
         {
           "suite": "webfetch",
@@ -14377,6 +14377,102 @@
             "reviewed-risk-picks-duplicate-news",
             "reviewed-risk-picks-inline-navigation-title"
           ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "challenge-03",
+          "reason": "Require 80 percent of the minimum named-record count across three saved first-load observations for this exact URL. Preserve every original stable anchor and forbidden term; do not unify separate suites or freeze record names. Whole source, exact quota, one-below and three-record controls were tested.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Unchanged original task identity, anchors, forbidden terms and parent inputs."
+            },
+            {
+              "path": "review-evidence/webfetch/challenge-first-load-observations-20260916.json",
+              "sha256": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+              "scope": "Three saved anonymous first-load observations for the exact https://www.xiaohongshu.com/explore URL; source metadata specifies no clicks or scrolling. Named destinations only, no DOM ownership or full-prose claim."
+            }
+          ],
+          "regression_ids": [
+            "variable-list-23-of-30-does-not-meet-80-percent-source-threshold",
+            "variable-list-24-of-30-meets-source-threshold-without-claiming-completeness",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ],
+          "changes_sha256": "a3e184f84ab8f3d3ecdd971f23e88b43b97c043dbe63a784e3bf4850bd77a518"
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "challenge-05",
+          "reason": "Require 80 percent of the minimum named-record count across three saved first-load observations for this exact URL. Preserve every original stable anchor and forbidden term; do not unify separate suites or freeze record names. Whole source, exact quota, one-below and three-record controls were tested.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Unchanged original task identity, anchors, forbidden terms and parent inputs."
+            },
+            {
+              "path": "review-evidence/webfetch/challenge-first-load-observations-20260916.json",
+              "sha256": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+              "scope": "Three saved anonymous first-load observations for the exact https://movie.douban.com/top250 URL; source metadata specifies no clicks or scrolling. Named destinations only, no DOM ownership or full-prose claim."
+            }
+          ],
+          "regression_ids": [
+            "variable-list-23-of-30-does-not-meet-80-percent-source-threshold",
+            "variable-list-24-of-30-meets-source-threshold-without-claiming-completeness",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ],
+          "changes_sha256": "feb4f290f15ef4c0392016c585329f2398cd4bc4e231c3fd8ac8b28ad8fd12d8"
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "challenge-10-justwatch",
+          "reason": "Require 80 percent of the minimum named-record count across three saved first-load observations for this exact URL. Preserve every original stable anchor and forbidden term; do not unify separate suites or freeze record names. Whole source, exact quota, one-below and three-record controls were tested.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Unchanged original task identity, anchors, forbidden terms and parent inputs."
+            },
+            {
+              "path": "review-evidence/webfetch/challenge-first-load-observations-20260916.json",
+              "sha256": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+              "scope": "Three saved anonymous first-load observations for the exact https://www.justwatch.com/us/tv-shows URL; source metadata specifies no clicks or scrolling. Named destinations only, no DOM ownership or full-prose claim."
+            }
+          ],
+          "regression_ids": [
+            "variable-list-23-of-30-does-not-meet-80-percent-source-threshold",
+            "variable-list-24-of-30-meets-source-threshold-without-claiming-completeness",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ],
+          "changes_sha256": "2543ef0a2c1733d0dd78dad05cde8ab65760af3daa6c81d55bd893f3af75b989"
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "challenge-07",
+          "reason": "Add only the observed /-/zh Amazon product route alternative. Preserve original minimum, all stable anchors, forbidden terms and other revision changes. Full saved-source positive and wrong-host/path/context negatives pass.",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Unchanged original task identity, anchors, forbidden terms and parent inputs."
+            },
+            {
+              "path": "list-references/challenge-07.json",
+              "sha256": "210d66d1f1d432eef2ce71575c82674d0b5b833a150f55930ca62d064ce34e74",
+              "scope": "Existing frozen saved named product links explicitly include /-/zh/dp routes. No new count or locale is inferred."
+            }
+          ],
+          "regression_ids": [
+            "amazon-tracking-suffix-remains-a-product-detail",
+            "amazon-non-ref-suffix-is-not-a-product-detail",
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records"
+          ],
+          "changes_sha256": "15483f0877d80bae04a6780d342d51c40cf32c598e0ca90d215f95261bcc28c8"
         }
       ]
     }

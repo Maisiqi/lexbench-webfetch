@@ -203,3 +203,56 @@ Canva, PayPal and Elsevier. Figma's three observations lack the required
 Dingtalk and USPS likewise retain unresolved source gaps. Proposed bulk
 forbidden-word removals remain withheld because the available evidence has not
 qualified their false-positive and false-negative behavior.
+
+## Short specification regions
+
+Retain the five short regions in access-restrictions `risk-001`: they correspond
+to five separate product specification cards, rather than arbitrary slices of
+prose. Two saved initial browser observations at the exact requested URL contain
+all five cards. With the registered all-region 80% rule, the complete body passes
+and removing any one card fails in five omission controls. These qualify the
+body layer only.
+
+The source itself explains an apparent identity mismatch: the URL and document
+metadata still name an AMD model, while both rendered observations show an Intel
+model heading and the Intel/16 GB/512 GB cards used by the reference. Do not
+replace observed content with specifications inferred from the URL slug. This
+finding establishes what was displayed, not which product the seller actually
+supplies. Other short navigation-only regions require separate scope review.
+
+## Resource-discovery scope
+
+Reject increasing the Bilibili resource task's quota solely because a single
+valid BV link passes. Its prompt explicitly requests one current video-detail
+entry; it does not request a homepage inventory, video file or playback test.
+An independently observed URL passes, while homepage-only, wrong-host,
+malformed-BV and empty outputs fail. Offline address validation cannot prove
+that every syntactically valid BV still exists. A broader target would need an
+explicitly versioned objective and suitable source evidence, not an arbitrary
+link count. This decision does not apply to the separate Bilibili homepage task.
+
+## Challenge-list coverage and localized product routes
+
+Three webfetch challenge quotas are now based on saved first-load observations
+at the exact task URLs, rather than old inventories of uncertain initial scope:
+
+| Case | Observed named records | Required records |
+| --- | --- | --- |
+| challenge-03 | 30, 28, 30 | 23 |
+| challenge-05 | 25, 25, 25 | 20 |
+| challenge-10-justwatch | 7, 7, 7 | 6 |
+
+Each quota is 80% of the smallest observed count, rounded up. All original
+stable anchors and forbidden terms remain. Complete observations and exact-quota
+controls pass; three-record and one-below-quota controls fail. The historical
+JustWatch inventory contained 46 records, which is not evidence that 46 appeared
+in the initial state. Its separate popular-sites task is retained rather than
+silently unified. The other seven challenge quotas still need qualified initial
+scope evidence.
+
+Amazon challenge-07 also had a distinct route defect: its saved localized
+`/-/zh/dp/…` links were all rejected. An additive path alternative accepts the
+17 named records in the saved source while wrong hosts, wrong paths and missing
+search context still fail. Its existing quota remains unchanged. These four
+registered corrections pass 40 full-score source and boundary controls; they
+do not claim complete prose coverage or original DOM ownership.

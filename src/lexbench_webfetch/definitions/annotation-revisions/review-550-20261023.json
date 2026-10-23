@@ -74,7 +74,11 @@
     "reviewed-risk-picks-inline-navigation-title",
     "reviewed-risk-picks-navigation-only",
     "table-multiline-complete",
-    "table-multiline-missing-field"
+    "table-multiline-missing-field",
+    "variable-list-23-of-30-does-not-meet-80-percent-source-threshold",
+    "variable-list-24-of-30-meets-source-threshold-without-claiming-completeness",
+    "amazon-tracking-suffix-remains-a-product-detail",
+    "amazon-non-ref-suffix-is-not-a-product-detail"
   ],
   "changes": [
     {
@@ -18982,6 +18986,196 @@
         }
       },
       "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "challenge-03",
+      "before_sha256": "3029641c14f4d824a98b3114bc30b19fede032bdb1132a075932d4f863a0a4df",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 23,
+          "hosts": [
+            "www.xiaohongshu.com"
+          ],
+          "entry_path": "/explore/[a-fA-F0-9]+",
+          "stable_text_anchors": [
+            {
+              "id": "page-text-1",
+              "alternatives": [
+                "穿搭"
+              ]
+            },
+            {
+              "id": "page-text-2",
+              "alternatives": [
+                "美食"
+              ]
+            },
+            {
+              "id": "page-text-3",
+              "alternatives": [
+                "彩妆"
+              ]
+            },
+            {
+              "id": "page-text-4",
+              "alternatives": [
+                "影视"
+              ]
+            }
+          ],
+          "entry_context": "list_or_card",
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 28,
+            "source_observation_counts": [
+              30,
+              28,
+              30
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 23,
+            "source_evidence_sha256": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+            "reason": "Three saved anonymous first-load observations with declared no scrolling or interaction; count distinct named destinations in the saved link inventory. Current window must be re-observed before future use."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "challenge-05",
+      "before_sha256": "98bb7a0627dcc619c0ebc0690289a3bac6b0285bb3ddf5b3d14896dd9afbe01b",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 20,
+          "hosts": [
+            "movie.douban.com"
+          ],
+          "entry_path": "/subject/\\d+",
+          "stable_text_anchors": [
+            {
+              "id": "page-text-1",
+              "alternatives": [
+                "豆瓣电影 Top 250"
+              ]
+            },
+            {
+              "id": "page-text-2",
+              "alternatives": [
+                "导演:"
+              ]
+            },
+            {
+              "id": "page-text-3",
+              "alternatives": [
+                "主演:"
+              ]
+            }
+          ],
+          "entry_context": "list_or_card",
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 25,
+            "source_observation_counts": [
+              25,
+              25,
+              25
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 20,
+            "source_evidence_sha256": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+            "reason": "Three saved anonymous first-load observations with declared no scrolling or interaction; count distinct named destinations in the saved link inventory. Current window must be re-observed before future use."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "challenge-10-justwatch",
+      "before_sha256": "cca09c66b3ac9efa14ce73244e833721bd1be94c663a2f13aecca0c3fd36557b",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 6,
+          "hosts": [
+            "www.justwatch.com"
+          ],
+          "entry_path": "/us/tv-show/[^/]+",
+          "record_name_exclusions": [
+            "FreeTV"
+          ],
+          "stable_text_anchors": [
+            {
+              "id": "page-text-1",
+              "alternatives": [
+                "Discover TV shows and find where to watch online"
+              ]
+            },
+            {
+              "id": "page-text-2",
+              "alternatives": [
+                "Where to watch TV series online?"
+              ]
+            },
+            {
+              "id": "page-text-3",
+              "alternatives": [
+                "You can also check out other streaming services to find out what’s available to buy, rent or watch for free."
+              ]
+            }
+          ],
+          "entry_context": "list_or_card",
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 7,
+            "source_observation_counts": [
+              7,
+              7,
+              7
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 6,
+            "source_evidence_sha256": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+            "reason": "Three saved anonymous first-load observations with declared no scrolling or interaction; count distinct named destinations in the saved link inventory. Current window must be re-observed before future use."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "challenge-07",
+      "before_sha256": "2825ad1fbcbde1edefb89e0712357c5830649fbfaf8145316d755ef008b8ccdc",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 3,
+          "hosts": [
+            "www.amazon.com"
+          ],
+          "entry_path": "(?:/[^/]+|/-/zh)?/dp/[A-Z0-9]{10}(?:/ref=[^/?#]+)?",
+          "entry_identity_pattern": "/dp/([A-Z0-9]{10})(?:/|$)",
+          "stable_text_anchors": [
+            {
+              "id": "search-context-1",
+              "alternatives": [
+                "headphones"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ],
+          "entry_context": "list_or_card"
+        }
+      },
+      "remove": []
     }
   ],
   "review_inputs": {
@@ -19020,6 +19214,9 @@
       "review-evidence/access-restrictions/risk-diverse-047/round-01.html": "ab467852a898a10014aa5f1a9ae0141a32651b6a45fc2ccfcf27d604b6a16bde",
       "review-evidence/access-restrictions/risk-diverse-047/round-02.html": "1524a8b9f1d08be706ecaeec3c2b8a8e8345ae72582ea4415684a3644b5506ad",
       "review-evidence/access-restrictions/risk-diverse-248/round-01.html": "4054f1cc3c7f69c8894bf9f923b6f8b26c1f2b3f8f3e1a1f162c4fe52058cf24"
+    },
+    "webfetch": {
+      "review-evidence/webfetch/challenge-first-load-observations-20260916.json": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b"
     }
   }
 }
