@@ -81,7 +81,9 @@
     "amazon-non-ref-suffix-is-not-a-product-detail",
     "reviewed-region-role-complete",
     "reviewed-region-role-missing-prose",
-    "reviewed-region-role-missing-labels"
+    "reviewed-region-role-missing-labels",
+    "scoped-list-new-short-names",
+    "scoped-list-empty-name"
   ],
   "changes": [
     {
@@ -19200,6 +19202,230 @@
         }
       },
       "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "challenge-09",
+      "before_sha256": "ad121d3afa075c2dff04bac7f7ec4f6a5ba8fc2018958d212b501f5044bff570",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 3,
+          "hosts": [
+            "www.imdb.com",
+            "imdb.com"
+          ],
+          "entry_path": "/title/tt\\d+",
+          "stable_text_anchors": [
+            {
+              "id": "page-text-1",
+              "alternatives": [
+                "IMDb Top 250 movies"
+              ]
+            },
+            {
+              "id": "page-text-2",
+              "alternatives": [
+                "As rated by regular IMDb voters."
+              ]
+            }
+          ],
+          "entry_context": "list_or_card",
+          "name_validation": "nonempty"
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-029-twitch-tv",
+      "before_sha256": "1a8084c93f4d77a8de516bc61d55ebca634bc5c56b98743216ffbfd3e9294557",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 11,
+          "hosts": [
+            "www.twitch.tv"
+          ],
+          "entry_path": "/(?!(?:directory|downloads?|jobs?|settings|login|signup|search|subscriptions|wallet|turbo|videos|friends|inventory|store|drops|creatorcamp|prime|about|legal|brand|security|partners|press|advertisers|blog)(?:/|$))[A-Za-z0-9_]+",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "Browse"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "Categories"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "Live"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "Show all"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 13,
+            "source_observation_counts": [
+              13,
+              13,
+              13
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 11,
+            "source_evidence_sha256": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+            "reason": "Three saved anonymous first-load observations with explicit no scrolling/clicks. Distinct observed named targets; no claim of original DOM region ancestry."
+          }
+        }
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-072-rakuten-co-jp",
+      "before_sha256": "77b0f24472f60fa6318bf5b494499dcefe82d40102ffa7a796eece7b9228d208",
+      "set": {
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "named_link",
+          "minimum_records": 8,
+          "hosts": [
+            "item.rakuten.co.jp"
+          ],
+          "entry_path": "/[A-Za-z0-9_-]+/(?!c(?:/|$)|info(?:/|$))[A-Za-z0-9_-]+/?",
+          "stable_text_anchors": [
+            {
+              "id": "stable-anchor-1",
+              "alternatives": [
+                "お買い物"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-2",
+              "alternatives": [
+                "カード"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-3",
+              "alternatives": [
+                "銀行"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-4",
+              "alternatives": [
+                "証券"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-5",
+              "alternatives": [
+                "トラベル"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-6",
+              "alternatives": [
+                "ブックス"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-7",
+              "alternatives": [
+                "ポイント"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-8",
+              "alternatives": [
+                "モバイル"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-9",
+              "alternatives": [
+                "ラクマ"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-10",
+              "alternatives": [
+                "ROOM"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-11",
+              "alternatives": [
+                "ログイン"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-12",
+              "alternatives": [
+                "ヘルプ"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-13",
+              "alternatives": [
+                "会社概要"
+              ],
+              "match_scope": "non_record_lines"
+            },
+            {
+              "id": "stable-anchor-14",
+              "alternatives": [
+                "採用情報"
+              ],
+              "match_scope": "non_record_lines"
+            }
+          ],
+          "record_count_policy": {
+            "list_type": "variable",
+            "source_observed_count": 9,
+            "source_observation_counts": [
+              9,
+              9,
+              9
+            ],
+            "required_ratio": 0.8,
+            "minimum_records": 8,
+            "source_evidence_sha256": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+            "reason": "Three saved anonymous first-load observations with explicit no scrolling/clicks. Distinct observed named targets; no claim of original DOM region ancestry."
+          }
+        }
+      },
+      "remove": []
     }
   ],
   "review_inputs": {
@@ -19225,7 +19451,8 @@
       "review-evidence/dynamic-content/dynamic-043-en-stable-grommet-table/round-03.html": "65e7e62258e10a91db6c400f847dfe7ed2535025325a186c4bb1b86b0ba9a0a9"
     },
     "popular-sites": {
-      "review-evidence/popular-sites/homepages-selected-observations-20260916.json": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2"
+      "review-evidence/popular-sites/homepages-selected-observations-20260916.json": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
+      "review-evidence/popular-sites/linked-homepage-observations-20260916.json": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b"
     },
     "articles": {
       "review-evidence/articles/article-090/body.html": "0667feb4e6b962f0073241c2b277367e5869f72bc0e5ebab52fee555d82f1b1d"

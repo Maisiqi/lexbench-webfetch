@@ -310,3 +310,24 @@ and scoring path. The harness must preserve this declaration for offline replay;
 historical outputs without it are not silently reinterpreted. Actual Vue/CSS
 positives, removed-fact negatives and prepared-answer controls qualify the fix
 against the registered document rules.
+
+## Numeric movie names and two homepage quotas
+
+The IMDb frozen inventory contains 250 movie titles, including the numeric title
+`1917`. Its task now uses the existing nonempty-name option; empty names, CTA
+labels, wrong hosts and wrong paths remain rejected. This validates the name
+field, not the authenticity of an arbitrary supplied title. Original DOM
+ownership is not established by the saved typed inventory.
+
+Three initial observations each contain 13 Twitch channels and nine Rakuten
+products. Their quotas are now 11 and eight, respectively, using 80% rounded
+up. Twitch retains real single-segment channel paths. Rakuten excludes shop
+category and information routes from product records. All old stable anchors
+and forbidden terms remain. Complete-source, quota-boundary, old-minimum-only
+and missing-destination controls qualify these changes: 37 controls across
+the three cases pass. The additional observations are separately hash-bound
+review inputs; original frozen manifests remain unchanged.
+
+2345 already requires ten records from an observed inventory of ten external
+articles. Neither lowering that requirement nor restricting links to the
+homepage host is supported, so that task is unchanged.

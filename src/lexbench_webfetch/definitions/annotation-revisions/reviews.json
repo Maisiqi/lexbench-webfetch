@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "bf41846fe498c6314d85f4013c6903e7c248585be03bcc2fbcd08fa1d744d426",
+      "revision_sha256": "2fc16bbc5702ce7c814e3c72d9a65c85d399b1ed58f7d9e891b02658f1c81b84",
       "changes": [
         {
           "suite": "webfetch",
@@ -14512,6 +14512,78 @@
             "separate-names-and-bare-urls-are-not-records"
           ],
           "changes_sha256": "15483f0877d80bae04a6780d342d51c40cf32c598e0ca90d215f95261bcc28c8"
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "challenge-09",
+          "reason": "Permit numeric entity titles for this IMDb task with the existing nonempty name-validation option. Preserve original path/count/anchors/bans. This is field validity, not offline truth verification: fabricated numeric titles cannot be distinguished from real entities without contemporaneous reference. Empty/CTA/wrong-host/wrong-path controls remain rejected; no global numeric rule changes.",
+          "changes_sha256": "e9ecbba8d63d1fcbc8309c9422c219299057843f9c9d28c3ea8989947d6d0926",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Unchanged frozen task identity, original stable anchors and forbidden terms."
+            },
+            {
+              "path": "list-references/challenge-09.json",
+              "sha256": "9e5bd350d3b01098c4a7f5f610185eb303a9fd355eff27978e32adce8cb55181",
+              "scope": "Existing frozen typed title/URL inventory contains 250 movie records; its sole pure-numeric title is the real film 1917, not navigation."
+            }
+          ],
+          "regression_ids": [
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records",
+            "scoped-list-new-short-names",
+            "scoped-list-empty-name"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-029-twitch-tv",
+          "reason": "Require 80 percent of the minimum named-record count in three saved first-load observations, retaining all original anchors and forbidden terms. Keep Twitch single-segment channel handles as valid real routes. Whole-source, quota, below-quota, old-minimum-only and missing-destination controls pass. This does not certify a real DOM navigation shell.",
+          "changes_sha256": "59e93894e732cceb7f408d106faba5abd8498fd7dbae0400bdd6014fe7698b80",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen task identity, original stable anchors and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/linked-homepage-observations-20260916.json",
+              "sha256": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+              "scope": "Three saved anonymous first-load observations of this exact homepage, with no clicks/scrolling. Full visible_text plus actual named href inventory; no original DOM ownership claim."
+            }
+          ],
+          "regression_ids": [
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records",
+            "variable-list-23-of-30-does-not-meet-80-percent-source-threshold",
+            "variable-list-24-of-30-meets-source-threshold-without-claiming-completeness"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-072-rakuten-co-jp",
+          "reason": "Require 80 percent of the minimum named-record count in three saved first-load observations, retaining all original anchors and forbidden terms. Restrict Rakuten targets to observed two-component product routes, excluding shop category/info routes. Whole-source, quota, below-quota, old-minimum-only and missing-destination controls pass. This does not certify a real DOM navigation shell.",
+          "changes_sha256": "d5367af3f9576d5490f4ebf45a4b5db0243604074bd0167b324a741eb305dccb",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Unchanged frozen task identity, original stable anchors and forbidden terms."
+            },
+            {
+              "path": "review-evidence/popular-sites/linked-homepage-observations-20260916.json",
+              "sha256": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
+              "scope": "Three saved anonymous first-load observations of this exact homepage, with no clicks/scrolling. Full visible_text plus actual named href inventory; no original DOM ownership claim."
+            }
+          ],
+          "regression_ids": [
+            "explicit-named-links-form-records",
+            "separate-names-and-bare-urls-are-not-records",
+            "variable-list-23-of-30-does-not-meet-80-percent-source-threshold",
+            "variable-list-24-of-30-meets-source-threshold-without-claiming-completeness"
+          ]
         }
       ]
     }
