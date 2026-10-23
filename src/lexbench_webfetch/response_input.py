@@ -53,3 +53,26 @@ def safe_named_links(links, base_url):
         if parts.scheme in {'http', 'https'} and parts.hostname and not parts.username and not parts.password:
             result.append((url, item['title']))
     return result
+
+
+def answer_format(metadata=None):
+    """Read the persisted answer representation, never the origin HTTP MIME."""
+    metadata = metadata or {}
+    if 'answer_format' not in metadata:
+        return None
+    value = metadata['answer_format']
+    if not isinstance(value, str) or value not in {'plain_text', 'html', 'markdown'}:
+        raise ValueError('answer_format must be plain_text, html, or markdown')
+    return value
+
+
+def answer_prose_input(content, representation):
+    """Protect declared literal text on the temporary prose-scoring surface.
+
+    Stored response bytes, prepared-answer tuples, links and file evidence are
+    unchanged. HTML and Markdown retain their existing visibility projection.
+    """
+    if representation == 'plain_text':
+        from html import escape
+        return escape(content, quote=False)
+    return content

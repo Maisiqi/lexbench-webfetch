@@ -291,3 +291,22 @@ the historical and current bodies become the same 2,182 characters after
 whitespace normalization. The final DataPass r6 source accepts changed numeric
 values and rejects dash placeholders. Neither an old marker nor a hash match
 alone substitutes for these content controls.
+
+## Literal HTML examples in delivered text
+
+Vue 026 and CSS 043 exposed a serialization defect: their extracted plain-text
+examples contain literal `<script setup>` or `<style>` tokens. Mixed-HTML
+projection treated these as active raw-text elements and swallowed later real
+facts. The leading HTML-document detector was not the cause. An origin HTTP
+Content-Type cannot resolve this ambiguity because delivered answers may be
+extracted text from an HTML origin.
+
+Optional persisted `answer_format` metadata now distinguishes delivered plain
+text from HTML/Markdown. Explicit plain text protects literal tags only on the
+temporary content-scoring surface; original bytes, resource evidence and links
+remain unchanged. Default behavior and real HTML visibility rules are preserved.
+Unknown declarations fail, and saved metadata is replayed through the same CLI
+and scoring path. The harness must preserve this declaration for offline replay;
+historical outputs without it are not silently reinterpreted. Actual Vue/CSS
+positives, removed-fact negatives and prepared-answer controls qualify the fix
+against the registered document rules.

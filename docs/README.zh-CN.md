@@ -130,6 +130,8 @@ uv run --frozen browser-harness-eval run \
 
 任务可设置 `page_identity_required: true`，要求返回的最终网址符合任务声明；缺少网址或网址不符都会判为未通过。动态任务需要区分完整语言标签时，可再设置 `document_language_match: "exact"`，默认值为 `"primary"`，只比较主语言。这些检查适用于所有接口。没有要求网址元数据的冻结任务，继续按原有内容规则验收。
 
+保存的回答元数据可通过 `answer_format` 声明 `plain_text`、`html` 或 `markdown`。该字段描述交付的回答字节，不是原网页的 HTTP Content-Type。`plain_text` 在正文评分时保留 HTML 示例字面文本；`html` 和 `markdown` 沿用现有可见内容解析。不声明则保留自动判断，其他显式值会报错。执行端应随回答保存该字段，离线通过相同的 `score --metadata` 传回；评分器不会从旧结论推断格式。原始响应字节、链接与文件证据保持不变。
+
 离线评分会重新计算派生字段，保留原始参考哈希、调用时限证据和文件指纹。文件结论需要当前文件验收依据；旧的通过标记不能认证本次重评分。汇总在原有成功调用耗时之外，提供全部调用的 `mean_all_attempts_ms`、`all_attempts_p50_ms` 和 `all_attempts_p95_ms`，包含失败调用与超时。
 
 上述修改不改写冻结题目，也不自动认证历史成绩。更正分数仍需建立新的证据修订，绑定评分器版本和回归用例。

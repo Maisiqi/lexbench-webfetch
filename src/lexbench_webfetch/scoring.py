@@ -119,7 +119,8 @@ def score_attempt(
     language_match = case.get("document_language_match", "primary")
     if language_match not in {"primary", "exact"}:
         raise ValueError("document_language_match must be primary or exact")
-    from .response_input import answer_input
+    from .response_input import answer_input, answer_format, answer_prose_input
+    representation = answer_format(metadata)
     # Live callers forward the conversion completed inside the timed boundary.
     # Offline callers reconstruct it from immutable evidence by the same function.
     content, links, ok, status_basis = (prepared_answer if prepared_answer is not None else
@@ -151,13 +152,15 @@ def score_attempt(
         except ValueError:
             pass
     result.update(evaluate_content(
-        content, case.get("expected_any", []), title=title,
+        answer_prose_input(content, representation), case.get("expected_any", []), title=title,
         base_url=base_url, named_links=links,
         allow_reference_block_exemptions=(
             task_kind == "body" and not case.get("acceptance_contract")
         ),
         **scoring_values,
     ))
+    if representation is not None:
+        result["answer_format"] = representation
     result.update(request_ok=ok, request_status_basis=status_basis,
                   normalized_named_link_count=len(links))
     dynamic_page_identity = bool(

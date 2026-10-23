@@ -137,6 +137,8 @@ Version 0.3 matches Latin words at word boundaries for facts, markers and stable
 
 A task can set `page_identity_required: true` to require its final URL observations. Missing or mismatched observations then fail acceptance. Dynamic tasks can also set `document_language_match: "exact"` when the complete language tag matters; the default is `"primary"`. These checks apply across interfaces. Frozen tasks that do not require URL metadata keep their content-based acceptance rules.
 
+Saved answer metadata may declare `answer_format` as `plain_text`, `html`, or `markdown`. This describes the delivered answer bytes, not the origin HTTP Content-Type. `plain_text` preserves literal HTML examples for prose scoring; `html` and `markdown` use the existing visibility projection. Omission preserves automatic interpretation, and any other explicit value is rejected. Persist this field with the response and pass the same metadata to offline `score --metadata`; format is never recovered from an old verdict. Original response bytes, links and file evidence remain unchanged.
+
 Offline scoring recomputes derived fields. It retains the original reference hash, deadline evidence and file fingerprints. A file verdict requires current file verification; an old pass flag cannot certify a rescore. Summaries expose `mean_all_attempts_ms`, `all_attempts_p50_ms` and `all_attempts_p95_ms` alongside the existing successful-call timings. The all-attempt population includes failed calls and timeouts.
 
 These changes do not revise frozen tasks or certify historical results. Score corrections require a new evidence revision tied to the scorer and its regression controls.
