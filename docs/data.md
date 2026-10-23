@@ -141,3 +141,18 @@ accepting `/detail` as a valid record or counting tracking parameters twice.
 Omitting the path policy preserves the existing all-record query requirement.
 It cannot be combined with `entry_identity_pattern`, which defines a separate
 identity rule. No domain-specific handling is involved.
+
+## Saved answer format
+
+Saved response metadata may declare `answer_format` as `plain_text`, `html`, or
+`markdown`. It describes the delivered bytes, not the origin Content-Type.
+Plain text preserves literal HTML examples; HTML and Markdown use the visible
+content projection. Omission keeps automatic interpretation. Persist the format
+with the response and pass it to offline `score --metadata`; an old verdict
+cannot supply missing format metadata. Original response bytes, links and file
+evidence remain unchanged.
+
+These annotations remain separate from frozen benchmark editions. Use the
+[versioning guide](versions.md) to freeze a selected population and scorer or
+to compare editions. Neither a package upgrade nor selecting a correction
+certifies historical results.
