@@ -341,6 +341,9 @@ def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
         if 'body_projection' in change:
             from .body_revisions import project_body_reference
             project_body_reference(case, change['body_projection'], reference_hashes[case['id']])
+        if 'body_regions_to_stable_text' in change:
+            from .body_revisions import move_regions_to_stable_text
+            move_regions_to_stable_text(case, change['body_regions_to_stable_text'])
         for field in change['remove']:
             case.pop(field, None)
         reviewed_changes.append((change, old, case))

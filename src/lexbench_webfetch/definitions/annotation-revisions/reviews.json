@@ -5849,7 +5849,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "2f4483cd4a97a6c1e1efb9e01d313ed974542e33b60fe402f40716e9a58a5dbe",
+      "revision_sha256": "bf41846fe498c6314d85f4013c6903e7c248585be03bcc2fbcd08fa1d744d426",
       "changes": [
         {
           "suite": "webfetch",
@@ -8000,13 +8000,23 @@
         {
           "suite": "access-restrictions",
           "case_id": "risk-diverse-045",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "reason": "Move the exact-bound section heading and navigation/control text from prose coverage into mandatory stable text. Preserve all original information and require every remaining prose region at 80 percent. Two saved same-target HTTP sources qualify the changed body and added-label checks; existing anchor failures, when present, are preserved. Missing-prose and missing-label controls fail.",
+          "changes_sha256": "21cd761b533e0f186f65f657f1fed66c5c9bbfc4084769e50976c845d24421bb",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
               "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-045"
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-045/region-role-round-1.html",
+              "sha256": "2997d32165586b28abd17e8b278277a5d16832cde60ebbdf205e19a2d1f217f4",
+              "scope": "Successful same-target HTTP source; ordinary section heading and link/button text retained separately from prose. Browser captures in this batch are blocked and are not used as positives."
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-045/region-role-round-2.html",
+              "sha256": "8c524bb968fe3aac6ba4b022ce38cd09ffb994cc0c0dd5307a1b6983b6a9e42e",
+              "scope": "Successful same-target HTTP source; ordinary section heading and link/button text retained separately from prose. Browser captures in this batch are blocked and are not used as positives."
             }
           ],
           "regression_ids": [
@@ -8019,7 +8029,10 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "reviewed-region-role-complete",
+            "reviewed-region-role-missing-prose",
+            "reviewed-region-role-missing-labels"
           ]
         },
         {
@@ -8125,13 +8138,23 @@
         {
           "suite": "access-restrictions",
           "case_id": "risk-diverse-059",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Move the exact-bound section heading and navigation/control text from prose coverage into mandatory stable text. Preserve all original information and require every remaining prose region at 80 percent. Two saved same-target HTTP sources qualify the changed body and added-label checks; existing anchor failures, when present, are preserved. Missing-prose and missing-label controls fail.",
+          "changes_sha256": "91fe35e8bc99865d1476b1b6e60a21cf36de29836e587b65075138dd9b733529",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
               "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-059"
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-059/region-role-round-1.html",
+              "sha256": "156cc30b0360d1a4b68cf0b350a7eb8d16b3803bb0bafbc0da273d3d9b99ab11",
+              "scope": "Successful same-target HTTP source; ordinary section heading and link/button text retained separately from prose. Browser captures in this batch are blocked and are not used as positives."
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-059/region-role-round-2.html",
+              "sha256": "374f601c7d20a8488dfa1bc65c151dbe55625c5f2a30c2cd6de971e4ee08ab34",
+              "scope": "Successful same-target HTTP source; ordinary section heading and link/button text retained separately from prose. Browser captures in this batch are blocked and are not used as positives."
             }
           ],
           "regression_ids": [
@@ -8144,7 +8167,10 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "reviewed-region-role-complete",
+            "reviewed-region-role-missing-prose",
+            "reviewed-region-role-missing-labels"
           ]
         },
         {
@@ -8425,13 +8451,23 @@
         {
           "suite": "access-restrictions",
           "case_id": "risk-diverse-159",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "8bd2ccd2e97f8468ce7dd6ccb7bbda133019e1d398dcfb9b2ffb80424c663b9b",
+          "reason": "Move the exact-bound section heading and navigation/control text from prose coverage into mandatory stable text. Preserve all original information and require every remaining prose region at 80 percent. Two saved same-target HTTP sources qualify the changed body and added-label checks; existing anchor failures, when present, are preserved. Missing-prose and missing-label controls fail.",
+          "changes_sha256": "8a75b08b8f84c3acde9a080b77242cb3aaa3dc699f870ac952da95a6b73e3f23",
           "sources": [
             {
               "path": "dataset.json",
               "sha256": "165b888133e859304b035d74183dd40bf7ab609cac78bb6ae6e75b645c1de426",
               "scope": "Existing hash-bound body regions and declared target scope for risk-diverse-159"
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-159/region-role-round-1.html",
+              "sha256": "837c355c872cd672e7034c98227d4cadc45e1ec89a78ec884e7c2e26f1c61f35",
+              "scope": "Successful same-target HTTP source; ordinary section heading and link/button text retained separately from prose. Browser captures in this batch are blocked and are not used as positives."
+            },
+            {
+              "path": "review-evidence/access-restrictions/risk-diverse-159/region-role-round-2.html",
+              "sha256": "1a7bc3d4a5cf55ab30e22a6038d2e642f21b305650eb8caf08b7b557dc459200",
+              "scope": "Successful same-target HTTP source; ordinary section heading and link/button text retained separately from prose. Browser captures in this batch are blocked and are not used as positives."
             }
           ],
           "regression_ids": [
@@ -8444,7 +8480,10 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "reviewed-region-role-complete",
+            "reviewed-region-role-missing-prose",
+            "reviewed-region-role-missing-labels"
           ]
         },
         {

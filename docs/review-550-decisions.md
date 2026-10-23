@@ -220,6 +220,21 @@ replace observed content with specifications inferred from the URL slug. This
 finding establishes what was displayed, not which product the seller actually
 supplies. Other short navigation-only regions require separate scope review.
 
+Cases 045 and 059 place News / All News in a news-module heading and link;
+159 places its short slogan in `h1` and Upload in a submit link. These exact-bound
+regions now become required stable text instead of prose coverage. Every other
+region retains its 80% requirement. Reclassification validates the original
+region's hash, preserves the text as a required anchor, and cannot remove all
+prose. Public hashed tasks and executable references produce identical revisions.
+
+Six successful HTTP captures qualify the changed body and added-label checks;
+their browser counterparts are challenge pages and are not treated as positive
+content. Five complete captures pass the full task. The second capture of 059
+still lacks original anchor `stable-02`, just as before the revision; that
+unrelated requirement is not removed or padded into the source. Missing-prose
+and missing-label controls fail. This is a scope correction, not a claim that
+all old source/reference discrepancies have been resolved.
+
 ## Resource-discovery scope
 
 Reject increasing the Bilibili resource task's quota solely because a single
@@ -256,3 +271,23 @@ Amazon challenge-07 also had a distinct route defect: its saved localized
 search context still fail. Its existing quota remains unchanged. These four
 registered corrections pass 40 full-score source and boundary controls; they
 do not claim complete prose coverage or original DOM ownership.
+
+## Twenty-five dynamic replacements
+
+All 25 cases pass complete source controls using their qualified observations,
+including later bound observations where earlier captures were incomplete.
+Removing target records fails for all 12 structured cases. For the 13 fixed-body
+cases, both large body omissions with original anchors retained and final-region
+omissions fail. Of 42 individual-region deletion controls, 40 fail; two small
+Gridjs Search deletions still match through retained anchors or repeated example
+text. Fragment coverage does not establish unique spatial ownership or reject
+every partial omission, and these results are not presented as such a guarantee.
+
+The 11 proposed count-policy annotations keep existing minima and all other
+requirements unchanged. They document provenance rather than repair demonstrated
+acceptance errors, so they are not registered as 11 additional fixes. Mobilités'
+old incomplete marker resulted from whitespace-sensitive length comparison:
+the historical and current bodies become the same 2,182 characters after
+whitespace normalization. The final DataPass r6 source accepts changed numeric
+values and rejects dash placeholders. Neither an old marker nor a hash match
+alone substitutes for these content controls.

@@ -10,6 +10,49 @@ def _binding(text):
     return {'sha256': hashlib.sha256(text.encode()).hexdigest(), 'chars': len(text)}
 
 
+def move_regions_to_stable_text(case, moves):
+    """Reclassify exact-bound short components without dropping required text."""
+    body = deepcopy(case.get('body_requirements'))
+    contract = deepcopy(case.get('acceptance_contract'))
+    if (not isinstance(body, dict) or body.get('version') != 3
+            or 'ending' in body or not isinstance(contract, dict)
+            or contract.get('schema') != 'body_text'
+            or contract.get('stable_text_role', 'required') != 'required'
+            or not isinstance(moves, list) or not moves
+            or body.get('minimum_floor') != body.get('minimum_coverage')
+            or body.get('minimum_region_passes') != len(body.get('regions', []))):
+        raise ValueError('Region reclassification requires a strict version 3 body')
+    regions = {r['id']: r for r in body['regions']}
+    anchors = contract.setdefault('stable_text_anchors', [])
+    anchor_ids = {a['id'] for a in anchors}
+    moved = set()
+    for move in moves:
+        if (not isinstance(move, dict) or set(move) != {'region_id', 'anchor_id', 'text'}
+                or not all(isinstance(v, str) and v.strip() for v in move.values())
+                or move['region_id'] not in regions or move['region_id'] in moved
+                or move['anchor_id'] in anchor_ids):
+            raise ValueError('Invalid region reclassification')
+        region = regions[move['region_id']]
+        expected = region.get('text_binding')
+        if 'text' in region:
+            actual = _binding(region['text'])
+            if expected is not None and expected != actual:
+                raise ValueError('Frozen region text differs from its binding')
+            expected = actual
+        if expected != _binding(move['text']):
+            raise ValueError('Required stable text differs from frozen region')
+        anchors.append({'id': move['anchor_id'], 'alternatives': [move['text']]})
+        anchor_ids.add(move['anchor_id'])
+        moved.add(move['region_id'])
+    retained = [r for r in body['regions'] if r['id'] not in moved]
+    if not retained:
+        raise ValueError('Region reclassification must retain prose')
+    body['regions'] = retained
+    body['minimum_region_passes'] = len(retained)
+    case['body_requirements'] = body
+    case['acceptance_contract'] = contract
+
+
 def project_body_reference(case, projection, expected_source_sha256):
     """Apply reviewed character ranges, verifying their materialized text at export."""
     original = case.get('body_requirements')

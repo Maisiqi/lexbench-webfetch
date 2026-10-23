@@ -78,7 +78,10 @@
     "variable-list-23-of-30-does-not-meet-80-percent-source-threshold",
     "variable-list-24-of-30-meets-source-threshold-without-claiming-completeness",
     "amazon-tracking-suffix-remains-a-product-detail",
-    "amazon-non-ref-suffix-is-not-a-product-detail"
+    "amazon-non-ref-suffix-is-not-a-product-detail",
+    "reviewed-region-role-complete",
+    "reviewed-region-role-missing-prose",
+    "reviewed-region-role-missing-labels"
   ],
   "changes": [
     {
@@ -1946,7 +1949,14 @@
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 4
-      }
+      },
+      "body_regions_to_stable_text": [
+        {
+          "region_id": "body-region-4",
+          "anchor_id": "review-required-body-region-4",
+          "text": "News\nAll News"
+        }
+      ]
     },
     {
       "suite": "access-restrictions",
@@ -2006,7 +2016,14 @@
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 5
-      }
+      },
+      "body_regions_to_stable_text": [
+        {
+          "region_id": "body-region-5",
+          "anchor_id": "review-required-body-region-5",
+          "text": "News\nAll News"
+        }
+      ]
     },
     {
       "suite": "access-restrictions",
@@ -2150,7 +2167,14 @@
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 4
-      }
+      },
+      "body_regions_to_stable_text": [
+        {
+          "region_id": "body-region-1",
+          "anchor_id": "review-required-body-region-1",
+          "text": "Open and share the knowledge\nUpload"
+        }
+      ]
     },
     {
       "suite": "access-restrictions",
@@ -19213,7 +19237,13 @@
       "review-evidence/access-restrictions/risk-diverse-050/round-02.html": "7d7904d21592a62244e7584bae4140b317c56944afb15cc8711cefa11bc5d105",
       "review-evidence/access-restrictions/risk-diverse-047/round-01.html": "ab467852a898a10014aa5f1a9ae0141a32651b6a45fc2ccfcf27d604b6a16bde",
       "review-evidence/access-restrictions/risk-diverse-047/round-02.html": "1524a8b9f1d08be706ecaeec3c2b8a8e8345ae72582ea4415684a3644b5506ad",
-      "review-evidence/access-restrictions/risk-diverse-248/round-01.html": "4054f1cc3c7f69c8894bf9f923b6f8b26c1f2b3f8f3e1a1f162c4fe52058cf24"
+      "review-evidence/access-restrictions/risk-diverse-248/round-01.html": "4054f1cc3c7f69c8894bf9f923b6f8b26c1f2b3f8f3e1a1f162c4fe52058cf24",
+      "review-evidence/access-restrictions/risk-diverse-045/region-role-round-1.html": "2997d32165586b28abd17e8b278277a5d16832cde60ebbdf205e19a2d1f217f4",
+      "review-evidence/access-restrictions/risk-diverse-045/region-role-round-2.html": "8c524bb968fe3aac6ba4b022ce38cd09ffb994cc0c0dd5307a1b6983b6a9e42e",
+      "review-evidence/access-restrictions/risk-diverse-059/region-role-round-1.html": "156cc30b0360d1a4b68cf0b350a7eb8d16b3803bb0bafbc0da273d3d9b99ab11",
+      "review-evidence/access-restrictions/risk-diverse-059/region-role-round-2.html": "374f601c7d20a8488dfa1bc65c151dbe55625c5f2a30c2cd6de971e4ee08ab34",
+      "review-evidence/access-restrictions/risk-diverse-159/region-role-round-1.html": "837c355c872cd672e7034c98227d4cadc45e1ec89a78ec884e7c2e26f1c61f35",
+      "review-evidence/access-restrictions/risk-diverse-159/region-role-round-2.html": "1a7bc3d4a5cf55ab30e22a6038d2e642f21b305650eb8caf08b7b557dc459200"
     },
     "webfetch": {
       "review-evidence/webfetch/challenge-first-load-observations-20260916.json": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b"
