@@ -66,3 +66,15 @@ def test_non_strict_or_ending_contracts_are_not_reclassified(field, value):
     case['body_requirements'][field] = value
     with pytest.raises(ValueError):
         move_regions_to_stable_text(case, moves())
+
+
+def test_merging_required_short_labels_into_long_prose_can_hide_their_loss():
+    merged = fixture()['body_requirements']
+    merged['regions'] = [{'id': 'merged', 'text': PROSE + LABELS}]
+    merged['minimum_region_passes'] = 1
+    # The proposed merge changes a mandatory label into a small fraction of
+    # the body allowance. A complete prose-only answer then passes at 80%.
+    assert evaluate_body_requirements(PROSE, merged)['body_coverage_pass']
+    case = fixture()
+    move_regions_to_stable_text(case, moves())
+    assert not evaluate_stable_task(PROSE, case['acceptance_contract'])['stable_task_pass']

@@ -168,30 +168,6 @@ def scoped_html(content):
     return soup
 
 
-def table_accessible_names_html(content):
-    """Project explicitly named SVGs in table cells for opted-in contracts.
-
-    Accessible names are distinct from visible text. Only aria-label supplies
-    a name here; arbitrary graphic attributes and inaccessible descendants do
-    not. Existing visible-text extraction retains its separate semantics.
-    """
-    from .structured_tables import _contains_rendered_html_table, _without_example_fences
-    content = _without_example_fences(content)
-    if not _contains_rendered_html_table(content):
-        return content
-    soup = scoped_html(content)
-    for graphic in list(soup.select('td svg[aria-label], th svg[aria-label]')):
-        if graphic.parent is None:
-            continue
-        if any(str(node.get('aria-hidden', '')).strip().casefold() == 'true'
-               for node in [graphic, *graphic.parents] if hasattr(node, 'get')):
-            continue
-        label = graphic.get('aria-label', '').strip()
-        if label:
-            graphic.replace_with(label)
-    return str(soup)
-
-
 def visible_html_text(
     content, *, preserve_source_whitespace=False, preserve_links=False
 ):

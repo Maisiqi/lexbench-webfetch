@@ -136,3 +136,17 @@ def test_all_empty_or_duplicate_headings_are_invalid():
         with pytest.raises(ValueError):validate_document_structure(c)
     c=contract();c['headings'].append(deepcopy(c['headings'][0]))
     with pytest.raises(ValueError):validate_document_structure(c)
+
+
+def test_title_facts_and_total_length_do_not_replace_section_body_checks():
+    headings = contract()['headings']
+    case = {'id': 'section-counterexample', 'url': 'https://example.test/manual',
+            'min_content_chars': 100, 'fact_coverage_threshold': .8,
+            'required_facts': [{'id': h['id'], 'alternatives': [h['text']]}
+                               for h in headings]}
+    toc = '\n'.join(f'[{h["text"]}](#section-{h["id"]})' for h in headings)
+    answer = toc + '\n\n' + 'Unrelated footer text. ' * 30
+    assert task_passed(True, score_attempt(case, answer.encode(), ok=True))
+    case['document_structure'] = contract()
+    assert not task_passed(True, score_attempt(case, answer.encode(), ok=True))
+    assert task_passed(True, score_attempt(case, body().encode(), ok=True))

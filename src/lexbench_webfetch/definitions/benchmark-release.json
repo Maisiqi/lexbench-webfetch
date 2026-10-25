@@ -5,7 +5,7 @@
   "version": "2.1.0",
   "tag": "bench-v2.1.0",
   "scorer_revision": "2c9f62baa1b912f2a8406e373114e42b0c64a737",
-  "scoring_source_sha256": "f0b1ffcffacb2327dbd51f6c52f573d252dca1915a238d0efe63c9c644146314",
+  "scoring_source_sha256": "fe09c89d12e033c2d401d133b0fe6b9d9a4dbdaeadc9c4088f18bbb71d0ec334",
   "case_count": 550,
   "suites": [
     {

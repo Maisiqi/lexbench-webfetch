@@ -58594,7 +58594,7 @@
       "expected_task_pass": false
     },
     {
-      "id": "reviewed-table-accessible-status-complete",
+      "id": "reviewed-table-visible-names-complete",
       "category": "structured-extraction",
       "root_cause": "dynamic_rows_require_visible_owned_fields_and_companion_prose",
       "failure_mode": "false-negative",
@@ -58607,7 +58607,6 @@
               "id": "progress",
               "kind": "table",
               "minimum_records": 2,
-              "include_table_accessible_names": true,
               "identity_column": "name",
               "required_columns": [
                 {
@@ -58616,26 +58615,18 @@
                   "aliases": [
                     "Name"
                   ]
-                },
-                {
-                  "id": "complete",
-                  "kind": "text",
-                  "aliases": [
-                    "Complete"
-                  ],
-                  "pattern": "Bar meter with value (?:100|[0-9]{1,2}) out of 100"
                 }
               ]
             }
           ]
         }
       },
-      "artifact": "<table ><thead><tr><th>Name</th><th>Complete</th></tr></thead><tbody><tr><th scope=\"row\">Alan</th><td><svg aria-label=\"Bar meter with value 20 out of 100\"></svg></td></tr><tr><th scope=\"row\">Bryan</th><td><svg aria-label=\"Bar meter with value 20 out of 100\"></svg></td></tr></tbody></table>",
+      "artifact": "<table><tr><th>Name</th><th>Complete</th></tr><tr><td>Alan</td><td><svg></svg></td></tr><tr><td>Bryan</td><td><svg></svg></td></tr></table>",
       "ok": true,
       "expected_task_pass": true
     },
     {
-      "id": "reviewed-table-accessible-status-missing",
+      "id": "reviewed-table-visible-names-missing",
       "category": "structured-extraction",
       "root_cause": "dynamic_rows_require_visible_owned_fields_and_companion_prose",
       "failure_mode": "false-positive",
@@ -58648,7 +58639,6 @@
               "id": "progress",
               "kind": "table",
               "minimum_records": 2,
-              "include_table_accessible_names": true,
               "identity_column": "name",
               "required_columns": [
                 {
@@ -58657,21 +58647,13 @@
                   "aliases": [
                     "Name"
                   ]
-                },
-                {
-                  "id": "complete",
-                  "kind": "text",
-                  "aliases": [
-                    "Complete"
-                  ],
-                  "pattern": "Bar meter with value (?:100|[0-9]{1,2}) out of 100"
                 }
               ]
             }
           ]
         }
       },
-      "artifact": "<table ><thead><tr><th>Name</th><th>Complete</th></tr></thead><tbody><tr><th scope=\"row\">Alan</th><td><svg></svg></td></tr><tr><th scope=\"row\">Bryan</th><td><svg></svg></td></tr></tbody></table>",
+      "artifact": "<table><tr><th>Name</th><th>Complete</th></tr><tr><td>Alan</td><td><svg></svg></td></tr></table>",
       "ok": true,
       "expected_task_pass": false
     },

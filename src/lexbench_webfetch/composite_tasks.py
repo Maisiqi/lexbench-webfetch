@@ -165,7 +165,6 @@ def _validate_group(group: dict) -> None:
         "fixed_values",
         "link_column",
         "combined_columns",
-        "include_table_accessible_names",
         "table_scope",
         "group_caption",
     }
@@ -193,10 +192,6 @@ def _validate_group(group: dict) -> None:
             if key == "markdown_label_pattern" and "label" not in compiled.groupindex:
                 raise ValueError("Markdown card label pattern requires a label group")
     kind = group["kind"]
-    if "include_table_accessible_names" in group and (
-        kind != "table" or type(group["include_table_accessible_names"]) is not bool
-    ):
-        raise ValueError("Accessible table names require a boolean table option")
     if "group_caption" in group:
         option = group["group_caption"]
         keys = {"table_selector", "row_selector", "cell_selector", "caption_selector", "pattern", "field"}
@@ -297,13 +292,14 @@ def _validate_group(group: dict) -> None:
 
 def fields_are_valid(fields: object) -> bool:
     allowed_field_keys = {"id", "kind", "aliases", "minimum_chars", "pattern"}
-    allowed_field_kinds = {"text", "integer", "date_or_time", "price", "area", "version"}
+    allowed_field_kinds = {"text", "token", "integer", "date_or_time", "price", "area", "version"}
     if not isinstance(fields, list) or any(
         not isinstance(field, dict)
         or set(field) - allowed_field_keys
         or not isinstance(field.get("id"), str)
         or not field["id"]
         or field.get("kind") not in allowed_field_kinds
+        or (field.get("kind") == "token" and not field.get("pattern"))
         or (
             "aliases" in field
             and (
@@ -946,6 +942,8 @@ def _value_matches_spec(value: str, spec: dict, *, whole_cell: bool = False) -> 
         if not re.search(pattern, visible, re.I | re.M):
             return False
     kind = spec["kind"]
+    if kind == "token":
+        return bool(re.fullmatch(spec["pattern"], visible, re.I))
     if kind == "integer":
         pattern = r"\d[\d,.]*"
         return bool(
@@ -1529,9 +1527,6 @@ def evaluate_composite_acceptance(
     results = []
     for group in contract["groups"]:
         source = table_content if table_content is not None and group["kind"] in {"table", "linked_table"} else content
-        if group.get("include_table_accessible_names"):
-            from .dynamic_lists import table_accessible_names_html
-            source = table_accessible_names_html(source)
         if "group_caption" in group:
             from .dynamic_lists import grouped_table_surface
             source = grouped_table_surface(source, group)

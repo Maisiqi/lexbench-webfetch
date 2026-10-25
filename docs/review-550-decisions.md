@@ -19,14 +19,14 @@ not the number of changed scoring rules.
 | --- | --- |
 | 1. 82 document pages | Use shared document structure and substantive body-length requirements rather than a title/navigation-only check. All 82 have reviewed rules, qualified source controls and verified exported source bytes. Source serialization limits remain explicit below. |
 | 2. 31 product/brand homepages | Require actual stable functionality or named records where independently supported. Do not freeze campaign slogans, product prices or hidden carousel/tab content. The broader 44-case audit records 32 body-strengthening changes, two navigation fixes, one evidence-only retention and nine explicitly justified retentions. |
-| 3. Four access cases | 047 uses its actual documentation/help entry structure; 192 retains mandatory body requirements. 027 and 050 preserve their five-field rows and now additionally require eight unique owned commit destinations. A small shared auxiliary-node scope prevents decorative links and hidden details from corrupting row extraction. |
+| 3. Four access cases | 047 uses its actual documentation/help entry structure; 192 retains mandatory body requirements. 027 and 050 use one five-field linked-table check requiring eight unique owned commit destinations, replacing duplicate table checks. A small shared auxiliary-node scope prevents decorative links and hidden details from corrupting row extraction. |
 | 4. Six changing tables | Check required fields and actual rendered rows, not historical values. Preserve surrounding required prose. Exclude rows requiring pagination, interaction or virtual scrolling. |
 | 5. Body thresholds | All 148 targeted cases require every retained region at 80%, with at most five regions. Original source text and hashes remain frozen. |
 | 6. Ten challenge-list quotas | Seven quotas use observed counts and an 80% minimum. JD, Zhihu and Dianping returned login/verification pages; retain their existing requirements rather than invent counts. Cross-suite duplicates remain. |
 | 7. Short regions and endings | Preserve real short specifications; move genuine headings/labels to mandatory stable text where appropriate. Use actual author endings with ordered matching. Dynamic 051 uses a required title/subtitle instead of a weak short region and accepts the actual English labels. |
 | 8. Stable-anchor guidance | Sections 2, 6, 11 and 14 consistently require selected stable text by default. Adding body or record rules does not automatically make anchors optional. |
-| 9. 25 replacement sources | Register actual source locations and observations, including record-count provenance. Of 75 anchors, 28 across 11 cases have only one verified observation; do not claim repeated temporal stability. |
-| 10. Error-page words | Move generic lexical guesses to the existing diagnostic field only after source and task-specific positive/negative qualification. 288 cases are registered. The remaining 37 are retained pending sufficient evidence or a compatible rule correction. Explicit output exclusions are treated separately. |
+| 9. 25 replacement sources | Register actual source locations and observations, including record-count provenance. Remove 28 of 75 anchors across 11 cases with only one verified observation; keep source-bound body and record requirements. All 11 complete source controls pass and error-page controls fail. |
+| 10. Error-page words | Remove qualified generic lexical guesses without adding duplicate diagnostic lists. 288 cases are registered. The remaining 37 are retained pending sufficient evidence or a compatible rule correction. Explicit output exclusions are treated separately. |
 | 11. Long-document headings | Add real section headings, not sampled opening phrases, navigation or embedded-card metadata. Audit covers 22 articles, 15 documents and RFC 9110. Heading presence plus five-block coverage is an approximate completeness check, not proof that every sentence survives. |
 | 12. Broad record scopes | Tighten risk 248, Twitch and Rakuten using target ownership and link identity. Retain Bilibili's one-resource target: a homepage-wide quota would change the task. |
 | 13. Changing links and video text | Keep legitimate third-party news links for 2345. Video 09 asks only for title and publisher; do not add a description/subtitle task. |
@@ -80,8 +80,10 @@ Existing shared types handle stable text, reference-body coverage, named links,
 tables, composite groups and resource targets. Earlier necessary shared changes
 support document structure, strict body/ending revisions, reference-preserving
 role changes, explicit answer formats, scoped identity and evidence binding.
-These are opt-in rules and preserve historical defaults. No domain-specific
-scorer branch is introduced.
+Most additional contracts are opt-in. Two shared corrections enforce already
+declared body facts and deduplicate wildcard destinations; their complete
+frozen-case inventory is in [the shared impact audit](review-550-shared-impact.md).
+No domain-specific scorer branch is introduced.
 
 A necessary shared table exclusion option adds 18 lines and removes three across
 two production files. It reuses existing table cleanup; absent options preserve
@@ -116,3 +118,49 @@ supply list-count evidence. These limits are not hidden by weakening requirement
 
 Detailed evidence and remaining-case dispositions belong in the registered review
 records and external audit collection, rather than an expanding development log.
+
+## V2 review decisions verified so far
+
+- Remove the independent body-threshold and ending revision files: their
+  operations already exist in the selected revision. Patch contract fields and
+  anchors by identity rather than repeat unchanged contracts. The initial
+  conversion produced identical effective definitions for all 550 cases.
+- Remove the Grommet SVG accessibility-label extension. Its Complete cells are
+  visible graphics, not numerical text. Four distinct visible names remain
+  required, with the surrounding headers and body requirements preserved.
+- Consolidate access 027 and 050 into one linked-table group: age, message,
+  author, files and changed lines must belong to the same row, with eight unique
+  commit destinations. A `token` field requires a complete explicit pattern;
+  it accommodates values such as `-17 / +29` without weakening ordinary text
+  fields. Forty source-derived HTML/Markdown controls cover complete input,
+  each missing field, missing/repeated/wrong-host links and seven records.
+- Select primary source headings for 11 long documents instead of hundreds of
+  nested headings. Keep original required facts. All 11 complete reference
+  texts pass; deleting their selected primary headings fails. One-word titles
+  are not inherently invalid: a real Methods or Goals section can be useful.
+- Remove Note, Caution, Table of Contents and the linked Cloud/Documentation/
+  Roadmap/Discord navigation heading from seven section lists. Their complete
+  HTML sources still pass and removing substantive headings fails.
+- Reject the blanket replacement of section checks with title facts and total
+  length. `test_title_facts_and_total_length_do_not_replace_section_body_checks`
+  demonstrates that a linked table of contents plus unrelated footer text
+  passes the proposed substitute but fails the section rule. The rule checks
+  local body ownership, not similarity to an old paragraph.
+- Do not merge mandatory short labels into long regions merely to remove the
+  role-change operation. `test_merging_required_short_labels_into_long_prose_can_hide_their_loss`
+  demonstrates that an answer missing the entire short label can still reach
+  80% after that merge. The existing bounded operation verifies the frozen
+  label and keeps it mandatory separately from prose coverage.
+- Keep explicit answer-format support. Two full PDF reference texts containing
+  code-like angle brackets failed when treated as HTML; declaring their actual
+  plain-text format restores correct scoring without reducing body thresholds.
+- Remove 28 singly observed replacement-source anchors. All 11 affected full
+  source pages pass and challenge-only pages fail. Record observation counts
+  once per case and retain hashes identifying the source of each kept anchor.
+- Remove 288 newly added diagnostic-list overrides. Qualified generic lexical
+  exclusions remain removed; explicit task exclusions are a separate policy.
+
+These controls do not establish that every homepage boundary or every retained
+error-word rule is correct. Those items require their own source checks. Shared
+behavior changes and their complete frozen-case inventory are recorded in
+[the impact audit](review-550-shared-impact.md).
