@@ -1,14 +1,12 @@
 """Visible rows qualify without graphical accessibility labels."""
-import json
-from pathlib import Path
-
 import pytest
+from lexbench_webfetch import benchmark
 from lexbench_webfetch.composite_tasks import evaluate_composite_acceptance
 
 
 def contract():
-    path = Path(__file__).parents[1] / 'src/lexbench_webfetch/definitions/annotation-revisions/review-550-20261023.json'
-    rows = json.loads(path.read_text())['changes']
+    path = benchmark.SUITES / 'annotation-revisions/review-550-20261023.json'
+    rows = benchmark.read(path)['changes']
     return next(r['set']['composite_acceptance'] for r in rows
                 if r['case_id'] == 'dynamic-043-en-stable-grommet-table')
 
