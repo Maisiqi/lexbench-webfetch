@@ -73,7 +73,7 @@ body boundaries, and nine more receive substantive conclusion selections with
 their original body regions preserved. This is a partial review revision, not certification of all 550
 cases. See [review decisions](review-550-decisions.md).
 
-It also adds source-qualified `document_structure` contracts to 64 mutable
+It also adds source-qualified `document_structure` contracts to 67 mutable
 documents: 80% of declared headings must have the required local body, and
 the delivered document must meet its reviewed half-length floor. Navigation,
 table-of-contents entries and headings without their required body cannot fill
@@ -81,9 +81,8 @@ the section quota. This checks structural coverage, not semantic accuracy.
 Two cases also remove a mandatory phrase proven to be in an initially hidden
 tab panel or closed disclosure; all other existing requirements remain.
 
-Seventeen further cases use source-qualified target directories, resource cards,
-explicit body facts or API definitions, bringing the mutable-document review to
-81 cases; the subsequent Feishu section correction completes all 82.
+The remaining fifteen reviewed documents use source-qualified target directories,
+resource cards, explicit body facts or API definitions, completing all 82 cases.
 Definition contracts explicitly set `type: "definition"`:
 signatures need adjacent descriptions (`dt` followed by `dd` in HTML, or complete
 signature lines followed by prose in text/Markdown). API names and unrelated

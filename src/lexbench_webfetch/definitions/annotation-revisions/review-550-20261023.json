@@ -1591,7 +1591,8 @@
               "LICENSE"
             ]
           }
-        ]
+        ],
+        "forbidden_any": []
       },
       "remove": [],
       "body_thresholds": {
@@ -3645,135 +3646,33 @@
       "set": {
         "required_facts": [
           {
-            "id": "source-semantic-heading-15ddbfbb08f9",
+            "id": "source-primary-heading-3d4954c155f8",
             "alternatives": [
-              "Acquire an installation image"
+              "Pre-installation"
             ]
           },
           {
-            "id": "source-semantic-heading-5bcb91b183fa",
+            "id": "source-primary-heading-c3fc54aa5390",
             "alternatives": [
-              "Verify signature"
+              "Installation"
             ]
           },
           {
-            "id": "source-semantic-heading-4e91515fc0f3",
+            "id": "source-primary-heading-20d77d05e76f",
             "alternatives": [
-              "Prepare an installation medium"
+              "Configure the system"
             ]
           },
           {
-            "id": "source-semantic-heading-ae32711eb873",
+            "id": "source-primary-heading-fba023ca78eb",
             "alternatives": [
-              "Boot the live environment"
+              "Reboot"
             ]
           },
           {
-            "id": "source-semantic-heading-8c41715280be",
+            "id": "source-primary-heading-d26aab0a098d",
             "alternatives": [
-              "Set the console keyboard layout and font"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-e55905b7f566",
-            "alternatives": [
-              "Verify the boot mode"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-22817ef8c1fa",
-            "alternatives": [
-              "Connect to the internet"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-409c3cfbdd3f",
-            "alternatives": [
-              "Update the system clock"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-ec0892327684",
-            "alternatives": [
-              "Partition the disks"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-baba130c0227",
-            "alternatives": [
-              "Example layouts"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-b31e669cc9b3",
-            "alternatives": [
-              "Format the partitions"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-9421573edc30",
-            "alternatives": [
-              "Mount the file systems"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-5cb69f050b86",
-            "alternatives": [
-              "Select the mirrors"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-5cf6ca579008",
-            "alternatives": [
-              "Install essential packages"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-06ee72e7ccf6",
-            "alternatives": [
-              "Fstab"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-854eaadd4121",
-            "alternatives": [
-              "Chroot"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-336074805fc8",
-            "alternatives": [
-              "Time"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-a3cacb75505c",
-            "alternatives": [
-              "Localization"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-bd5a6dafd3e2",
-            "alternatives": [
-              "Network configuration"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-9752c38a9065",
-            "alternatives": [
-              "Initramfs"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-5dc02a84bed2",
-            "alternatives": [
-              "Root password"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-e00b287ac134",
-            "alternatives": [
-              "Boot loader"
+              "Post-installation"
             ]
           }
         ]
@@ -3852,135 +3751,63 @@
       "set": {
         "required_facts": [
           {
-            "id": "source-semantic-heading-32c06340d9c7",
+            "id": "source-primary-heading-d4b1ea5708dd",
             "alternatives": [
-              "Downloading FPC binary packages"
+              "Overview"
             ]
           },
           {
-            "id": "source-semantic-heading-4baaa6a7e109",
+            "id": "source-primary-heading-4828e60247c1",
             "alternatives": [
-              "Downloading FPC tar balls"
+              "Linux"
             ]
           },
           {
-            "id": "source-semantic-heading-352544c24c58",
+            "id": "source-primary-heading-7e693bb8be74",
             "alternatives": [
-              "Downloading FPC sources from Git or zip"
+              "FreeBSD"
             ]
           },
           {
-            "id": "source-semantic-heading-637f98279947",
+            "id": "source-primary-heading-3173c825c2af",
             "alternatives": [
-              "Documentation sources"
+              "OpenBSD"
             ]
           },
           {
-            "id": "source-semantic-heading-0ef012b63abb",
-            "alternatives": [
-              "Compiling the FPC source, using preinstalled FPC"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-e08f7956cfe8",
-            "alternatives": [
-              "Compiling the FPC source, using just downloaded FPC 3.2.2"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-730acf4646db",
-            "alternatives": [
-              "Installing from the ports collection"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-fa8b052b6bd6",
-            "alternatives": [
-              "Installing from tar"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-8e2410539d10",
+            "id": "source-primary-heading-dd185453dd7a",
             "alternatives": [
               "Installing from source on BSD/Linux"
             ]
           },
           {
-            "id": "source-semantic-heading-92b270a9342e",
+            "id": "source-primary-heading-d598026a9cbc",
             "alternatives": [
-              "Installing an FPC release with the Windows installer"
+              "Windows"
             ]
           },
           {
-            "id": "source-semantic-heading-678fab685fe8",
+            "id": "source-primary-heading-aed6b7aa2a05",
             "alternatives": [
-              "Obtaining the source with a command line git client"
+              "macOS"
             ]
           },
           {
-            "id": "source-semantic-heading-ec554f2121c1",
+            "id": "source-primary-heading-b1daa10830ec",
             "alternatives": [
-              "Source for a release version of FPC"
+              "Testing the FPC Install"
             ]
           },
           {
-            "id": "source-semantic-heading-58d508403219",
-            "alternatives": [
-              "Source for a non-release version of FPC"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-742ffb7177a5",
-            "alternatives": [
-              "Obtaining a bootstrap compiler"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-8d2659ca5a2f",
-            "alternatives": [
-              "Installing an FPC release from the official macOS packages"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-e45e5a2c36b6",
-            "alternatives": [
-              "Step 1: Download Xcode (optional)"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-4e3925cd050d",
-            "alternatives": [
-              "Step 2: Xcode Command Line Tools"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-ef77c8c645ac",
-            "alternatives": [
-              "Step 3: Download FPC"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-10277c8f702a",
-            "alternatives": [
-              "FPC development version"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-9e5bd416187d",
-            "alternatives": [
-              "FPC Fixes 3.2"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-748c93726f1a",
-            "alternatives": [
-              "Other installation options"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-ddbbfb9dd4a7",
+            "id": "source-primary-heading-36f9e87474aa",
             "alternatives": [
               "Useful command-line switches for compiling from source"
+            ]
+          },
+          {
+            "id": "source-primary-heading-8e610b882aae",
+            "alternatives": [
+              "Installing cross compilers"
             ]
           }
         ]
@@ -4131,141 +3958,45 @@
       "set": {
         "required_facts": [
           {
-            "id": "source-semantic-heading-b5114001e143",
+            "id": "source-primary-heading-d6fad4e53885",
             "alternatives": [
-              "What is Dolphin?"
+              "About Dolphin"
             ]
           },
           {
-            "id": "source-semantic-heading-2ca49afc9a10",
+            "id": "source-primary-heading-19aefc7419e8",
             "alternatives": [
-              "What is Dolphin's License?"
+              "Hardware and system requirements"
             ]
           },
           {
-            "id": "source-semantic-heading-b7db897ce8d3",
+            "id": "source-primary-heading-bfbf22e31707",
             "alternatives": [
-              "Who Made Dolphin?"
+              "Installation issues"
             ]
           },
           {
-            "id": "source-semantic-heading-f5daa72675c1",
+            "id": "source-primary-heading-bc0de441a3e5",
             "alternatives": [
-              "What operating systems are supported?"
+              "Configuration issues"
             ]
           },
           {
-            "id": "source-semantic-heading-ba5697f13da2",
+            "id": "source-primary-heading-1bfad7de8e0d",
             "alternatives": [
-              "Which CPU should I use?"
+              "Common issues"
             ]
           },
           {
-            "id": "source-semantic-heading-42bf94350824",
+            "id": "source-primary-heading-71c6d17702a6",
             "alternatives": [
-              "Which GPU do I need?"
+              "Dolphin development"
             ]
           },
           {
-            "id": "source-semantic-heading-c244437f7177",
+            "id": "source-primary-heading-5cb0b4266058",
             "alternatives": [
-              "How much RAM do I need to run Dolphin?"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-56c97e232746",
-            "alternatives": [
-              "Which version of Dolphin should I download?"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-b460dfb05dc7",
-            "alternatives": [
-              "\"This program can't start because VC_.dll is missing\""
-            ]
-          },
-          {
-            "id": "source-semantic-heading-02d4f17b818e",
-            "alternatives": [
-              "\"This application has failed to start because XINPUT1_3.dll was not found\""
-            ]
-          },
-          {
-            "id": "source-semantic-heading-f15335850d87",
-            "alternatives": [
-              "\"The application was unable to start correctly (0xc000007b)\""
-            ]
-          },
-          {
-            "id": "source-semantic-heading-f32778e55c25",
-            "alternatives": [
-              "My Laptop / New GPU is not performing as well as it should"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-e6cce4830e8b",
-            "alternatives": [
-              "configured the bindings for the second GC pad but it does not work"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-dfa165603e63",
-            "alternatives": [
-              "My audio is stuttering!"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-723fdc74e826",
-            "alternatives": [
-              "Game \"X\" does not run correctly"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-f7805bbbef96",
-            "alternatives": [
-              "Dolphin speeds up when I open the graphics menu?"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-c6a564068822",
-            "alternatives": [
-              "How can I build Dolphin on my computer?"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-3e108738ccb2",
-            "alternatives": [
-              "What is the best way to follow the development progress?"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-4f5e70280ab2",
-            "alternatives": [
-              "I've got an idea to make Dolphin better, how should I tell the devs about it?"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-94d6bfc17a51",
-            "alternatives": [
-              "Couldn't Dolphin use more of my CPU cores to go faster?"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-7ace299c64b0",
-            "alternatives": [
-              "Why do I need such a powerful computer to emulate an old console?"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-d0c6c167fb3c",
-            "alternatives": [
-              "Where can I download game ISOs/ROMs?"
-            ]
-          },
-          {
-            "id": "source-semantic-heading-7f7af53be822",
-            "alternatives": [
-              "What dump formats are supported by Dolphin?"
+              "Miscellaneous"
             ]
           }
         ]
@@ -10966,123 +10697,21 @@
           "minimum_body_chars": 3317,
           "headings": [
             {
-              "id": "section-1",
-              "text": "Just getting started?",
-              "level": 2,
+              "id": "primary-1",
+              "text": "API Reference",
+              "level": 1,
               "body_required": true
             },
             {
-              "id": "section-2",
-              "text": "Not a developer?",
-              "level": 2,
+              "id": "primary-2",
+              "text": "Authentication",
+              "level": 1,
               "body_required": true
             },
             {
-              "id": "section-3",
-              "text": "Attributes",
-              "level": 3,
-              "body_required": true
-            },
-            {
-              "id": "section-4",
-              "text": "code nullable string",
-              "level": 4,
-              "body_required": true
-            },
-            {
-              "id": "section-5",
-              "text": "decline _ code nullable string",
-              "level": 4,
-              "body_required": true
-            },
-            {
-              "id": "section-6",
-              "text": "message nullable string",
-              "level": 4,
-              "body_required": true
-            },
-            {
-              "id": "section-7",
-              "text": "param nullable string",
-              "level": 4,
-              "body_required": true
-            },
-            {
-              "id": "section-8",
-              "text": "payment _ intent nullable object",
-              "level": 4,
-              "body_required": true
-            },
-            {
-              "id": "section-9",
-              "text": "type enum",
-              "level": 4,
-              "body_required": true
-            },
-            {
-              "id": "section-10",
-              "text": "More Expand all",
-              "level": 3,
-              "body_required": true
-            },
-            {
-              "id": "section-11",
-              "text": "advice _ code nullable string",
-              "level": 4,
-              "body_required": false
-            },
-            {
-              "id": "section-12",
-              "text": "charge nullable string",
-              "level": 4,
-              "body_required": false
-            },
-            {
-              "id": "section-13",
-              "text": "doc _ url nullable string",
-              "level": 4,
-              "body_required": false
-            },
-            {
-              "id": "section-14",
-              "text": "network _ advice _ code nullable string",
-              "level": 4,
-              "body_required": false
-            },
-            {
-              "id": "section-15",
-              "text": "network _ decline _ code nullable string",
-              "level": 4,
-              "body_required": false
-            },
-            {
-              "id": "section-16",
-              "text": "payment _ method nullable object",
-              "level": 4,
-              "body_required": false
-            },
-            {
-              "id": "section-17",
-              "text": "payment _ method _ type nullable string",
-              "level": 4,
-              "body_required": false
-            },
-            {
-              "id": "section-18",
-              "text": "request _ log _ url nullable string",
-              "level": 4,
-              "body_required": false
-            },
-            {
-              "id": "section-19",
-              "text": "setup _ intent nullable object",
-              "level": 4,
-              "body_required": false
-            },
-            {
-              "id": "section-20",
-              "text": "source nullable object",
-              "level": 4,
+              "id": "primary-3",
+              "text": "Errors",
+              "level": 1,
               "body_required": true
             }
           ]
@@ -16292,7 +15921,7 @@
             "www.nih.gov",
             "grants.nih.gov"
           ],
-          "entry_path": "/(?:challenges/[^/]+|grants/guide/notice-files/[^/]+\\.html|news-events/news-releases/[^/]+|virtual-tour|about-nih/(?:who-we-are/nih-director|what-we-do/impact-nih-research)|health-information/nih-clinical-research-trials-you|research-training/(?:training-opportunities|accelerating-medicines-partnership-amp|medical-research-initiatives)|heal)/?",
+          "entry_path": "/(?:challenges/[^/]+|grants/guide/notice-files/[^/]+\\.html|news-events/news-releases/[^/]+|virtual-tour|about-nih/(?:who-we-are|what-we-do)/[^/]+|health-information/[^/]+|research-training/[^/]+|heal)/?",
           "record_count_policy": {
             "list_type": "variable",
             "source_observed_count": 11,
@@ -16573,7 +16202,7 @@
           "hosts": [
             "www.paypal.com"
           ],
-          "entry_path": "/us/digital-wallet/(?:manage-money/(?:paypal-debit-card|paypal-cashback-mastercard|start-saving|crypto)|ways-to-pay/(?:buy-now-pay-later(?:/pay-later-in-store)?|credit-services/paypal-credit)|security-and-protection|send-receive-money/(?:send-money|request-money|pool-money))/?",
+          "entry_path": "/us/digital-wallet/(?:manage-money|ways-to-pay|send-receive-money)/[^?#]+/?|/us/digital-wallet/security-and-protection/?",
           "record_count_policy": {
             "list_type": "variable",
             "source_observed_count": 10,
@@ -18166,26 +17795,33 @@
       "case_id": "china-homepage-088-figma-com",
       "before_sha256": "8c18122d905a2e4dde49dc1d8cb20629c060930335db5bc5626b1e220e451873",
       "set": {
-        "composite_acceptance": {
-          "version": 1,
-          "groups": [
-            {
-              "id": "body-design-build-links",
-              "kind": "named_link",
-              "minimum_records": 2,
-              "hosts": [
-                "www.figma.com"
-              ],
-              "entry_path": "/(?:design-explore|build-ship)/?",
-              "start_pattern": "^(?:#{1,6}\\s+)?Design anything you can imagine\\s*$",
-              "end_pattern": "^(?:#{1,6}\\s+)?The products you love are designed in Figma\\s*$"
-            }
-          ]
-        },
         "content_score_applicable": true,
         "forbidden_any": []
       },
-      "remove": []
+      "remove": [],
+      "acceptance_patch": {
+        "set": {
+          "schema": "named_link",
+          "minimum_records": 2,
+          "hosts": [
+            "www.figma.com"
+          ],
+          "entry_path": "/(?:design-explore|build-ship)/?",
+          "entry_scope": {
+            "html_selector": "main#main",
+            "start_pattern": "^Get started$",
+            "end_pattern": "^Figma Socials$",
+            "required_end": true
+          }
+        },
+        "anchors": {
+          "remove": [
+            "current-stable-b3a53be5cfe8",
+            "current-stable-84c15a1b5110",
+            "current-stable-84f4cd35818d"
+          ]
+        }
+      }
     },
     {
       "suite": "popular-sites",
@@ -18762,7 +18398,9 @@
       "suite": "popular-sites",
       "case_id": "global-homepage-028-microsoft-com",
       "before_sha256": "035161fdefec0a4ee2894b5d0c0642c9a4dcee6400edde51159a30ed54d478e5",
-      "set": {},
+      "set": {
+        "forbidden_any": []
+      },
       "remove": [],
       "acceptance_patch": {
         "set": {
@@ -18794,7 +18432,9 @@
       "suite": "popular-sites",
       "case_id": "global-homepage-056-apple-com",
       "before_sha256": "44b8dd5d91fd16a4f911d22cafca1671287f30c829130bf582aae87d1ffa7443",
-      "set": {},
+      "set": {
+        "forbidden_any": []
+      },
       "remove": [],
       "acceptance_patch": {
         "set": {
@@ -18856,7 +18496,9 @@
       "suite": "popular-sites",
       "case_id": "global-homepage-085-douyin-com",
       "before_sha256": "aa70adb251b640078f4659640da1f0443de740fc57ba8c86a5be307ea58022c3",
-      "set": {},
+      "set": {
+        "forbidden_any": []
+      },
       "remove": [],
       "acceptance_patch": {
         "set": {
@@ -20284,7 +19926,10 @@
       "review-evidence/dynamic-content/generic-diagnostic-sources/d663da2a237f66f43b7fa6f5b16e0af4f0838d543608119af2f8c51a84268899.png": "d663da2a237f66f43b7fa6f5b16e0af4f0838d543608119af2f8c51a84268899",
       "review-evidence/followup-051-only/dynamic-051-youzan-github-io-vant/0-rendered.html": "50d23446fc4d59fe8ec49b19e44e2763e7cb9e0be815c0ed0a3330fd29646d5a",
       "review-evidence/followup-051-only/dynamic-051-youzan-github-io-vant/1-visible.txt": "c7bca23f1476804fcd4a06f56df82f7e9adf44a3a4296d615b82dff2ec0e98ad",
-      "review-evidence/followup-051-only/dynamic-051-youzan-github-io-vant/2-visible-dom.json": "cee3dfff088dfa3fefd9bc641843e770b09e110b3bd34495b3fb8eb971e72c78"
+      "review-evidence/followup-051-only/dynamic-051-youzan-github-io-vant/2-visible-dom.json": "cee3dfff088dfa3fefd9bc641843e770b09e110b3bd34495b3fb8eb971e72c78",
+      "review-evidence/dynamic-content/v2-vant-diagnostics/4783be9f28abce49429cdabd08ad00b31729af14a607b5fd92d966a533bc79d4.json": "4783be9f28abce49429cdabd08ad00b31729af14a607b5fd92d966a533bc79d4",
+      "review-evidence/dynamic-content/v2-vant-diagnostics/83c5a2001b1fe482a4c4613d87580944bfd291e140a3b2a090ed4d55c55bbe1e.json": "83c5a2001b1fe482a4c4613d87580944bfd291e140a3b2a090ed4d55c55bbe1e",
+      "review-evidence/dynamic-content/v2-vant-diagnostics/controls.json": "f8fd9ef5c1afe3ee9841dee270186c4f67a28aa0e54210d1cfba7db7b55e0bba"
     },
     "popular-sites": {
       "review-evidence/popular-sites/homepages-selected-observations-20260916.json": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
@@ -20472,7 +20117,14 @@
       "review-evidence/popular-sites/v2-homepage-dom/elsevier.html": "f32de1a69bf70cdb3df5e7680bcff18d02aad4096924c7e670613751aad5ec2b",
       "review-evidence/popular-sites/v2-homepage-dom/china-homepage-081-elsevier-com-controls.json": "26b8a20a48ed38570f283be1838516c189efd91618eb3d7d6097ea836be1d824",
       "review-evidence/popular-sites/v2-homepage-dom/zoom.html": "b25525c9cfd15508ca23f65fd892621580c85cda1e26ee94ec3efa28d778b0dc",
-      "review-evidence/popular-sites/v2-homepage-dom/zoom-controls.json": "9c8aa7bb8338d704ca001998ac15db710aaae46f83acaa0023b23824fab406fa"
+      "review-evidence/popular-sites/v2-homepage-dom/zoom-controls.json": "9c8aa7bb8338d704ca001998ac15db710aaae46f83acaa0023b23824fab406fa",
+      "review-evidence/popular-sites/v2-homepage-dom/figma.html": "fcbaee129e70512dae6160406fa7b7144ab3cf70ec4f3abc2f02b0b748d6946f",
+      "review-evidence/popular-sites/v2-homepage-dom/lexbench-v2-figma-controls.json": "ab521031502c80de06919b2638b427c41b042998e4f3d9b7078d1ffbe9f8ccd2",
+      "review-evidence/popular-sites/v2-diagnostic-controls/v2-diagnostic-microsoft-probe.json": "fa678ea050884c3009596830b9e6a7af68dbcc27e5bf4a1a140a4667489707c0",
+      "review-evidence/popular-sites/v2-diagnostic-controls/v2-diagnostic-apple-probe.json": "ee70baf21b3ac15517327ca6eadf9db18a084d0fdba0ddf730420dab638efe9d",
+      "review-evidence/popular-sites/v2-diagnostic-controls/v2-diagnostic-douyin-probe.json": "76c51fa1b3638f9948bcaf56e7740a4bfd73732f50d11c3217b51838e130059d",
+      "review-evidence/popular-sites/v2-homepage-dom/global-homepage-063-paypal-com-route-controls.json": "4ad8e513820cce834b9cbbb08eb40a962873ce9e078b6290f259c47959c88250",
+      "review-evidence/popular-sites/v2-homepage-dom/china-homepage-057-nih-gov-route-controls.json": "1971b37fd6b770a140e5298248d65aa93feb62cebd6fa2cce9cfedcf60c1eaf3"
     },
     "articles": {
       "review-evidence/articles/article-090/body.html": "0667feb4e6b962f0073241c2b277367e5869f72bc0e5ebab52fee555d82f1b1d",

@@ -239,7 +239,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "0e8c81a5aba6bef6944de9c455e3caf478de8f561d4d5113cc957d7fa95bf77d",
+      "revision_sha256": "c0de72a0f5bccf68efac05837c0295ee2c8be2132b322d287ee6f1605ee3b502",
       "changes": [
         {
           "suite": "webfetch",
@@ -2058,8 +2058,8 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-051-youzan-github-io-vant",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Preserve the visible document title and subtitle as required stable text rather than a short recall region whose words recur elsewhere; retain all four substantive regions at 80%. Add independently observed Introduction and LICENSE as English equivalents of legacy Chinese facts for the already fixed en-US route. Full raw HTML/text pass; missing intro HTML/text, body and LICENSE fail.",
-          "changes_sha256": "95bb44e7d5d1efb59a2fc4c42373bb81f598c8fa915dad34dca127a3be656366",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Preserve the visible document title and subtitle as required stable text rather than a short recall region whose words recur elsewhere; retain all four substantive regions at 80%. Add independently observed Introduction and LICENSE as English equivalents of legacy Chinese facts for the already fixed en-US route. Full raw HTML/text pass; missing intro HTML/text, body and LICENSE fail. V2: remove qualified generic error-page word guesses after replaying both independent initial HTML rounds with the corrected language/role contract. Full pages pass; challenge-only and identity-only responses fail through body requirements. The previous batch size is not a reason to retain redundant lexical gates.",
+          "changes_sha256": "73f7d1f3178772e3c328b4d97965813e2e454ce075aa5f5b231abded35a73200",
           "sources": [
             {
               "path": "dataset.json",
@@ -2080,6 +2080,21 @@
               "path": "review-evidence/followup-051-only/dynamic-051-youzan-github-io-vant/2-visible-dom.json",
               "sha256": "cee3dfff088dfa3fefd9bc641843e770b09e110b3bd34495b3fb8eb971e72c78",
               "scope": "Independent automatically loaded source; original observation hash verified. Used for source-positive and deletion/missing-field controls, never provider output."
+            },
+            {
+              "path": "review-evidence/dynamic-content/v2-vant-diagnostics/4783be9f28abce49429cdabd08ad00b31729af14a607b5fd92d966a533bc79d4.json",
+              "sha256": "4783be9f28abce49429cdabd08ad00b31729af14a607b5fd92d966a533bc79d4",
+              "scope": "Independent initial source-only capture or observation manifest, requested URL verified, complete-page positive and challenge/identity negatives replayed for V2 lexical simplification."
+            },
+            {
+              "path": "review-evidence/dynamic-content/v2-vant-diagnostics/83c5a2001b1fe482a4c4613d87580944bfd291e140a3b2a090ed4d55c55bbe1e.json",
+              "sha256": "83c5a2001b1fe482a4c4613d87580944bfd291e140a3b2a090ed4d55c55bbe1e",
+              "scope": "Independent initial source-only capture or observation manifest, requested URL verified, complete-page positive and challenge/identity negatives replayed for V2 lexical simplification."
+            },
+            {
+              "path": "review-evidence/dynamic-content/v2-vant-diagnostics/controls.json",
+              "sha256": "f8fd9ef5c1afe3ee9841dee270186c4f67a28aa0e54210d1cfba7db7b55e0bba",
+              "scope": "Two source-qualified full-page positives and challenge-only/identity-only negatives after removing generic forbidden terms; no diagnostic list is added."
             }
           ],
           "regression_ids": [
@@ -5384,8 +5399,8 @@
         {
           "suite": "access-restrictions",
           "case_id": "risk-diverse-201",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
-          "changes_sha256": "fbddb75ae9c6428f66d483c0e1056818f9ac131036c69949aa0114f770b98046",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check. V2: select primary source sections rather than every installation substep or FAQ question. Preserve original facts and all body-coverage requirements. Complete references pass; removing primary-title phrases fails. A short genuine title is not discarded merely for being one word.",
+          "changes_sha256": "d8e6ebf85a628b931a4616d199867ef0b66631eb71a0550abf695bb3f3a0f903",
           "sources": [
             {
               "path": "dataset.json",
@@ -5553,8 +5568,8 @@
         {
           "suite": "access-restrictions",
           "case_id": "risk-diverse-210",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
-          "changes_sha256": "bff4dd1783cb91830f76a5f6bf6a6d4b639fea97ab5e73173beb01980a0ae00e",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check. V2: select primary source sections rather than every installation substep or FAQ question. Preserve original facts and all body-coverage requirements. Complete references pass; removing primary-title phrases fails. A short genuine title is not discarded merely for being one word.",
+          "changes_sha256": "d52e57afbdd855a60b17636374f0d7cf20dddd33652e3aeb4e61b33fa5a3ef43",
           "sources": [
             {
               "path": "dataset.json",
@@ -5872,8 +5887,8 @@
         {
           "suite": "access-restrictions",
           "case_id": "risk-diverse-237",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check.",
-          "changes_sha256": "519f780665dce2d34f602c31b54db4c25a60850f1257ed92d9cf2448ef95a531",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Require all source-declared semantic headings, deduplicated and excluding headings already guaranteed by existing facts or stable anchors. Preserve all old facts, body regions and thresholds. Saved complete reference passes. Heading presence can be satisfied by TOC or prose duplicates and does not guarantee section-body completeness; the original at-most-five-region 80% gate remains the approximate completeness check. V2: select primary source sections rather than every installation substep or FAQ question. Preserve original facts and all body-coverage requirements. Complete references pass; removing primary-title phrases fails. A short genuine title is not discarded merely for being one word.",
+          "changes_sha256": "0577ec1abc0aff8bf002b9c21c7648b421f1d258fc415e542a584020d9e34d32",
           "sources": [
             {
               "path": "dataset.json",
@@ -9104,8 +9119,8 @@
         {
           "suite": "webfetch",
           "case_id": "live-032-api-reference",
-          "reason": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "dfecb3d2f78c638b4ffbb81f9a610bb6807fc4e8194b1c301c50032ae18a1b8f",
+          "reason": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: replace twenty introductory cards, API property declarations and expansion-control labels with the three actual h1 sections: API Reference, Authentication and Errors. Keep the existing body-length floor and original facts. Complete source passes; removing these primary headings fails.",
+          "changes_sha256": "41ad8126afd9a387f5d7cffd768179d87db9201e64a318486aa7fa68e7ce29cc",
           "sources": [
             {
               "path": "sources/live-032-api-reference/current-source.html.txt",
@@ -11832,8 +11847,8 @@
         {
           "suite": "popular-sites",
           "case_id": "china-homepage-057-nih-gov",
-          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "a117d5b3f2300c8670045de72da9b35a242f990aeedd091445c0ef7495a6921b",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: accept new destinations inside the observed functional route families instead of enumerating current feature names. Preserve quota and other requirements. All three saved link-ownership projections pass; generously assembled known navigation/stable-label shells fail. This is destination-family filtering, not a claim of complete HTML main ownership; navigation links can contribute below the required quota.",
+          "changes_sha256": "0b7fc3db7408ae2416471258c07446b47b9a7396be627fa9841bf46e4ad57c45",
           "sources": [
             {
               "path": "dataset.json",
@@ -11889,6 +11904,11 @@
               "path": "review-evidence/popular-sites/generic-diagnostic-sources/cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77.json",
               "sha256": "cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77",
               "scope": "Exact source or source-control replay input used by the bound qualification record. Original local path mapping is retained in the audit proof."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/china-homepage-057-nih-gov-route-controls.json",
+              "sha256": "1971b37fd6b770a140e5298248d65aa93feb62cebd6fa2cce9cfedcf60c1eaf3",
+              "scope": "Three full preserved source projections and known-navigation negative controls for broadened functional route families. Original observations are already bound; no DOM ownership is invented."
             }
           ],
           "regression_ids": [
@@ -12446,8 +12466,8 @@
         {
           "suite": "popular-sites",
           "case_id": "global-homepage-063-paypal-com",
-          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "d87642b8b06fbe575c91d3963e6c39f2b1541c8f7fdaccd34afc2cee53119f2c",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: accept new destinations inside the observed functional route families instead of enumerating current feature names. Preserve quota and other requirements. All three saved link-ownership projections pass; generously assembled known navigation/stable-label shells fail. This is destination-family filtering, not a claim of complete HTML main ownership; navigation links can contribute below the required quota.",
+          "changes_sha256": "f4d18935d9198d86e7cf612c0edad7519a25b1cfeda1ed516fd607f29db3ac7f",
           "sources": [
             {
               "path": "dataset.json",
@@ -12503,6 +12523,11 @@
               "path": "review-evidence/popular-sites/generic-diagnostic-sources/cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77.json",
               "sha256": "cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77",
               "scope": "Exact source or source-control replay input used by the bound qualification record. Original local path mapping is retained in the audit proof."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/global-homepage-063-paypal-com-route-controls.json",
+              "sha256": "4ad8e513820cce834b9cbbb08eb40a962873ce9e078b6290f259c47959c88250",
+              "scope": "Three full preserved source projections and known-navigation negative controls for broadened functional route families. Original observations are already bound; no DOM ownership is invented."
             }
           ],
           "regression_ids": [
@@ -14447,8 +14472,8 @@
         {
           "suite": "popular-sites",
           "case_id": "china-homepage-088-figma-com",
-          "reason": "Retain all twelve original stable anchors. Withdraw the earlier eight-of-ten carousel proposal: overflow clipping hides later cards even though innerText and nonzero DOM rects included them. Require the two actual non-carousel design/build named destinations between existing required body headings. Do not freeze new marketing copy or depend on viewport width. A separate new initial observation verifies both functional links and every ancestor have nonzero opacity, visible display/visibility and no clipping overflow. Actual whole-page/main HTML and source-derived Markdown pass; removing either body destination while retaining navigation fails; removing all carousel hrefs still passes. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "c42d5625d9c85c4fd1de654dd6ab297a738f6867e2655f945ef512d170b84935",
+          "reason": "Retain all twelve original stable anchors. Withdraw the earlier eight-of-ten carousel proposal: overflow clipping hides later cards even though innerText and nonzero DOM rects included them. Require the two actual non-carousel design/build named destinations between existing required body headings. Do not freeze new marketing copy or depend on viewport width. A separate new initial observation verifies both functional links and every ancestor have nonzero opacity, visible display/visibility and no clipping overflow. Actual whole-page/main HTML and source-derived Markdown pass; removing either body destination while retaining navigation fails; removing all carousel hrefs still passes. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: replace the duplicate two-link composite group with the existing named-link contract, scoped to main#main in HTML and Get started through the required Figma Socials footer boundary in text. Preserve two distinct design/build destinations. Remove the obsolete hero slogan and both marketing-boundary anchors, so renamed campaign headings no longer invalidate correct body links. Three saved owned-link projections and fresh anonymous HTML pass; removing main leaves navigation/footer destinations but zero qualifying records.",
+          "changes_sha256": "20e8aecccbc3b5d3e503254ba1eb0417e30669be329af8ce1b8097e88bb01fe6",
           "sources": [
             {
               "path": "review-evidence/popular-sites/initial-homepages-20261023/figma.json",
@@ -14484,6 +14509,16 @@
               "path": "review-evidence/popular-sites/generic-diagnostic-sources/267633f138896aeb51cab3b4b608ac3ce78d7f511a5c0638792f22883ee13347.json",
               "sha256": "267633f138896aeb51cab3b4b608ac3ce78d7f511a5c0638792f22883ee13347",
               "scope": "Exact source or source-control replay input used by the bound qualification record. Original local path mapping is retained in the audit proof."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/figma.html",
+              "sha256": "fcbaee129e70512dae6160406fa7b7144ab3cf70ec4f3abc2f02b0b748d6946f",
+              "scope": "Anonymous official HTML verifies actual main ownership and two design/build entries; not a replacement frozen input."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/lexbench-v2-figma-controls.json",
+              "sha256": "ab521031502c80de06919b2638b427c41b042998e4f3d9b7078d1ffbe9f8ccd2",
+              "scope": "Three preserved link-ownership projections and fresh full HTML pass; deleting main fails. These controls precede removal of the two additional marketing heading anchors; regression tests separately cover changed campaign headings."
             }
           ],
           "regression_ids": [
@@ -15319,8 +15354,8 @@
         {
           "suite": "popular-sites",
           "case_id": "global-homepage-028-microsoft-com",
-          "reason": "Retain all original stable anchors and bans. Require three actual named stories within the non-carousel Get to know AI and Copilot section; three saved observations and one complete current observation each contain three. Same-moment composed ancestor geometry qualifies all six current title/CTA nodes. Generic HTML title/link ownership and Markdown heading-card parsing preserve titles when CTA labels are generic. Text ends at the next same-or-higher heading, not a frozen campaign title; missing structural end fails. Generic CTA exclusions prevent a neighboring report button from replacing a missing named story. Current full/quota-minus-one/empty controls in both formats and saved full/removed-body-link controls pass. Historical projection binds original observed title/body/link fields without claiming historical DOM geometry. No carousel, hidden business tab, task URL or frozen input changes.",
-          "changes_sha256": "0e54d932919102dbfda37b26d475daea576cc848059c374f62a9c31667675876",
+          "reason": "Retain all original stable anchors. Require three actual named stories within the non-carousel Get to know AI and Copilot section; three saved observations and one complete current observation each contain three. Same-moment composed ancestor geometry qualifies all six current title/CTA nodes. Generic HTML title/link ownership and Markdown heading-card parsing preserve titles when CTA labels are generic. Text ends at the next same-or-higher heading, not a frozen campaign title; missing structural end fails. Generic CTA exclusions prevent a neighboring report button from replacing a missing named story. Current full/quota-minus-one/empty controls in both formats and saved full/removed-body-link controls pass. Historical projection binds original observed title/body/link fields without claiming historical DOM geometry. No carousel, hidden business tab, task URL or frozen input changes. V2: remove generic error-word exclusions after replaying the complete source and all existing omitted-record/ownership controls with the current contract. Identity-only and challenge-only answers still fail the actual body record requirement. No diagnostic override is added; the old weak-identity retention rationale no longer applies.",
+          "changes_sha256": "7494bffb9124d644a634a6bdf2959561b2e643473257c93ff41d9b3d06d31e62",
           "sources": [
             {
               "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/microsoft-alternate.json",
@@ -15331,6 +15366,11 @@
               "path": "review-evidence/popular-sites/identity-observations-20260916.json",
               "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
               "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-diagnostic-controls/v2-diagnostic-microsoft-probe.json",
+              "sha256": "fa678ea050884c3009596830b9e6a7af68dbcc27e5bf4a1a140a4667489707c0",
+              "scope": "Replay of independently observed source positives and actual-record omission/ownership negatives with only generic lexical exclusions removed. Original source hashes and current candidate are included."
             }
           ],
           "regression_ids": [
@@ -15341,8 +15381,8 @@
         {
           "suite": "popular-sites",
           "case_id": "global-homepage-056-apple-com",
-          "reason": "Replace the obsolete fixed MacBook Air promotion requirement with coverage of three actual plain-text title/CTA cards. Add Home as the observed current navigation alias of TV & Home; preserve every other original anchor and all bans. Current nine tiles include six image-logo/visuallyhidden headings excluded from the new requirement; same-moment composed ancestor geometry qualifies only the remaining three text headings and their first CTA. No current product title is frozen. Actual full HTML and initial-visible-text Markdown preserve tile boundaries; three-card positives pass and two/zero-card negatives fail, with navigation/footer retained. The Markdown projection uses initial body.innerText navigation rather than closed DOM menus, excludes image and hidden title text, and preserves actual tile boundaries. Three saved historical observations document the earlier MacBook Air promotion and TV & Home label; missing historical DOM/CSS means their eight field-level records are not used as a visibility-qualified quota. Frozen inputs and task URL are unchanged.",
-          "changes_sha256": "2a44b8e49da053e41e38ab6b7f25275d07be9a06ec3d92606f24b07df4db93b6",
+          "reason": "Replace the obsolete fixed MacBook Air promotion requirement with coverage of three actual plain-text title/CTA cards. Add Home as the observed current navigation alias of TV & Home; preserve every other original anchor and explicit task exclusions. Current nine tiles include six image-logo/visuallyhidden headings excluded from the new requirement; same-moment composed ancestor geometry qualifies only the remaining three text headings and their first CTA. No current product title is frozen. Actual full HTML and initial-visible-text Markdown preserve tile boundaries; three-card positives pass and two/zero-card negatives fail, with navigation/footer retained. The Markdown projection uses initial body.innerText navigation rather than closed DOM menus, excludes image and hidden title text, and preserves actual tile boundaries. Three saved historical observations document the earlier MacBook Air promotion and TV & Home label; missing historical DOM/CSS means their eight field-level records are not used as a visibility-qualified quota. Frozen inputs and task URL are unchanged. V2: remove generic error-word exclusions after replaying the complete source and all existing omitted-record/ownership controls with the current contract. Identity-only and challenge-only answers still fail the actual body record requirement. No diagnostic override is added; the old weak-identity retention rationale no longer applies.",
+          "changes_sha256": "7ac28eaf80f3b731363638a9b5c9eea0399c29ac7a1d3fb550641ca99d41ff1b",
           "sources": [
             {
               "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/apple-v2.json",
@@ -15353,6 +15393,11 @@
               "path": "review-evidence/popular-sites/identity-observations-20260916.json",
               "sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
               "scope": "Three saved initial text-node observations, or independent current initial DOM and rendered ancestor evidence. Historical exact-label link projection does not assert historical DOM ownership. No interactions or invented missing anchors."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-diagnostic-controls/v2-diagnostic-apple-probe.json",
+              "sha256": "ee70baf21b3ac15517327ca6eadf9db18a084d0fdba0ddf730420dab638efe9d",
+              "scope": "Replay of independently observed source positives and actual-record omission/ownership negatives with only generic lexical exclusions removed. Original source hashes and current candidate are included."
             }
           ],
           "regression_ids": [
@@ -15390,8 +15435,8 @@
         {
           "suite": "popular-sites",
           "case_id": "global-homepage-085-douyin-com",
-          "reason": "Retain all forty-three stable navigation/footer anchors and every ban. Require thirty-two named video destinations from thirty-nine unique initially loaded feed cards (ceil(80%)); a fortieth owner is an empty placeholder. The actual card destination is a div href, not a native anchor: existing generic title_selector/link_selector already binds it to the same-card title without synthesizing URLs or adding site-specific code. Same-moment complete DOM plus composed ancestor evidence and scroll-state proof establish thirty-nine rendered cards inside the normal vertical scroller (scrollTop zero, scrollHeight 4307, clientHeight 612), not an inactive tab or lazy-fetch result. Markdown is an explicit projection of those observed same-card fields, not a claim that native a elements exist. Fourteen real full-score controls cover full/boundary/below-boundary/three/zero counts, duplicate IDs and titles moved outside owners in HTML/Markdown; eight cross-domain controls confirm the existing generic non-anchor href ownership behavior. No click, scroll, new schema, new scorer branch, task URL or frozen input change.",
-          "changes_sha256": "8bf77eaac96c744a156b3c473f2683f7b4e1831051d7aa02bc723d0178a5818b",
+          "reason": "Retain all forty-three stable navigation/footer anchors and explicit task exclusions. Require thirty-two named video destinations from thirty-nine unique initially loaded feed cards (ceil(80%)); a fortieth owner is an empty placeholder. The actual card destination is a div href, not a native anchor: existing generic title_selector/link_selector already binds it to the same-card title without synthesizing URLs or adding site-specific code. Same-moment complete DOM plus composed ancestor evidence and scroll-state proof establish thirty-nine rendered cards inside the normal vertical scroller (scrollTop zero, scrollHeight 4307, clientHeight 612), not an inactive tab or lazy-fetch result. Markdown is an explicit projection of those observed same-card fields, not a claim that native a elements exist. Fourteen real full-score controls cover full/boundary/below-boundary/three/zero counts, duplicate IDs and titles moved outside owners in HTML/Markdown; eight cross-domain controls confirm the existing generic non-anchor href ownership behavior. No click, scroll, new schema, new scorer branch, task URL or frozen input change. V2: remove generic error-word exclusions after replaying the complete source and all existing omitted-record/ownership controls with the current contract. Identity-only and challenge-only answers still fail the actual body record requirement. No diagnostic override is added; the old weak-identity retention rationale no longer applies.",
+          "changes_sha256": "4e0926a939d6d4e58b56e24db04282daa5b1a7b23f9a4829ac70bf6852558dd8",
           "sources": [
             {
               "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/douyin-card-visibility.json",
@@ -15402,6 +15447,11 @@
               "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/douyin-scroll-proof.json",
               "sha256": "33272541bbd34ae46e91567604a36ba1627d6928b3e02dfdc6eb3966eb104ede",
               "scope": "Actual original-URL initial DOM and composed ancestry, with same-tab vertical scroll-state evidence. All video URLs are observed div href attributes; zero scroll and no clicking. No historical or native-anchor ownership is invented."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-diagnostic-controls/v2-diagnostic-douyin-probe.json",
+              "sha256": "76c51fa1b3638f9948bcaf56e7740a4bfd73732f50d11c3217b51838e130059d",
+              "scope": "Replay of independently observed source positives and actual-record omission/ownership negatives with only generic lexical exclusions removed. Original source hashes and current candidate are included."
             }
           ],
           "regression_ids": [
