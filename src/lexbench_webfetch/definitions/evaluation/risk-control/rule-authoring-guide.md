@@ -175,7 +175,7 @@ Prefer natural paragraphs, chapters or complete components. Up to five contiguou
 The frozen legacy version-3 contracts require every region to reach at least
 60%, with at least `max(1, region_count−1)` regions reaching 80%. A single region
 needs 80%. The following table describes that historical rule, not the stricter
-`body-coverage-20261023` annotation revision.
+`review-550-20261023` annotation revision.
 
 | Regions | Requirement |
 | --- | --- |
@@ -185,7 +185,7 @@ needs 80%. The following table describes that historical rule, not the stricter
 | 5 | All at least 60%; at least four at 80% |
 
 Under the legacy rule, three regions at 90%, 85%, 65% pass; 95%, 95%, 20% fail.
-The `body-coverage-20261023` revision requires every existing region to reach
+The `review-550-20261023` revision requires every existing region to reach
 80%, retaining at most five regions; both examples fail. Use this stricter rule
 for new coverage annotations. An 80% whole-text average or one strong region is
 insufficient. Any threshold exception needs independent evidence before observing

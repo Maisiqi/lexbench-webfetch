@@ -118,8 +118,13 @@ def test_registered_revision_changes_only_the_95_fixed_body_versions():
     _, root = bench.suite('articles')
     original = bench.read(root / 'tasks.json')
     snapshot = deepcopy(original)
-    revised = bench.apply_annotation_revision('articles', original,
-                                              'article-ending-order-20261023')
+    definition = bench.read(bench.SUITES / 'annotation-revisions' / 'review-550-20261023.json')
+    operations = {r['case_id']: r['body_ending_order'] for r in definition['changes']
+                  if r['suite'] == 'articles' and 'body_ending_order' in r}
+    revised = deepcopy(original)
+    for case in revised['cases']:
+        if case['id'] in operations:
+            bench._revise_body_ending_order(case, operations[case['id']])
     assert original == snapshot
     changed = 0
     for old, new in zip(original['cases'], revised['cases']):

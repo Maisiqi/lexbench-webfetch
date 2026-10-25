@@ -39,7 +39,14 @@ Without `--revision`, export reproduces the original frozen dataset exactly.
 A score recomputed with revised annotations must retain both definition hashes
 and its original call identities; it is not a new browser run.
 
-The `body-coverage-20261023` revision changes quotas on 148 existing body
+Use `acceptance_patch` to change an existing contract without copying unchanged
+fields. Its `set` and `remove` fields edit contract properties; `anchors` can
+`replace` or `remove` existing IDs and `append` new IDs. Existing order is
+preserved. Missing, duplicate or conflicting targets fail. Do not combine a
+patch with replacement or removal of the same contract. The frozen task hash
+and per-case review hash still bind the complete resulting rule change.
+
+The `review-550-20261023` revision changes quotas on 148 existing body
 contracts across webfetch, dynamic-content and access-restrictions. Every region
 must reach 80%; it preserves all reference bindings, region boundaries and URLs.
 Its `body_thresholds` operation accepts only `minimum_coverage`, `minimum_floor`
@@ -49,7 +56,7 @@ the revision. Version-4/5 ending requirements cannot be weakened by this operati
 Per-case review hashes cover the resulting field differences and executable
 controls cover complete, boundary, weak-region and missing-region responses.
 
-For articles, `article-ending-order-20261023` upgrades the 95 fixed bodies from
+For articles, `review-550-20261023` upgrades the 95 fixed bodies from
 version 4 to 5 with `body_ending_order: true`. Reference text, region boundaries,
 the existing fragment gates and the five collection contracts remain unchanged.
 Version 5 additionally compares the ending against a contiguous response passage

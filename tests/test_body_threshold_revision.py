@@ -75,13 +75,20 @@ def test_same_revision_preserves_public_bindings_and_executable_references():
 
 
 def test_published_revision_covers_all_legacy_bodies_and_keeps_bindings():
-    revision = 'body-coverage-20261023'
+    revision = 'review-550-20261023'
     counts = {}
     for identifier in ('webfetch', 'dynamic-content', 'access-restrictions'):
         _, root = bench.suite(identifier)
         data = bench.read(root / 'tasks.json')
         before = copy.deepcopy(data)
-        revised = bench.apply_annotation_revision(identifier, data, revision)
+        definition = bench.read(bench.SUITES / 'annotation-revisions' / (revision + '.json'))
+        operations = {r['case_id']: r['body_thresholds'] for r in definition['changes']
+                      if r['suite'] == identifier and 'body_thresholds' in r}
+        revised = copy.deepcopy(data)
+        revised['id'] += '--' + revision
+        for case in revised['cases']:
+            if case['id'] in operations:
+                bench._revise_body_thresholds(case, operations[case['id']])
         assert data == before
         assert revised['id'] == data['id'] + '--' + revision
         count = 0

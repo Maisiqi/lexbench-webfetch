@@ -262,6 +262,48 @@ def inspect_annotation_revision(identifier: str, revision: str) -> dict:
     return _apply_annotation_revision(identifier, read(root/'tasks.json'), revision)[1]
 
 
+def _patch_acceptance_contract(case, patch):
+    """Edit contract fields and identified anchors without copying unchanged rules."""
+    if not isinstance(patch, dict) or set(patch) - {'set', 'remove', 'anchors'}:
+        raise ValueError('Invalid acceptance patch')
+    contract = deepcopy(case.get('acceptance_contract'))
+    if not isinstance(contract, dict):
+        raise ValueError('Acceptance patch requires an existing contract')
+    updates, removals = patch.get('set', {}), patch.get('remove', [])
+    if (not isinstance(updates, dict) or not isinstance(removals, list)
+            or any(not isinstance(k, str) for k in removals)
+            or len(set(removals)) != len(removals) or set(updates) & set(removals)):
+        raise ValueError('Invalid acceptance field edits')
+    for key in removals:
+        if key not in contract:
+            raise ValueError('Acceptance removal target is absent')
+        del contract[key]
+    contract.update(deepcopy(updates))
+    if 'anchors' in patch:
+        edits = patch['anchors']
+        if (not isinstance(edits, dict) or set(edits) - {'remove', 'replace', 'append'}
+                or 'stable_text_anchors' in set(updates) | set(removals)
+                or any(not isinstance(v, list) for v in edits.values())):
+            raise ValueError('Invalid anchor edits')
+        anchors = contract.get('stable_text_anchors', [])
+        ids = [a['id'] for a in anchors]
+        removed = edits.get('remove', [])
+        replaced = edits.get('replace', [])
+        appended = edits.get('append', [])
+        if any(not isinstance(a, dict) or not isinstance(a.get('id'), str) for a in replaced + appended):
+            raise ValueError('Anchor edits require IDs')
+        touched = removed + [a['id'] for a in replaced + appended]
+        if (any(not isinstance(i, str) for i in removed) or len(set(ids)) != len(ids)
+                or len(set(touched)) != len(touched)
+                or set(removed + [a['id'] for a in replaced]) - set(ids)
+                or set(a['id'] for a in appended) & set(ids)):
+            raise ValueError('Anchor edits must have unique, valid targets')
+        replacements = {a['id']: a for a in replaced}
+        contract['stable_text_anchors'] = [deepcopy(replacements.get(a['id'], a))
+                                           for a in anchors if a['id'] not in removed] + deepcopy(appended)
+    case['acceptance_contract'] = contract
+
+
 def _revise_body_thresholds(case: dict, thresholds: dict) -> None:
     """Revise quotas without replacing frozen reference text or public bindings."""
     body = case.get('body_requirements')
@@ -342,6 +384,10 @@ def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
             raise ValueError('Annotation revision cannot change collection inputs')
         old = deepcopy(case)
         case.update(deepcopy(change['set']))
+        if 'acceptance_patch' in change:
+            if 'acceptance_contract' in set(change['set']) | set(change['remove']):
+                raise ValueError('Conflicting acceptance replacement and patch')
+            _patch_acceptance_contract(case, change['acceptance_patch'])
         if 'body_thresholds' in change:
             _revise_body_thresholds(case, change['body_thresholds'])
         if 'body_ending_order' in change:
