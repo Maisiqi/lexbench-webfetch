@@ -1,6 +1,6 @@
 from copy import deepcopy
 import pytest
-from lexbench_webfetch.body_revisions import move_regions_to_stable_text
+from lexbench_webfetch.annotation_revisions import move_regions_to_stable_text
 from lexbench_webfetch.scoring import score_attempt
 from lexbench_webfetch.metrics import task_passed
 

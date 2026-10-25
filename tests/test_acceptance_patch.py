@@ -3,7 +3,7 @@ from copy import deepcopy
 
 import pytest
 
-from lexbench_webfetch.benchmark import _patch_acceptance_contract
+from lexbench_webfetch.annotation_revisions import _patch_acceptance_contract
 
 
 def example():

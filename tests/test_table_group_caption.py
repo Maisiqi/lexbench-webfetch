@@ -77,6 +77,9 @@ def test_undeclared_contract_retains_existing_behavior():
     {'pattern': '(.*)'}, {'pattern': '(?P<value>.*)'},
     {'field': {'id': 'id', 'kind': 'text', 'aliases': ['Country']}},
     {'table_selector': ''}, {'extra': True},
+    {'field': {'aliases': ['Country']}},
+    {'field': {'id': 'country', 'kind': 'unknown', 'aliases': ['Country']}},
+    {'field': None},
 ])
 def test_invalid_caption_contract_rejected(change):
     rules = contract(); rules['groups'][0]['group_caption'].update(change)
@@ -96,3 +99,13 @@ def test_actual_header_is_not_replaced_with_invented_header():
     assert not result(table(header + caption() + row(1) + row(2)))['composite_acceptance_pass']
     header = '<tr><th>Name</th><th>ID</th></tr>'
     assert not result(table(header + caption() + row(1) + row(2)))['composite_acceptance_pass']
+
+
+def test_equal_rows_outside_selector_are_not_selected_by_value():
+    from lexbench_webfetch.structured_tables import grouped_table_surface
+    group = contract()['groups'][0]
+    group['group_caption']['row_selector'] = 'tr.record:nth-child(n+3)'
+    source = table(caption() + row(1) + row(1) + row(2))
+    surface = grouped_table_surface(source, group)
+    assert surface.count('| 1 | Person 1 | Argentina |') == 1
+    assert surface.count('| 2 | Person 2 | Argentina |') == 1

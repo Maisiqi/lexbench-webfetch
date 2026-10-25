@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import math
 import re
+
+import soupsieve
 import unicodedata
 
 
@@ -11,9 +13,15 @@ def _key(text):
     return ''.join(c for c in unicodedata.normalize('NFKC', text).casefold() if c.isalnum())
 
 
+def _headings(contract):
+    return [{'id': f'section-{index + 1}', 'body_required': True, **heading}
+            for index, heading in enumerate(contract['headings'])]
+
+
 def validate_document_structure(contract):
     if not isinstance(contract, dict) or set(contract) - {
         'version', 'headings', 'minimum_heading_coverage', 'minimum_body_chars', 'type',
+        'minimum_section_chars',
     }:
         raise ValueError('Invalid document_structure fields')
     if contract.get('version') != 1 or isinstance(contract.get('version'), bool):
@@ -27,9 +35,14 @@ def validate_document_structure(contract):
     minimum = contract.get('minimum_body_chars')
     if isinstance(minimum, bool) or not isinstance(minimum, int) or minimum < 1:
         raise ValueError('Invalid document body character floor')
+    section_minimum = contract.get('minimum_section_chars', 1)
+    if type(section_minimum) is not int or section_minimum < 1:
+        raise ValueError('Invalid document section character floor')
     headings = contract.get('headings')
-    if not isinstance(headings, list) or not headings:
+    if (not isinstance(headings, list) or not headings
+            or any(not isinstance(h, dict) for h in headings)):
         raise ValueError('Document structure requires evidenced headings')
+    headings = _headings(contract)
     ids, texts = set(), set()
     for heading in headings:
         if (not isinstance(heading, dict)
@@ -50,7 +63,6 @@ def validate_document_structure(contract):
             if (contract.get('type') == 'definition' or not isinstance(selector, str)
                     or not selector.strip()):
                 raise ValueError('Invalid document heading selector')
-            import soupsieve
             try:
                 soupsieve.compile(selector)
             except soupsieve.SelectorSyntaxError as error:
@@ -61,8 +73,7 @@ def validate_document_structure(contract):
         raise ValueError('A document contract needs at least one substantive section')
 
 
-def _html_events(content, headings=()):
-    from bs4 import Comment, NavigableString
+def _content_root(content):
     from .dynamic_lists import scoped_html
     # Accessibility-tree hiding is not visual hiding. Reuse the shared
     # explicit HTML/inline-style visibility rules, including closed details.
@@ -70,6 +81,12 @@ def _html_events(content, headings=()):
     root = soup.select_one('main') or soup.select_one('article') or soup.body or soup
     for node in root.select('nav,header,footer,aside,[role="navigation"],.toc,#toc,.reference-toc'):
         node.decompose()
+    return root
+
+
+def _html_events(content, headings=()):
+    from bs4 import Comment, NavigableString
+    root = _content_root(content)
     # Lists containing only local section links are tables of contents. Other
     # lists and article-specific external reading links remain body content.
     for node in list(root.select('ul,ol')):
@@ -103,7 +120,10 @@ def _html_events(content, headings=()):
 
 def _text_events(content, headings, key_function=_key):
     # Markdown code contributes body content, but cannot declare section titles.
+    numbered = {m[1]: h['level'] for h in headings
+                if (m := re.match(r'^(\d+(?:\.\d+)*)\.\s+', h['text']))}
     lines, eligible = [], []
+    continuation_column = None
     fence = None
     for raw in content.splitlines():
         line = raw.strip()
@@ -116,11 +136,28 @@ def _text_events(content, headings, key_function=_key):
                 fence = None
             continue
         if not line:
+            continuation_column = None
             continue
+        # Wrapped numbered titles continue past the number in plain text.
+        # A blank line or a less-indented paragraph ends that continuation.
+        if numbered and fence is None:
+            indent = len(raw) - len(raw.lstrip())
+            if continuation_column is not None and indent >= continuation_column:
+                lines[-1] += ' ' + line
+                continue
+            marker = re.match(r'^(\s*\d+(?:\.\d+)*\.)\s+(?=\S)', raw)
+            continuation_column = marker.end(1) if marker else None
         if fence is None and re.fullmatch(r'(?:[-*+]\s*|\d+[.)]\s*)?\[[^]]+\]\(#[^)]*\)', line):
             continue
         level_match = re.match(r'^(#{1,6})\s+(.+?)(?:\s+#+)?$', line) if fence is None else None
-        lines.append(level_match[2] if level_match else line)
+        if level_match:
+            # Native serializers may append the heading's permalink without a separator.
+            label = re.split(r'https?://\S+#\S*$', level_match[2], maxsplit=1)[0].rstrip()
+            if any(key_function(label) == key_function(h['text']) for h in headings):
+                line = label
+            else:
+                line = level_match[2]
+        lines.append(line)
         eligible.append((fence is None, len(level_match[1]) if level_match else None))
     declared = {key_function(h['text']): h for h in headings}
     prefixes = {key[:i] for key in declared for i in range(1, len(key) + 1)}
@@ -148,6 +185,14 @@ def _text_events(content, headings, key_function=_key):
             events.append((heading['text'], heading['level']))
             index = end + 1
         else:
+            # Undeclared children of numbered sections are headings too, not
+            # prose that can make a table-of-contents entry look complete.
+            number = re.match(r'^(\d+(?:\.\d+)*)\.\s+\S', lines[index])
+            if explicit_level is None and number:
+                parents = [n for n in numbered if number[1].startswith(n + '.')]
+                if numbered:
+                    parent = max(parents, key=len) if parents else next(iter(numbered))
+                    explicit_level = numbered[parent] + number[1].count('.') - parent.count('.')
             events.append((lines[index], explicit_level))
             index += 1
     return events
@@ -161,11 +206,7 @@ def _definition_key(text):
 
 
 def _definition_html_events(content):
-    from .dynamic_lists import scoped_html
-    soup = scoped_html(content)
-    root = soup.select_one('main') or soup.select_one('article') or soup.body or soup
-    for node in root.select('nav,header,footer,aside,[role="navigation"],.toc,#toc,.reference-toc'):
-        node.decompose()
+    root = _content_root(content)
     events = []
     for term in root.select('dt'):
         for anchor in term.select('.headerlink'):
@@ -181,15 +222,16 @@ def evaluate_document_structure(content, contract, *, html_document=False):
     if not contract:
         return {}
     validate_document_structure(contract)
+    headings = _headings(contract)
     definitions = contract.get('type') == 'definition'
     key_function = _definition_key if definitions else _key
     if definitions:
         events = (_definition_html_events(content) if html_document else
-                  _text_events(content, contract['headings'], key_function))
+                  _text_events(content, headings, key_function))
     else:
-        events = (_html_events(content, contract['headings']) if html_document else
-                  _text_events(content, contract['headings']))
-    declared = {key_function(h['text']): h for h in contract['headings']}
+        events = (_html_events(content, headings) if html_document else
+                  _text_events(content, headings))
+    declared = {key_function(h['text']): h for h in headings}
     # Serializers may change heading levels. The declared source hierarchy
     # determines which subsequent text belongs to a registered section.
     events = [(text, declared[key_function(text)]['level']
@@ -207,8 +249,9 @@ def evaluate_document_structure(content, contract, *, html_document=False):
                     if events[i][1] is not None and events[i][1] <= level), len(events))
         if definitions:
             definition_body_indices.update(i for i in range(index + 1, end) if events[i][1] is None)
-        has_body = any(event_level is None and bool(_key(value))
-                       for value, event_level in events[index + 1:end])
+        section_chars = sum(len(_key(value)) for value, event_level in events[index + 1:end]
+                            if event_level is None)
+        has_body = section_chars >= contract.get('minimum_section_chars', 1)
         if has_body or not heading['body_required']:
             supported.add(heading['id'])
     body_chars = sum(len(text) for i, (text, level) in enumerate(events)
@@ -222,6 +265,6 @@ def evaluate_document_structure(content, contract, *, html_document=False):
         'document_minimum_body_chars': contract['minimum_body_chars'],
         'document_heading_results': [
             {'id': h['id'], 'present': h['id'] in found, 'pass': h['id'] in supported}
-            for h in contract['headings']
+            for h in headings
         ],
     }

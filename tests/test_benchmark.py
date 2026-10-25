@@ -183,10 +183,25 @@ class FrozenInputs(unittest.TestCase):
         self.assertEqual((self.source/'dataset.json').read_bytes(), original)
         self.assertEqual(bench.verify_inputs('synthetic', self.source)['case_count'], 1)
 
-    def test_additional_review_evidence_cannot_be_omitted_changed_or_symlinked(self):
+    def test_optional_evidence_export_is_not_a_pass_or_a_parent_replacement(self):
+        self.additional_review_revision()
+        original = (self.source/'dataset.json').read_bytes()
+        path = bench.export('synthetic', self.source, self.root/'without-evidence',
+                            revision='source-annotation-v2')
+        report = bench.read(path.parent/'annotation-review.json')['reference_controls']
+        self.assertFalse(report['complete'])
+        self.assertFalse(report['changed_rules_complete'])
+        self.assertEqual(report['cases'][0]['status'], 'unavailable')
+        self.assertEqual(report['cases'][0]['unavailable_review_sources'],
+                         ['review-evidence/article.html'])
+        self.assertFalse((path.parent/'review-evidence').exists())
+        self.assertEqual((self.source/'dataset.json').read_bytes(), original)
+        self.assertEqual(bench.verify_inputs('synthetic', self.source)['case_count'], 1)
+
+    def test_supplied_review_evidence_cannot_be_changed_missing_or_symlinked(self):
         target = self.additional_review_revision()
         original = target.read_bytes()
-        for mode in ('omitted', 'changed', 'missing', 'symlink'):
+        for mode in ('changed', 'missing', 'symlink'):
             with self.subTest(mode=mode):
                 if target.exists() or target.is_symlink():
                     target.unlink()
@@ -201,7 +216,7 @@ class FrozenInputs(unittest.TestCase):
                 output = self.root/mode
                 with self.assertRaises(ValueError):
                     bench.export('synthetic', self.source, output, revision='source-annotation-v2',
-                                 review_source=None if mode == 'omitted' else self.review_source)
+                                 review_source=self.review_source)
                 self.assertFalse(output.exists())
 
     def test_review_evidence_manifest_rejects_unsafe_or_ambiguous_paths(self):
@@ -246,6 +261,37 @@ class FrozenInputs(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     bench.export('synthetic', self.source, output, revision='source-annotation-v2')
                 self.assertFalse(output.exists())
+
+    def test_shared_review_reason_expands_in_export_and_rejects_invalid_references(self):
+        import copy
+        definition = self.annotation_revision()
+        path = self.suites/'annotation-revisions/reviews.json'
+        review = bench.read(path)
+        revision = review['revisions'][definition['id']]
+        item = revision['changes'][0]
+        reason = item.pop('reason')
+        item['reason_ref'] = 'content'
+        revision['shared_reasons'] = {'content': reason}
+        write(path, review)
+        output = self.root/'shared-reason'
+        bench.export('synthetic', self.source, output, revision=definition['id'])
+        exported = bench.read(output/'annotation-review.json')
+        self.assertEqual(exported['changes'][0]['reason'], reason)
+        self.assertNotIn('reason_ref', exported['changes'][0])
+        for defect in ('unknown', 'conflict', 'empty', 'non-string', 'bad-map'):
+            with self.subTest(defect=defect):
+                bad = copy.deepcopy(review)
+                revision = bad['revisions'][definition['id']]
+                item = revision['changes'][0]
+                if defect == 'unknown': item['reason_ref'] = 'missing'
+                elif defect == 'conflict': item['reason'] = reason
+                elif defect == 'empty': revision['shared_reasons']['content'] = ' '
+                elif defect == 'non-string': item['reason_ref'] = []
+                else: revision['shared_reasons'] = []
+                write(path, bad)
+                with self.assertRaises(ValueError):
+                    bench.export('synthetic', self.source, self.root/defect,
+                                 revision=definition['id'])
 
     def test_revised_export_rejects_unreviewed_or_unproven_changes(self):
         import copy
@@ -377,6 +423,15 @@ class ReferenceControls(unittest.TestCase):
             self.assertFalse(result['cases'][0]['error_page_passed'])
             case['ground_truth_main_content'] = 'Home Terms Privacy'
             self.assertEqual(bench.check_revision_references({'cases': [case]}, review, source)['cases'][0]['status'], 'failed')
+            review['review_inputs'] = {'review-evidence/absent.html': 'a' * 64}
+            review['changes'][0]['sources'].append({
+                'path': 'review-evidence/absent.html', 'sha256': 'a' * 64})
+            optional = bench.check_revision_references(
+                {'cases': [case]}, review, source, include_review_evidence=False)
+            self.assertEqual(optional['cases'][0]['status'], 'unavailable')
+            self.assertFalse(optional['cases'][0]['reference_candidates'][0]['passed'])
+            self.assertFalse(optional['changed_rules_complete'])
+            review['changes'][0]['sources'].pop()
             del case['ground_truth_main_content']
             missing = bench.check_revision_references({'cases': [case]}, review, source)
             self.assertFalse(missing['complete'])
@@ -390,6 +445,14 @@ class ReferenceControls(unittest.TestCase):
             self.assertTrue(result['cases'][0]['error_page_passed'])
             self.assertEqual(result['cases'][0]['status'], 'failed')
             self.assertFalse(result['complete'])
+            review['review_inputs'] = {'review-evidence/absent.html': 'a' * 64}
+            review['changes'][0]['sources'].append({
+                'path': 'review-evidence/absent.html', 'sha256': 'a' * 64})
+            result = bench.check_revision_references(
+                {'cases': [case]}, review, Path(directory), include_review_evidence=False)
+            self.assertTrue(result['cases'][0]['error_page_passed'])
+            self.assertEqual(result['cases'][0]['status'], 'failed')
+
 
     def test_media_reference_uses_observed_urls_in_an_image_answer(self):
         with tempfile.TemporaryDirectory() as directory:

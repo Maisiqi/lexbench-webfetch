@@ -6,7 +6,7 @@ import pytest
 
 from lexbench_webfetch.benchmark import public_task
 from lexbench_webfetch.body_coverage import body_requirements, evaluate_body_requirements, tokens
-from lexbench_webfetch.body_revisions import project_body_reference
+from lexbench_webfetch.annotation_revisions import project_body_reference
 
 CREDIT = 'Illustration credit: Research Studio.\n\n'
 BODY = 'The team studied how birds navigate during migration. ' * 8

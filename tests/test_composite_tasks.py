@@ -53,6 +53,7 @@ def test_wildcard_links_count_distinct_destinations(destinations, extra, count):
         for index, destination in enumerate(destinations)) + "\n# End"
     result = evaluate_composite_acceptance(text, rules, base_url="https://example.test/")
     assert result["composite_group_results"][0]["count"] == count
+    assert result["composite_group_results"][0]["records"][0]["title"] == "Story 0"
     assert result["composite_acceptance_pass"] == (count >= 2)
 
 

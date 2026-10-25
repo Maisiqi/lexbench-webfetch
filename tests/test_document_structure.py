@@ -117,6 +117,7 @@ def test_structure_is_optional_and_final_task_predicate_enforces_it():
     m=score_attempt(case,text.encode(),ok=True)
     assert m['stable_task_pass']
     assert not m['content_pass']
+    assert m['content_decision_basis'].endswith('_and_document_structure')
     assert not task_passed(True,m)
     assert task_passed(True,score_attempt(case,body().encode(),ok=True))
 
@@ -150,3 +151,68 @@ def test_title_facts_and_total_length_do_not_replace_section_body_checks():
     case['document_structure'] = contract()
     assert not task_passed(True, score_attempt(case, answer.encode(), ok=True))
     assert task_passed(True, score_attempt(case, body().encode(), ok=True))
+
+
+def test_omitted_heading_defaults_preserve_verdicts_and_explicit_exceptions():
+    compact = {'version': 1, 'minimum_heading_coverage': 1,
+               'minimum_body_chars': 20, 'headings': [
+                   {'text': 'Usage', 'level': 2},
+                   {'id': 'references', 'text': 'References', 'level': 2,
+                    'body_required': False},
+               ]}
+    explicit = deepcopy(compact)
+    explicit['headings'][0].update(id='section-1', body_required=True)
+    for answer, passed in [
+        ('Usage\nA useful description of the feature.\nReferences', True),
+        ('Usage\nReferences', False),
+        ('A useful description of the feature.\nReferences', False),
+    ]:
+        assert evaluate_document_structure(answer, compact) == evaluate_document_structure(answer, explicit)
+        assert evaluate_document_structure(answer, compact)['document_structure_pass'] is passed
+    compact['headings'][1]['id'] = 'section-1'
+    with pytest.raises(ValueError, match='unique IDs'):
+        validate_document_structure(compact)
+
+
+def test_numbered_toc_children_cannot_replace_missing_chapter_body():
+    c = {'version': 1, 'minimum_heading_coverage': 1, 'minimum_body_chars': 1,
+         'headings': [{'text': '1. Methods', 'level': 1},
+                      {'text': '2. Context', 'level': 1}]}
+    toc = '1. Methods\n1.1. Overview\n1.2. Definitions\n2. Context\n2.1. Fields\n'
+    methods = '1. Methods\n1.1. Overview\nRequests use these methods.\n'
+    context = '2. Context\n2.1. Fields\nFields describe the request context.\n'
+    assert evaluate_document_structure(toc + methods + context, c)['document_structure_pass']
+    assert not evaluate_document_structure(toc + context, c)['document_structure_pass']
+    assert not evaluate_document_structure(toc, c)['document_structure_pass']
+
+
+def test_numbered_list_remains_body_for_unnumbered_section():
+    c = {'version': 1, 'minimum_heading_coverage': 1, 'minimum_body_chars': 1,
+         'headings': [{'text': 'Steps', 'level': 1}]}
+    assert evaluate_document_structure('Steps\n1.1. Run the command.', c)['document_structure_pass']
+
+
+def test_wrapped_numbered_toc_and_unrequired_sibling_are_not_body():
+    c = {'version': 1, 'minimum_heading_coverage': 1, 'minimum_body_chars': 1,
+         'headings': [{'text': '1. Methods', 'level': 1}]}
+    toc = '  1. Methods\n    1.1.  A long heading\n        continued here\n  2. References\nA reference entry.\n'
+    assert not evaluate_document_structure(toc, c)['document_structure_pass']
+    text = toc + '\n1. Methods\n\n1.1. A long heading\n     continued here\n\n   An actual paragraph.\n'
+    assert evaluate_document_structure(text, c)['document_structure_pass']
+
+
+@pytest.mark.parametrize('minimum', [0, True, 1.5, '4'])
+def test_invalid_local_section_floor(minimum):
+    c = contract()
+    c['minimum_section_chars'] = minimum
+    with pytest.raises(ValueError, match='section character floor'):
+        validate_document_structure(c)
+
+
+def test_local_section_floor_cannot_borrow_other_section_or_punctuation():
+    c = {'version': 1, 'minimum_heading_coverage': 1, 'minimum_body_chars': 1,
+         'minimum_section_chars': 4,
+         'headings': [{'text': 'Messages', 'level': 2}, {'text': 'Meetings', 'level': 2}]}
+    for first, passed in [('x!!!!', False), ('一二三', False), ('一二三四', True)]:
+        text = '## Messages\n' + first + '\n## Meetings\nA complete meeting description.'
+        assert evaluate_document_structure(text, c)['document_structure_pass'] is passed

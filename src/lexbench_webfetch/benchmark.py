@@ -11,6 +11,7 @@ import tempfile
 from pathlib import Path
 from .paths import contained_path, safe_identifier
 from .inputs import digest, load_manifest, verify_catalog
+from .annotation_revisions import apply_annotation_change
 
 SUITES = Path(__file__).parent / "definitions"
 
@@ -212,6 +213,12 @@ def _review_annotation(definition, revision_path, identifier, root, changes):
     review = reviews.get('revisions', {}).get(definition['id'], {})
     if reviews.get('schema_version') != 1 or review.get('revision_sha256') != digest(revision_path):
         raise ValueError('Annotation review differs from the declared revision')
+    shared_reasons = review.get('shared_reasons', {})
+    if (not isinstance(shared_reasons, dict)
+            or any(not isinstance(key, str) or not key.strip()
+                   or not isinstance(value, str) or not value.strip()
+                   for key, value in shared_reasons.items())):
+        raise ValueError('Invalid shared annotation reasons')
     entries = review.get('changes', [])
     keys = [(item['suite'], item['case_id']) for item in entries]
     if len(keys) != len(set(keys)) or set(keys) != {(item['suite'], item['case_id']) for item in definition['changes']}:
@@ -228,7 +235,14 @@ def _review_annotation(definition, revision_path, identifier, root, changes):
         encoded = json.dumps(delta, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()
         if item.get('changes_sha256') != hashlib.sha256(encoded).hexdigest():
             raise ValueError('Annotation includes unreviewed field changes: ' + change['case_id'])
-        if not isinstance(item.get('reason'), str) or not item['reason'].strip():
+        reason = item.get('reason')
+        if 'reason_ref' in item:
+            reference = item['reason_ref']
+            if ('reason' in item or not isinstance(reference, str)
+                    or reference not in shared_reasons):
+                raise ValueError('Invalid annotation reason reference')
+            reason = shared_reasons[reference]
+        if not isinstance(reason, str) or not reason.strip():
             raise ValueError('Annotation requires a per-task reason')
         sources = item.get('sources', [])
         if not sources or any(source.get('path') not in declared_inputs
@@ -241,7 +255,7 @@ def _review_annotation(definition, revision_path, identifier, root, changes):
             raise ValueError('Annotation controls differ from its declared revision')
         check_scoring_regressions(controls)
         records.append({'suite': identifier, 'case_id': change['case_id'],
-                        'reason': item['reason'], 'sources': sources, 'changes': delta,
+                        'reason': reason, 'sources': sources, 'changes': delta,
                         'regression_ids': controls,
                         'source_coverage': ('revision_review_source_declared' if any(source['path'] in review_inputs for source in sources)
                                             else 'reference_source_declared' if any(source['path'] != 'dataset.json' for source in sources)
@@ -260,87 +274,6 @@ def inspect_annotation_revision(identifier: str, revision: str) -> dict:
     """Inspect exact field differences, frozen sources and passing controls."""
     _, root = suite(identifier)
     return _apply_annotation_revision(identifier, read(root/'tasks.json'), revision)[1]
-
-
-def _patch_acceptance_contract(case, patch):
-    """Edit contract fields and identified anchors without copying unchanged rules."""
-    if not isinstance(patch, dict) or set(patch) - {'set', 'remove', 'anchors'}:
-        raise ValueError('Invalid acceptance patch')
-    contract = deepcopy(case.get('acceptance_contract'))
-    if not isinstance(contract, dict):
-        raise ValueError('Acceptance patch requires an existing contract')
-    updates, removals = patch.get('set', {}), patch.get('remove', [])
-    if (not isinstance(updates, dict) or not isinstance(removals, list)
-            or any(not isinstance(k, str) for k in removals)
-            or len(set(removals)) != len(removals) or set(updates) & set(removals)):
-        raise ValueError('Invalid acceptance field edits')
-    for key in removals:
-        if key not in contract:
-            raise ValueError('Acceptance removal target is absent')
-        del contract[key]
-    contract.update(deepcopy(updates))
-    if 'anchors' in patch:
-        edits = patch['anchors']
-        if (not isinstance(edits, dict) or set(edits) - {'remove', 'replace', 'append'}
-                or 'stable_text_anchors' in set(updates) | set(removals)
-                or any(not isinstance(v, list) for v in edits.values())):
-            raise ValueError('Invalid anchor edits')
-        anchors = contract.get('stable_text_anchors', [])
-        ids = [a['id'] for a in anchors]
-        removed = edits.get('remove', [])
-        replaced = edits.get('replace', [])
-        appended = edits.get('append', [])
-        if any(not isinstance(a, dict) or not isinstance(a.get('id'), str) for a in replaced + appended):
-            raise ValueError('Anchor edits require IDs')
-        touched = removed + [a['id'] for a in replaced + appended]
-        if (any(not isinstance(i, str) for i in removed) or len(set(ids)) != len(ids)
-                or len(set(touched)) != len(touched)
-                or set(removed + [a['id'] for a in replaced]) - set(ids)
-                or set(a['id'] for a in appended) & set(ids)):
-            raise ValueError('Anchor edits must have unique, valid targets')
-        replacements = {a['id']: a for a in replaced}
-        contract['stable_text_anchors'] = [deepcopy(replacements.get(a['id'], a))
-                                           for a in anchors if a['id'] not in removed] + deepcopy(appended)
-    case['acceptance_contract'] = contract
-
-
-def _revise_body_thresholds(case: dict, thresholds: dict) -> None:
-    """Revise quotas without replacing frozen reference text or public bindings."""
-    body = case.get('body_requirements')
-    fields = {'minimum_coverage', 'minimum_floor', 'minimum_region_passes'}
-    if (not isinstance(body, dict) or body.get('version') not in (3, 4, 5)
-            or not isinstance(body.get('regions'), list) or not body['regions']
-            or not isinstance(thresholds, dict) or set(thresholds) != fields
-            or any(type(thresholds[k]) not in (int, float)
-                   for k in ('minimum_coverage', 'minimum_floor'))
-            or not 0 < thresholds['minimum_floor'] <= thresholds['minimum_coverage'] <= 1
-            or type(thresholds['minimum_region_passes']) is not int
-            or not 1 <= thresholds['minimum_region_passes'] <= len(body['regions'])
-            or (body['version'] in (4, 5) and (
-                thresholds['minimum_floor'] != thresholds['minimum_coverage']
-                or thresholds['minimum_region_passes'] != len(body['regions'])))):
-        raise ValueError('Invalid annotation body thresholds')
-    body.update(thresholds)
-
-
-def _revise_body_ending_order(case: dict, enabled: bool) -> None:
-    """Add local ordered matching while retaining every frozen body reference."""
-    from .body_coverage import compact_ngrams
-    body = case.get('body_requirements')
-    ending = body.get('ending') if isinstance(body, dict) else None
-    binding = ending.get('text_binding') if isinstance(ending, dict) else None
-    valid_ending = isinstance(ending, dict) and (
-        isinstance(ending.get('text'), str) and bool(compact_ngrams(ending['text'], 6))
-        or isinstance(binding, dict) and isinstance(binding.get('sha256'), str)
-        and re.fullmatch('[0-9a-f]{64}', binding['sha256']) is not None
-        and type(binding.get('chars')) is int and binding['chars'] >= 6)
-    if (enabled is not True or not isinstance(body, dict) or body.get('version') != 4
-            or not valid_ending
-            or not isinstance(body.get('regions'), list) or not body['regions']
-            or body.get('minimum_region_passes') != len(body['regions'])
-            or body.get('minimum_floor') != body.get('minimum_coverage')):
-        raise ValueError('Ordered ending revision requires a strict version 4 body')
-    body['version'] = 5
 
 
 def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
@@ -364,10 +297,6 @@ def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
         raise ValueError('Annotation revision dataset identity differs')
     result = deepcopy(dataset)
     cases = {case['id']: case for case in result['cases']}
-    allowed = {'expected_resources', 'required_facts', 'forbidden_any', 'diagnostic_any',
-               'composite_acceptance', 'acceptance_contract', 'required_patterns',
-               'document_structure', 'content_score_applicable', 'min_content_chars',
-               'fact_coverage_threshold'}
     changes = [row for row in definition['changes'] if row['suite'] == identifier]
     if not changes or len({row['case_id'] for row in changes}) != len(changes):
         raise ValueError('Annotation revision has an invalid task inventory')
@@ -380,26 +309,8 @@ def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
         encoded = json.dumps(public, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()
         if hashlib.sha256(encoded).hexdigest() != change['before_sha256']:
             raise ValueError('Annotation revision task differs from frozen parent')
-        if (set(change['set']) | set(change['remove'])) - allowed:
-            raise ValueError('Annotation revision cannot change collection inputs')
         old = deepcopy(case)
-        case.update(deepcopy(change['set']))
-        if 'acceptance_patch' in change:
-            if 'acceptance_contract' in set(change['set']) | set(change['remove']):
-                raise ValueError('Conflicting acceptance replacement and patch')
-            _patch_acceptance_contract(case, change['acceptance_patch'])
-        if 'body_thresholds' in change:
-            _revise_body_thresholds(case, change['body_thresholds'])
-        if 'body_ending_order' in change:
-            _revise_body_ending_order(case, change['body_ending_order'])
-        if 'body_projection' in change:
-            from .body_revisions import project_body_reference
-            project_body_reference(case, change['body_projection'], reference_hashes[case['id']])
-        if 'body_regions_to_stable_text' in change:
-            from .body_revisions import move_regions_to_stable_text
-            move_regions_to_stable_text(case, change['body_regions_to_stable_text'])
-        for field in change['remove']:
-            case.pop(field, None)
+        apply_annotation_change(case, change, reference_hashes[case['id']])
         reviewed_changes.append((change, old, case))
     review = _review_annotation(definition, path, identifier, root, reviewed_changes)
     result['id'] = dataset['id'] + '--' + revision
@@ -428,7 +339,8 @@ def _body_reference_additions(changes):
     return added
 
 
-def check_revision_references(dataset: dict, review: dict, source: Path) -> dict:
+def check_revision_references(dataset: dict, review: dict, source: Path, *,
+                              include_review_evidence: bool = True) -> dict:
     """Run frozen reference and error-page controls without treating absent text as a pass."""
     from html import escape
     from .scoring import score_attempt, SCORING_SOURCE_SHA256
@@ -441,11 +353,15 @@ def check_revision_references(dataset: dict, review: dict, source: Path) -> dict
         case = cases[item['case_id']]
         added_anchors = _body_reference_additions(item.get('changes'))
         candidates = []
+        unavailable_sources = []
         for field in ('reference_answer', 'ground_truth_main_content'):
             if isinstance(case.get(field), str) and case[field].strip():
                 candidates.append((case[field].encode(), {'path': 'dataset.json', 'field': field}))
         for binding in item['sources']:
             if binding['path'] == 'dataset.json':
+                continue
+            if not include_review_evidence and binding['path'] in review.get('review_inputs', {}):
+                unavailable_sources.append(binding['path'])
                 continue
             path = contained_path(source, binding['path'], reject_symlinks=True)
             if digest(path) != binding['sha256']:
@@ -497,11 +413,15 @@ def check_revision_references(dataset: dict, review: dict, source: Path) -> dict
         negative_pass = task_passed(True, metrics, case.get('task_kind', 'body'))
         status = ('failed' if negative_pass
                   else 'passed' if any(control['passed'] for control in controls)
+                  else 'unavailable' if unavailable_sources
                   else 'failed' if controls else 'unavailable')
         results.append({'case_id': case['id'], 'status': status, 'reference_candidates': controls,
                         'verification_scope': next((c['scope'] for c in controls if c['passed']), 'unavailable'),
                         'error_page_passed': negative_pass,
-                        'reason': ('The frozen inputs retain source hashes but no executable reference answer.'
+                        **({'unavailable_review_sources': unavailable_sources} if unavailable_sources else {}),
+                        'reason': ('Optional review evidence was not supplied; existing control results are retained.'
+                                   if unavailable_sources else
+                                   'The frozen inputs retain source hashes but no executable reference answer.'
                                    if not controls else '')})
     return {'scoring_source_sha256': SCORING_SOURCE_SHA256,
             'complete': all(result['status'] == 'passed' and result['verification_scope'] == 'full_task'
@@ -533,9 +453,7 @@ def export(identifier: str, source: Path, output: Path, *, revision: str | None 
             dataset_path = stage / manifest['dataset']
             revised, review = _apply_annotation_revision(identifier, read(dataset_path), revision)
             extra_inputs = review.get('review_inputs', {})
-            if extra_inputs and review_source is None:
-                raise ValueError('This revision requires --review-source with its declared review evidence')
-            for relative, sha256 in extra_inputs.items():
+            for relative, sha256 in (extra_inputs.items() if review_source is not None else ()):
                 original = contained_path(review_source, relative, reject_symlinks=True)
                 if not original.is_file() or digest(original) != sha256:
                     raise ValueError('Review evidence is missing or changed: ' + relative)
@@ -544,7 +462,8 @@ def export(identifier: str, source: Path, output: Path, *, revision: str | None 
                 shutil.copyfile(original, target)
                 if digest(target) != sha256:
                     raise ValueError('Review evidence changed during export: ' + relative)
-            review['reference_controls'] = check_revision_references(revised, review, stage)
+            review['reference_controls'] = check_revision_references(
+                revised, review, stage, include_review_evidence=review_source is not None)
             if any(item['status'] == 'failed' for item in review['reference_controls']['cases']):
                 raise ValueError('Revised contract rejects its frozen reference or accepts an error page')
             (stage/'annotation-review.json').write_text(json.dumps(review, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')

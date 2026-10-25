@@ -2,6 +2,7 @@
 import copy
 import pytest
 
+from lexbench_webfetch import annotation_revisions
 from lexbench_webfetch import benchmark as bench
 from lexbench_webfetch.body_coverage import body_requirements, evaluate_body_requirements
 
@@ -18,7 +19,7 @@ def test_threshold_revision_preserves_text_and_changes_only_weak_region_verdict(
     case = {'body_requirements': body()}
     original = copy.deepcopy(case)
     thresholds = dict(minimum_coverage=.8, minimum_floor=.8, minimum_region_passes=2)
-    bench._revise_body_thresholds(case, thresholds)
+    annotation_revisions._revise_body_thresholds(case, thresholds)
     assert case['body_requirements']['regions'] == original['body_requirements']['regions']
     first = original['body_requirements']['regions'][0]['text']
     # 105 characters yield 100 fragments; 75 yield 70, 85 yield 80.
@@ -43,7 +44,7 @@ def test_bad_quotas_cannot_rewrite_a_reference(update):
     case = {'body_requirements': body()}
     before = copy.deepcopy(case)
     with pytest.raises(ValueError, match='body thresholds'):
-        bench._revise_body_thresholds(case, update)
+        annotation_revisions._revise_body_thresholds(case, update)
     assert case == before
 
 
@@ -51,7 +52,7 @@ def test_bad_quotas_cannot_rewrite_a_reference(update):
                                 {'version': 3, 'regions': []}])
 def test_quota_revision_requires_an_existing_compatible_body(rule):
     with pytest.raises(ValueError, match='body thresholds'):
-        bench._revise_body_thresholds({'body_requirements': rule},
+        annotation_revisions._revise_body_thresholds({'body_requirements': rule},
             dict(minimum_coverage=.8, minimum_floor=.8, minimum_region_passes=1))
 
 
@@ -59,7 +60,7 @@ def test_strict_ending_contract_cannot_be_relaxed_to_one_weak_region():
     rule = body()
     rule.update(version=4, ending={'text': 'A required closing paragraph'})
     with pytest.raises(ValueError, match='body thresholds'):
-        bench._revise_body_thresholds({'body_requirements': rule},
+        annotation_revisions._revise_body_thresholds({'body_requirements': rule},
             dict(minimum_coverage=.8, minimum_floor=.6, minimum_region_passes=1))
 
 
@@ -68,8 +69,8 @@ def test_same_revision_preserves_public_bindings_and_executable_references():
     public = bench.public_task(executable)
     original = copy.deepcopy(executable['body_requirements']['regions'])
     thresholds = dict(minimum_coverage=.8, minimum_floor=.8, minimum_region_passes=2)
-    bench._revise_body_thresholds(public, thresholds)
-    bench._revise_body_thresholds(executable, thresholds)
+    annotation_revisions._revise_body_thresholds(public, thresholds)
+    annotation_revisions._revise_body_thresholds(executable, thresholds)
     assert bench.public_task(executable) == public
     assert executable['body_requirements']['regions'] == original
 
@@ -88,7 +89,7 @@ def test_published_revision_covers_all_legacy_bodies_and_keeps_bindings():
         revised['id'] += '--' + revision
         for case in revised['cases']:
             if case['id'] in operations:
-                bench._revise_body_thresholds(case, operations[case['id']])
+                annotation_revisions._revise_body_thresholds(case, operations[case['id']])
         assert data == before
         assert revised['id'] == data['id'] + '--' + revision
         count = 0

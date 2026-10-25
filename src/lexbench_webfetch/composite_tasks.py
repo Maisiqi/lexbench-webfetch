@@ -10,10 +10,12 @@ about individual sites.  It is pure scoring code and performs no I/O.
 from __future__ import annotations
 
 import re
+
+import soupsieve
 import unicodedata
 from urllib.parse import parse_qsl, unquote, urljoin, urlsplit
 
-from .structured_tables import _pipe_cells, table_text_surface
+from .structured_tables import _pipe_cells, table_text_surface, validate_group_caption
 from .dynamic_lists import canonical_entry_path, _named_candidate, extract_named_entries
 from .reference_quality import clean_reference_text, markdown_links, visible_markdown_links
 
@@ -193,20 +195,9 @@ def _validate_group(group: dict) -> None:
                 raise ValueError("Markdown card label pattern requires a label group")
     kind = group["kind"]
     if "group_caption" in group:
-        option = group["group_caption"]
-        keys = {"table_selector", "row_selector", "cell_selector", "caption_selector", "pattern", "field"}
-        if (kind != "table" or not isinstance(option, dict) or set(option) != keys
-                or not fields_are_valid([option.get("field")])
-                or not option["field"].get("aliases")
-                or option["field"]["id"] in {c.get("id") for c in group.get("required_columns", [])}
-                or any(not isinstance(option[k], str) or not option[k].strip() for k in keys - {"field"})):
+        validate_group_caption(group)
+        if not fields_are_valid([group["group_caption"]["field"]]):
             raise ValueError("Invalid table group caption")
-        import soupsieve
-        for key in keys - {"field", "pattern"}:
-            soupsieve.compile(option[key])
-        pattern = re.compile(option["pattern"])
-        if set(pattern.groupindex) != {"value"} or pattern.groups != 1 or pattern.search(""):
-            raise ValueError("Table caption must capture one nonempty value")
     if "combined_columns" in group and kind != "table":
         raise ValueError("Combined columns require a table group")
     minimum = group.get("minimum_records")
@@ -256,7 +247,6 @@ def _validate_group(group: dict) -> None:
                 or not isinstance(scope["exclude_selector"], str)
                 or not scope["exclude_selector"].strip()):
             raise ValueError("Invalid composite table scope")
-        import soupsieve
         soupsieve.compile(scope["exclude_selector"])
     if kind in {"table", "linked_table"}:
         columns = group.get("required_columns")
@@ -899,8 +889,10 @@ def _named_link_group(content: str, group: dict, base_url: str, links: list | No
         if "*" in group["hosts"]:
             # Repeated presentations of one destination are one record, even
             # when their labels differ. Apply exclusions before deduplication.
-            records = list({_link_identity(entry["url"], group): entry
-                            for entry in records}.values())
+            first = {}
+            for entry in records:
+                first.setdefault(_link_identity(entry["url"], group), entry)
+            records = list(first.values())
     return {
         "count": len(records),
         "records": records,
@@ -1528,7 +1520,7 @@ def evaluate_composite_acceptance(
     for group in contract["groups"]:
         source = table_content if table_content is not None and group["kind"] in {"table", "linked_table"} else content
         if "group_caption" in group:
-            from .dynamic_lists import grouped_table_surface
+            from .structured_tables import grouped_table_surface
             source = grouped_table_surface(source, group)
             group = {**group, "required_columns": [*group["required_columns"], group["group_caption"]["field"]]}
         if group["kind"] in {"table", "linked_table"}:

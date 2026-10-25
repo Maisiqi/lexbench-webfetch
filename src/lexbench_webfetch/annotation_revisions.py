@@ -1,5 +1,6 @@
-"""Derive revised body scopes from exact frozen references without copying captures."""
+"""Apply score-only annotation edits while preserving frozen collection inputs."""
 from copy import deepcopy
+from functools import partial
 import hashlib
 import re
 
@@ -130,3 +131,125 @@ def project_body_reference(case, projection, expected_source_sha256):
     # Keep the original full reference for historical F1 diagnostics. Only the
     # declared coverage scope changes, and every retained character is source-bound.
     case['body_requirements'] = body
+
+
+def _patch_acceptance_contract(case, patch):
+    """Edit contract fields and identified anchors without copying unchanged rules."""
+    if not isinstance(patch, dict) or set(patch) - {'set', 'remove', 'anchors'}:
+        raise ValueError('Invalid acceptance patch')
+    contract = deepcopy(case.get('acceptance_contract'))
+    if not isinstance(contract, dict):
+        raise ValueError('Acceptance patch requires an existing contract')
+    updates, removals = patch.get('set', {}), patch.get('remove', [])
+    if (not isinstance(updates, dict) or not isinstance(removals, list)
+            or any(not isinstance(k, str) for k in removals)
+            or len(set(removals)) != len(removals) or set(updates) & set(removals)):
+        raise ValueError('Invalid acceptance field edits')
+    for key in removals:
+        if key not in contract:
+            raise ValueError('Acceptance removal target is absent')
+        del contract[key]
+    contract.update(deepcopy(updates))
+    if 'anchors' in patch:
+        edits = patch['anchors']
+        if (not isinstance(edits, dict) or set(edits) - {'remove', 'replace', 'append'}
+                or 'stable_text_anchors' in set(updates) | set(removals)
+                or any(not isinstance(v, list) for v in edits.values())):
+            raise ValueError('Invalid anchor edits')
+        anchors = contract.get('stable_text_anchors', [])
+        ids = [a['id'] for a in anchors]
+        removed = edits.get('remove', [])
+        replaced = edits.get('replace', [])
+        appended = edits.get('append', [])
+        if any(not isinstance(a, dict) or not isinstance(a.get('id'), str) for a in replaced + appended):
+            raise ValueError('Anchor edits require IDs')
+        touched = removed + [a['id'] for a in replaced + appended]
+        if (any(not isinstance(i, str) for i in removed) or len(set(ids)) != len(ids)
+                or len(set(touched)) != len(touched)
+                or set(removed + [a['id'] for a in replaced]) - set(ids)
+                or set(a['id'] for a in appended) & set(ids)):
+            raise ValueError('Anchor edits must have unique, valid targets')
+        replacements = {a['id']: a for a in replaced}
+        contract['stable_text_anchors'] = [deepcopy(replacements.get(a['id'], a))
+                                           for a in anchors if a['id'] not in removed] + deepcopy(appended)
+    case['acceptance_contract'] = contract
+
+
+def _revise_body_thresholds(case: dict, thresholds: dict) -> None:
+    """Revise quotas without replacing frozen reference text or public bindings."""
+    body = case.get('body_requirements')
+    fields = {'minimum_coverage', 'minimum_floor', 'minimum_region_passes'}
+    if (not isinstance(body, dict) or body.get('version') not in (3, 4, 5)
+            or not isinstance(body.get('regions'), list) or not body['regions']
+            or not isinstance(thresholds, dict) or set(thresholds) != fields
+            or any(type(thresholds[k]) not in (int, float)
+                   for k in ('minimum_coverage', 'minimum_floor'))
+            or not 0 < thresholds['minimum_floor'] <= thresholds['minimum_coverage'] <= 1
+            or type(thresholds['minimum_region_passes']) is not int
+            or not 1 <= thresholds['minimum_region_passes'] <= len(body['regions'])
+            or (body['version'] in (4, 5) and (
+                thresholds['minimum_floor'] != thresholds['minimum_coverage']
+                or thresholds['minimum_region_passes'] != len(body['regions'])))):
+        raise ValueError('Invalid annotation body thresholds')
+    body.update(thresholds)
+
+
+def _revise_body_ending_order(case: dict, enabled: bool) -> None:
+    """Add local ordered matching while retaining every frozen body reference."""
+    from .body_coverage import compact_ngrams
+    body = case.get('body_requirements')
+    ending = body.get('ending') if isinstance(body, dict) else None
+    binding = ending.get('text_binding') if isinstance(ending, dict) else None
+    valid_ending = isinstance(ending, dict) and (
+        isinstance(ending.get('text'), str) and bool(compact_ngrams(ending['text'], 6))
+        or isinstance(binding, dict) and isinstance(binding.get('sha256'), str)
+        and re.fullmatch('[0-9a-f]{64}', binding['sha256']) is not None
+        and type(binding.get('chars')) is int and binding['chars'] >= 6)
+    if (enabled is not True or not isinstance(body, dict) or body.get('version') != 4
+            or not valid_ending
+            or not isinstance(body.get('regions'), list) or not body['regions']
+            or body.get('minimum_region_passes') != len(body['regions'])
+            or body.get('minimum_floor') != body.get('minimum_coverage')):
+        raise ValueError('Ordered ending revision requires a strict version 4 body')
+    body['version'] = 5
+
+
+EDITABLE_FIELDS = {'expected_resources', 'required_facts', 'forbidden_any', 'diagnostic_any',
+    'composite_acceptance', 'acceptance_contract', 'required_patterns',
+    'document_structure', 'content_score_applicable', 'min_content_chars',
+    'fact_coverage_threshold'}
+
+
+def _set_fields(case, fields):
+    case.update(deepcopy(fields))
+
+
+def _remove_fields(case, fields):
+    for field in fields:
+        case.pop(field, None)
+
+
+def apply_annotation_change(case, change, reference_sha256):
+    """Apply declared edits in dependency order, independent of JSON key order."""
+    updates, removals = change.get('set', {}), change.get('remove', [])
+    if (not isinstance(updates, dict) or not isinstance(removals, list)
+            or (set(updates) | set(removals)) - EDITABLE_FIELDS):
+        raise ValueError('Annotation revision cannot change collection inputs')
+    if ('acceptance_patch' in change
+            and 'acceptance_contract' in set(updates) | set(removals)):
+        raise ValueError('Conflicting acceptance replacement and patch')
+    # Thresholds must precede ending upgrades and reference/region edits;
+    # field removals happen last. Do not dispatch in input key order.
+    handlers = {
+        'set': _set_fields,
+        'acceptance_patch': _patch_acceptance_contract,
+        'body_thresholds': _revise_body_thresholds,
+        'body_ending_order': _revise_body_ending_order,
+        'body_projection': partial(project_body_reference,
+                                   expected_source_sha256=reference_sha256),
+        'body_regions_to_stable_text': move_regions_to_stable_text,
+        'remove': _remove_fields,
+    }
+    for kind, handler in handlers.items():
+        if kind in change:
+            handler(case, change[kind])

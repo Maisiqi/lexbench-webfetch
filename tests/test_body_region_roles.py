@@ -3,7 +3,7 @@ from copy import deepcopy
 import pytest
 
 from lexbench_webfetch.benchmark import public_task
-from lexbench_webfetch.body_revisions import move_regions_to_stable_text
+from lexbench_webfetch.annotation_revisions import move_regions_to_stable_text
 from lexbench_webfetch.body_coverage import evaluate_body_requirements
 from lexbench_webfetch.stable_tasks import evaluate_stable_task
 

@@ -33,7 +33,7 @@ def main() -> None:
             command.add_argument("--output", type=Path, required=True)
             command.add_argument("--revision", help="Apply a registered score-only annotation version")
             command.add_argument("--review-source", type=Path,
-                                 help="Independent evidence directory declared by the selected revision")
+                                 help="Optional evidence directory; verify and include declared review sources")
     inspect = sub.add_parser("inspect-revision", help="Show reviewed field differences, sources and acceptance controls")
     inspect.add_argument("--suite", required=True)
     inspect.add_argument("--revision", required=True)

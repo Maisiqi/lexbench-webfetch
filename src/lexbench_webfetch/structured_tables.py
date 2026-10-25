@@ -3,6 +3,8 @@ from datetime import datetime
 from decimal import Decimal
 import re
 
+import soupsieve
+
 
 def validate_table(contract):
     columns = contract.get('table_columns')
@@ -18,7 +20,6 @@ def validate_table(contract):
                 or col.get('type') not in {'text', 'token', 'integer', 'number', 'currency_usd', 'date_dmy', 'date_ordinal_en'}):
             raise ValueError('Invalid table column')
         if 'selector' in col:
-            import soupsieve
             if not isinstance(col['selector'], str) or not col['selector'].strip():
                 raise ValueError('Invalid record field selector')
             soupsieve.compile(col['selector'])
@@ -61,7 +62,6 @@ def validate_table(contract):
     if 'markdown_table_limit' in scope and (type(scope['markdown_table_limit']) is not int
                                             or scope['markdown_table_limit'] < 1):
         raise ValueError('Invalid Markdown table limit')
-    import soupsieve
     soupsieve.compile(scope['row_selector']); soupsieve.compile(scope['cell_selector'])
     if 'exclude_selector' in scope:
         if not isinstance(scope['exclude_selector'], str) or not scope['exclude_selector']:
@@ -518,3 +518,115 @@ def _pipe_cells(line):
     if cells and cells[-1] == '' and line.endswith('|'):
         cells.pop()
     return cells
+
+
+
+def validate_group_caption(group):
+    """Validate caption ownership selectors and its single extracted value."""
+    option = group["group_caption"]
+    keys = {"table_selector", "row_selector", "cell_selector", "caption_selector", "pattern", "field"}
+    if (group["kind"] != "table" or not isinstance(option, dict) or set(option) != keys
+            or not isinstance(option.get("field"), dict)
+            or not option["field"].get("aliases")
+            or option["field"].get("id") in {c.get("id") for c in group.get("required_columns", [])}
+            or any(not isinstance(option[k], str) or not option[k].strip() for k in keys - {"field"})):
+        raise ValueError("Invalid table group caption")
+    for key in keys - {"field", "pattern"}:
+        soupsieve.compile(option[key])
+    pattern = re.compile(option["pattern"])
+    if set(pattern.groupindex) != {"value"} or pattern.groups != 1 or pattern.search(""):
+        raise ValueError("Table caption must capture one nonempty value")
+
+
+def grouped_table_surface(content, group):
+    """Bind a caption value only to following rows in the same declared table.
+
+    Markdown uses a one-cell caption row inside a four (or more) column table.
+    Captions outside a table, or after a record, cannot supply that record.
+    HTML selectors describe the rendered cells, including CSS-hidden exclusions.
+    """
+    from .dynamic_lists import scoped_html
+    option = group['group_caption']
+    columns = group['required_columns']
+    pattern = re.compile(option['pattern'])
+    label = option['field']['aliases'][0]
+    content = _without_example_fences(content)
+
+    def value(text):
+        match = pattern.fullmatch(text.strip())
+        return match['value'].strip() if match else ''
+
+    def line(cells):
+        # Escape pipe characters so a value cannot manufacture another field.
+        return '| ' + ' | '.join(v.replace('|', r'\|') for v in cells) + ' |'
+
+    if _contains_rendered_html_table(content):
+        soup = scoped_html(content)
+        for table in list(soup.select(option['table_selector'])):
+            if table.name != 'table':
+                continue
+            rows = table.select('tr')
+            captions = {id(row) for row in table.select(option['caption_selector'])}
+            records = {id(row) for row in table.select(option['row_selector'])}
+            header_rows = [row for row in rows
+                           if row.find_parent('table') is table and row.find('th')
+                           and id(row) not in records
+                           and id(row) not in captions]
+            headers = ([cell.get_text(' ', strip=True) for cell in header_rows[0].find_all(['th', 'td'], recursive=False)]
+                       if header_rows else [c['aliases'][0] for c in columns])
+            # A normalized table may already carry the caption value per row.
+            # Its genuine header and cells go through ordinary column matching.
+            if len(headers) == len(columns) + 1:
+                continue
+            out = [line(headers + [label]),
+                   line(['---'] * (len(columns) + 1))]
+            context = ''
+            owner = None
+            for row in rows:
+                if row.find_parent('table') is not table:
+                    continue
+                section = row.find_parent(['tbody', 'thead', 'tfoot']) or table
+                if section is not owner:
+                    context, owner = '', section
+                if id(row) in captions:
+                    context = value(row.get_text(' ', strip=True))
+                elif id(row) in records:
+                    cells = [c.get_text(' ', strip=True) for c in row.select(option['cell_selector'])
+                             if c.find_parent('tr') is row]
+                    if len(cells) == len(columns):
+                        out.append(line(cells + [context]))
+            table.replace_with('\n' + '\n'.join(out) + '\n')
+        return str(soup)
+
+    lines = content.splitlines()
+    out = []
+    index = 0
+    while index < len(lines):
+        cells = _pipe_cells(lines[index]) if '|' in lines[index] else []
+        separator = _pipe_cells(lines[index + 1]) if index + 1 < len(lines) and '|' in lines[index + 1] else []
+        if (len(cells) not in {len(columns), len(columns) + 1} or len(separator) != len(cells)
+                or not all(re.fullmatch(r'\s*:?-{3,}:?\s*', c) for c in separator)):
+            if '|' not in lines[index]:
+                out.append(lines[index])
+            index += 1
+            continue
+        if len(cells) == len(columns) + 1:
+            out.extend([lines[index], lines[index + 1]])
+            index += 2
+            while index < len(lines) and '|' in lines[index] and lines[index].strip():
+                out.append(lines[index]); index += 1
+            continue
+        out.extend([line(cells + [label]), line(separator + ['---'])])
+        index += 2
+        context = ''
+        while index < len(lines) and '|' in lines[index] and lines[index].strip():
+            cells = _pipe_cells(lines[index])
+            nonempty = [c for c in cells if c.strip()]
+            if len(nonempty) == 1:
+                context = value(nonempty[0])
+            elif len(cells) == len(columns):
+                out.append(line(cells + [context]))
+            else:
+                context = ''
+            index += 1
+    return '\n'.join(out)

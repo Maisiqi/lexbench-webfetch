@@ -9,6 +9,8 @@ from __future__ import annotations
 import hashlib
 import math
 import re
+
+import soupsieve
 import unicodedata
 from datetime import date, datetime
 from html import unescape
@@ -18,6 +20,20 @@ from .dynamic_lists import extract_named_entries, named_entry_source_pair_hash
 from .reference_quality import (
     clean_reference_text, is_markdown_image_start, markdown_delimiter_pairs,
 )
+
+ACCEPTANCE_CONTRACT_FIELDS = {
+    'version', 'schema', 'minimum_records',
+    'maximum_records', 'page_patterns', 'stable_text_anchors',
+    'stable_text_role', 'hosts', 'entry_path',
+    'entry_identity_pattern', 'entry_context', 'entry_scope',
+    'name_validation', 'identity_query_keys', 'identity_query_paths',
+    'field_minimum_records', 'record_name_exclusions', 'title_exclusion_patterns',
+    'price_patterns', 'price_exclusion_patterns', 'price_unavailable_patterns',
+    'record_count_policy', 'source_record_pair_hashes', 'source_record_pairs_sha256',
+    'table_columns', 'record_identity_fields', 'table_scope',
+    'duplicate_policy', 'link_base_url', 'text_exclusions',
+    'content_scope',
+}
 
 SCHEMA_FIELDS = {
     "table_row": (),
@@ -487,6 +503,22 @@ def _descriptions(text):
     return records
 
 
+def _html_list_descriptions(content):
+    """Preserve native leaf-list ownership before flattening visible HTML."""
+    from .dynamic_lists import scoped_html, visible_html_text
+    from .reference_quality import is_html_document_or_fragment
+    if not is_html_document_or_fragment(content):
+        return None
+    items = [node for node in scoped_html(content).select('li') if not node.select('li')]
+    records = []
+    for item in items:
+        lines = visible_html_text(str(item)).splitlines()
+        if len(lines) >= 2:
+            records.append(_record({'name': lines[0], 'description': ' '.join(lines[1:])},
+                                   'name_description'))
+    return records or None
+
+
 def _closed_title_descriptions(text, *, line_delimited=False):
     """Treat title-description-title triples as explicitly closed cards."""
     blocks = text.splitlines() if line_delimited else re.split(r"\n\s*\n", text)
@@ -708,16 +740,22 @@ def _stable_literal_match(surface, value, registered_words=(), *, phrase_boundar
     surface = visible_markdown_links(surface)
     surface = re.sub(r'(?<=[^\W\d_])(?=\d+\s+of\s+\d+\b)', ' ', surface)
     expected = normalize_for_match(_visible(value))
+    # Only an explicit heading with a trailing fragment URL can supply this
+    # additional surface; ordinary word suffixes remain significant.
+    surface = re.sub(r'(?m)^(#{1,6}\s+[^\n]+?)https?://[^\s]+#[^\s]*[ \t]*$',
+                     r'\1', surface)
     folded = normalize_for_match(surface)
     from .reference_quality import separate_case_labels as camel
     alphabetic_boundaries = (not re.fullmatch(r'[A-Za-z]+', value)
                              and (phrase_boundaries or bool(re.search(r'[^\x00-\x7f]', value))))
-    surfaces = (folded, normalize_for_match(camel(surface))) if alphabetic_boundaries else (folded,)
+    surfaces = [(folded, expected)]
+    if alphabetic_boundaries:
+        surfaces.append((normalize_for_match(camel(surface)), normalize_for_match(camel(_visible(value)))))
     # Native serializers can join an all-caps preceding label to a complete
     # notice. Apply the same case boundary used for atomic labels before the
     # Unicode phrase gate, while retaining complete-word matching on both ends.
-    if not any(fact_in_text(text, expected, latin_boundaries=alphabetic_boundaries)
-               for text in surfaces):
+    if not any(fact_in_text(text, phrase, latin_boundaries=alphabetic_boundaries)
+               for text, phrase in surfaces):
         return False
     # Arabic labels are whitespace-delimited words too. A longer inflected
     # word cannot supply an independently registered ordinary navigation label.
@@ -795,6 +833,22 @@ def _anchor_matches(anchor, records, visible, schema, non_record_visible=None,
                                      value, registered_words)]
 
 
+def _native_link_label_surface(content, exclusions):
+    """Keep visible native link labels separate without splitting ordinary words."""
+    from .dynamic_lists import scoped_html, visible_html_text
+    from .reference_quality import is_html_document_or_fragment
+    if not is_html_document_or_fragment(content):
+        return None
+    soup = scoped_html(content)
+    for selector in exclusions.get('html_selectors', []):
+        for node in soup.select(selector):
+            node.decompose()
+    labels = '\n'.join(visible_html_text(str(node)) for node in soup.select('a[href]'))
+    for pattern in exclusions.get('text_patterns', []):
+        labels = re.sub(pattern, ' ', labels, flags=re.I | re.M)
+    return labels
+
+
 def _validate_visible_control(control):
     """Validate the narrowly opted-in ordinary control attribute surface."""
     if (not isinstance(control, dict) or set(control) != {"selector", "attribute"}
@@ -802,7 +856,6 @@ def _validate_visible_control(control):
             or not isinstance(control["attribute"], str)
             or control["attribute"] not in {"placeholder", "value"}):
         raise ValueError("Invalid visible control declaration")
-    import soupsieve
     try:
         soupsieve.compile(control["selector"])
     except (soupsieve.SelectorSyntaxError, NotImplementedError) as error:
@@ -841,7 +894,7 @@ def validate_acceptance_contract(contract: dict) -> None:
             or contract.get("version") != 1 or not isinstance(contract.get("schema"), str)
             or contract.get("schema") not in SCHEMA_FIELDS):
         raise ValueError("Unsupported stable acceptance contract")
-    if set(contract) - {"version", "schema", "minimum_records", "maximum_records", "page_patterns", "stable_text_anchors", "stable_text_role", "hosts", "entry_path", "entry_identity_pattern", "entry_context", "entry_scope", "name_validation", "identity_query_keys", "identity_query_paths", "field_minimum_records", "record_name_exclusions", "title_exclusion_patterns", "price_patterns", "price_exclusion_patterns", "price_unavailable_patterns", "record_count_policy", "source_record_pair_hashes", "source_record_pairs_sha256", "table_columns", "record_identity_fields", "table_scope", "duplicate_policy", "link_base_url", "text_exclusions", "content_scope"}:
+    if set(contract) - ACCEPTANCE_CONTRACT_FIELDS:
         raise ValueError("Unknown stable acceptance contract fields")
     if contract.get("stable_text_role", "required") not in {"required", "diagnostic"}:
         raise ValueError("Invalid stable text role")
@@ -865,7 +918,6 @@ def validate_acceptance_contract(contract: dict) -> None:
             if key == 'text_patterns':
                 re.compile(value)
             else:
-                import soupsieve
                 soupsieve.compile(value)
     if contract['schema'] == 'table_row':
         from .structured_tables import validate_table
@@ -970,7 +1022,6 @@ def validate_acceptance_contract(contract: dict) -> None:
                     or (scope.get("required_end") and not scope.get("end_pattern"))
                     or (("title_selector" in scope) != ("link_selector" in scope))):
                 raise ValueError("Invalid linked record section scope")
-            import soupsieve
             soupsieve.compile(scope["html_selector"])
             for key in ("title_selector", "link_selector", "price_selector"):
                 if key in scope:
@@ -1230,6 +1281,8 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
         if schema == 'table_row':
             from .structured_tables import parse_table_records
             records = parse_table_records(content, visible, contract)
+        elif schema == 'name_description' and (html_records := _html_list_descriptions(content)) is not None:
+            records = html_records
         else:
             records = (
                 []
@@ -1254,6 +1307,7 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
     registered_words = tuple(value for anchor in contract.get("stable_text_anchors", [])
                              for value in anchor["alternatives"]
                              if re.fullmatch(r"[A-Za-z]+", value))
+    native_labels = None
     for anchor in contract.get("stable_text_anchors", []):
         selected_surface = anchor_visible
         selected_non_record = non_record_visible
@@ -1270,6 +1324,12 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
                 original_markdown_visible, registered_words)
             matched = [value for value in anchor["alternatives"]
                        if value in matched or value in literal_matches]
+        if not matched and anchor.get('match_scope') != 'non_record_lines':
+            if native_labels is None:
+                native_labels = _native_link_label_surface(content, exclusions) or ''
+            if native_labels:
+                matched = _anchor_matches(anchor, records, visible, schema,
+                                          anchor_visible=native_labels)
         anchors.append({**anchor, "matched": matched, "pass": bool(matched)})
     anchor_errors = ["missing_stable_anchor:" + r["id"] for r in anchors if not r["pass"]]
     if anchors_required:

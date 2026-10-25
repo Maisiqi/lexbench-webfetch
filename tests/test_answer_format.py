@@ -95,3 +95,29 @@ def test_cli_rescores_saved_answer_with_saved_metadata(tmp_path):
     run = subprocess.run(args, capture_output=True, text=True)
     assert run.returncode == 1
     assert 'answer_format must be' in run.stderr
+
+
+@pytest.mark.parametrize('heading', [
+    'Controllers & Actions', 'Screenshots & Gifs',
+    'Returning Furniture & Select Decor', 'Literal &amp; notation',
+    'Use <style> literally',
+])
+def test_plain_text_section_titles_preserve_literal_characters(heading):
+    case = {'id': 'literal-section', 'url': 'https://example.test/manual',
+            'document_structure': {
+                'version': 1, 'minimum_heading_coverage': 1,
+                'minimum_body_chars': 20,
+                'headings': [{'id': 'section', 'text': heading, 'level': 2,
+                              'body_required': True}],
+            }}
+    metadata = {'answer_format': 'plain_text'}
+    answer = (heading + '\nA complete description of this feature.').encode()
+    metrics = score_attempt(case, answer, ok=True, metadata=metadata)
+    assert metrics['document_structure_pass']
+    assert task_passed(True, metrics)
+    missing = score_attempt(case, b'A complete description of this feature.',
+                            ok=True, metadata=metadata)
+    assert not missing['document_structure_pass']
+    assert not task_passed(True, missing)
+    empty = score_attempt(case, heading.encode(), ok=True, metadata=metadata)
+    assert not task_passed(True, empty)

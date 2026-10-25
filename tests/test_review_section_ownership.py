@@ -44,8 +44,8 @@ def test_titles_and_total_length_cannot_replace_local_section_body(reviewed, cas
     # The proposed title-presence substitute has every declared title and
     # exceeds the total floor, but none of the actual feature descriptions.
     substitute['required_facts'] = [*substitute.get('required_facts', []),
-                                   *({'id': h['id'], 'alternatives': [h['text']]}
-                                     for h in section['headings'])]
+                                   *({'id': h.get('id', f'section-{i+1}'), 'alternatives': [h['text']]}
+                                     for i, h in enumerate(section['headings']))]
     substitute['min_content_chars'] = max(substitute.get('min_content_chars', 0),
                                           section['minimum_body_chars'])
     assert task_passed(True, score_attempt(substitute, answer.encode(), ok=True))

@@ -6,6 +6,7 @@ import pytest
 from lexbench_webfetch.body_coverage import (
     _ordered_ending_similarity, body_requirements, evaluate_body_requirements,
 )
+from lexbench_webfetch import annotation_revisions
 from lexbench_webfetch import benchmark as bench
 
 OPENING = 'A telescope observes distant galaxies and documents stellar motion. ' * 20
@@ -83,8 +84,8 @@ def test_annotation_preserves_public_and_executable_reference_equivalence():
     executable = {'body_requirements': contract(4)}
     original = deepcopy(executable['body_requirements'])
     public = bench.public_task(executable)
-    bench._revise_body_ending_order(executable, True)
-    bench._revise_body_ending_order(public, True)
+    annotation_revisions._revise_body_ending_order(executable, True)
+    annotation_revisions._revise_body_ending_order(public, True)
     assert bench.public_task(executable) == public
     original['version'] = 5
     assert executable['body_requirements'] == original
@@ -95,7 +96,7 @@ def test_annotation_requires_explicit_true(enabled):
     case = {'body_requirements': contract(4)}
     before = deepcopy(case)
     with pytest.raises(ValueError):
-        bench._revise_body_ending_order(case, enabled)
+        annotation_revisions._revise_body_ending_order(case, enabled)
     assert case == before
 
 
@@ -110,7 +111,7 @@ def test_annotation_cannot_upgrade_invalid_or_non_strict_bodies(replacement):
     case = {'body_requirements': rule}
     before = deepcopy(case)
     with pytest.raises(ValueError):
-        bench._revise_body_ending_order(case, True)
+        annotation_revisions._revise_body_ending_order(case, True)
     assert case == before
 
 
@@ -124,7 +125,7 @@ def test_registered_revision_changes_only_the_95_fixed_body_versions():
     revised = deepcopy(original)
     for case in revised['cases']:
         if case['id'] in operations:
-            bench._revise_body_ending_order(case, operations[case['id']])
+            annotation_revisions._revise_body_ending_order(case, operations[case['id']])
     assert original == snapshot
     changed = 0
     for old, new in zip(original['cases'], revised['cases']):
@@ -135,3 +136,20 @@ def test_registered_revision_changes_only_the_95_fixed_body_versions():
             changed += 1
         assert new == expected
     assert changed == 95
+
+
+def test_annotation_dispatch_respects_dependencies_not_json_key_order():
+    case = {'body_requirements': contract(4)}
+    body = case['body_requirements']
+    body['minimum_floor'] = .5
+    body['minimum_region_passes'] = 1
+    change = {'body_ending_order': True, 'body_thresholds': {
+        'minimum_coverage': .8, 'minimum_floor': .8,
+        'minimum_region_passes': len(body['regions']),
+    }}
+    original = deepcopy(change)
+    annotation_revisions.apply_annotation_change(case, change, None)
+    assert body['version'] == 5
+    assert body['minimum_floor'] == body['minimum_coverage'] == .8
+    assert body['minimum_region_passes'] == len(body['regions'])
+    assert change == original

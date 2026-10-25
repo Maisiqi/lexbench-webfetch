@@ -921,10 +921,13 @@ def evaluate_content(
     if document_structure:
         from .document_structure import evaluate_document_structure
         structure = evaluate_document_structure(
-            prose_content, document_structure, html_document=is_html,
+            prose_content if is_html else visible_content,
+            document_structure, html_document=is_html,
         )
         result.update(structure)
         result["content_pass"] = bool(result["content_pass"] and structure['document_structure_pass'])
+        result["content_decision_basis"] = (
+            result.get("content_decision_basis", "base_acceptance") + "_and_document_structure")
     return result
 
 
