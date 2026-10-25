@@ -250,10 +250,21 @@ objects are identical before and after that reduction.
 The registered review contains 529 entries, including evidence-only records.
 The 738 retained external review-input bindings come from the hash-verified evidence set,
 including the qualified Microsoft, Apple and Douyin source-replay controls.
-The article suite was exported from its hash-verified frozen inputs with the
-selected revision: all 95 available reference controls passed. Full frozen-input
-exports for the other four suites have not yet been reverified; source-level
+The article suite exports from its hash-verified frozen inputs without an
+external review directory: 94 changed-case controls pass and article-072
+remains unverified. Neither completeness flag is true. With the optional verified evidence
+directory, all 95 changed-case controls pass; `changed_rules_complete` is true,
+but whole-task `complete` remains false because some controls cover only the
+changed body rules. Full frozen-input
+exports for the other four suites have not been reverified; source-level
 controls and unit tests are not substitutes for those exports.
+
+Keep the original `lexmount-doc` URL. On 2026-10-26, both public resolvers
+8.8.8.8 and 1.1.1.1 returned public addresses (104.21.36.225 and 172.67.200.7)
+for `browser.lexmount.com`. This rules out a universally private DNS mapping
+in those observations; it does not by itself prove current page completeness.
+The ten hash-verified saved outputs are covered by the scorer comparison.
+A new URL would require a new input version, not a score-only correction.
 
 The 288-case diagnostic migration was checked against actual source artifacts:
 238 prior results were reused only after matching complete contract, proof and
