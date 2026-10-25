@@ -50,7 +50,7 @@ uv run --frozen lexbench-webfetch export \
 
 导出会验证输入哈希，将清单中的文件写入新目录。仓库不分发完整参考快照，目前也没有公开输入包。所需文件和获取条件见[数据指南](../docs/data.md)。
 
-经过审核的评分修订需通过 `--revision` 显式选择，独立评审证据通过 `--review-source` 提供。详见[标注修订及评分规则](data.md)和仍在进行的 [550 案例审查](review-550-decisions.md)。这些修订不自动认证历史成绩。
+经过审核的评分修订需通过 `--revision` 显式选择，独立评审证据可选，通过 `--review-source` 提供；缺少证据会标为未验证，不算通过。详见[标注修订及评分规则](data.md)和[550 案例规则修订](review-550-decisions.md)。这些修订不自动认证历史成绩。
 
 ## 给响应评分
 

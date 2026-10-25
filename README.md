@@ -50,7 +50,7 @@ uv run --frozen lexbench-webfetch export \
 
 Export verifies the input hashes and writes the declared files to a new directory. Full reference captures are not distributed in this repository; there is currently no public input bundle. The [data guide](docs/data.md) describes required files and access.
 
-Reviewed scoring corrections are selected explicitly with `--revision`; external review evidence uses `--review-source`. See [annotation revisions and scoring details](docs/data.md) and the ongoing [550-case review](docs/review-550-decisions.md). These revisions do not certify historical scores.
+Reviewed scoring corrections are selected explicitly with `--revision`; external review evidence is optional via `--review-source`. Missing evidence is reported as unverified, not passed. See [annotation revisions and scoring details](docs/data.md) and the [550-case rule revision](docs/review-550-decisions.md). These revisions do not certify historical scores.
 
 ## Score an answer
 

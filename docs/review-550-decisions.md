@@ -27,7 +27,7 @@ not the number of changed scoring rules.
 | 8. Stable-anchor guidance | Sections 2, 6, 11 and 14 consistently require selected stable text by default. Adding body or record rules does not automatically make anchors optional. |
 | 9. 25 replacement sources | Register actual source locations and observations, including record-count provenance. Remove 28 of 75 anchors across 11 cases with only one verified observation; keep source-bound body and record requirements. All 11 complete source controls pass and error-page controls fail. |
 | 10. Error-page words | Remove generic lexical vetoes in all 325 affected cases, without adding diagnostic lists. Existing content requirements decide the verdict; only explicit task output exclusions remain. |
-| 11. Long-document headings | Add real section headings, not sampled opening phrases, navigation or embedded-card metadata. Audit covers 22 articles, 15 documents and RFC 9110. Heading presence plus five-block coverage is an approximate completeness check, not proof that every sentence survives. |
+| 11. Long-document headings | Require source-owned section content: RFC 9110 uses local section checks, while twelve reference-bound cases use same-count content facts instead of title-only facts. Existing body coverage remains; neither mechanism proves every sentence survives. |
 | 12. Broad record scopes | Tighten risk 248, Twitch and Rakuten using target ownership and link identity. Retain Bilibili's one-resource target: a homepage-wide quota would change the task. |
 | 13. Changing links and video text | Keep legitimate third-party news links for 2345. Video 09 asks only for title and publisher; do not add a description/subtitle task. |
 | 14. Fixed 300-character floors | Retain 71 floors already backed by stronger gates: 60 document-body minima and 11 reference-body requirements. An additional universal half-length gate is redundant. |
@@ -74,6 +74,44 @@ not the number of changed scoring rules.
   the tasks explicitly exclude them. Complete target answers pass; adding the
   excluded content fails without breaking other required facts.
 
+## Section ownership and page completeness
+
+Navigation, feedback controls, references and related links remain page content.
+They cannot substitute for missing article prose, but that does not justify
+removing their existing requirements. The 17 reviewed document cases retain
+those requirements; empty compatibility placeholders already waive local body.
+Full hash-verified source controls pass, while headings-only controls fail.
+
+For both RFC 9110 cases, local section-body checks replace the added heading-name
+facts. All 18 main sections need local content; the existing five 80% reference
+regions and original mandatory facts remain. Complete HTML and plain text pass;
+removing Methods while retaining the TOC fails. Deleting each main chapter from
+the plain-text source also fails. Numbered outline entries and wrapped titles
+cannot supply prose. This does not claim that every sentence is preserved.
+
+Twelve reference-bound long-document cases (Wikipedia AI, Node.js, WCAG, XML,
+Arch, Free Pascal, Dolphin, RFC 6455 and four paper tasks) replace 85 added
+title-only facts with 85 short facts
+from the corresponding section content. Titles in a TOC or citations cannot
+supply these facts: each selected text is absent outside its DOM-aligned section
+in the saved reference. All twelve complete plain references pass; deleting each
+selected section fails its content fact. Eight complete HTML sources now pass the
+full task. Node.js needed one additional scope correction: its frozen reference
+includes three closed README details blocks despite the task requiring no
+expansion. An existing hash-bound projection retains all default-visible ranges
+and summaries, excluding only the three DOM-verified collapsed interiors. The
+original HTML, complete reference and visible-only reference pass; removing any
+of the four retained ranges fails. The 80% threshold, original reference hash and
+shared visibility policy are unchanged. The other eleven cases keep their frozen
+body regions. The four paper tasks also pass after line-wrap hyphenation removal
+and Unicode normalization. No extra facts or new parser are added.
+
+A data-only move to section structure was insufficient in plain text: repeated
+citation labels and unformatted TOC entries can supply apparent local body. The
+source-owned content facts address that demonstrated gap without generalizing a
+new heading-order or plain-text TOC parser. This applies to the twelve reviewed
+reference-bound cases, not live mutable documents without frozen prose.
+
 ## Implementation boundary
 
 Existing shared types handle stable text, reference-body coverage, named links,
@@ -82,7 +120,7 @@ support document structure, strict body/ending revisions, reference-preserving
 role changes, explicit answer formats, scoped identity and evidence binding.
 Most additional contracts are opt-in. Two shared corrections enforce already
 declared body facts and deduplicate wildcard destinations; their complete
-frozen-case inventory is in [the shared impact audit](review-550-shared-impact.md).
+frozen-case inventory is in [the shared impact audit](data.md#shared-scoring-impact-audit).
 No domain-specific scorer branch is introduced.
 
 A necessary shared table exclusion option adds 18 lines and removes three across
@@ -97,11 +135,120 @@ Independent review sources cannot replace frozen parent inputs. Changes are
 reviewed in [PR #12](https://github.com/lexmount/lexbench-webfetch/pull/12),
 targeting the original repository’s main branch.
 
+## Directory scope controls
+
+Ten reviewed directory/content-link pages were checked at the composite-group
+level using complete source HTML, target-container HTML, HTML outside that
+container, and an outside-link Markdown projection. All complete and target
+controls pass; all outside controls fail. These are group-level controls, not
+full-task or frozen-suite export claims. Existing path, identity and quota
+requirements suffice for the observed non-curl controls; do not add blanket
+scope configuration without a demonstrated gap.
+
+Curl is the confirmed exception before revision: 42 outside links could satisfy
+its 37-record quota in a link projection. The existing start-pattern mechanism
+now starts at Documentation Overview, and the root breadcrumb is excluded from
+the record path. Complete HTML and Markdown still pass. CSS 2.1 is itself a
+specification directory, so its table of contents remains target content.
+
+Grouped-table extraction and caption-specific schema, selector and capture checks
+live in `structured_tables.py`. Composite groups retain their shared field-type
+validator; no duplicate field validator or reverse module dependency is added.
+
+The NOAA climate-card group also passes complete-page and `main#main` controls
+with four records. Removing main leaves zero qualifying records in both HTML
+and link-preserving text. Keep the existing route-qualified four-record rule;
+this source control does not justify another scope field. These are group-level
+checks, not a complete-task verdict.
+
+## Annotation edit ownership
+
+Score-only edit handlers live together in `annotation_revisions.py`. An ordered
+handler map applies field updates, contract patches, thresholds, ending upgrades,
+reference projections, region moves and final removals. JSON key order does not
+change these dependencies. Frozen-parent checks and review verification remain
+in the benchmark loader. All 550 revised public cases and review results match
+the preceding dispatcher on the same current rule data.
+
+## Retained implementation choices
+
+- Section checks consume the already decoded visible-text surface, fixing
+  literal `&` headings without adding format flags throughout the parser stack.
+  Explicit plain-text handling still protects PDF angle brackets. Regression
+  tests cover ampersands, literal entities, angle brackets and real hidden HTML.
+  The artifact bytes remain unchanged. Keep this local correction instead of
+  broadening the format-plumbing change across unrelated scoring paths.
+
+- Keep section-contract validation at the scoring entry point: callers may pass
+  mutable dictionaries directly to `score_attempt`, without using the dataset
+  loader. A valid direct call succeeds; a subsequent invalid section floor is
+  rejected. Loader-only validation would leave this supported path unchecked;
+  no trusted-object cache or parallel unchecked scoring API is introduced.
+
+- Definition support follows actual markup: the reviewed `os.path` source has
+  35 `dt` entries, each followed by a `dd` explanation. Removing definition mode
+  rejects the complete source. The declared Feishu title selectors match `div`
+  elements; its source has no native `h2` elements. Removing those selectors
+  likewise rejects the complete article. Keep both opt-in mechanisms rather
+  than substituting title-presence checks that lose local-content ownership.
+
+- Do not impose a blanket 20-heading cap. All 17 affected mutable-document
+  cases lack frozen body-coverage requirements, so the proposed 80% prose
+  fallback is absent. Three ordinary documents already have more than 20
+  level-one/two headings; the definition case has 35 actual function entries.
+  Truncating these lists would discard checks without a source-based boundary.
+  Omitted default IDs and body-required flags reduce serialization without
+  changing which sections are checked.
+
+## Optional review evidence
+
+The final reviewer proposal to delete all independent evidence bindings is not
+adopted. Of 529 review entries, 242 cite independent sources and 18 cite no
+frozen source at all. Removing those citations would erase their registered
+basis; substituting `dataset.json` would falsely imply that the frozen file
+supports the observation. The article-072 comparison below also shows that
+reverting a rule does not necessarily repair an incomplete frozen reference.
+Keep hash-bound provenance and optional executable controls, while requiring
+all original frozen input checks. Independent observations qualify only the
+stated source and controls; they do not certify historical provider outcomes
+or replace the four unavailable exact input bundles. No captured page content
+is committed to this repository.
+
+For 137 entries whose sole rule change clears generic forbidden words, use the
+frozen task as the policy-change source and retain the existing shared scoring
+regressions. Fresh observations are unnecessary for that correction. Removing
+232 exclusively referenced external bindings and repeated per-case explanations
+saves 202,584 bytes across the two JSON files without changing any scoring rule.
+Available body/reference checks remain active; absent executable references
+remain explicitly unverified.
+
+Export verifies the original frozen inputs regardless of `--review-source`.
+Omitting that option skips only declared independent review files; it does not
+skip frozen sources or mark missing evidence as passing. Available reference
+results remain in the report. A missing positive with omitted review evidence
+is unavailable, while an accepted negative control still fails. Supplied review
+evidence remains hash-checked and complete. Source registrations are retained:
+they provide provenance and executable positive controls for revised rules.
+The articles frozen-input export without review evidence materializes all 100
+cases: 94 changed-case controls pass and article-072 is unavailable. Its failed
+body-only candidate remains recorded; neither completeness flag is true. This
+is an export check, not a claim of full positive-reference qualification.
+A separate check scores the exact frozen article-072 body under both original
+and revised annotations. Both pass body coverage and fail page identity plus
+the same 19 existing stable anchors. Thus this incomplete body is not evidence
+that the revised headings introduced a regression; reverting those changes
+would not make it a complete page control. Removing navigation requirements to
+force this body-only reference to pass would contradict the task. This finding
+must be considered separately from whether the export API needs optional review
+inputs; it does not establish that every part of that mechanism is necessary.
+
 ## Verification and limits
 
-The final integration check passed 2975 tests and 338 subtests in 200.02 seconds.
+The final integration check passed 3023 tests and 342 subtests in 217.27
+seconds, including the metadata-only evidence reduction. All 529 rule-change
+objects are identical before and after that reduction.
 The registered review contains 529 entries, including evidence-only records.
-All 969 external review-input bindings were checked against the preserved bytes,
+The 738 retained external review-input bindings come from the hash-verified evidence set,
 including the qualified Microsoft, Apple and Douyin source-replay controls.
 The article suite was exported from its hash-verified frozen inputs with the
 selected revision: all 95 available reference controls passed. Full frozen-input
@@ -124,7 +271,7 @@ supply list-count evidence. These limits are not hidden by weakening requirement
 Detailed evidence and remaining-case dispositions belong in the registered review
 records and external audit collection, rather than an expanding development log.
 
-## V2 review decisions
+## Rule design and controls
 
 - Remove the independent body-threshold and ending revision files: their
   operations already exist in the selected revision. Patch contract fields and
@@ -178,12 +325,12 @@ records and external audit collection, rather than an expanding development log.
   yield twelve complete rows; removing the country-caption association yields
   zero. Ordinary table matching cannot preserve the requested fields.
 
-These controls do not establish that every homepage boundary or every retained
-error-word rule is correct. Those items require their own source checks. Shared
+These controls do not establish that every homepage boundary is correct.
+Each boundary requires its own source checks. Shared
 behavior changes and their complete frozen-case inventory are recorded in
-[the impact audit](review-550-shared-impact.md).
+[the impact audit](data.md#shared-scoring-impact-audit).
 
-### V2 homepage ownership checks
+### Homepage ownership checks
 
 GitHub, Zoom, Volcengine and Elsevier now scope product records to their verified
 main containers and accept future paths within the same product families. Zoom
@@ -223,6 +370,14 @@ no longer applies after their actual content requirements were added.
 
 ### Remaining homepage route decisions
 
+The small homepage quotas follow the observed target regions: Microsoft has
+three visible non-carousel story cards, Apple has three visible text-heading
+tiles (six image/hidden-title tiles are excluded), and Figma has two visible
+non-carousel design/build destinations. These checks supplement retained page
+requirements; they do not claim that two or three records cover every homepage
+component. Exact observations and omission controls remain in each review entry.
+
+
 PayPal and NIH accept new destinations within their observed functional route
 families instead of enumerating current feature names. All three preserved source
 projections pass. Known navigation/stable-label shells yield four of eight and
@@ -237,7 +392,12 @@ can support an ownership rule. Current browser access redirects to a different
 locale; that is not a substitute input. NIH's fresh browser request returns a
 verification page, so no new DOM claim is made for it either.
 
-Weather already uses generic article paths, Hao123 uses publisher article IDs,
+Weather already uses generic article paths. Its earlier text projections lost
+article links when displayed headings differed from link labels containing video
+durations. Restoring only uniquely matched URLs from the same hash-verified
+observations yields 17, 13 and 13 distinct records; all three projections pass
+the unchanged quota of 11. This corrects the test fixture, not the contract, and
+does not establish complete DOM ownership. Hao123 uses publisher article IDs,
 and 1688 uses product records without fixed names or prices. Their known-label
 navigation controls yield zero qualifying records. Namu already accepts arbitrary
 wiki article paths; its known-label shell yields 22 against 68 required records.
@@ -248,11 +408,11 @@ section labels for their composite boundaries, so their boundaries are retained.
 
 ### Content-only verdict policy
 
-The user clarified that generic login, verification and error words must never
-be sufficient to reject content. Remove the remaining 33 generic lexical vetoes,
-including the 25 identity-oriented cases and the eight previously unqualified
-cases. This corrects the earlier retention decision; it adds no scorer logic,
-new diagnostic lists, task requirements, source observations or collection inputs.
+Generic login, verification and error words are not sufficient to reject
+content. All 325 affected cases use their positive content requirements instead
+of generic lexical vetoes, including identity-oriented cases and cases with
+unverified source coverage. No diagnostic lists or additional task requirements
+are needed for this policy.
 
 A synthetic answer containing every required label plus verification text can
 still satisfy an identity-oriented contract. That exposes the limits of those
@@ -262,20 +422,20 @@ answer. Missing required labels, prose or records still fails existing checks.
 Explicit exclusions requested by the task (such as specified ad/button content)
 remain unchanged.
 
-The eight source/recognition issues below are separate from this word-veto
-correction. They remain outside this minimal change:
+The following source and recognition limitations are not resolved by removing
+generic lexical vetoes:
 
 
 | Cases | Evidence and decision |
 | --- | --- |
-| Webfetch challenge 02, 04, 06 | JD, Zhihu and Dianping observations return login/verification pages. Normal target coverage is not verified by those observations. |
-| Dynamic 061 Juejin | The preserved observation is `/hot/articles`, while the task requests `/`; do not change the task URL to fit evidence. |
-| Dynamic 056 Vant | Complete English observations conflict with existing Chinese facts. The separately qualified correction for dynamic 051 does not establish this case's language binding. |
-| Dynamic 014 RSuite | Source records pass, but the existing Resolvers anchor is absent. Removing an error-word list does not resolve that source/contract discrepancy. |
-| Dynamic Angular phones | Complete source facts pass, but the record parser yields one against twenty required. The quota is preserved; the record-recognition discrepancy is separate. |
-| Douyu homepage | Three saved sources miss two mandatory anchors. No verified minimal anchor correction is available. |
+| Webfetch challenge 02, 04, 06 | JD, Zhihu and Dianping observations return login/verification pages. Normal target coverage is not verified. This is missing positive evidence, not proof that the frozen rule is incorrect; do not replace the URL, disable scoring or delete required content merely to accept the observed shell. Preserve the original tasks and report this qualification gap. |
+| Dynamic 061 Juejin | Both saved visits started at `/hot/articles` but ended at the task homepage `/`. Their complete HTML already passes with 20 records; no rule change is needed for those pages. These redirects do not establish a direct-homepage collection control, so retain that qualification and the original task URL. |
+| Dynamic 056 Vant | The frozen task explicitly declares en-US and the English final URL. Accept the observed English introduction and LICENSE alongside the original Chinese alternatives. Both saved HTML observations pass; removing either text fails. The observations have identical bytes, and these controls use restored review references rather than a complete frozen-suite export. |
+| Dynamic 014 RSuite | Fixed adjacent native-link labels being concatenated into Resolversschema-typed. Resolvers exists in both saved HTML sources. Both complete pages now pass; removing or hiding that label fails. No required anchor is removed. |
+| Dynamic Angular phones | Fixed HTML normalization losing native list-item boundaries. The complete captured page now yields 20 records and passes in both suites; removing a record or description fails. The 20-record quota and original required text remain. |
+| Douyu homepage | Remove only the two old fixed navigation labels absent from all three complete observations. Preserve the other 19 anchors and named-record requirements. Complete projections pass; omitted links and retained-label omissions fail. |
 
-All eight receive the same generic-word removal. Their other rules remain
-unchanged, and this policy correction does not resolve or certify those existing
-source and recognition discrepancies. The original tasks and frozen inputs are
+All eight receive the same generic-word removal. The Angular parsing defect is
+resolved separately without changing its rules. The RSuite native-link boundary defect is also resolved separately. The Douyu two-label correction is independently source-backed. The Vant correction follows its own explicit English target binding. The other four
+source/contract discrepancies are not resolved by the generic-word policy correction. The original tasks and frozen inputs are
 preserved.
