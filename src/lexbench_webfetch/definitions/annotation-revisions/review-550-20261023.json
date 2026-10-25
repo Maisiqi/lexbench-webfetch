@@ -16424,7 +16424,7 @@
             "www.volcengine.com",
             "volcengine.com"
           ],
-          "entry_path": "/product/(?:doubao|dramart|trae|ark|agentkit|hiagent|SecurityIntelligent|ml-platform|ecs|TOS|rds-mysql|AICC|llm-scan|aipp|agentsentry|feilian)/?",
+          "entry_path": "/product/(?!list/?$)[^/?#]+/?",
           "record_count_policy": {
             "list_type": "variable",
             "source_observed_count": 16,
@@ -16437,6 +16437,12 @@
             "minimum_records": 13,
             "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
             "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Sixteen distinct named product routes in actual main product/security sections; excludes catalog/contact/trust/report URLs. Three routes repeat in footer but fall below required floor."
+          },
+          "entry_scope": {
+            "html_selector": "main.page",
+            "start_pattern": "^全部产品$",
+            "end_pattern": "^关于我们$",
+            "required_end": true
           }
         }
       }
@@ -16456,7 +16462,7 @@
           "hosts": [
             "github.com"
           ],
-          "entry_path": "/(?:features/(?:ai/github-app|copilot|actions|codespaces|issues|discussions|code-review)|mobile|marketplace|security/advanced-security(?:/(?:code-security|software-supply-chain|secret-protection))?|sponsors)/?",
+          "entry_path": "/(?:features/[^?#]+|security/[^?#]+|mobile|marketplace|sponsors)/?",
           "record_count_policy": {
             "list_type": "variable",
             "source_observed_count": 14,
@@ -16469,6 +16475,12 @@
             "minimum_records": 12,
             "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
             "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Named feature links in the initially loaded workflow, security and collaboration modules; unique destinations merge Projects and Issues."
+          },
+          "entry_scope": {
+            "html_selector": "main",
+            "start_pattern": "^GitHub features$",
+            "end_pattern": "^Site-wide Links$",
+            "required_end": true
           }
         }
       }
@@ -16484,24 +16496,33 @@
       "acceptance_patch": {
         "set": {
           "schema": "named_link",
-          "minimum_records": 12,
+          "minimum_records": 10,
           "hosts": [
             "www.zoom.com"
           ],
-          "entry_path": "/en/products/(?:ai-assistant(?:/features/ai-note-taking)?|virtual-meetings|meeting-rooms|voip-phone|collaborative-docs|contact-center|cx-insights|bonsai|workvivo|ai-productivity-suite|webinars|brighthire|virtual-agent)/?",
+          "entry_path": "/en/products/[^?#]+/?",
           "record_count_policy": {
             "list_type": "variable",
-            "source_observed_count": 14,
+            "source_observed_count": 12,
             "source_observation_counts": [
-              14,
-              14,
-              14
+              12,
+              12,
+              12
             ],
             "required_ratio": 0.8,
-            "minimum_records": 12,
+            "minimum_records": 10,
             "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
-            "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Named product links in the first product navigation and page modules. Product destinations only, no pricing/report/news URLs."
-          }
+            "reason": "Three independent initial rendered sources contain twelve unique named products in the main carousel. Header-only products and generic Explore products buttons do not count. Require ceil(12 * 0.8) = 10; product names and slugs may change."
+          },
+          "entry_scope": {
+            "html_selector": "main#main",
+            "start_pattern": "^Explore products$",
+            "end_pattern": "^Language$",
+            "required_end": true
+          },
+          "title_exclusion_patterns": [
+            "(?:Explore products\\s*)+"
+          ]
         }
       }
     },
@@ -16584,7 +16605,7 @@
           "hosts": [
             "www.elsevier.com"
           ],
-          "entry_path": "/products/(?:leapspace|sciencedirect|scopus|clinicalkey/clinicalkey-ai|sherpath/sherpath-ai|complete-anatomy|reaxys|embase|knovel)/?",
+          "entry_path": "/products/[^?#]+/?",
           "record_count_policy": {
             "list_type": "variable",
             "source_observed_count": 9,
@@ -16597,6 +16618,12 @@
             "minimum_records": 8,
             "source_evidence_sha256": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
             "reason": "Initially loaded independent anonymous source rounds; conservative minimum observed distinct named destinations, rounded up at 80%. Nine product cards in Academic/Government, Health and Industry modules; footer all-products navigation is excluded."
+          },
+          "entry_scope": {
+            "html_selector": "main#main-content",
+            "start_pattern": "^Resources for Editors$",
+            "end_pattern": "^Footer navigation$",
+            "required_end": true
           }
         }
       }
@@ -20437,7 +20464,15 @@
       "review-evidence/popular-sites/generic-diagnostic-migration/china-homepage-069-3dmgame-com.json": "7499e4f5a8755afe17c11357d1eb2b3b3ffc6d5c2f203a752f36d3d5f39a4e2a",
       "review-evidence/popular-sites/generic-diagnostic-migration/china-homepage-071-2345-com.json": "aba899a83629ae66ec3cc58608afeb16bf4796a35937c4605d32ad03a007c847",
       "review-evidence/popular-sites/generic-diagnostic-migration/china-homepage-072-cctv-com.json": "015d7fbd307da54a64b34cb600e815346e3f43f96d89af3425a3769c59d02588",
-      "review-evidence/popular-sites/generic-diagnostic-migration/china-homepage-078-nga-cn.json": "5b2b8923f054d65f2fe90164b61be75713b8bb8e6bebb3f0350337e0cfe9a1f1"
+      "review-evidence/popular-sites/generic-diagnostic-migration/china-homepage-078-nga-cn.json": "5b2b8923f054d65f2fe90164b61be75713b8bb8e6bebb3f0350337e0cfe9a1f1",
+      "review-evidence/popular-sites/v2-homepage-dom/volcengine.html": "fd8b6944b899b9426977ad2156098a97789761451e12ee9f46184460dd8ff61f",
+      "review-evidence/popular-sites/v2-homepage-dom/china-homepage-075-volcengine-com-controls.json": "7fc24a0395e92ead697c57383c3c7e1d1b5163b9c744d9cfe055d1693df2bf41",
+      "review-evidence/popular-sites/v2-homepage-dom/github.html": "abdc0c7cf4e3e8ef7c2910f4a17c6a699d98f4042b93869d60601e6003c4eb7f",
+      "review-evidence/popular-sites/v2-homepage-dom/global-homepage-042-github-com-controls.json": "3b76c093b706b39366e4e61792328e9231c31a3789935a8632eb95ca4b541d47",
+      "review-evidence/popular-sites/v2-homepage-dom/elsevier.html": "f32de1a69bf70cdb3df5e7680bcff18d02aad4096924c7e670613751aad5ec2b",
+      "review-evidence/popular-sites/v2-homepage-dom/china-homepage-081-elsevier-com-controls.json": "26b8a20a48ed38570f283be1838516c189efd91618eb3d7d6097ea836be1d824",
+      "review-evidence/popular-sites/v2-homepage-dom/zoom.html": "b25525c9cfd15508ca23f65fd892621580c85cda1e26ee94ec3efa28d778b0dc",
+      "review-evidence/popular-sites/v2-homepage-dom/zoom-controls.json": "9c8aa7bb8338d704ca001998ac15db710aaae46f83acaa0023b23824fab406fa"
     },
     "articles": {
       "review-evidence/articles/article-090/body.html": "0667feb4e6b962f0073241c2b277367e5869f72bc0e5ebab52fee555d82f1b1d",

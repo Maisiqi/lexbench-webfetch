@@ -164,3 +164,28 @@ These controls do not establish that every homepage boundary or every retained
 error-word rule is correct. Those items require their own source checks. Shared
 behavior changes and their complete frozen-case inventory are recorded in
 [the impact audit](review-550-shared-impact.md).
+
+### V2 homepage ownership checks
+
+GitHub, Zoom, Volcengine and Elsevier now scope product records to their verified
+main containers and accept future paths within the same product families. Zoom
+uses `main#main`: its navigation dropdowns also contain `main` elements, so a
+bare `main` selector is insufficient. Generic Explore products buttons cannot
+supply product names. Three saved initial rounds each show twelve named main
+carousel products; their 80% quota is ten, replacing the previous quota based on
+fourteen page-wide destinations. The fresh anonymous HTML also returns twelve
+named products after generic buttons are excluded.
+
+GitHub and Zoom pass complete fresh anonymous HTML controls. Volcengine and
+Elsevier pass their three saved, link-preserving text projections. Their fresh
+HTTP DOM verifies ownership only: Volcengine's SSR omits rendered navigation,
+and Elsevier returns a different locale. Neither is claimed to be a new full
+positive for the old complete-page language/anchor requirements. Main removal
+and footer-link controls fail, while renamed valid product destinations pass.
+The record controls and source hashes are registered outside frozen inputs.
+
+These selectors are observed site structure, not a promise that future redesigns
+will retain them. Text boundaries use section or footer labels, rather than
+current product names; an omitted required boundary fails closed. Tests cover
+both HTML and Markdown, new product paths, navigation/footer-only records,
+missing boundaries and Zoom's misleading navigation `main` elements.

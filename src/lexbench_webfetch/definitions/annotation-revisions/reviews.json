@@ -239,7 +239,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "17a40d9f2d9511d658bfa221090de98bc42ae6903e2eca7f0a804fd87eb135f0",
+      "revision_sha256": "0e8c81a5aba6bef6944de9c455e3caf478de8f561d4d5113cc957d7fa95bf77d",
       "changes": [
         {
           "suite": "webfetch",
@@ -12124,8 +12124,8 @@
         {
           "suite": "popular-sites",
           "case_id": "china-homepage-075-volcengine-com",
-          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "6f8ed006d095714a302ff0a9a32b4299e3cf500d6e2ac3b7daffd0824a3b9d6e",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: require product links inside the actual main body; accept future routes in the same product families instead of enumerating current product slugs. Text output uses observed section/footer boundaries; HTML uses a verified main owner. Navigation/footer-only and new-route controls cover ownership and changing destinations. Existing quotas and required anchors are unchanged.",
+          "changes_sha256": "172f3d142cef8fea2efa7d7f12235a5b9156b1b93cafedeed8202dcdda3528b0",
           "sources": [
             {
               "path": "dataset.json",
@@ -12181,6 +12181,16 @@
               "path": "review-evidence/popular-sites/generic-diagnostic-sources/cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77.json",
               "sha256": "cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77",
               "scope": "Exact source or source-control replay input used by the bound qualification record. Original local path mapping is retained in the audit proof."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/volcengine.html",
+              "sha256": "fd8b6944b899b9426977ad2156098a97789761451e12ee9f46184460dd8ff61f",
+              "scope": "Anonymous public HTTP source used only to verify HTML body ownership and generic product routes. It is not a new frozen input or a claim that SSR/locale-dependent output contains every rendered-page anchor."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/china-homepage-075-volcengine-com-controls.json",
+              "sha256": "7fc24a0395e92ead697c57383c3c7e1d1b5163b9c744d9cfe055d1693df2bf41",
+              "scope": "Source-derived record controls: owned records, renamed valid routes, removed body, future Markdown destination and footer-only destination. Full task controls use the previously qualified source representation."
             }
           ],
           "regression_ids": [
@@ -12197,8 +12207,8 @@
         {
           "suite": "popular-sites",
           "case_id": "global-homepage-042-github-com",
-          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "f7733f06b0c601978410ea0af2bad31219029d2f2066ba15c4f404f9152960c4",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: require product links inside the actual main body; accept future routes in the same product families instead of enumerating current product slugs. Text output uses observed section/footer boundaries; HTML uses a verified main owner. Navigation/footer-only and new-route controls cover ownership and changing destinations. Existing quotas and required anchors are unchanged.",
+          "changes_sha256": "cf4add996bcd8f01ae0bff7f40f4194b4a303de0dcff14d54d189b3693f0e4d0",
           "sources": [
             {
               "path": "dataset.json",
@@ -12254,6 +12264,16 @@
               "path": "review-evidence/popular-sites/generic-diagnostic-sources/cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77.json",
               "sha256": "cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77",
               "scope": "Exact source or source-control replay input used by the bound qualification record. Original local path mapping is retained in the audit proof."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/github.html",
+              "sha256": "abdc0c7cf4e3e8ef7c2910f4a17c6a699d98f4042b93869d60601e6003c4eb7f",
+              "scope": "Anonymous public HTTP source used only to verify HTML body ownership and generic product routes. It is not a new frozen input or a claim that SSR/locale-dependent output contains every rendered-page anchor."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/global-homepage-042-github-com-controls.json",
+              "sha256": "3b76c093b706b39366e4e61792328e9231c31a3789935a8632eb95ca4b541d47",
+              "scope": "Source-derived record controls: owned records, renamed valid routes, removed body, future Markdown destination and footer-only destination. Full task controls use the previously qualified source representation."
             }
           ],
           "regression_ids": [
@@ -12270,8 +12290,8 @@
         {
           "suite": "popular-sites",
           "case_id": "global-homepage-046-zoom-us",
-          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "ae1becb97310f0be601ed4b952b377857a2b6646e678a440851f9a740457a606",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: count only the twelve named main-carousel product destinations observed in each of three initial rounds, requiring ten. Exclude generic Explore products buttons and header/footer destinations. main#main avoids navigation menus that also use main tags; text boundaries use Explore products and Language instead of a campaign slogan. New product slugs remain eligible.",
+          "changes_sha256": "eae92a03e7e6f27ec36152f837597a3e1e31e89892dc869f2a6afe6b5d06711f",
           "sources": [
             {
               "path": "dataset.json",
@@ -12327,6 +12347,16 @@
               "path": "review-evidence/popular-sites/generic-diagnostic-sources/cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77.json",
               "sha256": "cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77",
               "scope": "Exact source or source-control replay input used by the bound qualification record. Original local path mapping is retained in the audit proof."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/zoom.html",
+              "sha256": "b25525c9cfd15508ca23f65fd892621580c85cda1e26ee94ec3efa28d778b0dc",
+              "scope": "V2 main-body product scope, named-product denominator and anonymous full HTTP source positive; preserves all required stable text."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/zoom-controls.json",
+              "sha256": "9c8aa7bb8338d704ca001998ac15db710aaae46f83acaa0023b23824fab406fa",
+              "scope": "V2 main-body product scope, named-product denominator and anonymous full HTTP source positive; preserves all required stable text."
             }
           ],
           "regression_ids": [
@@ -12489,8 +12519,8 @@
         {
           "suite": "popular-sites",
           "case_id": "china-homepage-081-elsevier-com",
-          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "0c55ccf128737f7ae0c1cc1c92808c29286775e6d45737e0c18609e0e0c9d464",
+          "reason": "Require observed functional modules, named destinations, section prose or product fields in addition to every original stable anchor, page identity and navigation; no original anchor is removed. Three saved observations pass the full task and actual-source omission controls fail. Saved observations are separately bound review evidence, not original frozen inputs. This does not certify original DOM navigation ownership; all old forbidden terms remain unchanged. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: require product links inside the actual main body; accept future routes in the same product families instead of enumerating current product slugs. Text output uses observed section/footer boundaries; HTML uses a verified main owner. Navigation/footer-only and new-route controls cover ownership and changing destinations. Existing quotas and required anchors are unchanged.",
+          "changes_sha256": "f6f18c8650ae848785adf1de6dd45d5603aa084b87cf5840b90063d936a07c1a",
           "sources": [
             {
               "path": "dataset.json",
@@ -12546,6 +12576,16 @@
               "path": "review-evidence/popular-sites/generic-diagnostic-sources/cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77.json",
               "sha256": "cb7c48f3204f232bb08368b189a3032d1fcfa9e67815981b76e2d2b068050a77",
               "scope": "Exact source or source-control replay input used by the bound qualification record. Original local path mapping is retained in the audit proof."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/elsevier.html",
+              "sha256": "f32de1a69bf70cdb3df5e7680bcff18d02aad4096924c7e670613751aad5ec2b",
+              "scope": "Anonymous public HTTP source used only to verify HTML body ownership and generic product routes. It is not a new frozen input or a claim that SSR/locale-dependent output contains every rendered-page anchor."
+            },
+            {
+              "path": "review-evidence/popular-sites/v2-homepage-dom/china-homepage-081-elsevier-com-controls.json",
+              "sha256": "26b8a20a48ed38570f283be1838516c189efd91618eb3d7d6097ea836be1d824",
+              "scope": "Source-derived record controls: owned records, renamed valid routes, removed body, future Markdown destination and footer-only destination. Full task controls use the previously qualified source representation."
             }
           ],
           "regression_ids": [
