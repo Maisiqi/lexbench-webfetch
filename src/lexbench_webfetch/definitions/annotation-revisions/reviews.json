@@ -239,7 +239,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "c0de72a0f5bccf68efac05837c0295ee2c8be2132b322d287ee6f1605ee3b502",
+      "revision_sha256": "fd5496b7519376fbd5119369c84e866a4a90b00f35e5180cc29082dd8d2c1526",
       "changes": [
         {
           "suite": "webfetch",
@@ -2239,8 +2239,8 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-056-vant-ui-github-io-vant",
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness.",
-          "changes_sha256": "1e9927317fa74cb0e90bc52de006e6174ee5ea8a98786572eb7e3c1c1c143b63",
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "ef79faaad1534b338ec51007c20936339f4331f2ac363be9381fb911f721cd36",
           "sources": [
             {
               "path": "dataset.json",
@@ -2258,7 +2258,9 @@
             "all-body-regions-5-boundary",
             "all-body-regions-5-below-boundary",
             "all-body-regions-5-weak-region",
-            "all-body-regions-5-missing-region"
+            "all-body-regions-5-missing-region",
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
           ]
         },
         {
@@ -15408,8 +15410,8 @@
         {
           "suite": "popular-sites",
           "case_id": "global-homepage-038-samsung-com",
-          "reason": "Retain the existing body-text/navigation contract without inventing a quota for hidden product/theme cards. Current initial rendered evidence exposes a campaign hero rather than a qualified stable product collection; the reviewer permits retaining marketing homepages with an explanation. Add only Privacy as the actual footer label while retaining Privacy Policy. The latter appears in a cookie banner in one capture and is absent in others, so it is not a reliable mandatory literal. Three saved initial visible-text observations pass with the alias; removing privacy wording fails in all three. Every other anchor, ban, field, task URL and frozen input remains unchanged. This is a navigation-label compatibility fix, not a claim that new body coverage was added.",
-          "changes_sha256": "d2fa87698b688543bd4eee1e4489cfab301d03f62d52d224e8835d9e61f331fa",
+          "reason": "Retain the existing body-text/navigation contract without inventing a quota for hidden product/theme cards. Current initial rendered evidence exposes a campaign hero rather than a qualified stable product collection; the reviewer permits retaining marketing homepages with an explanation. Add only Privacy as the actual footer label while retaining Privacy Policy. The latter appears in a cookie banner in one capture and is absent in others, so it is not a reliable mandatory literal. Three saved initial visible-text observations pass with the alias; removing privacy wording fails in all three. Every other anchor, ban, field, task URL and frozen input remains unchanged. This is a navigation-label compatibility fix, not a claim that new body coverage was added. User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "12215ccc9e709088c84f37f4b87690327bd09380990d1822c3e7b816250ceb36",
           "sources": [
             {
               "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/samsung.json",
@@ -15429,7 +15431,9 @@
           ],
           "regression_ids": [
             "localized-equivalent-stable-anchor-passes",
-            "unrelated-label-does-not-satisfy-equivalent-stable-anchor"
+            "unrelated-label-does-not-satisfy-equivalent-stable-anchor",
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
           ]
         },
         {
@@ -15462,8 +15466,8 @@
         {
           "suite": "popular-sites",
           "case_id": "china-homepage-026-aliyun-com",
-          "reason": "Remove only four retired cloud-market menu literals: 上云迁移, 主机安全, 企业应用 and 公司注册. The saved historical observations bind each actual old menu URL; three complete current DOM observations contain neither the old labels nor those destinations after path/query normalization. The replacement taxonomy uses different names and URLs and is not claimed as an equivalent alias. Preserve the other forty-one stable anchors, schema, quota, bans, task URL and frozen inputs. Three current sources fail the old contract exactly on these four retired labels, pass the minimal revision, and fail when the still-required 产品定价 label is removed; all three historical full sources still pass. This fixes stale navigation requirements only. It does not claim new body completeness: the ten product cards are transparent and the fourth promotional tile is clipped, so those rejected quota proposals are not registered.",
-          "changes_sha256": "dc851ab1978469f6d25bed80d39c611d49f4e0746d99909c4439d59605dece61",
+          "reason": "Remove only four retired cloud-market menu literals: 上云迁移, 主机安全, 企业应用 and 公司注册. The saved historical observations bind each actual old menu URL; three complete current DOM observations contain neither the old labels nor those destinations after path/query normalization. The replacement taxonomy uses different names and URLs and is not claimed as an equivalent alias. Preserve the other forty-one stable anchors, schema, quota, bans, task URL and frozen inputs. Three current sources fail the old contract exactly on these four retired labels, pass the minimal revision, and fail when the still-required 产品定价 label is removed; all three historical full sources still pass. This fixes stale navigation requirements only. It does not claim new body completeness: the ten product cards are transparent and the fourth promotional tile is clipped, so those rejected quota proposals are not registered. User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "ec8be35c47ab37cc09ee44f33184e9457535abce47b3f2d0d9595e4d98012fa8",
           "sources": [
             {
               "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/aliyun.json",
@@ -15488,14 +15492,16 @@
           ],
           "regression_ids": [
             "current-homepage-stable-intersection-passes",
-            "obsolete-homepage-anchor-does-not-pass"
+            "obsolete-homepage-anchor-does-not-pass",
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
           ]
         },
         {
           "suite": "popular-sites",
           "case_id": "china-homepage-040-quark-cn",
-          "reason": "Retain the current contract unchanged after independent initial-source review. The broader browser/Agent/document modules exist in DOM and innerText, but composed ancestor evidence proves all three inspected section headings (智能浏览体验, 支持AI Agent调用, 文档全能处理) have an opacity-zero ancestor. Do not turn hidden or inactive carousel/tab content, logo image text, or current campaign copy into new mandatory body coverage. The existing navigation and drive-function requirements pass both current complete source observations in HTML/text; removing the still-required 文件快传分享 functional anchor fails. This evidence-only decision neither deletes old anchors nor claims a new body quota or complete review of every hidden module. The task URL and frozen inputs remain unchanged.",
-          "changes_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "reason": "Retain the current contract unchanged after independent initial-source review. The broader browser/Agent/document modules exist in DOM and innerText, but composed ancestor evidence proves all three inspected section headings (智能浏览体验, 支持AI Agent调用, 文档全能处理) have an opacity-zero ancestor. Do not turn hidden or inactive carousel/tab content, logo image text, or current campaign copy into new mandatory body coverage. The existing navigation and drive-function requirements pass both current complete source observations in HTML/text; removing the still-required 文件快传分享 functional anchor fails. This evidence-only decision neither deletes old anchors nor claims a new body quota or complete review of every hidden module. The task URL and frozen inputs remain unchanged. User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
           "sources": [
             {
               "path": "review-evidence/popular-sites/initial-gap-homepages-20261023/quark-initial.json",
@@ -15510,7 +15516,9 @@
           ],
           "regression_ids": [
             "independent-stable-anchors-pass-in-any-document-order",
-            "independent-stable-anchors-still-require-every-group"
+            "independent-stable-anchors-still-require-every-group",
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
           ]
         },
         {
@@ -19291,6 +19299,499 @@
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
             "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "challenge-02",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "5335365bb9967689fc277daeb9da96e7ee4c60426f44b2157fcb1851340aa781",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "challenge-04",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "5335365bb9967689fc277daeb9da96e7ee4c60426f44b2157fcb1851340aa781",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "webfetch",
+          "case_id": "challenge-06",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "5335365bb9967689fc277daeb9da96e7ee4c60426f44b2157fcb1851340aa781",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "5f751146143dcbe9daf46f0fb2511da1147508b3c8c4cd3377a6f3cceb82264e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-061-061-juejin-ranking",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "280fdc5c821eb362d30f97b818d5b384ca3374dcaf1842c6459336ae1b896b06",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-014-en-stable-rsuite-table",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "280fdc5c821eb362d30f97b818d5b384ca3374dcaf1842c6459336ae1b896b06",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "dynamic-content",
+          "case_id": "dynamic-angular-phones",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "543ce562628f11a803f4f360866aeb5d4319cb8b20e74cae3a8ee7782d8c69af",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "0da2bb30aaabe3ca2b93ec17b4cb88cdc1cf3ea46336bb3777fdb21c1f211b84",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-001-google-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-002-youtube-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-005-chatgpt-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-010-bing-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-011-wikipedia-org",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-012-gemini-google-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-018-baidu-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-023-cloud-microsoft",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-039-duckduckgo-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-067-deepseek-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-068-indeed-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "global-homepage-082-shein-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "60e4e5e8e77ce1fb36647af6c23b148828c9192a131676709fffebd634a2f2e0",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-008-doubao-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-033-dingtalk-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-044-kimi-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-047-qianwen-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-048-douyu-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-052-alipay-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-073-so-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-080-yandex-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-082-huawei-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-083-grok-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
+          ]
+        },
+        {
+          "suite": "popular-sites",
+          "case_id": "china-homepage-085-shopify-com",
+          "reason": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
+          "changes_sha256": "51f88a023cda4abe8a68d62e90ea7383f80fcb573704312ed3ca7b2f0f416b82",
+          "sources": [
+            {
+              "path": "dataset.json",
+              "sha256": "85544512d4cfd9459c22af1f70b1eb400844742dbf3179807662b76db2dcfc2e",
+              "scope": "Frozen task definition: generic lexical exclusions are removed as an explicit verdict-policy correction; no source text, URL, record quota or required fact changes."
+            }
+          ],
+          "regression_ids": [
+            "source-backed-diagnostic-source-discusses-status",
+            "source-backed-diagnostic-status-heading"
           ]
         }
       ]

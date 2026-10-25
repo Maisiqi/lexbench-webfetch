@@ -26,7 +26,7 @@ not the number of changed scoring rules.
 | 7. Short regions and endings | Preserve real short specifications; move genuine headings/labels to mandatory stable text where appropriate. Use actual author endings with ordered matching. Dynamic 051 uses a required title/subtitle instead of a weak short region and accepts the actual English labels. |
 | 8. Stable-anchor guidance | Sections 2, 6, 11 and 14 consistently require selected stable text by default. Adding body or record rules does not automatically make anchors optional. |
 | 9. 25 replacement sources | Register actual source locations and observations, including record-count provenance. Remove 28 of 75 anchors across 11 cases with only one verified observation; keep source-bound body and record requirements. All 11 complete source controls pass and error-page controls fail. |
-| 10. Error-page words | Remove qualified generic lexical guesses without adding duplicate diagnostic lists. 292 cases are qualified, including Vant, Microsoft, Apple and Douyin after current source controls. Retain 25 identity-oriented contracts whose challenge guard would be lost; eight others lack a qualified complete positive, as detailed below. Explicit output exclusions are treated separately. |
+| 10. Error-page words | Remove generic lexical vetoes in all 325 affected cases, without adding diagnostic lists. Existing content requirements decide the verdict; only explicit task output exclusions remain. |
 | 11. Long-document headings | Add real section headings, not sampled opening phrases, navigation or embedded-card metadata. Audit covers 22 articles, 15 documents and RFC 9110. Heading presence plus five-block coverage is an approximate completeness check, not proof that every sentence survives. |
 | 12. Broad record scopes | Tighten risk 248, Twitch and Rakuten using target ownership and link identity. Retain Bilibili's one-resource target: a homepage-wide quota would change the task. |
 | 13. Changing links and video text | Keep legitimate third-party news links for 2345. Video 09 asks only for title and publisher; do not add a description/subtitle task. |
@@ -99,8 +99,8 @@ targeting the original repository’s main branch.
 
 ## Verification and limits
 
-The final integration check passed 2971 tests and 338 subtests in 181.37 seconds.
-The registered review contains 500 entries, including evidence-only records.
+The final integration check passed 2975 tests and 338 subtests in 200.02 seconds.
+The registered review contains 529 entries, including evidence-only records.
 All 969 external review-input bindings were checked against the preserved bytes,
 including the qualified Microsoft, Apple and Douyin source-replay controls.
 The article suite was exported from its hash-verified frozen inputs with the
@@ -246,26 +246,36 @@ Retain these contracts rather than add unverified selectors. Namu, Hao123 and
 negative controls, not exhaustive DOM proofs. Spotify, OpenAI and USPS use actual
 section labels for their composite boundaries, so their boundaries are retained.
 
-### Remaining generic error-word decisions
+### Content-only verdict policy
 
-A synthetic omitted-content control supplies every mandatory stable label plus
-verification text, but no body records. Removing generic exclusions makes this
-control pass for 25 retained identity-oriented homepages; current rules reject it.
-This is a counterexample to blanket removal, not an observed website failure or
-proof that every retained word is ideal. Adding unrelated body requirements just
-to remove those words would exceed this minimal revision.
+The user clarified that generic login, verification and error words must never
+be sufficient to reject content. Remove the remaining 33 generic lexical vetoes,
+including the 25 identity-oriented cases and the eight previously unqualified
+cases. This corrects the earlier retention decision; it adds no scorer logic,
+new diagnostic lists, task requirements, source observations or collection inputs.
 
-The other eight retentions have specific source limits:
+A synthetic answer containing every required label plus verification text can
+still satisfy an identity-oriented contract. That exposes the limits of those
+content requirements; the extra words are not evidence that the required content
+is absent. Do not invent stronger requirements solely to reject that synthetic
+answer. Missing required labels, prose or records still fails existing checks.
+Explicit exclusions requested by the task (such as specified ad/button content)
+remain unchanged.
+
+The eight source/recognition issues below are separate from this word-veto
+correction. They remain outside this minimal change:
+
 
 | Cases | Evidence and decision |
 | --- | --- |
-| Webfetch challenge 02, 04, 06 | JD, Zhihu and Dianping observations return login/verification pages. No qualified complete target establishes a safe removal. |
+| Webfetch challenge 02, 04, 06 | JD, Zhihu and Dianping observations return login/verification pages. Normal target coverage is not verified by those observations. |
 | Dynamic 061 Juejin | The preserved observation is `/hot/articles`, while the task requests `/`; do not change the task URL to fit evidence. |
 | Dynamic 056 Vant | Complete English observations conflict with existing Chinese facts. The separately qualified correction for dynamic 051 does not establish this case's language binding. |
 | Dynamic 014 RSuite | Source records pass, but the existing Resolvers anchor is absent. Removing an error-word list does not resolve that source/contract discrepancy. |
-| Dynamic Angular phones | Complete source facts pass, but the record parser yields one against twenty required. Do not lower the quota merely to qualify this migration. |
+| Dynamic Angular phones | Complete source facts pass, but the record parser yields one against twenty required. The quota is preserved; the record-recognition discrepancy is separate. |
 | Douyu homepage | Three saved sources miss two mandatory anchors. No verified minimal anchor correction is available. |
 
-These eight remain unchanged; their failed qualification is not evidence that the
-proposed removal is intrinsically wrong, or that the existing contracts are fully
-validated. The original task and frozen inputs are preserved.
+All eight receive the same generic-word removal. Their other rules remain
+unchanged, and this policy correction does not resolve or certify those existing
+source and recognition discrepancies. The original tasks and frozen inputs are
+preserved.

@@ -1706,7 +1706,9 @@
       "suite": "dynamic-content",
       "case_id": "dynamic-056-vant-ui-github-io-vant",
       "before_sha256": "ef586ab58fe0de56414228f922c9be1534ac34da497047e8b6ee200f43d20694",
-      "set": {},
+      "set": {
+        "forbidden_any": []
+      },
       "remove": [],
       "body_thresholds": {
         "minimum_coverage": 0.8,
@@ -18476,7 +18478,9 @@
       "suite": "popular-sites",
       "case_id": "global-homepage-038-samsung-com",
       "before_sha256": "769b391c27e1ac6df73dc59e24524c6f0f4c4e44983afaefa632762cd476d751",
-      "set": {},
+      "set": {
+        "forbidden_any": []
+      },
       "remove": [],
       "acceptance_patch": {
         "anchors": {
@@ -18523,7 +18527,9 @@
       "suite": "popular-sites",
       "case_id": "china-homepage-026-aliyun-com",
       "before_sha256": "17e3fe5d3c57b583c831db9011eb9658deedc99839bb2a8ea0fd173c1373b7cd",
-      "set": {},
+      "set": {
+        "forbidden_any": []
+      },
       "remove": [],
       "acceptance_patch": {
         "anchors": {
@@ -18540,7 +18546,9 @@
       "suite": "popular-sites",
       "case_id": "china-homepage-040-quark-cn",
       "before_sha256": "546b9e5c55d7362ee3de767c5e66fdc5322b730c59d8364602a5abc7168d4680",
-      "set": {},
+      "set": {
+        "forbidden_any": []
+      },
       "remove": []
     },
     {
@@ -19566,6 +19574,267 @@
       "suite": "webfetch",
       "case_id": "video-blender-release",
       "before_sha256": "00df62eaa59f8329fb089564fb21a687f97cb29ca1407a862210bdc7d989719c",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "challenge-02",
+      "before_sha256": "98f3d9a5aa56b729f4bbc078ca7550e76fa3fb8c5c5fccb58828abf5751fb172",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "challenge-04",
+      "before_sha256": "2e1f421eb0e70b89ecce09a0c638fcacaabfb69df9bb844be24c9196757ed7f1",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "webfetch",
+      "case_id": "challenge-06",
+      "before_sha256": "d2706db430f3895d28477f4ec84ac2af54f3ba44e9d27d2645902eda8a20e64c",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "dynamic-content",
+      "case_id": "dynamic-061-061-juejin-ranking",
+      "before_sha256": "2f687a48a433435157f7467924ebb6f853472e6a491eb5f401634d18cd4a461e",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "dynamic-content",
+      "case_id": "dynamic-014-en-stable-rsuite-table",
+      "before_sha256": "44081f2d008a76b597e62c86176ed6d011178b2bf135654f5f7cb4f365c1bef5",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "dynamic-content",
+      "case_id": "dynamic-angular-phones",
+      "before_sha256": "65f505d2e2908d7803efcce27f715733c6be0a384bfa850196a07c94cdc0582e",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-001-google-com",
+      "before_sha256": "955fe0bbd06e9923071526e38834481ab5d77ab77de5aa7d38a2610d93c130c3",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-002-youtube-com",
+      "before_sha256": "f7106a29b5a42048fb437ace1f2ed2f28ca0239ad1cc20ee62695bdf848c7ad9",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-005-chatgpt-com",
+      "before_sha256": "70d07fbf1c5bfb9a2d989a262b38a6a28f41dc985a6e6100510501fffec4ccce",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-010-bing-com",
+      "before_sha256": "0825098d7c9e5057e69eba8b62b642293fb5c39f7c8175bd6efd00d1c957522e",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-011-wikipedia-org",
+      "before_sha256": "ba29036649403868669ad9b61e3b1d43217878b261ab0cb39a4b83e22867ffbb",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-012-gemini-google-com",
+      "before_sha256": "e9fedf84cbe88903fd9489d2487a5aa5c042b46bddd7efe4366f25b087c7e3e5",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-018-baidu-com",
+      "before_sha256": "25ec389fec46934539f96a7d26376594b31996eca3f7263dd89a0686f903e0e1",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-023-cloud-microsoft",
+      "before_sha256": "7a5ceefb18309bfd3e832dfa49479d9b2367b5d1d99d037f54ee86afa0b57e9b",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-039-duckduckgo-com",
+      "before_sha256": "2a9ac7fe534e821a3e5ef8449ebee21e8299ef7a1acf9c0cf7e12fda7f277359",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-067-deepseek-com",
+      "before_sha256": "bb747b8c315fc4cb375351385f661a95e070fa25a5e2f5485975106f8475b907",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-068-indeed-com",
+      "before_sha256": "c934b2177d3be94ed356d7fcb7f27700c9b47566e71622d4efc49a205287ff64",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "global-homepage-082-shein-com",
+      "before_sha256": "ff3192a023b406a348b15c76c52c67b718107fa60226ae28835b11550ad23f6d",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-008-doubao-com",
+      "before_sha256": "6d721253fb6222d1d313758e3bcf5318e4d44aa82841203eab689914cb7631c7",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-033-dingtalk-com",
+      "before_sha256": "f5ff88d5e361d3633128d9ffc4605ffebab35af435ec6f241197c6faccbaed8c",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-044-kimi-com",
+      "before_sha256": "7415db820f1c19510ab0bbeb1d89c9bdf2076648091d47968bbcd53144fb3624",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-047-qianwen-com",
+      "before_sha256": "5d158d6d3504f5c5178c4b13fd2379e16302cc28e5f2bfee42d6ebfaeed8bd3f",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-048-douyu-com",
+      "before_sha256": "85a40241d3ad093c314738f70df45edaa93cf138027ae09e20f7012ac73c9a03",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-052-alipay-com",
+      "before_sha256": "e4ca677b8de14659d28a2129f4e097a1aa64ab59a335beedd507a1ef21524dd7",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-073-so-com",
+      "before_sha256": "914c4a4cca43c2b6e838fc2b35526feec190b82e94b39ec1e60b5692e2d28c7e",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-080-yandex-com",
+      "before_sha256": "f4df443fac79943d114850af8c73130a4ee92d170db38ccef412efd115d11119",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-082-huawei-com",
+      "before_sha256": "9c23dfc2ac8d53dd23e1860d63abf9d296ac2d76794fbb030b75467881f2961c",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-083-grok-com",
+      "before_sha256": "cc97976b302e0abfffd71d7d50aca8a355f5a085d3ea208f29ca09aff9623776",
+      "set": {
+        "forbidden_any": []
+      },
+      "remove": []
+    },
+    {
+      "suite": "popular-sites",
+      "case_id": "china-homepage-085-shopify-com",
+      "before_sha256": "46bd2f0ae13f1f8b5a5dad0e83a04d2e4ccd86ec13fb56b413af79a0ed16fda4",
       "set": {
         "forbidden_any": []
       },
