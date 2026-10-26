@@ -234,3 +234,10 @@ def test_overlapping_record_selector_preserves_real_header(selector, label, pass
     rules = contract(); rules['groups'][0]['group_caption']['row_selector'] = selector
     header = f'<tr class="record"><th>{label}</th><th>Name</th></tr>'
     assert result(table(header + caption() + row(1) + row(2)), rules)['composite_acceptance_pass'] is passed
+
+
+@pytest.mark.parametrize('label,passed', [('ID', True), ('Wrong', False)])
+def test_explicit_header_section_preserves_td_labels(label, passed):
+    source = ('<table class="orders"><thead><tr><td>' + label + '</td><td>Name</td></tr></thead>'
+              '<tbody>' + caption() + row(1) + row(2) + '</tbody></table>')
+    assert result(source)['composite_acceptance_pass'] is passed
