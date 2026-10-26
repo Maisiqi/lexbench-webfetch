@@ -607,9 +607,8 @@ def grouped_table_surface(content, group):
             expanded[token] = '\n' + '\n'.join(out) + '\n'
             replacements.append((table, token))
         # Compute selectors before moving selected tables out of their ancestors.
-        selected = {id(table) for table, _ in replacements}
         for table, token in replacements:
-            nested = [child.extract() for child in table.find_all('table') if id(child) in selected]
+            nested = [child.extract() for child in table.find_all('table')]
             table.replace_with(token, *nested)
         content = table_text_surface(str(soup))
         for token, markdown in expanded.items():

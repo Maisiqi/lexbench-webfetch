@@ -189,3 +189,14 @@ def test_selected_nested_table_retains_its_own_caption(depth):
     assert result(inner)['composite_acceptance_pass']
     assert not result(inner.replace(caption(), ''))['composite_acceptance_pass']
     assert not result(table(caption() + '<tr><td>' + table(row(1) + row(2)) + '</td></tr>'))['composite_acceptance_pass']
+
+
+@pytest.mark.parametrize('selected', [False, True])
+def test_normalized_nested_table_survives_caption_expansion(selected):
+    inner = ('<table' + (' class="orders"' if selected else '') + '>'
+             '<tr><th>ID</th><th>Name</th><th>Country</th></tr>'
+             '<tr><td>1</td><td>One</td><td>Argentina</td></tr>'
+             '<tr><td>2</td><td>Two</td><td>Brazil</td></tr></table>')
+    source = table('<tr><td>' + inner + '</td></tr>')
+    assert result(source)['composite_acceptance_pass']
+    assert not result(source.replace('<td>Brazil</td>', '<td></td>'))['composite_acceptance_pass']
