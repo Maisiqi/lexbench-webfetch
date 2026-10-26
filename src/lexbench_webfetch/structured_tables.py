@@ -558,7 +558,7 @@ def grouped_table_surface(content, group):
 
     def line(cells):
         # Escape pipe characters so a value cannot manufacture another field.
-        return '| ' + ' | '.join(v.replace('|', r'\|') for v in cells) + ' |'
+        return '| ' + ' | '.join(v.replace('\\', r'\\').replace('|', r'\|') for v in cells) + ' |'
 
     if _contains_rendered_html_table(content):
         soup = scoped_html(content)

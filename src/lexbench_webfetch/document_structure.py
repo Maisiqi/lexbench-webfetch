@@ -202,6 +202,9 @@ def _text_events(content, headings, key_function=_key):
                 if numbered:
                     parent = max(parents, key=len) if parents else next(iter(numbered))
                     explicit_level = numbered[parent] + number[1].count('.') - parent.count('.')
+            if key_function is _definition_key and re.fullmatch(
+                    r'[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*\(.*\)', lines[index].strip('`¶ ')):
+                explicit_level = 1
             events.append((lines[index], explicit_level))
             index += 1
     return events

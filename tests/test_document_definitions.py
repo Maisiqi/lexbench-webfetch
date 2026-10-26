@@ -71,3 +71,13 @@ class DefinitionStructureTests(unittest.TestCase):
     def test_undeclared_definition_mode_does_not_promote_terms(self):
         del self.contract['type']
         self.assertFalse(self.result(self.html)['document_structure_pass'])
+
+    def test_undeclared_signature_cannot_supply_previous_description(self):
+        for signature in ['os.path.other(path)', '`os.path.other(path)`', '### `os.path.other(path)`']:
+            with self.subTest(signature=signature):
+                text = ('os.path.join(path, *paths)\n' + signature
+                        + '\nDescription of other.\nos.path.split(path)\nDescription of split.')
+                self.assertFalse(self.result(text, False)['document_structure_pass'])
+                text = text.replace('os.path.join(path, *paths)\n',
+                                    'os.path.join(path, *paths)\nJoin pathname components.\n')
+                self.assertTrue(self.result(text, False)['document_structure_pass'])

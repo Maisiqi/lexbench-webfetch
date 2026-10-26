@@ -125,3 +125,11 @@ def test_mixed_html_preserves_markdown_caption_rows(prefix):
     source = '| ID | Name |\n| --- | --- |\n| Country: Argentina - 2 items |\n| 1 | One |\n| 2 | Two |'
     assert result(prefix + source)['composite_acceptance_pass']
     assert not result(prefix + source.replace('| Country: Argentina - 2 items |\n', ''))['composite_acceptance_pass']
+
+
+@pytest.mark.parametrize('name', [r'A\|B', r'A\\|B', 'A|B'])
+def test_caption_cells_round_trip_literal_backslashes_and_pipes(name):
+    source = table(caption() + row(1).replace('Person 1', name) + row(2))
+    report = result(source)
+    assert report['composite_acceptance_pass']
+    assert report['composite_group_results'][0]['records'][0]['name'] == name
