@@ -594,7 +594,7 @@ def grouped_table_surface(content, group):
                 if section is not owner:
                     context, owner = '', section
                 if id(row) in captions:
-                    context = value(row.get_text(' ', strip=True))
+                    context = value(' '.join(row.get_text(' ', strip=True).split()))
                 elif id(row) in records:
                     cells = [c.get_text(' ', strip=True) for c in row.select(option['cell_selector'])
                              if c.find_parent('tr') is row]

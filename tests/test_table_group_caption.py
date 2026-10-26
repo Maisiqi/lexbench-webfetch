@@ -163,3 +163,10 @@ def test_multiple_caption_placeholders_do_not_overlap():
     assert report['composite_acceptance_pass']
     assert len(report['composite_group_results'][0]['records']) == 22
     assert not result(source.replace(row(22), ''), rules)['composite_acceptance_pass']
+
+
+@pytest.mark.parametrize('gap', [' ', '\n', '\r\n', '\t'])
+def test_html_caption_normalizes_internal_whitespace(gap):
+    report = result(table(caption('United' + gap + 'States') + row(1) + row(2)))
+    assert report['composite_acceptance_pass']
+    assert {r['country'] for r in report['composite_group_results'][0]['records']} == {'United States'}

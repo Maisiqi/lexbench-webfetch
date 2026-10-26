@@ -91,3 +91,15 @@ class DefinitionStructureTests(unittest.TestCase):
         self.assertTrue(evaluate_document_structure(value, contract, html_document=True)['document_structure_pass'])
         outside = '<dl><dt>os.path.join(path, *paths)</dt><dd></dd></dl>' + description
         self.assertFalse(evaluate_document_structure(outside, contract, html_document=True)['document_structure_pass'])
+
+    def test_distinct_signature_punctuation_is_not_duplicate(self):
+        for names in [('foo_bar()', 'foobar()'), ('foo(x=1)', 'foo(x=-1)')]:
+            with self.subTest(names=names):
+                contract = copy.deepcopy(self.contract)
+                for heading, name in zip(contract['headings'], names):
+                    heading['text'] = name
+                text = '\n'.join(name + '\nA substantial local description.' for name in names)
+                self.assertTrue(evaluate_document_structure(text, contract)['document_structure_pass'])
+                contract['headings'][1]['text'] = names[0]
+                with self.assertRaises(ValueError):
+                    validate_document_structure(contract)

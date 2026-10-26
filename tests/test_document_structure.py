@@ -263,3 +263,11 @@ def test_multiline_setext_heading_is_not_previous_section_body(title):
     source = f'Usage\n---\n\n{title}\n---\nOther description.'
     assert not evaluate_document_structure(source, c)['document_structure_pass']
     assert evaluate_document_structure(source.replace('Usage\n---\n', 'Usage\n---\nUsage description.\n'), c)['document_structure_pass']
+
+
+@pytest.mark.parametrize('separator,passed', [('\n', True), ('\n\n', False), ('\n  \n', False)])
+def test_wrapped_heading_does_not_cross_paragraphs(separator, passed):
+    c = {'version': 1, 'minimum_heading_coverage': 1, 'minimum_body_chars': 1,
+         'headings': [{'text': 'Getting started', 'level': 2}]}
+    text = 'Getting' + separator + 'started\n\nA substantive description.'
+    assert evaluate_document_structure(text, c)['document_structure_pass'] is passed

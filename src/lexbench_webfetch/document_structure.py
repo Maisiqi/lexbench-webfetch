@@ -44,6 +44,7 @@ def validate_document_structure(contract):
         raise ValueError('Document structure requires evidenced headings')
     headings = _headings(contract)
     ids, texts = set(), set()
+    key_function = _definition_key if contract.get('type') == 'definition' else _key
     for heading in headings:
         if (not isinstance(heading, dict)
                 or not {'id', 'text', 'level', 'body_required'} <= set(heading)
@@ -51,7 +52,7 @@ def validate_document_structure(contract):
             raise ValueError('Invalid document heading fields')
         if (not isinstance(heading['id'], str) or not heading['id'].strip()
                 or heading['id'] in ids or not isinstance(heading['text'], str)
-                or not _key(heading['text']) or _key(heading['text']) in texts):
+                or not key_function(heading['text']) or key_function(heading['text']) in texts):
             raise ValueError('Document headings must have unique IDs and text')
         if (isinstance(heading['level'], bool) or not isinstance(heading['level'], int)
                 or not 1 <= heading['level'] <= 6 or not isinstance(heading['body_required'], bool)):
@@ -68,7 +69,7 @@ def validate_document_structure(contract):
             except soupsieve.SelectorSyntaxError as error:
                 raise ValueError('Invalid document heading selector') from error
         ids.add(heading['id'])
-        texts.add(_key(heading['text']))
+        texts.add(key_function(heading['text']))
     if not any(h['body_required'] for h in headings):
         raise ValueError('A document contract needs at least one substantive section')
 
@@ -127,6 +128,7 @@ def _text_events(content, headings, key_function=_key):
     numbered = {m[1]: h['level'] for h in headings
                 if (m := re.match(r'^(\d+(?:\.\d+)*)\.\s+', h['text']))}
     lines, eligible = [], []
+    paragraph_boundaries = set()
     continuation_column = None
     fence = None
     previous_line = ''
@@ -151,6 +153,7 @@ def _text_events(content, headings, key_function=_key):
                 paragraph_start = len(lines)
                 continue
         if not line:
+            paragraph_boundaries.add(len(lines))
             continuation_column = None
             paragraph_start = len(lines)
             continue
@@ -197,7 +200,8 @@ def _text_events(content, headings, key_function=_key):
         # Text serializers often split inline code/links within a heading.
         # Only complete adjacent lines, in source order, may form that heading.
         for end in range(index, min(index + 12, len(lines))):
-            if not eligible[end][0] or (end > index and eligible[end][1] is not None):
+            if not eligible[end][0] or (end > index and (eligible[end][1] is not None
+                                                       or end in paragraph_boundaries)):
                 break
             joined += key_function(lines[end])
             if joined in declared:
