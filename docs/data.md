@@ -494,7 +494,9 @@ all HTML tables were excluded. Scope labels are not reinterpreted as HTML.
 Raw-output and code-scoped patterns use the original returned text, independently
 of plain-text escaping for prose checks. HTML table normalization preserves
 separate nested tables and counts only cells and text owned by each table,
-including when a link wraps an inner table. Explicit
+including when a link wraps an inner table. The owning link retains its URL and
+its own label, excluding nested-table text; a nested-only label cannot qualify
+as an owning linked record. Public scoring controls cover both outcomes. Explicit
 `thead` rows retain their column labels even with `td` cells. These shared changes
 also affect default contracts, without selecting the annotation revision.
 Caption expansion applies declared HTML

@@ -1013,3 +1013,31 @@ def test_duplicate_incomplete_dom_records_cannot_combine_name_and_fields():
     metrics = score_attempt(case, content.encode(), ok=True)
     assert metrics["composite_acceptance_pass"] is False
     assert task_passed(True, metrics, "body") is False
+
+
+@pytest.mark.parametrize('own_label', ['', 'Own name'])
+@pytest.mark.parametrize('nested', [False, True])
+def test_public_linked_table_preserves_owning_link(own_label, nested):
+    from lexbench_webfetch.metrics import task_passed
+    from lexbench_webfetch.scoring import score_attempt
+    from lexbench_webfetch.structured_tables import table_text_surface
+
+    inner = '<table><tr><td>Unrelated</td></tr></table>' if nested else ''
+    content = ('<table><tr><th>Name</th></tr><tr><td><a href="/entry/1">'
+               + own_label + inner + '</a></td></tr></table>')
+    rules = contract({
+        'id': 'entries', 'kind': 'linked_table', 'minimum_records': 1,
+        'hosts': ['example.test'], 'entry_path': r'/entry/\d+',
+        'required_columns': [{'id': 'name', 'kind': 'text', 'aliases': ['Name']}],
+        'identity_column': 'name', 'link_column': 'name',
+    })
+    case = {'url': 'https://example.test/catalog', 'task_kind': 'body',
+            'min_content_chars': 1, 'composite_acceptance': rules}
+    metrics = score_attempt(case, content.encode(), ok=True)
+    assert task_passed(True, metrics, 'body') is bool(own_label)
+    surface = table_text_surface(content)
+    if own_label:
+        assert '[Own name](/entry/1)' in surface
+    if nested:
+        assert '| Unrelated |' in surface
+        assert '[Unrelated](/entry/1)' not in surface

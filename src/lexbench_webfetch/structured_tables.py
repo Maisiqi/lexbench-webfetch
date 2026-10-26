@@ -232,9 +232,14 @@ def table_text_surface(content, *, exclude_selector=None):
                 if cell.get('colspan', '1') != '1' or cell.get('rowspan', '1') != '1':
                     break
                 for link in cell.find_all('a', href=True):
-                    if link.find_parent('table') is not table or link.find('table') is not None:
+                    if link.find_parent('table') is not table:
                         continue
-                    link.replace_with('[' + link.get_text(' ', strip=True) + '](' + link['href'] + ')')
+                    label = ' '.join(str(part).strip() for part in link.strings
+                                     if part.find_parent('table') is table and str(part).strip())
+                    nested = [child.extract() for child in link.find_all('table')
+                              if child.find_parent('table') is table]
+                    link.replace_with('[' + label + '](' + link['href'] + ')' if label or not nested else '',
+                                      *nested)
                 text = ' '.join(str(part).strip() for part in cell.strings
                                 if part.find_parent('table') is table and str(part).strip())
                 values.append(text.replace('\\', r'\\').replace('|', r'\|'))
