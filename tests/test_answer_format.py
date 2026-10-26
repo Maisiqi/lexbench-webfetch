@@ -121,3 +121,11 @@ def test_plain_text_section_titles_preserve_literal_characters(heading):
     assert not task_passed(True, missing)
     empty = score_attempt(case, heading.encode(), ok=True, metadata=metadata)
     assert not task_passed(True, empty)
+
+
+@pytest.mark.parametrize('pattern,passed', [('a < b', True), ('&lt;', False)])
+def test_plain_text_output_patterns_match_original_characters(pattern, passed):
+    case = {'id': 'raw-pattern', 'url': 'https://example.test',
+            'required_patterns': [{'id': 'literal', 'pattern': pattern, 'match_scope': 'output'}]}
+    metrics = score_attempt(case, b'a < b', ok=True, metadata={'answer_format': 'plain_text'})
+    assert metrics['pattern_results'][0]['pass'] is passed

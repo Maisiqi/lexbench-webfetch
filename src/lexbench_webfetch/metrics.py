@@ -697,6 +697,7 @@ def evaluate_content(
     document_structure: dict | None = None,
     composite_acceptance: dict | None = None,
     allow_reference_block_exemptions: bool = False,
+    raw_content: str | None = None,
 ) -> dict[str, Any]:
     title_prefix = ((title.strip() + '\n') if title and title.strip() else '')
     from .reference_quality import is_html_document_or_fragment, markdown_body_content
@@ -780,14 +781,15 @@ def evaluate_content(
                     and not encoding_corruption
                     and not script_shell)
     pattern_results = []
+    pattern_content = content if raw_content is None else raw_content
     code_blocks = None
     for rule in required_patterns or []:
         scope = rule.get('match_scope', 'visible_text')
         if scope not in {'visible_text', 'text', 'output', 'code_compact'}:
             raise ValueError('Unknown required-pattern matching scope')
         if scope == 'code_compact' and code_blocks is None:
-            code_blocks = code_matching_blocks(content)
-        targets = code_blocks if scope == 'code_compact' else [content if scope == 'output' else visible_content]
+            code_blocks = code_matching_blocks(pattern_content)
+        targets = code_blocks if scope == 'code_compact' else [pattern_content if scope == 'output' else visible_content]
         flags = 0 if scope == 'code_compact' else re.I
         count = len({match for target in targets for match in re.findall(rule['pattern'], target, flags)})
         pattern_results.append({'id':rule['id'],'count':count,'minimum':rule.get('minimum',1),'pass':count >= rule.get('minimum',1)})

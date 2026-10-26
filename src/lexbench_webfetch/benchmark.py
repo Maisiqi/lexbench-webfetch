@@ -406,7 +406,7 @@ def check_revision_references(dataset: dict, review: dict, source: Path, *,
                 scope = 'full_task'
             controls.append({'source': binding, 'answer_sha256': hashlib.sha256(raw).hexdigest(),
                              'scope': scope, 'passed': passed})
-            if controls[-1]['passed']:
+            if passed and scope == 'full_task':
                 break
         negative = b'<html><body>Verify you are human. Access Denied. CAPTCHA.</body></html>'
         metrics = score_attempt(case, negative, ok=True)
@@ -416,7 +416,7 @@ def check_revision_references(dataset: dict, review: dict, source: Path, *,
                   else 'unavailable' if unavailable_sources
                   else 'failed' if controls else 'unavailable')
         results.append({'case_id': case['id'], 'status': status, 'reference_candidates': controls,
-                        'verification_scope': next((c['scope'] for c in controls if c['passed']), 'unavailable'),
+                        'verification_scope': next((c['scope'] for c in reversed(controls) if c['passed']), 'unavailable'),
                         'error_page_passed': negative_pass,
                         **({'unavailable_review_sources': unavailable_sources} if unavailable_sources else {}),
                         'reason': ('Optional review evidence was not supplied; existing control results are retained.'

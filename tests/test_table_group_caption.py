@@ -109,3 +109,12 @@ def test_equal_rows_outside_selector_are_not_selected_by_value():
     surface = grouped_table_surface(source, group)
     assert surface.count('| 1 | Person 1 | Argentina |') == 1
     assert surface.count('| 2 | Person 2 | Argentina |') == 1
+
+
+@pytest.mark.parametrize('selector', ['table.orders', 'tr.record', 'tbody'])
+def test_caption_expansion_preserves_table_exclusions(selector):
+    rules = contract()
+    rules['groups'][0]['table_scope'] = {'exclude_selector': selector}
+    source = table(caption() + row(1) + row(2))
+    assert result(source)['composite_acceptance_pass']
+    assert not result(source, rules)['composite_acceptance_pass']

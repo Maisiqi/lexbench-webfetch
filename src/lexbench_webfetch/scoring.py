@@ -153,7 +153,7 @@ def score_attempt(
             pass
     result.update(evaluate_content(
         answer_prose_input(content, representation), case.get("expected_any", []), title=title,
-        base_url=base_url, named_links=links,
+        base_url=base_url, named_links=links, raw_content=content,
         allow_reference_block_exemptions=(
             task_kind == "body" and not case.get("acceptance_contract")
         ),

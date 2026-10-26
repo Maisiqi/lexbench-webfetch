@@ -562,6 +562,10 @@ def grouped_table_surface(content, group):
 
     if _contains_rendered_html_table(content):
         soup = scoped_html(content)
+        if exclude := group.get('table_scope', {}).get('exclude_selector'):
+            for node in list(soup.select(exclude)):
+                if node.parent is not None:
+                    node.decompose()
         for table in list(soup.select(option['table_selector'])):
             if table.name != 'table':
                 continue

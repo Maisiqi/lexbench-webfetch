@@ -127,14 +127,18 @@ def _text_events(content, headings, key_function=_key):
     fence = None
     for raw in content.splitlines():
         line = raw.strip()
-        marker = re.match(r'^(`{3,}|~{3,})', line)
+        indent = len(raw.expandtabs(4)) - len(raw.expandtabs(4).lstrip())
+        marker = re.match(r'^(`{3,}|~{3,})(.*)$', line) if indent < 4 else None
         if marker:
-            char = marker[1][0]
-            if fence is None:
-                fence = char
-            elif fence == char:
+            token, suffix = marker.groups()
+            if fence is None and not (token[0] == '`' and '`' in suffix):
+                fence = token
+                continuation_column = None
+                continue
+            if (fence is not None and token[0] == fence[0]
+                    and len(token) >= len(fence) and not suffix.strip()):
                 fence = None
-            continue
+                continue
         if not line:
             continuation_column = None
             continue
@@ -147,9 +151,10 @@ def _text_events(content, headings, key_function=_key):
                 continue
             marker = re.match(r'^(\s*\d+(?:\.\d+)*\.)\s+(?=\S)', raw)
             continuation_column = marker.end(1) if marker else None
-        if fence is None and re.fullmatch(r'(?:[-*+]\s*|\d+[.)]\s*)?\[[^]]+\]\(#[^)]*\)', line):
+        heading_eligible = fence is None and indent < 4
+        if heading_eligible and re.fullmatch(r'(?:[-*+]\s*|\d+[.)]\s*)?\[[^]]+\]\(#[^)]*\)', line):
             continue
-        level_match = re.match(r'^(#{1,6})\s+(.+?)(?:\s+#+)?$', line) if fence is None else None
+        level_match = re.match(r'^(#{1,6})\s+(.+?)(?:\s+#+)?$', line) if heading_eligible else None
         if level_match:
             # Native serializers may append the heading's permalink without a separator.
             label = re.split(r'https?://\S+#\S*$', level_match[2], maxsplit=1)[0].rstrip()
@@ -158,7 +163,7 @@ def _text_events(content, headings, key_function=_key):
             else:
                 line = level_match[2]
         lines.append(line)
-        eligible.append((fence is None, len(level_match[1]) if level_match else None))
+        eligible.append((heading_eligible, len(level_match[1]) if level_match else None))
     declared = {key_function(h['text']): h for h in headings}
     prefixes = {key[:i] for key in declared for i in range(1, len(key) + 1)}
     events, index = [], 0

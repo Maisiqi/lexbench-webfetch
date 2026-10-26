@@ -216,3 +216,14 @@ def test_local_section_floor_cannot_borrow_other_section_or_punctuation():
     for first, passed in [('x!!!!', False), ('一二三', False), ('一二三四', True)]:
         text = '## Messages\n' + first + '\n## Meetings\nA complete meeting description.'
         assert evaluate_document_structure(text, c)['document_structure_pass'] is passed
+
+
+@pytest.mark.parametrize('wrapper', [
+    lambda text: '\n'.join('    ' + line for line in text.splitlines()),
+    lambda text: '\n'.join('\t' + line for line in text.splitlines()),
+    lambda text: '````\n```\n' + text + '\n````',
+    lambda text: '~~~\n~~~ example\n' + text + '\n~~~',
+])
+def test_code_examples_cannot_supply_section_headings(wrapper):
+    assert not evaluate_document_structure(wrapper(body()), contract())['document_structure_pass']
+    assert evaluate_document_structure(wrapper(body()) + '\n\n' + body(), contract())['document_structure_pass']

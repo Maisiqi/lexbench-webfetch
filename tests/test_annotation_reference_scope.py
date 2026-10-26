@@ -80,3 +80,18 @@ def test_replacing_old_stable_requirements_needs_full_page_evidence(tmp_path):
                                             'before': before, 'after': deepcopy(anchors)})
     result = check_revision_references(dataset, review, tmp_path)
     assert not result['changed_rules_complete']
+
+
+@pytest.mark.parametrize('full_page', [True, False])
+def test_later_review_source_can_upgrade_body_scope(tmp_path, full_page):
+    import hashlib
+    dataset, review = fixture()
+    text = dataset['cases'][0]['ground_truth_main_content']
+    raw = (('Site navigation\n' if full_page else '') + text).encode()
+    (tmp_path / 'page.txt').write_bytes(raw)
+    review['changes'][0]['sources'].append(
+        {'path': 'page.txt', 'sha256': hashlib.sha256(raw).hexdigest()})
+    result = check_revision_references(dataset, review, tmp_path)
+    assert result['changed_rules_complete']
+    assert result['complete'] is full_page
+    assert result['cases'][0]['verification_scope'] == ('full_task' if full_page else 'body_only')
