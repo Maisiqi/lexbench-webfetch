@@ -470,17 +470,26 @@ archives contain no provider outputs for the 100 article cases or webfetch
 provider-result claim is made for those 104 IDs. Existing article reference
 controls and the four deferred exports retain their separate scopes.
 
-All 4,820 outputs were rescored with final scorer `03d23e7`, using the same
+All 4,820 outputs were rescored with scorer `03d23e7`, using the same
 archived bytes, metadata and contracts; all output hashes match the restoration
 records. No final pass/fail verdict differs from the preceding comparison:
 1,646 pass, with the same 18 differences from baseline listed above. This covers
 the later shared table and literal-pattern changes without new provider calls.
-The selected historical table-group case has ten outputs and no rendered HTML
-tables; nested-table and `thead`/`td` behavior is established by the dedicated
-accepted/rejected controls, not by claiming those shapes appeared in this replay.
+The three selected historical table/linked-table cases have 30 outputs and no
+rendered HTML tables; nested-table and `thead`/`td` behavior is established by
+dedicated accepted/rejected controls, not by claiming those shapes appeared here.
+
+The subsequent heading-order correction (`1d18da9`) was checked against all 214
+normalized answers containing HTML tables, with no additional verdict changes.
+The other 4,606 outputs cannot enter the changed HTML-table branch and reuse the
+preceding results. Artifact, result-metadata and contract hashes were checked
+before reuse. This is targeted revalidation after the full replay, not a second
+full 4,820-output scoring run.
 
 ### Literal input and structural exclusion safeguards
 
+HTML headings are decoded only after final table serialization, before restoring
+Markdown cells, so visible scope labels are not reinterpreted as HTML.
 Raw-output and code-scoped patterns use the original returned text, independently
 of plain-text escaping for prose checks. HTML table normalization preserves
 separate nested tables and counts only cells and text owned by each table,
