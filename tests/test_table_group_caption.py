@@ -255,3 +255,21 @@ def test_normalized_header_section_preserves_labels(cell, label, passed, nested)
         source = source.replace('<tbody>', '<tbody><tr><td><table><tr><th>Other</th></tr></table></td></tr>')
     assert result(source)['composite_acceptance_pass'] is passed
     assert not result(source.replace('<td>Brazil</td>', '<td></td>'))['composite_acceptance_pass']
+
+
+@pytest.mark.parametrize('own_text', ['', 'Actual name'])
+@pytest.mark.parametrize('linked', [False, True])
+def test_normalized_link_cannot_import_nested_table_text(own_text, linked):
+    from lexbench_webfetch.structured_tables import table_text_surface
+    nested = '<table><tr><td>Unrelated</td></tr></table>'
+    label = own_text + nested if linked else own_text
+    cell = '<a href="/entry">' + label + '</a>' + ('' if linked else nested)
+    source = ('<table><tr><th>ID</th><th>Name</th><th>Country</th></tr>'
+              '<tr><td>1</td><td>' + cell + '</td><td>Argentina</td></tr>'
+              '<tr><td>2</td><td>Two</td><td>Brazil</td></tr></table>')
+    assert result(source)['composite_acceptance_pass'] is bool(own_text)
+    surface = table_text_surface(source)
+    assert '| Unrelated |' in surface
+    assert 'Unrelated' not in next(line for line in surface.splitlines() if line.startswith('| 1 |'))
+    if not linked and own_text:
+        assert '[Actual name](/entry)' in surface

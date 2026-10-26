@@ -245,7 +245,7 @@ def table_text_surface(content, *, exclude_selector=None):
                 if cell.get('colspan', '1') != '1' or cell.get('rowspan', '1') != '1':
                     break
                 for link in cell.find_all('a', href=True):
-                    if link.find_parent('table') is not table:
+                    if link.find_parent('table') is not table or link.find('table') is not None:
                         continue
                     link.replace_with('[' + link.get_text(' ', strip=True) + '](' + link['href'] + ')')
                 text = ' '.join(str(part).strip() for part in cell.strings

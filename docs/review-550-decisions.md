@@ -296,22 +296,12 @@ stable-text controls; all 95 changed-rule controls pass. Full frozen-input
 exports for the other four suites have not been reverified; source-level
 controls and unit tests are not substitutes for those exports.
 
-Keep the original `lexmount-doc` URL and its failed Moli result. The saved
-Moli attempt resolved the hostname to a private address and was rejected by
-its enabled private-network safeguard before content retrieval. Follow-up
-checks on 2026-10-26 found different answers through local UDP DNS and public
-HTTPS/TCP DNS. The source of that discrepancy is not established. Public
-resolution alone did not restore the local guarded fetch: connection failures
-remained. These observations identify an execution-path limitation, not a
-proven defect in the task or its acceptance rules.
-
-An independent hosted Firecrawl request with `maxAge=0` returned HTTP 200 and
-6,202 characters satisfying the current rules. This confirms external access
-in that observation; it does not prove Moli succeeds on another network and
-must not replace Moli's failed measurement. Preserve native safety checks and
-do not add case-specific DNS exceptions. Raw diagnostics remain outside Git.
-The ten hash-verified historical outputs remain in the scorer comparison.
-Changing this task's URL requires a MAJOR dataset edition under
+Keep the original `lexmount-doc` URL, acceptance rules and failed measurement.
+The available diagnostics show an execution-path limitation, not a proven
+rule defect; they do not establish that every provider succeeds elsewhere.
+Preserve native safety checks and avoid case-specific DNS exceptions. Diagnostic
+captures and provider measurements remain outside Git; the PR records the
+supporting observations. Changing the URL requires a MAJOR dataset edition under
 [versions.md](versions.md), with a qualified replacement and source controls.
 
 

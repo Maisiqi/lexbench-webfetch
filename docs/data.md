@@ -473,7 +473,12 @@ controls and the four deferred exports retain their separate scopes.
 ### Literal input and structural exclusion safeguards
 
 Raw-output and code-scoped patterns use the original returned text, independently
-of plain-text escaping for prose checks. Caption expansion applies declared HTML
+of plain-text escaping for prose checks. HTML table normalization preserves
+separate nested tables and counts only cells and text owned by each table,
+including when a link wraps an inner table. Explicit
+`thead` rows retain their column labels even with `td` cells. These shared changes
+also affect default contracts, without selecting the annotation revision.
+Caption expansion applies declared HTML
 table exclusions before discarding selector markup and also processes remaining
 Markdown tables in mixed answers. Section checks retain article-local headers
 while excluding explicit navigation and table-of-contents containers. Indented code cannot declare
