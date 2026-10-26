@@ -281,7 +281,10 @@ external review directory: 94 changed-case controls pass and article-072
 remains unverified. Neither completeness flag is true. With the optional verified evidence
 directory, all 95 changed-case controls pass; `changed_rules_complete` is true,
 but whole-task `complete` remains false because some controls cover only the
-changed body rules. Full frozen-input
+changed body rules. Reference selection continues after a scoped success to
+prefer a later full-task success. Rechecking the same hash-bound article
+sources qualifies 17 full tasks, 75 body-only controls and three body-plus-added-
+stable-text controls; all 95 changed-rule controls pass. Full frozen-input
 exports for the other four suites have not been reverified; source-level
 controls and unit tests are not substitutes for those exports.
 

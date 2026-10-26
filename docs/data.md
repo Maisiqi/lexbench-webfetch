@@ -469,3 +469,15 @@ archives contain no provider outputs for the 100 article cases or webfetch
 `challenge-01`, `challenge-07`, `challenge-08`, `challenge-09`. No historical
 provider-result claim is made for those 104 IDs. Existing article reference
 controls and the four deferred exports retain their separate scopes.
+
+### Literal input and structural exclusion safeguards
+
+Raw-output and code-scoped patterns use the original returned text, independently
+of plain-text escaping for prose checks. Caption expansion applies declared HTML
+table exclusions before discarding selector markup. Indented code cannot declare
+section titles; fenced code closes only on a matching fence at least as long as
+its opener, without trailing non-whitespace. Accepted/rejected controls cover
+these combinations. Comparing 65 precisely hash-bound section-source inputs
+against the preceding parser found no changed section verdicts. Three older
+projection records lacked an exact matching source binding and are not included;
+this is not a complete historical-output rescore.
