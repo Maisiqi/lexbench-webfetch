@@ -503,20 +503,23 @@ def _descriptions(text):
     return records
 
 
-def _html_list_descriptions(content):
+def _html_list_descriptions(content, *, allow_closed_title_cards=False):
     """Preserve native leaf-list ownership before flattening visible HTML."""
-    from .dynamic_lists import scoped_html, visible_html_text
+    from .dynamic_lists import visible_html_text
+    from .document_structure import _content_root
     from .reference_quality import is_html_document_or_fragment
     if not is_html_document_or_fragment(content):
         return None
-    items = [node for node in scoped_html(content).select('li') if not node.select('li')]
+    root = _content_root(content)
+    items = [node for node in root.select('li') if not node.select('li')]
     records = []
     for item in items:
         lines = visible_html_text(str(item)).splitlines()
         if len(lines) >= 2:
             records.append(_record({'name': lines[0], 'description': ' '.join(lines[1:])},
                                    'name_description'))
-    return records or None
+    return records or _parse_records(visible_html_text(str(root)), 'name_description',
+                                     allow_closed_title_cards=allow_closed_title_cards)
 
 
 def _closed_title_descriptions(text, *, line_delimited=False):
@@ -1281,7 +1284,8 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
         if schema == 'table_row':
             from .structured_tables import parse_table_records
             records = parse_table_records(content, visible, contract)
-        elif schema == 'name_description' and (html_records := _html_list_descriptions(content)) is not None:
+        elif schema == 'name_description' and (html_records := _html_list_descriptions(
+                content, allow_closed_title_cards=allow_closed_title_cards)) is not None:
             records = html_records
         else:
             records = (

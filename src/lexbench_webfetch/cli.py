@@ -111,6 +111,21 @@ def main() -> None:
         else:
             result = {"dataset": str(export(args.suite, args.source, args.output, revision=args.revision,
                                              review_source=args.review_source).resolve())}
+            if args.revision:
+                review = json.loads((args.output / "annotation-review.json").read_text(encoding="utf-8"))
+                controls = review["reference_controls"]
+                unverified = [case for case in controls["cases"] if case["status"] != "passed"]
+                result["verification"] = {
+                    "passed": len(controls["cases"]) - len(unverified),
+                    "unverified": len(unverified),
+                    "unverified_with_failed_frozen_reference": sum(
+                        any(not candidate["passed"] and candidate["source"]["path"]
+                            not in review.get("review_inputs", {})
+                            for candidate in case["reference_candidates"])
+                        for case in unverified),
+                    "complete": controls["complete"],
+                    "changed_rules_complete": controls["changed_rules_complete"],
+                }
     except (ValueError, KeyError, OSError) as error:
         parser.exit(1, f"{error}\n")
     print(json.dumps(result, ensure_ascii=False, indent=2))
