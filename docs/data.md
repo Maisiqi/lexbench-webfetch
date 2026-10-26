@@ -349,6 +349,34 @@ also reject duplicate names and hidden items and avoid counting nested list
 containers twice. Captures remain outside Git. These source controls do not
 replace complete frozen-input exports or historical provider-score comparisons.
 
+### Shared stable-anchor matching
+
+Three shared corrections also affect stable anchors outside the 104 body-fact
+cases listed above:
+
+- A missing page-level anchor can use visible native-link labels after the
+  normal match fails. `non_record_lines` anchors do not use this fallback;
+  declared text exclusions still apply. Link destinations alone are not text.
+- An explicit Markdown heading may discard an appended URL with a fragment
+  when matching its visible label. Ordinary word suffixes remain significant.
+- Case-boundary normalization is applied to both the answer and the expected
+  label, avoiding asymmetry for labels such as mixed-case product names.
+
+The frozen definitions contain 499 suite/case entries with nonempty
+`stable_text_anchors`: 99 webfetch cases and 100 in each of popular-sites,
+dynamic-content, access-restrictions and articles. There are 486 distinct case
+IDs because thirteen IDs occur in more than one suite; different contracts or
+URLs must not be conflated merely because an ID is reused. This is the potential
+scope, not a claim that all outcomes change or that every case has saved
+provider output. The 104-case body-fact inventory above describes a separate
+shared gate and remains valid.
+
+Native-list name/description parsing is narrower: only `dynamic-angular-phones`
+in webfetch and dynamic-content uses it. It excludes navigation/header/footer
+and auxiliary containers from record counting, while retaining body-text
+fallback parsing. Complete captured HTML still produces 20 records; deleting
+a record or its description fails. Auxiliary lists cannot fill the quota.
+
 ### Generic-label follow-up
 
 The Deployments case originally required only `Note:` as its second fact and
@@ -392,3 +420,52 @@ its source-backed operation-description alternative remains an equivalent fact.
 This is not a full replay of every revised annotation or a provider-quality
 result. Four exact frozen input bundles remain unavailable, so the comparison
 does not replace their export checks.
+
+### Expanded saved-output comparison (v4)
+
+The three shared matcher corrections were audited beyond the earlier 104 cases.
+Reuse requires identical output bytes, result metadata, selected task contracts
+and scorer code. The previous 1,040 outputs (including ten Lexmount outputs)
+are reused; 3,780 additional outputs are scored. No provider is called again.
+Both sides use the same contract and bytes for each comparison. The baseline
+scorer is `d9e2f00` (the scoring implementation is unchanged at the PR base
+`b824b1e0`); the reviewed scorer is `3abfeb7`. The v4 navigation-list correction
+is separately qualified against both Angular cases and its accepted/rejected
+controls. Raw captures and replay artifacts remain outside Git.
+
+| Saved-output cohort | Case IDs | Outputs | Baseline passes | Reviewed passes |
+| --- | ---: | ---: | ---: | ---: |
+| Native archive | 381 | 3,810 | 1,343 | 1,335 |
+| Dynamic archive | 100 | 1,000 | 312 | 304 |
+| Lexmount | 1 | 10 | 7 | 7 |
+| Total | 382 distinct | 4,820 | 1,662 | 1,646 |
+
+The archives overlap in case IDs and contain different saved runs; case counts
+must not be summed. Eighteen outcomes differ, in four cases:
+
+| Case | Pass to fail | Fail to pass | Explanation |
+| --- | ---: | ---: | --- |
+| `dynamic-051-youzan-github-io-vant` | 8 | 0 | Required language-specific facts under the original annotation; the explicit revised annotation accepts the supported language. |
+| `dynamic-056-vant-ui-github-io-vant` | 7 | 0 | Same language/fact distinction. |
+| `dynamic-105-blueprint-docs` | 2 | 0 | Missing space in the installation command; remains rejected. |
+| `global-homepage-030-weather-com` | 0 | 1 | Two actual visible Hourly links were missed without native-label matching. |
+
+All fifteen Vant outputs pass the explicit revised rules; both Blueprint
+outputs remain rejected in the revised controls. The additional dynamic-archive
+780 outputs have no outcome changes. The native
+archive adds another run of the already known Vant/Blueprint cases and the
+weather case. In the weather output, disabling only native-label fallback
+restores the failure for `stable-anchor-4`; replacing both Hourly labels while
+retaining their destination URLs also fails. This attributes the improvement
+to visible text rather than accepting URL-only evidence. The other two shared
+normalization corrections add no further final-outcome changes in these saved
+runs; this does not imply they never change individual anchor matches.
+
+These are historical-contract comparisons, not complete exports of the current
+frozen suites. The earlier 104-case contracts retain their documented alignment;
+additional records use their archived contracts. Historical contracts can differ
+from current suite contracts, including cases sharing an ID. The selected
+archives contain no provider outputs for the 100 article cases or webfetch
+`challenge-01`, `challenge-07`, `challenge-08`, `challenge-09`. No historical
+provider-result claim is made for those 104 IDs. Existing article reference
+controls and the four deferred exports retain their separate scopes.

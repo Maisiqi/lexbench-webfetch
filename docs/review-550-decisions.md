@@ -77,10 +77,15 @@ not the number of changed scoring rules.
 ## Section ownership and page completeness
 
 Navigation, feedback controls, references and related links remain page content.
-They cannot substitute for missing article prose, but that does not justify
-removing their existing requirements. The 17 reviewed document cases retain
-those requirements; empty compatibility placeholders already waive local body.
-Full hash-verified source controls pass, while headings-only controls fail.
+The section requirements discussed here were added in this PR; they are not
+pre-existing main-branch requirements. Keep references and related links in
+section coverage. For the six Kubernetes cases (live-004, live-008, live-009,
+live-015, live-052 and live-053), Feedback is a Yes/No helpfulness widget:
+retain its heading in the coverage calculation, with `body_required: false`.
+Empty compatibility placeholders also waive local body. This does not waive
+substantive sections or remove navigation from the requested answer.
+All six hash-bound complete sources and sources retaining only the Feedback
+heading within that widget pass section checks; headings-only answers fail.
 
 For both RFC 9110 cases, local section-body checks replace the added heading-name
 facts. All 18 main sections need local content; the existing five 80% reference
@@ -145,6 +150,18 @@ full-task or frozen-suite export claims. Existing path, identity and quota
 requirements suffice for the observed non-curl controls; do not add blanket
 scope configuration without a demonstrated gap.
 
+
+The page count is not the group count. The saved controls cover seven single-group
+pages (`lm-python-tutorial`, `live-005`, `live-022`, `live-024`, `live-035`,
+`live-040`, `live-051`), three directory groups in `lm-rust-learn`, four in
+`live-039-welcome-to-redis-docs`, and the climate-card/focus-area groups in
+`live-037-breadcrumb`: ten pages and sixteen groups. This includes every
+`target-directory-*` group in the current webfetch revision (fourteen groups
+across nine pages). The outside-link projections fail each of these groups.
+Thus the review's twelve-group estimate cannot be compared with the ten-page
+count by subtracting two; no current target-directory group is omitted from
+this inventory. These existing controls are reused, not rerun.
+
 Curl is the confirmed exception before revision: 42 outside links could satisfy
 its 37-record quota in a link projection. The existing start-pattern mechanism
 now starts at Documentation Overview, and the root breadcrumb is excluded from
@@ -202,8 +219,7 @@ the preceding dispatcher on the same current rule data.
 
 ## Optional review evidence
 
-The final reviewer proposal to delete all independent evidence bindings is not
-adopted. Of 529 review entries, 242 cite independent sources and 18 cite no
+Independent evidence bindings preserve the basis of the rules. Of 529 review entries, 242 cite independent sources and 18 cite no
 frozen source at all. Removing those citations would erase their registered
 basis; substituting `dataset.json` would falsely imply that the frozen file
 supports the observation. The article-072 comparison below also shows that
@@ -242,11 +258,26 @@ force this body-only reference to pass would contradict the task. This finding
 must be considered separately from whether the export API needs optional review
 inputs; it does not establish that every part of that mechanism is necessary.
 
+### Rules supported only by independent observations
+
+The following 18 review entries have no registered frozen-source citation:
+
+- **access-restrictions**: `risk-diverse-192`.
+- **popular-sites**: `china-homepage-088-figma-com`, `global-homepage-086-usps-com`, `global-homepage-020-naver-com`, `global-homepage-028-microsoft-com`, `global-homepage-056-apple-com`, `global-homepage-038-samsung-com`, `global-homepage-085-douyin-com`, `china-homepage-026-aliyun-com`.
+- **webfetch**: `web-retail-returns`, `lm-feishu-help`, `challenge-01`, `challenge-08`, `video-09`, `dynamic-reviews-graphql`, `dynamic-react-cart`, `dynamic-swagger`, `dynamic-product-reviews`.
+
+Their registered observations support the revised rules for the observed page
+state. Rescoring a saved answer means testing those saved bytes against the
+chosen rule edition; it does not prove that the newer observation describes
+the page when the old answer was collected. Report the rule edition and this
+limitation when comparing historical scores. These citations do not qualify
+missing frozen reference answers or replace a frozen-input export.
+
 ## Verification and limits
 
-The final integration check passed 3023 tests and 342 subtests in 217.27
-seconds, including the metadata-only evidence reduction. All 529 rule-change
-objects are identical before and after that reduction.
+The v4 integration check passed 3040 tests and 342 subtests. Six Feedback
+entries waive local prose; other rule changes from the preceding revision remain
+unchanged. Shared review reasons preserve the same resolved explanations.
 The registered review contains 529 entries, including evidence-only records.
 The 738 retained external review-input bindings come from the hash-verified evidence set,
 including the qualified Microsoft, Apple and Douyin source-replay controls.
@@ -265,13 +296,18 @@ for `browser.lexmount.com`. This rules out a universally private DNS mapping
 in those observations; it does not by itself prove current page completeness.
 The ten hash-verified saved outputs are covered by the scorer comparison.
 A new URL would require a new input version, not a score-only correction.
+A later local check returned `10.2.0.11` through the system resolver and a UDP
+query addressed to 8.8.8.8, while Google's HTTPS DNS endpoint returned the
+public addresses above. Local resolver configuration included 198.18.255.254
+and 10.2.0.1. This discrepancy is consistent with local DNS/proxy interception;
+it does not identify which software is responsible or prove that all remote
+fetch providers see private DNS. Changing Wi-Fi need not remove a device-level
+proxy. Keep private-address safeguards and the case unchanged pending diagnosis.
+`lexmount-doc` belongs to webfetch's `technical_documentation` category. A
+replacement would require a MAJOR dataset edition under the URL-change policy
+in [versions.md](versions.md), with a qualified replacement task and source
+controls; it cannot silently repair or preserve comparability of old results.
 
-The 288-case diagnostic migration was checked against actual source artifacts:
-238 prior results were reused only after matching complete contract, proof and
-source hashes; 50 additional cases were replayed. Task-specific negative controls
-are used: an identity-only answer is valid when the task requests only identity.
-One replay assembly error duplicated a menu's facts; its corrected control and
-the original failed run are both retained.
 
 Complete HTML, Markdown or explicit source-field projections are distinguished.
 A projection is not evidence that absent DOM ownership or historical visibility
@@ -284,13 +320,8 @@ records and external audit collection, rather than an expanding development log.
 
 ## Rule design and controls
 
-- Remove the independent body-threshold and ending revision files: their
-  operations already exist in the selected revision. Patch contract fields and
-  anchors by identity rather than repeat unchanged contracts. The initial
-  conversion produced identical effective definitions for all 550 cases.
-- Remove the Grommet SVG accessibility-label extension. Its Complete cells are
-  visible graphics, not numerical text. Four distinct visible names remain
-  required, with the surrounding headers and body requirements preserved.
+- Grommet requires four distinct visible names, with surrounding headers and
+  body requirements preserved. Its graphical Complete cells are not numbers.
 - Consolidate access 027 and 050 into one linked-table group: age, message,
   author, files and changed lines must belong to the same row, with eight unique
   commit destinations. A `token` field requires a complete explicit pattern;
@@ -320,8 +351,6 @@ records and external audit collection, rather than an expanding development log.
 - Remove 28 singly observed replacement-source anchors. All 11 affected full
   source pages pass and challenge-only pages fail. Record observation counts
   once per case and retain hashes identifying the source of each kept anchor.
-- Remove 288 newly added diagnostic-list overrides. Qualified generic lexical
-  exclusions remain removed; explicit task exclusions are a separate policy.
 - Stripe now requires its three actual primary sections rather than twenty
   entries mixing sections, promotional cards and API property labels. Complete
   saved HTML passes; removing the primary headings fails.
@@ -450,3 +479,27 @@ All eight receive the same generic-word removal. The Angular parsing defect is
 resolved separately without changing its rules. The RSuite native-link boundary defect is also resolved separately. The Douyu two-label correction is independently source-backed. The Vant correction follows its own explicit English target binding. The other four
 source/contract discrepancies are not resolved by the generic-word policy correction. The original tasks and frozen inputs are
 preserved.
+
+## V4 review disposition
+
+- Adopt the navigation-record correction and export verification summary. The
+  former reuses the existing content-root helper; the latter reports passed,
+  unverified and unverified-with-failed-frozen-reference counts, retaining both
+  completeness flags. Neither changes the frozen-input export safeguards.
+- Adopt the six Feedback prose waivers, explicit external-only case inventory,
+  shared-matcher impact inventory and removal of intermediate implementation
+  history. Keep the earlier source-qualified non-adoption decisions above.
+- Reuse existing checks when output bytes, scoring code and selected contracts
+  match. The directory controls, 104-case comparison and unchanged source controls
+  remain evidence; supplementary scoring covers the previously omitted outputs.
+- Keep the edition-bound 104-case inventory. Its membership and counts were
+  recomputed from the frozen definitions. A new test tied to this prose table
+  is not added: this is a historical edition audit, not a requirement that every
+  future dataset reproduce the same inventory.
+- Four complete exports remain deferred at the requester's explicit instruction
+  in the development discussion on 2026-10-26. Original packages were searched
+  locally, including Browser Eval artifacts and archives; no maintainer was
+  contacted on the requester's behalf. This is a disclosed verification gap,
+  not evidence of maintainer approval to waive a release check. The PR contains
+  proposed code and rules for review, not only an archive; the agent must leave
+  it open and unmerged. Maintainers decide any eventual merge/release conditions.

@@ -239,7 +239,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "a56ed556d345077d7f45eb32ade147dcb56205026d05e10bdc1df20fcc84cff0",
+      "revision_sha256": "1144a1129c46f494a8ff8b0e90be11b3866538b181fd02aebdac1f47e29dda3a",
       "changes": [
         {
           "suite": "webfetch",
@@ -8451,8 +8451,8 @@
         {
           "suite": "webfetch",
           "case_id": "live-004-deployments",
-          "reason": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: exclude generic admonition labels and table-of-contents/navigation headings from section coverage; retain substantive body headings and the body length floor. Retain the existing feedback, reference, related-link and placeholder heading requirements: non-prose page content remains within the task scope. Original empty compatibility placeholders already waive local body, so no additional exception is needed. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer. Replace the generic Note: label in both fact and stable-anchor requirements with its source-verified warning sentence, Do not manage ReplicaSets owned by a Deployment. Full HTML and HTML without Note: pass; removing that warning while retaining the section structure fails. Keep the other facts, headings and body-length requirement unchanged.",
-          "changes_sha256": "6819f4c572bc63b950acf9047b6f429e525010f9a9660f16d85702008de3c081",
+          "reason": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: exclude generic admonition labels and table-of-contents/navigation headings from section coverage; retain substantive body headings and the body length floor. Retain the feedback, reference, related-link and placeholder heading requirements added in this PR: non-prose page content remains within the task scope. Empty compatibility placeholders waive local body. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer. Replace the generic Note: label in both fact and stable-anchor requirements with its source-verified warning sentence, Do not manage ReplicaSets owned by a Deployment. Full HTML and HTML without Note: pass; removing that warning while retaining the section structure fails. Keep the other facts, headings and body-length requirement unchanged. The Kubernetes Feedback heading identifies a Yes/No helpfulness widget. Keep its heading in the coverage calculation but waive prose beneath it (body_required=false); this does not waive the substantive documentation sections.",
+          "changes_sha256": "14ab98abfb628217121d28bf6c0900d5ff1156a31af338dc115b47a99b2edb63",
           "sources": [
             {
               "path": "sources/live-004-deployments/current-source.html.txt",
@@ -8541,7 +8541,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-008-service",
-          "changes_sha256": "0faeccf89515537eb07d22da74ecabbb1623436da62575af021c7b4109820b42",
+          "changes_sha256": "d832b31e19b2ab6d29bfc8b1494770749f5b274e06e87f48e55e4e644137496c",
           "sources": [
             {
               "path": "sources/live-008-service/current-source.html.txt",
@@ -8581,12 +8581,12 @@
             "prompt-diagnostic-missing-required-content",
             "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
           ],
-          "reason_ref": "reason-011"
+          "reason_ref": "kubernetes-feedback-widget-2"
         },
         {
           "suite": "webfetch",
           "case_id": "live-009-run-a-stateless-application-usin",
-          "changes_sha256": "cbbc3b533466761f571e173a902f19336d569736b4dc6d12c6f81cff33bc5207",
+          "changes_sha256": "9254996d7cc1fa4fae4a74db5292470c93b2676011e7348d18d04aa72f8abec9",
           "sources": [
             {
               "path": "sources/live-009-run-a-stateless-application-usin/current-source.html.txt",
@@ -8626,7 +8626,7 @@
             "prompt-diagnostic-missing-required-content",
             "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "kubernetes-feedback-widget-3"
         },
         {
           "suite": "webfetch",
@@ -8721,7 +8721,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-015-configmaps",
-          "changes_sha256": "d7ffddedf363740bf7d77a95a2d70a7c4a70b66d287a4a804c1d9a543c7854ba",
+          "changes_sha256": "806032fbc209efec046576a726c2bbdf5415cd0b059b5421bf675821ee8f0564",
           "sources": [
             {
               "path": "sources/live-015-configmaps/current-source.html.txt",
@@ -8761,7 +8761,7 @@
             "prompt-diagnostic-missing-required-content",
             "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
           ],
-          "reason_ref": "reason-011"
+          "reason_ref": "kubernetes-feedback-widget-2"
         },
         {
           "suite": "webfetch",
@@ -9621,7 +9621,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-052-objects-in-kubernetes",
-          "changes_sha256": "d7b04903f1e24d60711be2134d794c9d23beb11852f391dc585a974430100603",
+          "changes_sha256": "2bf52b00b2867a3581aebf17b7fb045ebc858e654843331602fdc92fa1629f82",
           "sources": [
             {
               "path": "sources/live-052-objects-in-kubernetes/current-source.html.txt",
@@ -9661,12 +9661,12 @@
             "prompt-diagnostic-missing-required-content",
             "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "kubernetes-feedback-widget-3"
         },
         {
           "suite": "webfetch",
           "case_id": "live-053-dns-for-services-and-pods",
-          "changes_sha256": "b7a63ba4252824705882e70be5fccd23faf9b0c7e72ac33fbaaf81dea6af05e7",
+          "changes_sha256": "e951713e8c4c0331886304b8a863a787856f208633d6ccbac0d1df4573ec772d",
           "sources": [
             {
               "path": "sources/live-053-dns-for-services-and-pods/current-source.html.txt",
@@ -9706,7 +9706,7 @@
             "prompt-diagnostic-missing-required-content",
             "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
           ],
-          "reason_ref": "reason-011"
+          "reason_ref": "kubernetes-feedback-widget-2"
         },
         {
           "suite": "webfetch",
@@ -18261,8 +18261,8 @@
         "reason-008": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate.",
         "reason-009": "Add ordered local ending validation without changing reference text, body regions, stable requirements or target. Keeps the original ending-fragment check; source-boundary corrections remain separate. Require actual source body section headings only; retain all original stable anchors, five body blocks, thresholds, ending checks and projection operations. This improves whole-section presence only: keeping headings while omitting some later prose can still pass.",
         "reason-010": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-        "reason-011": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: exclude generic admonition labels and table-of-contents/navigation headings from section coverage; retain substantive body headings and the body length floor. Retain the existing feedback, reference, related-link and placeholder heading requirements: non-prose page content remains within the task scope. Original empty compatibility placeholders already waive local body, so no additional exception is needed. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer.",
-        "reason-012": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. Retain the existing feedback, reference, related-link and placeholder heading requirements: non-prose page content remains within the task scope. Original empty compatibility placeholders already waive local body, so no additional exception is needed. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer.",
+        "reason-011": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: exclude generic admonition labels and table-of-contents/navigation headings from section coverage; retain substantive body headings and the body length floor. Retain the feedback, reference, related-link and placeholder heading requirements added in this PR: non-prose page content remains within the task scope. Empty compatibility placeholders waive local body. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer.",
+        "reason-012": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. Retain the feedback, reference, related-link and placeholder heading requirements added in this PR: non-prose page content remains within the task scope. Empty compatibility placeholders waive local body. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer.",
         "reason-013": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: exclude generic admonition labels and table-of-contents/navigation headings from section coverage; retain substantive body headings and the body length floor.",
         "reason-014": "Require the source-qualified target directory or resource cards and reviewed length floor; preserve all existing facts and stable anchors. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
         "reason-015": "Require additional source-backed concepts in this heading-free document and preserve the existing requirements; no artificial headings are introduced. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
@@ -18271,7 +18271,9 @@
         "reason-018": "Require 80 percent of the minimum named-record count across three saved first-load observations for this exact URL. Preserve every original stable anchor and forbidden term; do not unify separate suites or freeze record names. Whole source, exact quota, one-below and three-record controls were tested. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
         "reason-019": "Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
         "reason-020": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
-        "forbidden-word-policy": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers."
+        "forbidden-word-policy": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers.",
+        "kubernetes-feedback-widget-2": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: exclude generic admonition labels and table-of-contents/navigation headings from section coverage; retain substantive body headings and the body length floor. Retain the feedback, reference, related-link and placeholder heading requirements added in this PR: non-prose page content remains within the task scope. Empty compatibility placeholders waive local body. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer. The Kubernetes Feedback heading identifies a Yes/No helpfulness widget. Keep its heading in the coverage calculation but waive prose beneath it (body_required=false); this does not waive the substantive documentation sections.",
+        "kubernetes-feedback-widget-3": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. Retain the feedback, reference, related-link and placeholder heading requirements added in this PR: non-prose page content remains within the task scope. Empty compatibility placeholders waive local body. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer. The Kubernetes Feedback heading identifies a Yes/No helpfulness widget. Keep its heading in the coverage calculation but waive prose beneath it (body_required=false); this does not waive the substantive documentation sections."
       }
     }
   }
