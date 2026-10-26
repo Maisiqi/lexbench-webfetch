@@ -226,3 +226,11 @@ def test_nested_header_does_not_replace_outer_columns():
     assert not result(source.replace(caption(), ''))['composite_acceptance_pass']
     wrong_header = '<tr><th>Wrong</th><th>Name</th></tr>'
     assert not result(source.replace(nested, nested + wrong_header))['composite_acceptance_pass']
+
+
+@pytest.mark.parametrize('selector', ['tr', 'tr.record'])
+@pytest.mark.parametrize('label,passed', [('ID', True), ('Wrong', False)])
+def test_overlapping_record_selector_preserves_real_header(selector, label, passed):
+    rules = contract(); rules['groups'][0]['group_caption']['row_selector'] = selector
+    header = f'<tr class="record"><th>{label}</th><th>Name</th></tr>'
+    assert result(table(header + caption() + row(1) + row(2)), rules)['composite_acceptance_pass'] is passed
