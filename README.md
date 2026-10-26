@@ -8,11 +8,13 @@
 [![License: Apache 2.0](https://img.shields.io/badge/code-Apache--2.0-51735b)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-356a91)](pyproject.toml)
 
-[Tasks](#task-suites) · [Quickstart](#quickstart) · [Scoring](#score-an-answer) · [Contributing](CONTRIBUTING.md)
+[Tasks](#task-suites) · [Quickstart](#quickstart) · [Scoring](#score-an-answer) · [Versions](#versions) · [Related projects](#related-repositories) · [Contributing](CONTRIBUTING.md)
 
 </div>
 
-LexBench Web Fetch provides tasks and scoring tools for web retrieval: page text, records with usable links, resources and files. Use it with your own runner or [Browser Eval](https://github.com/lexmount/browser-eval).
+LexBench Web Fetch defines 550 Web Fetch tasks and scores returned page text, records with usable links, resources and files. Use the tasks with your own runner or [Browser Eval](https://github.com/lexmount/browser-eval) to compare browsers, extraction tools and hosted services.
+
+This repository owns the task definitions, acceptance rules and frozen input bindings. Browser Eval owns provider calls, timing, evidence and comparison reports.
 
 ## Task suites
 
@@ -61,13 +63,28 @@ uv run --frozen lexbench-webfetch score --task examples/task.json --response exa
 
 For real evaluations, use the complete task from a verified dataset. Add `--metadata metadata.json` for structured response fields, or `--file /absolute/path/file` for delivered files. Scoring requirements and result reporting are described in the [evaluation protocol](docs/protocol.md).
 
-## Versions and execution
+## Run browsers and build reports
 
-Run `uv run --frozen lexbench-webfetch version` to inspect the installed catalog. Tags use `bench-vMAJOR.MINOR.PATCH`. Each report freezes the selected tasks and scoring source in `benchmark-release.json`; a package upgrade leaves that selection unchanged.
+Follow the [Browser Eval integration guide](https://github.com/lexmount/browser-eval/blob/main/docs/benchmarks.md) to run exported tasks against browsers or services and build comparison reports. Provider accounts, API keys and measured outputs belong to the execution environment. The commands above validate and score saved inputs without calling providers.
 
-Use `release` to freeze an edition and `compare-releases` to check comparability. See [versioning](docs/versions.md) for commands and major/minor/patch rules.
+## Versions
 
-To execute browser or service calls and build reports, follow the [Browser Eval integration guide](https://github.com/lexmount/browser-eval/blob/main/docs/benchmarks.md).
+The current full catalog is benchmark edition `2.0.1` (`bench-v2.0.1`), with 550 entries. The Python tooling package is `0.3.0`. These versions identify different things: the edition fixes tasks, references and scoring; the package versions the commands and Python implementation.
+
+Run `uv run --frozen lexbench-webfetch version` to verify the installed catalog. Use `release` to freeze the exact selected tasks and scorer in `benchmark-release.json`, and `compare-releases` to check whether results can be compared directly, need rescoring or belong to separate populations. Installing a newer package leaves an existing report's edition unchanged. See [versioning](docs/versions.md) for commands and change rules.
+
+## Related repositories
+
+| Repository | Role |
+| --- | --- |
+| [Browser Eval](https://github.com/lexmount/browser-eval) | Browser/provider execution, saved evidence and comparison reports |
+| [LexBench Web Search](https://github.com/lexmount/lexbench-websearch) | Search queries, source references and retrieval scoring |
+| [Moli](https://github.com/lexmount/moli) | Browser that can be evaluated with these tasks |
+| [WebFetch CLI](https://github.com/lexmount/webfetch-cli) | CLI client for the Lexmount WebFetch service |
+| [Artifact Site](https://github.com/lexmount/artifact-site) | Hosting, versioning and sharing of generated reports |
+| [Lexbench-Headless-Browser](https://github.com/lexmount/Lexbench-Headless-Browser) | Protocol, automation-driver and web-platform benchmarks |
+
+[Third-party notices](THIRD_PARTY.md) list scoring dependencies and source rights. WebMainBench, WCXB and WebArena are separate benchmarks; they are not part of this 550-entry catalog.
 
 ## Contribute
 
@@ -77,7 +94,7 @@ Read [CONTRIBUTING](CONTRIBUTING.md) before changing task requirements or scorin
 
 ## Cite LexBench Web Fetch
 
-Use this citation or [CITATION.cff](CITATION.cff), and record the benchmark edition and suites used.
+Use this citation or [CITATION.cff](CITATION.cff), and record the benchmark edition, suites and code revision used. The citation below identifies the tooling package; the catalog edition is `2.0.1`.
 
 ```bibtex
 @software{lexbench_webfetch_2026,

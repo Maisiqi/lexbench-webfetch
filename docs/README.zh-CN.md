@@ -8,11 +8,13 @@
 [![License: Apache 2.0](https://img.shields.io/badge/code-Apache--2.0-51735b)](../LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-356a91)](../pyproject.toml)
 
-[任务集](#任务集) · [快速开始](#快速开始) · [评分](#给响应评分) · [参与贡献](../CONTRIBUTING.md)
+[任务集](#任务集) · [快速开始](#快速开始) · [评分](#给响应评分) · [版本](#版本) · [相关仓库](#相关仓库) · [参与贡献](../CONTRIBUTING.md)
 
 </div>
 
-LexBench Web Fetch 提供网页获取任务和评分工具，评测正文、带有效链接的记录、资源和文件。可以使用自己的运行器，也可以接入 [Browser Eval](https://github.com/lexmount/browser-eval)。
+LexBench Web Fetch 定义了 550 条网页获取任务，评测返回的正文、带有效链接的记录、资源和文件。可以用自己的运行器，也可以接入 [Browser Eval](https://github.com/lexmount/browser-eval)，比较浏览器、提取工具和在线服务。
+
+本仓库维护题目、验收规则和冻结输入绑定。Browser Eval 负责服务调用、计时、证据保存和对比报告。
 
 ## 任务集
 
@@ -61,13 +63,28 @@ uv run --frozen lexbench-webfetch score --task examples/task.json --response exa
 
 实际评测应使用经过验证的数据集中的完整任务。结构化响应字段通过 `--metadata metadata.json` 传入，交付文件通过 `--file /absolute/path/file` 传入。评分要求和结果发布规则见[评测协议](../docs/protocol.md)。
 
-## 版本与运行
+## 运行浏览器并生成报告
 
-运行 `uv run --frozen lexbench-webfetch version` 查看安装的题库版本。标签格式为 `bench-v主版本.次版本.补丁版本`。每份报告通过 `benchmark-release.json` 固定所选题目和评分源码，升级包不会替换这份选择。
+按 [Browser Eval 接入指南](https://github.com/lexmount/browser-eval/blob/main/docs/benchmarks.md)执行导出的任务，调用浏览器或在线服务，生成对比报告。服务账号、API 密钥和实测输出由运行环境管理。上面的命令只检查输入、给已保存的响应评分，不调用服务。
 
-用 `release` 固定评测版本，用 `compare-releases` 检查结果是否可比。命令和主版本、次版本、补丁版本规则见[版本说明](../docs/versions.md)。
+## 版本
 
-执行浏览器或服务调用并生成报告，请按 [Browser Eval 接入指南](https://github.com/lexmount/browser-eval/blob/main/docs/benchmarks.md)操作。
+当前完整题库的评测版本为 `2.0.1`（`bench-v2.0.1`），共 550 条题目；Python 工具包版本为 `0.3.0`。评测版本固定题目、参考输入和评分规则，工具包版本标识命令与 Python 实现。
+
+运行 `uv run --frozen lexbench-webfetch version` 验证安装的题库。用 `release` 将实际选用的题目和评分器固定在 `benchmark-release.json` 中，用 `compare-releases` 判断结果能直接比较、需要重算评分，还是属于不同题目范围。升级包不会替换已有报告的评测版本。命令和版本变更规则见[版本说明](../docs/versions.md)。
+
+## 相关仓库
+
+| 仓库 | 用途 |
+| --- | --- |
+| [Browser Eval](https://github.com/lexmount/browser-eval) | 运行浏览器与服务、保存证据、生成对比报告 |
+| [LexBench Web Search](https://github.com/lexmount/lexbench-websearch) | 搜索问题、来源参考和检索评分 |
+| [Moli](https://github.com/lexmount/moli) | 可使用本题库评测的浏览器 |
+| [WebFetch CLI](https://github.com/lexmount/webfetch-cli) | Lexmount WebFetch 服务的命令行客户端 |
+| [Artifact Site](https://github.com/lexmount/artifact-site) | 报告托管、版本管理和分享 |
+| [Lexbench-Headless-Browser](https://github.com/lexmount/Lexbench-Headless-Browser) | 协议、自动化驱动和 Web 平台评测 |
+
+评分依赖和来源权利见[第三方说明](../THIRD_PARTY.md)。WebMainBench、WCXB 和 WebArena 是独立评测集，不计入这里的 550 条题目。
 
 ## 参与贡献
 
@@ -77,7 +94,7 @@ uv run --frozen lexbench-webfetch score --task examples/task.json --response exa
 
 ## 引用 LexBench Web Fetch
 
-使用以下引用或 [CITATION.cff](../CITATION.cff)，并注明评测版本和任务集。
+使用以下引用或 [CITATION.cff](../CITATION.cff)，并注明评测版本、任务集和代码版本。以下引用标识工具包版本，题库评测版本为 `2.0.1`。
 
 ```bibtex
 @software{lexbench_webfetch_2026,

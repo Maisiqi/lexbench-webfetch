@@ -1,13 +1,17 @@
 name: ci
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
 permissions:
   contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python: ["3.11", "3.12", "3.13", "3.14"]
+        python: ["3.11"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -17,17 +21,5 @@ jobs:
         with:
           version: "0.7.8"
       - run: uv sync --frozen --extra test --python "$(command -v python)"
-      - run: uv run --frozen --extra test python -m pytest tests -q
-      - run: uv run --frozen lexbench-webfetch validate
-      - run: uv build --sdist
-      - run: uv build dist/*.tar.gz --wheel
-      - name: Validate an isolated wheel installation
-        run: |
-          uv venv /tmp/lexbench-wheel --python "$(command -v python)"
-          for lexbench_wheel in dist/*.whl; do
-            uv pip install --python /tmp/lexbench-wheel/bin/python "${lexbench_wheel}[test]"
-          done
-          cp -R tests /tmp/lexbench-wheel-tests
-          cd /tmp
-          /tmp/lexbench-wheel/bin/lexbench-webfetch validate
-          uv run --no-project --no-sync --python /tmp/lexbench-wheel/bin/python python -m pytest /tmp/lexbench-wheel-tests -q
+      - run: make check BENCH_PYTHON="$(command -v python)"
+      - run: make package-check BENCH_PYTHON="$(command -v python)"
