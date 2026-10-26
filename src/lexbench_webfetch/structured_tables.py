@@ -228,11 +228,6 @@ def table_text_surface(content, *, exclude_selector=None):
                 if node.parent is not None:
                     node.decompose()
         content = str(soup)
-        content = re.sub(
-            r"<h([1-6])\b[^>]*>[\s\S]*?</h\1\s*>",
-            lambda m: "\n" + BeautifulSoup(m[0], "html.parser").get_text(" ", strip=True) + "\n",
-            content, flags=re.I,
-        )
 
     def convert(table):
         lines = []
@@ -270,6 +265,11 @@ def table_text_surface(content, *, exclude_selector=None):
             nested = [child.extract() for child in table.find_all('table')]
             table.replace_with(token, *nested)
         content = str(soup)
+        content = re.sub(
+            r"<h([1-6])\b[^>]*>[\s\S]*?</h\1\s*>",
+            lambda m: "\n" + BeautifulSoup(m[0], "html.parser").get_text(" ", strip=True) + "\n",
+            content, flags=re.I,
+        )
         for _, token, markdown in replacements:
             content = content.replace(token, markdown)
     lines = content.splitlines()

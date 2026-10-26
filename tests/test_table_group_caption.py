@@ -273,3 +273,23 @@ def test_normalized_link_cannot_import_nested_table_text(own_text, linked):
     assert 'Unrelated' not in next(line for line in surface.splitlines() if line.startswith('| 1 |'))
     if not linked and own_text:
         assert '[Actual name](/entry)' in surface
+
+
+@pytest.mark.parametrize('label', ['Rates & fees', 'Rates <value>', 'Rates &amp; fees'])
+def test_normalized_headings_keep_literal_section_boundaries(label):
+    import html
+    import re
+    rules = {'version': 1, 'groups': [{
+        'id': 'scoped', 'kind': 'table', 'minimum_records': 2,
+        'identity_column': 'id',
+        'required_columns': [{'id': 'id', 'kind': 'integer', 'aliases': ['ID']}],
+        'start_pattern': '^' + re.escape(label) + '$',
+        'end_pattern': '^' + re.escape('End ' + label) + '$'}]}
+    header = '<tr><th>ID</th></tr>'
+    first = '<tr><td>1</td></tr>'
+    second = '<tr><td>2</td></tr>'
+    start = '<h2><span>' + html.escape(label) + '</span></h2>'
+    end = '<h2>' + html.escape('End ' + label) + '</h2>'
+    assert result(start + table(header + first + second) + end, rules)['composite_acceptance_pass']
+    assert not result(start + table(header + first) + end + table(header + second), rules)['composite_acceptance_pass']
+    assert not result(table(header + first + second) + end, rules)['composite_acceptance_pass']
