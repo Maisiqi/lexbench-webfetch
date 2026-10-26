@@ -220,14 +220,6 @@ def table_text_surface(content, *, exclude_selector=None):
     """Preserve owned HTML cells/links and adjacent split Markdown bodies."""
     from bs4 import BeautifulSoup
     content = _without_example_fences(content)
-    if _contains_rendered_html_table(content):
-        from .dynamic_lists import scoped_html
-        soup = scoped_html(content)
-        if exclude_selector:
-            for node in list(soup.select(exclude_selector)):
-                if node.parent is not None:
-                    node.decompose()
-        content = str(soup)
 
     def convert(table):
         lines = []
@@ -254,7 +246,13 @@ def table_text_surface(content, *, exclude_selector=None):
                         lines.append('| ' + ' | '.join('---' for _ in cells) + ' |')
         return '\n' + '\n'.join(lines) + '\n'
     if _contains_rendered_html_table(content):
-        soup = BeautifulSoup(content, 'html.parser')
+        from .dynamic_lists import scoped_html
+        soup = scoped_html(content)
+        if exclude_selector:
+            for node in list(soup.select(exclude_selector)):
+                if node.parent is not None:
+                    node.decompose()
+        content = str(soup)
         replacements = []
         for table in soup.find_all('table'):
             token = f'LEXBENCH_TABLE_{len(replacements)}_END'

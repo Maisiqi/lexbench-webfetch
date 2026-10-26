@@ -276,7 +276,8 @@ def test_normalized_link_cannot_import_nested_table_text(own_text, linked):
 
 
 @pytest.mark.parametrize('label', ['Rates & fees', 'Rates <value>', 'Rates &amp; fees'])
-def test_normalized_headings_keep_literal_section_boundaries(label):
+@pytest.mark.parametrize('mixed', [False, True])
+def test_normalized_headings_keep_literal_section_boundaries(label, mixed):
     import html
     import re
     rules = {'version': 1, 'groups': [{
@@ -288,8 +289,15 @@ def test_normalized_headings_keep_literal_section_boundaries(label):
     header = '<tr><th>ID</th></tr>'
     first = '<tr><td>1</td></tr>'
     second = '<tr><td>2</td></tr>'
+    if mixed:
+        rules['groups'][0]['table_scope'] = {'exclude_selector': '.noise'}
+        header, first, second = '| ID |\n| --- |\n', '| 1 |\n', '| 2 |\n'
+    def records(rows):
+        return '\n' + header + rows if mixed else table(header + rows)
     start = '<h2><span>' + html.escape(label) + '</span></h2>'
+    if mixed:
+        start += '<table class="noise"><tr><td>Noise</td></tr></table>'
     end = '<h2>' + html.escape('End ' + label) + '</h2>'
-    assert result(start + table(header + first + second) + end, rules)['composite_acceptance_pass']
-    assert not result(start + table(header + first) + end + table(header + second), rules)['composite_acceptance_pass']
-    assert not result(table(header + first + second) + end, rules)['composite_acceptance_pass']
+    assert result(start + records(first + second) + end, rules)['composite_acceptance_pass']
+    assert not result(start + records(first) + end + records(second), rules)['composite_acceptance_pass']
+    assert not result(records(first + second) + end, rules)['composite_acceptance_pass']
