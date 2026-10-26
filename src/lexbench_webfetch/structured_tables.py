@@ -587,7 +587,7 @@ def grouped_table_surface(content, group):
             captions = {id(row) for row in table.select(option['caption_selector'])}
             records = {id(row) for row in table.select(option['row_selector'])}
             header_rows = [row for row in rows
-                           if row.find_parent('table') is table and row.find('th')
+                           if row.find_parent('table') is table and row.find('th', recursive=False)
                            and id(row) not in records
                            and id(row) not in captions]
             headers = ([owned_text(cell, table) for cell in header_rows[0].find_all(['th', 'td'], recursive=False)]

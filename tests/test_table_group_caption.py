@@ -217,3 +217,12 @@ def test_mixed_caption_preserves_ampersand(mixed):
         source = table('') + '\n' + source
     assert result(source, rules)['composite_acceptance_pass']
     assert not result(source.replace('Country: A & B', 'Country: Wrong'), rules)['composite_acceptance_pass']
+
+
+def test_nested_header_does_not_replace_outer_columns():
+    nested = '<tr><td><table><tr><th>Other</th></tr></table></td></tr>'
+    source = table(nested + caption() + row(1) + row(2))
+    assert result(source)['composite_acceptance_pass']
+    assert not result(source.replace(caption(), ''))['composite_acceptance_pass']
+    wrong_header = '<tr><th>Wrong</th><th>Name</th></tr>'
+    assert not result(source.replace(nested, nested + wrong_header))['composite_acceptance_pass']
