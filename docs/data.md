@@ -470,6 +470,15 @@ archives contain no provider outputs for the 100 article cases or webfetch
 provider-result claim is made for those 104 IDs. Existing article reference
 controls and the four deferred exports retain their separate scopes.
 
+All 4,820 outputs were rescored with final scorer `03d23e7`, using the same
+archived bytes, metadata and contracts; all output hashes match the restoration
+records. No final pass/fail verdict differs from the preceding comparison:
+1,646 pass, with the same 18 differences from baseline listed above. This covers
+the later shared table and literal-pattern changes without new provider calls.
+The selected historical table-group case has ten outputs and no rendered HTML
+tables; nested-table and `thead`/`td` behavior is established by the dedicated
+accepted/rejected controls, not by claiming those shapes appeared in this replay.
+
 ### Literal input and structural exclusion safeguards
 
 Raw-output and code-scoped patterns use the original returned text, independently
