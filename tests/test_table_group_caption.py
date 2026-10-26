@@ -200,3 +200,20 @@ def test_normalized_nested_table_survives_caption_expansion(selected):
     source = table('<tr><td>' + inner + '</td></tr>')
     assert result(source)['composite_acceptance_pass']
     assert not result(source.replace('<td>Brazil</td>', '<td></td>'))['composite_acceptance_pass']
+
+
+@pytest.mark.parametrize('own_text', ['', 'Actual name'])
+def test_nested_table_cannot_fill_parent_cell(own_text):
+    nested = '<table><tr><td>Unrelated</td></tr></table>'
+    source = table(caption() + row(1).replace('Person 1', own_text + nested) + row(2))
+    assert result(source)['composite_acceptance_pass'] is bool(own_text)
+
+
+@pytest.mark.parametrize('mixed', [False, True])
+def test_mixed_caption_preserves_ampersand(mixed):
+    rules = contract(); rules['groups'][0]['group_caption']['pattern'] = r'Country: (?P<value>A & B)'
+    source = '| ID | Name |\n| --- | --- |\n| Country: A & B |\n| 1 | One |\n| 2 | Two |'
+    if mixed:
+        source = table('') + '\n' + source
+    assert result(source, rules)['composite_acceptance_pass']
+    assert not result(source.replace('Country: A & B', 'Country: Wrong'), rules)['composite_acceptance_pass']

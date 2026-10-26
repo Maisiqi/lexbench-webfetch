@@ -271,3 +271,12 @@ def test_wrapped_heading_does_not_cross_paragraphs(separator, passed):
          'headings': [{'text': 'Getting started', 'level': 2}]}
     text = 'Getting' + separator + 'started\n\nA substantive description.'
     assert evaluate_document_structure(text, c)['document_structure_pass'] is passed
+
+
+@pytest.mark.parametrize('title,passed', [
+    ('Installation', True), ('[Installation](https://example.com/install)', True),
+    ('[Other](https://example.com/Installation)', False)])
+def test_linked_heading_uses_visible_label(title, passed):
+    c = {'version': 1, 'minimum_heading_coverage': 1, 'minimum_body_chars': 1,
+         'headings': [{'text': 'Installation', 'level': 2}]}
+    assert evaluate_document_structure('## ' + title + '\nA substantive description.', c)['document_structure_pass'] is passed

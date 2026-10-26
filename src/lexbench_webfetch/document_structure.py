@@ -7,6 +7,8 @@ import re
 import soupsieve
 import unicodedata
 
+from .reference_quality import visible_markdown_links
+
 
 def _key(text):
     # Formatting and serializer line breaks may vary; word order may not.
@@ -205,7 +207,7 @@ def _text_events(content, headings, key_function=_key):
             if not eligible[end][0] or (end > index and (eligible[end][1] is not None
                                                        or end in paragraph_boundaries)):
                 break
-            joined += key_function(lines[end])
+            joined += key_function(visible_markdown_links(lines[end]))
             if joined in declared:
                 match = (end, declared[joined])
                 break

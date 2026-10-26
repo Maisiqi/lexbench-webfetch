@@ -556,6 +556,10 @@ def grouped_table_surface(content, group):
         match = pattern.fullmatch(text.strip())
         return (match['value'] or '').strip() if match else ''
 
+    def owned_text(node, table):
+        return ' '.join(str(part).strip() for part in node.strings
+                        if part.find_parent('table') is table and str(part).strip())
+
     def line(cells):
         # Escape pipe characters so a value cannot manufacture another field.
         return '| ' + ' | '.join(' '.join(v.split()).replace('\\', r'\\').replace('|', r'\|') for v in cells) + ' |'
@@ -564,6 +568,14 @@ def grouped_table_surface(content, group):
         soup = scoped_html(content)
         expanded = {}
         replacements = []
+
+        def protect(text):
+            token = f'LEXBENCH_CAPTION_TABLE_{len(expanded)}_END'
+            while token in content:
+                token += '_'
+            expanded[token] = text
+            return token
+
         if exclude := group.get('table_scope', {}).get('exclude_selector'):
             for node in list(soup.select(exclude)):
                 if node.parent is not None:
@@ -578,7 +590,7 @@ def grouped_table_surface(content, group):
                            if row.find_parent('table') is table and row.find('th')
                            and id(row) not in records
                            and id(row) not in captions]
-            headers = ([cell.get_text(' ', strip=True) for cell in header_rows[0].find_all(['th', 'td'], recursive=False)]
+            headers = ([owned_text(cell, table) for cell in header_rows[0].find_all(['th', 'td'], recursive=False)]
                        if header_rows else [c['aliases'][0] for c in columns])
             # A normalized table may already carry the caption value per row.
             # Its genuine header and cells go through ordinary column matching.
@@ -595,21 +607,21 @@ def grouped_table_surface(content, group):
                 if section is not owner:
                     context, owner = '', section
                 if id(row) in captions:
-                    context = value(' '.join(row.get_text(' ', strip=True).split()))
+                    context = value(' '.join(owned_text(row, table).split()))
                 elif id(row) in records:
-                    cells = [c.get_text(' ', strip=True) for c in row.select(option['cell_selector'])
+                    cells = [owned_text(c, table) for c in row.select(option['cell_selector'])
                              if c.find_parent('tr') is row]
                     if len(cells) == len(columns):
                         out.append(line(cells + [context]))
-            token = f'LEXBENCH_CAPTION_TABLE_{len(expanded)}_END'
-            while token in content:
-                token += '_'
-            expanded[token] = '\n' + '\n'.join(out) + '\n'
-            replacements.append((table, token))
+            replacements.append((table, protect('\n' + '\n'.join(out) + '\n')))
         # Compute selectors before moving selected tables out of their ancestors.
         for table, token in replacements:
             nested = [child.extract() for child in table.find_all('table')]
             table.replace_with(token, *nested)
+        # Preserve adjacent Markdown characters through HTML serialization.
+        for part in list(soup.strings):
+            if part.find_parent('table') is None and any(c in part for c in '&<>'):
+                part.replace_with(protect(str(part)))
         content = table_text_surface(str(soup))
         for token, markdown in expanded.items():
             content = content.replace(token, markdown)
