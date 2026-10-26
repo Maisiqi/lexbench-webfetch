@@ -158,9 +158,6 @@ pages (`lm-python-tutorial`, `live-005`, `live-022`, `live-024`, `live-035`,
 `live-037-breadcrumb`: ten pages and sixteen groups. This includes every
 `target-directory-*` group in the current webfetch revision (fourteen groups
 across nine pages). The outside-link projections fail each of these groups.
-Thus the review's twelve-group estimate cannot be compared with the ten-page
-count by subtracting two; no current target-directory group is omitted from
-this inventory. These existing controls are reused, not rerun.
 
 Curl is the confirmed exception before revision: 42 outside links could satisfy
 its 37-record quota in a link projection. The existing start-pattern mechanism
@@ -254,9 +251,7 @@ and revised annotations. Both pass body coverage and fail page identity plus
 the same 19 existing stable anchors. Thus this incomplete body is not evidence
 that the revised headings introduced a regression; reverting those changes
 would not make it a complete page control. Removing navigation requirements to
-force this body-only reference to pass would contradict the task. This finding
-must be considered separately from whether the export API needs optional review
-inputs; it does not establish that every part of that mechanism is necessary.
+force this body-only reference to pass would contradict the task.
 
 ### Rules supported only by independent observations
 
@@ -275,7 +270,7 @@ missing frozen reference answers or replace a frozen-input export.
 
 ## Verification and limits
 
-The v4 integration check passed 3040 tests and 342 subtests. Six Feedback
+The integration check passed 3040 tests and 342 subtests. Six Feedback
 entries waive local prose; other rule changes from the preceding revision remain
 unchanged. Shared review reasons preserve the same resolved explanations.
 The registered review contains 529 entries, including evidence-only records.
@@ -290,23 +285,23 @@ changed body rules. Full frozen-input
 exports for the other four suites have not been reverified; source-level
 controls and unit tests are not substitutes for those exports.
 
-Keep the original `lexmount-doc` URL. On 2026-10-26, both public resolvers
-8.8.8.8 and 1.1.1.1 returned public addresses (104.21.36.225 and 172.67.200.7)
-for `browser.lexmount.com`. This rules out a universally private DNS mapping
-in those observations; it does not by itself prove current page completeness.
-The ten hash-verified saved outputs are covered by the scorer comparison.
-A new URL would require a new input version, not a score-only correction.
-A later local check returned `10.2.0.11` through the system resolver and a UDP
-query addressed to 8.8.8.8, while Google's HTTPS DNS endpoint returned the
-public addresses above. Local resolver configuration included 198.18.255.254
-and 10.2.0.1. This discrepancy is consistent with local DNS/proxy interception;
-it does not identify which software is responsible or prove that all remote
-fetch providers see private DNS. Changing Wi-Fi need not remove a device-level
-proxy. Keep private-address safeguards and the case unchanged pending diagnosis.
-`lexmount-doc` belongs to webfetch's `technical_documentation` category. A
-replacement would require a MAJOR dataset edition under the URL-change policy
-in [versions.md](versions.md), with a qualified replacement task and source
-controls; it cannot silently repair or preserve comparability of old results.
+Keep the original `lexmount-doc` URL and its failed Moli result. The saved
+Moli attempt resolved the hostname to a private address and was rejected by
+its enabled private-network safeguard before content retrieval. Follow-up
+checks on 2026-10-26 found different answers through local UDP DNS and public
+HTTPS/TCP DNS. The source of that discrepancy is not established. Public
+resolution alone did not restore the local guarded fetch: connection failures
+remained. These observations identify an execution-path limitation, not a
+proven defect in the task or its acceptance rules.
+
+An independent hosted Firecrawl request with `maxAge=0` returned HTTP 200 and
+6,202 characters satisfying the current rules. This confirms external access
+in that observation; it does not prove Moli succeeds on another network and
+must not replace Moli's failed measurement. Preserve native safety checks and
+do not add case-specific DNS exceptions. Raw diagnostics remain outside Git.
+The ten hash-verified historical outputs remain in the scorer comparison.
+Changing this task's URL requires a MAJOR dataset edition under
+[versions.md](versions.md), with a qualified replacement and source controls.
 
 
 Complete HTML, Markdown or explicit source-field projections are distinguished.
@@ -479,27 +474,3 @@ All eight receive the same generic-word removal. The Angular parsing defect is
 resolved separately without changing its rules. The RSuite native-link boundary defect is also resolved separately. The Douyu two-label correction is independently source-backed. The Vant correction follows its own explicit English target binding. The other four
 source/contract discrepancies are not resolved by the generic-word policy correction. The original tasks and frozen inputs are
 preserved.
-
-## V4 review disposition
-
-- Adopt the navigation-record correction and export verification summary. The
-  former reuses the existing content-root helper; the latter reports passed,
-  unverified and unverified-with-failed-frozen-reference counts, retaining both
-  completeness flags. Neither changes the frozen-input export safeguards.
-- Adopt the six Feedback prose waivers, explicit external-only case inventory,
-  shared-matcher impact inventory and removal of intermediate implementation
-  history. Keep the earlier source-qualified non-adoption decisions above.
-- Reuse existing checks when output bytes, scoring code and selected contracts
-  match. The directory controls, 104-case comparison and unchanged source controls
-  remain evidence; supplementary scoring covers the previously omitted outputs.
-- Keep the edition-bound 104-case inventory. Its membership and counts were
-  recomputed from the frozen definitions. A new test tied to this prose table
-  is not added: this is a historical edition audit, not a requirement that every
-  future dataset reproduce the same inventory.
-- Four complete exports remain deferred at the requester's explicit instruction
-  in the development discussion on 2026-10-26. Original packages were searched
-  locally, including Browser Eval artifacts and archives; no maintainer was
-  contacted on the requester's behalf. This is a disclosed verification gap,
-  not evidence of maintainer approval to waive a release check. The PR contains
-  proposed code and rules for review, not only an archive; the agent must leave
-  it open and unmerged. Maintainers decide any eventual merge/release conditions.

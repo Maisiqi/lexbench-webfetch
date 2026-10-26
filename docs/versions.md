@@ -72,6 +72,12 @@ different measurement is an error. A different major edition stays separate
 even if some task IDs overlap. An overlap analysis may be diagnostic, but it
 does not make the two full-population percentages comparable.
 
+Before publishing a benchmark tag after a squash merge, update the catalog's
+`scorer_revision` in a follow-up PR to the full merged commit containing the
+scorer. Verify that its scoring-source hash matches the catalog and run
+`lexbench-webfetch version`. Do not point new scorer bytes at an old main commit
+or publish the tag while the locator still depends on the discarded branch.
+
 ## Reports and retained calls
 
 Report builds retain the selected edition, dataset digest and per-result

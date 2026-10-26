@@ -421,7 +421,7 @@ This is not a full replay of every revised annotation or a provider-quality
 result. Four exact frozen input bundles remain unavailable, so the comparison
 does not replace their export checks.
 
-### Expanded saved-output comparison (v4)
+### Expanded saved-output comparison
 
 The three shared matcher corrections were audited beyond the earlier 104 cases.
 Reuse requires identical output bytes, result metadata, selected task contracts
@@ -429,7 +429,7 @@ and scorer code. The previous 1,040 outputs (including ten Lexmount outputs)
 are reused; 3,780 additional outputs are scored. No provider is called again.
 Both sides use the same contract and bytes for each comparison. The baseline
 scorer is `d9e2f00` (the scoring implementation is unchanged at the PR base
-`b824b1e0`); the reviewed scorer is `3abfeb7`. The v4 navigation-list correction
+`b824b1e0`); the reviewed scorer is `3abfeb7`. The navigation-list correction
 is separately qualified against both Angular cases and its accepted/rejected
 controls. Raw captures and replay artifacts remain outside Git.
 
