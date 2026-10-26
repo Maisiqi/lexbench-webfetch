@@ -146,11 +146,13 @@ def _text_events(content, headings, key_function=_key):
                 fence = token
                 continuation_column = None
                 paragraph_start = len(lines)
+                paragraph_boundaries.add(len(lines))
                 continue
             if (fence is not None and token[0] == fence[0]
                     and len(token) >= len(fence) and not suffix.strip()):
                 fence = None
                 paragraph_start = len(lines)
+                paragraph_boundaries.add(len(lines))
                 continue
         if not line:
             paragraph_boundaries.add(len(lines))

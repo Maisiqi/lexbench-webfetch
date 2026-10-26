@@ -554,7 +554,7 @@ def grouped_table_surface(content, group):
 
     def value(text):
         match = pattern.fullmatch(text.strip())
-        return match['value'].strip() if match else ''
+        return (match['value'] or '').strip() if match else ''
 
     def line(cells):
         # Escape pipe characters so a value cannot manufacture another field.
@@ -563,6 +563,7 @@ def grouped_table_surface(content, group):
     if _contains_rendered_html_table(content):
         soup = scoped_html(content)
         expanded = {}
+        replacements = []
         if exclude := group.get('table_scope', {}).get('exclude_selector'):
             for node in list(soup.select(exclude)):
                 if node.parent is not None:
@@ -604,7 +605,12 @@ def grouped_table_surface(content, group):
             while token in content:
                 token += '_'
             expanded[token] = '\n' + '\n'.join(out) + '\n'
-            table.replace_with(token)
+            replacements.append((table, token))
+        # Compute selectors before moving selected tables out of their ancestors.
+        selected = {id(table) for table, _ in replacements}
+        for table, token in replacements:
+            nested = [child.extract() for child in table.find_all('table') if id(child) in selected]
+            table.replace_with(token, *nested)
         content = table_text_surface(str(soup))
         for token, markdown in expanded.items():
             content = content.replace(token, markdown)

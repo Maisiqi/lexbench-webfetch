@@ -170,3 +170,22 @@ def test_html_caption_normalizes_internal_whitespace(gap):
     report = result(table(caption('United' + gap + 'States') + row(1) + row(2)))
     assert report['composite_acceptance_pass']
     assert {r['country'] for r in report['composite_group_results'][0]['records']} == {'United States'}
+
+
+@pytest.mark.parametrize('captured', [False, True])
+def test_optional_caption_capture_fails_without_value(captured):
+    rules = contract()
+    rules['groups'][0]['group_caption']['pattern'] = r'(?P<value>Argentina)?y'
+    validate_composite_acceptance(rules)
+    source = table('<tr class="caption"><td>' + ('Argentinay' if captured else 'y') + '</td></tr>' + row(1) + row(2))
+    assert result(source, rules)['composite_acceptance_pass'] is captured
+
+
+@pytest.mark.parametrize('depth', [1, 2])
+def test_selected_nested_table_retains_its_own_caption(depth):
+    inner = table(caption() + row(1) + row(2))
+    for _ in range(depth):
+        inner = table('<tr><td>' + inner + '</td></tr>')
+    assert result(inner)['composite_acceptance_pass']
+    assert not result(inner.replace(caption(), ''))['composite_acceptance_pass']
+    assert not result(table(caption() + '<tr><td>' + table(row(1) + row(2)) + '</td></tr>'))['composite_acceptance_pass']
