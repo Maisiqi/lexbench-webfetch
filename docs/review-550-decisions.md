@@ -205,6 +205,10 @@ the preceding dispatcher on the same current rule data.
   elements; its source has no native `h2` elements. Removing those selectors
   likewise rejects the complete article. Keep both opt-in mechanisms rather
   than substituting title-presence checks that lose local-content ownership.
+  Local `dd` content includes nested parameter descriptions; blanket removal of
+  nested lists rejects valid descriptions. This structural check does not prove
+  semantic relevance of every nested term. The bound `os.path` source contains
+  no nested `dd dl` lists; accepted/rejected synthetic controls cover locality.
 
 - Do not impose a blanket 20-heading cap. All 17 affected mutable-document
   cases lack frozen body-coverage requirements, so the proposed 80% prose
