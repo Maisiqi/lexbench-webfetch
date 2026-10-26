@@ -235,7 +235,9 @@ def test_article_header_keeps_local_heading(owner):
          'headings': [{'text': 'Usage', 'level': 1}]}
     source = f'<{owner}><header><h1>Usage</h1></header><p>A substantive description.</p></{owner}>'
     assert evaluate_document_structure(source, c, html_document=True)['document_structure_pass']
-    assert not evaluate_document_structure(source.replace('<header>', '<nav>').replace('</header>', '</nav>'), c, html_document=True)['document_structure_pass']
+    for tag in ['nav', 'header role="navigation"', 'header class="toc"']:
+        excluded = source.replace('<header>', '<' + tag + '>').replace('</header>', '</' + tag.split()[0] + '>')
+        assert not evaluate_document_structure(excluded, c, html_document=True)['document_structure_pass']
 
 
 def test_tab_indented_numbered_heading_is_code():

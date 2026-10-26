@@ -79,12 +79,12 @@ def _content_root(content, *, preserve_local_header=False):
     # explicit HTML/inline-style visibility rules, including closed details.
     soup = scoped_html(content)
     root = soup.select_one('main') or soup.select_one('article') or soup.body or soup
-    for node in root.select('nav,header,footer,aside,[role="navigation"],.toc,#toc,.reference-toc'):
-        if node.parent is None:
-            continue
-        if preserve_local_header and node.name == 'header' and root.name in {'main', 'article'}:
-            continue
-        node.decompose()
+    excluded = 'nav,footer,aside,[role="navigation"],.toc,#toc,.reference-toc'
+    if not preserve_local_header or root.name not in {'main', 'article'}:
+        excluded += ',header'
+    for node in root.select(excluded):
+        if node.parent is not None:
+            node.decompose()
     return root
 
 
@@ -215,7 +215,7 @@ def _definition_key(text):
 
 
 def _definition_html_events(content):
-    root = _content_root(content, preserve_local_header=True)
+    root = _content_root(content)
     events = []
     for term in root.select('dt'):
         for anchor in term.select('.headerlink'):
