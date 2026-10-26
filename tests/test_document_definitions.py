@@ -73,7 +73,8 @@ class DefinitionStructureTests(unittest.TestCase):
         self.assertFalse(self.result(self.html)['document_structure_pass'])
 
     def test_undeclared_signature_cannot_supply_previous_description(self):
-        for signature in ['os.path.other(path)', '`os.path.other(path)`', '### `os.path.other(path)`']:
+        for signature in ['os.path.other(path)', '`os.path.other(path)`', '### `os.path.other(path)`',
+                          'os.path.other(path) -> str', '`os.path.other(path) -> str`']:
             with self.subTest(signature=signature):
                 text = ('os.path.join(path, *paths)\n' + signature
                         + '\nDescription of other.\nos.path.split(path)\nDescription of split.')

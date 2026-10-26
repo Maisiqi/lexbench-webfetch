@@ -245,3 +245,12 @@ def test_tab_indented_numbered_heading_is_code():
          'headings': [{'text': '1. Methods', 'level': 1}]}
     assert not evaluate_document_structure('\t1. Methods\n\nA substantive paragraph.', c)['document_structure_pass']
     assert evaluate_document_structure('1. Methods\n\nA substantive paragraph.', c)['document_structure_pass']
+
+
+@pytest.mark.parametrize('underline', ['---', '==='])
+def test_setext_boundary_prevents_borrowing_next_section(underline):
+    c = {'version': 1, 'minimum_heading_coverage': 1, 'minimum_body_chars': 1,
+         'headings': [{'text': 'Usage', 'level': 1 if underline[0] == '=' else 2}]}
+    text = f'Usage\n{underline}\nOther\n{underline}\nDescription belonging only to Other.'
+    assert not evaluate_document_structure(text, c)['document_structure_pass']
+    assert evaluate_document_structure(text.replace('Other\n', 'Usage description.\n\nOther\n'), c)['document_structure_pass']

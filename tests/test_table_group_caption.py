@@ -133,3 +133,17 @@ def test_caption_cells_round_trip_literal_backslashes_and_pipes(name):
     report = result(source)
     assert report['composite_acceptance_pass']
     assert report['composite_group_results'][0]['records'][0]['name'] == name
+
+
+@pytest.mark.parametrize('name', ['A & B', '<value>', 'A|B', r'A\|B'])
+@pytest.mark.parametrize('normalized', [False, True])
+def test_html_table_literal_values_survive_expansion(name, normalized):
+    from html import escape
+    value = escape(name)
+    source = (f'<table><tr><th>ID</th><th>Name</th><th>Country</th></tr>'
+              f'<tr><td>1</td><td>{value}</td><td>Argentina</td></tr>'
+              '<tr><td>2</td><td>Two</td><td>Brazil</td></tr></table>' if normalized
+              else table(caption() + row(1).replace('Person 1', value) + row(2)))
+    report = result(source)
+    assert report['composite_acceptance_pass']
+    assert report['composite_group_results'][0]['records'][0]['name'] == name

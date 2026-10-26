@@ -562,6 +562,7 @@ def grouped_table_surface(content, group):
 
     if _contains_rendered_html_table(content):
         soup = scoped_html(content)
+        expanded = {}
         if exclude := group.get('table_scope', {}).get('exclude_selector'):
             for node in list(soup.select(exclude)):
                 if node.parent is not None:
@@ -599,8 +600,14 @@ def grouped_table_surface(content, group):
                              if c.find_parent('tr') is row]
                     if len(cells) == len(columns):
                         out.append(line(cells + [context]))
-            table.replace_with('\n' + '\n'.join(out) + '\n')
-        content = str(soup)
+            token = f'LEXBENCH_CAPTION_TABLE_{len(expanded)}'
+            while token in content:
+                token += '_'
+            expanded[token] = '\n' + '\n'.join(out) + '\n'
+            table.replace_with(token)
+        content = table_text_surface(str(soup))
+        for token, markdown in expanded.items():
+            content = content.replace(token, markdown)
 
     lines = content.splitlines()
     out = []

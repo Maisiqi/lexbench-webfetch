@@ -129,7 +129,10 @@ def _text_events(content, headings, key_function=_key):
     lines, eligible = [], []
     continuation_column = None
     fence = None
+    previous_line = ''
     for raw in content.splitlines():
+        previous_text = previous_line.strip()
+        previous_line = raw
         raw = raw.expandtabs(4)
         line = raw.strip()
         indent = len(raw) - len(raw.lstrip())
@@ -156,6 +159,11 @@ def _text_events(content, headings, key_function=_key):
             marker = re.match(r'^(\s*\d+(?:\.\d+)*\.)\s+(?=\S)', raw)
             continuation_column = marker.end(1) if marker else None
         heading_eligible = fence is None and indent < 4
+        if (heading_eligible and previous_text and lines and lines[-1] == previous_text
+                and eligible[-1] == (True, None)
+                and re.fullmatch(r'=+|-+', line)):
+            eligible[-1] = (True, 1 if line[0] == '=' else 2)
+            continue
         if heading_eligible and re.fullmatch(r'(?:[-*+]\s*|\d+[.)]\s*)?\[[^]]+\]\(#[^)]*\)', line):
             continue
         level_match = re.match(r'^(#{1,6})\s+(.+?)(?:\s+#+)?$', line) if heading_eligible else None
@@ -203,7 +211,7 @@ def _text_events(content, headings, key_function=_key):
                     parent = max(parents, key=len) if parents else next(iter(numbered))
                     explicit_level = numbered[parent] + number[1].count('.') - parent.count('.')
             if key_function is _definition_key and re.fullmatch(
-                    r'[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*\(.*\)', lines[index].strip('`¶ ')):
+                    r'[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*\(.*\)(?:\s*->\s*\S.*)?', lines[index].strip('`¶ ')):
                 explicit_level = 1
             events.append((lines[index], explicit_level))
             index += 1
