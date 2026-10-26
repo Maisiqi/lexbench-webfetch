@@ -558,7 +558,7 @@ def grouped_table_surface(content, group):
 
     def line(cells):
         # Escape pipe characters so a value cannot manufacture another field.
-        return '| ' + ' | '.join(v.replace('\\', r'\\').replace('|', r'\|') for v in cells) + ' |'
+        return '| ' + ' | '.join(' '.join(v.split()).replace('\\', r'\\').replace('|', r'\|') for v in cells) + ' |'
 
     if _contains_rendered_html_table(content):
         soup = scoped_html(content)
@@ -600,7 +600,7 @@ def grouped_table_surface(content, group):
                              if c.find_parent('tr') is row]
                     if len(cells) == len(columns):
                         out.append(line(cells + [context]))
-            token = f'LEXBENCH_CAPTION_TABLE_{len(expanded)}'
+            token = f'LEXBENCH_CAPTION_TABLE_{len(expanded)}_END'
             while token in content:
                 token += '_'
             expanded[token] = '\n' + '\n'.join(out) + '\n'

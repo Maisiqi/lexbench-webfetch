@@ -82,3 +82,12 @@ class DefinitionStructureTests(unittest.TestCase):
                 text = text.replace('os.path.join(path, *paths)\n',
                                     'os.path.join(path, *paths)\nJoin pathname components.\n')
                 self.assertTrue(self.result(text, False)['document_structure_pass'])
+
+    def test_nested_parameter_list_is_local_description(self):
+        contract = copy.deepcopy(self.contract)
+        contract['headings'] = contract['headings'][:1]
+        description = '<dl><dt>path</dt><dd>The initial pathname component to join.</dd></dl>'
+        value = '<dl><dt>os.path.join(path, *paths)</dt><dd>' + description + '</dd></dl>'
+        self.assertTrue(evaluate_document_structure(value, contract, html_document=True)['document_structure_pass'])
+        outside = '<dl><dt>os.path.join(path, *paths)</dt><dd></dd></dl>' + description
+        self.assertFalse(evaluate_document_structure(outside, contract, html_document=True)['document_structure_pass'])

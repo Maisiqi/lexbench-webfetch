@@ -130,6 +130,7 @@ def _text_events(content, headings, key_function=_key):
     continuation_column = None
     fence = None
     previous_line = ''
+    paragraph_start = 0
     for raw in content.splitlines():
         previous_text = previous_line.strip()
         previous_line = raw
@@ -142,13 +143,16 @@ def _text_events(content, headings, key_function=_key):
             if fence is None and not (token[0] == '`' and '`' in suffix):
                 fence = token
                 continuation_column = None
+                paragraph_start = len(lines)
                 continue
             if (fence is not None and token[0] == fence[0]
                     and len(token) >= len(fence) and not suffix.strip()):
                 fence = None
+                paragraph_start = len(lines)
                 continue
         if not line:
             continuation_column = None
+            paragraph_start = len(lines)
             continue
         # Wrapped numbered titles continue past the number in plain text.
         # A blank line or a less-indented paragraph ends that continuation.
@@ -162,7 +166,9 @@ def _text_events(content, headings, key_function=_key):
         if (heading_eligible and previous_text and lines and lines[-1] == previous_text
                 and eligible[-1] == (True, None)
                 and re.fullmatch(r'=+|-+', line)):
-            eligible[-1] = (True, 1 if line[0] == '=' else 2)
+            lines[paragraph_start:] = [' '.join(lines[paragraph_start:])]
+            eligible[paragraph_start:] = [(True, 1 if line[0] == '=' else 2)]
+            paragraph_start = len(lines)
             continue
         if heading_eligible and re.fullmatch(r'(?:[-*+]\s*|\d+[.)]\s*)?\[[^]]+\]\(#[^)]*\)', line):
             continue
@@ -176,6 +182,8 @@ def _text_events(content, headings, key_function=_key):
                 line = level_match[2]
         lines.append(line)
         eligible.append((heading_eligible, len(level_match[1]) if level_match else None))
+        if not heading_eligible or level_match:
+            paragraph_start = len(lines)
     declared = {key_function(h['text']): h for h in headings}
     prefixes = {key[:i] for key in declared for i in range(1, len(key) + 1)}
     events, index = [], 0

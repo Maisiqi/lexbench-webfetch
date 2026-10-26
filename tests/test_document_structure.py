@@ -254,3 +254,12 @@ def test_setext_boundary_prevents_borrowing_next_section(underline):
     text = f'Usage\n{underline}\nOther\n{underline}\nDescription belonging only to Other.'
     assert not evaluate_document_structure(text, c)['document_structure_pass']
     assert evaluate_document_structure(text.replace('Other\n', 'Usage description.\n\nOther\n'), c)['document_structure_pass']
+
+
+@pytest.mark.parametrize('title', ['Other section', 'Other\nsection', 'Other\nlong\nsection'])
+def test_multiline_setext_heading_is_not_previous_section_body(title):
+    c = {'version': 1, 'minimum_heading_coverage': 1, 'minimum_body_chars': 1,
+         'headings': [{'text': 'Usage', 'level': 2}]}
+    source = f'Usage\n---\n\n{title}\n---\nOther description.'
+    assert not evaluate_document_structure(source, c)['document_structure_pass']
+    assert evaluate_document_structure(source.replace('Usage\n---\n', 'Usage\n---\nUsage description.\n'), c)['document_structure_pass']

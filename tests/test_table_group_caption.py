@@ -147,3 +147,19 @@ def test_html_table_literal_values_survive_expansion(name, normalized):
     report = result(source)
     assert report['composite_acceptance_pass']
     assert report['composite_group_results'][0]['records'][0]['name'] == name
+
+
+@pytest.mark.parametrize('gap', ['\n', '\r\n', '\t'])
+def test_html_caption_cells_normalize_embedded_whitespace(gap):
+    report = result(table(caption() + row(1).replace('Person 1', 'Person' + gap + 'One') + row(2)))
+    assert report['composite_acceptance_pass']
+    assert report['composite_group_results'][0]['records'][0]['name'] == 'Person One'
+
+
+def test_multiple_caption_placeholders_do_not_overlap():
+    rules = contract(); rules['groups'][0]['minimum_records'] = 22
+    source = ''.join(table(caption() + row(2*i+1) + row(2*i+2)) for i in range(11))
+    report = result(source, rules)
+    assert report['composite_acceptance_pass']
+    assert len(report['composite_group_results'][0]['records']) == 22
+    assert not result(source.replace(row(22), ''), rules)['composite_acceptance_pass']
