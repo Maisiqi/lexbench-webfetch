@@ -479,17 +479,18 @@ The three selected historical table/linked-table cases have 30 outputs and no
 rendered HTML tables; nested-table and `thead`/`td` behavior is established by
 dedicated accepted/rejected controls, not by claiming those shapes appeared here.
 
-The subsequent heading-order correction (`1d18da9`) was checked against all 214
-normalized answers containing HTML tables, with no additional verdict changes.
-The other 4,606 outputs cannot enter the changed HTML-table branch and reuse the
-preceding results. Artifact, result-metadata and contract hashes were checked
-before reuse. This is targeted revalidation after the full replay, not a second
-full 4,820-output scoring run.
+Final scorer `19ba48a` retains the full replay plus targeted revalidation.
+All 214 normalized HTML-table answers were rescored after the heading-order
+correction. A final surface comparison checked 224 answers containing a table-tag
+prefix; the 101 whose normalized text changed were rescored, with no verdict
+changes. Other results reuse hash-verified artifacts, metadata and contracts.
+This is targeted revalidation, not a second full 4,820-output scoring run.
 
 ### Literal input and structural exclusion safeguards
 
-HTML headings are decoded only after final table serialization, before restoring
-Markdown cells, so visible scope labels are not reinterpreted as HTML.
+HTML exclusions and table conversion share one parsed document. Headings are
+decoded after final serialization, before restoring Markdown cells, even when
+all HTML tables were excluded. Scope labels are not reinterpreted as HTML.
 Raw-output and code-scoped patterns use the original returned text, independently
 of plain-text escaping for prose checks. HTML table normalization preserves
 separate nested tables and counts only cells and text owned by each table,
