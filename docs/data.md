@@ -474,7 +474,9 @@ controls and the four deferred exports retain their separate scopes.
 
 Raw-output and code-scoped patterns use the original returned text, independently
 of plain-text escaping for prose checks. Caption expansion applies declared HTML
-table exclusions before discarding selector markup. Indented code cannot declare
+table exclusions before discarding selector markup and also processes remaining
+Markdown tables in mixed answers. Section checks retain article-local headers
+while excluding explicit navigation and table-of-contents containers. Indented code cannot declare
 section titles; fenced code closes only on a matching fence at least as long as
 its opener, without trailing non-whitespace. Accepted/rejected controls cover
 these combinations. Comparing 65 precisely hash-bound section-source inputs

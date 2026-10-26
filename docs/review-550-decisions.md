@@ -238,7 +238,11 @@ remain explicitly unverified.
 Export verifies the original frozen inputs regardless of `--review-source`.
 Omitting that option skips only declared independent review files; it does not
 skip frozen sources or mark missing evidence as passing. Available reference
-results remain in the report. A missing positive with omitted review evidence
+results remain in the report. Export success materializes inputs; it does not
+certify reference acceptance. A failed candidate plus omitted independent evidence
+remains unverified, with its failed candidate and both completion flags retained;
+without an omitted alternative, all-failing executable controls reject export.
+A missing positive with omitted review evidence
 is unavailable, while an accepted negative control still fails. Supplied review
 evidence remains hash-checked and complete. Source registrations are retained:
 they provide provenance and executable positive controls for revised rules.
