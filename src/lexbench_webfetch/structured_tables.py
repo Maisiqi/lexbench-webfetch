@@ -234,9 +234,7 @@ def table_text_surface(content, *, exclude_selector=None):
             content, flags=re.I,
         )
 
-    def convert(match):
-        soup = BeautifulSoup(match[0], 'html.parser')
-        table = soup.find('table')
+    def convert(table):
         lines = []
         for row in table.find_all('tr'):
             if row.find_parent('table') is not table:
@@ -247,15 +245,33 @@ def table_text_surface(content, *, exclude_selector=None):
                 if cell.get('colspan', '1') != '1' or cell.get('rowspan', '1') != '1':
                     break
                 for link in cell.find_all('a', href=True):
+                    if link.find_parent('table') is not table:
+                        continue
                     link.replace_with('[' + link.get_text(' ', strip=True) + '](' + link['href'] + ')')
-                values.append(cell.get_text(' ', strip=True).replace('\\', r'\\').replace('|', r'\|'))
+                text = ' '.join(str(part).strip() for part in cell.strings
+                                if part.find_parent('table') is table and str(part).strip())
+                values.append(text.replace('\\', r'\\').replace('|', r'\|'))
             else:
                 if values:
                     lines.append('| ' + ' | '.join(values) + ' |')
-                    if all(cell.name == 'th' for cell in cells):
+                    if (all(cell.name == 'th' for cell in cells)
+                            or row.find_parent(['thead', 'table']).name == 'thead'):
                         lines.append('| ' + ' | '.join('---' for _ in cells) + ' |')
         return '\n' + '\n'.join(lines) + '\n'
-    content = re.sub(r'<table\b[^>]*>[\s\S]*?</table\s*>', convert, content, flags=re.I)
+    if _contains_rendered_html_table(content):
+        soup = BeautifulSoup(content, 'html.parser')
+        replacements = []
+        for table in soup.find_all('table'):
+            token = f'LEXBENCH_TABLE_{len(replacements)}_END'
+            while token in content:
+                token += '_'
+            replacements.append((table, token, convert(table)))
+        for table, token, _ in replacements:
+            nested = [child.extract() for child in table.find_all('table')]
+            table.replace_with(token, *nested)
+        content = str(soup)
+        for _, token, markdown in replacements:
+            content = content.replace(token, markdown)
     lines = content.splitlines()
     output = []
     index = 0

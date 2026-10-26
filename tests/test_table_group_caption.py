@@ -241,3 +241,17 @@ def test_explicit_header_section_preserves_td_labels(label, passed):
     source = ('<table class="orders"><thead><tr><td>' + label + '</td><td>Name</td></tr></thead>'
               '<tbody>' + caption() + row(1) + row(2) + '</tbody></table>')
     assert result(source)['composite_acceptance_pass'] is passed
+
+
+@pytest.mark.parametrize('nested', [False, True])
+@pytest.mark.parametrize('cell', ['th', 'td'])
+@pytest.mark.parametrize('label,passed', [('ID', True), ('Wrong', False)])
+def test_normalized_header_section_preserves_labels(cell, label, passed, nested):
+    header = ''.join(f'<{cell}>{name}</{cell}>' for name in [label, 'Name', 'Country'])
+    source = ('<table class="orders"><thead><tr>' + header + '</tr></thead><tbody>'
+              '<tr><td>1</td><td>One</td><td>Argentina</td></tr>'
+              '<tr><td>2</td><td>Two</td><td>Brazil</td></tr></tbody></table>')
+    if nested:
+        source = source.replace('<tbody>', '<tbody><tr><td><table><tr><th>Other</th></tr></table></td></tr>')
+    assert result(source)['composite_acceptance_pass'] is passed
+    assert not result(source.replace('<td>Brazil</td>', '<td></td>'))['composite_acceptance_pass']
