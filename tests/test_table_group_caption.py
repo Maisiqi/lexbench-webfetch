@@ -118,3 +118,10 @@ def test_caption_expansion_preserves_table_exclusions(selector):
     source = table(caption() + row(1) + row(2))
     assert result(source)['composite_acceptance_pass']
     assert not result(source, rules)['composite_acceptance_pass']
+
+
+@pytest.mark.parametrize('prefix', ['', '<table><tr><th>Other</th></tr></table>\n'])
+def test_mixed_html_preserves_markdown_caption_rows(prefix):
+    source = '| ID | Name |\n| --- | --- |\n| Country: Argentina - 2 items |\n| 1 | One |\n| 2 | Two |'
+    assert result(prefix + source)['composite_acceptance_pass']
+    assert not result(prefix + source.replace('| Country: Argentina - 2 items |\n', ''))['composite_acceptance_pass']

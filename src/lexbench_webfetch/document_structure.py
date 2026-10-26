@@ -73,20 +73,24 @@ def validate_document_structure(contract):
         raise ValueError('A document contract needs at least one substantive section')
 
 
-def _content_root(content):
+def _content_root(content, *, preserve_local_header=False):
     from .dynamic_lists import scoped_html
     # Accessibility-tree hiding is not visual hiding. Reuse the shared
     # explicit HTML/inline-style visibility rules, including closed details.
     soup = scoped_html(content)
     root = soup.select_one('main') or soup.select_one('article') or soup.body or soup
     for node in root.select('nav,header,footer,aside,[role="navigation"],.toc,#toc,.reference-toc'):
+        if node.parent is None:
+            continue
+        if preserve_local_header and node.name == 'header' and root.name in {'main', 'article'}:
+            continue
         node.decompose()
     return root
 
 
 def _html_events(content, headings=()):
     from bs4 import Comment, NavigableString
-    root = _content_root(content)
+    root = _content_root(content, preserve_local_header=True)
     # Lists containing only local section links are tables of contents. Other
     # lists and article-specific external reading links remain body content.
     for node in list(root.select('ul,ol')):
@@ -126,8 +130,9 @@ def _text_events(content, headings, key_function=_key):
     continuation_column = None
     fence = None
     for raw in content.splitlines():
+        raw = raw.expandtabs(4)
         line = raw.strip()
-        indent = len(raw.expandtabs(4)) - len(raw.expandtabs(4).lstrip())
+        indent = len(raw) - len(raw.lstrip())
         marker = re.match(r'^(`{3,}|~{3,})(.*)$', line) if indent < 4 else None
         if marker:
             token, suffix = marker.groups()
@@ -145,7 +150,6 @@ def _text_events(content, headings, key_function=_key):
         # Wrapped numbered titles continue past the number in plain text.
         # A blank line or a less-indented paragraph ends that continuation.
         if numbered and fence is None:
-            indent = len(raw) - len(raw.lstrip())
             if continuation_column is not None and indent >= continuation_column:
                 lines[-1] += ' ' + line
                 continue
@@ -211,7 +215,7 @@ def _definition_key(text):
 
 
 def _definition_html_events(content):
-    root = _content_root(content)
+    root = _content_root(content, preserve_local_header=True)
     events = []
     for term in root.select('dt'):
         for anchor in term.select('.headerlink'):

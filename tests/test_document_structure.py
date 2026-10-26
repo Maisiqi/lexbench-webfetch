@@ -227,3 +227,19 @@ def test_local_section_floor_cannot_borrow_other_section_or_punctuation():
 def test_code_examples_cannot_supply_section_headings(wrapper):
     assert not evaluate_document_structure(wrapper(body()), contract())['document_structure_pass']
     assert evaluate_document_structure(wrapper(body()) + '\n\n' + body(), contract())['document_structure_pass']
+
+
+@pytest.mark.parametrize('owner', ['article', 'main'])
+def test_article_header_keeps_local_heading(owner):
+    c = {'version': 1, 'minimum_heading_coverage': 1, 'minimum_body_chars': 1,
+         'headings': [{'text': 'Usage', 'level': 1}]}
+    source = f'<{owner}><header><h1>Usage</h1></header><p>A substantive description.</p></{owner}>'
+    assert evaluate_document_structure(source, c, html_document=True)['document_structure_pass']
+    assert not evaluate_document_structure(source.replace('<header>', '<nav>').replace('</header>', '</nav>'), c, html_document=True)['document_structure_pass']
+
+
+def test_tab_indented_numbered_heading_is_code():
+    c = {'version': 1, 'minimum_heading_coverage': 1, 'minimum_body_chars': 1,
+         'headings': [{'text': '1. Methods', 'level': 1}]}
+    assert not evaluate_document_structure('\t1. Methods\n\nA substantive paragraph.', c)['document_structure_pass']
+    assert evaluate_document_structure('1. Methods\n\nA substantive paragraph.', c)['document_structure_pass']

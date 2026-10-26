@@ -600,7 +600,7 @@ def grouped_table_surface(content, group):
                     if len(cells) == len(columns):
                         out.append(line(cells + [context]))
             table.replace_with('\n' + '\n'.join(out) + '\n')
-        return str(soup)
+        content = str(soup)
 
     lines = content.splitlines()
     out = []
