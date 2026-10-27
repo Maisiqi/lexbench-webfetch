@@ -239,7 +239,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "1d7d096c12a168a35dc88f4cc9023dafd59f0b5e67ae9f0069113368985fbbb5",
+      "revision_sha256": "b3a68468b5e7183d3917a74ae8bb376b02870cee4dea7f5469ff77aa9bb5fe55",
       "changes": [
         {
           "suite": "webfetch",
@@ -8333,7 +8333,7 @@
         {
           "suite": "webfetch",
           "case_id": "github-repository",
-          "changes_sha256": "d9dcecc95738e8187d44ffabe9396785358484318c797910663ff7ef0e5e3a8b",
+          "changes_sha256": "2404e5886608ac16a29394d43f559a30ad6c413a76d0315583d7f5310c1be109",
           "sources": [
             {
               "path": "sources/github-repository/current-source.html.txt",
@@ -8362,23 +8362,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-001-python-pathlib-documentation",
-          "changes_sha256": "15aebc6e3979d8bae17501f140a6cbcd1dc80bba07aae6c832a42cf35c2a0098",
+          "changes_sha256": "1be4446667b956ef87593ce224705ac32323c9316778556ce65ffb276c7212a5",
           "sources": [
             {
               "path": "sources/live-001-python-pathlib-documentation/current-source.html.txt",
@@ -8407,23 +8406,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-002-http-http-modules",
-          "changes_sha256": "443dac30963b9ab4023d923bc4af5b19ee055527c631679fa6be8b0419f63728",
+          "changes_sha256": "9f86f12b2a4a38b052f882b51ad259fa699423efe0056fa4a8e1448fd3b19635",
           "sources": [
             {
               "path": "sources/live-002-http-http-modules/current-source.html.txt",
@@ -8452,24 +8450,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-004-deployments",
-          "reason": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: exclude generic admonition labels and table-of-contents/navigation headings from section coverage; retain substantive body headings and the body length floor. Retain the feedback, reference, related-link and placeholder heading requirements added in this PR: non-prose page content remains within the task scope. Empty compatibility placeholders waive local body. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer. Replace the generic Note: label in both fact and stable-anchor requirements with its source-verified warning sentence, Do not manage ReplicaSets owned by a Deployment. Full HTML and HTML without Note: pass; removing that warning while retaining the section structure fails. Keep the other facts, headings and body-length requirement unchanged. The Kubernetes Feedback heading identifies a Yes/No helpfulness widget. Keep its heading in the coverage calculation but waive prose beneath it (body_required=false); this does not waive the substantive documentation sections.",
-          "changes_sha256": "14ab98abfb628217121d28bf6c0900d5ff1156a31af338dc115b47a99b2edb63",
+          "changes_sha256": "8f32d5ba63446acd2cbc7d9b58b98411fbc5c8f78035c6272e935f32bfa1bb6e",
           "sources": [
             {
               "path": "sources/live-004-deployments/current-source.html.txt",
@@ -8498,22 +8494,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
-          ]
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ],
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-006-python-typing-documentation",
-          "changes_sha256": "9e995fba5bd7151534460ddf216bfc98810af05bb59ef8ee0847acac291851e6",
+          "changes_sha256": "dbfd3c303f9977f10a1860cf8b5daa0b66d8681e3a7728a723ab49d0cf3f1585",
           "sources": [
             {
               "path": "sources/live-006-python-typing-documentation/current-source.html.txt",
@@ -8542,23 +8538,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-008-service",
-          "changes_sha256": "d832b31e19b2ab6d29bfc8b1494770749f5b274e06e87f48e55e4e644137496c",
+          "changes_sha256": "e40dc113ea2aa7184636adbc1d2a9345906ac3e6dfd6c879eca17e55403d73b4",
           "sources": [
             {
               "path": "sources/live-008-service/current-source.html.txt",
@@ -8587,23 +8582,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "kubernetes-feedback-widget-2"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-009-run-a-stateless-application-usin",
-          "changes_sha256": "9254996d7cc1fa4fae4a74db5292470c93b2676011e7348d18d04aa72f8abec9",
+          "changes_sha256": "38a0602776e1b4e4932de5cd842cc0aa74f73d07702fd702c8141c90c6a5170b",
           "sources": [
             {
               "path": "sources/live-009-run-a-stateless-application-usin/current-source.html.txt",
@@ -8632,23 +8626,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "kubernetes-feedback-widget-3"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-012-navigation-menu",
-          "changes_sha256": "e08ff553ce4910f4f5521a5103586ee104fbdaf951226944724c15748809587b",
+          "changes_sha256": "2847ef783d453daa5a2669c071cb625424ac3d6a598de728ee7d10e29b1b5e5b",
           "sources": [
             {
               "path": "sources/live-012-navigation-menu/current-source.html.txt",
@@ -8677,23 +8670,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-013-navigation-menu",
-          "changes_sha256": "2256a0142e2e388cc1fe4311db60870dc566249e92d1ca2d0a9ed8a3726620db",
+          "changes_sha256": "85880ac894becdd981304c1a8b9dd56d752dbfd8accd1407654d13066fc74948",
           "sources": [
             {
               "path": "sources/live-013-navigation-menu/current-source.html.txt",
@@ -8722,23 +8714,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-015-configmaps",
-          "changes_sha256": "806032fbc209efec046576a726c2bbdf5415cd0b059b5421bf675821ee8f0564",
+          "changes_sha256": "3f02c6dc6ef05d05ab8c76ca01a1a7854e8e5f4f914c765456ae00456ad31adf",
           "sources": [
             {
               "path": "sources/live-015-configmaps/current-source.html.txt",
@@ -8767,23 +8758,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "kubernetes-feedback-widget-2"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-016-navigation-menu",
-          "changes_sha256": "0ddaa19aeb04105a9dbf051e238fc1edbc6609d372608492f5d6343734e067ea",
+          "changes_sha256": "d9432df3c05734e5ccb95253bca0f0b3fbd92669a1b222ce2bdc742794fc1b32",
           "sources": [
             {
               "path": "sources/live-016-navigation-menu/current-source.html.txt",
@@ -8812,23 +8802,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-017-navigation-menu",
-          "changes_sha256": "9414d7e0529741b3fcf84e78d218d265f7465c4ba82841bf69a52c6e5782ab05",
+          "changes_sha256": "ec51609e44f4eef00f7b914b80898436bfd8bc7d4c21686d78a71bab61e73f9c",
           "sources": [
             {
               "path": "sources/live-017-navigation-menu/current-source.html.txt",
@@ -8857,23 +8846,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-019-navigation-menu",
-          "changes_sha256": "9026274521ee2afd0ee21ae7da27c43380a90e6574eb2aa6e09f25238673b31b",
+          "changes_sha256": "e0894976bf2333ca6abad971f26007d1686af8bffb89c748f5aebe13a39fc14f",
           "sources": [
             {
               "path": "sources/live-019-navigation-menu/current-source.html.txt",
@@ -8902,18 +8890,17 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
@@ -8963,7 +8950,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-026-getting-started",
-          "changes_sha256": "3dd319d85d75e86594ac11a3cacbc55c8a17f2195604b76a5a089d1438dea527",
+          "changes_sha256": "55d8b8f6b908049c8baf4e0d01dcbf4a39db58de70facb098350adbe0c92b997",
           "sources": [
             {
               "path": "sources/live-026-getting-started/current-source.html.txt",
@@ -8992,23 +8979,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-027-sponsors",
-          "changes_sha256": "9b87b7ace65d9a53d73a8d7da098a7f984a53227518509fb9ea3e6b0f85e7862",
+          "changes_sha256": "91fb05ae1eb3a55b8d94c522c73a6d9649a0f7bc682c68071f30c5fef115f3d5",
           "sources": [
             {
               "path": "sources/live-027-sponsors/current-source.html.txt",
@@ -9037,23 +9023,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-028-getting-started-with-rails",
-          "changes_sha256": "e5637da0957392cee73f1809cd2efb6f492471dfbd418f6e1b3a62da1050b325",
+          "changes_sha256": "921664d38da6c2c2c3764cfadc81dd5b52bd91b9ea452ca2142f0b1a09947a43",
           "sources": [
             {
               "path": "sources/live-028-getting-started-with-rails/current-source.html.txt",
@@ -9082,24 +9067,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-029-fetch",
-          "reason": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove only the mandatory engine-support sentence inside a closed disclosure. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "2ede126106a8f280b01b454f188a3c65a7be5cb85deb77683f5a35dfdfda15ec",
+          "changes_sha256": "84ff7bfc9ff0afefceb7570b53e698aa8502b01925f88d3fda2a25ccb2d457d8",
           "sources": [
             {
               "path": "sources/live-029-fetch/current-source.html.txt",
@@ -9128,23 +9111,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
-          ]
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ],
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-032-api-reference",
-          "reason": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: replace twenty introductory cards, API property declarations and expansion-control labels with the three actual h1 sections: API Reference, Authentication and Errors. Keep the existing body-length floor and original facts. Complete source passes; removing these primary headings fails.",
-          "changes_sha256": "4ee5340a946fb31b5b3533792bc83b1c71f2497d00801e926c349f8dc128a9df",
+          "changes_sha256": "5f7ce9c0ff8d12baf733877cdc52bf12609e696889c2baa11d5120a0db461369",
           "sources": [
             {
               "path": "sources/live-032-api-reference/current-source.html.txt",
@@ -9173,22 +9155,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
-          ]
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ],
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-041-python-programming-language",
-          "changes_sha256": "c9818479ade2d16d872ca8459c9ca3b8189e99e4a4638343d297c30226f9f52d",
+          "changes_sha256": "1231424fd07c0c2875bfee075a7e1a26c2dac47b33bb850d41f0d150d15981a1",
           "sources": [
             {
               "path": "sources/live-041-python-programming-language/source.html.txt",
@@ -9217,23 +9199,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-042-document-object-model-dom",
-          "changes_sha256": "a4b66e7ee2d96eaadf982ab8f61c3deabf7a860c673936137dd5cf74799f802c",
+          "changes_sha256": "d8188bc9012e4a7b268f43ebac69fae680690d3199c70b7f41579cac3a76ed1a",
           "sources": [
             {
               "path": "sources/live-042-document-object-model-dom/current-source.html.txt",
@@ -9262,23 +9243,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-043-syntax",
-          "changes_sha256": "891d05b2ea69b07f2487f52f311c7242d1d92e9cac74c19eb7bbe2e0d8c09cab",
+          "changes_sha256": "7538c13de111a5285f49111dd8b2629da8fc9a073bece305af92127849875583",
           "sources": [
             {
               "path": "sources/live-043-syntax/current-source.html.txt",
@@ -9307,23 +9287,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-044-history-api",
-          "changes_sha256": "002bd4ca6f19787382c1e6ee3e8663bd6ac6eb50e8389209c887960751cad72e",
+          "changes_sha256": "2d851f1023eb8bd4c6eb121adaa8207120f24e48cf4ac9f66a78f5790e8ff5ca",
           "sources": [
             {
               "path": "sources/live-044-history-api/current-source.html.txt",
@@ -9352,23 +9331,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-045-cache",
-          "changes_sha256": "2407008265918249b80d14e0bedac742f9f7a16eb98c945f98466b9d1425cf16",
+          "changes_sha256": "1da48a250899e9fa2014991ae609c559bcd669fe043f11e77387a374f958cced",
           "sources": [
             {
               "path": "sources/live-045-cache/current-source.html.txt",
@@ -9397,23 +9375,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-046-file-api",
-          "changes_sha256": "939cd37eff3d3090e9ddc0a87cc0f6dece3be0264fdfdbb45f309ff5b5ef8874",
+          "changes_sha256": "dcda6ca23c1a9b67f39ee7f30557a7b55592227a75f0238b4d84846329fc38d1",
           "sources": [
             {
               "path": "sources/live-046-file-api/current-source.html.txt",
@@ -9442,23 +9419,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-047-push-api",
-          "changes_sha256": "95dadff1ad0551b586217ce047f4ab8d89cba87186b05c226347bf978a557b2d",
+          "changes_sha256": "29ec36317bcec9dce4db29544c4b6ef904c9f396a448b93afe349b126443661a",
           "sources": [
             {
               "path": "sources/live-047-push-api/current-source.html.txt",
@@ -9487,18 +9463,17 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
@@ -9548,7 +9523,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-049-functools-higher-order-functions",
-          "changes_sha256": "6feeaa671e7e5ee18d40d7c1d3c715fd5ebc381b32d35910082bec3c95e7417b",
+          "changes_sha256": "99c6285566ff1b5b1298660c6960ca5075d6c16cd6272501f95cedea26cb6dfb",
           "sources": [
             {
               "path": "sources/live-049-functools-higher-order-functions/current-source.html.txt",
@@ -9577,23 +9552,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-050-re-regular-expression-operations",
-          "changes_sha256": "5baf70003cada67799f72e46fd658a7f7bb22e2cad1436438876c5daaeeab6d8",
+          "changes_sha256": "e6b3c2ce7e737e3088750aecab3aaf20a0af9afd2a2289ab2c7561b6c43510d0",
           "sources": [
             {
               "path": "sources/live-050-re-regular-expression-operations/current-source.html.txt",
@@ -9622,23 +9596,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-052-objects-in-kubernetes",
-          "changes_sha256": "2bf52b00b2867a3581aebf17b7fb045ebc858e654843331602fdc92fa1629f82",
+          "changes_sha256": "21f10d6a8535d3bacbae5cee512c44b4a4939510bb052435fbe2032b3a0d41c7",
           "sources": [
             {
               "path": "sources/live-052-objects-in-kubernetes/current-source.html.txt",
@@ -9667,23 +9640,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "kubernetes-feedback-widget-3"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-053-dns-for-services-and-pods",
-          "changes_sha256": "e951713e8c4c0331886304b8a863a787856f208633d6ccbac0d1df4573ec772d",
+          "changes_sha256": "925a13a5bc5a68f97aa41932cd7c38552612550984e104244c2646163f34e1e3",
           "sources": [
             {
               "path": "sources/live-053-dns-for-services-and-pods/current-source.html.txt",
@@ -9712,23 +9684,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "kubernetes-feedback-widget-2"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-054-navigation-menu",
-          "changes_sha256": "134828d3bfeb4bc5e19cfa64e79b4d6d98098c14968864a7f43d700a2a8ecd35",
+          "changes_sha256": "28e99f0ab2ba210d561faeefe3bb0bbe2c2860fda00dc11fcebf96eb729691a7",
           "sources": [
             {
               "path": "sources/live-054-navigation-menu/current-source.html.txt",
@@ -9757,23 +9728,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-055-navigation-menu",
-          "changes_sha256": "122f42ef87ecf12a644dcc300457ca1e6a0ade9bb715999b57697ea0c44b1dc6",
+          "changes_sha256": "a2d3366d055f5e4ce6f3476de470cec856c7449c8bbd6e8cf800f92d426bd32d",
           "sources": [
             {
               "path": "sources/live-055-navigation-menu/current-source.html.txt",
@@ -9802,23 +9772,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-056-navigation-menu",
-          "changes_sha256": "0965432dece50528d58633dea73a938786f1027c444a9cfcd7118e1fd9a6867b",
+          "changes_sha256": "05e0aa2165b5d8dd6792e106a28bc05f0ea5a66c843a17129bc0b19e7aaac050",
           "sources": [
             {
               "path": "sources/live-056-navigation-menu/current-source.html.txt",
@@ -9847,23 +9816,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-057-navigation-menu",
-          "changes_sha256": "74883821e2b2fa3e14e29a3af77e1e62bb979d6a0d927f3f28f34abd0e770628",
+          "changes_sha256": "12f8f06d30d56d1842ed9df7cb883911e5cc57c05f75bea19409518dd1483390",
           "sources": [
             {
               "path": "sources/live-057-navigation-menu/current-source.html.txt",
@@ -9892,23 +9860,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-058-navigation-menu",
-          "changes_sha256": "2f2a6c87b717751e6d520ac230b41bfdfffd33fe30da8181654d3d9413db550d",
+          "changes_sha256": "bca63cad591d71e1745c70ace826c5b6c26f35731b30309fa5c4132267f05f48",
           "sources": [
             {
               "path": "sources/live-058-navigation-menu/current-source.html.txt",
@@ -9937,23 +9904,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-059-navigation-menu",
-          "changes_sha256": "bb64db41b87e2b64e12d589fe4adb7dc8ade7ad3d0913429f7f28febb7dbe7dd",
+          "changes_sha256": "15b3e20b7345ee92bea290de51e8f45dd99f0e2347f00cfe6343da35c72925fe",
           "sources": [
             {
               "path": "sources/live-059-navigation-menu/current-source.html.txt",
@@ -9982,23 +9948,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-060-database",
-          "changes_sha256": "3472b5f365c9276f351edda07d0faf79cef384b3104de8ce894faffa372292f8",
+          "changes_sha256": "e1d090fdea750a4f874135c665561521f7b67c34dc6a35620095b1268622c68e",
           "sources": [
             {
               "path": "sources/live-060-database/current-source.html.txt",
@@ -10027,23 +9992,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-061-version-control",
-          "changes_sha256": "e7ef2a3c554b93bf621256ed8a7e200720fd6abd0f60086e5b001c604f1b6419",
+          "changes_sha256": "1c2585af939fc560fde3fadd5521df4f9ae9318b62246b8e548dd307b8b35e4f",
           "sources": [
             {
               "path": "sources/live-061-version-control/current-source.html.txt",
@@ -10072,23 +10036,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-062-natural-language-processing",
-          "changes_sha256": "738e04809cb01347976d84ca9a20a0dcb20facc5db7c3e1cf489790910515d6f",
+          "changes_sha256": "b6986b91f9996b04a5081129fc0c4ec1ab563562349d298ab12bb9e0b747fec4",
           "sources": [
             {
               "path": "sources/live-062-natural-language-processing/current-source.html.txt",
@@ -10117,23 +10080,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-012"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-063-navigation-menu",
-          "changes_sha256": "818391758f849ed165b8b00a3e16e74078bf944d7a18afd7dd9105b867cfc2e0",
+          "changes_sha256": "5bb975973ac440aa36d20245488b62b09d06b4c77129ccd44d33ac6e0bfbc132",
           "sources": [
             {
               "path": "sources/live-063-navigation-menu/current-source.html.txt",
@@ -10162,18 +10124,17 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-013"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
@@ -10223,7 +10184,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-065-navigation-menu",
-          "changes_sha256": "fadf43f2572f8b570425fe5beb9bab08a7039905fb568e742c2c4fd872f5aca4",
+          "changes_sha256": "80b476fd4c6b4c0e19b8cf4b7eb79c125494081b68b9227988668d175ece557c",
           "sources": [
             {
               "path": "sources/live-065-navigation-menu/current-source.html.txt",
@@ -10252,23 +10213,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-066-navigation-menu",
-          "changes_sha256": "8bd086e18105afac7d079bfd9d467a043bf056f87d85bc05d6ae6a48d32b8fc8",
+          "changes_sha256": "181cd1bd73d5f3143ad185841364de8885de99cdd475360e6dc0f19e03600419",
           "sources": [
             {
               "path": "sources/live-066-navigation-menu/current-source.html.txt",
@@ -10297,18 +10257,17 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
@@ -10403,7 +10362,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-069-navigation-menu",
-          "changes_sha256": "5ba2401a0de75fe0f9edc411ce8fe31dbcfa4f0c11fdf85534d44d95dd8a3184",
+          "changes_sha256": "3e646181806b4ef9ab3c760057d4fad30df64d01b15590db24486f0b2eeeb0d0",
           "sources": [
             {
               "path": "sources/live-069-navigation-menu/current-source.html.txt",
@@ -10432,23 +10391,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-070-navigation-menu",
-          "changes_sha256": "44818ad8d78515f351350739c66be2a6feddd4d36f29347f070580b54162e028",
+          "changes_sha256": "f196b0f5e41b1b2757cd5880372d5545903605693ddc16427bb7e488ed918cec",
           "sources": [
             {
               "path": "sources/live-070-navigation-menu/current-source.html.txt",
@@ -10477,23 +10435,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-072-python-itertools-documentation",
-          "changes_sha256": "8375d9d509570a45a763bae776dee4aa81e2ef26e3317b506577fdce9c45bc88",
+          "changes_sha256": "4b3d7e0de0b84ab8e3d3d403547761fbbd4ee1703610fe140cd0beceed233a1c",
           "sources": [
             {
               "path": "sources/live-072-python-itertools-documentation/current-source.html.txt",
@@ -10522,23 +10479,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-073-python-json-documentation",
-          "changes_sha256": "b8cdbf01eb8d200bb78333b6f85cfde42f597e28f4725eed2657439352218efe",
+          "changes_sha256": "887a1cfe5bfaa43153e0cb8e61d2106def11a98354d19802e576c2acb5948aad",
           "sources": [
             {
               "path": "sources/live-073-python-json-documentation/current-source.html.txt",
@@ -10567,23 +10523,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-074-python-sqlite3-documentation",
-          "changes_sha256": "7bfac01e03d5b48a3c7e59b5ca6e2352e5bb842ca57973acac5dcc2a2d9ff97d",
+          "changes_sha256": "928d629a58278a59d07a25a12b83cb68ac8b61d13ad38dacaac39173016c9061",
           "sources": [
             {
               "path": "sources/live-074-python-sqlite3-documentation/current-source.html.txt",
@@ -10612,23 +10567,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-075-python-logging-documentation",
-          "changes_sha256": "773bb685d6fdfbe3c125b5e5c06837e23fdfebb4065272bd6846688ce6222e3d",
+          "changes_sha256": "23a63a267cc156d4cec89212ff8fd2df841e4208bcc89e2b29f0e97f0e2d0b17",
           "sources": [
             {
               "path": "sources/live-075-python-logging-documentation/current-source.html.txt",
@@ -10657,23 +10611,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-076-python-unittest-documentation",
-          "changes_sha256": "f8c2a55d59abb090faa0f5b4e500bfc83b9cb141d959defae00bfd04998853cb",
+          "changes_sha256": "985e3a7bfad2655e5a1755d6e214345e13a2c4fb81693d53907308691f72b666",
           "sources": [
             {
               "path": "sources/live-076-python-unittest-documentation/current-source.html.txt",
@@ -10702,23 +10655,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-077-python-dataclasses-documentation",
-          "changes_sha256": "c76c8954c5893eaed76e24cbd03abf37fa48d5aa5d4edf765ed997d95226dae7",
+          "changes_sha256": "518b9bb0ac2cad5273bf4b68c0997c3ff526cb8137498e68e652c7fb7c64768b",
           "sources": [
             {
               "path": "sources/live-077-python-dataclasses-documentation/current-source.html.txt",
@@ -10747,23 +10699,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-078-python-collections-documentation",
-          "changes_sha256": "c17fb080f14418687f7f7f404602423c1235346d0c5ff9e37480cbc69efa6830",
+          "changes_sha256": "ff77376738a0f2b4847b3ebebf298a9ec91f335f1fa4c40a4b17963a339e29e6",
           "sources": [
             {
               "path": "sources/live-078-python-collections-documentation/current-source.html.txt",
@@ -10792,23 +10743,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-079-python-hashlib-documentation",
-          "changes_sha256": "6e3de7f8462b11bfdf88d4cd2f7a4452c440e144426443f75dcc9ba60c9621f3",
+          "changes_sha256": "8692c5202374745effc324e9ce472c02688557344f4ef3ccd8096726539db831",
           "sources": [
             {
               "path": "sources/live-079-python-hashlib-documentation/current-source.html.txt",
@@ -10837,23 +10787,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-080-python-urllib-parse-documentatio",
-          "changes_sha256": "d0cc55b6595f1c92acf929659c02e8850c0dfcff23194359c963ede93ed3decb",
+          "changes_sha256": "263675a8ca37df98881fb69bbaa6ba5238f1577d7a015f958c8af967cd4556cb",
           "sources": [
             {
               "path": "sources/live-080-python-urllib-parse-documentatio/current-source.html.txt",
@@ -10882,23 +10831,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-081-python-csv-documentation",
-          "changes_sha256": "8efff02b79951cea22a33b4564b7fc6860ee7a687f572824f2eca3421a22d4e1",
+          "changes_sha256": "771a8c9675a2c66f9b697b002e869adb1b2e3c1a5c6a025052eee1561b018947",
           "sources": [
             {
               "path": "sources/live-081-python-csv-documentation/current-source.html.txt",
@@ -10927,23 +10875,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-082-python-decimal-documentation",
-          "changes_sha256": "7d8adc5594afc357fbfef19819190a4fc61d7f1dc3303cb9e7ecfc4c890b5089",
+          "changes_sha256": "34e67c3cc87ac31df6cc3a19291c17465ebf010b4693faa8dcca48449a4b46ee",
           "sources": [
             {
               "path": "sources/live-082-python-decimal-documentation/current-source.html.txt",
@@ -10972,23 +10919,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-083-python-datetime-documentation",
-          "changes_sha256": "6edb512b9215e61edd9fa3b8214518b16840af4c1b51f5c9095e989ae57c3dab",
+          "changes_sha256": "07eb825604d4feee8bbf95d451426edc01dd191ee170365116a6a8f2f60e19b9",
           "sources": [
             {
               "path": "sources/live-083-python-datetime-documentation/current-source.html.txt",
@@ -11017,23 +10963,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "live-084-python-concurrent-futures-docume",
-          "changes_sha256": "2c065003de5ef660bbdfe4d45fd6b42cb8fdbd385ee41dec21cac888269041fa",
+          "changes_sha256": "87bda688b209434caa2d4f7b8e24dfe603286db0a40b4e8604afb614bb478d9f",
           "sources": [
             {
               "path": "sources/live-084-python-concurrent-futures-docume/current-source.html.txt",
@@ -11062,24 +11007,22 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reason-010"
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
           "case_id": "lm-node-intro",
-          "reason": "Require the source h2 and its local body plus the reviewed half-length floor. Its anchor wrapper is a permalink, not evidence that the heading is navigation. Preserve all old requirements. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "31e0e391fe646ca08956932efe1b4f8aee38bc8497121e150d6539303f9306c7",
+          "changes_sha256": "98c6875437117f7cf153b6a1eb61c66fbc20738af35ba5e5ab21062f2fad54a3",
           "sources": [
             {
               "path": "sources/lm-node-intro/current-source.html.txt",
@@ -11108,17 +11051,17 @@
             }
           ],
           "regression_ids": [
-            "mutable-document-structure-complete",
-            "mutable-document-structure-eighty-percent",
-            "mutable-document-structure-missing-sections",
-            "mutable-document-structure-toc-padding",
-            "mutable-document-structure-missing-fact",
-            "mutable-document-structure-hidden-sections",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
-          ]
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ],
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "webfetch",
@@ -11827,8 +11770,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-021-python-common-pathname-manipulations",
-          "reason": "Require source-qualified definitions with their local descriptions and a reviewed body-length floor; API names plus unrelated filler do not satisfy definitions. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "081b74c60fa9ca62a33e1c22a74ff11dbe417939557650b87fa4686eb1ba381c",
+          "changes_sha256": "61714f38ea7fa5844fbbec6eb0ae9b049c3739531e064ba66b043f105626a0f3",
           "sources": [
             {
               "path": "sources/live-021-python-common-pathname-manipulations/current-source.html.txt",
@@ -11857,16 +11799,19 @@
             }
           ],
           "regression_ids": [
-            "reviewed-document-definitions-complete",
-            "reviewed-document-definitions-empty-with-padding",
             "reviewed-document-directory-complete",
             "reviewed-document-directory-navigation-only",
-            "mutable-document-structure-missing-fact",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
-          ]
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ],
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "popular-sites",
@@ -14421,8 +14366,7 @@
         {
           "suite": "webfetch",
           "case_id": "lm-feishu-help",
-          "reason": "Require eight source-evidenced custom headings with local body and a 1263-character floor; preserve all five facts and stable anchors. Existing task requests initial loaded article without expanding sections and does not require anonymous access. The observed session is signed in; article text matches the old embedded body except two renderer icon placeholders, and the collapsed FAQ question is visible. Do not require its hidden answer or claim anonymous reachability. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit.",
-          "changes_sha256": "0d85e19fea4d7f8560b0cd59bbf5d9638969dfa236793382c64b7c618898eb01",
+          "changes_sha256": "7e0d7f7d7eef5a7b0d8379c233ba4be5470a9f7efef5f939fe71148ebe905025",
           "sources": [
             {
               "path": "review-evidence/webfetch/feishu-initial-20261023/capture.json",
@@ -14458,12 +14402,17 @@
           "regression_ids": [
             "mutable-document-custom-heading-complete",
             "mutable-document-custom-heading-hidden",
-            "mutable-document-structure-missing-fact",
             "prompt-qualified-with-diagnostic-hints",
             "prompt-diagnostic-only-verification",
             "prompt-diagnostic-missing-required-content",
-            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
-          ]
+            "complete-records-with-declared-excluded-ui-fail-diagnostic-hints",
+            "all-body-regions-5-complete",
+            "all-body-regions-5-boundary",
+            "all-body-regions-5-below-boundary",
+            "all-body-regions-5-weak-region",
+            "all-body-regions-5-missing-region"
+          ],
+          "reason_ref": "reviewed-document-bodies"
         },
         {
           "suite": "access-restrictions",
@@ -18575,7 +18524,8 @@
         "reason-020": " User-directed content-only verdict policy: remove generic login, verification and error-word vetoes. Presence of those words is not failure; existing required text, body, record, identity and explicit output-exclusion rules decide the result. No new source observation or stronger content requirement is claimed. Earlier retention based on challenge-shell counterexamples or unavailable complete positives is superseded by this policy; source/record qualification issues are separate.",
         "forbidden-word-policy": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers.",
         "kubernetes-feedback-widget-2": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. V2: exclude generic admonition labels and table-of-contents/navigation headings from section coverage; retain substantive body headings and the body length floor. Retain the feedback, reference, related-link and placeholder heading requirements added in this PR: non-prose page content remains within the task scope. Empty compatibility placeholders waive local body. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer. The Kubernetes Feedback heading identifies a Yes/No helpfulness widget. Keep its heading in the coverage calculation but waive prose beneath it (body_required=false); this does not waive the substantive documentation sections.",
-        "kubernetes-feedback-widget-3": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. Retain the feedback, reference, related-link and placeholder heading requirements added in this PR: non-prose page content remains within the task scope. Empty compatibility placeholders waive local body. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer. The Kubernetes Feedback heading identifies a Yes/No helpfulness widget. Keep its heading in the coverage calculation but waive prose beneath it (body_required=false); this does not waive the substantive documentation sections."
+        "kubernetes-feedback-widget-3": "Require 80% of source-qualified document headings with local body and the reviewed half-length body floor; navigation and table-of-contents entries cannot supply these sections. Existing requirements remain. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. Retain the feedback, reference, related-link and placeholder heading requirements added in this PR: non-prose page content remains within the task scope. Empty compatibility placeholders waive local body. Full hash-verified source passes and headings-only output fails. Navigation cannot substitute for a body section; this does not permit dropping navigation from the answer. The Kubernetes Feedback heading identifies a Yes/No helpfulness widget. Keep its heading in the coverage calculation but waive prose beneath it (body_required=false); this does not waive the substantive documentation sections.",
+        "reviewed-document-bodies": "Reviewed document bodies now use five source-bound regions, each requiring 80% coverage, instead of title/section and half-length gates. The task requests complete initial-page content, not individual chapter/definition quotas. Existing independent facts and anchors remain unchanged. Frozen reference bytes remain unchanged; recent matching is evidence of present suitability, not permanent immutability. See docs/document-body-review.md for per-case scope, current-source checks and limitations."
       }
     }
   }

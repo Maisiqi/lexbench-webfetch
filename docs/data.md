@@ -48,7 +48,7 @@ Each cell is **covered cases (percentage of suite entries); declared checkpoints
 | [Required legacy marker groups](../src/lexbench_webfetch/metrics.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
 | [Required stable anchors](../src/lexbench_webfetch/stable_tasks.py) | 99 (66.0%); 391 → 91 (60.7%); 284 | 100 (100.0%); 2022 → 100 (100.0%); 2052 | 100 (100.0%); 2367 → 83 (83.0%); 2173 | 98 (98.0%); 1553 → 100 (100.0%); 1587 | 100 (100.0%); 3970 → 100 (100.0%); 4229 | 497 (90.4%); 10303 → 474 (86.2%); 10325 |
 | [Diagnostic stable anchors](../src/lexbench_webfetch/stable_tasks.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (2.0%); 33 → 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (0.4%); 33 → 0 (0.0%); 0 |
-| [Body regions](../src/lexbench_webfetch/body_coverage.py) | 27 (18.0%); 123 → 27 (18.0%); 122 | 0 (0.0%); 0 | 42 (42.0%); 151 → 42 (42.0%); 143 | 79 (79.0%); 296 → 79 (79.0%); 293 | 95 (95.0%); 418 | 243 (44.2%); 988 → 243 (44.2%); 976 |
+| [Body regions](../src/lexbench_webfetch/body_coverage.py) | 27 (18.0%); 123 → 86 (57.3%); 417 | 0 (0.0%); 0 | 42 (42.0%); 151 → 42 (42.0%); 143 | 79 (79.0%); 296 → 79 (79.0%); 293 | 95 (95.0%); 418 | 243 (44.2%); 988 → 302 (54.9%); 1271 |
 | [Article endings](../src/lexbench_webfetch/body_coverage.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 95 (95.0%); 95 | 95 (17.3%); 95 |
 | [Ordered article endings](../src/lexbench_webfetch/body_coverage.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 → 95 (95.0%); 95 | 0 (0.0%); 0 → 95 (17.3%); 95 |
 | [Required text patterns](../src/lexbench_webfetch/metrics.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (2.0%); 2 | 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (0.4%); 2 |
@@ -57,8 +57,8 @@ Each cell is **covered cases (percentage of suite entries); declared checkpoints
 | [Named-link collections](../src/lexbench_webfetch/stable_tasks.py) | 10 (6.7%); 10 → 22 (14.7%); 31 | 43 (43.0%); 43 → 61 (61.0%); 66 | 32 (32.0%); 32 | 18 (18.0%); 24 → 21 (21.0%); 28 | 0 (0.0%); 0 | 103 (18.7%); 109 → 136 (24.7%); 157 |
 | [Typed record/table fields](../src/lexbench_webfetch/stable_tasks.py) | 10 (6.7%); 26 | 0 (0.0%); 0 → 1 (1.0%); 2 | 31 (31.0%); 110 → 37 (37.0%); 150 | 12 (12.0%); 52 → 14 (14.0%); 62 | 0 (0.0%); 0 | 53 (9.6%); 188 → 62 (11.3%); 240 |
 | [Composite groups](../src/lexbench_webfetch/composite_tasks.py) | 0 (0.0%); 0 → 12 (8.0%); 21 | 0 (0.0%); 0 → 3 (3.0%); 8 | 0 (0.0%); 0 → 5 (5.0%); 8 | 22 (22.0%); 29 → 25 (25.0%); 33 | 0 (0.0%); 0 | 22 (4.0%); 29 → 45 (8.2%); 70 |
-| [Document sections](../src/lexbench_webfetch/document_structure.py) | 0 (0.0%); 0 → 68 (45.3%); 1125 | 0 (0.0%); 0 → 5 (5.0%); 40 | 0 (0.0%); 0 | 0 (0.0%); 0 → 1 (1.0%); 3 | 0 (0.0%); 0 | 0 (0.0%); 0 → 74 (13.5%); 1168 |
-| [Definition terms](../src/lexbench_webfetch/document_structure.py) | 0 (0.0%); 0 → 1 (0.7%); 35 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 → 1 (0.2%); 35 |
+| [Document sections](../src/lexbench_webfetch/document_structure.py) | 0 (0.0%); 0 → 10 (6.7%); 104 | 0 (0.0%); 0 → 5 (5.0%); 40 | 0 (0.0%); 0 | 0 (0.0%); 0 → 1 (1.0%); 3 | 0 (0.0%); 0 | 0 (0.0%); 0 → 16 (2.9%); 147 |
+| [Definition terms](../src/lexbench_webfetch/document_structure.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
 | [Article title groups](../src/lexbench_webfetch/article_title.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 90 (90.0%); 90 | 90 (16.4%); 90 |
 | [Comment contracts](../src/lexbench_webfetch/article_comments.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 20 (20.0%); 20 | 20 (3.6%); 20 |
 | [Post contracts](../src/lexbench_webfetch/article_posts.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 5 (5.0%); 5 | 5 (0.9%); 5 |
@@ -76,15 +76,15 @@ Values are declared thresholds across all suites (absent values excluded); chang
 
 | Declaration | Baseline values | Revised values | Changed cases |
 | --- | --- | --- | ---: |
-| `body_requirements.minimum_coverage` | 0.8: 243 cases | 0.8: 243 cases | 0 |
-| `body_requirements.minimum_floor` | 0.6: 148 cases, 0.8: 95 cases | 0.8: 243 cases | 148 |
-| `body_requirements.minimum_region_passes` | 1: 30 cases, 2: 38 cases, 3: 25 cases, 4: 79 cases, 5: 71 cases | 1: 16 cases, 2: 22 cases, 3: 39 cases, 4: 31 cases, 5: 135 cases | 129 |
-| `body_requirements.version` | 3: 148 cases, 4: 95 cases | 3: 148 cases, 5: 95 cases | 95 |
+| `body_requirements.minimum_coverage` | 0.8: 243 cases | 0.8: 302 cases | 59 |
+| `body_requirements.minimum_floor` | 0.6: 148 cases, 0.8: 95 cases | 0.8: 302 cases | 207 |
+| `body_requirements.minimum_region_passes` | 1: 30 cases, 2: 38 cases, 3: 25 cases, 4: 79 cases, 5: 71 cases | 1: 16 cases, 2: 22 cases, 3: 39 cases, 4: 31 cases, 5: 194 cases | 188 |
+| `body_requirements.version` | 3: 148 cases, 4: 95 cases | 3: 207 cases, 5: 95 cases | 154 |
 | `acceptance_contract.minimum_records` | 0–100 (25 values; 502 cases) | 0–200 (33 values; 501 cases) | 27 |
 | `acceptance_contract.maximum_records` | not declared | not declared | 0 |
 | `acceptance_contract.record_count_policy.required_ratio` | 0.8: 36 cases, 1.0: 11 cases | 0.8: 63 cases, 1.0: 21 cases | 37 |
-| `document_structure.minimum_heading_coverage` | not declared | 0.8: 67 cases, 1.0: 8 cases | 75 |
-| `document_structure.minimum_body_chars` | not declared | 1–153524 (69 values; 75 cases) | 75 |
+| `document_structure.minimum_heading_coverage` | not declared | 0.8: 8 cases, 1.0: 8 cases | 16 |
+| `document_structure.minimum_body_chars` | not declared | 1–5138 (10 values; 16 cases) | 16 |
 | `document_structure.minimum_section_chars` | not declared | 4: 1 cases, 19: 1 cases, 20: 3 cases | 5 |
 
 Baseline unavailable rule declarations: 0.
@@ -680,3 +680,12 @@ these combinations. Comparing 65 precisely hash-bound section-source inputs
 against the preceding parser found no changed section verdicts. Three older
 projection records lacked an exact matching source binding and are not included;
 this is not a complete historical-output rescore.
+
+## Current document-body qualification
+
+The [59-case document-body review](document-body-review.md) records source scope,
+per-region qualification and why WebSocket retains its section contract. Before
+a formal live evaluation, qualify the selected revision against current initial-page
+content without clicks, tab switching or expansion. Investigate failures and
+version any justified changes; never silently replace frozen references. These
+checks do not substitute for the four deferred frozen-export validations.

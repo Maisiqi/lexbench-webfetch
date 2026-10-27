@@ -101,6 +101,47 @@ def test_version_three_projects_static_prose_without_inventing_an_ending():
     assert not evaluate_body_requirements(CREDIT + FOOTER, case['body_requirements'])['body_coverage_pass']
 
 
+def test_reviewed_mutable_body_becomes_required_without_changing_frozen_text():
+    case, projection = fixture()
+    del case['body_requirements']
+    del projection['ending']
+    case['mutable_body_policy'] = {'stable_annotation': {'content_kind': 'changing_public_body'}}
+    public = public_task(case)
+    project_body_reference(case, projection, binding(SOURCE)['sha256'])
+    project_body_reference(public, projection, binding(SOURCE)['sha256'])
+    assert public_task(case) == public
+    assert 'mutable_body_policy' not in case
+    assert case['ground_truth_main_content'] == SOURCE
+    assert case['body_requirements']['minimum_floor'] == .8
+    assert case['body_requirements']['minimum_region_passes'] == 1
+    assert evaluate_body_requirements(BODY + ENDING, case['body_requirements'])['body_coverage_pass']
+    assert not evaluate_body_requirements(CREDIT + FOOTER, case['body_requirements'])['body_coverage_pass']
+
+
+@pytest.mark.parametrize('policy', [None, [], {}, {'content_kind': 'unknown'}])
+def test_body_introduction_requires_an_existing_mutable_body_policy(policy):
+    case, projection = fixture()
+    del case['body_requirements']
+    del projection['ending']
+    case['mutable_body_policy'] = policy
+    before = deepcopy(case)
+    with pytest.raises(ValueError, match='Invalid body reference projection'):
+        project_body_reference(case, projection, binding(SOURCE)['sha256'])
+    assert case == before
+
+
+def test_failed_body_introduction_keeps_original_policy():
+    case, projection = fixture()
+    del case['body_requirements']
+    del projection['ending']
+    case['mutable_body_policy'] = {'stable_annotation': {'content_kind': 'changing_public_body'}}
+    projection['regions'][0]['text_binding']['sha256'] = '0' * 64
+    before = deepcopy(case)
+    with pytest.raises(ValueError, match='differs from reviewed binding'):
+        project_body_reference(case, projection, binding(SOURCE)['sha256'])
+    assert case == before
+
+
 @pytest.mark.parametrize('version', [3, 4, 5])
 def test_projection_cannot_change_whether_source_contract_has_an_ending(version):
     case, projection = fixture()

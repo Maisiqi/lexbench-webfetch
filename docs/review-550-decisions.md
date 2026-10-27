@@ -17,7 +17,7 @@ not the number of changed scoring rules.
 
 | Report item | Decision and evidence |
 | --- | --- |
-| 1. 82 document pages | Use shared document structure and substantive body-length requirements rather than a title/navigation-only check. All 82 have reviewed rules and source-byte checks. Complete HTML controls and source-field projections are distinguished; source serialization and export limits remain explicit below. |
+| 1. 82 document pages | Initial review added structure/content checks. The [2026-10-27 follow-up](document-body-review.md) replaces section/definition gates in 59 source-qualified full-body tasks with five-region 80% matching; 16 section cases remain. Frozen references and independent anchors are preserved. Source qualification and full-export limits remain distinct. |
 | 2. 31 product/brand homepages | Require actual stable functionality or named records where independently supported. Do not freeze campaign slogans, product prices or hidden carousel/tab content. The broader 44-case audit records 32 body-strengthening changes, two navigation fixes, one evidence-only retention and nine explicitly justified retentions. |
 | 3. Four access cases | 047 uses its actual documentation/help entry structure; 192 retains mandatory body requirements. 027 and 050 use one five-field linked-table check requiring eight unique owned commit destinations, replacing duplicate table checks. A small shared auxiliary-node scope prevents decorative links and hidden details from corrupting row extraction. |
 | 4. Six changing tables | Check required fields and actual rendered rows, not historical values. Preserve surrounding required prose. Exclude rows requiring pagination, interaction or virtual scrolling. |
@@ -30,7 +30,14 @@ not the number of changed scoring rules.
 | 11. Long-document headings | Require source-owned section content: RFC 9110 uses local section checks, while twelve reference-bound cases use same-count content facts instead of title-only facts. Existing body coverage remains; neither mechanism proves every sentence survives. |
 | 12. Broad record scopes | Tighten risk 248, Twitch and Rakuten using target ownership and link identity. Retain Bilibili's one-resource target: a homepage-wide quota would change the task. |
 | 13. Changing links and video text | Keep legitimate third-party news links for 2345. Video 09 asks only for title and publisher; do not add a description/subtitle task. |
-| 14. Fixed 300-character floors | Retain 71 floors already backed by stronger gates: 60 document-body minima and 11 reference-body requirements. An additional universal half-length gate is redundant. |
+| 14. Fixed 300-character floors | The initial audit retained 71 floors backed by stronger gates. The 59-case body follow-up restores baseline floors while replacing its added section/half-length gates with source-bound coverage; no universal extra length gate is added. |
+
+## Document-body follow-up
+
+See [Document-body revision](document-body-review.md) for all 59 cases, current
+region percentages, excluded non-body ranges and the WebSocket retention.
+The remaining 491 cases are unchanged by this follow-up. Previous historical
+output results below precede this body-rule change; they are not a rescore of it.
 
 ## Important source-based decisions
 

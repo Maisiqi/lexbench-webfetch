@@ -57,6 +57,14 @@ def move_regions_to_stable_text(case, moves):
 def project_body_reference(case, projection, expected_source_sha256):
     """Apply reviewed character ranges, verifying their materialized text at export."""
     original = case.get('body_requirements')
+    policy = case.get('mutable_body_policy')
+    annotation = policy.get('stable_annotation') if isinstance(policy, dict) else None
+    introducing_body = (original is None and isinstance(policy, dict)
+                        and isinstance(annotation, dict)
+                        and annotation.get('content_kind') == 'changing_public_body')
+    if introducing_body:
+        original = {'version': 3, 'unit': 'region_compact_hexagram_recall',
+                    'minimum_coverage': .8}
     version = original.get('version') if isinstance(original, dict) else None
     projection_fields = {'source_sha256', 'source_chars', 'regions'}
     if version in (4, 5):
@@ -131,6 +139,8 @@ def project_body_reference(case, projection, expected_source_sha256):
     # Keep the original full reference for historical F1 diagnostics. Only the
     # declared coverage scope changes, and every retained character is source-bound.
     case['body_requirements'] = body
+    if introducing_body:
+        case.pop('mutable_body_policy')
 
 
 def _patch_acceptance_contract(case, patch):
