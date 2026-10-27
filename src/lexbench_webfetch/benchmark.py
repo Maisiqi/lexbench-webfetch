@@ -73,7 +73,8 @@ def public_task(case: dict) -> dict:
     if routing:
         task["source_benchmark"] = routing
     verification = {key: case.get("source_verification", {})[key]
-                    for key in ("mime", "file_sha256") if key in case.get("source_verification", {})}
+                    for key in ("mime", "file_sha256", "reference_mode")
+                    if key in case.get("source_verification", {})}
     if verification:
         task["source_verification"] = verification
     review = case.get("rule_review", {})

@@ -141,6 +141,10 @@ def project_body_reference(case, projection, expected_source_sha256):
     case['body_requirements'] = body
     if introducing_body:
         case.pop('mutable_body_policy')
+        # Live-page recall needs current-source qualification, not a refreshed
+        # answer. Older execution tools reject this explicit unsupported mode.
+        case['source_verification'] = {
+            **case.get('source_verification', {}), 'reference_mode': 'live_body'}
 
 
 def _patch_acceptance_contract(case, patch):

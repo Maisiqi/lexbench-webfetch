@@ -94,6 +94,7 @@ def test_version_three_projects_static_prose_without_inventing_an_ending():
     project_body_reference(case, projection, binding(SOURCE)['sha256'])
     project_body_reference(public, projection, binding(SOURCE)['sha256'])
     assert case['body_requirements']['version'] == 3
+    assert 'source_verification' not in case
     assert 'ending' not in case['body_requirements']
     assert public_task(case) == public
     assert case['ground_truth_main_content'] == SOURCE
@@ -111,6 +112,8 @@ def test_reviewed_mutable_body_becomes_required_without_changing_frozen_text():
     project_body_reference(public, projection, binding(SOURCE)['sha256'])
     assert public_task(case) == public
     assert 'mutable_body_policy' not in case
+    assert case['source_verification'] == {'reference_mode': 'live_body'}
+    assert public['source_verification'] == case['source_verification']
     assert case['ground_truth_main_content'] == SOURCE
     assert case['body_requirements']['minimum_floor'] == .8
     assert case['body_requirements']['minimum_region_passes'] == 1

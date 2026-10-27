@@ -189,3 +189,25 @@ commit-pinned documentation, navigation labels such as “Release notes”, and
 versions discussed in dated articles. Those are not equivalent to a changing
 minimum runtime requirement or temporary announcement, and were retained.
 This audit is not proof that every live page will remain unchanged.
+
+### Formal-run source admission
+
+The 59 newly mandatory live-body cases declare
+`source_verification.reference_mode: live_body` in executable and public task
+exports. This declaration requires an execution consumer supporting body-source
+qualification; older consumers reject the unsupported mode instead of silently
+certifying a cohort with zero source checks.
+
+The Browser Eval companion extends its existing preflight/freezer/postcheck
+lifecycle. Independent current source text must satisfy the unchanged body
+contract before calls and after the cohort. Qualification binds the source text,
+its hash, observation time and task scope; missing, stale or altered evidence
+cannot qualify. Original reference text, regions and thresholds remain frozen.
+A materially changed source is rejected as a source problem, not recorded as a
+provider failure. Minor changes within the existing body tolerance are allowed;
+`live_body` does not impose exact equality with either the old body or pre-call
+capture. Existing `frozen` and `live_exact` tasks retain their original policies.
+
+Until the compatible execution consumer is available, these selected cases are
+not ready for a formal certified run. Source qualification is separate from
+historical rescoring; previously collected responses are not new live calls.
