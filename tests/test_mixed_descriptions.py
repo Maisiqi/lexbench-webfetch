@@ -57,3 +57,31 @@ def test_missing_non_list_description_cannot_borrow_from_owned_list():
     result = evaluate_stable_task(html, contract(2), allow_closed_title_cards=True)
     assert not result['stable_task_pass']
     assert result['stable_complete_record_count'] == 1
+
+
+@pytest.mark.parametrize('wrapper', ['body', 'main'])
+@pytest.mark.parametrize('labeled', [False, True])
+@pytest.mark.parametrize('form', ['articles', 'lists', 'mixed'])
+def test_html_record_containers_and_labels_preserve_fixed_fields(wrapper, labeled, form):
+    rows = [{'name': 'Alpha', 'description': 'First complete description.'},
+            {'name': 'Beta', 'description': 'Second complete description.'}]
+    fields = ['description', 'name']
+    rule = contract(2)
+    rule['source_membership'] = {'kind': 'fixed', 'fields': fields,
+        'record_hashes': sorted(source_record_hash(r, fields, 'name_description') for r in rows)}
+    def render(missing=False):
+        cards = []
+        for i, row in enumerate(rows):
+            tag = 'li' if form == 'lists' or (form == 'mixed' and i == 0) else 'article'
+            name = ('Name: ' if labeled else '') + row['name']
+            description = ('Description: ' if labeled else '') + row['description']
+            body = '<p>' + name + '</p>'
+            if not (missing and i == 0):
+                body += '<section><p>' + description + '</p></section>'
+            cards.append(f'<{tag}>{body}</{tag}>' if tag == 'article' else '<ul><li>' + body + '</li></ul>')
+        return f'<{wrapper}>' + ''.join(cards) + f'</{wrapper}>'
+    accepted = evaluate_stable_task(render(), rule)
+    assert accepted['stable_task_pass'], accepted
+    assert accepted['stable_complete_record_count'] == accepted['stable_unique_record_count'] == 2
+    assert not evaluate_stable_task(render(missing=True), rule)['stable_task_pass']
+    assert not evaluate_stable_task(render().replace('Second complete', 'Fabricated altered'), rule)['stable_task_pass']

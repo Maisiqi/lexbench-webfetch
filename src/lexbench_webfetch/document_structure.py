@@ -76,12 +76,14 @@ def validate_document_structure(contract):
         raise ValueError('A document contract needs at least one substantive section')
 
 
-def _content_root(content, *, preserve_local_header=False):
+def _content_root(content, *, preserve_local_header=False, single_article=True):
     from .dynamic_lists import scoped_html
     # Accessibility-tree hiding is not visual hiding. Reuse the shared
     # explicit HTML/inline-style visibility rules, including closed details.
     soup = scoped_html(content)
-    root = soup.select_one('main') or soup.select_one('article') or soup.body or soup
+    root = (soup.select_one('main')
+            or (soup.select_one('article') if single_article else None)
+            or soup.body or soup)
     excluded = 'nav,footer,aside,[role="navigation"],.toc,#toc,.reference-toc'
     if not preserve_local_header or root.name not in {'main', 'article'}:
         excluded += ',header'

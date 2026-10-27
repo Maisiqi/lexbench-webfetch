@@ -544,19 +544,27 @@ def _html_list_descriptions(content, *, allow_closed_title_cards=False):
     from .reference_quality import is_html_document_or_fragment
     if not is_html_document_or_fragment(content):
         return None
-    root = _content_root(content)
+    root = _content_root(content, single_article=False)
     items = [node for node in root.select('li') if not node.select('li')]
     records = []
     for item in items:
         lines = visible_html_text(str(item)).splitlines()
         if len(lines) >= 2:
-            records.append(_record({'name': lines[0], 'description': ' '.join(lines[1:])},
+            records.append(_record({'name': _field(lines[0], 'name'),
+                                    'description': ' '.join(_field(line, 'description') for line in lines[1:])},
                                    'name_description'))
     # List ownership includes incomplete items and enclosing list labels.
     # Remove those subtrees before parsing independently owned non-list cards.
     for item in list(root.select('li')):
         if item.parent is not None:
             item.decompose()
+    # Sibling articles are separate records, not one document or one merged card.
+    # Nested presentation sections remain inside their owning article.
+    for article in list(root.select('article')):
+        if article.parent is not None:
+            records.extend(_parse_records(visible_html_text(str(article)), 'name_description',
+                                           allow_closed_title_cards=allow_closed_title_cards))
+            article.decompose()
     return records + _parse_records(visible_html_text(str(root)), 'name_description',
                                     allow_closed_title_cards=allow_closed_title_cards)
 

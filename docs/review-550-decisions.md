@@ -527,6 +527,11 @@ footer phrases or source-record hashes are special-cased. These shared parser
 corrections also apply outside the selected annotation revision. They do not
 change declared coverage counts; historical provider outputs have not been
 rescored for this follow-up.
+The HTML record path retains sibling article containers without requiring a
+`main` wrapper, and removes supported `Name:` / `Description:` field labels
+before comparing values. List/article/mixed controls cover labeled and unlabeled
+records, missing fields and changed descriptions; document-body root selection
+keeps its existing single-article default.
 
 Review comment [4386548264](https://github.com/lexmount/lexbench-webfetch/pull/12#discussion_r4386548264)
 correctly identifies this gap. `test_duplicate_public_scores` confirms that
