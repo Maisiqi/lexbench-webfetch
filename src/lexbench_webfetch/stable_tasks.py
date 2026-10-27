@@ -1077,7 +1077,7 @@ def validate_acceptance_contract(contract: dict) -> None:
                 or count_policy.get("minimum_records", minimum) != minimum):
             raise ValueError("Record minimum does not match the frozen source policy")
     membership = contract.get('source_membership')
-    if membership is not None:
+    if 'source_membership' in contract:
         if not isinstance(membership, dict) or membership.get('kind') not in {'fixed', 'changing'}:
             raise ValueError('Invalid source membership policy')
         if membership['kind'] == 'changing':

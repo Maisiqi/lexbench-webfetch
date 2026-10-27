@@ -74,6 +74,7 @@ def test_fixed_records_bind_fields_together_and_changing_accepts_new_records():
 
 
 @pytest.mark.parametrize('policy', [
+    None,
     {'kind': 'changing', 'record_hashes': []}, {'kind': 'fixed'},
     {'kind': 'fixed', 'fields': ['author'], 'record_hashes': ['a' * 64]},
     {'kind': 'fixed', 'fields': ['author', 'quote', 'tags'], 'record_hashes': ['invalid']},
