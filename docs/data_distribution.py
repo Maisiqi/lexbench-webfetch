@@ -33,7 +33,7 @@ ROWS = {
     'membership': ('Fixed source record hashes', 'stable_tasks.py'),
     'resources': ('Resource groups', 'resource_urls.py'),
     'files': ('File integrity contracts', 'file_acceptance.py'),
-    'length': ('Content character floors', 'metrics.py'),
+    'length': ('Direct content character floors', 'metrics.py'),
     'forbidden': ('Lexical exclusion terms', 'metrics.py'),
     'identity': ('Required page identity', 'scoring.py'),
     'legacy_lists': ('Legacy list contracts', 'dynamic_lists.py'),

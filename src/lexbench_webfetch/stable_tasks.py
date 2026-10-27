@@ -153,6 +153,24 @@ def _visible(text, schema=None, *, normalized_html=False):
     if projected_html:
         from .dynamic_lists import visible_html_text
 
+        if schema == "review":
+            from .dynamic_lists import scoped_html
+            soup = scoped_html(text)
+            # Nested presentation blocks stay inside their single-review owner.
+            owners = {id(node) for node in soup.select('section,article,li')
+                      if len(re.findall(r"(?m)^\s*(?:date\s*:\s*)?\d{4}-\d{2}-\d{2}(?=\s|$)",
+                                        visible_html_text(str(node)), re.I)) == 1}
+            def inside_record(node):
+                return any(id(parent) in owners for parent in node.parents)
+            for node in list(soup.select('section,article,main,header,footer,nav,aside,li,hr')):
+                if inside_record(node) and node.name not in {'footer', 'nav', 'aside'}:
+                    continue
+                node.insert_before("\n" + _CARD_BOUNDARY + "\n")
+                node.insert_after("\n" + _CARD_BOUNDARY + "\n")
+            for node in soup.select('h1,h2,h3,h4,h5,h6'):
+                if not inside_record(node):
+                    node.insert(0, '#' * int(node.name[1]) + ' ')
+            text = str(soup)
         text = visible_html_text(text)
     if schema == "name_description" and not normalized_html and not projected_html and re.search(r"<(?:div|section|article|span|script|template)\b", text, re.I):
         from .dynamic_lists import scoped_html
@@ -418,17 +436,26 @@ def _quotes(lines):
 
 
 def _reviews(lines):
-    records, i = [], 0
+    lines = [line.strip() for line in lines if line.strip()]
+    records, i, context_level = [], 0, 6
     while i < len(lines):
-        match = re.match(r"(?:date\s*:\s*)?(\d{4}-\d{2}-\d{2})(?:\s+(.+))?$", lines[i], re.I)
+        heading = re.match(r"#{1,6}\s+", lines[i])
+        if heading:
+            context_level = len(heading[0].strip())
+        match = re.match(r"(?:date\s*:\s*)?(\d{4}-\d{2}-\d{2})(?:\s+(.+))?$", _line(lines[i]), re.I)
         if not match:
             i += 1
             continue
         fields = {"date": match[1]}
         text = [match[2]] if match[2] else []
         j = i + 1
-        while j < len(lines) and not re.match(r"(?:date\s*:\s*)?\d{4}-\d{2}-\d{2}", lines[j], re.I):
-            text.append(_field(lines[j], "text"))
+        while j < len(lines):
+            following = _line(lines[j])
+            heading = re.match(r"#{1,6}\s+", lines[j])
+            if (re.match(r"(?:date\s*:\s*)?\d{4}-\d{2}-\d{2}", following, re.I)
+                    or (heading and len(heading[0].strip()) <= context_level)):
+                break
+            text.append(_field(following, "text"))
             j += 1
         fields["text"] = " ".join(text)
         records.append(_record(fields, "review"))
@@ -525,8 +552,13 @@ def _html_list_descriptions(content, *, allow_closed_title_cards=False):
         if len(lines) >= 2:
             records.append(_record({'name': lines[0], 'description': ' '.join(lines[1:])},
                                    'name_description'))
-    return records or _parse_records(visible_html_text(str(root)), 'name_description',
-                                     allow_closed_title_cards=allow_closed_title_cards)
+    # List ownership includes incomplete items and enclosing list labels.
+    # Remove those subtrees before parsing independently owned non-list cards.
+    for item in list(root.select('li')):
+        if item.parent is not None:
+            item.decompose()
+    return records + _parse_records(visible_html_text(str(root)), 'name_description',
+                                    allow_closed_title_cards=allow_closed_title_cards)
 
 
 def _closed_title_descriptions(text, *, line_delimited=False):
@@ -620,7 +652,8 @@ def _parse_records(visible, schema, *, allow_closed_title_cards=False):
     elif schema == "quote":
         records.extend(_quotes(lines))
     elif schema == "review":
-        records.extend(_reviews(lines))
+        for block in remainder.split(_CARD_BOUNDARY):
+            records.extend(_reviews(block.splitlines()))
     elif schema == "api_operation":
         # Keep section boundaries until after parsing ownership. Otherwise the
         # last operation in each group absorbs the next heading, its overview,

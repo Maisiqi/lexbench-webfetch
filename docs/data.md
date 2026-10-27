@@ -65,7 +65,7 @@ Each cell is **covered cases (percentage of suite entries); declared checkpoints
 | [Fixed source record hashes](../src/lexbench_webfetch/stable_tasks.py) | 0 (0.0%); 0 → 10 (6.7%); 133 | 0 (0.0%); 0 | 0 (0.0%); 0 → 10 (10.0%); 133 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 → 20 (3.6%); 266 |
 | [Resource groups](../src/lexbench_webfetch/resource_urls.py) | 16 (10.7%); 19 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 16 (2.9%); 19 |
 | [File integrity contracts](../src/lexbench_webfetch/file_acceptance.py) | 3 (2.0%); 3 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 3 (0.5%); 3 |
-| [Content character floors](../src/lexbench_webfetch/metrics.py) | 121 (80.7%); 121 | 0 (0.0%); 0 → 4 (4.0%); 4 | 92 (92.0%); 92 | 100 (100.0%); 100 | 100 (100.0%); 100 | 413 (75.1%); 413 → 417 (75.8%); 417 |
+| [Direct content character floors](../src/lexbench_webfetch/metrics.py) | 121 (80.7%); 121 | 0 (0.0%); 0 → 4 (4.0%); 4 | 92 (92.0%); 92 | 100 (100.0%); 100 | 100 (100.0%); 100 | 413 (75.1%); 413 → 417 (75.8%); 417 |
 | [Lexical exclusion terms](../src/lexbench_webfetch/metrics.py) | 150 (100.0%); 689 → 0 (0.0%); 0 | 100 (100.0%); 659 → 0 (0.0%); 0 | 75 (75.0%); 374 → 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 325 (59.1%); 1722 → 0 (0.0%); 0 |
 | [Required page identity](../src/lexbench_webfetch/scoring.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
 | [Legacy list contracts](../src/lexbench_webfetch/dynamic_lists.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
@@ -149,6 +149,9 @@ returned rows. Composite groups and their fields/links deliberately overlap.
   file requirement through `acceptance_checks`; the task kind cannot bypass
   another declared requirement. Undeclared requirements are omitted. Deadline
   overrun fails.
+  The matrix's direct character-floor row counts the `length` acceptance gate
+  only. It excludes nested stable-contract `body_text` floors and document-local
+  floors; those still apply when their respective contracts are enabled.
   Encoding corruption, script-only shells and declared truncation have shared
   scorer guards; these are not separate sampled components. A truncation notice
   can be overridden only by exact coverage of every declared body region.

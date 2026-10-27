@@ -511,8 +511,40 @@ still satisfy an identity-oriented contract. That exposes the limits of those
 content requirements; the extra words are not evidence that the required content
 is absent. Do not invent stronger requirements solely to reject that synthetic
 answer. Missing required labels, prose or records still fails existing checks.
-Explicit exclusions requested by the task (such as specified ad/button content)
-remain unchanged.
+The frozen prompts still request exclusions such as ad/button content, but the
+revision no longer enforces their former lexical vetoes. This is a known gap,
+not evidence that the complete output-exclusion requirement is satisfied.
+
+### Output-exclusion review disposition (2026-10-27)
+
+The companion parser findings are accepted: review containers and peer headings
+now bound each review before source hashing, and owned HTML list records no
+longer suppress the non-list parser. Regression controls cover correct records
+with sibling footers, changed or missing review text, nested body containers,
+peer versus nested headings, and mixed valid/invalid list records without
+double-counting or borrowing fields. Source membership remains strict; no
+footer phrases or source-record hashes are special-cased. These shared parser
+corrections also apply outside the selected annotation revision. They do not
+change declared coverage counts; historical provider outputs have not been
+rescored for this follow-up.
+
+Review comment [4386548264](https://github.com/lexmount/lexbench-webfetch/pull/12#discussion_r4386548264)
+correctly identifies this gap. `test_duplicate_public_scores` confirms that
+complete Swagger operations with a prefixed Cookie notice pass, while a notice
+alone and fabricated operations fail in both suites. These controls establish
+positive content validation, not removal of unwanted UI.
+
+Do not restore the lexical veto: the same words can occur in legitimate quoted
+or explanatory content, and the requester explicitly excludes word-presence
+rejection. The proposed ownership-aware exclusion is not implemented in this
+follow-up. Plain text does not reliably retain UI ownership; adding an HTML-only
+detector would leave the text path unchecked, while inferring ownership from
+phrases would recreate the rejected veto. A new cross-format exclusion contract
+needs separately qualified positive and negative examples. That is beyond this
+minimal parser correction. Preserve the original prompts and disclose that
+Cookie banners, cart/advertising UI and related-product material are not
+independently rejected. Closing the review discussion records this explicit
+non-adoption, not a claim that the exclusion defect was fixed.
 
 The following source and recognition limitations are not resolved by removing
 generic lexical vetoes:

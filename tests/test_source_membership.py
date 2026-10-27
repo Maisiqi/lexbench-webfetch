@@ -163,3 +163,57 @@ def test_deduplicated_facts_still_have_mandatory_anchor_checks(paired_cases):
                 result = evaluate_stable_task(text, contract)
                 row = next(a for a in result['stable_anchor_results'] if a['id'] == anchor['id'])
                 assert row['pass'] is expected, (case_id, label, text)
+
+@pytest.mark.parametrize('markup', ['html', 'markdown'])
+@pytest.mark.parametrize('variant,expected', [
+    ('complete', True), ('sibling', True), ('wrong', False),
+    ('inside', False), ('nested-heading', False), ('borrow', False),
+])
+def test_fixed_review_ownership_respects_structural_boundaries(paired_cases, markup, variant, expected):
+    from html import escape
+    original = next(c for c in benchmark.read(benchmark.suite('webfetch')[1] / 'tasks.json')['cases']
+                    if c['id'] == 'dynamic-product-reviews')
+    facts = {f['id']: f['alternatives'][0] for f in original['required_facts']}
+    rows = [(facts[f'entry-{i}-date'], facts[f'entry-{i}-text']) for i in range(1, 6)]
+    saved = rows[-1][1]
+    if variant == 'wrong':
+        rows[-1] = (rows[-1][0], 'A fabricated different review about another product.')
+    elif variant == 'borrow':
+        rows[-1] = (rows[-1][0], '')
+    if markup == 'html':
+        cards = ['<section><p>' + escape(date) + '</p><p>' + escape(text) + '</p></section>'
+                 for date, text in rows]
+        if variant in {'inside', 'nested-heading'}:
+            tag = 'p' if variant == 'inside' else 'h3'
+            cards[-1] = cards[-1].replace('</section>',
+                f'<{tag}>Invented extra review text.</{tag}></section>')
+        tail = '<footer>' + (escape(saved) if variant == 'borrow' else 'Unrelated page information.') + '</footer>'
+        text = '<main>' + ''.join(cards) + '</main>' + (tail if variant in {'sibling', 'wrong', 'borrow'} else '')
+    else:
+        text = '\n\n'.join('## ' + date + '\n\n' + body for date, body in rows)
+        if variant in {'sibling', 'wrong', 'borrow'}:
+            text += '\n\n## Other information\n\n' + (saved if variant == 'borrow' else 'Unrelated page information.')
+        elif variant in {'inside', 'nested-heading'}:
+            text += ('\n\n### Added claim' if variant == 'nested-heading' else '') + '\n\nInvented extra review text.'
+    for cases in paired_cases.values():
+        result = score_attempt(cases['dynamic-product-reviews'], text.encode(), ok=True)
+        assert task_passed(True, result) is expected
+
+
+@pytest.mark.parametrize('form,expected', [('nested-body', True), ('peer-headings', True), ('nested-heading-change', False)])
+def test_fixed_review_html_nested_body_and_peer_heading_ownership(paired_cases, form, expected):
+    from html import escape
+    original = next(c for c in benchmark.read(benchmark.suite('webfetch')[1] / 'tasks.json')['cases']
+                    if c['id'] == 'dynamic-product-reviews')
+    facts = {f['id']: f['alternatives'][0] for f in original['required_facts']}
+    rows = [(facts[f'entry-{i}-date'], facts[f'entry-{i}-text']) for i in range(1, 6)]
+    if form == 'nested-body':
+        text = '<main>' + ''.join('<section><p>' + escape(date) + '</p><section><p>'
+            + escape(body) + '</p></section></section>' for date, body in rows) + '<footer>Other information</footer></main>'
+    else:
+        text = '<main>' + ''.join('<h2>' + escape(date) + '</h2><p>' + escape(body) + '</p>' for date, body in rows)
+        text += ('<h2>Other information</h2><p>Page information</p>' if form == 'peer-headings'
+                 else '<h3>Extra claim</h3><p>Invented extra review text.</p>') + '</main>'
+    for cases in paired_cases.values():
+        result = score_attempt(cases['dynamic-product-reviews'], text.encode(), ok=True)
+        assert task_passed(True, result) is expected
