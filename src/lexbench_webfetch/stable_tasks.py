@@ -164,8 +164,8 @@ def _visible(text, schema=None, *, normalized_html=False):
             dated = {id(node) for node in candidates}
             owners = {id(node) for node in candidates
                       if not any(id(child) in dated for child in node.select(containers))}
-            # Date-only presentation blocks may use their enclosing owner's prose,
-            # but independent child articles cannot supply that missing prose.
+            # Presentation wrappers do not own records. Independent articles and
+            # auxiliary blocks cannot supply an enclosing review's missing prose.
             for node in candidates:
                 if (id(node) not in owners or node.name == 'article'
                         or not re.fullmatch(r"(?:date\s*:\s*)?\d{4}-\d{2}-\d{2}",
@@ -175,7 +175,8 @@ def _visible(text, schema=None, *, normalized_html=False):
                     if id(parent) not in dated:
                         continue
                     own_text = ' '.join(str(text) for text in parent.strings
-                        if next((p for p in text.parents if p.name in containers.split(',')), None) is parent)
+                        if next((p for p in text.parents if p is parent or p is node
+                                 or p.name in {'article', 'footer', 'nav', 'aside'}), None) is parent)
                     if own_text.strip():
                         owners.remove(id(node))
                         owners.add(id(parent))
@@ -566,7 +567,12 @@ def _html_list_descriptions(content, *, allow_closed_title_cards=False):
     from .reference_quality import is_html_document_or_fragment
     if not is_html_document_or_fragment(content):
         return None
-    root = _content_root(content, single_article=False)
+    from .dynamic_lists import scoped_html
+    soup = scoped_html(content)
+    # Keep record-local titles before the document helper removes page chrome.
+    for header in soup.select('article header,section header,li header'):
+        header.unwrap()
+    root = _content_root(str(soup), single_article=False)
     items = [node for node in root.select('li') if not node.select('li')]
     records = []
     for item in items:

@@ -260,15 +260,20 @@ def test_review_header_keeps_date_with_own_body(paired_cases, wrapper, missing):
 @pytest.mark.parametrize('wrapper', ['article', 'section', 'div'])
 @pytest.mark.parametrize('depth', [1, 2])
 @pytest.mark.parametrize('missing', [False, True])
-def test_date_only_presentation_block_keeps_enclosing_owned_body(wrapper, depth, missing):
+@pytest.mark.parametrize('body_wrapper', ['', 'div', 'section'])
+def test_date_only_presentation_block_keeps_enclosing_owned_body(wrapper, depth, missing, body_wrapper):
     from lexbench_webfetch.stable_tasks import evaluate_stable_task
     row = {'date': '2026-10-01', 'text': 'Excellent service.'}
     fields = ['date', 'text']
     contract = {'version': 1, 'schema': 'review', 'minimum_records': 1,
                 'stable_text_anchors': [], 'source_membership': {'kind': 'fixed',
                 'fields': fields, 'record_hashes': [source_record_hash(row, fields, 'review')]}}
-    text = (f'<{wrapper}>' + '<section>' * depth + '<p>' + row['date'] + '</p>'
-            + '</section>' * depth + ('' if missing else '<p>' + row['text'] + '</p>')
+    body = '' if missing else '<p>' + row['text'] + '</p>'
+    if body_wrapper:
+        body = f'<{body_wrapper}>' + body + f'</{body_wrapper}>'
+    date_wrapper = 'div' if depth == 1 else 'section'
+    text = (f'<{wrapper}>' + f'<{date_wrapper}>' * depth + '<p>' + row['date'] + '</p>'
+            + f'</{date_wrapper}>' * depth + body
             + '<article><p>' + row['text'] + '</p></article>' + f'</{wrapper}>')
     result = evaluate_stable_task(text, contract)
     assert result['stable_task_pass'] is not missing, result

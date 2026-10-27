@@ -103,3 +103,22 @@ def test_sibling_sections_cannot_join_fixed_record_fields(wrapping, split):
         body = f'<{wrapping}>' + body + f'</{wrapping}>'
     result = evaluate_stable_task('<main>' + LIST + body + '</main>', rule)
     assert result['stable_task_pass'] is not split, result
+
+
+@pytest.mark.parametrize('root', ['main', 'body'])
+@pytest.mark.parametrize('card', ['article', 'section', 'li'])
+@pytest.mark.parametrize('missing', [False, True])
+def test_record_local_header_retains_title_without_page_header(root, card, missing):
+    row = {'name': 'Atlas', 'description': 'A useful reference collection.'}
+    fields = sorted(row)
+    rule = contract(1)
+    rule['source_membership'] = {'kind': 'fixed', 'fields': fields,
+        'record_hashes': [source_record_hash(row, fields, 'name_description')]}
+    # A page header cannot replace a missing record title.
+    title = '' if missing else '<header><h2>Atlas</h2></header>'
+    html = (f'<{root}><header><h1>Atlas</h1></header><{card}>' + title
+            + '<p>A useful reference collection.</p>' + f'</{card}></{root}>')
+    result = evaluate_stable_task(html, rule)
+    assert result['stable_task_pass'] is not missing, result
+    if not missing:
+        assert result['stable_complete_record_count'] == result['stable_unique_record_count'] == 1

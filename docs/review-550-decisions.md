@@ -536,9 +536,12 @@ Nested records are consumed before their enclosing article, and a review uses
 its innermost dated container rather than every single-date ancestor. Wrapping
 correct records in another section/article must not merge them; an undated
 sibling must not fill in a missing review body.
-Date-only presentation blocks may retain their enclosing container's directly
-owned prose; independent child articles cannot provide missing review text.
+Date-only presentation blocks may retain their enclosing container's prose,
+including sibling presentation wrappers; independent child articles and
+auxiliary blocks cannot provide missing review text.
 Equivalent `div` review cards retain their dated header with their own body.
+Record-local article/section/list headers retain their titles, while page
+headers cannot replace a missing record title.
 Non-list sections are parsed within their ownership boundary, including empty
 grouping wrappers; a name in one sibling section cannot borrow a description
 from another. Nested presentation text remains with an owning title.
