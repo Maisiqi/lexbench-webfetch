@@ -536,6 +536,12 @@ Nested records are consumed before their enclosing article, and a review uses
 its innermost dated container rather than every single-date ancestor. Wrapping
 correct records in another section/article must not merge them; an undated
 sibling must not fill in a missing review body.
+Date-only presentation blocks may retain their enclosing container's directly
+owned prose; independent child articles cannot provide missing review text.
+Equivalent `div` review cards retain their dated header with their own body.
+Non-list sections are parsed within their ownership boundary, including empty
+grouping wrappers; a name in one sibling section cannot borrow a description
+from another. Nested presentation text remains with an owning title.
 
 Review comment [4386548264](https://github.com/lexmount/lexbench-webfetch/pull/12#discussion_r4386548264)
 correctly identifies this gap. `test_duplicate_public_scores` confirms that

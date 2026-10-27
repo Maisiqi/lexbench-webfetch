@@ -86,3 +86,20 @@ def test_html_record_containers_and_labels_preserve_fixed_fields(wrapper, nestin
     assert accepted['stable_complete_record_count'] == accepted['stable_unique_record_count'] == 2
     assert not evaluate_stable_task(render(missing=True), rule)['stable_task_pass']
     assert not evaluate_stable_task(render().replace('Second complete', 'Fabricated altered'), rule)['stable_task_pass']
+
+
+@pytest.mark.parametrize('wrapping', ['', 'section', 'div', 'article'])
+@pytest.mark.parametrize('split', [False, True])
+def test_sibling_sections_cannot_join_fixed_record_fields(wrapping, split):
+    rows = [{'name': 'Alpha', 'description': 'First complete description.'},
+            {'name': 'Beta', 'description': 'Second complete description.'}]
+    fields = ['description', 'name']
+    rule = contract(2)
+    rule['source_membership'] = {'kind': 'fixed', 'fields': fields,
+        'record_hashes': sorted(source_record_hash(r, fields, 'name_description') for r in rows)}
+    body = ('<section><p>Beta</p></section><section><p>Second complete description.</p></section>'
+            if split else '<section><p>Beta</p><section><p>Second complete description.</p></section></section>')
+    if wrapping:
+        body = f'<{wrapping}>' + body + f'</{wrapping}>'
+    result = evaluate_stable_task('<main>' + LIST + body + '</main>', rule)
+    assert result['stable_task_pass'] is not split, result

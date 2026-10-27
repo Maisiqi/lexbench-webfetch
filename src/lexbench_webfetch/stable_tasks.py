@@ -157,16 +157,35 @@ def _visible(text, schema=None, *, normalized_html=False):
             from .dynamic_lists import scoped_html
             soup = scoped_html(text)
             # Nested presentation blocks stay inside their single-review owner.
-            candidates = [node for node in soup.select('section,article,li')
+            containers = 'section,article,li,div'
+            candidates = [node for node in soup.select(containers)
                       if len(re.findall(r"(?m)^\s*(?:date\s*:\s*)?\d{4}-\d{2}-\d{2}(?=\s|$)",
                                         visible_html_text(str(node)), re.I)) == 1]
             dated = {id(node) for node in candidates}
             owners = {id(node) for node in candidates
-                      if not any(id(child) in dated for child in node.select('section,article,li'))}
+                      if not any(id(child) in dated for child in node.select(containers))}
+            # Date-only presentation blocks may use their enclosing owner's prose,
+            # but independent child articles cannot supply that missing prose.
+            for node in candidates:
+                if (id(node) not in owners or node.name == 'article'
+                        or not re.fullmatch(r"(?:date\s*:\s*)?\d{4}-\d{2}-\d{2}",
+                                            visible_html_text(str(node)), re.I)):
+                    continue
+                for parent in node.parents:
+                    if id(parent) not in dated:
+                        continue
+                    own_text = ' '.join(str(text) for text in parent.strings
+                        if next((p for p in text.parents if p.name in containers.split(',')), None) is parent)
+                    if own_text.strip():
+                        owners.remove(id(node))
+                        owners.add(id(parent))
+                        break
+                    if parent.name == 'article':
+                        break
             def inside_record(node):
                 return any(id(parent) in owners for parent in node.parents)
-            for node in list(soup.select('section,article,main,header,footer,nav,aside,li,hr')):
-                if inside_record(node) and node.name not in {'footer', 'nav', 'aside'}:
+            for node in list(soup.select(containers + ',main,header,footer,nav,aside,hr')):
+                if inside_record(node) and node.name not in {'article', 'footer', 'nav', 'aside'}:
                     continue
                 node.insert_before("\n" + _CARD_BOUNDARY + "\n")
                 node.insert_after("\n" + _CARD_BOUNDARY + "\n")
@@ -561,13 +580,27 @@ def _html_list_descriptions(content, *, allow_closed_title_cards=False):
     for item in list(root.select('li')):
         if item.parent is not None:
             item.decompose()
-    # Sibling articles are separate records, not one document or one merged card.
-    # Nested presentation sections remain inside their owning article.
+    def bounded_records(container):
+        original = str(container)
+        children = [child for child in container.select('section')
+                    if child.find_parent(['section', 'article']) is container]
+        for child in children:
+            child.extract()
+        # A grouping wrapper cannot join fields from separate child sections.
+        # A section with its own title can retain nested presentation text.
+        if children and not visible_html_text(str(container)).strip():
+            return [record for child in children for record in bounded_records(child)]
+        return _parse_records(visible_html_text(original), 'name_description',
+                              allow_closed_title_cards=allow_closed_title_cards)
+    # Consume nested articles first; retain presentation sections with their title.
     for article in reversed(list(root.select('article'))):
         if article.parent is not None:
-            records.extend(_parse_records(visible_html_text(str(article)), 'name_description',
-                                           allow_closed_title_cards=allow_closed_title_cards))
+            records.extend(bounded_records(article))
             article.decompose()
+    for section in list(root.select('section')):
+        if section.parent is not None:
+            records.extend(bounded_records(section))
+            section.decompose()
     return records + _parse_records(visible_html_text(str(root)), 'name_description',
                                     allow_closed_title_cards=allow_closed_title_cards)
 
