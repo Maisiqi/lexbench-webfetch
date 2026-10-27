@@ -592,10 +592,14 @@ def _html_list_descriptions(content, *, allow_closed_title_cards=False):
                     if child.find_parent(['section', 'article']) is container]
         for child in children:
             child.extract()
-        # A grouping wrapper cannot join fields from separate child sections.
-        # A section with its own title can retain nested presentation text.
-        if children and not visible_html_text(str(container)).strip():
-            return [record for child in children for record in bounded_records(child)]
+        # An empty wrapper or a heading over sibling sections is a group.
+        # A record title with one presentation section retains its own prose.
+        own_text = visible_html_text(str(container)).strip()
+        headings = '\n'.join(visible_html_text(str(h)) for h in container.select('h1,h2,h3,h4,h5,h6'))
+        if children and (not own_text or own_text == headings):
+            child_records = [record for child in children for record in bounded_records(child)]
+            if not own_text or len(children) > 1 or len(child_records) > 1:
+                return child_records
         return _parse_records(visible_html_text(original), 'name_description',
                               allow_closed_title_cards=allow_closed_title_cards)
     # Consume nested articles first; retain presentation sections with their title.

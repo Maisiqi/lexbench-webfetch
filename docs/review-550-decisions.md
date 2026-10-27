@@ -545,6 +545,8 @@ headers cannot replace a missing record title.
 Non-list sections are parsed within their ownership boundary, including empty
 grouping wrappers; a name in one sibling section cannot borrow a description
 from another. Nested presentation text remains with an owning title.
+Heading-only wrappers over sibling sections, including nested groups, remain
+grouping labels rather than becoming an extra record or joining child records.
 
 Review comment [4386548264](https://github.com/lexmount/lexbench-webfetch/pull/12#discussion_r4386548264)
 correctly identifies this gap. `test_duplicate_public_scores` confirms that

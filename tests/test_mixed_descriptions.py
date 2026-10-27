@@ -122,3 +122,37 @@ def test_record_local_header_retains_title_without_page_header(root, card, missi
     assert result['stable_task_pass'] is not missing, result
     if not missing:
         assert result['stable_complete_record_count'] == result['stable_unique_record_count'] == 1
+
+
+@pytest.mark.parametrize('root', ['main', 'body'])
+@pytest.mark.parametrize('wrapper', ['section', 'article'])
+@pytest.mark.parametrize('heading', ['h1', 'h2'])
+@pytest.mark.parametrize('depth', [1, 2, 3])
+def test_heading_over_sibling_sections_is_not_a_record(root, wrapper, heading, depth):
+    rows = [{'name': 'Alpha', 'description': 'First complete description.'},
+            {'name': 'Beta', 'description': 'Second complete description.'}]
+    fields = sorted(rows[0])
+    rule = contract(2)
+    rule['source_membership'] = {'kind': 'fixed', 'fields': fields,
+        'record_hashes': sorted(source_record_hash(row, fields, 'name_description') for row in rows)}
+    cards = ''.join('<section><p>' + row['name'] + '</p><p>' + row['description'] + '</p></section>'
+                    for row in rows)
+    html = cards
+    for _ in range(depth):
+        html = f'<{wrapper}><{heading}>Catalog</{heading}>' + html + f'</{wrapper}>'
+    html = f'<{root}>' + html + f'</{root}>'
+    result = evaluate_stable_task(html, rule)
+    assert result['stable_task_pass'], result
+    assert result['stable_complete_record_count'] == result['stable_unique_record_count'] == 2
+    assert not evaluate_stable_task(html.replace('Second complete description.', ''), rule)['stable_task_pass']
+    assert not evaluate_stable_task(html.replace('Second complete', 'Invented different'), rule)['stable_task_pass']
+
+
+def test_record_heading_with_one_presentation_section_keeps_description():
+    row = {'name': 'Atlas', 'description': 'First paragraph. Second paragraph.'}
+    fields = sorted(row)
+    rule = contract(1)
+    rule['source_membership'] = {'kind': 'fixed', 'fields': fields,
+        'record_hashes': [source_record_hash(row, fields, 'name_description')]}
+    html = '<section><h2>Atlas</h2><section><p>First paragraph.</p><p>Second paragraph.</p></section></section>'
+    assert evaluate_stable_task(html, rule)['stable_task_pass']
