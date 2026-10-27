@@ -160,7 +160,7 @@ def freeze_release(dataset_path: Path, output: Path, **options) -> dict:
     return release
 
 
-def catalog_release(path: Path | None = None) -> dict:
+def catalog_release(path: Path | None = None, *, require_current_scorer: bool = True) -> dict:
     """Read the published catalog edition and verify its complete suite bindings."""
     from .benchmark import SUITES, registry, validate
 
@@ -173,7 +173,9 @@ def catalog_release(path: Path | None = None) -> dict:
     _version(release.get("version"))
     if release.get("tag") != "bench-v" + release["version"]:
         raise ValueError("Catalog release tag differs from its version")
-    if release.get("scoring_source_sha256") != SCORING_SOURCE_SHA256:
+    if not re.fullmatch(r"[0-9a-f]{64}", release.get("scoring_source_sha256", "")):
+        raise ValueError("Catalog release needs a scoring source SHA-256")
+    if require_current_scorer and release["scoring_source_sha256"] != SCORING_SOURCE_SHA256:
         raise ValueError("Catalog release scoring source changed")
     revision = release.get("scorer_revision", "")
     if not re.fullmatch(r"[0-9a-f]{40}", revision):
@@ -187,3 +189,13 @@ def catalog_release(path: Path | None = None) -> dict:
             row["case_count"] for row in actual):
         raise ValueError("Catalog release task or frozen reference bindings changed")
     return release
+
+
+def installed_version() -> dict:
+    """Identify development scorers without assigning them a published edition."""
+    release = catalog_release(require_current_scorer=False)
+    if release["scoring_source_sha256"] == SCORING_SOURCE_SHA256:
+        return release
+    return {"status": "unreleased", "version": None, "tag": None,
+            "scoring_source_sha256": SCORING_SOURCE_SHA256,
+            "published_catalog": release}

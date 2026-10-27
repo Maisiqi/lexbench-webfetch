@@ -41,12 +41,14 @@ Version changes and tags require an explicit human release request. Documentatio
 
 ## Freeze an edition
 
-`lexbench-webfetch version` verifies the installed catalog's complete suite list,
-task definitions, frozen reference bindings and scorer against
-`definitions/benchmark-release.json`. The published `bench-vMAJOR.MINOR.PATCH`
-tag fixes that catalog. Full reference inputs remain separately hash-bound;
-the catalog does not replace the executable datasets or distribute their source
-captures. A report binds its actual selected population with the sidecar below;
+`lexbench-webfetch version` checks the installed catalog's complete suite list,
+task definitions and frozen reference bindings. When its scorer matches the
+published catalog, it returns that edition. A changed scorer returns
+`status: "unreleased"`, its source hash, and the unchanged `published_catalog`;
+it has no release version or tag until an explicit release.
+
+The published tag fixes the catalog. Full reference inputs remain separately
+hash-bound. A report binds its selected population with the sidecar below;
 installing a newer catalog never expands that population.
 
 Compile or export the inputs through their existing owner first, including any

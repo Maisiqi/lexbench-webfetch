@@ -58,6 +58,30 @@ uv run --frozen lexbench-webfetch inspect-revision \
 the field differences, source hashes and executed controls. It preserves the
 original input files and the revision's existing dataset identity.
 
+## Main content and shared acceptance
+
+Describe the required result in task prompts. Specify authentication or retrieval
+methods only when the task evaluates them. Prompt changes are input revisions;
+follow the benchmark version rules instead of rewriting frozen tasks for wording.
+
+Choose the main content from the task and an independent page observation:
+article sections, feed entries, or the requested product fields. Navigation alone
+cannot establish that the main content was retrieved.
+
+Combine facts, body regions, records, patterns, resources and files in the task
+configuration. `score_attempt` returns the selected `acceptance_checks`, and
+`task_passed` requires all of them. Undeclared checks are skipped. Set
+`content_score_applicable: false` to omit literal and length diagnostics;
+explicit facts and body requirements still apply. Record contracts can use
+`stable_text_role: "diagnostic"` for page-shell anchors when a positive record
+count or another declared content requirement owns acceptance.
+
+Test complete answers, page shells, missing sections or fields, and equivalent
+serializations. Keep changing prices, rankings and membership out of fixed fact
+requirements unless the task freezes them. New coverage needs independently
+qualified, versioned inputs; scoring corrections require a complete rescore of
+the affected saved outputs before report results change.
+
 ## License
 
 Contributions use the [Apache License 2.0](LICENSE). Preserve third-party licenses, copyright notices and source attributions described in [THIRD_PARTY](THIRD_PARTY.md).
