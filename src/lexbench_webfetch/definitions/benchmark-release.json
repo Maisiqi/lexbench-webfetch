@@ -4,8 +4,8 @@
   "benchmark": "lexmount-webfetch",
   "version": "2.1.0",
   "tag": "bench-v2.1.0",
-  "scorer_revision": "c1c7ee7098c00bff3b176dcc5d40ba9b75aa0462",
-  "scoring_source_sha256": "0c78674e902781bb6468de175dcce8cf414d73b57600cca0b7022932fca7a9eb",
+  "scorer_revision": "1fe04cb182458e425f28668023d36d99109491da",
+  "scoring_source_sha256": "df92879c59b4d0468701960ab1ab24b11f4536b9a6180666d4918c29f83db808",
   "case_count": 550,
   "suites": [
     {
