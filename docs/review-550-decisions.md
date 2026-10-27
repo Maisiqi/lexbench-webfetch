@@ -532,6 +532,10 @@ The HTML record path retains sibling article containers without requiring a
 before comparing values. List/article/mixed controls cover labeled and unlabeled
 records, missing fields and changed descriptions; document-body root selection
 keeps its existing single-article default.
+Nested records are consumed before their enclosing article, and a review uses
+its innermost dated container rather than every single-date ancestor. Wrapping
+correct records in another section/article must not merge them; an undated
+sibling must not fill in a missing review body.
 
 Review comment [4386548264](https://github.com/lexmount/lexbench-webfetch/pull/12#discussion_r4386548264)
 correctly identifies this gap. `test_duplicate_public_scores` confirms that

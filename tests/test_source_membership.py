@@ -217,3 +217,22 @@ def test_fixed_review_html_nested_body_and_peer_heading_ownership(paired_cases, 
     for cases in paired_cases.values():
         result = score_attempt(cases['dynamic-product-reviews'], text.encode(), ok=True)
         assert task_passed(True, result) is expected
+
+
+@pytest.mark.parametrize('outer', ['section', 'article'])
+@pytest.mark.parametrize('depth', [1, 2])
+@pytest.mark.parametrize('variant', ['correct', 'missing', 'wrong'])
+def test_innermost_review_cannot_absorb_sibling_in_single_date_container(outer, depth, variant):
+    from lexbench_webfetch.stable_tasks import evaluate_stable_task
+    row = {'date': '2026-10-01', 'text': 'Excellent service.'}
+    fields = ['date', 'text']
+    contract = {'version': 1, 'schema': 'review', 'minimum_records': 1,
+                'stable_text_anchors': [], 'source_membership': {'kind': 'fixed',
+                'fields': fields, 'record_hashes': [source_record_hash(row, fields, 'review')]}}
+    body = row['text'] if variant == 'correct' else '' if variant == 'missing' else 'Different service.'
+    sibling = 'Subscribe to our newsletter.' if variant == 'correct' else row['text']
+    text = (f'<{outer}>' * depth + '<article><p>' + row['date'] + '</p><section><p>'
+            + body + '</p></section></article><article><p>' + sibling + '</p></article>'
+            + f'</{outer}>' * depth)
+    result = evaluate_stable_task(text, contract)
+    assert result['stable_task_pass'] is (variant == 'correct'), result

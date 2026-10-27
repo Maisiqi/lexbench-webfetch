@@ -60,9 +60,10 @@ def test_missing_non_list_description_cannot_borrow_from_owned_list():
 
 
 @pytest.mark.parametrize('wrapper', ['body', 'main'])
+@pytest.mark.parametrize('nesting', [0, 1, 2])
 @pytest.mark.parametrize('labeled', [False, True])
 @pytest.mark.parametrize('form', ['articles', 'lists', 'mixed'])
-def test_html_record_containers_and_labels_preserve_fixed_fields(wrapper, labeled, form):
+def test_html_record_containers_and_labels_preserve_fixed_fields(wrapper, nesting, labeled, form):
     rows = [{'name': 'Alpha', 'description': 'First complete description.'},
             {'name': 'Beta', 'description': 'Second complete description.'}]
     fields = ['description', 'name']
@@ -79,7 +80,7 @@ def test_html_record_containers_and_labels_preserve_fixed_fields(wrapper, labele
             if not (missing and i == 0):
                 body += '<section><p>' + description + '</p></section>'
             cards.append(f'<{tag}>{body}</{tag}>' if tag == 'article' else '<ul><li>' + body + '</li></ul>')
-        return f'<{wrapper}>' + ''.join(cards) + f'</{wrapper}>'
+        return f'<{wrapper}>' + '<article>' * nesting + ''.join(cards) + '</article>' * nesting + f'</{wrapper}>'
     accepted = evaluate_stable_task(render(), rule)
     assert accepted['stable_task_pass'], accepted
     assert accepted['stable_complete_record_count'] == accepted['stable_unique_record_count'] == 2

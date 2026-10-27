@@ -157,9 +157,12 @@ def _visible(text, schema=None, *, normalized_html=False):
             from .dynamic_lists import scoped_html
             soup = scoped_html(text)
             # Nested presentation blocks stay inside their single-review owner.
-            owners = {id(node) for node in soup.select('section,article,li')
+            candidates = [node for node in soup.select('section,article,li')
                       if len(re.findall(r"(?m)^\s*(?:date\s*:\s*)?\d{4}-\d{2}-\d{2}(?=\s|$)",
-                                        visible_html_text(str(node)), re.I)) == 1}
+                                        visible_html_text(str(node)), re.I)) == 1]
+            dated = {id(node) for node in candidates}
+            owners = {id(node) for node in candidates
+                      if not any(id(child) in dated for child in node.select('section,article,li'))}
             def inside_record(node):
                 return any(id(parent) in owners for parent in node.parents)
             for node in list(soup.select('section,article,main,header,footer,nav,aside,li,hr')):
@@ -560,7 +563,7 @@ def _html_list_descriptions(content, *, allow_closed_title_cards=False):
             item.decompose()
     # Sibling articles are separate records, not one document or one merged card.
     # Nested presentation sections remain inside their owning article.
-    for article in list(root.select('article')):
+    for article in reversed(list(root.select('article'))):
         if article.parent is not None:
             records.extend(_parse_records(visible_html_text(str(article)), 'name_description',
                                            allow_closed_title_cards=allow_closed_title_cards))
