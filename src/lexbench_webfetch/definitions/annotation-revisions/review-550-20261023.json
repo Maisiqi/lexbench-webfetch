@@ -12719,7 +12719,28 @@
           ]
         },
         "min_content_chars": 640,
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "正文核对点-2",
+            "alternatives": [
+              ". Those who provision and manage their own PostgreSQL installation"
+            ]
+          },
+          {
+            "id": "正文核对点-3",
+            "alternatives": [
+              "to report a documentation issue."
+            ]
+          }
+        ]
+      },
+      "acceptance_patch": {
+        "anchors": {
+          "remove": [
+            "正文核对点-1"
+          ]
+        }
       }
     },
     {
@@ -12990,7 +13011,7 @@
           {
             "id": "正文核对点-2",
             "alternatives": [
-              "It is cross-platform, and requires Python 3.10+. It is maintained"
+              "It is cross-platform"
             ]
           },
           {
@@ -13008,6 +13029,18 @@
         ],
         "min_content_chars": 201,
         "forbidden_any": []
+      },
+      "acceptance_patch": {
+        "anchors": {
+          "replace": [
+            {
+              "id": "正文核对点-2",
+              "alternatives": [
+                "It is cross-platform"
+              ]
+            }
+          ]
+        }
       }
     },
     {
@@ -13143,8 +13176,7 @@
           {
             "id": "body-semantic-unit-1",
             "alternatives": [
-              "html.escape",
-              "html. escape"
+              "Use this if you need to display text that might contain such characters in HTML"
             ]
           },
           {

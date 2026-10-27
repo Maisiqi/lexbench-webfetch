@@ -43,10 +43,10 @@ Each cell is **covered cases (percentage of suite entries); declared checkpoints
 
 | Component | webfetch | popular-sites | dynamic-content | access-restrictions | articles | Combined |
 | --- | --- | --- | --- | --- | --- | --- |
-| [Required facts](../src/lexbench_webfetch/metrics.py) | 121 (80.7%); 686 → 111 (74.0%); 433 | 0 (0.0%); 0 | 47 (47.0%); 452 → 34 (34.0%); 107 | 0 (0.0%); 0 → 3 (3.0%); 22 | 0 (0.0%); 0 | 168 (30.5%); 1138 → 148 (26.9%); 562 |
+| [Required facts](../src/lexbench_webfetch/metrics.py) | 121 (80.7%); 686 → 111 (74.0%); 432 | 0 (0.0%); 0 | 47 (47.0%); 452 → 34 (34.0%); 107 | 0 (0.0%); 0 → 3 (3.0%); 22 | 0 (0.0%); 0 | 168 (30.5%); 1138 → 148 (26.9%); 561 |
 | [Diagnostic historical facts](../src/lexbench_webfetch/metrics.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
 | [Required legacy marker groups](../src/lexbench_webfetch/metrics.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
-| [Required stable anchors](../src/lexbench_webfetch/stable_tasks.py) | 99 (66.0%); 391 → 91 (60.7%); 284 | 100 (100.0%); 2022 → 100 (100.0%); 2052 | 100 (100.0%); 2367 → 83 (83.0%); 2173 | 98 (98.0%); 1553 → 100 (100.0%); 1587 | 100 (100.0%); 3970 → 100 (100.0%); 4229 | 497 (90.4%); 10303 → 474 (86.2%); 10325 |
+| [Required stable anchors](../src/lexbench_webfetch/stable_tasks.py) | 99 (66.0%); 391 → 91 (60.7%); 283 | 100 (100.0%); 2022 → 100 (100.0%); 2052 | 100 (100.0%); 2367 → 83 (83.0%); 2173 | 98 (98.0%); 1553 → 100 (100.0%); 1587 | 100 (100.0%); 3970 → 100 (100.0%); 4229 | 497 (90.4%); 10303 → 474 (86.2%); 10324 |
 | [Diagnostic stable anchors](../src/lexbench_webfetch/stable_tasks.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (2.0%); 33 → 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (0.4%); 33 → 0 (0.0%); 0 |
 | [Body regions](../src/lexbench_webfetch/body_coverage.py) | 27 (18.0%); 123 → 86 (57.3%); 417 | 0 (0.0%); 0 | 42 (42.0%); 151 → 42 (42.0%); 143 | 79 (79.0%); 296 → 79 (79.0%); 293 | 95 (95.0%); 418 | 243 (44.2%); 988 → 302 (54.9%); 1271 |
 | [Article endings](../src/lexbench_webfetch/body_coverage.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 95 (95.0%); 95 | 95 (17.3%); 95 |

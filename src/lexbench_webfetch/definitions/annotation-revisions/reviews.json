@@ -239,7 +239,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "b3a68468b5e7183d3917a74ae8bb376b02870cee4dea7f5469ff77aa9bb5fe55",
+      "revision_sha256": "67b3de15b18c3db8c9b8dd4520e220c126873df31b43ddd433c14cc50dec447e",
       "changes": [
         {
           "suite": "webfetch",
@@ -11242,7 +11242,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-035-part-i-tutorial",
-          "changes_sha256": "9acfba91b8ec7f14027a1deec0c6b93672242560448e0129dcc36a7e290befef",
+          "changes_sha256": "2402b549c20d742d96ae32c1a482216220e96d655d3be7be2ccdc491b9946b0f",
           "sources": [
             {
               "path": "sources/live-035-part-i-tutorial/current-source.html.txt",
@@ -11281,7 +11281,7 @@
             "prompt-diagnostic-missing-required-content",
             "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
           ],
-          "reason_ref": "reason-014"
+          "reason": "Remove the temporary PostgreSQL release banner from mandatory facts and anchors. Retain tutorial directory count, allowed destinations, prose facts and length. Current complete directory must pass without appending an obsolete announcement; incomplete directories must fail."
         },
         {
           "suite": "webfetch",
@@ -11594,7 +11594,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-010-navigation-menu",
-          "changes_sha256": "06c1fcf1b9a3e6e1a13b3127491e4c3631b4b97b7217e3d6912f513eaadba6d8",
+          "changes_sha256": "10b6ef8d714b1c6c23b270eb9e812db03ab6fb49d88d64287052e38a5021f365",
           "sources": [
             {
               "path": "sources/live-010-navigation-menu/current-source.html.txt",
@@ -11633,7 +11633,7 @@
             "prompt-diagnostic-missing-required-content",
             "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
           ],
-          "reason_ref": "reason-015"
+          "reason": "Keep the cross-platform property, installation and framework description, but remove the changing minimum Python version from both mandatory facts and anchors. Current 3.11 and historical 3.10 wording must both pass; missing framework description must fail."
         },
         {
           "suite": "webfetch",
@@ -11726,7 +11726,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-007-html-hypertext-markup-language-s",
-          "changes_sha256": "2f917d92dd34102cd6b988086555dd884fd40ef773337ccb69858998dd763466",
+          "changes_sha256": "baa31ebbbd78c32c94177d23745fb06e7de25613f05d5032d5461755931c7544",
           "sources": [
             {
               "path": "sources/live-007-html-hypertext-markup-language-s/current-source.html.txt",
@@ -11765,7 +11765,7 @@
             "prompt-diagnostic-missing-required-content",
             "complete-records-with-declared-excluded-ui-fail-diagnostic-hints"
           ],
-          "reason_ref": "reason-015"
+          "reason": "Require substantive html.escape usage text, not its signature alone. The existing unescape fact covers the second function explanation. Complete current official HTML passes; deleting either function explanation fails. Frozen reference contains both explanation facts."
         },
         {
           "suite": "webfetch",

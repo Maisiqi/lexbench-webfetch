@@ -161,3 +161,31 @@ The four full frozen-export validations remain deferred: these source checks
 neither replace them nor prove them passed. Historical provider outputs have
 not been rescored against this follow-up; earlier provider totals describe the
 previous PR revision and must not be presented as current results.
+
+## Follow-up: required prose and volatile labels
+
+The October 27 review found two distinct scoring errors outside the 59 projected
+bodies. The Python `html` page accepted a missing `html.escape` explanation;
+Scrapy and the PostgreSQL tutorial rejected current content because mandatory
+facts and anchors retained an old Python minimum version or release banner.
+
+- `live-007`: require the source-backed usage explanation for `html.escape`,
+  alongside the existing substantive `html.unescape` fact. Function signatures
+  alone do not establish that their explanations were delivered.
+- `live-010`: retain cross-platform support, framework description and installation
+  requirements, without fixing the current minimum Python version.
+- `live-035`: remove the release-announcement banner from facts and anchors;
+  preserve the tutorial directory, its count and destinations, prose and length.
+
+Current official-source controls passed for all three cases. Removing either
+Python function explanation, the Scrapy framework description, or the PostgreSQL
+directory failed. Historical and simulated future Python version labels also
+passed. These checks qualify the changed requirements, not provider performance
+or the four deferred complete frozen exports. Captures remain outside Git.
+
+A keyword audit of facts and anchors across all five revised suites also found
+versioned specification identities (CSS 2.1, XML 1.0, WCAG 2.1, DB-API 2.0),
+commit-pinned documentation, navigation labels such as “Release notes”, and
+versions discussed in dated articles. Those are not equivalent to a changing
+minimum runtime requirement or temporary announcement, and were retained.
+This audit is not proof that every live page will remain unchanged.
