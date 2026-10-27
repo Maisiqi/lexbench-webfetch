@@ -112,7 +112,15 @@
     "heading-only-body-region-headings-only",
     "mixed-html-linked-table-valid",
     "mixed-html-linked-table-missing-owned-field",
-    "mixed-html-linked-table-hidden-is-not-answer"
+    "mixed-html-linked-table-hidden-is-not-answer",
+    "fixed-record-correct",
+    "fixed-record-wrong-author",
+    "fixed-record-invented",
+    "changing-record-new-content",
+    "fixed-record-extra-notice",
+    "fixed-record-notice-only",
+    "record-fields-no-historical-facts-complete",
+    "record-fields-no-historical-facts-missing-price"
   ],
   "changes": [
     {
@@ -1334,7 +1342,10 @@
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 3
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -1532,7 +1543,10 @@
             "plain_row_pattern": "^(?P<order_id>[^\\t\\n]+)\\t(?P<customer>[^\\t\\n]+)\\t(?P<date>[^\\t\\n]+)\\t(?P<freight>[^\\t\\n]+)\\t(?P<country>[^\\t\\n]+)$"
           }
         }
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -1873,6 +1887,9 @@
           "anchor_id": "review-short-view-source",
           "text": "view source"
         }
+      ],
+      "remove": [
+        "required_facts"
       ]
     },
     {
@@ -1886,7 +1903,10 @@
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 1
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -2369,7 +2389,10 @@
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 5
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -2442,7 +2465,10 @@
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 5
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -3058,6 +3084,11 @@
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 5
+      },
+      "acceptance_patch": {
+        "set": {
+          "stable_text_role": "required"
+        }
       }
     },
     {
@@ -15264,6 +15295,17 @@
             }
           ]
         }
+      },
+      "acceptance_patch": {
+        "set": {
+          "stable_text_role": "required"
+        },
+        "anchors": {
+          "remove": [
+            "stable-06",
+            "stable-13"
+          ]
+        }
       }
     },
     {
@@ -16004,42 +16046,48 @@
       "case_id": "dynamic-reviews-graphql",
       "before_sha256": "4292b5f4ceef4b0597bf1eb215ef4f89ac14dd89cfb44c40b03f2df6e5975d02",
       "set": {
-        "forbidden_any": [
-          "data-testid=\"review-stars\""
-        ]
-      }
+        "forbidden_any": []
+      },
+      "acceptance_contract_ref": "dynamic-reviews-graphql",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
       "case_id": "dynamic-react-cart",
       "before_sha256": "e07aa4ff316a1efa33f95473cc6a4d3e120da97ca20925a4746585385f93167b",
       "set": {
-        "forbidden_any": [
-          "Add to cart",
-          "Work in the Netherlands",
-          "jeremy-akeze-doghouse-it-recruitment"
-        ]
-      }
+        "forbidden_any": []
+      },
+      "acceptance_contract_ref": "dynamic-react-cart",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
       "case_id": "dynamic-swagger",
       "before_sha256": "4e7633a3ea3fc253d2ddff7bc6ab6af0053ab44ac92784e71af629b8d874af00",
       "set": {
-        "forbidden_any": [
-          "About cookies on this site"
-        ]
-      }
+        "forbidden_any": []
+      },
+      "acceptance_contract_ref": "dynamic-swagger",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
       "case_id": "dynamic-product-reviews",
       "before_sha256": "4e860f81369e3165b9a727b99d8e2020379fee9681ac505198c823e3d98afd7e",
       "set": {
-        "forbidden_any": [
-          "Similar Products"
-        ]
-      }
+        "forbidden_any": []
+      },
+      "acceptance_contract_ref": "dynamic-product-reviews",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
@@ -16047,7 +16095,11 @@
       "before_sha256": "2c3a5a110db6604f4c8523210013902c5ff233ef653d7bffb3fd247adf5107e4",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-quotes-api",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
@@ -16055,7 +16107,11 @@
       "before_sha256": "e614af51e176a095d8dabf44ad64fc41e02c59ab60de75bce5b9e9d79be38a53",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-products-api",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
@@ -16063,7 +16119,11 @@
       "before_sha256": "9a86d2f255b93c699fded037d1908bca30d6c2e395a0fa1abfda932a9b25a45d",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-catalog",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
@@ -16071,7 +16131,11 @@
       "before_sha256": "ab4e6c93eb0ce20187a7cc5d7e73923ddc3aba4efb59e81037ed74f17aa99fa2",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-delayed",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
@@ -16079,7 +16143,11 @@
       "before_sha256": "7fffde4ef25dc37624853527d779d9a8ae88cbcc0e9aaf6a1b3bd58fac5b43f6",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-angular-phones",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
@@ -16087,7 +16155,11 @@
       "before_sha256": "3fdbe569810f12531e10ce38d8bb54ca4aac4d1d9193c1e0168a7fca1630f03f",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-iframe",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
@@ -16255,7 +16327,10 @@
       "before_sha256": "434af12208b6b968b35650ce1d452a349a87d040aa74e4a32651747ca89c021b",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16263,7 +16338,10 @@
       "before_sha256": "c647a243d017f17d3e8ca5336d9f78e9e23fbe10578c5482fcdd1b3fc4208e1c",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16295,7 +16373,10 @@
       "before_sha256": "10014d7d52b78d47daaa376218af4797d3f667212c14b30a6ff7b39c6d6fbc23",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16359,7 +16440,10 @@
       "before_sha256": "943bfe81296c33bdcbb498d2f54eb7497facdb925e4f3bd35919d133e849170b",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16383,7 +16467,10 @@
       "before_sha256": "b58c32a23b3a83c99ab578a3a8e044a3d16bc5f45dea2e30e61fe9d4380b4176",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16391,7 +16478,10 @@
       "before_sha256": "ddf22c2f8843e606c4423818ab3ceedf0a240640777a2893bb12224ee9977b2c",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16407,7 +16497,10 @@
       "before_sha256": "f5c049bca6cb0ec62cb0107a2cb1e24a8a389778590ebdceb581bfc976debe47",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16431,7 +16524,10 @@
       "before_sha256": "e12757cfde8dd2e56dbed81a78bebbfc281c3f9bb499dc56a08aa4eb4e9b2d81",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16439,7 +16535,10 @@
       "before_sha256": "8a4c08e3540c75adbddfa4c3d0ce3427d2deb8df14ea632c0aa735e69ed172e4",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16455,7 +16554,11 @@
       "before_sha256": "709bfee75044b578f2e84f2c401ab29be34bf1e3295a91fc33810da02a00b3a3",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-quotes-api",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16463,7 +16566,11 @@
       "before_sha256": "c494af0b1a9a598b208504aa920042c54477ce3469dfc873be8ca12648590805",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-products-api",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16471,7 +16578,11 @@
       "before_sha256": "d7f737764d8d6ca657ae14d0479eeb5de98c12a831b4e8aa4e341039966688d8",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-catalog",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16479,7 +16590,11 @@
       "before_sha256": "493ab965d2c08d0f4679a1a603215a68b4bbe0b91efac845964f69be21688478",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-delayed",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16487,7 +16602,11 @@
       "before_sha256": "dfdeaed34b09ebecdac50a294d7a7cdaf6409e6bd164ab220adf330a6bbb5723",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-reviews-graphql",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16495,7 +16614,11 @@
       "before_sha256": "629eaea8c2ae86c8247f2ff48f545d3460b91eb6971b8b6a12290a8fc1828869",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-react-cart",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16503,7 +16626,11 @@
       "before_sha256": "dd2dc0f179020e7b4e383988f7f1f99655158e8cab78c54090662fae8af001e0",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-swagger",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16511,7 +16638,11 @@
       "before_sha256": "3481474a703ed68368dab95c5ef6a3ddcc01b8694c8ca2e1e0e24c3499912056",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-product-reviews",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
@@ -16895,7 +17026,11 @@
       "before_sha256": "c98a09bed248519447eec36db2430f4f4e9ac2e9484c215e8b6bd67ea6640817",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-iframe",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "webfetch",
@@ -16943,7 +17078,10 @@
       "before_sha256": "44081f2d008a76b597e62c86176ed6d011178b2bf135654f5f7cb4f365c1bef5",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "dynamic-content",
@@ -16951,7 +17089,11 @@
       "before_sha256": "65f505d2e2908d7803efcce27f715733c6be0a384bfa850196a07c94cdc0582e",
       "set": {
         "forbidden_any": []
-      }
+      },
+      "acceptance_contract_ref": "dynamic-angular-phones",
+      "remove": [
+        "required_facts"
+      ]
     },
     {
       "suite": "popular-sites",
@@ -17372,7 +17514,17 @@
       "review-evidence/dynamic-content/v2-vant-diagnostics/4783be9f28abce49429cdabd08ad00b31729af14a607b5fd92d966a533bc79d4.json": "4783be9f28abce49429cdabd08ad00b31729af14a607b5fd92d966a533bc79d4",
       "review-evidence/dynamic-content/v2-vant-diagnostics/83c5a2001b1fe482a4c4613d87580944bfd291e140a3b2a090ed4d55c55bbe1e.json": "83c5a2001b1fe482a4c4613d87580944bfd291e140a3b2a090ed4d55c55bbe1e",
       "review-evidence/dynamic-content/v2-vant-diagnostics/controls.json": "f8fd9ef5c1afe3ee9841dee270186c4f67a28aa0e54210d1cfba7db7b55e0bba",
-      "review-evidence/dynamic-content/dynamic-056-vant-ui-github-io-vant/round-01.html": "5daaff72923191a561e725ec6a136b70ee66c866c84f00324f7949168998f945"
+      "review-evidence/dynamic-content/dynamic-056-vant-ui-github-io-vant/round-01.html": "5daaff72923191a561e725ec6a136b70ee66c866c84f00324f7949168998f945",
+      "review-evidence/cross-suite-fixed/dynamic-angular-phones.txt": "877d5cd0a01d27940808b469c7792136644f4df27dcebf6f814324bd5ede95f1",
+      "review-evidence/cross-suite-fixed/dynamic-catalog.txt": "304b607dabec992e508c3cfbef381e44dc55915c820e05627ecbaa08034ae836",
+      "review-evidence/cross-suite-fixed/dynamic-delayed.txt": "1b0d230de9e4e8f91674cd3db383c68b17519c94da70b6d1dda382848fae4780",
+      "review-evidence/cross-suite-fixed/dynamic-iframe.txt": "e4183696f6e74f9016c0668ee9809eb2fe7b03c244bfdae2231d8e1a1326f9ca",
+      "review-evidence/cross-suite-fixed/dynamic-product-reviews.txt": "e1b7d42946c236ed613e0318b20fefd56a7652073fccb88d6dcc29980fb27246",
+      "review-evidence/cross-suite-fixed/dynamic-products-api.txt": "133390e3d8bb20f971778abb2b43c4803f1c363703e60cabe9aecc5304cdd09c",
+      "review-evidence/cross-suite-fixed/dynamic-quotes-api.txt": "1b0d230de9e4e8f91674cd3db383c68b17519c94da70b6d1dda382848fae4780",
+      "review-evidence/cross-suite-fixed/dynamic-react-cart.txt": "cf603310fbc4eabf16baa9ef3ddcb0ae6bfc156de5cb4e3a4fe9af605692a2df",
+      "review-evidence/cross-suite-fixed/dynamic-reviews-graphql.txt": "176193496a44f0acfbd9d91ecca4a8443a75debc8839acab4c37f5cb31de0535",
+      "review-evidence/cross-suite-fixed/dynamic-swagger.txt": "37727508e4f211fe7a6f2f18e74b5840f8f9a6c9595d91bc8f74f5d662db5054"
     },
     "popular-sites": {
       "review-evidence/popular-sites/homepages-selected-observations-20260916.json": "1f9147520aad811ada650cc29b3d1ae89cddb2d8f19b2c1890f61361bdf8bce2",
@@ -17606,7 +17758,9 @@
       "review-evidence/followup-027-050/risk-diverse-027/0-http-default.bin": "a8a594253de6ac37ca097ca650c04fb336a503fd6b2974dc13478791ea628697",
       "review-evidence/followup-027-050/risk-diverse-027/1-http-default.bin": "a8a594253de6ac37ca097ca650c04fb336a503fd6b2974dc13478791ea628697",
       "review-evidence/followup-027-050/risk-diverse-050/0-http-default.bin": "e80dc9f8a69d97af54f4b6bf9f653ce713c2d99d1cb420b67a5eb5a419cb3df4",
-      "review-evidence/followup-027-050/risk-diverse-050/1-http-default.bin": "7d7904d21592a62244e7584bae4140b317c56944afb15cc8711cefa11bc5d105"
+      "review-evidence/followup-027-050/risk-diverse-050/1-http-default.bin": "7d7904d21592a62244e7584bae4140b317c56944afb15cc8711cefa11bc5d105",
+      "review-evidence/stable-role-policy/first-30-rule-review.md": "6945a6aa7b0d8d5990d8abf5d24fc41b5a42a22c70940a7c996d8698c6e9bf81",
+      "review-evidence/stable-role-policy/remaining-70-rule-review.md": "301574dddcfddf6d30ed4d882cdd40b1ae859fdc95a0a02cf9868f55e3fd1079"
     },
     "webfetch": {
       "review-evidence/webfetch/challenge-first-load-observations-20260916.json": "83957abe22d1d8a14e40b3a85260cd5cd9e0c96162c9c062baac65266ca7321b",
@@ -17893,7 +18047,442 @@
       "review-evidence/webfetch/generic-diagnostic-migration/video-09.json": "e5e14bc6b518c57f0fd347b67e5b422987aa9b500c099a2d8b559794bb20633f",
       "review-evidence/webfetch/generic-diagnostic-sources/7f2e21d5534d2c411c88d519986056a8584926ca4e30d723fc75fd5b12dad37c.txt": "7f2e21d5534d2c411c88d519986056a8584926ca4e30d723fc75fd5b12dad37c",
       "review-evidence/webfetch/generic-diagnostic-sources/a484f8469d3eec07bbfee12ee2b82efb1d355595306bbe0742c3096078e5d359.txt": "a484f8469d3eec07bbfee12ee2b82efb1d355595306bbe0742c3096078e5d359",
-      "review-evidence/webfetch/generic-diagnostic-sources/19606cba26c29b1211811e6d24ad01bc2427a83896bfb85787d7acfb067c1842.txt": "19606cba26c29b1211811e6d24ad01bc2427a83896bfb85787d7acfb067c1842"
+      "review-evidence/webfetch/generic-diagnostic-sources/19606cba26c29b1211811e6d24ad01bc2427a83896bfb85787d7acfb067c1842.txt": "19606cba26c29b1211811e6d24ad01bc2427a83896bfb85787d7acfb067c1842",
+      "review-evidence/cross-suite-fixed/dynamic-angular-phones.txt": "877d5cd0a01d27940808b469c7792136644f4df27dcebf6f814324bd5ede95f1",
+      "review-evidence/cross-suite-fixed/dynamic-catalog.txt": "304b607dabec992e508c3cfbef381e44dc55915c820e05627ecbaa08034ae836",
+      "review-evidence/cross-suite-fixed/dynamic-delayed.txt": "1b0d230de9e4e8f91674cd3db383c68b17519c94da70b6d1dda382848fae4780",
+      "review-evidence/cross-suite-fixed/dynamic-iframe.txt": "e4183696f6e74f9016c0668ee9809eb2fe7b03c244bfdae2231d8e1a1326f9ca",
+      "review-evidence/cross-suite-fixed/dynamic-product-reviews.txt": "e1b7d42946c236ed613e0318b20fefd56a7652073fccb88d6dcc29980fb27246",
+      "review-evidence/cross-suite-fixed/dynamic-products-api.txt": "133390e3d8bb20f971778abb2b43c4803f1c363703e60cabe9aecc5304cdd09c",
+      "review-evidence/cross-suite-fixed/dynamic-quotes-api.txt": "1b0d230de9e4e8f91674cd3db383c68b17519c94da70b6d1dda382848fae4780",
+      "review-evidence/cross-suite-fixed/dynamic-react-cart.txt": "cf603310fbc4eabf16baa9ef3ddcb0ae6bfc156de5cb4e3a4fe9af605692a2df",
+      "review-evidence/cross-suite-fixed/dynamic-reviews-graphql.txt": "176193496a44f0acfbd9d91ecca4a8443a75debc8839acab4c37f5cb31de0535",
+      "review-evidence/cross-suite-fixed/dynamic-swagger.txt": "37727508e4f211fe7a6f2f18e74b5840f8f9a6c9595d91bc8f74f5d662db5054"
+    }
+  },
+  "shared_acceptance_contracts": {
+    "dynamic-angular-phones": {
+      "version": 1,
+      "schema": "name_description",
+      "minimum_records": 20,
+      "stable_text_anchors": [],
+      "source_membership": {
+        "kind": "fixed",
+        "fields": [
+          "description",
+          "name"
+        ],
+        "record_hashes": [
+          "009c1534c8af730310cede0efc6694b65312236812823941cfda1205271c18ce",
+          "05bc2e8b17b5daa4eb08a04c22eaff89d4bebc8df2a3072ae3d9cc4dfd142124",
+          "1862083cc46ec4c0c50a5fe450f95ea74945c227981d246fe051a691e17cda33",
+          "1f3bada2ec16f9fc5702334a64e35589028735f6df0098eb35e5561618c179b3",
+          "29adb32865b78b6da5aad7860c473e8b244c494953d8cfb5de3733464a8edf6e",
+          "2d1d5db73ee8cc25308af6a2283dc185478b885ebd2b243306a1af988ab80482",
+          "3b934d55567eef7f7764cb85647ce3b93f75c8c92fd315af44a94554eb2c8ffa",
+          "3e2d4913d6d1a57e4862c3fc3e596857f35f60b6e67b30ae5c7cd2c290c8851e",
+          "4260ff7b1ff60f490b3ef88d2fa918c5bec2bf67c58bd9f2867aa5c8e44dbd5b",
+          "49616a1c9613c3f662b25eb62e40bb02911626a5d64dad3e6f809446fa5823f7",
+          "62058de8bba8331c4b804ea87f5ed4f27f3f44747c1fdd0ab6a2869d70dae283",
+          "640ed13728000d9f89aa5ed41987359efdcca59324e6a42a0e9a1c0e9d0cba60",
+          "75a11d98168d0f5ac4cebdfa67a1397902a78a43dfe1aafe3666f266ecf1a35f",
+          "81f8def51751c293cef0ca1f57e99dd54ae037e8395c243a1660d506afd01f89",
+          "8a0bce6f7aa8decf5c1f66acb649d86991feb6bcf53f24e30873f1e3f738fc6f",
+          "9c46fc87341abdb92d2148260d8e657df97990fdc596afe89e7a14c69c9d84f6",
+          "b2d7d73402d6d2a2bf607ab3e2efef9b93b011104821b0c2ba489f0ca5d48f51",
+          "b480de6f7c97742882b1ab211b8c845dd699d69679a82b6ce7c10b94c68b4972",
+          "c59ae4f4b2c0f324b92565f6ecf21c7c4aff63c7139805d54db673394f4144b6",
+          "cc9664a00004cc02d557626cdceab37fd8bc15c649867d0b8228dde2d9381f55"
+        ]
+      },
+      "record_count_policy": {
+        "list_type": "fixed",
+        "source_observed_count": 20,
+        "required_ratio": 1.0,
+        "minimum_records": 20,
+        "source_observation_counts": [
+          20,
+          20,
+          20
+        ],
+        "reason": "固定列表：要求取得Codex独立观察范围内的全部记录。",
+        "source_evidence_sha256": "53190cbbecc1879bb4fd31c09c7e2b4032caa465697515e5c1cb266c7c9ccfe0"
+      }
+    },
+    "dynamic-catalog": {
+      "version": 1,
+      "schema": "catalog_product",
+      "minimum_records": 6,
+      "stable_text_anchors": [],
+      "source_membership": {
+        "kind": "fixed",
+        "fields": [
+          "description",
+          "price",
+          "reviews",
+          "title"
+        ],
+        "record_hashes": [
+          "005eceb971457af02caa0f98086403a1b671846cf350abba6366cd2736c18721",
+          "2043e57cb2f5db6fd825a819d6819ef49a806ec7c973e187c177bb758bfad25f",
+          "5763891b89c8ac2dff2d4cd3a96f3aba8f91f4fe6863097f6f352dd639012763",
+          "78c91186b4c13b63bf220b28e2ba2dd5a059f5f93137e79586036686bd5145bd",
+          "88b9ae48d268a13a7f88b1988bf7c4fa4ecdbeb456b3d51375d63b80378c4a5e",
+          "d1cb662d2d76c92b1d6955c786fe44b69a875c9d60035836bd59281383784b2c"
+        ]
+      },
+      "record_count_policy": {
+        "list_type": "fixed",
+        "source_observed_count": 6,
+        "required_ratio": 1.0,
+        "minimum_records": 6,
+        "source_observation_counts": [
+          6,
+          6,
+          6
+        ],
+        "reason": "固定列表：要求取得Codex独立观察范围内的全部记录。",
+        "source_evidence_sha256": "d142a0b827884341036513bbe0926987cbf1cbc62fb3b3fc4a63d0f3aa14ca40"
+      }
+    },
+    "dynamic-delayed": {
+      "version": 1,
+      "schema": "quote",
+      "minimum_records": 10,
+      "stable_text_anchors": [],
+      "source_membership": {
+        "kind": "fixed",
+        "fields": [
+          "author",
+          "quote",
+          "tags"
+        ],
+        "record_hashes": [
+          "0f8355ff8d1de1930920725ded981390e43c02aacfba72a6bcd7b8b3224725e7",
+          "1703e87a89ba30667cb7f1e3ce8ac81351d148425a584de6bf6dd367acdf2576",
+          "3d998f7c1e2a7b017782796becb28e54a31cc156d352ea6e93d86993e8c8a45e",
+          "7772070ca5ea6a0d528683575838621551e2ec968f4b502057748130414407be",
+          "78bf0a943a8b226e647d271848fd24c89a32e6777be6bea7d1cd95cf0ee70b4f",
+          "9fb45d8fbde605fcc9b619b922a006e2266f73ff6f5f440c33389ee2afe687d9",
+          "b4991e7770c1e10bc463df1ece11efb81b6f717139af2205491e9230189cf74f",
+          "e9da4be2c617921477df2223bb347663abd0c1f0f0e88c4d803659c26a6e1b13",
+          "eb3ea9c9fae450e2951dd7479857ba51c41224a586e4c19f55d86a37bcf5e609",
+          "efba35da8ff99d6a4e423b80f437006e5f24ae36eff8f790bd8daf18191cac6d"
+        ]
+      },
+      "record_count_policy": {
+        "list_type": "fixed",
+        "source_observed_count": 10,
+        "required_ratio": 1.0,
+        "minimum_records": 10,
+        "source_observation_counts": [
+          10,
+          10,
+          10
+        ],
+        "reason": "固定列表：要求取得Codex独立观察范围内的全部记录。",
+        "source_evidence_sha256": "b7778e82c08bc106c7bf0e3ec22b37003845699652eac6f3205b84e266d03697"
+      }
+    },
+    "dynamic-iframe": {
+      "version": 1,
+      "schema": "taxonomy_family",
+      "minimum_records": 14,
+      "stable_text_anchors": [],
+      "source_membership": {
+        "kind": "fixed",
+        "fields": [
+          "family"
+        ],
+        "record_hashes": [
+          "08fc3002684e74e88ba6d3859b0517e114d23f60341d5caa074ab21578bf7090",
+          "0bdf2fb44ed265e3d0a9251a16703239fb1a99cb7ba8424c34c48855467e0fe9",
+          "135d1fb346d51207a535c380caa9cced86f9bff1b8c28d67953c25653178c749",
+          "2ba6874c1d7a4f8cf561c0705950cc8e6e9c30abf1d4af79c129f0e21cadc116",
+          "6307ef203fc78912ae7b1cffcc5f95a4f8843f0fa1395dc6e587f2f34f7d799c",
+          "6e0efe4cb8ea4338d9497bd8a8e043575a20499fa31a6c490fc4cbd7914af6d4",
+          "82d3db3eddb5a218f30dcf6bb32a0dd27306b03a93322752faf6d45d84a88fae",
+          "9c6f0100f87d72be5beab8a6d99676d8bbe467d195c4ffc6e84d0cf482ed06ec",
+          "a1b2e3bbda4b1b6247e5b5f46b7177160326cca186baf5cddd8732537c8df7bb",
+          "a28df8bd2119ca6d5b1239ee58ce74eb61a4a72d7aa40b43dc4f810568c32e94",
+          "a63bc38f5b365ffdf571764ddd4574bef1c0c577d486b2263271cf71d9952a79",
+          "bf9f7ee630fd3511464ce62233d19504b2d13d0993a86076a62532d47a384064",
+          "c343fb44bb7797eb41c8a1e3a048ecb27a22ac340b7907c1376498adb20f354e",
+          "f8110ed16164a14043cf03d0163bf0cf8e5516be8ddd72479af48d8828cca24e"
+        ]
+      },
+      "record_count_policy": {
+        "list_type": "fixed",
+        "source_observed_count": 14,
+        "required_ratio": 1.0,
+        "minimum_records": 14,
+        "source_observation_counts": [
+          14,
+          14,
+          14
+        ],
+        "reason": "固定列表：要求取得Codex独立观察范围内的全部记录。",
+        "source_evidence_sha256": "dc135635076c85d3cabf73b783b43ddedb3cb08ada8d7f5667494f1de94ec52d"
+      }
+    },
+    "dynamic-product-reviews": {
+      "version": 1,
+      "schema": "review",
+      "minimum_records": 5,
+      "stable_text_anchors": [],
+      "source_membership": {
+        "kind": "fixed",
+        "fields": [
+          "date",
+          "text"
+        ],
+        "record_hashes": [
+          "1e301a3dcf7751b6f780ac972d7b5cf1582947b11d7a41d9b60c9e11fd375675",
+          "518268e501caf07397c6dfb7c56d0f5dba40bf69199314831eb907092672260e",
+          "815569b9e8bc8f04efad0551a4cf073f635d7a7e321f05c82edd1a48f8a0a903",
+          "ce757ae33a49f8868fca71feb3a45572e1081a38561b24773bca3cb65ad57356",
+          "dd44992242844a9ee7540be9e8380ec0fb8a6a450bee9ea3ed5f633fc090e1f5"
+        ]
+      },
+      "record_count_policy": {
+        "list_type": "fixed",
+        "source_observed_count": 5,
+        "required_ratio": 1.0,
+        "minimum_records": 5,
+        "source_observation_counts": [
+          5,
+          5,
+          5
+        ],
+        "reason": "固定列表：要求取得Codex独立观察范围内的全部记录。",
+        "source_evidence_sha256": "c9e5e883193d4c87db1d0680a96927aed9663448e69c87c4a20e3378b204df82"
+      }
+    },
+    "dynamic-products-api": {
+      "version": 1,
+      "schema": "product",
+      "minimum_records": 12,
+      "stable_text_anchors": [],
+      "source_membership": {
+        "kind": "fixed",
+        "fields": [
+          "name",
+          "price"
+        ],
+        "record_hashes": [
+          "1b56336b1c80d3eed3e3ba42ffa7138186efe9b217f459fa953b1375e68202d9",
+          "33657324583e77af7d86d1f56acf36b17993477905df2ad90ab23c15e1ba659f",
+          "441dfac6f98d4bcf8d09fd6aa119b31abd47e2e3372edbec795c1c56361e69b1",
+          "77e933b128f907c386307fa22babb2cf357f635ebaf37b0a5d4cbae624e26cdc",
+          "7863fd48fcf13858513c6067f1d8485b2c0591eea51c4a04b106812bb9784fd5",
+          "8497781e1ae379aba0674ac7b15ca8561e3df579a472ecf2d04d2af07b8318ca",
+          "a94886bed4a0e592eb954acdc6e2eddc640406d3a36c1f4bdcece91f2c88a132",
+          "b686e33e5cb01484e6db8e06ce0ff156af0de6f41e6b4a1011c05622645a9e87",
+          "b812b00c60ccd084188d14926a29ae5b62597c42e4392fa5122ca0d4fa55a937",
+          "dc42aefae95d6b111823fb9e4be2618d485d4eb2afc9a35f054b5446849cdda9",
+          "e58b0f45f2fa291a65fe4d05c70217038b43dec0e9d83157e323183e7716aa00",
+          "eb06e7e3fcfbf68069e51f78f6bb05e41f695f5756467ff2622d7ab168e64bf7"
+        ]
+      },
+      "record_count_policy": {
+        "list_type": "fixed",
+        "source_observed_count": 12,
+        "required_ratio": 1.0,
+        "minimum_records": 12,
+        "source_observation_counts": [
+          12,
+          12,
+          12
+        ],
+        "reason": "固定列表：要求取得Codex独立观察范围内的全部记录。",
+        "source_evidence_sha256": "89f681663aa14763839aaa9ea2cbd157244cb386ca9b612927935491f0660a5a"
+      }
+    },
+    "dynamic-quotes-api": {
+      "version": 1,
+      "schema": "quote",
+      "minimum_records": 10,
+      "stable_text_anchors": [],
+      "source_membership": {
+        "kind": "fixed",
+        "fields": [
+          "author",
+          "quote",
+          "tags"
+        ],
+        "record_hashes": [
+          "0f8355ff8d1de1930920725ded981390e43c02aacfba72a6bcd7b8b3224725e7",
+          "1703e87a89ba30667cb7f1e3ce8ac81351d148425a584de6bf6dd367acdf2576",
+          "3d998f7c1e2a7b017782796becb28e54a31cc156d352ea6e93d86993e8c8a45e",
+          "7772070ca5ea6a0d528683575838621551e2ec968f4b502057748130414407be",
+          "78bf0a943a8b226e647d271848fd24c89a32e6777be6bea7d1cd95cf0ee70b4f",
+          "9fb45d8fbde605fcc9b619b922a006e2266f73ff6f5f440c33389ee2afe687d9",
+          "b4991e7770c1e10bc463df1ece11efb81b6f717139af2205491e9230189cf74f",
+          "e9da4be2c617921477df2223bb347663abd0c1f0f0e88c4d803659c26a6e1b13",
+          "eb3ea9c9fae450e2951dd7479857ba51c41224a586e4c19f55d86a37bcf5e609",
+          "efba35da8ff99d6a4e423b80f437006e5f24ae36eff8f790bd8daf18191cac6d"
+        ]
+      },
+      "record_count_policy": {
+        "list_type": "fixed",
+        "source_observed_count": 10,
+        "required_ratio": 1.0,
+        "minimum_records": 10,
+        "source_observation_counts": [
+          10,
+          10,
+          10
+        ],
+        "reason": "固定列表：要求取得Codex独立观察范围内的全部记录。",
+        "source_evidence_sha256": "0e0939d7979c8caf58456e0de903baf5dfd0252018375a99bab8b49fea261012"
+      }
+    },
+    "dynamic-react-cart": {
+      "version": 1,
+      "schema": "product",
+      "minimum_records": 16,
+      "stable_text_anchors": [],
+      "field_minimum_records": {
+        "financing": 15,
+        "shipping": 13
+      },
+      "source_membership": {
+        "kind": "fixed",
+        "fields": [
+          "financing",
+          "name",
+          "price",
+          "shipping"
+        ],
+        "record_hashes": [
+          "058f27bb7046e4edf7f9e8df2c4985df65b21bb4e041b97f4fd624e27f06b846",
+          "1926be2bfa91eaf6e3fa9b2c27023a7d7c209d8a3c4e15dbd62aefbeef09eec2",
+          "47355a9c64d37a77fb706e222d79239927e0f6300efaaedab060eeaf4558df75",
+          "4d453408322f98a0969cd0043ca7b453d544e6f7ca33d913c02d1241996739e9",
+          "844f9de1df144896dcbfc96c2f25b66c184b5816f6741fae7eb5e7037c16dde5",
+          "9ac2dc34d483f599726783ce6e904185ee3ba8fb28f52d00f05ae40a31bc7a10",
+          "a344d69663face32143394dccc72a2c24555accae1bacf6de08a6ff40552658b",
+          "a482956604008dacd956ceb3e9c753d593f70c1d93e4f4c53c8e68b510d623bb",
+          "aadbacbace4caf6ea6bb0af7295a4681463e453b0bdc82641e2e521da34c3907",
+          "ad144abb5261991212c2537c0a1b4109178b33d3baf46d6ea01b860c4d5bc608",
+          "bfecbaeb5c1c7e4083dff2bd2b6752b9214702d128e05b0a728741aea8312112",
+          "c6dd1fe0d57f19d93203f9bbdbb41b5cf3491ef54602946a255076cc7da12853",
+          "d30a5739e045b17911681cd5dacc5ed900a1d887e5a9c3e3a19542e37450a09e",
+          "d61240c13bb26c1941dd5f60c02cdfdf0546c1f2a0b1e83faf658c5c0d1ea550",
+          "e460ff062e9c7305b30f10070c976b58abbdf21326f4025458a7ac3567b80dbb",
+          "f4d43d14a3dbe90d3395c4f8c59bd1c143f0f9e5d3ced2c8d113e5d4ba473071"
+        ]
+      },
+      "record_count_policy": {
+        "list_type": "fixed",
+        "source_observed_count": 16,
+        "required_ratio": 1.0,
+        "minimum_records": 16,
+        "source_observation_counts": [
+          16,
+          16,
+          16
+        ],
+        "reason": "固定列表：要求取得Codex独立观察范围内的全部记录。",
+        "source_evidence_sha256": "6562fb9f03ad103af46d20bc24f0398ece069f550c22714d5fa13ee3cecb194e"
+      }
+    },
+    "dynamic-reviews-graphql": {
+      "version": 1,
+      "schema": "review",
+      "minimum_records": 20,
+      "stable_text_anchors": [],
+      "source_membership": {
+        "kind": "fixed",
+        "fields": [
+          "date",
+          "text"
+        ],
+        "record_hashes": [
+          "084e70d3d23f607ce67bcab9b7cfbdefdce6f1aef0cbd3c8e663e1b236be21dc",
+          "102a5256ff91bf31c544226b051c8ea0e16d31b3af46e01cb88095fcac4a4006",
+          "12157012f25e157b42e2b864f989d287a55369593f270ffd4ece063f22dc8563",
+          "19ea5b9256f8fb9f807d0507a8cbc6ad11ece3d89b66c8512bf4b3be76cb51de",
+          "3cf373772e74d55779258b7692d0f029f369299b1e53b4af0864a3dfe4e3eec5",
+          "3ea5468c530fae564593de87edb0c0938d4080846303234126b7638e0a2cce44",
+          "5ce111757c2ea54f5edce679dee4ac02e65a288824361056ce47525fa7395c5f",
+          "68f7bbfd57ea7c0094d263cc43fe4d231e7c9cb3a0a29a1fa3f3456d81cee0fb",
+          "71d28d04c5b4f659f3e596ce3558f20fe9bd93b4c7493fb3375a3228a6159359",
+          "79b48073ec275b460a7538e184cbfba534b7d85b62ee9a68ce531d3a237c1d07",
+          "7cffd1b5d0c4ab81f7991ba285ce9f0143f4c30ae1ea6c81f688584eee72b33d",
+          "9dd6703f54e5432d9ed477b3d5ce79dab08d44cf7dbef85b95057e43c43d77c9",
+          "af335a864bb6b0822bd1019decdf10cf0ed65149dabd08f2dc23700c10ef527f",
+          "b880b1de085ed6307066ffc320cb6dd6352a013074ffb2445ceb84f73d1879a0",
+          "c239df17dd85a6271b7a3e6b85ba557fbc85a8da0a46bf0a5f7e4d8c9fdd73a5",
+          "c48a9ea2d40a79f13e5e77e07f69ead401fd14c5502ef80b088d09bfdb94dc38",
+          "dd467d0931e33ad20638c04d9f2854b6f9f915bf70c814619442d285fce1a548",
+          "e1c0e951c95283f58489051a1f583bcc267f5596c705428620cfe61836cf6059",
+          "e277d5de9645c67ee9ec5b716e7d32c15972a25b5eadbf8e0d7657b214310d09",
+          "e471f0689d9a9cbeb16243c88d76e48ad7ee890c4bff3566a95205197c883905"
+        ]
+      },
+      "record_count_policy": {
+        "list_type": "fixed",
+        "source_observed_count": 20,
+        "required_ratio": 1.0,
+        "minimum_records": 20,
+        "source_observation_counts": [
+          20,
+          20,
+          20
+        ],
+        "reason": "固定列表：要求取得Codex独立观察范围内的全部记录。",
+        "source_evidence_sha256": "d77c28273ba5bf1221ea548e23955f81f9c17197aa4918121e4f4a5c3a20c22c"
+      }
+    },
+    "dynamic-swagger": {
+      "version": 1,
+      "schema": "api_operation",
+      "minimum_records": 20,
+      "stable_text_anchors": [],
+      "source_membership": {
+        "kind": "fixed",
+        "fields": [
+          "method",
+          "path",
+          "summary"
+        ],
+        "record_hashes": [
+          "10c2223c1e4110acfc2f68873538df82bc934084fab168bb5e71033aea867976",
+          "15949b5d93a837ce2315fee9c2a3adf024025450433586c07d0068e52d05f19b",
+          "19f55dcc3ed3aac37615376fd8c2d4cde777747fe9fd9b7566714178eac1977d",
+          "1c04a4a51ca95bc4647d442c7f0f149ac8ac3b33640df67be93b9a553b0b7506",
+          "228058d76da7a3102548335976b9f884ddc42c929edbe182bd2f1c5e20a1b215",
+          "2ad43e9e82d96aa10cf24d01e104478fde0446b77a9ff5a39597c8bacfb5822a",
+          "2bef9bfcb03d0b86f4b37983acb9b4fbdaee6372502e6e978749beadbc1d1651",
+          "3ad860a2574b867514a0baae18270f1e17f3bf689b7d7a94ade9b388dbd110b4",
+          "55cf7a3794e7a98400f74853d176e46a17308c722c654356dce2365974dc9678",
+          "5a4db0d1342919d98ebf32dc3fb4fc2a6e1a14453f60aab0deae345bc713a59e",
+          "72c3860011405d87d0ea87877cdb8e642fef95a907a2bf883a105e2949f0963a",
+          "735e6f2a9a5b8027a79ac109768c75960e21d365b8ba3e09cf3d15b9d20d171f",
+          "7bd64e09c0230e0b42aa1dbaaac9e35fd5e6a688ca766ca23fbc1299003ad67e",
+          "8026397ae76ee90c3f341cf369f40f72b9c001e89b561c3d91d8a636ecd530ce",
+          "94b73cb308e2d54631ba21247934b7bab492b588b1c57e80d9b2ba7a7a507c0a",
+          "9f21351feabc163f4abc4ce0a7529492cf922fac41b291428cc621a199d319c1",
+          "b350ac2a9aa0d3818ac88455aac925fe658854e4f5b824e14a6c337d85cfccdd",
+          "cc7b282e05b8ac04552ca4980e2f2218e6655b584a9c6de33e6b6a5605694ca8",
+          "cdac840e953d6e0447f0e8d965e38eb7f7e379e7fee5ba64c52b39760d6f383d",
+          "ffc107fc384557ca3cb026e1923dfc545776eeca798176bbdda210673bac61b9"
+        ]
+      },
+      "record_count_policy": {
+        "list_type": "fixed",
+        "source_observed_count": 20,
+        "required_ratio": 1.0,
+        "minimum_records": 20,
+        "source_observation_counts": [
+          20,
+          20,
+          20
+        ],
+        "reason": "固定列表：要求取得Codex独立观察范围内的全部记录。",
+        "source_evidence_sha256": "573ead9b184f1509aa9cde0a7ae9eecd7b489d9e29fe95c363465de6b74fed25"
+      }
     }
   }
 }

@@ -59188,6 +59188,224 @@
       "expected_metrics": {
         "fact_coverage": 0.5
       }
+    },
+    {
+      "id": "fixed-record-correct",
+      "failure_mode": "false-negative",
+      "category": "acceptance-contract",
+      "root_cause": "Source membership is explicit and independent of record count; notices cannot substitute for requested records or veto complete content.",
+      "case": {
+        "url": "https://example.test/quotes",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "quote",
+          "minimum_records": 1,
+          "stable_text_anchors": [],
+          "source_membership": {
+            "kind": "fixed",
+            "fields": [
+              "author",
+              "quote",
+              "tags"
+            ],
+            "record_hashes": [
+              "348d26a98c91d975385c24a651b1d99e294a9ddbb63e05b32e768089e432a4c2"
+            ]
+          }
+        }
+      },
+      "artifact": "“A small synthetic quotation for testing records.”\nby Sample Author\nTags: testing example",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "fixed-record-wrong-author",
+      "failure_mode": "false-positive",
+      "category": "acceptance-contract",
+      "root_cause": "Source membership is explicit and independent of record count; notices cannot substitute for requested records or veto complete content.",
+      "case": {
+        "url": "https://example.test/quotes",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "quote",
+          "minimum_records": 1,
+          "stable_text_anchors": [],
+          "source_membership": {
+            "kind": "fixed",
+            "fields": [
+              "author",
+              "quote",
+              "tags"
+            ],
+            "record_hashes": [
+              "348d26a98c91d975385c24a651b1d99e294a9ddbb63e05b32e768089e432a4c2"
+            ]
+          }
+        }
+      },
+      "artifact": "“A small synthetic quotation for testing records.”\nby Other Author\nTags: testing example",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "fixed-record-invented",
+      "failure_mode": "false-positive",
+      "category": "acceptance-contract",
+      "root_cause": "Source membership is explicit and independent of record count; notices cannot substitute for requested records or veto complete content.",
+      "case": {
+        "url": "https://example.test/quotes",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "quote",
+          "minimum_records": 1,
+          "stable_text_anchors": [],
+          "source_membership": {
+            "kind": "fixed",
+            "fields": [
+              "author",
+              "quote",
+              "tags"
+            ],
+            "record_hashes": [
+              "348d26a98c91d975385c24a651b1d99e294a9ddbb63e05b32e768089e432a4c2"
+            ]
+          }
+        }
+      },
+      "artifact": "“An entirely fabricated quotation with enough words.”\nby Other Author\nTags: fake example",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "changing-record-new-content",
+      "failure_mode": "false-negative",
+      "category": "acceptance-contract",
+      "root_cause": "Source membership is explicit and independent of record count; notices cannot substitute for requested records or veto complete content.",
+      "case": {
+        "url": "https://example.test/quotes",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "quote",
+          "minimum_records": 1,
+          "stable_text_anchors": [],
+          "source_membership": {
+            "kind": "changing"
+          }
+        }
+      },
+      "artifact": "“An entirely fabricated quotation with enough words.”\nby Other Author\nTags: fake example",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "fixed-record-extra-notice",
+      "failure_mode": "false-negative",
+      "category": "acceptance-contract",
+      "root_cause": "Source membership is explicit and independent of record count; notices cannot substitute for requested records or veto complete content.",
+      "case": {
+        "url": "https://example.test/quotes",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "quote",
+          "minimum_records": 1,
+          "stable_text_anchors": [],
+          "source_membership": {
+            "kind": "fixed",
+            "fields": [
+              "author",
+              "quote",
+              "tags"
+            ],
+            "record_hashes": [
+              "348d26a98c91d975385c24a651b1d99e294a9ddbb63e05b32e768089e432a4c2"
+            ]
+          }
+        }
+      },
+      "artifact": "About cookies on this site\n\n“A small synthetic quotation for testing records.”\nby Sample Author\nTags: testing example",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "fixed-record-notice-only",
+      "failure_mode": "false-positive",
+      "category": "acceptance-contract",
+      "root_cause": "Source membership is explicit and independent of record count; notices cannot substitute for requested records or veto complete content.",
+      "case": {
+        "url": "https://example.test/quotes",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "quote",
+          "minimum_records": 1,
+          "stable_text_anchors": [],
+          "source_membership": {
+            "kind": "fixed",
+            "fields": [
+              "author",
+              "quote",
+              "tags"
+            ],
+            "record_hashes": [
+              "348d26a98c91d975385c24a651b1d99e294a9ddbb63e05b32e768089e432a4c2"
+            ]
+          }
+        }
+      },
+      "artifact": "About cookies on this site",
+      "ok": true,
+      "expected_task_pass": false
+    },
+    {
+      "id": "record-fields-no-historical-facts-complete",
+      "failure_mode": "false-negative",
+      "category": "acceptance-contract",
+      "root_cause": "Structured record fields and counts determine acceptance without historical fact diagnostics.",
+      "case": {
+        "url": "https://example.test/products",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "product",
+          "minimum_records": 1,
+          "stable_text_anchors": []
+        }
+      },
+      "artifact": "Sample product\n$20",
+      "ok": true,
+      "expected_task_pass": true
+    },
+    {
+      "id": "record-fields-no-historical-facts-missing-price",
+      "failure_mode": "false-positive",
+      "category": "acceptance-contract",
+      "root_cause": "Structured record fields and counts determine acceptance without historical fact diagnostics.",
+      "case": {
+        "url": "https://example.test/products",
+        "task_kind": "body",
+        "min_content_chars": 1,
+        "acceptance_contract": {
+          "version": 1,
+          "schema": "product",
+          "minimum_records": 1,
+          "stable_text_anchors": []
+        }
+      },
+      "artifact": "Sample product",
+      "ok": true,
+      "expected_task_pass": false
     }
   ],
   "superseded_cases": {

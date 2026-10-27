@@ -12,6 +12,158 @@ The initial versions were imported from Browser Eval commit `894b38f8`. The curr
 
 Public task requirements are maintained in this repository. Frozen historical catalogs and manifests also live under `definitions/evaluation/` with their original relative paths and bytes. Browser Eval resolves its historical logical paths through this installed package. It retains experiment profiles and compact hash bindings, rather than duplicate definition files.
 
+## Dataset composition and scoring coverage
+
+Edition: the registered frozen suites in `registry.json`; revised edition:
+`review-550-20261023`. The tables compare declarations under the current scorer,
+not results from an older scorer or provider runs. Suite links open maintained
+baseline contracts; [revision operations](../src/lexbench_webfetch/definitions/annotation-revisions/review-550-20261023.json)
+contain changed rules and shared fixed-record contracts.
+
+<!-- distribution:start -->
+### Sample composition
+
+Counting unit: registered case entry; percentages use the suite row total (combined row: 550).
+Delivery categories partition entries. Frozen baseline and selected revision have identical composition.
+
+| Suite | Total | Body | Structure | Resource discovery | File delivery | Unique URLs | Unique URL + prompt tasks |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| [webfetch](../src/lexbench_webfetch/definitions/evaluation/tasks.json) | 150 | 121 (80.7%) | 10 (6.7%) | 16 (10.7%) | 3 (2.0%) | 150 | 150 |
+| [popular-sites](../src/lexbench_webfetch/definitions/evaluation/popular-sites/tasks.json) | 100 | 0 (0.0%) | 100 (100.0%) | 0 (0.0%) | 0 (0.0%) | 100 | 100 |
+| [dynamic-content](../src/lexbench_webfetch/definitions/evaluation/dynamic-content-100-moli-webfetch/tasks.json) | 100 | 88 (88.0%) | 12 (12.0%) | 0 (0.0%) | 0 (0.0%) | 100 | 100 |
+| [access-restrictions](../src/lexbench_webfetch/definitions/evaluation/risk-control/current/tasks.json) | 100 | 100 (100.0%) | 0 (0.0%) | 0 (0.0%) | 0 (0.0%) | 100 | 100 |
+| [articles](../src/lexbench_webfetch/definitions/evaluation/articles/tasks.json) | 100 | 100 (100.0%) | 0 (0.0%) | 0 (0.0%) | 0 (0.0%) | 100 | 100 |
+| Combined | 550 | 409 (74.4%) | 122 (22.2%) | 16 (2.9%) | 3 (0.5%) | 535 | 540 |
+
+Across suites: **10 exact URL + prompt identities**, represented by **20 entries** (**10 repeated entries**). URL-only uniqueness does not establish task equivalence; different prompts on one URL remain different tasks. Equality uses stored strings, with no URL canonicalization.
+
+### Scoring component matrix
+
+Each cell is **covered cases (percentage of suite entries); declared checkpoints**. An arrow means **frozen baseline → selected revision**; unchanged cells appear once. Components overlap and must not be added into a total case count. A zero means no executable declaration in that component, not a measured failure.
+
+| Component | webfetch | popular-sites | dynamic-content | access-restrictions | articles | Combined |
+| --- | --- | --- | --- | --- | --- | --- |
+| [Required facts](../src/lexbench_webfetch/metrics.py) | 111 (74.0%); 354 → 111 (74.0%); 433 | 0 (0.0%); 0 | 22 (22.0%); 71 → 21 (21.0%); 68 | 0 (0.0%); 0 → 3 (3.0%); 22 | 0 (0.0%); 0 | 133 (24.2%); 425 → 135 (24.5%); 523 |
+| [Diagnostic historical facts](../src/lexbench_webfetch/metrics.py) | 10 (6.7%); 332 → 0 (0.0%); 0 | 0 (0.0%); 0 | 25 (25.0%); 381 → 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 35 (6.4%); 713 → 0 (0.0%); 0 |
+| [Required legacy marker groups](../src/lexbench_webfetch/metrics.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
+| [Required stable anchors](../src/lexbench_webfetch/stable_tasks.py) | 99 (66.0%); 391 → 91 (60.7%); 284 | 100 (100.0%); 2022 → 100 (100.0%); 2052 | 100 (100.0%); 2367 → 83 (83.0%); 2173 | 98 (98.0%); 1553 → 100 (100.0%); 1587 | 100 (100.0%); 3970 → 100 (100.0%); 4229 | 497 (90.4%); 10303 → 474 (86.2%); 10325 |
+| [Diagnostic stable anchors](../src/lexbench_webfetch/stable_tasks.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (2.0%); 33 → 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (0.4%); 33 → 0 (0.0%); 0 |
+| [Body regions](../src/lexbench_webfetch/body_coverage.py) | 27 (18.0%); 123 → 27 (18.0%); 122 | 0 (0.0%); 0 | 42 (42.0%); 151 → 42 (42.0%); 143 | 79 (79.0%); 296 → 79 (79.0%); 293 | 95 (95.0%); 418 | 243 (44.2%); 988 → 243 (44.2%); 976 |
+| [Article endings](../src/lexbench_webfetch/body_coverage.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 95 (95.0%); 95 | 95 (17.3%); 95 |
+| [Ordered article endings](../src/lexbench_webfetch/body_coverage.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 → 95 (95.0%); 95 | 0 (0.0%); 0 → 95 (17.3%); 95 |
+| [Required text patterns](../src/lexbench_webfetch/metrics.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (2.0%); 2 | 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (0.4%); 2 |
+| [Required page patterns](../src/lexbench_webfetch/stable_tasks.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (2.0%); 8 → 3 (3.0%); 9 | 1 (1.0%); 1 | 100 (100.0%); 101 | 103 (18.7%); 110 → 104 (18.9%); 111 |
+| [Fixed name/URL pairs](../src/lexbench_webfetch/stable_tasks.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
+| [Named-link collections](../src/lexbench_webfetch/stable_tasks.py) | 10 (6.7%); 10 → 22 (14.7%); 31 | 43 (43.0%); 43 → 61 (61.0%); 66 | 32 (32.0%); 32 | 18 (18.0%); 24 → 21 (21.0%); 28 | 0 (0.0%); 0 | 103 (18.7%); 109 → 136 (24.7%); 157 |
+| [Typed record/table fields](../src/lexbench_webfetch/stable_tasks.py) | 10 (6.7%); 26 | 0 (0.0%); 0 → 1 (1.0%); 2 | 31 (31.0%); 110 → 37 (37.0%); 150 | 12 (12.0%); 52 → 14 (14.0%); 62 | 0 (0.0%); 0 | 53 (9.6%); 188 → 62 (11.3%); 240 |
+| [Composite groups](../src/lexbench_webfetch/composite_tasks.py) | 0 (0.0%); 0 → 12 (8.0%); 21 | 0 (0.0%); 0 → 3 (3.0%); 8 | 0 (0.0%); 0 → 5 (5.0%); 8 | 22 (22.0%); 29 → 25 (25.0%); 33 | 0 (0.0%); 0 | 22 (4.0%); 29 → 45 (8.2%); 70 |
+| [Document sections](../src/lexbench_webfetch/document_structure.py) | 0 (0.0%); 0 → 68 (45.3%); 1125 | 0 (0.0%); 0 → 5 (5.0%); 40 | 0 (0.0%); 0 | 0 (0.0%); 0 → 1 (1.0%); 3 | 0 (0.0%); 0 | 0 (0.0%); 0 → 74 (13.5%); 1168 |
+| [Definition terms](../src/lexbench_webfetch/document_structure.py) | 0 (0.0%); 0 → 1 (0.7%); 35 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 → 1 (0.2%); 35 |
+| [Article title groups](../src/lexbench_webfetch/article_title.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 90 (90.0%); 90 | 90 (16.4%); 90 |
+| [Comment contracts](../src/lexbench_webfetch/article_comments.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 20 (20.0%); 20 | 20 (3.6%); 20 |
+| [Post contracts](../src/lexbench_webfetch/article_posts.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 5 (5.0%); 5 | 5 (0.9%); 5 |
+| [Fixed source record hashes](../src/lexbench_webfetch/stable_tasks.py) | 0 (0.0%); 0 → 10 (6.7%); 133 | 0 (0.0%); 0 | 0 (0.0%); 0 → 10 (10.0%); 133 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 → 20 (3.6%); 266 |
+| [Resource groups](../src/lexbench_webfetch/resource_urls.py) | 16 (10.7%); 19 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 16 (2.9%); 19 |
+| [File integrity contracts](../src/lexbench_webfetch/file_acceptance.py) | 3 (2.0%); 3 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 3 (0.5%); 3 |
+| [Body character floors](../src/lexbench_webfetch/metrics.py) | 111 (74.0%); 111 | 57 (57.0%); 57 → 41 (41.0%); 41 | 37 (37.0%); 37 → 36 (36.0%); 36 | 100 (100.0%); 100 | 100 (100.0%); 100 | 405 (73.6%); 405 → 388 (70.5%); 388 |
+| [Lexical exclusion terms](../src/lexbench_webfetch/metrics.py) | 150 (100.0%); 689 → 0 (0.0%); 0 | 100 (100.0%); 659 → 0 (0.0%); 0 | 75 (75.0%); 374 → 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 325 (59.1%); 1722 → 0 (0.0%); 0 |
+| [Required page identity](../src/lexbench_webfetch/scoring.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
+| [Legacy list contracts](../src/lexbench_webfetch/dynamic_lists.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
+
+### Threshold changes
+
+Values are declared thresholds across all suites (absent values excluded); changed cases include additions/removals. For more than six values, show the range and distinct-value count. Nested composite-group quotas remain in the linked per-task definitions.
+
+| Declaration | Baseline values | Revised values | Changed cases |
+| --- | --- | --- | ---: |
+| `body_requirements.minimum_coverage` | 0.8: 243 cases | 0.8: 243 cases | 0 |
+| `body_requirements.minimum_floor` | 0.6: 148 cases, 0.8: 95 cases | 0.8: 243 cases | 148 |
+| `body_requirements.minimum_region_passes` | 1: 30 cases, 2: 38 cases, 3: 25 cases, 4: 79 cases, 5: 71 cases | 1: 16 cases, 2: 22 cases, 3: 39 cases, 4: 31 cases, 5: 135 cases | 129 |
+| `body_requirements.version` | 3: 148 cases, 4: 95 cases | 3: 148 cases, 5: 95 cases | 95 |
+| `acceptance_contract.minimum_records` | 0–100 (25 values; 502 cases) | 0–200 (33 values; 501 cases) | 27 |
+| `acceptance_contract.maximum_records` | not declared | not declared | 0 |
+| `acceptance_contract.record_count_policy.required_ratio` | 0.8: 36 cases, 1.0: 11 cases | 0.8: 63 cases, 1.0: 21 cases | 37 |
+| `document_structure.minimum_heading_coverage` | not declared | 0.8: 67 cases, 1.0: 8 cases | 75 |
+| `document_structure.minimum_body_chars` | not declared | 1–153524 (69 values; 75 cases) | 75 |
+| `document_structure.minimum_section_chars` | not declared | 4: 1 cases, 19: 1 cases, 20: 3 cases | 5 |
+
+Baseline unavailable rule declarations: 0.
+
+Revision unavailable rule declarations: 0.
+
+<!-- distribution:end -->
+
+### Counting and acceptance rules
+
+Regenerate with `uv run --frozen python docs/data_distribution.py --write`;
+verify with `uv run --frozen python docs/data_distribution.py --check`.
+The normal test suite checks totals and documentation drift. This small script
+reads registered definitions and applies the revision; it performs no fetching.
+
+A checkpoint is one fact/anchor alternative group, body region, ending,
+pattern, named-link collection, fixed name/URL pair, typed field/column, composite group,
+section/definition term, source-record hash or resource group. Alternative
+spellings do not count as separate checks. A title/comment/post/file contract
+counts once; its required record count is a threshold, not additional declared
+checkpoints. Typed fields are counted once per collection, not multiplied by
+returned rows. Composite groups and their fields/links deliberately overlap.
+
+- **Facts, anchors and patterns:** normalized literal alternatives are checked
+  as groups. Required fact coverage uses the task's `fact_coverage_threshold`
+  (default 1); required anchors and patterns must all pass. Stable page-pattern groups are also mandatory. Structured-record
+  schemas in the baseline retain historical `required_facts` as diagnostics;
+  this revision removes those unused fields from 36 cases. Historical fact
+  averages must not be compared across that cleanup. The two baseline diagnostic
+  anchor roles are replaced by explicit required groups: Devuan retains all 20;
+  ibiblio retains 11 source-present groups and removes two obsolete ones.
+  `stable_text_role: diagnostic` remains supported for frozen historical inputs,
+  but no selected-revision case uses it.
+- **Bodies and endings:** declared regions use `minimum_coverage`, the floor
+  and required-region count in `body_requirements`. This revision sets the 148
+  revised body contracts to 80% per region. The 95 article bodies also require
+  80% ending similarity, with order enforced in the revision. Endings may occur
+  before a footer; absent regions cannot borrow credit from stronger regions.
+- **Named and typed records:** records must own their names, links and fields,
+  meet declared URL/scope/type rules and `minimum_records`, plus any maximum,
+  duplicate or field-specific quotas. Fixed count policies use the observed
+  count; variable count policies use the declared ratio rounded up. Count policy
+  is separate from source membership: only explicit fixed membership binds
+  complete record-field hashes. Changing lists are not required to repeat old
+  members. All composite groups must independently meet their thresholds.
+- **Sections and definitions:** count matched headings with locally owned body
+  text (unless explicitly waived), then require `minimum_heading_coverage`,
+  `minimum_section_chars` and `minimum_body_chars`. No whole-section prose match
+  is implied. Per-task floors and headings are in the linked contracts.
+- **Article components:** required title alternatives, comment ownership and
+  `minimum_comments`, and post ownership/permalinks and `minimum_posts` must
+  pass alongside the base content checks. They are not optional diagnostics.
+- **Resources and files:** resource tasks check declared acceptable URLs/groups
+  and output scope; unexpected resources follow the explicit output policy.
+  File delivery requires actual bytes, recognized signature, minimum byte size,
+  and declared MIME/hash constraints. A URL alone is not a delivered file.
+- **Shared verdict:** request success is required. Any enabled mandatory document,
+  page-identity or article component must pass. Stable contracts combine with
+  declared body, pattern and composite requirements; without one, the task kind
+  selects body, legacy list, resource or file acceptance. Deadline overrun fails.
+  Encoding corruption, script-only shells and declared truncation have shared
+  scorer guards; these are not separate sampled components. A truncation notice
+  can be overridden only by exact coverage of every declared body region.
+  All revised lexical vetoes are removed; extra notices do not independently fail.
+- **Unavailable and diagnostics:** unresolved rules and missing file verification
+  are unmeasured, not passing results. Missing required page-identity evidence
+  fails that required check. Optional page language/redirect measurements and
+  runtime word-overlap diagnostics are not acceptance coverage. Zero declaration,
+  an inapplicable component and an attempted check that fails are distinct.
+
+The matrix shows covered-case and checkpoint changes, including removal of
+lexical vetoes and the new explicit fixed-source membership. Unchanged coverage
+counts do not imply unchanged thresholds or scope: article order, body floors,
+record quotas and selection scopes also change. See the
+[review decisions](review-550-decisions.md) for those source-qualified changes.
+Declared coverage does **not** establish source qualification, historical-output
+review, provider pass rates or successful frozen exports. The four full exports
+remain deferred; these statistics do not fill that evidence gap.
+
 ## External inputs
 
 An approved input directory contains the exact `dataset.json` and, when listed by the manifest, `sources/` and `list-references/` files. `verify-inputs` checks every declared file, the full dataset hash, ordered complete task-definition hashes and public requirements. `export` verifies the source, copies only declared files into a new directory and verifies the copy. Unlisted files are ignored and never exported. No provider calls or downloads occur.
@@ -45,6 +197,21 @@ fields. Its `set` and `remove` fields edit contract properties; `anchors` can
 preserved. Missing, duplicate or conflicting targets fail. Do not combine a
 patch with replacement or removal of the same contract. The frozen task hash
 and per-case review hash still bind the complete resulting rule change.
+
+A revision may define `shared_acceptance_contracts` and reference one with
+`acceptance_contract_ref` on each identical task's change. References cannot
+be combined with a patch, replacement or removal of that contract. Each
+expanded change retains its independent frozen-parent and review bindings.
+
+Structured records can declare `source_membership`: `fixed` binds sorted field
+names and SHA-256 hashes of normalized complete field tuples; `changing` binds
+no historical records. Fixed membership rejects fabricated or mispaired fields,
+independently of record counts. Normalization uses existing matching rules,
+including compact spaces for name/description records. This is source-record
+identity, not a semantic truth check. Undeclared membership keeps prior behavior.
+The ten duplicate practice tasks share fixed contracts; no global historical
+fact requirement is added to changing lists. All revised tasks omit lexical
+`forbidden_any` vetoes; complete content with extra notices may pass.
 
 The `review-550-20261023` revision changes quotas on 148 existing body
 contracts across webfetch, dynamic-content and access-restrictions. Every region

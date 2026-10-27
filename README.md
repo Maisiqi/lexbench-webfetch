@@ -24,7 +24,7 @@ LexBench Web Fetch provides tasks and scoring tools for web retrieval: page text
 | `access-restrictions` | 100 | URLs with previously observed access restrictions |
 | `articles` | 100 | Article bodies, initial comments and post collections |
 
-The catalog contains 550 task entries across five suites. Public definitions include task instructions and acceptance rules; complete frozen reference inputs must be obtained separately. See [data and access](docs/data.md) and [article requirements](src/lexbench_webfetch/definitions/evaluation/articles/README.md).
+The catalog contains 550 task entries across five suites. Public definitions include task instructions and acceptance rules; complete frozen reference inputs must be obtained separately. See [sample composition and scoring coverage](docs/data.md#dataset-composition-and-scoring-coverage), [data and access](docs/data.md) and [article requirements](src/lexbench_webfetch/definitions/evaluation/articles/README.md).
 
 ## Quickstart
 

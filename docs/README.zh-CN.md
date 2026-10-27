@@ -24,7 +24,7 @@ LexBench Web Fetch 提供网页获取任务和评分工具，评测正文、带�
 | `access-restrictions` | 100 | 曾观察到访问限制的 URL |
 | `articles` | 100 | 文章正文、初始评论和帖子列表 |
 
-题库共五个任务集、550 条题目。公开定义包含任务说明和验收规则，完整冻结参考输入需另行获取。详见[数据与获取方式](../docs/data.md)和[文章验收要求](../src/lexbench_webfetch/definitions/evaluation/articles/README.md)。
+题库共五个任务集、550 条题目。公开定义包含任务说明和验收规则，完整冻结参考输入需另行获取。详见[案例组成与评分覆盖](data.md#dataset-composition-and-scoring-coverage)、[数据与获取方式](../docs/data.md)和[文章验收要求](../src/lexbench_webfetch/definitions/evaluation/articles/README.md)。
 
 ## 快速开始
 

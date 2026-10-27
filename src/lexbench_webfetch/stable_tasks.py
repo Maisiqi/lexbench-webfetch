@@ -32,7 +32,7 @@ ACCEPTANCE_CONTRACT_FIELDS = {
     'record_count_policy', 'source_record_pair_hashes', 'source_record_pairs_sha256',
     'table_columns', 'record_identity_fields', 'table_scope',
     'duplicate_policy', 'link_base_url', 'text_exclusions',
-    'content_scope',
+    'content_scope', 'source_membership',
 }
 
 SCHEMA_FIELDS = {
@@ -367,6 +367,13 @@ def _product_records(text, schema):
     for marked_block in text.split(_CARD_BOUNDARY):
         blocks = [block for block in re.split(r"\n\s*\n", marked_block)
                   if block.strip()]
+        # A separate prose preface cannot own a price-first catalog card.
+        # Require price and title in the same following block before trimming.
+        if schema == "catalog_product":
+            while (len(blocks) > 1 and not _products(blocks[0].splitlines(), schema)
+                   and re.match(rf"^{_MONEY}\n[^\n]+", blocks[1], re.I)):
+                blocks.pop(0)
+            marked_block = "\n\n".join(blocks)
         parsed = [
             _products([_line(line) for line in block.splitlines() if line.strip()], schema)
             for block in blocks
@@ -791,6 +798,16 @@ def _stable_literal_match(surface, value, registered_words=(), *, phrase_boundar
     return False
 
 
+def source_record_hash(fields, names, schema):
+    """Bind complete owned fields using the existing structured-anchor normalization."""
+    import json
+    from .metrics import normalize_for_match
+    values = [normalize_for_match(fields.get(name, '')).strip('“”"‘’ ') for name in names]
+    if schema == 'name_description':
+        values = [value.replace(' ', '') for value in values]
+    return hashlib.sha256(json.dumps(values, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
+
+
 def _anchor_matches(anchor, records, visible, schema, non_record_visible=None,
                     anchor_visible=None, registered_words=()):
     from .metrics import normalize_for_match
@@ -974,6 +991,24 @@ def validate_acceptance_contract(contract: dict) -> None:
                 or minimum != expected_minimum
                 or count_policy.get("minimum_records", minimum) != minimum):
             raise ValueError("Record minimum does not match the frozen source policy")
+    membership = contract.get('source_membership')
+    if membership is not None:
+        if not isinstance(membership, dict) or membership.get('kind') not in {'fixed', 'changing'}:
+            raise ValueError('Invalid source membership policy')
+        if membership['kind'] == 'changing':
+            if set(membership) != {'kind'}:
+                raise ValueError('Changing membership cannot bind historical records')
+        else:
+            fields, hashes = membership.get('fields'), membership.get('record_hashes')
+            schema_fields = set(SCHEMA_FIELDS[contract['schema']])
+            if (set(membership) != {'kind', 'fields', 'record_hashes'} or not schema_fields
+                    or not isinstance(fields, list) or not all(isinstance(f, str) for f in fields)
+                    or fields != sorted(set(fields))
+                    or not schema_fields <= set(fields) <= schema_fields | {'financing', 'shipping'}
+                    or not isinstance(hashes, list) or not all(isinstance(h, str) for h in hashes)
+                    or hashes != sorted(set(hashes)) or len(hashes) < minimum
+                    or any(not re.fullmatch(r'[0-9a-f]{64}', h) for h in hashes)):
+                raise ValueError('Invalid fixed source record bindings')
     patterns = contract.get("page_patterns", [])
     if not isinstance(patterns, list) or any(not isinstance(p, str) or not p for p in patterns):
         raise ValueError("Invalid stable page patterns")
@@ -1339,6 +1374,14 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
     if anchors_required:
         content_errors += anchor_errors
     complete = [r for r in records if r["valid"]]
+    membership = contract.get('source_membership', {})
+    if membership.get('kind') == 'fixed':
+        allowed = set(membership['record_hashes'])
+        owned = [r for r in complete if source_record_hash(
+            r['fields'], membership['fields'], schema) in allowed]
+        if len(owned) != len(complete):
+            errors.append('source_record_mismatch')
+        complete = owned
     identity_fields = contract["record_identity_fields"] if schema == "table_row" else UNIQUE_FIELDS[schema]
     compact_fields = {c['name'] for c in contract.get('table_columns', [])
                       if c.get('compact_whitespace')}
@@ -1406,4 +1449,8 @@ def evaluate_stable_task(content: str, contract: dict, base_url: str = "", eligi
             "stable_source_mismatched_record_count": len(source_mismatches),
             "stable_source_mismatched_records": source_mismatches[:20],
             "factual_correctness": None,
-            "stable_verification_scope": "Mechanical field/group/count checks; source fidelity and factual values are not verified"}
+            "stable_source_membership": membership.get('kind'),
+            "stable_verification_scope": (
+                "Complete record fields match declared frozen source hashes; semantic truth is not verified"
+                if membership.get('kind') == 'fixed' else
+                "Mechanical field/group/count checks; source fidelity and factual values are not verified")}

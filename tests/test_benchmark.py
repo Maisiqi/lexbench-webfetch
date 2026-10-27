@@ -140,6 +140,26 @@ class FrozenInputs(unittest.TestCase):
                 'regression_ids': data['regression_ids']}]} }})
         return data
 
+    def test_shared_contract_references_reject_missing_or_conflicting_definitions(self):
+        contract = {'version': 1, 'schema': 'quote', 'minimum_records': 1,
+                    'stable_text_anchors': []}
+        for variant in ('missing', 'patch', 'replacement', 'removal'):
+            with self.subTest(variant=variant):
+                definition = self.annotation_revision()
+                definition['shared_acceptance_contracts'] = {'quotes': contract}
+                change = definition['changes'][0]
+                change['acceptance_contract_ref'] = 'absent' if variant == 'missing' else 'quotes'
+                if variant == 'patch':
+                    change['acceptance_patch'] = {}
+                elif variant == 'replacement':
+                    change['set']['acceptance_contract'] = contract
+                elif variant == 'removal':
+                    change['remove'].append('acceptance_contract')
+                write(self.suites/'annotation-revisions/source-annotation-v2.json', definition)
+                with self.assertRaisesRegex(ValueError, 'shared acceptance reference'):
+                    bench.apply_annotation_revision('synthetic',
+                        bench.read(self.suites/'synthetic/tasks.json'), 'source-annotation-v2')
+
     def additional_review_revision(self):
         definition = self.annotation_revision()
         self.review_source = self.root / 'independent-review'

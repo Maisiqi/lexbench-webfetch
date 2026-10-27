@@ -26,7 +26,7 @@ not the number of changed scoring rules.
 | 7. Short regions and endings | Preserve real short specifications; move genuine headings/labels to mandatory stable text where appropriate. Use actual author endings with ordered matching. Dynamic 051 uses a required title/subtitle instead of a weak short region and accepts the actual English labels. |
 | 8. Stable-anchor guidance | Sections 2, 6, 11 and 14 consistently require selected stable text by default. Adding body or record rules does not automatically make anchors optional. |
 | 9. 25 replacement sources | Register actual source locations and observations, including record-count provenance. Remove 28 of 75 anchors across 11 cases with only one verified observation; keep source-bound body and record requirements. All 11 complete source controls pass and error-page controls fail. |
-| 10. Error-page words | Remove generic lexical vetoes in all 325 affected cases, without adding diagnostic lists. Existing content requirements decide the verdict; only explicit task output exclusions remain. |
+| 10. Error-page words | Remove generic lexical vetoes in all 325 affected cases, without adding diagnostic lists. Existing content requirements decide the verdict. The four explicit output-exclusion lexical vetoes were also removed during the duplicate-task review below. |
 | 11. Long-document headings | Require source-owned section content: RFC 9110 uses local section checks, while twelve reference-bound cases use same-count content facts instead of title-only facts. Existing body coverage remains; neither mechanism proves every sentence survives. |
 | 12. Broad record scopes | Tighten risk 248, Twitch and Rakuten using target ownership and link identity. Retain Bilibili's one-resource target: a homepage-wide quota would change the task. |
 | 13. Changing links and video text | Keep legitimate third-party news links for 2345. Video 09 asks only for title and publisher; do not add a description/subtitle task. |
@@ -69,10 +69,41 @@ not the number of changed scoring rules.
 - **Video 09:** the complete observed title and publisher total 19 characters.
   Replace the arbitrary 20-character floor with one while retaining both
   mandatory facts. Missing either field still fails.
-- **Explicit exclusions:** retain React cart button/advertisement exclusions and
-  Swagger's cookie-banner exclusion. Fresh sources contain these regions and
-  the tasks explicitly exclude them. Complete target answers pass; adding the
-  excluded content fails without breaking other required facts.
+- **Duplicate fixed records and exclusions (2026-10-27):** accept the review's
+  demonstrated cross-suite inconsistency. Ten identical URL/prompt pairs now
+  reference one contract per task. Complete record fields are bound together
+  to the existing hash-verified source references, preventing invented records
+  or swapped authors from passing on structure alone. The references match the
+  frozen webfetch manifest; they are not the four missing complete input bundles.
+  Membership is explicitly fixed; genuinely changing lists remain unfrozen.
+  Remove the remaining four lexical vetoes (review stars, cart/ads, Swagger
+  cookies and product recommendations). Explicit prompt exclusions justified
+  the old intent, but do not justify failing any answer containing those words.
+  Do not propagate these bans to the other suite. Required records, fields and
+  counts remain enforced; extra unrelated text is not independently rejected.
+  Catalog parsing preserves complete blank-line card boundaries around standalone
+  prose, so a prefixed notice cannot become a price-first card's title. Missing
+  fields remain rejected. This does not certify that every unwanted UI region
+  has been excluded.
+
+
+## Diagnostic-field cleanup
+
+The 36 structured cases retained historical `required_facts` that the stable
+record predicate does not use. Remove those fields only in the selected
+revision; record membership, types, fields and quotas remain unchanged. This
+changes diagnostic fact counts/averages, not the acceptance policy. Do not
+present the resulting averages as comparable historical provider scores.
+
+The two inherited diagnostic anchor roles contradict their explicit per-case
+rules in `first-30-rule-review.md` section 21 and `remaining-70-rule-review.md`
+section 56. Restore required stable text for Devuan (20 groups), preserving its
+five body regions. This is an authored-policy correction, not a claim of a new
+complete Devuan source replay. For ibiblio, qualified current HTML proves that
+11 groups remain present; the old institutional sentence and `Logos` are absent.
+Remove those two obsolete groups and require the other 11, alongside the existing
+identity pattern and section requirements. Full source passes; omitting required
+navigation fails. Frozen definitions and their historical diagnostics stay intact.
 
 ## Section ownership and page completeness
 

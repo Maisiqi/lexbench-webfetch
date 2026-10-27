@@ -297,6 +297,14 @@ def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
         raise ValueError('Annotation revision dataset identity differs')
     result = deepcopy(dataset)
     cases = {case['id']: case for case in result['cases']}
+    shared_contracts = definition.get('shared_acceptance_contracts', {})
+    if not isinstance(shared_contracts, dict):
+        raise ValueError('Invalid shared acceptance contracts')
+    from .stable_tasks import validate_acceptance_contract
+    for name, contract in shared_contracts.items():
+        if not isinstance(name, str) or not name.strip():
+            raise ValueError('Invalid shared acceptance contract name')
+        validate_acceptance_contract(contract)
     changes = [row for row in definition['changes'] if row['suite'] == identifier]
     if not changes or len({row['case_id'] for row in changes}) != len(changes):
         raise ValueError('Annotation revision has an invalid task inventory')
@@ -310,7 +318,17 @@ def _apply_annotation_revision(identifier: str, dataset: dict, revision: str):
         if hashlib.sha256(encoded).hexdigest() != change['before_sha256']:
             raise ValueError('Annotation revision task differs from frozen parent')
         old = deepcopy(case)
-        apply_annotation_change(case, change, reference_hashes[case['id']])
+        effective_change = change
+        if 'acceptance_contract_ref' in change:
+            reference = change['acceptance_contract_ref']
+            if (not isinstance(reference, str) or reference not in shared_contracts
+                    or 'acceptance_patch' in change
+                    or 'acceptance_contract' in change.get('set', {})
+                    or 'acceptance_contract' in change.get('remove', [])):
+                raise ValueError('Invalid or conflicting shared acceptance reference')
+            effective_change = deepcopy(change)
+            effective_change.setdefault('set', {})['acceptance_contract'] = shared_contracts[reference]
+        apply_annotation_change(case, effective_change, reference_hashes[case['id']])
         reviewed_changes.append((change, old, case))
     review = _review_annotation(definition, path, identifier, root, reviewed_changes)
     result['id'] = dataset['id'] + '--' + revision
