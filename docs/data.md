@@ -246,9 +246,12 @@ scoring changes in the revision; it does not certify all 550 reference answers
 or historical scores. Unresolved source and recognition limitations are listed
 in [review decisions](review-550-decisions.md).
 
-It also adds source-qualified `document_structure` contracts to 67 mutable
-documents: 80% of declared headings must have the required local body, and
-the delivered document must meet its reviewed half-length floor. Navigation,
+The initial review added `document_structure` contracts to 67 documents.
+The [2026-10-27 follow-up](document-body-review.md) replaces 59 section/definition
+gates with five-region body matching and restores their baseline length floors.
+Across all suites, 16 section contracts remain and no definition contract is
+currently declared. Retained section contracts require their declared heading
+fraction and local/body length floors. Navigation,
 table-of-contents entries and headings without their required body cannot fill
 the section quota. This checks structural coverage, not semantic accuracy.
 Heading IDs default to `section-1`, `section-2`, and so on; `body_required`
@@ -256,9 +259,9 @@ defaults to `true`. Explicit IDs and empty-section exceptions remain supported.
 Two cases also remove a mandatory phrase proven to be in an initially hidden
 tab panel or closed disclosure; all other existing requirements remain.
 
-The remaining fifteen reviewed documents use source-qualified target directories,
-resource cards, explicit body facts or API definitions, completing all 82 cases.
-Definition contracts explicitly set `type: "definition"`:
+Other documents from the 82-case review use source-qualified target directories,
+resource cards or explicit body facts. The supported definition contract sets
+`type: "definition"` (now unused by the selected revision):
 signatures need adjacent descriptions (`dt` followed by `dd` in HTML, or complete
 signature lines followed by prose in text/Markdown). API names and unrelated
 padding do not count as definitions. Existing mandatory facts remain mandatory.
@@ -553,9 +556,10 @@ a record or its description fails. Auxiliary lists cannot fill the quota.
 The Deployments case originally required only `Note:` as its second fact and
 stable anchor. Its revision now requires the actual warning sentence,
 "Do not manage ReplicaSets owned by a Deployment.", from the hash-verified
-source. Complete HTML passes even with the generic label removed; removing
-the warning fails while section structure still passes. Other facts, section
-requirements and the body-length floor are unchanged.
+source. At that review checkpoint, complete HTML passed even with the generic
+label removed, while removing the warning failed despite passing section
+structure. The document-body follow-up preserves this mandatory warning and
+replaces the section gate with source-bound body coverage.
 
 ### Saved-output comparison
 
