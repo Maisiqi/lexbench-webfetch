@@ -1336,16 +1336,28 @@
       "case_id": "dynamic-020-webscraper-io-test",
       "before_sha256": "de0df0e65f46914f764711246fa8444025260fe0b681059bf2d7ff55ab05b9da",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-1",
+            "alternatives": [
+              "Computers"
+            ]
+          },
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "Tablets"
+            ]
+          }
+        ]
       },
       "body_thresholds": {
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 3
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
@@ -1459,7 +1471,27 @@
       "before_sha256": "e296e26e28bcf8fabafae0e00daf23311c01d1589fed0776473b908cc9d7d942",
       "set": {
         "min_content_chars": 1,
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-1",
+            "alternatives": [
+              "Order ID"
+            ]
+          },
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "Customer Name"
+            ]
+          },
+          {
+            "id": "anchor-3",
+            "alternatives": [
+              "Ship Country"
+            ]
+          }
+        ]
       },
       "body_thresholds": {
         "minimum_coverage": 0.8,
@@ -1544,9 +1576,7 @@
           }
         }
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
@@ -1874,7 +1904,15 @@
       "case_id": "dynamic-025-025-tabulator-vertical-virtual-dom",
       "before_sha256": "60c4e4119483364b51281a0dc61d83a8bdaae79024f72c6779295748114790bd",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "1000 rows"
+            ]
+          }
+        ]
       },
       "body_thresholds": {
         "minimum_coverage": 0.8,
@@ -1888,25 +1926,35 @@
           "text": "view source"
         }
       ],
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
       "case_id": "dynamic-033-033-vuetify-usage-table",
       "before_sha256": "bdde1271c8a96817614bd1ce156f6bfbe6ff3140f31b122831d0c92b55eb4683",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "African Elephant"
+            ]
+          },
+          {
+            "id": "anchor-3",
+            "alternatives": [
+              "Cheetah"
+            ]
+          }
+        ]
       },
       "body_thresholds": {
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 1
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
@@ -2383,16 +2431,34 @@
       "case_id": "dynamic-104-mui-data-grid",
       "before_sha256": "9b50da067bed584f75a052faad62147667e34419aa591789e6b6af22c309ee00",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "Why choose the MUI X Data Grid?"
+            ]
+          },
+          {
+            "id": "anchor-3",
+            "alternatives": [
+              "First name"
+            ]
+          },
+          {
+            "id": "anchor-4",
+            "alternatives": [
+              "Jon Snow"
+            ]
+          }
+        ]
       },
       "body_thresholds": {
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 5
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
@@ -2459,16 +2525,40 @@
       "case_id": "dynamic-108-swagger-petstore3",
       "before_sha256": "ef29d6e96f6603d08fb730ff4e5b48bcac3394bf7b611e897234e02756362d9f",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-1",
+            "alternatives": [
+              "Swagger Petstore"
+            ]
+          },
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "/pet/{petId}"
+            ]
+          },
+          {
+            "id": "anchor-3",
+            "alternatives": [
+              "Find purchase order by ID"
+            ]
+          },
+          {
+            "id": "anchor-4",
+            "alternatives": [
+              "Create user"
+            ]
+          }
+        ]
       },
       "body_thresholds": {
         "minimum_coverage": 0.8,
         "minimum_floor": 0.8,
         "minimum_region_passes": 5
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
@@ -16326,22 +16416,52 @@
       "case_id": "dynamic-017-en-stable-eui-table",
       "before_sha256": "434af12208b6b968b35650ce1d452a349a87d040aa74e4a32651747ca89c021b",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-1",
+            "alternatives": [
+              "First Name"
+            ]
+          },
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "Last Name"
+            ]
+          },
+          {
+            "id": "anchor-3",
+            "alternatives": [
+              "Github"
+            ]
+          },
+          {
+            "id": "anchor-4",
+            "alternatives": [
+              "Date of Birth"
+            ]
+          },
+          {
+            "id": "anchor-5",
+            "alternatives": [
+              "Online",
+              "Offline"
+            ]
+          }
+        ]
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
       "case_id": "dynamic-041-en-stable-heroui-table",
       "before_sha256": "c647a243d017f17d3e8ca5336d9f78e9e23fbe10578c5482fcdd1b3fc4208e1c",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": []
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
@@ -16372,11 +16492,10 @@
       "case_id": "dynamic-038-material-angular-dev-components",
       "before_sha256": "10014d7d52b78d47daaa376218af4797d3f667212c14b30a6ff7b39c6d6fbc23",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": []
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
@@ -16439,11 +16558,10 @@
       "case_id": "dynamic-092-play-uol-com-br",
       "before_sha256": "943bfe81296c33bdcbb498d2f54eb7497facdb925e4f3bd35919d133e849170b",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": []
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
@@ -16466,22 +16584,64 @@
       "case_id": "dynamic-024-en-stable-gridjs-pagination",
       "before_sha256": "b58c32a23b3a83c99ab578a3a8e044a3d16bc5f45dea2e30e61fe9d4380b4176",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-1",
+            "alternatives": [
+              "Name"
+            ]
+          },
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "Email"
+            ]
+          },
+          {
+            "id": "anchor-3",
+            "alternatives": [
+              "Phone Number"
+            ]
+          },
+          {
+            "id": "completion-status",
+            "alternatives": [
+              "Showing 1 to 2 of 2 results"
+            ]
+          }
+        ]
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
       "case_id": "dynamic-029-029-primevue-basic-treetable",
       "before_sha256": "ddf22c2f8843e606c4423818ab3ceedf0a240640777a2893bb12224ee9977b2c",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-1",
+            "alternatives": [
+              "Name"
+            ]
+          },
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "Size"
+            ]
+          },
+          {
+            "id": "anchor-3",
+            "alternatives": [
+              "Type"
+            ]
+          }
+        ]
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
@@ -16496,11 +16656,35 @@
       "case_id": "dynamic-031-031-primeng-basic-table",
       "before_sha256": "f5c049bca6cb0ec62cb0107a2cb1e24a8a389778590ebdceb581bfc976debe47",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-1",
+            "alternatives": [
+              "Bamboo Watch"
+            ]
+          },
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "Black Watch"
+            ]
+          },
+          {
+            "id": "anchor-3",
+            "alternatives": [
+              "Blue Band"
+            ]
+          },
+          {
+            "id": "anchor-4",
+            "alternatives": [
+              "Bracelet"
+            ]
+          }
+        ]
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
@@ -16523,22 +16707,53 @@
       "case_id": "dynamic-050-en-real-usgs-earthquakes",
       "before_sha256": "e12757cfde8dd2e56dbed81a78bebbfc281c3f9bb499dc56a08aa4eb4e9b2d81",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-1",
+            "alternatives": [
+              "USGS"
+            ]
+          },
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "Magnitude 2.5+ Earthquakes",
+              "Earthquakes"
+            ]
+          },
+          {
+            "id": "anchor-3",
+            "alternatives": [
+              "Past Day"
+            ]
+          }
+        ]
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
       "case_id": "dynamic-058-zh-stable-tdesign-table",
       "before_sha256": "8a4c08e3540c75adbddfa4c3d0ce3427d2deb8df14ea632c0aa735e69ed172e4",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-1",
+            "alternatives": [
+              "审批通过"
+            ]
+          },
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "电子签署"
+            ]
+          }
+        ]
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",
@@ -17077,11 +17292,29 @@
       "case_id": "dynamic-014-en-stable-rsuite-table",
       "before_sha256": "44081f2d008a76b597e62c86176ed6d011178b2bf135654f5f7cb4f365c1bef5",
       "set": {
-        "forbidden_any": []
+        "forbidden_any": [],
+        "required_facts": [
+          {
+            "id": "anchor-1",
+            "alternatives": [
+              "First Name"
+            ]
+          },
+          {
+            "id": "anchor-2",
+            "alternatives": [
+              "Last Name"
+            ]
+          },
+          {
+            "id": "anchor-3",
+            "alternatives": [
+              "Email"
+            ]
+          }
+        ]
       },
-      "remove": [
-        "required_facts"
-      ]
+      "remove": []
     },
     {
       "suite": "dynamic-content",

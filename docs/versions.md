@@ -30,14 +30,25 @@ population and request differences; maintainers still review whether a rule
 change preserves the intended task. Existing annotation revisions retain
 their independent source evidence and executable correction controls.
 
+## Package versions and release approval
+
+Package versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html): compatible fixes use a patch, compatible CLI or Python API additions use a minor, and incompatible public interfaces use a major. While a package remains `0.x`, use a minor for new functionality or breaking changes and a patch for compatible fixes. Document migrations explicitly.
+
+The package version, benchmark edition and hosted report version are independent. Web Fetch benchmark tags use `bench-vMAJOR.MINOR.PATCH`; Web Search benchmark tags use `bench-MAJOR.MINOR.PATCH`. Both repositories use `vMAJOR.MINOR.PATCH` for tooling-only software releases. Browser Eval uses software tags, since it owns execution and reporting rather than a benchmark catalog. A change to task population can require a major benchmark edition while its software support remains backward compatible. Each repository keeps its own version number and release schedule.
+
+Version changes and tags require an explicit human release request. Documentation edits, routine fixes, synchronization and report rebuilds do not automatically bump versions or rewrite a frozen catalog. Release from a reviewed, merged commit after code, catalog and installed-package checks pass. Preserve all existing tags and exact bindings; a readable tag is not a substitute for input or scorer hashes.
+
+
 ## Freeze an edition
 
-`lexbench-webfetch version` verifies the installed catalog's complete suite list,
-task definitions, frozen reference bindings and scorer against
-`definitions/benchmark-release.json`. The published `bench-vMAJOR.MINOR.PATCH`
-tag fixes that catalog. Full reference inputs remain separately hash-bound;
-the catalog does not replace the executable datasets or distribute their source
-captures. A report binds its actual selected population with the sidecar below;
+`lexbench-webfetch version` checks the installed catalog's complete suite list,
+task definitions and frozen reference bindings. When its scorer matches the
+published catalog, it returns that edition. A changed scorer returns
+`status: "unreleased"`, its source hash, and the unchanged `published_catalog`;
+it has no release version or tag until an explicit release.
+
+The published tag fixes the catalog. Full reference inputs remain separately
+hash-bound. A report binds its selected population with the sidecar below;
 installing a newer catalog never expands that population.
 
 Compile or export the inputs through their existing owner first, including any

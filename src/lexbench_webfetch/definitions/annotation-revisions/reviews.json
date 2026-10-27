@@ -239,7 +239,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "b5dd1b981d96a62b7bc7a9ce97be0e9f0db5b09df46732cfdd93e1401f7cffe6",
+      "revision_sha256": "1d7d096c12a168a35dc88f4cc9023dafd59f0b5e67ae9f0069113368985fbbb5",
       "changes": [
         {
           "suite": "webfetch",
@@ -1820,7 +1820,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-020-webscraper-io-test",
-          "changes_sha256": "527e989a8abc869c1e34451928b2c39d7b3557905044b675ecf058fc88c50c78",
+          "changes_sha256": "311d5ef9888e456685461df3341a9c3beee62bab358a28f7cb54a689e51e62b6",
           "sources": [
             {
               "path": "dataset.json",
@@ -1871,7 +1871,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case."
         },
         {
           "suite": "dynamic-content",
@@ -1941,7 +1941,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-028-ej2-syncfusion-com-react",
-          "changes_sha256": "43593ffc470c4dfb88516ccdada4c0934e694c0a37f7aea6041e11e5d11185ba",
+          "changes_sha256": "71686089081a405fdf59e85a947f5a06eb8671d0de8a06f16cf58d603f315cb7",
           "sources": [
             {
               "path": "dataset.json",
@@ -2003,7 +2003,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Replace historical dynamic row text with visible-field and initial-row-count requirements. Preserve all stable anchors and exact-bound static prose; do not count unrendered virtual rows or hidden example code. The saved rendered observations are newly declared review evidence, not additions silently attributed to the original frozen inputs. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Replace historical dynamic row text with visible-field and initial-row-count requirements. Preserve all stable anchors and exact-bound static prose; do not count unrendered virtual rows or hidden example code. The saved rendered observations are newly declared review evidence, not additions silently attributed to the original frozen inputs. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case."
         },
         {
           "suite": "dynamic-content",
@@ -2713,7 +2713,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-025-025-tabulator-vertical-virtual-dom",
-          "changes_sha256": "a6d4b4a5aa952667ecabc1fc62371c11447886e0787002c08805fbc071c38a4e",
+          "changes_sha256": "04c9c982e4f81493a2699cbf00c143458858d7323e4e5a92b26ca2a588172c99",
           "sources": [
             {
               "path": "dataset.json",
@@ -2772,12 +2772,12 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Reclassify the observed View Source button as required stable text while preserving table schema, every field, minimum, identity, old anchors and remaining title/prose regions. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Reclassify the observed View Source button as required stable text while preserving table schema, every field, minimum, identity, old anchors and remaining title/prose regions. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case. Deduplicate only fact groups already implied by an unchanged required anchor, with the same normalized alternative and a fact threshold of 1.0: anchor-1 -> phase1-stable-6316d9efad9d, anchor-3 -> review-short-view-source. No required text, table field, row count or independent fact is removed."
         },
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-033-033-vuetify-usage-table",
-          "changes_sha256": "f7980bbc9b063b164187e8ccf7e5d1e204b4034daffcfd02fcb4d37d42b09e03",
+          "changes_sha256": "d0b9e30f83393d08b5330e04871e38953ba17e0ca368492b631b0cb93878ded8",
           "sources": [
             {
               "path": "dataset.json",
@@ -2828,7 +2828,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case. Deduplicate only fact groups already implied by an unchanged required anchor, with the same normalized alternative and a fact threshold of 1.0: anchor-1 -> phase1-stable-8d59829c1e15. No required text, table field, row count or independent fact is removed."
         },
         {
           "suite": "dynamic-content",
@@ -3082,7 +3082,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-104-mui-data-grid",
-          "changes_sha256": "7ce57bc78605de42ebba976b019fde92ee08c3a06730ea7cbd22f15e26ac8066",
+          "changes_sha256": "34467f0e3e52f6944cf7f0df7ebc597ed982d26ffa80c545eb8209161c002227",
           "sources": [
             {
               "path": "dataset.json",
@@ -3133,7 +3133,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case. Deduplicate only fact groups already implied by an unchanged required anchor, with the same normalized alternative and a fact threshold of 1.0: anchor-1 -> phase1-stable-61cb5c9d6890, anchor-5 -> phase1-stable-c8e5998f6a39. No required text, table field, row count or independent fact is removed."
         },
         {
           "suite": "dynamic-content",
@@ -3242,7 +3242,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-108-swagger-petstore3",
-          "changes_sha256": "e839b4a1dc3ac66554a185ddb1b47ebbd0a740bf5f6e02256b7faedcb657bd42",
+          "changes_sha256": "a72a9d2bb54b43016f8276df840cdf509791acdeb4ae6fcfc1f47e463f05f5cc",
           "sources": [
             {
               "path": "dataset.json",
@@ -3293,7 +3293,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Preserve all frozen body regions and reference hashes; every region must independently reach 80 percent. This is fragment coverage, not an exact bound on omitted characters or ordered section completeness. Remove generic error/verification-page lexical guesses from forbidden_any without adding diagnostic requirements. Preserve explicit non-generic exclusions and every positive requirement. Source-qualified complete targets pass; challenge-only and identity-only controls fail through the existing positive contracts. Source scope and any DOM ownership limitations are recorded in the bound audit. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case."
         },
         {
           "suite": "dynamic-content",
@@ -15645,7 +15645,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -15687,7 +15687,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -15729,7 +15729,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -15771,7 +15771,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -15803,7 +15803,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -15835,7 +15835,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -15867,7 +15867,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -15899,7 +15899,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -15931,7 +15931,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -15963,7 +15963,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -16348,7 +16348,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-017-en-stable-eui-table",
-          "changes_sha256": "ccad5150d264bd46a7737b9c8fd010949d8b8dd31d96514094f621c79b7e3d51",
+          "changes_sha256": "280fdc5c821eb362d30f97b818d5b384ca3374dcaf1842c6459336ae1b896b06",
           "sources": [
             {
               "path": "dataset.json",
@@ -16364,12 +16364,12 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case."
         },
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-041-en-stable-heroui-table",
-          "changes_sha256": "a89871313fc1e29ff04e756a903c63b4d1e063ae984db8fac8e461eac65046ba",
+          "changes_sha256": "88e6e4819db55956696c3e28f7df6e19d6c42c9eb4ee081b016489a9b3922fcb",
           "sources": [
             {
               "path": "dataset.json",
@@ -16385,7 +16385,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case. Deduplicate only fact groups already implied by an unchanged required anchor, with the same normalized alternative and a fact threshold of 1.0: anchor-1 -> phase1-stable-dcd1d5223f73, anchor-2 -> phase1-stable-14736a2eb9f4, anchor-3 -> phase1-stable-920e413c7d41. No required text, table field, row count or independent fact is removed."
         },
         {
           "suite": "dynamic-content",
@@ -16447,7 +16447,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-038-material-angular-dev-components",
-          "changes_sha256": "483ddb76f7593bdc6b772bbf3d33acf7cbf5e7a739cb33f5e1cd85790a897884",
+          "changes_sha256": "029d3f38c2a9ec90c531d3ca6b5f4f882a5ee4505a2386e0868392c53ca64c98",
           "sources": [
             {
               "path": "dataset.json",
@@ -16463,7 +16463,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case. Deduplicate only fact groups already implied by an unchanged required anchor, with the same normalized alternative and a fact threshold of 1.0: anchor-1 -> phase1-stable-38178a20b470, anchor-2 -> phase1-stable-dcd1d5223f73, anchor-3 -> phase1-stable-81d27ef6d503, anchor-4 -> phase1-stable-ba0e4afa9340. No required text, table field, row count or independent fact is removed."
         },
         {
           "suite": "dynamic-content",
@@ -16601,7 +16601,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-092-play-uol-com-br",
-          "changes_sha256": "2201922a659e04ad0a326fb6e7e75f0eeec48946e8c88cdb103fa3e1f1ff92b1",
+          "changes_sha256": "87ba448d74c084e0f88441167c3413423fe264334efe54dca307270d944e247c",
           "sources": [
             {
               "path": "dataset.json",
@@ -16617,7 +16617,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case. Deduplicate only fact groups already implied by an unchanged required anchor, with the same normalized alternative and a fact threshold of 1.0: anchor-1 -> phase1-stable-c59a7946e50f. No required text, table field, row count or independent fact is removed."
         },
         {
           "suite": "dynamic-content",
@@ -16660,7 +16660,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-024-en-stable-gridjs-pagination",
-          "changes_sha256": "b62e5cfd79c00a52832707ab1ea3d01674c69c2c6d99ed9ff9600a53ec29b368",
+          "changes_sha256": "280fdc5c821eb362d30f97b818d5b384ca3374dcaf1842c6459336ae1b896b06",
           "sources": [
             {
               "path": "dataset.json",
@@ -16676,12 +16676,12 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case."
         },
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-029-029-primevue-basic-treetable",
-          "changes_sha256": "e053c84a3c3a26226b9d2a26115cc985b134b752d19a07753353c9cc5dbc7789",
+          "changes_sha256": "280fdc5c821eb362d30f97b818d5b384ca3374dcaf1842c6459336ae1b896b06",
           "sources": [
             {
               "path": "dataset.json",
@@ -16697,7 +16697,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case."
         },
         {
           "suite": "dynamic-content",
@@ -16721,7 +16721,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-031-031-primeng-basic-table",
-          "changes_sha256": "f40579e4f47be6147e64b916af49a9a31851b5e69ac5945080b8ec2fa8953693",
+          "changes_sha256": "280fdc5c821eb362d30f97b818d5b384ca3374dcaf1842c6459336ae1b896b06",
           "sources": [
             {
               "path": "dataset.json",
@@ -16737,7 +16737,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case."
         },
         {
           "suite": "dynamic-content",
@@ -16780,7 +16780,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-050-en-real-usgs-earthquakes",
-          "changes_sha256": "6354d50bf9664196aa817a09701d87252a55229b0b810b8b8f3f5f4ea663f5ed",
+          "changes_sha256": "280fdc5c821eb362d30f97b818d5b384ca3374dcaf1842c6459336ae1b896b06",
           "sources": [
             {
               "path": "dataset.json",
@@ -16796,12 +16796,12 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case."
         },
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-058-zh-stable-tdesign-table",
-          "changes_sha256": "e639b8017134059401d28b203c8789b759b560589b077b419720e89830e7730c",
+          "changes_sha256": "280fdc5c821eb362d30f97b818d5b384ca3374dcaf1842c6459336ae1b896b06",
           "sources": [
             {
               "path": "dataset.json",
@@ -16817,7 +16817,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case."
         },
         {
           "suite": "dynamic-content",
@@ -16868,7 +16868,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "dynamic-content",
@@ -16900,7 +16900,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "dynamic-content",
@@ -16932,7 +16932,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "dynamic-content",
@@ -16964,7 +16964,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "dynamic-content",
@@ -16996,7 +16996,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "dynamic-content",
@@ -17028,7 +17028,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "dynamic-content",
@@ -17060,7 +17060,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "dynamic-content",
@@ -17092,7 +17092,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -18017,7 +18017,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "webfetch",
@@ -18109,7 +18109,7 @@
         {
           "suite": "dynamic-content",
           "case_id": "dynamic-014-en-stable-rsuite-table",
-          "changes_sha256": "495fe16e3e2f4e2cae81747a7061ae48185f948dd5243070c090e4703fb5ca8f",
+          "changes_sha256": "280fdc5c821eb362d30f97b818d5b384ca3374dcaf1842c6459336ae1b896b06",
           "sources": [
             {
               "path": "dataset.json",
@@ -18123,7 +18123,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Remove only generic forbidden-word vetoes. The frozen task supplies the unchanged positive content requirements; the registered shared regressions distinguish complete required content from challenge-only or missing-content answers. This policy correction does not require a fresh page observation and does not qualify missing frozen reference answers. After integrating main unified acceptance, retain declared facts as mandatory checks; no fixed source-record replacement was qualified for this case."
         },
         {
           "suite": "dynamic-content",
@@ -18153,7 +18153,7 @@
             "record-fields-no-historical-facts-complete",
             "record-fields-no-historical-facts-missing-price"
           ],
-          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Remove historical required_facts that structured acceptance never uses as a gate; preserve source membership, record fields and quotas. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
+          "reason": "Use the same fixed-source record contract for identical URL and task instructions across suites. Bind all owned record fields from the hash-verified reference; changing collections are not subject to historical membership. Remove lexical exclusion vetoes: extra notices do not fail complete requested records, and cannot supply missing records. Page-level labels outside the requested records are not mandatory substitutes for record identity. Replace redundant historical required_facts with stronger complete fixed-source record membership; preserve record fields and quotas. Main now enforces all remaining declared facts. Frozen task definitions remain unchanged. Historical diagnostic averages are not comparable across this annotation change."
         },
         {
           "suite": "popular-sites",

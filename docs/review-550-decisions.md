@@ -89,11 +89,29 @@ not the number of changed scoring rules.
 
 ## Diagnostic-field cleanup
 
-The 36 structured cases retained historical `required_facts` that the stable
-record predicate does not use. Remove those fields only in the selected
-revision; record membership, types, fields and quotas remain unchanged. This
-changes diagnostic fact counts/averages, not the acceptance policy. Do not
-present the resulting averages as comparable historical provider scores.
+Before integrating main, 36 structured cases retained historical facts that
+were only diagnostics. Main commit `4aa3cb2` now enforces every declared fact
+alongside records. Therefore retain the 16 cases without a qualified fixed-record
+replacement as mandatory fact checks; replace only the 20 duplicate fixed-record
+cases' redundant facts with complete source membership. Do not infer that all
+structured facts are optional. Frozen definitions stay unchanged, and diagnostic
+fact averages are not comparable across this annotation/scorer change.
+
+The follow-up audits the 16 remaining structured cases rather than treating
+all their facts as diagnostic. Six cases contain 13 facts exactly implied by
+unchanged mandatory anchors; remove only those duplicate fact groups (all six
+fact thresholds are 1.0). Header presence is retained where it is a separate
+requirement from typed row parsing. Fixed example records and completed-load
+labels are not assumed to be live rankings merely because the suite is dynamic.
+
+| Cases | Decision and evidence |
+| --- | --- |
+| HeroUI, Material Angular, UOL Play | Remove duplicated Name/Role/Status, No./Name/Weight/Symbol, and UOL Play facts; identical mandatory anchor groups remain. |
+| Tabulator, Vuetify usage, MUI Data Grid | Remove duplicated page-title/View Source/Usage/API facts only. Keep nonduplicate example identities and descriptive/completion requirements. |
+| EUI, Syncfusion, RSuite, PrimeVue | Keep explicit field/header requirements. Row typing alone is not proof that every original header appears; no source-qualified alias relaxation is proposed. |
+| Webscraper, USGS | Keep category/site/time-window identity. These are not frozen product prices or old earthquake events. |
+| Grid.js | Keep the frozen initial completed-load status and declared headers. This is an initial example-state requirement, not a new rule that every changing list must always have two items. |
+| PrimeNG, TDesign, Swagger Petstore | Keep fixed example names/statuses and API identities; generic field counts are not a replacement for those source facts. No new complete source qualification is claimed for this retention. |
 
 The two inherited diagnostic anchor roles contradict their explicit per-case
 rules in `first-30-rule-review.md` section 21 and `remaining-70-rule-review.md`

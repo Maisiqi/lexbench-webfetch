@@ -43,8 +43,8 @@ Each cell is **covered cases (percentage of suite entries); declared checkpoints
 
 | Component | webfetch | popular-sites | dynamic-content | access-restrictions | articles | Combined |
 | --- | --- | --- | --- | --- | --- | --- |
-| [Required facts](../src/lexbench_webfetch/metrics.py) | 111 (74.0%); 354 → 111 (74.0%); 433 | 0 (0.0%); 0 | 22 (22.0%); 71 → 21 (21.0%); 68 | 0 (0.0%); 0 → 3 (3.0%); 22 | 0 (0.0%); 0 | 133 (24.2%); 425 → 135 (24.5%); 523 |
-| [Diagnostic historical facts](../src/lexbench_webfetch/metrics.py) | 10 (6.7%); 332 → 0 (0.0%); 0 | 0 (0.0%); 0 | 25 (25.0%); 381 → 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 35 (6.4%); 713 → 0 (0.0%); 0 |
+| [Required facts](../src/lexbench_webfetch/metrics.py) | 121 (80.7%); 686 → 111 (74.0%); 433 | 0 (0.0%); 0 | 47 (47.0%); 452 → 34 (34.0%); 107 | 0 (0.0%); 0 → 3 (3.0%); 22 | 0 (0.0%); 0 | 168 (30.5%); 1138 → 148 (26.9%); 562 |
+| [Diagnostic historical facts](../src/lexbench_webfetch/metrics.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
 | [Required legacy marker groups](../src/lexbench_webfetch/metrics.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
 | [Required stable anchors](../src/lexbench_webfetch/stable_tasks.py) | 99 (66.0%); 391 → 91 (60.7%); 284 | 100 (100.0%); 2022 → 100 (100.0%); 2052 | 100 (100.0%); 2367 → 83 (83.0%); 2173 | 98 (98.0%); 1553 → 100 (100.0%); 1587 | 100 (100.0%); 3970 → 100 (100.0%); 4229 | 497 (90.4%); 10303 → 474 (86.2%); 10325 |
 | [Diagnostic stable anchors](../src/lexbench_webfetch/stable_tasks.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (2.0%); 33 → 0 (0.0%); 0 | 0 (0.0%); 0 | 2 (0.4%); 33 → 0 (0.0%); 0 |
@@ -65,7 +65,7 @@ Each cell is **covered cases (percentage of suite entries); declared checkpoints
 | [Fixed source record hashes](../src/lexbench_webfetch/stable_tasks.py) | 0 (0.0%); 0 → 10 (6.7%); 133 | 0 (0.0%); 0 | 0 (0.0%); 0 → 10 (10.0%); 133 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 → 20 (3.6%); 266 |
 | [Resource groups](../src/lexbench_webfetch/resource_urls.py) | 16 (10.7%); 19 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 16 (2.9%); 19 |
 | [File integrity contracts](../src/lexbench_webfetch/file_acceptance.py) | 3 (2.0%); 3 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 3 (0.5%); 3 |
-| [Body character floors](../src/lexbench_webfetch/metrics.py) | 111 (74.0%); 111 | 57 (57.0%); 57 → 41 (41.0%); 41 | 37 (37.0%); 37 → 36 (36.0%); 36 | 100 (100.0%); 100 | 100 (100.0%); 100 | 405 (73.6%); 405 → 388 (70.5%); 388 |
+| [Content character floors](../src/lexbench_webfetch/metrics.py) | 121 (80.7%); 121 | 0 (0.0%); 0 → 4 (4.0%); 4 | 92 (92.0%); 92 | 100 (100.0%); 100 | 100 (100.0%); 100 | 413 (75.1%); 413 → 417 (75.8%); 417 |
 | [Lexical exclusion terms](../src/lexbench_webfetch/metrics.py) | 150 (100.0%); 689 → 0 (0.0%); 0 | 100 (100.0%); 659 → 0 (0.0%); 0 | 75 (75.0%); 374 → 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 325 (59.1%); 1722 → 0 (0.0%); 0 |
 | [Required page identity](../src/lexbench_webfetch/scoring.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
 | [Legacy list contracts](../src/lexbench_webfetch/dynamic_lists.py) | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 | 0 (0.0%); 0 |
@@ -111,12 +111,14 @@ returned rows. Composite groups and their fields/links deliberately overlap.
 - **Facts, anchors and patterns:** normalized literal alternatives are checked
   as groups. Required fact coverage uses the task's `fact_coverage_threshold`
   (default 1); required anchors and patterns must all pass. Stable page-pattern groups are also mandatory. Structured-record
-  schemas in the baseline retain historical `required_facts` as diagnostics;
-  this revision removes those unused fields from 36 cases. Historical fact
-  averages must not be compared across that cleanup. The two baseline diagnostic
-  anchor roles are replaced by explicit required groups: Devuan retains all 20;
-  ibiblio retains 11 source-present groups and removes two obsolete ones.
-  `stable_text_role: diagnostic` remains supported for frozen historical inputs,
+  schemas obey declared facts too under the unified main scorer. This revision
+  replaces redundant facts in 20 fixed-record cases with stronger complete-source
+  membership. Among the other 16 structured cases, 13 duplicate fact groups in
+  six cases are already required by identical stable anchors and are deduplicated;
+  all nonduplicate facts remain mandatory. No fact-only diagnostic role exists in this scorer.
+  The two baseline diagnostic anchor roles are replaced by explicit required
+  groups: Devuan retains all 20; ibiblio retains 11 source-present groups and
+  removes two obsolete ones. Diagnostic anchor support remains for frozen inputs,
   but no selected-revision case uses it.
 - **Bodies and endings:** declared regions use `minimum_coverage`, the floor
   and required-region count in `body_requirements`. This revision sets the 148
@@ -143,8 +145,10 @@ returned rows. Composite groups and their fields/links deliberately overlap.
   and declared MIME/hash constraints. A URL alone is not a delivered file.
 - **Shared verdict:** request success is required. Any enabled mandatory document,
   page-identity or article component must pass. Stable contracts combine with
-  declared body, pattern and composite requirements; without one, the task kind
-  selects body, legacy list, resource or file acceptance. Deadline overrun fails.
+  every declared fact, literal, length, body, pattern, composite, resource and
+  file requirement through `acceptance_checks`; the task kind cannot bypass
+  another declared requirement. Undeclared requirements are omitted. Deadline
+  overrun fails.
   Encoding corruption, script-only shells and declared truncation have shared
   scorer guards; these are not separate sampled components. A truncation notice
   can be overridden only by exact coverage of every declared body region.

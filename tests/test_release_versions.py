@@ -9,9 +9,20 @@ from lexbench_webfetch.versions import (
 )
 
 
-def test_installed_catalog_binds_every_registered_suite():
+@pytest.fixture
+def matching_catalog(tmp_path):
+    from lexbench_webfetch.benchmark import SUITES
+    from lexbench_webfetch.scoring import SCORING_SOURCE_SHA256
+    release = json.loads((SUITES / "benchmark-release.json").read_text())
+    release["scoring_source_sha256"] = SCORING_SOURCE_SHA256
+    path = tmp_path / "catalog.json"
+    path.write_text(json.dumps(release))
+    return path
+
+
+def test_catalog_binds_every_registered_suite(matching_catalog):
     from lexbench_webfetch.benchmark import registry
-    release = catalog_release()
+    release = catalog_release(matching_catalog)
     assert release["tag"] == "bench-v" + release["version"]
     entries = registry()["suites"]
     assert [row["suite"] for row in release["suites"]] == [row["id"] for row in entries]
@@ -19,8 +30,8 @@ def test_installed_catalog_binds_every_registered_suite():
 
 
 @pytest.mark.parametrize("change", ["omitted_suite", "count", "reference", "scorer", "tag"])
-def test_published_catalog_rejects_changed_population_rules_or_reference_bindings(tmp_path, change):
-    release = catalog_release()
+def test_published_catalog_rejects_changed_population_rules_or_reference_bindings(tmp_path, change, matching_catalog):
+    release = catalog_release(matching_catalog)
     if change == "omitted_suite":
         release["suites"].pop()
     elif change == "count":
@@ -194,7 +205,7 @@ def test_tree_verdict_changes_require_rescoring_even_in_relaxed_report_verificat
 
     before = dataset()
     case = before["cases"][0]
-    case.update(ordered_tree_reference={"tag": "p", "text": "hello"},
+    case.update(ordered_tree_reference={"tag": "p", "text": "complete body"},
                 ordered_tree_min_similarity=0.5)
     after = deepcopy(before)
     if field == "ordered_tree_reference":
@@ -205,7 +216,7 @@ def test_tree_verdict_changes_require_rescoring_even_in_relaxed_report_verificat
         case[field] = 0.1
     if reverse:
         before, after = after, before
-    answer = b'{"tag":"p","text":"hello"}'
+    answer = b'{"tag":"p","text":"complete body"}'
     assert evaluate_response(before["cases"][0], answer)["passed"] is not reverse
     assert evaluate_response(after["cases"][0], answer)["passed"] is reverse
     first = release(before)
@@ -235,3 +246,26 @@ def test_list_name_rule_is_part_of_measurement_not_just_public_display_fields():
         release(after, "1.0.1", previous=first)
     with pytest.raises(ValueError, match="dataset"):
         verify_release(first, after, exact_dataset=False)
+
+
+@pytest.mark.parametrize("released", [False, True])
+def test_version_command_distinguishes_published_and_unreleased_scorers(monkeypatch, capsys, released):
+    from lexbench_webfetch import versions
+    from lexbench_webfetch.benchmark import SUITES
+    from lexbench_webfetch.cli import main
+    catalog = json.loads((SUITES / "benchmark-release.json").read_text())
+    source_hash = catalog["scoring_source_sha256"] if released else "0" * 64
+    monkeypatch.setattr(versions, "SCORING_SOURCE_SHA256", source_hash)
+    monkeypatch.setattr("sys.argv", ["lexbench-webfetch", "version"])
+    main()
+    result = json.loads(capsys.readouterr().out)
+    if released:
+        assert result == catalog
+        assert versions.catalog_release() == catalog
+    else:
+        assert result["status"] == "unreleased"
+        assert result["version"] is None and result["tag"] is None
+        assert result["scoring_source_sha256"] == source_hash
+        assert result["published_catalog"] == catalog
+        with pytest.raises(ValueError, match="scoring source changed"):
+            versions.catalog_release()

@@ -5,6 +5,7 @@ import sys
 
 from lexbench_webfetch import benchmark
 from lexbench_webfetch.stable_tasks import SCHEMA_FIELDS
+from lexbench_webfetch.scoring import acceptance_checks
 
 REVISION = 'review-550-20261023'
 START, END = '<!-- distribution:start -->', '<!-- distribution:end -->'
@@ -32,7 +33,7 @@ ROWS = {
     'membership': ('Fixed source record hashes', 'stable_tasks.py'),
     'resources': ('Resource groups', 'resource_urls.py'),
     'files': ('File integrity contracts', 'file_acceptance.py'),
-    'length': ('Body character floors', 'metrics.py'),
+    'length': ('Content character floors', 'metrics.py'),
     'forbidden': ('Lexical exclusion terms', 'metrics.py'),
     'identity': ('Required page identity', 'scoring.py'),
     'legacy_lists': ('Legacy list contracts', 'dynamic_lists.py'),
@@ -45,10 +46,11 @@ def components(case):
         return Counter()
     c = case.get('acceptance_contract') or {}
     schema, kind = c.get('schema'), case.get('task_kind', 'body')
-    body_gate = schema == 'body_text' or (not c and kind == 'body')
+    checks = acceptance_checks(case, {})
+    body_gate = 'length' in checks
     r = Counter()
-    r['facts' if body_gate else 'fact_diagnostics'] = len(case.get('required_facts', []))
-    r['markers'] = int(body_gate and bool(case.get('expected_any')))
+    r['facts'] = len(case.get('required_facts', []))
+    r['markers'] = int('literals' in checks)
     r['anchors' if c.get('stable_text_role', 'required') != 'diagnostic'
       else 'anchor_diagnostics'] = len(c.get('stable_text_anchors', []))
     body = case.get('body_requirements') or {}
@@ -72,9 +74,9 @@ def components(case):
     for row, key in [('titles', 'title_contract'), ('comments', 'comment_contract'), ('posts', 'post_contract')]:
         r[row] = int(key in source)
     r['membership'] = len(c.get('source_membership', {}).get('record_hashes', []))
-    r['resources'] = len(case.get('expected_resources', [])) if kind == 'resource' else 0
+    r['resources'] = len(case.get('expected_resources', []))
     r['files'] = int(kind == 'file')
-    r['length'] = int(body_gate and case.get('min_content_chars', 0) > 0)
+    r['length'] = int(body_gate and case.get('min_content_chars', 1) > 0)
     r['forbidden'] = len(case.get('forbidden_any', []))
     r['identity'] = int(case.get('page_identity_required', False))
     r['legacy_lists'] = int(not c and source.get('mode') == 'dynamic_list_structure')

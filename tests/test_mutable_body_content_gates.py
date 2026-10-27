@@ -72,7 +72,7 @@ def test_no_declared_facts_does_not_create_a_new_requirement():
     ("[A newly published item](https://example.test/item/7)", True),
     ("There are no records here.", False),
 ])
-def test_structured_records_do_not_inherit_historical_fact_or_length_gates(answer, passed):
+def test_structured_records_obey_declared_gates_until_explicitly_removed(answer, passed):
     case = deepcopy(body_case())
     case["task_kind"] = "structure"
     case["expected_any"] = ["A retired entry"]
@@ -84,8 +84,13 @@ def test_structured_records_do_not_inherit_historical_fact_or_length_gates(answe
     metrics = score_attempt(case, answer.encode(), ok=True)
     assert metrics["fact_coverage"] == 0
     assert not metrics["length_pass"]
-    assert task_passed(True, metrics) is passed
-    assert "required_facts_missing" not in metrics["stable_task_errors"]
+    assert not task_passed(True, metrics)
+    assert metrics['acceptance_checks']['facts'] is False
+    assert metrics['acceptance_checks']['length'] is False
+    case.pop('required_facts')
+    case['expected_any'] = []
+    case['min_content_chars'] = 1
+    assert task_passed(True, score_attempt(case, answer.encode(), ok=True)) is passed
 
 
 def test_document_metadata_does_not_supply_a_missing_body_fact():

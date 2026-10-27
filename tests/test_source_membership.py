@@ -114,7 +114,7 @@ def test_catalog_notice_cannot_own_a_complete_card_or_repair_missing_fields(pref
 def test_revised_record_rules_do_not_carry_unused_historical_facts(paired_cases):
     for cases in paired_cases.values():
         for case in cases.values():
-            if case.get('acceptance_contract', {}).get('schema') not in (None, 'body_text'):
+            if case.get('acceptance_contract', {}).get('source_membership', {}).get('kind') == 'fixed':
                 assert not case.get('required_facts')
 
 
@@ -137,3 +137,29 @@ def test_reviewed_stable_text_is_required_without_obsolete_ibiblio_groups():
         assert evaluate_stable_task(text, contract)['stable_task_pass']
         label = 'Register' if case_id == 'risk-diverse-042' else 'Privacy'
         assert not evaluate_stable_task(text.replace(label, 'omitted'), contract)['stable_task_pass']
+
+
+def test_deduplicated_facts_still_have_mandatory_anchor_checks(paired_cases):
+    from lexbench_webfetch.metrics import normalize_for_match
+    from lexbench_webfetch.stable_tasks import evaluate_stable_task
+    removed = {
+        'dynamic-041-en-stable-heroui-table': ['Name', 'Role', 'Status'],
+        'dynamic-038-material-angular-dev-components': ['No.', 'Name', 'Weight', 'Symbol'],
+        'dynamic-092-play-uol-com-br': ['UOL Play'],
+        'dynamic-025-025-tabulator-vertical-virtual-dom': ['Virtual DOM - Vertical', 'View Source'],
+        'dynamic-033-033-vuetify-usage-table': ['Usage'],
+        'dynamic-104-mui-data-grid': ['MUI X Data Grid', 'API'],
+    }
+    for case_id, labels in removed.items():
+        case = paired_cases['dynamic-content'][case_id]
+        contract = case['acceptance_contract']
+        assert contract.get('stable_text_role', 'required') == 'required'
+        facts = {normalize_for_match(v) for f in case.get('required_facts', []) for v in f['alternatives']}
+        for label in labels:
+            assert normalize_for_match(label) not in facts
+            anchor = next(a for a in contract['stable_text_anchors'] if {normalize_for_match(v) for v in a['alternatives']} == {normalize_for_match(label)})
+            # Verify the retained checker, independently of missing full body inputs.
+            for text, expected in [(label, True), ('unrelated', False)]:
+                result = evaluate_stable_task(text, contract)
+                row = next(a for a in result['stable_anchor_results'] if a['id'] == anchor['id'])
+                assert row['pass'] is expected, (case_id, label, text)

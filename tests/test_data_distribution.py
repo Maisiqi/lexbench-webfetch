@@ -1,9 +1,13 @@
 """The reader-facing inventory must agree with the registered definitions."""
 import runpy
+import pytest
 from pathlib import Path
 
 
-MODULE = runpy.run_path(str(Path(__file__).parents[1] / 'docs/data_distribution.py'))
+SOURCE = Path(__file__).parents[1] / 'docs/data_distribution.py'
+if not SOURCE.is_file():
+    pytest.skip('Documentation inventory is checked in the source checkout.', allow_module_level=True)
+MODULE = runpy.run_path(str(SOURCE))
 
 
 def test_distribution_totals_and_documentation_drift():
