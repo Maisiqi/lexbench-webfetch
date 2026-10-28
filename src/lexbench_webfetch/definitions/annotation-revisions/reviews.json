@@ -239,7 +239,7 @@
       ]
     },
     "review-550-20261023": {
-      "revision_sha256": "67b3de15b18c3db8c9b8dd4520e220c126873df31b43ddd433c14cc50dec447e",
+      "revision_sha256": "1e9752b3797cbdf8f3e07faab38f0dcba9007447732b1dfb37510e6db23ce22f",
       "changes": [
         {
           "suite": "webfetch",
@@ -9434,7 +9434,7 @@
         {
           "suite": "webfetch",
           "case_id": "live-047-push-api",
-          "changes_sha256": "29ec36317bcec9dce4db29544c4b6ef904c9f396a448b93afe349b126443661a",
+          "changes_sha256": "5f90efd7802713f10dcb2772f9fefe7ae821c69f978d8019121f1263a9a48f4e",
           "sources": [
             {
               "path": "sources/live-047-push-api/current-source.html.txt",
@@ -9473,7 +9473,7 @@
             "all-body-regions-5-weak-region",
             "all-body-regions-5-missing-region"
           ],
-          "reason_ref": "reviewed-document-bodies"
+          "reason": "Five frozen-reference regions each require 80%, replacing section/half-length gates; independent facts and anchors remain. Scope follow-up 2026-10-28 retains offsets 208–4332, from the Web Workers note through all remaining prose. Saved HTML confirms the preceding Baseline explanation is default-closed, as in History API. Only the first region start and bindings change; later ranges, thresholds, frozen source bytes and ordinary execution remain unchanged. Complete reference/source controls pass; prefix-only, headings-only, half-body and each omitted-region control fail. Evidence and limits: docs/document-body-review.md."
         },
         {
           "suite": "webfetch",

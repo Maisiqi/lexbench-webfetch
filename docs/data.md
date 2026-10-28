@@ -688,11 +688,12 @@ against the preceding parser found no changed section verdicts. Three older
 projection records lacked an exact matching source binding and are not included;
 this is not a complete historical-output rescore.
 
-## Current document-body qualification
+## Frozen-reference document-body matching
 
 The [59-case document-body review](document-body-review.md) records source scope,
-per-region qualification and why WebSocket retains its section contract. Before
-a formal live evaluation, qualify the selected revision against current initial-page
-content without clicks, tab switching or expansion. Investigate failures and
-version any justified changes; never silently replace frozen references. These
-checks do not substitute for the four deferred frozen-export validations.
+saved per-region controls and why WebSocket retains its section contract. Formal
+runs use the saved references without an added fresh-page qualification gate.
+Investigate source drift and extraction when a correct-looking answer fails;
+version any justified reference/rule corrections and retain their provenance.
+Frozen inputs remain intact. Saved source controls do not substitute for the
+four deferred frozen-export validations.

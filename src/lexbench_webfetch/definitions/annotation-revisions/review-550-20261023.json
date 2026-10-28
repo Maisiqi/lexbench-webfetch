@@ -9577,15 +9577,15 @@
           {
             "id": "region-1",
             "label": "Body part 1",
-            "start": 0,
+            "start": 208,
             "end": 856,
             "text_binding": {
-              "sha256": "6e004f6fd03cf11316f1f4a36a12a8f3f7178e2af9496d520f441361888c68fc",
-              "chars": 838
+              "sha256": "3f3c89716e7cebf763c6202b49278174653896d5a641c067763092d426b2b0af",
+              "chars": 632
             },
             "source_text_binding": {
-              "sha256": "9fb9acf1faf6283327b2e54fee8ca464ccc4be465b67289a61511d4841cfd569",
-              "chars": 855
+              "sha256": "8fcef6fd1df2905d15fa411c657a221ec449e3a0f7ec67670dd00158826652bf",
+              "chars": 647
             }
           },
           {

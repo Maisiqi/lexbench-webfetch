@@ -1,4 +1,4 @@
-# Document-body revision: source qualification
+# Document-body revision: frozen-reference body matching
 
 This is the 2026-10-27 follow-up to the 75-case section/definition review in
 PR #12, within `review-550-20261023`. It replaces section/definition checks in
@@ -28,8 +28,10 @@ predict future changes.
   loader permits adding a body gate to a previously diagnostic mutable body;
   it verifies the catalog/reference hashes and removes the obsolete diagnostic
   policy. No new scoring algorithm, browser interaction or site adapter is added.
-- Do not tune boundaries to achieve 90%. Four cases pass between 80% and 90%
+- Do not tune boundaries to achieve 90%. Three cases pass between 80% and 90%
   in a region; retain their original ranges and publish that margin below.
+  Push API receives the same evidence-backed outer-boundary correction as
+  History API, excluding its default-closed compatibility explanation.
 
 ## Scope and initial-page constraints
 
@@ -41,7 +43,8 @@ except these reviewed outer-boundary corrections:
 | --- | --- | --- |
 | `live-029-fetch` | 288–292047 | Keep Abstract through the complete IDL Index, including algorithms and references. Exclude publication metadata and the appended, default-closed MDN compatibility panels. |
 | `live-044-history-api` | 210–3080 | Keep the complete introduction through the end. Exclude the preceding default-closed Baseline explanation; the title remains an independent required anchor. |
-| Other 57 cases | Complete existing reference | No extra trimming to improve current-page scores. |
+| `live-047-push-api` | 208–4332 | Keep the Web Workers note and complete introduction through the end. Exclude the preceding default-closed Baseline explanation, consistent with History API; the title remains an independent required anchor. |
+| Other 56 cases | Complete existing reference | No extra trimming to improve current-page scores. |
 
 Five ranges use source line boundaries; exact offsets, text hashes and source
 hashes are maintained in the revision's `body_projection` declarations.
@@ -64,9 +67,8 @@ For each of the 59 final contracts:
 - First half of the reference: fails.
 - Delete each of the five regions separately: all five variants fail.
 
-The four lower-margin cases are FastAPI `live-019-navigation-menu` and
-`live-027-sponsors` (default-closed examples/explanations), MDN Push
-`live-047-push-api` (a closed Baseline explanation), and Redux
+The three lower-margin cases are FastAPI `live-019-navigation-menu` and
+`live-027-sponsors` (default-closed examples/explanations), and Redux
 `live-070-navigation-menu` (inline-code text serialization differences).
 These passed without deleting their prose or lowering 80%.
 The table reports body coverage percentages in source order. All rows use five
@@ -100,7 +102,7 @@ outside Git.
 | [live-044-history-api](https://developer.mozilla.org/en-US/docs/Web/API/History_API) | 100 / 100 / 100 / 100 / 100 | 99.12 / 100.00 / 100.00 / 100.00 / 98.39 | `3626500ac6fe6cdad50b9f4a85a64ad0592fbdd385eea4544ce2c9b105d22bfa` |
 | [live-045-cache](https://developer.mozilla.org/en-US/docs/Web/API/Cache) | 100 / 100 / 100 / 100 / 100 | 91.35 / 99.69 / 99.62 / 96.61 / 97.80 | `d515010754a7432ad9d225954b7673f05b1631015bb47b05d3dfab60b820a5c7` |
 | [live-046-file-api](https://developer.mozilla.org/en-US/docs/Web/API/File_API) | 100 / 100 / 100 / 100 / 100 | 99.31 / 100.00 / 100.00 / 100.00 / 100.00 | `51f75cc068ac985c1661268d3af6b0d328358b094f10b903259115296b312f8f` |
-| [live-047-push-api](https://developer.mozilla.org/en-US/docs/Web/API/Push_API) | 100 / 100 / 100 / 100 / 100 | 81.57 / 100.00 / 99.75 / 100.00 / 99.58 | `31a067d55495b35a42392f2554d6591ba69aa42abe0f099b3c510953c0a1086e` |
+| [live-047-push-api](https://developer.mozilla.org/en-US/docs/Web/API/Push_API) | 100 / 100 / 100 / 100 / 100 | 99.81 / 100.00 / 100.00 / 100.00 / 100.00 | `31a067d55495b35a42392f2554d6591ba69aa42abe0f099b3c510953c0a1086e` |
 | [live-049-functools-higher-order-functions](https://docs.python.org/3/library/functools.html) | 100 / 100 / 100 / 100 / 100 | 99.91 / 99.37 / 99.97 / 99.73 / 99.85 | `ade37a02be5b8871f3a691e4d40ccc445c13593ee2b91b88de3813503b831c2a` |
 | [live-050-re-regular-expression-operations](https://docs.python.org/3/library/re.html) | 100 / 100 / 100 / 100 / 100 | 99.96 / 99.87 / 99.64 / 95.35 / 97.56 | `32650070d325ef3787579936baf70116804daecfb8954c41b4d316a18ababf15` |
 | [live-052-objects-in-kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/) | 100 / 100 / 100 / 100 / 100 | 100.00 / 100.00 / 100.00 / 100.00 / 100.00 | `9a570b4b02ec7805c080245e51ae6459a700a44b76ef19be1a0bd4d065692b8d` |
@@ -147,11 +149,13 @@ boundary, weak-region and missing-region regression controls in `reviews.json`.
 Actual source qualification additionally requires the external reference and
 current controls identified above; CI does not download these live pages.
 
-Before a formal live evaluation, requalify the selected revision against current
-initial-page content. Investigate a failure before changing a rule. If content
-has changed materially, publish reviewed, versioned reference/rule updates and
-retain their provenance; never silently overwrite frozen inputs or tune rules
-to provider outputs.
+Formal runs score against the saved references; a fresh capture is optional.
+When a correct-looking extraction fails, or multiple providers fail the same
+case, investigate both the current source and extraction before attributing
+the failure. If content changed materially, publish a reviewed, versioned
+reference/rule update with provenance. Keep frozen inputs intact and rules
+independent of provider outputs. Shared failures are a diagnostic signal, not
+proof of source drift; providers may also receive different cached versions.
 
 Coverage changes: body cases 243 → 302; section cases 74 → 16; definition cases
 1 → 0 (previous PR state → this follow-up). The generated baseline-to-revision
@@ -212,3 +216,32 @@ rewrites. A later source change can still cause a correct extraction to fail;
 such a failure needs investigation before attributing it to provider capability.
 Historical qualification records remain evidence for rule construction, not a
 mandatory fresh-fetch step or a guarantee of current-source validity.
+
+## V8 review disposition (2026-10-28)
+
+Accepted the stale mandatory-requalification text and PR-description cleanup;
+removed the same contradictory requirement from `data.md`.
+Formal runs keep ordinary frozen-reference matching; no execution dependency on
+Browser Eval PR #75 remains. The CI result must identify the tested commit.
+
+Accepted the Push API scope inconsistency, not a requirement to raise low scores.
+The existing hash-bound reference starts with its title and Baseline panel;
+the saved HTML identified in the table has a closed `details.baseline-indicator`
+whose `div.extra` contains the availability explanation. Offset 208 begins the
+Web Workers note. Retaining 208–4332 preserves that note, the full introduction,
+and all later prose. Only the first region's start changes (0 to 208); its end
+and the other four ranges stay fixed. Existing required title anchors remain.
+The same saved source now scores 99.81/100/100/100/100 instead of
+81.57/100/99.75/100/99.58. The shared fragment allocation can change later-region
+scores even when their ranges are unchanged. The complete reference and saved
+HTML pass; headings/navigation only, excluded prefix only, half-body and each
+of five omitted-region controls fail. No new capture or provider call was used.
+
+Retained the three other low-margin cases: removing their internal prose or
+changing thresholds solely to increase margins is not justified. Frozen-answer
+scoring is reproducible for identical inputs, but live results across dates are
+not automatically comparable. Do not extrapolate a small historical change
+sample into a predicted number of future changes. Source drift need not make
+all providers fail together; additional text can also alter fragment boundaries.
+These qualifications replace the review's stronger claims without adding a
+fresh-capture gate or modifying other cases.
