@@ -190,24 +190,25 @@ versions discussed in dated articles. Those are not equivalent to a changing
 minimum runtime requirement or temporary announcement, and were retained.
 This audit is not proof that every live page will remain unchanged.
 
-### Formal-run source admission
+### Execution policy: ordinary frozen-reference matching
 
-The 59 newly mandatory live-body cases declare
-`source_verification.reference_mode: live_body` in executable and public task
-exports. This declaration requires an execution consumer supporting body-source
-qualification; older consumers reject the unsupported mode instead of silently
-certifying a cohort with zero source checks.
+The 59 newly mandatory body cases use ordinary frozen-reference matching, with
+no added pre-run or post-run live-page qualification requirement. The requester
+withdrew that requirement on 2026-10-28; execution companion PR #75 is no longer
+required. The projection loader preserves any existing source-verification
+policy instead of adding a new mode.
 
-The Browser Eval companion extends its existing preflight/freezer/postcheck
-lifecycle. Independent current source text must satisfy the unchanged body
-contract before calls and after the cohort. Qualification binds the source text,
-its hash, observation time and task scope; missing, stale or altered evidence
-cannot qualify. Original reference text, regions and thresholds remain frozen.
-A materially changed source is rejected as a source problem, not recorded as a
-provider failure. Minor changes within the existing body tolerance are allowed;
-`live_body` does not impose exact equality with either the old body or pre-call
-capture. Existing `frozen` and `live_exact` tasks retain their original policies.
+Saved reference bytes, the five reviewed regions, each region's 80% threshold,
+and existing facts, anchors and other acceptance requirements remain unchanged.
+No new capture or reference refresh is needed to score these cases. Other cases
+and their execution policies are unchanged.
 
-Until the compatible execution consumer is available, these selected cases are
-not ready for a formal certified run. Source qualification is separate from
-historical rescoring; previously collected responses are not new live calls.
+This keeps the execution policy consistent with existing unversioned body cases
+and avoids a separate qualification workflow solely for these 59 conversions.
+The retained source comparisons support using the saved references for near-term
+runs; they do not guarantee that future pages remain unchanged. The 80% fragment
+coverage threshold tolerates some edits, not an exact 20% allowance for arbitrary
+rewrites. A later source change can still cause a correct extraction to fail;
+such a failure needs investigation before attributing it to provider capability.
+Historical qualification records remain evidence for rule construction, not a
+mandatory fresh-fetch step or a guarantee of current-source validity.
